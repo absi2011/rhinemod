@@ -1,0 +1,12 @@
+{
+    "rhinemod:RhineStrike": {
+        "NAME": "打击",
+        "DESCRIPTION": "造成 !D! 点伤害。",
+        "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:RhineDefend": {
+        "NAME": "防御",
+        "DESCRIPTION": "获得 !B! 点 格挡 。",
+        "UPGRADE_DESCRIPTION": ""
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "modid": "rhinemod",
+    "name": "RhineLab(莱茵生命)",
+    "author_list": ["_noname512", "absi2011"],
+    "description": "Added a character with new mechanisms, a new room type, some cards, potions and relics.",
+    "version": "0.1",
+    "sts_version": "12-22-2020",
+    "mts_version": "3.8.0",
+    "dependencies": ["basemod", "stslib"]
+}
