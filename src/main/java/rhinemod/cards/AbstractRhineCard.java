@@ -1,27 +1,32 @@
 package rhinemod.cards;
 
-import basemod.abstracts.CustomCard;
 import basemod.abstracts.DynamicVariable;
 import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
-import rhinemod.patches.AbstractCardEnum;
+import rs.lazymankits.abstracts.LMCustomCard;
+import rs.lazymankits.interfaces.cards.BranchableUpgradeCard;
+import rs.lazymankits.interfaces.cards.SwappableUpgBranchCard;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractRhineCard extends CustomCard {
-
+public abstract class AbstractRhineCard extends LMCustomCard implements BranchableUpgradeCard, SwappableUpgBranchCard {
+    public static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("rhinemod:AbstractRhineCard");
+    public static final String[] TEXT = uiStrings.TEXT;
     public int baseSecondMagicNumber;
     public int secondMagicNumber;
     public boolean isSecondMagicNumberModified;
     public boolean upgradedSecondMagicNumber;
 
     public AbstractRhineCard(String id, String name, String img, int cost, String rawDescription,
-                             AbstractCard.CardType type, AbstractCard.CardRarity rarity, AbstractCard.CardTarget target) {
-        super(id, name, img, cost, rawDescription, type, AbstractCardEnum.RHINE, rarity, target);
+                             AbstractCard.CardType type, AbstractCard.CardColor color,
+                             AbstractCard.CardRarity rarity, AbstractCard.CardTarget target) {
+        super(id, name, img, cost, rawDescription, type, color, rarity, target);
     }
 
     @Override
@@ -74,11 +79,32 @@ public abstract class AbstractRhineCard extends CustomCard {
         return card;
     }
 
-    public static class SecondMagicNumber extends DynamicVariable {
+    @Override
+    public void upgrade() {
+        possibleBranches().get(chosenBranch()).upgrade();
+    }
 
+    protected void upgradeName(int branchIndex) {
+        timesUpgraded++;
+        upgraded = true;
+        this.name = this.name + TEXT[branchIndex];
+        this.initializeTitle();
+    }
+
+    @Override
+    public boolean allowBranchWhenUpgradeBy(int msg) {
+        return true;
+    }
+
+    @Override
+    public int branchForRandomUpgrading(int msg) {
+        return 0;
+    }
+
+    public static class SecondMagicNumber extends DynamicVariable {
         @Override
         public String key() {
-            return "nearlmod:M2";
+            return "rhinemod:M2";
         }
 
         @Override

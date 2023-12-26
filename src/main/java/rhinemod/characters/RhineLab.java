@@ -1,11 +1,9 @@
 package rhinemod.characters;
 
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
-import com.megacrit.cardcrawl.cards.blue.Strike_Blue;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.city.Vampires;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
 import basemod.abstracts.CustomPlayer;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -24,12 +22,13 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import rhinemod.cards.*;
 import rhinemod.patches.*;
+import rhinemod.util.GlobalAttributes;
 
 import java.util.ArrayList;
 
 public class RhineLab extends CustomPlayer {
 
-    private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString("nearlmod:NearlCharacter");
+    private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString("rhinemod:RhineCharacter");
     public static final String NAME = characterStrings.NAMES[0];
     public static final String[] TEXT = characterStrings.TEXT;
     private static final Color NearlGold = CardHelper.getColor(255, 236, 194);
@@ -47,6 +46,7 @@ public class RhineLab extends CustomPlayer {
         "images/char/orb/layer3d.png",
         "images/char/orb/layer4d.png"
     };
+    public GlobalAttributes globalAttributes = new GlobalAttributes();
 
     public RhineLab(String name) {
         // 参数列表：角色名，角色类枚举，能量面板贴图路径列表，能量面板特效贴图路径，能量面板贴图旋转速度列表，能量面板，模型资源路径，动画资源路径
@@ -178,13 +178,14 @@ public class RhineLab extends CustomPlayer {
     @Override
     public CharSelectInfo getLoadout() {
         return new CharSelectInfo(NAME, TEXT[0],
-                77, 77, 0, 99, 5, //starting hp, max hp, max orbs, starting gold, starting hand size
+                81, 81, 0, 99, 5, //starting hp, max hp, max orbs, starting gold, starting hand size
                 this, getStartingRelics(), getStartingDeck(), false);
     }
 
     @Override
     public void applyStartOfCombatLogic() {
         super.applyStartOfCombatLogic();
+        globalAttributes.atStartOfCombat();
     }
 
     @Override
@@ -196,5 +197,17 @@ public class RhineLab extends CustomPlayer {
             AbstractDungeon.actionManager.addToTop(new WaitAction(1.0F));
         }
         super.useCard(c, monster, energyOnUse);
+    }
+
+    @Override
+    public void renderPlayerBattleUi(SpriteBatch sb) {
+        super.renderPlayerBattleUi(sb);
+        globalAttributes.render(sb);
+    }
+
+    @Override
+    public void applyStartOfTurnRelics() {
+        super.applyStartOfTurnRelics();
+        globalAttributes.atStartOfTurn();
     }
 }

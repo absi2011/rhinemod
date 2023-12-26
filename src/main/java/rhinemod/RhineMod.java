@@ -132,7 +132,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
 
         keywords.forEach((k,v)->{
             logger.info("Adding Keyword - " + v.NAMES[0]);
-            BaseMod.addKeyword("nearlmod:", v.PROPER_NAME, v.NAMES, v.DESCRIPTION);
+            BaseMod.addKeyword("rhinemod:", v.PROPER_NAME, v.NAMES, v.DESCRIPTION);
         });
     }
 

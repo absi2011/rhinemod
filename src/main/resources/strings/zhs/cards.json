@@ -2,11 +2,18 @@
     "rhinemod:RhineStrike": {
         "NAME": "打击",
         "DESCRIPTION": "造成 !D! 点伤害。",
-        "UPGRADE_DESCRIPTION": ""
+        "UPGRADE_DESCRIPTION": "",
+        "EXTENDED_DESCRIPTION": [
+            "造成 !D! 点伤害。 NL 如果目标处于 rhinemod:眩晕 ，改变 rhinemod:重力 。",
+            "造成 !D! 点伤害。 NL rhinemod:水渍 ： !M!"
+        ]
     },
     "rhinemod:RhineDefend": {
         "NAME": "防御",
         "DESCRIPTION": "获得 !B! 点 格挡 。",
-        "UPGRADE_DESCRIPTION": ""
+        "UPGRADE_DESCRIPTION": "",
+        "EXTENDED_DESCRIPTION": [
+            "获得 !B! 点 格挡 。 NL rhinemod:钙质粒子 ： !M!"
+        ]
     }
 }

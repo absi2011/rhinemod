@@ -2,32 +2,66 @@
   "CALCIUM": {
     "PROPER_NAME": "钙质粒子",
     "NAMES": [
-      "CalciumParticle",
-      "calciumparticle"
+      "Calcium",
+      "calcium",
+      "钙质粒子"
     ],
     "DESCRIPTION": "对局内属性，每回合结束时减少，可以为塞雷娅倾向的卡牌提供数值加成。"
   },
+  "SMASH": {
+    "PROPER_NAME": "重击",
+    "NAMES": [
+      "smash",
+      "重击"
+    ],
+    "DESCRIPTION": "如果一次性伤害高于20，则给予目标一层 [#EFC851]眩晕[] 。"
+  },
+  "STUNNED": {
+    "PROPER_NAME": "眩晕",
+    "NAMES": [
+      "stunned",
+      "眩晕"
+    ],
+    "DESCRIPTION": "处于眩晕的敌人水渍不再减少，重力改变时受到7点伤害。"
+  },
   "GRAVITY": {
     "PROPER_NAME": "重力",
-    "NAME": [
+    "NAMES": [
       "Gravity",
-      "gravity"
+      "gravity",
+      "重力"
     ],
-    "DESCRIPTION": "对局内属性，处于正向时所有角色攻击力提升，处于负向时所有角色攻击力降低。"
+    "DESCRIPTION": "对局内属性，处于正向时所有角色造成的提升，处于负向时所有角色造成的伤害降低。回合开始时重置。"
+  },
+  "GRAVITY_UP": {
+    "PROPER_NAME": "重力：正向",
+    "NAMES": [
+      "gravityup"
+    ],
+    "DESCRIPTION": "所有角色造成的伤害提升30%。回合开始时重置。"
+  },
+  "GRAVITY_DOWN": {
+    "PROPER_NAME": "重力：负向",
+    "NAMES": [
+      "gravitydown"
+    ],
+    "DESCRIPTION": "所有角色造成的伤害降低30%。回合开始时重置。"
   },
   "WATERDamage": {
     "PROPER_NAME": "水渍",
-    "NAME": [
+    "NAMES": [
       "WaterDamage",
-      "waterdamage"
+      "waterdamage",
+      "水渍"
     ],
     "DESCRIPTION": "一种可叠加状态，累积到一定值会进入 [#EFC851]浸没[] 。"
   },
   "SUBMERSION": {
     "PROPER_NAME": "浸没",
-    "NAME": [
+    "NAMES": [
       "Submersion",
-      "submersion"
+      "submersion",
+      "浸没"
     ],
     "DESCRIPTION": "一种多层状态，根据层数，进入时受到一定伤害，状态下攻击力降低。累计到 4 层时直接死亡。每回合减少一层。"
   }
