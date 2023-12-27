@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import rhinemod.characters.RhineLab;
+import rhinemod.powers.PlanetaryDebrisPower;
 import rhinemod.powers.Stunned;
 
 public class ChangeGravityAction extends AbstractGameAction {
@@ -20,6 +21,10 @@ public class ChangeGravityAction extends AbstractGameAction {
             if (!m.isDeadOrEscaped())
                 if (m.hasPower(Stunned.POWER_ID))
                     ((Stunned)m.getPower(Stunned.POWER_ID)).onGravityChange();
+
+        if (AbstractDungeon.player.hasPower(PlanetaryDebrisPower.POWER_ID)) {
+            ((PlanetaryDebrisPower)AbstractDungeon.player.getPower(PlanetaryDebrisPower.POWER_ID)).onGravityChange();
+        }
         isDone = true;
     }
 }

@@ -1,11 +1,9 @@
 package rhinemod;
 
 import basemod.*;
-import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
@@ -103,12 +101,15 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new RhineStrike()); // 打击
         BaseMod.addCard(new RhineDefend()); // 防御
         BaseMod.addCard(new Destiny()); // 命运
+        BaseMod.addCard(new DefenseSection()); // 防卫科
+        BaseMod.addCard(new ComponentsControlSection()); // 总辖构件科
+        BaseMod.addCard(new EcologicalSection()); // 生态科
 
         // Common.
-
+        BaseMod.addCard(new DangerousEntityRemoval()); // 危险目标清除
 
         // Uncommon.
-
+        BaseMod.addCard(new PlanetaryDebris()); // 行星碎屑
 
         // Rare.
 

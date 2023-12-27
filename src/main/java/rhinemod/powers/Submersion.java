@@ -38,11 +38,10 @@ public class Submersion extends AbstractPower {
         }
         updateDescription();
         if (this.amount >= 4) {
-            // TODO real die
             if (owner.hasPower("Buffer")) addToTop(new RemoveSpecificPowerAction(owner, owner, "Buffer"));
             if (owner.hasPower("Invincible")) addToTop(new RemoveSpecificPowerAction(owner, owner, "Invincible"));
             if (owner.hasPower("Intangible")) addToTop(new RemoveSpecificPowerAction(owner, owner, "Intangible"));
-            addToBot(new DamageAction(owner, new DamageInfo(owner, 999)));
+            addToBot(new DamageAction(owner, new DamageInfo(owner, 999, DamageInfo.DamageType.HP_LOSS)));
         }
     }
 

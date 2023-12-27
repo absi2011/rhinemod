@@ -161,6 +161,9 @@ public class RhineLab extends CustomPlayer {
         ret.add(RhineDefend.ID);
         ret.add(RhineDefend.ID);
         ret.add(RhineDefend.ID);
+        ret.add(DefenseSection.ID);
+        ret.add(ComponentsControlSection.ID);
+        ret.add(EcologicalSection.ID);
         ret.add(Destiny.ID);
         return ret;
     }

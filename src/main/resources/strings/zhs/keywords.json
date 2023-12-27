@@ -11,6 +11,7 @@
   "SMASH": {
     "PROPER_NAME": "重击",
     "NAMES": [
+      "Smash",
       "smash",
       "重击"
     ],
@@ -19,6 +20,7 @@
   "STUNNED": {
     "PROPER_NAME": "眩晕",
     "NAMES": [
+      "Stunned",
       "stunned",
       "眩晕"
     ],
@@ -31,7 +33,7 @@
       "gravity",
       "重力"
     ],
-    "DESCRIPTION": "处于失重时所有角色造成的伤害提升，处于超重时所有角色造成的伤害降低。回合开始时重置。"
+    "DESCRIPTION": "处于失重时所有角色攻击伤害提升，处于超重时所有角色攻击伤害降低。回合开始时重置。"
   },
   "GRAVITY_UP": {
     "PROPER_NAME": "重力：失重",
@@ -39,7 +41,7 @@
       "GravityUp",
       "gravityup"
     ],
-    "DESCRIPTION": "所有角色造成的伤害提升30%。回合开始时重置。"
+    "DESCRIPTION": "所有角色攻击伤害提升30%。回合开始时重置。"
   },
   "GRAVITY_DOWN": {
     "PROPER_NAME": "重力：超重",
@@ -47,7 +49,7 @@
       "GravityDown",
       "gravitydown"
     ],
-    "DESCRIPTION": "所有角色造成的伤害降低30%。回合开始时重置。"
+    "DESCRIPTION": "所有角色攻击伤害降低30%。回合开始时重置。"
   },
   "FLOWING_SHAPE": {
     "PROPER_NAME": "流形",
@@ -74,6 +76,6 @@
       "submersion",
       "浸没"
     ],
-    "DESCRIPTION": "一种多层状态，根据层数，进入时受到一定伤害，状态下攻击力降低。累计到 4 层时直接死亡。每回合减少一层。"
+    "DESCRIPTION": "一种多层状态，根据层数，进入时受到一定伤害，状态下攻击力降低。累计到 4 层时直接死亡。此状态下每回合减少10点水渍。"
   }
 }

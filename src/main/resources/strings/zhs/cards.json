@@ -21,5 +21,35 @@
         "NAME": "命运",
         "DESCRIPTION": "选择一张手牌，随机一个倾向，在本场战斗中升级它。",
         "UPGRADE_DESCRIPTION": "选择一张手牌，选择一个倾向，在本场战斗中升级它。"
+    },
+    "rhinemod:DefenseSection": {
+        "NAME": "防卫科",
+        "DESCRIPTION": "造成 !D! 点伤害。",
+        "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:ComponentsControlSection": {
+        "NAME": "总辖构件科",
+        "DESCRIPTION": "改变 rhinemod:重力 。",
+        "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:EcologicalSection": {
+        "NAME": "生态科",
+        "DESCRIPTION": "使目标获得 !M! 点 rhinemod:水渍 。",
+        "UPGRADE_DESCRIPTION": ""
+    },
+
+    "rhinemod:DangerousEntityRemoval": {
+        "NAME": "危险目标清除",
+        "DESCRIPTION": "造成 !D! 点伤害，使目标获得 !M! 层 易伤 。",
+        "UPGRADE_DESCRIPTION": "",
+        "EXTENDED_DESCRIPTION": [
+            "造成 !D! 点伤害。"
+        ]
+    },
+
+    "rhinemod:PlanetaryDebris": {
+        "NAME": "行星碎屑",
+        "DESCRIPTION": "重力变化时，对所有敌人造成 !M! 点伤害。",
+        "UPGRADE_DESCRIPTION": ""
     }
 }

@@ -1,11 +1,13 @@
 package rhinemod.powers;
 
 import com.badlogic.gdx.math.MathUtils;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -59,13 +61,13 @@ public class InvisibleGlobalAttributes extends AbstractPower {
 
     @Override
     public float atDamageFinalGive(float damage, DamageInfo.DamageType type) {
-        damage *= calcDmgScale();
+        if (type == DamageInfo.DamageType.NORMAL) damage *= calcDmgScale();
         return damage;
     }
 
     @Override
     public float atDamageFinalReceive(float damage, DamageInfo.DamageType type) {
-        damage *= calcDmgScale();
+        if (type == DamageInfo.DamageType.NORMAL) damage *= calcDmgScale();
         return damage;
     }
 
@@ -93,5 +95,12 @@ public class InvisibleGlobalAttributes extends AbstractPower {
         tmp.purgeOnUse = true;
         AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(tmp, m, card.energyOnUse, true, true), true);
         ((RhineLab)p).globalAttributes.clearFlowsp();
+    }
+
+    @Override
+    public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
+        if (damageAmount >= GlobalAttributes.smashThreshold) {
+            addToTop(new ApplyPowerAction(target, owner, new Stunned(target)));
+        }
     }
 }

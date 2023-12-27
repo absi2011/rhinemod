@@ -15,5 +15,9 @@
   "rhinemod:Stunned": {
     "NAME": "眩晕",
     "DESCRIPTIONS": ["本回合内，水渍不再减少，重力变化时受到 #b7 点伤害。"]
+  },
+  "rhinemod:PlanetaryDebris": {
+    "NAME": "行星碎屑",
+    "DESCRIPTIONS": ["重力变化时，对所有敌人造成 #b", " 点伤害。"]
   }
 }

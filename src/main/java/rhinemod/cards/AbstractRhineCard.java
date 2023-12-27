@@ -87,7 +87,7 @@ public abstract class AbstractRhineCard extends LMCustomCard implements Branchab
     }
 
     public void randomUpgrade() {
-        int branch = AbstractDungeon.cardRng.random(possibleBranches().size());
+        int branch = AbstractDungeon.cardRng.random(possibleBranches().size() - 1);
         BranchableUpgradePatch.CardBranchField.ChosenBranch.set(this, branch);
         upgrade();
     }
@@ -95,7 +95,8 @@ public abstract class AbstractRhineCard extends LMCustomCard implements Branchab
     protected void upgradeName(int branchIndex) {
         timesUpgraded++;
         upgraded = true;
-        realBranch = branchIndex;
+        if (realBranch == 0)
+            realBranch = branchIndex;
         this.name = this.name + TEXT[branchIndex];
         this.initializeTitle();
     }
