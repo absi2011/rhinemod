@@ -23,6 +23,7 @@ public abstract class AbstractRhineCard extends LMCustomCard implements Branchab
     public int secondMagicNumber;
     public boolean isSecondMagicNumberModified;
     public boolean upgradedSecondMagicNumber;
+    public int realBranch = 0;
 
     public AbstractRhineCard(String id, String name, String img, int cost, String rawDescription,
                              AbstractCard.CardType type, AbstractCard.CardColor color,
@@ -94,6 +95,7 @@ public abstract class AbstractRhineCard extends LMCustomCard implements Branchab
     protected void upgradeName(int branchIndex) {
         timesUpgraded++;
         upgraded = true;
+        realBranch = branchIndex;
         this.name = this.name + TEXT[branchIndex];
         this.initializeTitle();
     }

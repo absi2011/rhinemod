@@ -5,7 +5,7 @@
         "UPGRADE_DESCRIPTION": "",
         "EXTENDED_DESCRIPTION": [
             "造成 !D! 点伤害。 NL 如果目标处于 rhinemod:眩晕 ，改变 rhinemod:重力 。",
-            "造成 !D! 点伤害。 NL rhinemod:水渍 ： !M!"
+            "造成 !D! 点伤害。 NL 使目标获得 !M! 点 rhinemod:水渍 。"
         ]
     },
     "rhinemod:RhineDefend": {
@@ -13,7 +13,8 @@
         "DESCRIPTION": "获得 !B! 点 格挡 。",
         "UPGRADE_DESCRIPTION": "",
         "EXTENDED_DESCRIPTION": [
-            "获得 !B! 点 格挡 。 NL rhinemod:钙质粒子 ： !M!"
+            "获得 !B! 点 格挡 。 NL rhinemod:钙质粒子 ： !M!",
+            "获得 !B! 点 格挡 。 NL rhinemod:流形 ： !M!"
         ]
     },
     "rhinemod:Destiny": {

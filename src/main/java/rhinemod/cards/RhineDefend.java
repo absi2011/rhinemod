@@ -5,7 +5,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import rhinemod.characters.RhineLab;
+import rhinemod.actions.AddCalciumAction;
+import rhinemod.actions.AddFlowingShapeAction;
 import rhinemod.patches.AbstractCardEnum;
 import rs.lazymankits.interfaces.cards.UpgradeBranch;
 
@@ -21,8 +22,9 @@ public class RhineDefend extends AbstractRhineCard {
     public static final String IMG = "images/cards/RhineDefend.png";
     public static final int COST = 1;
     public static final int BLOCK_AMT = 5;
-    public static final int[] UPGRADE_PLUS_BLOCK = {3, 3, 3, 2};
+    public static final int[] UPGRADE_PLUS_BLOCK = {3, 3, 4, 0};
     public static final int UPGRADE_PLUS_CALCIUM = 2;
+    public static final int UPGRADE_PLUS_FLOWSP = 2;
     public RhineDefend() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.RHINE,
@@ -36,7 +38,11 @@ public class RhineDefend extends AbstractRhineCard {
         addToBot(new GainBlockAction(p, block));
         switch (chosenBranch()) {
             case 1:
-                ((RhineLab) p).globalAttributes.addCalcium(magicNumber);
+                addToBot(new AddCalciumAction(magicNumber));
+                break;
+            case 3:
+                addToBot(new AddFlowingShapeAction(magicNumber));
+                break;
         }
     }
 
@@ -56,6 +62,22 @@ public class RhineDefend extends AbstractRhineCard {
                     rawDescription = EXTENDED_DESCRIPTION[0];
                     upgradeDamage(UPGRADE_PLUS_BLOCK[1]);
                     magicNumber = baseMagicNumber = UPGRADE_PLUS_CALCIUM;
+                    initializeDescription();
+                }
+            });
+            add(() -> {
+                if (!upgraded) {
+                    upgradeName(2);
+                    upgradeBlock(UPGRADE_PLUS_BLOCK[2]);
+                    initializeDescription();
+                }
+            });
+            add(() -> {
+                if (!upgraded) {
+                    upgradeName(3);
+                    rawDescription = EXTENDED_DESCRIPTION[1];
+                    upgradeDamage(UPGRADE_PLUS_BLOCK[3]);
+                    magicNumber = baseMagicNumber = UPGRADE_PLUS_FLOWSP;
                     initializeDescription();
                 }
             });
