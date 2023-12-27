@@ -14,14 +14,14 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.helpers.CardHelper;
-import com.megacrit.cardcrawl.helpers.FontHelper;
-import com.megacrit.cardcrawl.helpers.ScreenShake;
+import com.megacrit.cardcrawl.helpers.*;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import rhinemod.cards.*;
 import rhinemod.patches.*;
+import rhinemod.powers.InvisibleGlobalAttributes;
 import rhinemod.util.GlobalAttributes;
 
 import java.util.ArrayList;
@@ -51,9 +51,9 @@ public class RhineLab extends CustomPlayer {
     public RhineLab(String name) {
         // 参数列表：角色名，角色类枚举，能量面板贴图路径列表，能量面板特效贴图路径，能量面板贴图旋转速度列表，能量面板，模型资源路径，动画资源路径
         super(name, RhineEnum.RHINE_CLASS, orbTextures, "images/char/orb/vfx.png", null, null, null);
-        
-        dialogX = 50.0F * Settings.scale;
-        dialogY = 170.0F * Settings.scale;
+
+        dialogX = this.drawX;
+        dialogY = this.drawY + 200.0F * Settings.scale;
 
         // 参数列表：静态贴图路径，越肩视角2贴图路径，越肩视角贴图路径，失败时贴图路径，角色选择界面信息，碰撞箱XY宽高，初始能量数
         initializeClass(IDLE, SHOULDER, SHOULDER, DIE, getLoadout(), 20.0F, -10.0F, 220.0F, 290.0F, new EnergyManager(3));
@@ -185,6 +185,7 @@ public class RhineLab extends CustomPlayer {
     @Override
     public void applyStartOfCombatLogic() {
         super.applyStartOfCombatLogic();
+        powers.add(new InvisibleGlobalAttributes());
         globalAttributes.atStartOfCombat();
     }
 
@@ -209,5 +210,28 @@ public class RhineLab extends CustomPlayer {
     public void applyStartOfTurnRelics() {
         super.applyStartOfTurnRelics();
         globalAttributes.atStartOfTurn();
+    }
+
+    @Override
+    public void renderPowerTips(SpriteBatch sb) {
+        ArrayList<PowerTip> tips = new ArrayList<>();
+        if (!this.stance.ID.equals("Neutral")) {
+            tips.add(new PowerTip(this.stance.name, this.stance.description));
+        }
+        for (AbstractPower p : this.powers) {
+            if (p.ID.equals("rhinemod:InvisibleGlobalAttributes")) continue;
+            if (p.region48 != null) {
+                tips.add(new PowerTip(p.name, p.description, p.region48));
+            } else {
+                tips.add(new PowerTip(p.name, p.description, p.img));
+            }
+        }
+        if (!tips.isEmpty()) {
+            if (this.hb.cX + this.hb.width / 2.0F < TIP_X_THRESHOLD) {
+                TipHelper.queuePowerTips(this.hb.cX + this.hb.width / 2.0F + TIP_OFFSET_R_X, this.hb.cY + TipHelper.calculateAdditionalOffset(tips, this.hb.cY), tips);
+            } else {
+                TipHelper.queuePowerTips(this.hb.cX - this.hb.width / 2.0F + TIP_OFFSET_R_X, this.hb.cY + TipHelper.calculateAdditionalOffset(tips, this.hb.cY), tips);
+            }
+        }
     }
 }
