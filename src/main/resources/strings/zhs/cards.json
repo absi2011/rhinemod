@@ -15,5 +15,10 @@
         "EXTENDED_DESCRIPTION": [
             "获得 !B! 点 格挡 。 NL rhinemod:钙质粒子 ： !M!"
         ]
+    },
+    "rhinemod:Destiny": {
+        "NAME": "命运",
+        "DESCRIPTION": "选择一张手牌，随机一个倾向，在本场战斗中升级它。",
+        "UPGRADE_DESCRIPTION": "选择一张手牌，选择一个倾向，在本场战斗中升级它。"
     }
 }

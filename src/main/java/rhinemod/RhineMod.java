@@ -31,7 +31,7 @@ import static rhinemod.patches.AbstractCardEnum.RHINE;
 @SpireInitializer
 public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, EditKeywordsSubscriber, EditRelicsSubscriber, EditStringsSubscriber, PostBattleSubscriber, PostInitializeSubscriber, PostDungeonInitializeSubscriber, AddCustomModeModsSubscriber, OnStartBattleSubscriber, OnPlayerLoseBlockSubscriber, RelicGetSubscriber {
 
-    public static final Color NearlGold = CardHelper.getColor(255, 236, 194);
+    public static final Color RhineOrange = CardHelper.getColor(201, 110, 69);
     private static final String attackCard = "images/512/bg_attack_nearl.png";
     private static final String skillCard = "images/512/bg_skill_nearl.png";
     private static final String powerCard = "images/512/bg_power_nearl.png";
@@ -50,7 +50,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
 
         logger.info("addColor RHINE");
         BaseMod.addColor(RHINE,
-                NearlGold, NearlGold, NearlGold, NearlGold, NearlGold, NearlGold, NearlGold,   //Background color, back color, frame color, frame outline color, description box color, glow color
+                RhineOrange, RhineOrange, RhineOrange, RhineOrange, RhineOrange, RhineOrange, RhineOrange,   //Background color, back color, frame color, frame outline color, description box color, glow color
                 attackCard, skillCard, powerCard, energyOrb,                                   //attack background image, skill background image, power background image, energy orb image
                 attackCardPortrait, skillCardPortrait, powerCardPortrait, energyOrbPortrait,   //as above, but for card inspect view
                 miniManaSymbol);
@@ -102,6 +102,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         // Basic.
         BaseMod.addCard(new RhineStrike()); // 打击
         BaseMod.addCard(new RhineDefend()); // 防御
+        BaseMod.addCard(new Destiny()); // 命运
 
         // Common.
 

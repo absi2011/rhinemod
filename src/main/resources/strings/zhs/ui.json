@@ -6,5 +6,10 @@
       "K",
       "M"
     ]
+  },
+  "rhinemod:DestinyAction": {
+    "TEXT": [
+      "选择一张卡牌升级"
+    ]
   }
 }

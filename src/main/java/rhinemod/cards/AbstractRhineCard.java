@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.rewards.RewardItem;
 import rs.lazymankits.abstracts.LMCustomCard;
 import rs.lazymankits.interfaces.cards.BranchableUpgradeCard;
 import rs.lazymankits.interfaces.cards.SwappableUpgBranchCard;
+import rs.lazymankits.patches.branchupgrades.BranchableUpgradePatch;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,6 +83,12 @@ public abstract class AbstractRhineCard extends LMCustomCard implements Branchab
     @Override
     public void upgrade() {
         possibleBranches().get(chosenBranch()).upgrade();
+    }
+
+    public void randomUpgrade() {
+        int branch = AbstractDungeon.cardRng.random(possibleBranches().size());
+        BranchableUpgradePatch.CardBranchField.ChosenBranch.set(this, branch);
+        upgrade();
     }
 
     protected void upgradeName(int branchIndex) {
