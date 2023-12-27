@@ -29,14 +29,14 @@ import static rhinemod.patches.AbstractCardEnum.RHINE;
 @SpireInitializer
 public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, EditKeywordsSubscriber, EditRelicsSubscriber, EditStringsSubscriber, PostBattleSubscriber, PostInitializeSubscriber, PostDungeonInitializeSubscriber, AddCustomModeModsSubscriber, OnStartBattleSubscriber, OnPlayerLoseBlockSubscriber, RelicGetSubscriber {
 
-    public static final Color RhineOrange = CardHelper.getColor(201, 110, 69);
-    private static final String attackCard = "images/512/bg_attack_nearl.png";
-    private static final String skillCard = "images/512/bg_skill_nearl.png";
-    private static final String powerCard = "images/512/bg_power_nearl.png";
+    public static final Color RhineMatte = CardHelper.getColor(188, 187, 145);
+    private static final String attackCard = "images/512/bg_attack_rhine.png";
+    private static final String skillCard = "images/512/bg_skill_rhine.png";
+    private static final String powerCard = "images/512/bg_power_rhine.png";
     private static final String energyOrb = "images/512/card_nearl_orb.png";
-    private static final String attackCardPortrait = "images/1024/bg_attack_nearl.png";
-    private static final String skillCardPortrait = "images/1024/bg_skill_nearl.png";
-    private static final String powerCardPortrait = "images/1024/bg_power_nearl.png";
+    private static final String attackCardPortrait = "images/1024/bg_attack_rhine.png";
+    private static final String skillCardPortrait = "images/1024/bg_skill_rhine.png";
+    private static final String powerCardPortrait = "images/1024/bg_power_rhine.png";
     private static final String energyOrbPortrait = "images/1024/card_nearl_orb.png";
     private static final String charButton = "images/charSelect/button.png";
     private static final String charPortrait = "images/charSelect/portrait.png";
@@ -48,7 +48,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
 
         logger.info("addColor RHINE");
         BaseMod.addColor(RHINE,
-                RhineOrange, RhineOrange, RhineOrange, RhineOrange, RhineOrange, RhineOrange, RhineOrange,   //Background color, back color, frame color, frame outline color, description box color, glow color
+                RhineMatte, RhineMatte, RhineMatte, RhineMatte, RhineMatte, RhineMatte, RhineMatte,   //Background color, back color, frame color, frame outline color, description box color, glow color
                 attackCard, skillCard, powerCard, energyOrb,                                   //attack background image, skill background image, power background image, energy orb image
                 attackCardPortrait, skillCardPortrait, powerCardPortrait, energyOrbPortrait,   //as above, but for card inspect view
                 miniManaSymbol);

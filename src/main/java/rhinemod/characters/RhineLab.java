@@ -31,7 +31,7 @@ public class RhineLab extends CustomPlayer {
     private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString("rhinemod:RhineCharacter");
     public static final String NAME = characterStrings.NAMES[0];
     public static final String[] TEXT = characterStrings.TEXT;
-    private static final Color RhineOrange = CardHelper.getColor(201, 110, 69);
+    private static final Color RhineMatte = CardHelper.getColor(188, 187, 145);
     public static final String IDLE = "images/char/idle.png";
     public static final String DIE = "images/char/die.png";
     public static final String SHOULDER = "images/char/shoulder.png";
@@ -69,17 +69,17 @@ public class RhineLab extends CustomPlayer {
 
     @Override
     public Color getSlashAttackColor() {
-        return RhineOrange;
+        return RhineMatte;
     }
 
     @Override
     public Color getCardRenderColor() {
-        return RhineOrange;
+        return RhineMatte;
     }
 
     @Override
     public Color getCardTrailColor() {
-        return RhineOrange;
+        return RhineMatte;
     }
 
     @Override
