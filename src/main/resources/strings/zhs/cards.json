@@ -51,5 +51,26 @@
         "NAME": "行星碎屑",
         "DESCRIPTION": "重力变化时，对所有敌人造成 !M! 点伤害。",
         "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:HighSpeedResonatingTroubleshooter": {
+        "NAME": "高速共振排障",
+        "DESCRIPTION": "标记一名敌人，回合结束或该敌人死亡时，对所有敌人造成等同于改名敌人标记期间受到伤害总额的伤害。",
+        "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:Starfall": {
+        "NAME": "星辰坠落",
+        "DESCRIPTION": "对所有敌人造成 !D! 点伤害。 NL 改变 rhinemod:重力 。",
+        "UPGRADE_DESCRIPTION": ""
+    },
+
+    "rhinemod:Calcification": {
+        "NAME": "钙质化",
+        "DESCRIPTION": "rhinemod:钙质粒子 ： !M!",
+        "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:Solidify": {
+        "NAME": "凝固",
+        "DESCRIPTION": "rhinemod:钙质粒子 不再在回合开始时减少。",
+        "UPGRADE_DESCRIPTION": ""
     }
 }

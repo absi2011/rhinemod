@@ -1,37 +1,39 @@
 package rhinemod.cards;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import rhinemod.actions.ChangeGravityAction;
 import rhinemod.patches.AbstractCardEnum;
-import rhinemod.powers.WaterDamage;
 import rs.lazymankits.interfaces.cards.UpgradeBranch;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class EcologicalSection extends AbstractRhineCard {
-    public static final String ID = "rhinemod:EcologicalSection";
+public class Starfall extends AbstractRhineCard {
+    public static final String ID = "rhinemod:Starfall";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String IMG = "images/cards/EcologicalSection.png";
-    public static final int COST = 0;
-    public static final int WATER_DMG = 8;
-    public static final int UPGRADE_PLUS_WATER = 3;
-    public EcologicalSection() {
+    public static final String IMG = "images/cards/Starfall.png";
+    public static final int COST = 2;
+    public static final int ATTACK_DMG = 13;
+    public static final int UPGRADE_PLUS_DMG = 3;
+    public Starfall() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
-                CardType.SKILL, AbstractCardEnum.RHINE,
-                CardRarity.BASIC, CardTarget.ENEMY);
-        magicNumber = baseMagicNumber = WATER_DMG;
-        realBranch = 3;
+                CardType.ATTACK, AbstractCardEnum.RHINE,
+                CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
+        damage = baseDamage = ATTACK_DMG;
+        realBranch = 2;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(m, p, new WaterDamage(m, magicNumber)));
+        addToBot(new DamageAllEnemiesAction(p, damage, damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+        addToBot(new ChangeGravityAction());
     }
 
     @Override
@@ -40,7 +42,7 @@ public class EcologicalSection extends AbstractRhineCard {
             add(() -> {
                 if (!upgraded) {
                     upgradeName(0);
-                    upgradeMagicNumber(UPGRADE_PLUS_WATER);
+                    upgradeDamage(UPGRADE_PLUS_DMG);
                     initializeDescription();
                 }
             });

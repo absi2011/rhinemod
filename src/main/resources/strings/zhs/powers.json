@@ -19,5 +19,13 @@
   "rhinemod:PlanetaryDebris": {
     "NAME": "行星碎屑",
     "DESCRIPTIONS": ["重力变化时，对所有敌人造成 #b", " 点伤害。"]
+  },
+  "rhinemod:HighSpeedResonatingTroubleshooter": {
+    "NAME": "高速共振排障",
+    "DESCRIPTIONS": ["你的回合结束或该目标死亡时，你对所有敌人造成 #b", " 点伤害。"]
+  },
+  "rhinemod:Solidify": {
+    "NAME": "凝固",
+    "DESCRIPTIONS": ["#y钙质粒子 不再在回合开始时减少。"]
   }
 }

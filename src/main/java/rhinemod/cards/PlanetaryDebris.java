@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlanetaryDebris extends AbstractRhineCard {
-    public static final String ID = "rhinemod:PlanetaryDebrisPower";
+    public static final String ID = "rhinemod:PlanetaryDebris";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -39,7 +39,7 @@ public class PlanetaryDebris extends AbstractRhineCard {
         return new ArrayList<UpgradeBranch>() {{
             add(() -> {
                 if (!upgraded) {
-                    upgradeName(2);
+                    upgradeName(0);
                     upgradeMagicNumber(UPGRADE_PLUS_DMG);
                     initializeDescription();
                 }

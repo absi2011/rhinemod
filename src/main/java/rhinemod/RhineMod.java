@@ -110,9 +110,12 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
 
         // Uncommon.
         BaseMod.addCard(new PlanetaryDebris()); // 行星碎屑
+        BaseMod.addCard(new HighSpeedRT()); // 高速共振排障
+        BaseMod.addCard(new Starfall()); // 星辰坠落
 
         // Rare.
-
+        BaseMod.addCard(new Calcification()); // 钙质化
+        BaseMod.addCard(new Solidify()); // 凝固
 
         // Special
 

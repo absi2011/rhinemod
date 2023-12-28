@@ -99,7 +99,7 @@ public class InvisibleGlobalAttributes extends AbstractPower {
 
     @Override
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
-        if (damageAmount >= GlobalAttributes.smashThreshold) {
+        if (info.type == DamageInfo.DamageType.NORMAL && damageAmount >= GlobalAttributes.smashThreshold) {
             addToTop(new ApplyPowerAction(target, owner, new Stunned(target)));
         }
     }

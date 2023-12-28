@@ -36,7 +36,7 @@ public class ComponentsControlSection extends AbstractRhineCard {
         return new ArrayList<UpgradeBranch>() {{
             add(() -> {
                 if (!upgraded) {
-                    upgradeName(2);
+                    upgradeName(0);
                     upgradeBaseCost(UPGRADE_COST);
                     initializeDescription();
                 }

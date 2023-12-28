@@ -39,7 +39,7 @@ public class DefenseSection extends AbstractRhineCard {
         return new ArrayList<UpgradeBranch>() {{
             add(() -> {
                 if (!upgraded) {
-                    upgradeName(1);
+                    upgradeName(0);
                     upgradeDamage(UPGRADE_PLUS_DMG);
                     initializeDescription();
                 }
