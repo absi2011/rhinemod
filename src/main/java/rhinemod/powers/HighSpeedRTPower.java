@@ -27,7 +27,6 @@ public class HighSpeedRTPower extends AbstractPower {
         region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("images/powers/HighSpeedResonatingTroubleshooter 84.png"), 0, 0, 84, 84);
         region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("images/powers/HighSpeedResonatingTroubleshooter 32.png"), 0, 0, 32, 32);
         this.amount = 0;
-        this.priority = -200;
         updateDescription();
     }
 
@@ -39,13 +38,13 @@ public class HighSpeedRTPower extends AbstractPower {
     @Override
     public void atStartOfTurn() {
         addToBot(new RemoveSpecificPowerAction(owner, owner, this));
-        addToBot(new DamageAllEnemiesAction(source, amount, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.NONE));
+        addToBot(new DamageAllEnemiesAction(source, amount, DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.NONE));
     }
 
     @Override
     public void onDeath() {
         addToBot(new RemoveSpecificPowerAction(owner, owner, this));
-        addToBot(new DamageAllEnemiesAction(source, amount, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.NONE));
+        addToBot(new DamageAllEnemiesAction(source, amount, DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.NONE));
     }
 
     @Override
