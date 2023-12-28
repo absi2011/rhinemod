@@ -46,6 +46,11 @@
             "造成 !D! 点伤害。"
         ]
     },
+    "rhinemod:ProgressiveMoisturization": {
+        "NAME": "渐进性润化",
+        "DESCRIPTION": "使目标获得 !M! 点 rhinemod:水渍 。 NL rhinemod:流形 ： !rhinemod:M2! ",
+        "UPGRADE_DESCRIPTION": ""
+    },
 
     "rhinemod:PlanetaryDebris": {
         "NAME": "行星碎屑",
@@ -61,6 +66,11 @@
         "NAME": "星辰坠落",
         "DESCRIPTION": "对所有敌人造成 !D! 点伤害。 NL 改变 rhinemod:重力 。",
         "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:PureWaterIsLife": {
+        "NAME": "净水即生命",
+        "DESCRIPTION": "选择一个敌人，获得等同于其 rhinemod:水渍 的 格挡 。",
+        "UPGRADE_DESCRIPTION": "获得等同于所有敌人 rhinemod:水渍 之和的 格挡 。"
     },
 
     "rhinemod:Calcification": {
