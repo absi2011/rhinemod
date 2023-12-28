@@ -24,7 +24,7 @@ public class Starfall extends AbstractRhineCard {
     public static final int UPGRADE_PLUS_DMG = 3;
     public Starfall() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
-                CardType.ATTACK, AbstractCardEnum.RHINE,
+                CardType.ATTACK, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
         damage = baseDamage = ATTACK_DMG;
         realBranch = 2;

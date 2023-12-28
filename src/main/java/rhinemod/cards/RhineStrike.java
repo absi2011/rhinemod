@@ -29,7 +29,7 @@ public class RhineStrike extends AbstractRhineCard {
     public static final int UPGRADE_PLUS_WATER = 3;
     public RhineStrike() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
-                CardType.ATTACK, AbstractCardEnum.RHINE,
+                CardType.ATTACK, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.BASIC, CardTarget.ENEMY);
         damage = baseDamage = ATTACK_DMG;
         tags.add(CardTags.STRIKE);

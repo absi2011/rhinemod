@@ -23,7 +23,7 @@ public class EcologicalSection extends AbstractRhineCard {
     public static final int UPGRADE_PLUS_WATER = 3;
     public EcologicalSection() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
-                CardType.SKILL, AbstractCardEnum.RHINE,
+                CardType.SKILL, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.BASIC, CardTarget.ENEMY);
         magicNumber = baseMagicNumber = WATER_DMG;
         realBranch = 3;

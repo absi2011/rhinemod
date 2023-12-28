@@ -19,12 +19,13 @@ import rhinemod.patches.RhineEnum;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import rhinemod.cards.*;
+import rhinemod.relics.*;
 
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
-import static rhinemod.patches.AbstractCardEnum.RHINE;
+import static rhinemod.patches.AbstractCardEnum.RHINE_MATTE;
 
 @SpireInitializer
 public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, EditKeywordsSubscriber, EditRelicsSubscriber, EditStringsSubscriber, PostBattleSubscriber, PostInitializeSubscriber, PostDungeonInitializeSubscriber, AddCustomModeModsSubscriber, OnStartBattleSubscriber, OnPlayerLoseBlockSubscriber, RelicGetSubscriber {
@@ -46,8 +47,8 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
     public RhineMod() {
         BaseMod.subscribe(this);
 
-        logger.info("addColor RHINE");
-        BaseMod.addColor(RHINE,
+        logger.info("addColor RHINE_MATTE");
+        BaseMod.addColor(RHINE_MATTE,
                 RhineMatte, RhineMatte, RhineMatte, RhineMatte, RhineMatte, RhineMatte, RhineMatte,   //Background color, back color, frame color, frame outline color, description box color, glow color
                 attackCard, skillCard, powerCard, energyOrb,                                   //attack background image, skill background image, power background image, energy orb image
                 attackCardPortrait, skillCardPortrait, powerCardPortrait, energyOrbPortrait,   //as above, but for card inspect view
@@ -146,13 +147,13 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
     @Override
     public void receiveEditRelics() {
         // starter.
-//        BaseMod.addRelicToCustomPool(new CureUp(), RHINE);
 
         // common.
 
         // uncommon.
 
         // rare.
+        BaseMod.addRelicToCustomPool(new Awaken(), RHINE_MATTE);
 
         // boss.
 

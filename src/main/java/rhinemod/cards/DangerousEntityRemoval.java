@@ -28,7 +28,7 @@ public class DangerousEntityRemoval extends AbstractRhineCard {
     public static final int UPGRADE_PLUS_VUL = 1;
     public DangerousEntityRemoval() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
-                CardType.ATTACK, AbstractCardEnum.RHINE,
+                CardType.ATTACK, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.COMMON, CardTarget.ENEMY);
         damage = baseDamage = ATTACK_DMG;
         magicNumber = baseMagicNumber = VULNERABLE_AMT;

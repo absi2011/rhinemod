@@ -21,7 +21,7 @@ public class Destiny extends AbstractRhineCard {
     public static final int COST = 0;
     public Destiny() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
-                CardType.SKILL, AbstractCardEnum.RHINE,
+                CardType.SKILL, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.BASIC, CardTarget.SELF);
     }
 

@@ -23,7 +23,7 @@ public class DefenseSection extends AbstractRhineCard {
     public static final int UPGRADE_PLUS_DMG = 5;
     public DefenseSection() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
-                CardType.ATTACK, AbstractCardEnum.RHINE,
+                CardType.ATTACK, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.BASIC, CardTarget.ENEMY);
         damage = baseDamage = ATTACK_DMG;
         realBranch = 1;

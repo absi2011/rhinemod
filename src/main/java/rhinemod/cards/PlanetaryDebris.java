@@ -23,7 +23,7 @@ public class PlanetaryDebris extends AbstractRhineCard {
     public static final int UPGRADE_PLUS_DMG = 2;
     public PlanetaryDebris() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
-                CardType.POWER, AbstractCardEnum.RHINE,
+                CardType.POWER, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.UNCOMMON, CardTarget.SELF);
         magicNumber = baseMagicNumber = ATTACK_DMG;
         realBranch = 2;

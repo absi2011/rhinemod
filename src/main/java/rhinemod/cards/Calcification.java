@@ -22,7 +22,7 @@ public class Calcification extends AbstractRhineCard {
     public static final int UPGRADE_PLUS_CA = 4;
     public Calcification() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
-                CardType.POWER, AbstractCardEnum.RHINE,
+                CardType.POWER, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.RARE, CardTarget.SELF);
         magicNumber = baseMagicNumber = CA_ADD;
         realBranch = 1;

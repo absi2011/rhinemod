@@ -23,7 +23,7 @@ public class PureWaterIsLife extends AbstractRhineCard {
     public static final int COST = 1;
     public PureWaterIsLife() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
-                CardType.SKILL, AbstractCardEnum.RHINE,
+                CardType.SKILL, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.UNCOMMON, CardTarget.ENEMY);
         realBranch = 3;
     }

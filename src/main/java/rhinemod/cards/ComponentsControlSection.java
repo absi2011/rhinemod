@@ -21,7 +21,7 @@ public class ComponentsControlSection extends AbstractRhineCard {
     public static final int UPGRADE_COST = 0;
     public ComponentsControlSection() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
-                CardType.SKILL, AbstractCardEnum.RHINE,
+                CardType.SKILL, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.BASIC, CardTarget.SELF);
         realBranch = 2;
     }

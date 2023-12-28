@@ -22,7 +22,7 @@ public class Solidify extends AbstractRhineCard {
     public static final int UPGRADE_COST = 1;
     public Solidify() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
-                CardType.POWER, AbstractCardEnum.RHINE,
+                CardType.POWER, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.RARE, CardTarget.SELF);
         realBranch = 1;
     }

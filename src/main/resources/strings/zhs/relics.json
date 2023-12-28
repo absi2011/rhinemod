@@ -1,7 +1,7 @@
 {
-  "rhinemod:": {
-    "NAME": "",
-    "FLAVOR": "",
-    "DESCRIPTIONS": []
+  "rhinemod:Awaken": {
+    "NAME": "“唤醒”",
+    "FLAVOR": "向前或向后都是科技的方向，它不分正反，永远进步。",
+    "DESCRIPTIONS": ["每 #b3 回合结束时，对所有敌人造成共计 #b20 点伤害。"]
   }
 }

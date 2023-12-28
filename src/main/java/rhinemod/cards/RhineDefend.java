@@ -27,7 +27,7 @@ public class RhineDefend extends AbstractRhineCard {
     public static final int UPGRADE_PLUS_FLOWSP = 2;
     public RhineDefend() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
-                CardType.SKILL, AbstractCardEnum.RHINE,
+                CardType.SKILL, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.BASIC, CardTarget.SELF);
         block = baseBlock = BLOCK_AMT;
         tags.add(CardTags.STARTER_DEFEND);

@@ -84,7 +84,7 @@ public class RhineLab extends CustomPlayer {
 
     @Override
     public AbstractCard.CardColor getCardColor() {
-        return AbstractCardEnum.RHINE;
+        return AbstractCardEnum.RHINE_MATTE;
     }
 
     @Override

@@ -22,7 +22,7 @@ public class HighSpeedRT extends AbstractRhineCard {
     public static final int UPGRADE_COST = 0;
     public HighSpeedRT() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
-                CardType.SKILL, AbstractCardEnum.RHINE,
+                CardType.SKILL, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.UNCOMMON, CardTarget.ENEMY);
     }
 

@@ -26,7 +26,7 @@ public class ProgressiveMoisturization extends AbstractRhineCard {
     public static final int UPGRADE_PLUS_FLOW = 1;
     public ProgressiveMoisturization() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
-                CardType.SKILL, AbstractCardEnum.RHINE,
+                CardType.SKILL, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.COMMON, CardTarget.ENEMY);
         magicNumber = baseMagicNumber = WATER_AMT;
         secondMagicNumber = baseSecondMagicNumber = FLOW_AMT;
