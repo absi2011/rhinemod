@@ -77,5 +77,13 @@
       "浸没"
     ],
     "DESCRIPTION": "一种多层状态，根据层数，进入时受到一定伤害，状态下攻击力降低。累计到 4 层时直接死亡。此状态下每回合减少10点水渍。"
+  },
+  "RESEARCH_PROGRESS": {
+    "PROPER_NAME": "科研进度",
+    "NAMES": [
+      "ResearchProgress",
+      "科研进度"
+    ],
+    "DESCRIPTION": "TODO。"
   }
 }

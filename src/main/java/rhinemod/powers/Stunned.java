@@ -29,7 +29,7 @@ public class Stunned extends AbstractPower {
     }
 
     public void onGravityChange() {
-        addToTop(new DamageAction(owner, new DamageInfo(null, 7, DamageInfo.DamageType.THORNS)));
+        addToTop(new DamageAction(owner, new DamageInfo(null, 4, DamageInfo.DamageType.THORNS)));
     }
 
     @Override

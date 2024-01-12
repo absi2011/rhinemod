@@ -51,6 +51,11 @@
         "DESCRIPTION": "使目标获得 !M! 点 rhinemod:水渍 。 NL rhinemod:流形 ： !rhinemod:M2! ",
         "UPGRADE_DESCRIPTION": ""
     },
+    "rhinemod:TransmitterResearch": {
+        "NAME": "递质研究",
+        "DESCRIPTION": " rhinemod:科研进度 ：!M! NL 将 !rhinemod:M2! 张 #伦理束缚 洗入弃牌堆。",
+        "UPGRADE_DESCRIPTION": ""
+    },
 
     "rhinemod:PlanetaryDebris": {
         "NAME": "行星碎屑",
@@ -81,6 +86,12 @@
     "rhinemod:Solidify": {
         "NAME": "凝固",
         "DESCRIPTION": "rhinemod:钙质粒子 不再在回合开始时减少。",
+        "UPGRADE_DESCRIPTION": ""
+    },
+
+    "rhinemod:EthicRestriction":{
+        "NAME": "伦理束缚",
+        "DESCRIPTION": "rhinemod:科研进度 ： !M! ",
         "UPGRADE_DESCRIPTION": ""
     }
 }
