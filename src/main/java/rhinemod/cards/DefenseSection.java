@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import rhinemod.patches.AbstractCardEnum;
-import rs.lazymankits.interfaces.cards.UpgradeBranch;
+import rhinemod.interfaces.UpgradeBranch;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import rhinemod.actions.AddCalciumAction;
 import rhinemod.actions.AddFlowingShapeAction;
 import rhinemod.patches.AbstractCardEnum;
-import rs.lazymankits.interfaces.cards.UpgradeBranch;
+import rhinemod.interfaces.UpgradeBranch;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +36,7 @@ public class RhineDefend extends AbstractRhineCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, block));
-        switch (chosenBranch()) {
+        switch (chosenBranch) {
             case 1:
                 addToBot(new AddCalciumAction(magicNumber));
                 break;

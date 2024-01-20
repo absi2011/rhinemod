@@ -64,7 +64,7 @@ public class RhineLab extends CustomPlayer {
 
     @Override
     public void playDeathAnimation() {
-        this.state.setAnimation(0, "Die", false);
+//        this.state.setAnimation(0, "Die", false);
     }
 
     @Override

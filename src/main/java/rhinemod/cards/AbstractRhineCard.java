@@ -1,5 +1,6 @@
 package rhinemod.cards;
 
+import basemod.abstracts.CustomCard;
 import basemod.abstracts.DynamicVariable;
 import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -8,21 +9,19 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
-import rs.lazymankits.abstracts.LMCustomCard;
-import rs.lazymankits.interfaces.cards.BranchableUpgradeCard;
-import rs.lazymankits.interfaces.cards.SwappableUpgBranchCard;
-import rs.lazymankits.patches.branchupgrades.BranchableUpgradePatch;
+import rhinemod.interfaces.UpgradeBranch;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractRhineCard extends LMCustomCard implements BranchableUpgradeCard, SwappableUpgBranchCard {
+public abstract class AbstractRhineCard extends CustomCard {
     public static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("rhinemod:AbstractRhineCard");
     public static final String[] TEXT = uiStrings.TEXT;
     public int baseSecondMagicNumber;
     public int secondMagicNumber;
     public boolean isSecondMagicNumberModified;
     public boolean upgradedSecondMagicNumber;
+    public int chosenBranch = 0;
     public int realBranch = 0;
 
     public AbstractRhineCard(String id, String name, String img, int cost, String rawDescription,
@@ -71,24 +70,20 @@ public abstract class AbstractRhineCard extends LMCustomCard implements Branchab
         AbstractDungeon.getCurrRoom().addCardReward(item);
     }
 
-    @Override
-    public AbstractCard makeStatEquivalentCopy() {
-        AbstractCard card = super.makeStatEquivalentCopy();
-        card.exhaust = this.exhaust;
-        card.isEthereal = this.isEthereal;
-        card.rawDescription = this.rawDescription;
-        card.initializeDescription();
-        return card;
+    public abstract List<UpgradeBranch> possibleBranches();
+    public List<UpgradeBranch> swappableBranches() {
+        List<UpgradeBranch> list = possibleBranches();
+        list.remove(chosenBranch);
+        return list;
     }
 
     @Override
     public void upgrade() {
-        possibleBranches().get(chosenBranch()).upgrade();
+        possibleBranches().get(chosenBranch).upgrade();
     }
 
     public void randomUpgrade() {
-        int branch = AbstractDungeon.cardRng.random(possibleBranches().size() - 1);
-        BranchableUpgradePatch.CardBranchField.ChosenBranch.set(this, branch);
+        chosenBranch = AbstractDungeon.cardRng.random(possibleBranches().size() - 1);
         upgrade();
     }
 
@@ -101,14 +96,53 @@ public abstract class AbstractRhineCard extends LMCustomCard implements Branchab
         this.initializeTitle();
     }
 
-    @Override
-    public boolean allowBranchWhenUpgradeBy(int msg) {
-        return true;
+    static public void copyStat(AbstractRhineCard s, AbstractRhineCard t) {
+        t.chosenBranch = s.chosenBranch;
+        for (int i = 0; i < s.timesUpgraded; ++i) {
+            t.upgrade();
+        }
+
+        t.name = s.name;
+        t.target = s.target;
+        t.upgraded = s.upgraded;
+        t.timesUpgraded = s.timesUpgraded;
+        t.baseDamage = s.baseDamage;
+        t.baseBlock = s.baseBlock;
+        t.baseMagicNumber = s.baseMagicNumber;
+        t.cost = s.cost;
+        t.costForTurn = s.costForTurn;
+        t.isCostModified = s.isCostModified;
+        t.isCostModifiedForTurn = s.isCostModifiedForTurn;
+        t.inBottleLightning = s.inBottleLightning;
+        t.inBottleFlame = s.inBottleFlame;
+        t.inBottleTornado = s.inBottleTornado;
+        t.isSeen = s.isSeen;
+        t.isLocked = s.isLocked;
+        t.misc = s.misc;
+        t.freeToPlayOnce = s.freeToPlayOnce;
+        t.exhaust = s.exhaust;
+        t.isEthereal = s.isEthereal;
+        t.rawDescription = s.rawDescription;
+        t.initializeDescription();
     }
 
     @Override
-    public int branchForRandomUpgrading(int msg) {
-        return 0;
+    public AbstractRhineCard makeStatEquivalentCopy() {
+        AbstractRhineCard card = (AbstractRhineCard) this.makeCopy();
+
+        copyStat(this, card);
+        return card;
+    }
+
+    public void resetUpgrade() {
+        AbstractRhineCard card = (AbstractRhineCard) this.makeCopy();
+        copyStat(card, this);
+    }
+
+    public void swapBranch(int branch) {
+        resetUpgrade();
+        chosenBranch = branch;
+        upgrade();
     }
 
     public static class SecondMagicNumber extends DynamicVariable {

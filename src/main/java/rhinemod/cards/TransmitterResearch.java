@@ -1,19 +1,15 @@
 package rhinemod.cards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToDiscardEffect;
-import rhinemod.actions.AddCalciumAction;
-import rhinemod.actions.AddFlowingShapeAction;
 import rhinemod.cards.special.EthicRestriction;
+import rhinemod.interfaces.UpgradeBranch;
 import rhinemod.patches.AbstractCardEnum;
 import rhinemod.powers.ResearchProgress;
-import rs.lazymankits.interfaces.cards.UpgradeBranch;
 
 import java.util.ArrayList;
 import java.util.List;

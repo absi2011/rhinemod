@@ -11,7 +11,7 @@ import rhinemod.actions.ChangeGravityAction;
 import rhinemod.patches.AbstractCardEnum;
 import rhinemod.powers.Stunned;
 import rhinemod.powers.WaterDamage;
-import rs.lazymankits.interfaces.cards.UpgradeBranch;
+import rhinemod.interfaces.UpgradeBranch;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +40,7 @@ public class RhineStrike extends AbstractRhineCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage)));
         if (upgraded) {
-            switch (chosenBranch()) {
+            switch (chosenBranch) {
                 case 2:
                     if (m.hasPower(Stunned.POWER_ID)) {
                         addToBot(new ChangeGravityAction());
