@@ -6,8 +6,10 @@ import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import rhinemod.actions.SubmersionLoseHpAction;
 
 public class Submersion extends AbstractPower {
     public static final String POWER_ID = "rhinemod:Submersion";
@@ -45,7 +47,7 @@ public class Submersion extends AbstractPower {
 
     @Override
     public void atStartOfTurn() {
-        addToBot(new DamageAction(owner, new DamageInfo(null, DAMAGE_TAKE[amount], DamageInfo.DamageType.THORNS)));
+        addToBot(new SubmersionLoseHpAction(owner, AbstractDungeon.player, DAMAGE_TAKE[amount]));
         if (!owner.hasPower(Stunned.POWER_ID)) {
             addToBot(new ReducePowerAction(owner, owner, WaterDamage.POWER_ID, 10));
         }
