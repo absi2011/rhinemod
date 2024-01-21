@@ -61,6 +61,11 @@
         "DESCRIPTION": "获得 !B! 点格挡。 NL rhinemod:科研进度 ： !M! ",
         "UPGRADE_DESCRIPTION": "获得 !B! 点格挡。 使所有拥有水渍的敌人失去 !M! 点生命。"
     },
+    "rhinemod:BookOfFairyTales": {
+        "NAME": "童话书",
+        "DESCRIPTION": "抽 !M! 张牌，每张牌有20%概率在本场战斗中升级。",
+        "UPGRADE_DESCRIPTION": ""
+    },
 
     "rhinemod:PlanetaryDebris": {
         "NAME": "行星碎屑",
