@@ -53,8 +53,13 @@
     },
     "rhinemod:TransmitterResearch": {
         "NAME": "递质研究",
-        "DESCRIPTION": " rhinemod:科研进度 ：!M! NL 将 !rhinemod:M2! 张 #伦理束缚 洗入弃牌堆。",
+        "DESCRIPTION": " rhinemod:科研进度 ：!M! NL 将 !rhinemod:M2! 张 #出格 洗入弃牌堆。",
         "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:IcefieldsAdventure": {
+        "NAME": "冰原探险",
+        "DESCRIPTION": "获得 !B! 点格挡。 NL rhinemod:科研进度 ： !M! ",
+        "UPGRADE_DESCRIPTION": "获得 !B! 点格挡。 使所有拥有水渍的敌人失去 !M! 点生命。"
     },
 
     "rhinemod:PlanetaryDebris": {
@@ -89,8 +94,8 @@
         "UPGRADE_DESCRIPTION": ""
     },
 
-    "rhinemod:EthicRestriction":{
-        "NAME": "伦理束缚",
+    "rhinemod:Unscrupulous":{
+        "NAME": "出格",
         "DESCRIPTION": "rhinemod:科研进度 ： !M! ",
         "UPGRADE_DESCRIPTION": ""
     }

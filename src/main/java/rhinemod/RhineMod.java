@@ -14,7 +14,7 @@ import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.screens.custom.CustomMod;
-import rhinemod.cards.special.EthicRestriction;
+import rhinemod.cards.special.Unscrupulous;
 import rhinemod.characters.RhineLab;
 import rhinemod.patches.RhineEnum;
 import org.apache.logging.log4j.LogManager;
@@ -111,6 +111,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new DangerousEntityRemoval()); // 危险目标清除
         BaseMod.addCard(new ProgressiveMoisturization()); // 渐进性润化
         BaseMod.addCard(new TransmitterResearch()); // 递质研究
+        BaseMod.addCard(new IcefieldsAdventure()); // 冰原探险
 
         // Uncommon.
         BaseMod.addCard(new PlanetaryDebris()); // 行星碎屑
@@ -123,7 +124,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new Solidify()); // 凝固
 
         // Special
-        BaseMod.addCard(new EthicRestriction()); // 伦理束缚
+        BaseMod.addCard(new Unscrupulous()); // 出格
 
     }
 
