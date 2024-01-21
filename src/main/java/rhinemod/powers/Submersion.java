@@ -1,5 +1,6 @@
 package rhinemod.powers;
 
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -7,6 +8,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import rhinemod.actions.SubmersionLoseHpAction;
@@ -24,7 +26,8 @@ public class Submersion extends AbstractPower {
         this.type = PowerType.DEBUFF;
         this.owner = owner;
         this.amount = amount;
-        this.loadRegion("curiosity");
+        region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("images/powers/Submersion 128.png"), 0, 0, 128, 128);
+        region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("images/powers/Submersion 48.png"), 0, 0, 48, 48);
         updateDescription();
     }
 

@@ -1,9 +1,11 @@
 package rhinemod.powers;
 
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
@@ -20,7 +22,8 @@ public class WaterDamage extends AbstractPower {
         this.owner = owner;
         this.amount = amount;
         updateSubmersion();
-        this.loadRegion("curiosity");
+        region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("images/powers/WaterDamage 128.png"), 0, 0, 128, 128);
+        region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("images/powers/WaterDamage 48.png"), 0, 0, 48, 48);
         updateDescription();
     }
 

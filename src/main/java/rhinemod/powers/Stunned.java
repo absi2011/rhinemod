@@ -1,10 +1,12 @@
 package rhinemod.powers;
 
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
@@ -18,7 +20,8 @@ public class Stunned extends AbstractPower {
         this.name = NAME;
         this.type = PowerType.DEBUFF;
         this.owner = owner;
-        this.loadRegion("curiosity");
+        region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("images/powers/Stunned 128.png"), 0, 0, 128, 128);
+        region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("images/powers/Stunned 48.png"), 0, 0, 48, 48);
         this.priority = 100;
         updateDescription();
     }
