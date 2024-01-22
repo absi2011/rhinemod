@@ -17,7 +17,7 @@ public class ResearchProgress extends AbstractPower {
     public ResearchProgress(AbstractCreature owner,int amount) {
         this.ID = POWER_ID;
         this.name = NAME;
-        this.type = PowerType.DEBUFF;
+        this.type = PowerType.BUFF;
         this.owner = owner;
         this.amount = amount;
         this.loadRegion("curiosity");
@@ -28,7 +28,7 @@ public class ResearchProgress extends AbstractPower {
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0];
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1] + getNext() + DESCRIPTIONS[2];
     }
 
     public void updateLevel(int prevLevel, int nowLevel) {
@@ -71,6 +71,18 @@ public class ResearchProgress extends AbstractPower {
         for (;;) {
             sum += cur;
             if (sum > amount) return level;
+            level ++;
+            if (level % 2 == 0) cur += 2;
+        }
+    }
+
+    public int getNext() {
+        int level = 0;
+        int cur = 4;
+        int sum = 0;
+        for (;;) {
+            sum += cur;
+            if (sum > amount) return sum - amount;
             level ++;
             if (level % 2 == 0) cur += 2;
         }

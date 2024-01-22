@@ -66,6 +66,11 @@
         "DESCRIPTION": "抽 !M! 张牌，每张牌有20%概率在本场战斗中升级。",
         "UPGRADE_DESCRIPTION": ""
     },
+    "rhinemod:StarlightIntersection": {
+        "NAME": "星束交汇",
+        "DESCRIPTION": "当前每有一名敌人，对所有敌人造成 !D! 点伤害。",
+        "UPGRADE_DESCRIPTION": ""
+    },
 
     "rhinemod:PlanetaryDebris": {
         "NAME": "行星碎屑",
@@ -86,6 +91,11 @@
         "NAME": "净水即生命",
         "DESCRIPTION": "选择一个敌人，获得等同于其 rhinemod:水渍 的 格挡 。",
         "UPGRADE_DESCRIPTION": "获得等同于所有敌人 rhinemod:水渍 之和的 格挡 。"
+    },
+    "rhinemod:MedicineDispensing": {
+        "NAME": "药物配置",
+        "DESCRIPTION": "获得 !B! 点格挡。 NL rhinemod:科研进度 ： !M! NL rhinemod:流形 ： !M!",
+        "UPGRADE_DESCRIPTION": ""
     },
 
     "rhinemod:Calcification": {

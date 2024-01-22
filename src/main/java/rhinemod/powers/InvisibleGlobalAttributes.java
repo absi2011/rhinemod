@@ -16,6 +16,8 @@ import rhinemod.cards.AbstractRhineCard;
 import rhinemod.characters.RhineLab;
 import rhinemod.util.GlobalAttributes;
 
+import java.util.logging.Logger;
+
 public class InvisibleGlobalAttributes extends AbstractPower {
     public static final String POWER_ID = "rhinemod:InvisibleGlobalAttributes";
     public InvisibleGlobalAttributes() {
@@ -80,7 +82,7 @@ public class InvisibleGlobalAttributes extends AbstractPower {
         if (flowspNum == 0) return;
 
         AbstractMonster m = action.target == null? null : (AbstractMonster)action.target;
-        AbstractCard tmp = card.makeSameInstanceOf();
+        AbstractRhineCard tmp = ((AbstractRhineCard) card).makeSameInstanceOf();
         AbstractDungeon.player.limbo.addToBottom(tmp);
 
         tmp.current_x = card.current_x;
@@ -89,8 +91,12 @@ public class InvisibleGlobalAttributes extends AbstractPower {
         tmp.target_y = Settings.HEIGHT / 2.0F;
 
         float multi = flowspNum * 0.25F;
-        tmp.baseDamage = MathUtils.floor(tmp.baseDamage * multi);
-        tmp.baseBlock = MathUtils.floor(tmp.baseBlock * multi);
+        float eps = 0.0001F;
+        tmp.baseDamage = MathUtils.ceil(tmp.baseDamage * multi - eps);
+        tmp.baseBlock = MathUtils.ceil(tmp.baseBlock * multi - eps);
+        tmp.magicNumber = tmp.baseMagicNumber = MathUtils.ceil(tmp.baseMagicNumber * multi - eps);
+        tmp.secondMagicNumber = tmp.baseSecondMagicNumber = MathUtils.ceil(tmp.baseSecondMagicNumber * multi - eps);
+        tmp.realBranch = -1;
         if (m != null) tmp.calculateCardDamage(m);
         tmp.purgeOnUse = true;
         AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(tmp, m, card.energyOnUse, true, true), true);

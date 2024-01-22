@@ -134,6 +134,13 @@ public abstract class AbstractRhineCard extends CustomCard {
         return card;
     }
 
+    @Override
+    public AbstractRhineCard makeSameInstanceOf() {
+        AbstractRhineCard card = this.makeStatEquivalentCopy();
+        card.uuid = this.uuid;
+        return card;
+    }
+
     public void resetUpgrade() {
         AbstractRhineCard card = (AbstractRhineCard) this.makeCopy();
         copyStat(card, this);

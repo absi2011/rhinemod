@@ -27,5 +27,13 @@
   "rhinemod:Solidify": {
     "NAME": "凝固",
     "DESCRIPTIONS": ["#y钙质粒子 不再在回合开始时减少。"]
+  },
+  "rhinemod:ResearchProgress": {
+    "NAME": "科研进度",
+    "DESCRIPTIONS": [
+      "累积一定层数可以获得一层 #y波骇 ， #y波骇会交替提供层数线性递增的 #y金属化 和 #y荆棘 ，每次获得 #y波骇 所需的层数会线性增加。当前有 #b",
+      " 层，距离获得下一层 #y 波骇还需要 #b",
+      " 层。"
+    ]
   }
 }

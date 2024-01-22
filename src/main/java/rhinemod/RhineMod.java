@@ -113,12 +113,14 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new TransmitterResearch()); // 递质研究
         BaseMod.addCard(new IcefieldsAdventure()); // 冰原探险
         BaseMod.addCard(new BookOfFairyTales()); // 童话书
+        BaseMod.addCard(new StarlightIntersection()); // 星束交汇
 
         // Uncommon.
         BaseMod.addCard(new PlanetaryDebris()); // 行星碎屑
         BaseMod.addCard(new HighSpeedRT()); // 高速共振排障
         BaseMod.addCard(new Starfall()); // 星辰坠落
         BaseMod.addCard(new PureWaterIsLife()); // 净水即生命
+        BaseMod.addCard(new MedicineDispensing()); // 药物配置
 
         // Rare.
         BaseMod.addCard(new Calcification()); // 钙质化
