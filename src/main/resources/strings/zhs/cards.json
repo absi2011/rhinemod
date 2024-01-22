@@ -97,6 +97,11 @@
         "DESCRIPTION": "获得 !B! 点格挡。 NL rhinemod:科研进度 ： !M! NL rhinemod:流形 ： !M!",
         "UPGRADE_DESCRIPTION": ""
     },
+    "rhinemod:Enkephalin": {
+        "NAME": "脑啡肽",
+        "DESCRIPTION": "获得等同于你已损失生命值的 格挡 。 NL 消耗 。",
+        "UPGRADE_DESCRIPTION": ""
+    },
 
     "rhinemod:Calcification": {
         "NAME": "钙质化",
@@ -107,6 +112,10 @@
         "NAME": "凝固",
         "DESCRIPTION": "rhinemod:钙质粒子 不再在回合开始时减少。",
         "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:HallOfStasis": {
+        "NAME": "静滞所",
+        "DESCRIPTION": "使一名敌人失去1点生命 !M! 次。"
     },
 
     "rhinemod:Unscrupulous":{
