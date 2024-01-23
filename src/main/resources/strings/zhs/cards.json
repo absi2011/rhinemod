@@ -53,7 +53,7 @@
     },
     "rhinemod:TransmitterResearch": {
         "NAME": "递质研究",
-        "DESCRIPTION": " rhinemod:科研进度 ：!M! NL 将 !rhinemod:M2! 张 #出格 洗入弃牌堆。",
+        "DESCRIPTION": " rhinemod:科研进度 ：!M! NL 将 !rhinemod:M2! 张 *出格 洗入弃牌堆。",
         "UPGRADE_DESCRIPTION": ""
     },
     "rhinemod:IcefieldsAdventure": {
@@ -124,9 +124,34 @@
         "UPGRADE_DESCRIPTION": ""
     },
 
-    "rhinemod:Unscrupulous":{
+    "rhinemod:Unscrupulous": {
         "NAME": "出格",
         "DESCRIPTION": "rhinemod:科研进度 ： !M! ",
+        "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:Egotist": {
+        "NAME": "自私者",
+        "DESCRIPTION": "对战结束时，星环不再对你造成伤害。 NL 虚无 。",
+        "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:Traitor": {
+        "NAME": "背叛者",
+        "DESCRIPTION": "对敌人造成 rhinemod:重击 时，当次伤害翻倍。 NL 虚无 。",
+        "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:Seeker": {
+        "NAME": "求道者",
+        "DESCRIPTION": "。 NL 虚无 。",
+        "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:Loner": {
+        "NAME": "独行者",
+        "DESCRIPTION": "。 NL 虚无 。",
+        "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:Pioneer": {
+        "NAME": "先驱者",
+        "DESCRIPTION": "*出格 不再降低 rhinemod:科研进度 。 NL 虚无 。",
         "UPGRADE_DESCRIPTION": ""
     }
 }

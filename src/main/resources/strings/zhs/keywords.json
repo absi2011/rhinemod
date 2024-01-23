@@ -15,7 +15,7 @@
       "smash",
       "重击"
     ],
-    "DESCRIPTION": "如果一次性伤害高于20，则给予目标一层 [#EFC851]眩晕[] 。"
+    "DESCRIPTION": "如果一次性伤害高于15，则给予目标一层 [#EFC851]眩晕[] 。"
   },
   "STUNNED": {
     "PROPER_NAME": "眩晕",

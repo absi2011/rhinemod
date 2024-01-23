@@ -7,39 +7,39 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import rhinemod.powers.PioneerPower;
-import rhinemod.powers.ResearchProgress;
+import rhinemod.powers.TraitorPower;
 
-public class Unscrupulous extends CustomCard {
-    public static final String ID = "rhinemod:Unscrupulous";
+public class Traitor extends CustomCard {
+    public static final String ID = "rhinemod:Traitor";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String IMG_PATH = "images/cards/RhineStrike.png";
-    private static final int COST = 0;
-    private static final int ADD_RESEARCH_PROGRESS = -2;
+    private static final int COST = 1;
+    private static final int UPGRADE_COST = 0;
 
-    public Unscrupulous() {
+    public Traitor() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
-                CardType.STATUS, CardColor.COLORLESS,
+                CardType.POWER, CardColor.COLORLESS,
                 CardRarity.SPECIAL, CardTarget.SELF);
-        magicNumber = baseMagicNumber = ADD_RESEARCH_PROGRESS;
-        exhaust = true;
+        isEthereal = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (!p.hasPower(PioneerPower.POWER_ID)) {
-            addToBot(new ApplyPowerAction(p, p, new ResearchProgress(p, baseMagicNumber)));
-        }
+        addToBot(new ApplyPowerAction(p, p, new TraitorPower(p)));
     }
 
     @Override
     public AbstractCard makeCopy() {
-        return new Unscrupulous();
+        return new Traitor();
     }
 
     @Override
     public void upgrade() {
+        if (!upgraded) {
+            upgradeName();
+            upgradeBaseCost(UPGRADE_COST);
+        }
     }
 }

@@ -31,9 +31,29 @@
   "rhinemod:ResearchProgress": {
     "NAME": "科研进度",
     "DESCRIPTIONS": [
-      "累积一定层数可以获得一层 #y波骇 ， #y波骇会交替提供层数线性递增的 #y金属化 和 #y荆棘 ，每次获得 #y波骇 所需的层数会线性增加。当前有 #b",
-      " 层，距离获得下一层 #y 波骇还需要 #b",
+      "累积一定层数可以获得一层 #y波骇 ， #y波骇 会交替提供层数线性递增的 #y金属化 和 #y荆棘 ，每次获得 #y波骇 所需的层数会线性增加。当前有 #b",
+      " 层，距离获得下一层 #y波骇 还需要 #b",
       " 层。"
     ]
+  },
+  "rhinemod:EgotistPower": {
+    "NAME": "自私者",
+    "DESCRIPTIONS": ["对战结束时， #y星环 不再对你造成伤害。"]
+  },
+  "rhinemod:TraitorPower": {
+    "NAME": "背叛者",
+    "DESCRIPTIONS": ["对敌人造成 #y重击 时，当次伤害翻倍。"]
+  },
+  "rhinemod:SeekerPower": {
+    "NAME": "求道者",
+    "DESCRIPTIONS": ["TODO"]
+  },
+  "rhinemod:LonerPower": {
+    "NAME": "独行者",
+    "DESCRIPTIONS": ["TODO"]
+  },
+  "rhinemod:PioneerPower": {
+    "NAME": "先驱者",
+    "DESCRIPTIONS": ["#y出格 不再降低 #y科研进度 。"]
   }
 }

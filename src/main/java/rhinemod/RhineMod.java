@@ -14,13 +14,12 @@ import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.screens.custom.CustomMod;
-import rhinemod.actions.HeatDeathAction;
-import rhinemod.cards.special.Unscrupulous;
-import rhinemod.characters.RhineLab;
-import rhinemod.patches.RhineEnum;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import rhinemod.cards.special.*;
 import rhinemod.cards.*;
+import rhinemod.characters.RhineLab;
+import rhinemod.patches.RhineEnum;
 import rhinemod.relics.*;
 
 import java.lang.reflect.Type;
@@ -132,7 +131,11 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
 
         // Special
         BaseMod.addCard(new Unscrupulous()); // 出格
-
+        BaseMod.addCard(new Egotist()); // 自私者
+        BaseMod.addCard(new Traitor()); // 背叛者
+        BaseMod.addCard(new Seeker()); // 求道者
+        BaseMod.addCard(new Loner()); // 独行者
+        BaseMod.addCard(new Pioneer()); // 先驱者
     }
 
     @Override
