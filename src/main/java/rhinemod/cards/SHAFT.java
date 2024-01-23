@@ -37,8 +37,7 @@ public class SHAFT extends AbstractRhineCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DrawCardAction(p, magicNumber));
-        addToBot(new SHAFTAction(chosenBranch, secondMagicNumber));
+        addToBot(new DrawCardAction(magicNumber, new SHAFTAction(chosenBranch, secondMagicNumber)));
     }
 
     @Override
