@@ -123,6 +123,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new MedicineDispensing()); // 药物配置
         BaseMod.addCard(new Enkephalin()); // 脑啡肽
         BaseMod.addCard(new SHAFT()); // 能量井
+        BaseMod.addCard(new EmergencyDefenseProcedures()); // 紧急防卫程序
 
         // Rare.
         BaseMod.addCard(new Calcification()); // 钙质化

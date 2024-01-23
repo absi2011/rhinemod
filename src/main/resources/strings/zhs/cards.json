@@ -107,6 +107,16 @@
         "DESCRIPTION": "抽 !M! 张牌，如果它们类型不同，将 !rhinemod:M2! 张 *灼伤 置入你的手牌。",
         "UPGRADE_DESCRIPTION": "抽 !M! 张牌，如果它们类型相同，将 *背叛者 加入你的手牌。"
     },
+    "rhinemod:EmergencyDefenseProcedures": {
+        "NAME": "紧急防卫程序",
+        "DESCRIPTION": "获得 !B! 点格挡，每有一张 *出格 则少获得 !M! 点。",
+        "UPGRADE_DESCRIPTION": "",
+        "EXTENDED_DESCRIPTION": [
+            "rhinemod:钙质粒子 ： !M! 。 NL 获得等同于你钙质粒子数量的 格挡 。",
+            "获得 !B! 点 格挡 。你每有一层 rhinemod:波骇 ，额外获得 !M! 点 格挡 。",
+            "（共 !rhinemod:M2! 点）"
+        ]
+    },
 
     "rhinemod:Calcification": {
         "NAME": "钙质化",

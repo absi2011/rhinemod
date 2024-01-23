@@ -24,7 +24,7 @@
       "stunned",
       "眩晕"
     ],
-    "DESCRIPTION": "处于眩晕的敌人水渍不再减少，重力改变时受到7点伤害。"
+    "DESCRIPTION": "处于眩晕的敌人 [#EFC851]水渍[] 不再减少， [#EFC851]重力[] 改变时受到4点伤害。"
   },
   "GRAVITY": {
     "PROPER_NAME": "重力",
@@ -76,7 +76,7 @@
       "submersion",
       "浸没"
     ],
-    "DESCRIPTION": "一种多层状态，根据层数，进入时受到一定伤害，状态下攻击力降低。累计到 4 层时直接死亡。此状态下每回合减少10点水渍。"
+    "DESCRIPTION": "一种多层状态，根据层数，进入时受到一定伤害，状态下攻击力降低。累计到 4 层时直接死亡。此状态下每回合减少10点 [#EFC851]水渍[] 。"
   },
   "RESEARCH_PROGRESS": {
     "PROPER_NAME": "科研进度",
@@ -84,6 +84,14 @@
       "ResearchProgress",
       "科研进度"
     ],
-    "DESCRIPTION": "TODO。"
+    "DESCRIPTION": "累积一定层数可以获得一层 [#EFC851]波骇[] ，所需层数线性递增。"
+  },
+  "PERTURBATION": {
+    "PROPER_NAME": "波骇",
+    "NAMES": [
+      "Perturbation",
+      "波骇"
+    ],
+    "DESCRIPTION": "每一层交替提供层数线性递增的 [#EFC851]金属化[] 和 [#EFC851]荆棘[] 。"
   }
 }
