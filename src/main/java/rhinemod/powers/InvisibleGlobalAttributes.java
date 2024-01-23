@@ -16,8 +16,6 @@ import rhinemod.cards.AbstractRhineCard;
 import rhinemod.characters.RhineLab;
 import rhinemod.util.GlobalAttributes;
 
-import java.util.logging.Logger;
-
 public class InvisibleGlobalAttributes extends AbstractPower {
     public static final String POWER_ID = "rhinemod:InvisibleGlobalAttributes";
     public InvisibleGlobalAttributes() {

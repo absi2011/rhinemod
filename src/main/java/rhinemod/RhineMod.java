@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.screens.custom.CustomMod;
+import rhinemod.actions.HeatDeathAction;
 import rhinemod.cards.special.Unscrupulous;
 import rhinemod.characters.RhineLab;
 import rhinemod.patches.RhineEnum;
@@ -127,6 +128,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new Calcification()); // 钙质化
         BaseMod.addCard(new Solidify()); // 凝固
         BaseMod.addCard(new HallOfStasis()); // 静滞所
+        BaseMod.addCard(new HeatDeath()); // 热寂
 
         // Special
         BaseMod.addCard(new Unscrupulous()); // 出格

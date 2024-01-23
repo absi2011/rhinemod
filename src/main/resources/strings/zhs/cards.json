@@ -115,7 +115,13 @@
     },
     "rhinemod:HallOfStasis": {
         "NAME": "静滞所",
-        "DESCRIPTION": "使一名敌人失去1点生命 !M! 次。"
+        "DESCRIPTION": "使一名敌人失去1点生命 !M! 次。",
+        "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:HeatDeath": {
+        "NAME": "热寂",
+        "DESCRIPTION": "召唤一个血量为1的黑洞，平均化所有敌人的血量。 NL 消耗 。",
+        "UPGRADE_DESCRIPTION": ""
     },
 
     "rhinemod:Unscrupulous":{
