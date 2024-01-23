@@ -102,6 +102,11 @@
         "DESCRIPTION": "获得等同于你已损失生命值的 格挡 。 NL 消耗 。",
         "UPGRADE_DESCRIPTION": ""
     },
+    "rhinemod:SHAFT": {
+        "NAME": "能量井",
+        "DESCRIPTION": "抽 !M! 张牌，如果它们类型不同，将 !rhinemod:M2! 张 *灼伤 置入你的手牌。",
+        "UPGRADE_DESCRIPTION": "抽 !M! 张牌，如果它们类型相同，将 *背叛者 加入你的手牌。"
+    },
 
     "rhinemod:Calcification": {
         "NAME": "钙质化",
