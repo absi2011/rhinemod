@@ -2,6 +2,7 @@ package rhinemod.characters;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.city.Vampires;
 import basemod.abstracts.CustomPlayer;
@@ -25,6 +26,7 @@ import rhinemod.powers.InvisibleGlobalAttributes;
 import rhinemod.util.GlobalAttributes;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class RhineLab extends CustomPlayer {
 
@@ -47,6 +49,10 @@ public class RhineLab extends CustomPlayer {
         "images/char/orb/layer4d.png"
     };
     public GlobalAttributes globalAttributes = new GlobalAttributes();
+    public static final float[] POSX = new float[] { 255.0F, -235.0F, 285.0F, -265.0F, 225.0F, -205.0F };
+    public static final float[] POSY = new float[] { 25.0F, 15.0F, 195.0F, 185.0F, 345.0F, 335.0F };
+    public final StarRing[] starRings = new StarRing[6];
+    public final ArrayList<StarRing> currentRings = new ArrayList<>();
 
     public RhineLab(String name) {
         // 参数列表：角色名，角色类枚举，能量面板贴图路径列表，能量面板特效贴图路径，能量面板贴图旋转速度列表，能量面板，模型资源路径，动画资源路径
@@ -189,6 +195,8 @@ public class RhineLab extends CustomPlayer {
         super.applyStartOfCombatLogic();
         powers.add(new InvisibleGlobalAttributes());
         globalAttributes.atStartOfCombat();
+        currentRings.clear();
+        for (int i = 0; i < 6; i++) starRings[i] = null;
     }
 
     @Override
@@ -234,6 +242,47 @@ public class RhineLab extends CustomPlayer {
             } else {
                 TipHelper.queuePowerTips(this.hb.cX - this.hb.width / 2.0F + TIP_OFFSET_R_X, this.hb.cY + TipHelper.calculateAdditionalOffset(tips, this.hb.cY), tips);
             }
+        }
+    }
+
+    @Override
+    public void render(SpriteBatch sb) {
+        super.render(sb);
+        currentRings.removeIf(r -> r.isDead);
+        for (StarRing r : currentRings) r.render(sb);
+    }
+
+    @Override
+    public void update() {
+        super.update();
+        currentRings.removeIf(r -> r.isDead);
+        for (StarRing r : currentRings) r.update();
+    }
+
+    @Override
+    public void applyStartOfTurnPowers() {
+        super.applyStartOfTurnPowers();
+        currentRings.removeIf(r -> r.isDead);
+        for (StarRing r : currentRings) r.applyStartOfTurnPowers();
+    }
+
+    public void summonStarRing(int maxHealth) {
+        for (int i = 0; i < 6; i++)
+            if (starRings[i] == null || starRings[i].isDead) {
+                starRings[i] = new StarRing(maxHealth, POSX[i], POSY[i]);
+                starRings[i].showHealthBar();
+                currentRings.add(starRings[i]);
+                return;
+            }
+    }
+
+    @Override
+    public void damage(DamageInfo info) {
+        currentRings.removeIf(r -> r.isDead);
+        if (!currentRings.isEmpty() && !Objects.equals(info.name, "StarRing")) {
+            currentRings.get(currentRings.size() - 1).damage(info);
+        } else {
+            super.damage(info);
         }
     }
 }

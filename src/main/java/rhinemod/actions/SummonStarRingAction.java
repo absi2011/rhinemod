@@ -5,8 +5,8 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import rhinemod.characters.RhineLab;
 
-public class AddCalciumAction extends AbstractGameAction {
-    public AddCalciumAction(int amount) {
+public class SummonStarRingAction extends AbstractGameAction {
+    public SummonStarRingAction(int amount) {
         actionType = ActionType.SPECIAL;
         duration = Settings.ACTION_DUR_XFAST;
         this.amount = amount;
@@ -15,7 +15,7 @@ public class AddCalciumAction extends AbstractGameAction {
     @Override
     public void update() {
         if (AbstractDungeon.player instanceof RhineLab)
-            ((RhineLab)AbstractDungeon.player).globalAttributes.addCalcium(amount);
+            ((RhineLab)AbstractDungeon.player).summonStarRing(amount);
         isDone = true;
     }
 }

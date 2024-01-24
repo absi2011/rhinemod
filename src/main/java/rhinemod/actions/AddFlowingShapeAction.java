@@ -14,7 +14,8 @@ public class AddFlowingShapeAction extends AbstractGameAction {
 
     @Override
     public void update() {
-        ((RhineLab)AbstractDungeon.player).globalAttributes.addFlowsp(amount);
+        if (AbstractDungeon.player instanceof RhineLab)
+            ((RhineLab)AbstractDungeon.player).globalAttributes.addFlowsp(amount);
         isDone = true;
     }
 }
