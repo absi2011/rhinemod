@@ -24,7 +24,7 @@ public class GlobalAttributes {
     public static final String CA_IMG = "images/ui/calcium.png";
     public static final String FS_IMG = "images/ui/flowingShape.png";
     public enum GravityDirection {
-        UP, DOWN, NONE
+        UP, DOWN, NONE, UNKNOWN
     }
     public int flowspNum;
     public GravityDirection gravity;
@@ -72,9 +72,12 @@ public class GlobalAttributes {
         flowspFlash = 2.0F;
     }
 
-    public void changeGravity() {
-        if (gravity == GravityDirection.UP) gravity = GravityDirection.DOWN;
-        else gravity = GravityDirection.UP;
+    public void changeGravity(GravityDirection aimGravity) {
+        if (aimGravity == GravityDirection.UNKNOWN) {
+            if (gravity == GravityDirection.UP) aimGravity = GravityDirection.DOWN;
+            else aimGravity = GravityDirection.UP;
+        }
+        gravity = aimGravity;
         gravityFlash = 2.0F;
         AbstractDungeon.onModifyPower();
     }

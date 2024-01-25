@@ -14,10 +14,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.FontHelper;
-import com.megacrit.cardcrawl.helpers.Hitbox;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
-import com.megacrit.cardcrawl.helpers.MathHelper;
+import com.megacrit.cardcrawl.helpers.*;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
@@ -30,7 +27,7 @@ import rhinemod.powers.EgotistPower;
 public class StarRing extends AbstractCreature {
     public static final String ID = "rhinemod:StarRing";
     public static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
-    public static final String NAME = uiStrings.TEXT[0];
+    public static final String[] TEXT = uiStrings.TEXT;
     public static final Texture img = new Texture("images/char/StarRing.png");
     public int blastDamage;
     public float hoverTimer;
@@ -39,7 +36,7 @@ public class StarRing extends AbstractCreature {
 
     public StarRing(int maxHealth, float x, float y) {
         super();
-        name = NAME;
+        name = TEXT[0];
         id = ID;
         this.maxHealth = currentHealth = maxHealth;
         hb_w = 150.0F * Settings.scale;
@@ -126,7 +123,7 @@ public class StarRing extends AbstractCreature {
     }
 
     public void takeTurn() {
-        int dmg = calculateDmg(1);
+        int dmg = calculateDmg(5);
         AbstractDungeon.actionManager.addToTop(new StarRingBlastAction(dmg, false));
         AbstractDungeon.actionManager.addToTop(new WaitAction(0.5F));
     }
@@ -150,6 +147,26 @@ public class StarRing extends AbstractCreature {
         healthHb.update();
         if (hb.hovered || healthHb.hovered) renderPowerTips(sb);
     }
+
+    @Override
+    public void renderPowerTips(SpriteBatch sb) {
+        tips.clear();
+        tips.add(new PowerTip(TEXT[0], TEXT[1] + calculateDmg(5) + TEXT[2]));
+        for (AbstractPower p : powers) {
+            if (p.region48 != null) {
+                tips.add(new PowerTip(p.name, p.description, p.region48));
+            } else {
+                tips.add(new PowerTip(p.name, p.description, p.img));
+            }
+        }
+
+        if (hb.cX + hb.width / 2.0F < TIP_X_THRESHOLD) {
+            TipHelper.queuePowerTips(hb.cX + hb.width / 2.0F + TIP_OFFSET_R_X, hb.cY + TipHelper.calculateAdditionalOffset(tips, hb.cY), tips);
+        } else {
+            TipHelper.queuePowerTips(hb.cX - hb.width / 2.0F + TIP_OFFSET_L_X, hb.cY + TipHelper.calculateAdditionalOffset(tips, hb.cY), tips);
+        }
+    }
+
 
     private void renderName(SpriteBatch sb) {
         if (!this.hb.hovered) {

@@ -71,6 +71,11 @@
         "DESCRIPTION": "当前每有一名敌人，对所有敌人造成 !D! 点伤害。",
         "UPGRADE_DESCRIPTION": ""
     },
+    "rhinemod:StarSculpt": {
+        "NAME": "塑星",
+        "DESCRIPTION": "召唤一个 !M! 点生命值的 rhinemod:星环 。",
+        "UPGRADE_DESCRIPTION": ""
+    },
 
     "rhinemod:PlanetaryDebris": {
         "NAME": "行星碎屑",
@@ -115,6 +120,15 @@
             "rhinemod:钙质粒子 ： !M! 。 NL 获得等同于你钙质粒子数量的 格挡 。",
             "获得 !B! 点 格挡 。你每有一层 rhinemod:波骇 ，额外获得 !M! 点 格挡 。",
             "（共 !rhinemod:M2! 点）"
+        ]
+    },
+    "rhinemod:TechnologyRisingStar": {
+        "NAME": "科技新星",
+        "DESCRIPTION": "抽 !M! 张牌，获得等同于它们消耗能量之和的 rhinemod:科研进度 。",
+        "UPGRADE_DESCRIPTION": "",
+        "EXTENDED_DESCRIPTION": [
+            "rhinemod:科研进度 ： !M! 。 NL 随机 消耗 不超过 !rhinemod:M2! 张 *出格 。",
+            "选择一个方向，改变 rhinemod:重力 到该方向。召唤一个 1 点生命的 rhinemod:星环 。"
         ]
     },
 
@@ -167,6 +181,21 @@
     "rhinemod:Pioneer": {
         "NAME": "先驱者",
         "DESCRIPTION": "*出格 不再降低 rhinemod:科研进度 。 NL 虚无 。",
+        "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:GravityUp": {
+        "NAME": "失重",
+        "DESCRIPTION": "切换至 rhinemod:失重 。",
+        "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:GravityDown": {
+        "NAME": "超重",
+        "DESCRIPTION": "切换至 rhinemod:超重 。",
+        "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:GravityNone": {
+        "NAME": "重置",
+        "DESCRIPTION": "重置 rhinemod:重力 。",
         "UPGRADE_DESCRIPTION": ""
     }
 }

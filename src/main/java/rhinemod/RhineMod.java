@@ -114,6 +114,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new IcefieldsAdventure()); // 冰原探险
         BaseMod.addCard(new BookOfFairyTales()); // 童话书
         BaseMod.addCard(new StarlightIntersection()); // 星束交汇
+        BaseMod.addCard(new StarSculpt()); // 塑星
 
         // Uncommon.
         BaseMod.addCard(new PlanetaryDebris()); // 行星碎屑
@@ -124,6 +125,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new Enkephalin()); // 脑啡肽
         BaseMod.addCard(new SHAFT()); // 能量井
         BaseMod.addCard(new EmergencyDefenseProcedures()); // 紧急防卫程序
+        BaseMod.addCard(new TechnologyRisingStar()); // 科技新星
 
         // Rare.
         BaseMod.addCard(new Calcification()); // 钙质化

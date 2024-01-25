@@ -8,8 +8,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 public class BookOfFairyTalesAction extends AbstractGameAction {
     public BookOfFairyTalesAction() {
-        actionType = ActionType.DRAW;
-        duration = startDuration = Settings.ACTION_DUR_XFAST;
+        actionType = ActionType.CARD_MANIPULATION;
+        duration = Settings.ACTION_DUR_XFAST;
     }
 
     @Override
