@@ -74,7 +74,16 @@
     "rhinemod:StarSculpt": {
         "NAME": "塑星",
         "DESCRIPTION": "召唤一个 !M! 点生命值的 rhinemod:星环 。",
-        "UPGRADE_DESCRIPTION": ""
+        "UPGRADE_DESCRIPTION": "召唤一个 !M! 点生命值的 rhinemod:星环 ，并使其获得 !rhinemod:M2! 点 力量 。"
+    },
+    "rhinemod:ShatteredVision": {
+        "NAME": "破碎愿景",
+        "DESCRIPTION": "对所有敌人均匀造成共计 !D! 点伤害。",
+        "UPGRADE_DESCRIPTION": "",
+        "EXTENDED_DESCRIPTION": [
+            "对所有敌人造成 !D! 点伤害，将这张牌移出你的牌组。 NL 消耗 。",
+            "对所有敌人均匀给予共计 !M! 点 rhinemod:水渍 。"
+        ]
     },
 
     "rhinemod:PlanetaryDebris": {

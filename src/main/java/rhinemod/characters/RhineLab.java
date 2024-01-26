@@ -1,7 +1,7 @@
 package rhinemod.characters;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.megacrit.cardcrawl.actions.utility.WaitAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.city.Vampires;
@@ -17,8 +17,8 @@ import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.*;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import rhinemod.cards.*;
 import rhinemod.patches.*;
@@ -200,17 +200,6 @@ public class RhineLab extends CustomPlayer {
     }
 
     @Override
-    public void useCard(AbstractCard c, AbstractMonster monster, int energyOnUse) {
-        if (!Settings.FAST_MODE) {
-            if (c.type == AbstractCard.CardType.ATTACK) {
-                // TODO spine
-            }
-            AbstractDungeon.actionManager.addToTop(new WaitAction(1.0F));
-        }
-        super.useCard(c, monster, energyOnUse);
-    }
-
-    @Override
     public void renderPlayerBattleUi(SpriteBatch sb) {
         super.renderPlayerBattleUi(sb);
         globalAttributes.render(sb);
@@ -266,11 +255,14 @@ public class RhineLab extends CustomPlayer {
         for (StarRing r : currentRings) r.applyStartOfTurnPowers();
     }
 
-    public void summonStarRing(int maxHealth) {
+    public void summonStarRing(int maxHealth, int strength) {
         for (int i = 0; i < 6; i++)
             if (starRings[i] == null || starRings[i].isDead) {
                 starRings[i] = new StarRing(maxHealth, POSX[i], POSY[i]);
                 starRings[i].showHealthBar();
+                if (strength > 0) {
+                    AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(starRings[i], this, new StrengthPower(starRings[i], strength)));
+                }
                 currentRings.add(starRings[i]);
                 return;
             }

@@ -115,6 +115,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new BookOfFairyTales()); // 童话书
         BaseMod.addCard(new StarlightIntersection()); // 星束交汇
         BaseMod.addCard(new StarSculpt()); // 塑星
+        BaseMod.addCard(new ShatteredVision()); // 破碎愿景
 
         // Uncommon.
         BaseMod.addCard(new PlanetaryDebris()); // 行星碎屑
@@ -176,6 +177,9 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         // boss.
 
         // event.
+
+        // shop.
+        BaseMod.addRelicToCustomPool(new ThreeDimensionArtDisplay(), RHINE_MATTE);
     }
 
     @Override

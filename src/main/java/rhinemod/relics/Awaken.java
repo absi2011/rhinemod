@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import rhinemod.actions.AverageDamageAllAction;
 
 import java.util.ArrayList;
 
@@ -38,19 +39,7 @@ public class Awaken extends CustomRelic {
         if (counter == 3) {
             counter = 0;
             flash();
-            ArrayList<AbstractMonster> list = new ArrayList<>();
-            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters)
-                if (!m.isDeadOrEscaped())
-                    list.add(m);
-            if (list.isEmpty()) return;
-            int[] dmg = new int[list.size()];
-            int baseDmg = TOTAL_DMG / list.size();
-            for (int i = 0; i < list.size(); i++)
-                dmg[i] = baseDmg;
-            int res = TOTAL_DMG % list.size();
-            for (int i = 0; i < res; i++)
-                dmg[i]++;
-            addToBot(new DamageAllEnemiesAction(AbstractDungeon.player, dmg, DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+            addToBot(new AverageDamageAllAction(TOTAL_DMG, null, DamageInfo.DamageType.THORNS));
         }
     }
 
