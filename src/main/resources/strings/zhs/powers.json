@@ -36,6 +36,13 @@
       " 层。"
     ]
   },
+  "rhinemod:BionicDevicePower": {
+    "NAME": "迷惑装置",
+    "DESCRIPTIONS": [
+      "本回合内，敌人每对你造成一次伤害，失去 #b",
+      " 点 #y力量 。"
+    ]
+  },
   "rhinemod:EgotistPower": {
     "NAME": "自私者",
     "DESCRIPTIONS": ["对战结束时， #y星环 不再对你造成伤害。"]

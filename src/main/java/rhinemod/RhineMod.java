@@ -127,6 +127,8 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new SHAFT()); // 能量井
         BaseMod.addCard(new EmergencyDefenseProcedures()); // 紧急防卫程序
         BaseMod.addCard(new TechnologyRisingStar()); // 科技新星
+        BaseMod.addCard(new UnusedBoxingGloves()); // 闲置拳击手套
+        BaseMod.addCard(new BionicDevice()); // 迷惑装置
 
         // Rare.
         BaseMod.addCard(new Calcification()); // 钙质化

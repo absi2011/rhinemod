@@ -140,6 +140,16 @@
             "选择一个方向，改变 rhinemod:重力 到该方向。召唤一个 1 点生命的 rhinemod:星环 。"
         ]
     },
+    "rhinemod:UnusedBoxingGloves": {
+        "NAME": "闲置拳击手套",
+        "DESCRIPTION": "造成 !D! 点伤害 !M! 次。 NL rhinemod:钙质粒子 ： !rhinemod:M2!",
+        "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:BionicDevice": {
+        "NAME": "迷惑装置",
+        "DESCRIPTION": "本回合中，敌人每对你造成一次伤害，失去1点 力量 。 NL 消耗 。",
+        "UPGRADE_DESCRIPTION": "rhinemod:流形 ： !M!"
+    },
 
     "rhinemod:Calcification": {
         "NAME": "钙质化",
