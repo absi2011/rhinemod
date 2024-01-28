@@ -43,6 +43,14 @@
       " 点 #y力量 。"
     ]
   },
+  "rhinemod:DreadnoughtProtocolPower": {
+    "NAME": "无畏者协议",
+    "DESCRIPTIONS": [
+      "当你将要受到致命伤害时，一回合内生命值不会低于1。若战斗结束时未被触发，回复 #b",
+      " 点生命值。"
+    ]
+  },
+
   "rhinemod:EgotistPower": {
     "NAME": "自私者",
     "DESCRIPTIONS": ["对战结束时， #y星环 不再对你造成伤害。"]

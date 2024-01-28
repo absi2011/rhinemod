@@ -135,6 +135,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new Solidify()); // 凝固
         BaseMod.addCard(new HallOfStasis()); // 静滞所
         BaseMod.addCard(new HeatDeath()); // 热寂
+        BaseMod.addCard(new DreadnoughtProtocol()); // 无畏者协议
 
         // Special
         BaseMod.addCard(new Unscrupulous()); // 出格

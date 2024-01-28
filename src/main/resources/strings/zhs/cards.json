@@ -171,6 +171,11 @@
         "DESCRIPTION": "召唤一个血量为1的黑洞，平均化所有敌人的血量。 NL 消耗 。",
         "UPGRADE_DESCRIPTION": ""
     },
+    "rhinemod:DreadnoughtProtocol": {
+        "NAME": "无畏者协议",
+        "DESCRIPTION": "当你将要受到致命伤害时，一回合内生命值不会低于1。若战斗结束时未被触发，回复 !M! 点生命值。",
+        "UPGRADE_DESCRIPTION": ""
+    },
 
     "rhinemod:Unscrupulous": {
         "NAME": "出格",
