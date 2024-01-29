@@ -23,6 +23,7 @@ public abstract class AbstractRhineCard extends CustomCard {
     public boolean upgradedSecondMagicNumber;
     public int chosenBranch = 0;
     public int realBranch = 0;
+    public boolean isTargetStarRing = false;
 
     public AbstractRhineCard(String id, String name, String img, int cost, String rawDescription,
                              AbstractCard.CardType type, AbstractCard.CardColor color,

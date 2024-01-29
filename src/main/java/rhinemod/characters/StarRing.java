@@ -10,7 +10,6 @@ import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -22,31 +21,25 @@ import com.megacrit.cardcrawl.vfx.combat.HbBlockBrokenEffect;
 import com.megacrit.cardcrawl.vfx.combat.StrikeEffect;
 import javassist.CtBehavior;
 import rhinemod.actions.StarRingBlastAction;
+import rhinemod.cards.AbstractRhineCard;
 import rhinemod.powers.EgotistPower;
 
-public class StarRing extends AbstractCreature {
+public class StarRing extends AbstractMonster {
     public static final String ID = "rhinemod:StarRing";
     public static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
     public static final String[] TEXT = uiStrings.TEXT;
     public static final Texture img = new Texture("images/char/StarRing.png");
+    public static final String IMG = "images/char/StarRing.png";
     public int blastDamage;
     public float hoverTimer;
     public Color nameColor;
     public Color nameBgColor;
 
     public StarRing(int maxHealth, float x, float y) {
-        super();
-        name = TEXT[0];
-        id = ID;
-        this.maxHealth = currentHealth = maxHealth;
-        hb_w = 150.0F * Settings.scale;
-        hb_h = 150.0F * Settings.scale;
+        super(TEXT[0], ID, maxHealth, 0.0F, 0.0F, 150.0F, 150.0F, IMG, 0.0F, 0.0F);
         drawX = AbstractDungeon.player.drawX + x * Settings.scale;
         drawY = AbstractDungeon.player.drawY + y * Settings.scale;
-        hb = new Hitbox(hb_w, hb_h);
-        healthHb = new Hitbox(hb_w, 72.0F * Settings.scale);
-        hb.move(this.drawX + this.hb_x, this.drawY + this.hb_y + this.hb_h / 2.0F);
-        healthHb.move(this.hb.cX, this.hb.cY - this.hb_h / 2.0F - this.healthHb.height / 2.0F);
+        refreshHitboxLocation();
         isPlayer = true;
         hoverTimer = 0.0F;
         nameColor = new Color();
@@ -127,16 +120,12 @@ public class StarRing extends AbstractCreature {
         return (int)Math.floor(dmg);
     }
 
-    public void takeTurn() {
-        int dmg = calculateDmg(5);
-        AbstractDungeon.actionManager.addToTop(new StarRingBlastAction(dmg, false));
-        AbstractDungeon.actionManager.addToTop(new WaitAction(0.5F));
-    }
-
     @Override
     public void applyStartOfTurnPowers() {
         super.applyStartOfTurnPowers();
-        takeTurn();
+        int dmg = calculateDmg(5);
+        AbstractDungeon.actionManager.addToTop(new StarRingBlastAction(dmg, false));
+        AbstractDungeon.actionManager.addToTop(new WaitAction(0.5F));
     }
 
     @Override
@@ -180,7 +169,9 @@ public class StarRing extends AbstractCreature {
             hoverTimer += Gdx.graphics.getDeltaTime();
         }
 
-        if ((!AbstractDungeon.player.isDraggingCard || AbstractDungeon.player.hoveredCard == null) && !isDead) {
+        if (!(AbstractDungeon.player.hoveredCard instanceof AbstractRhineCard) ||
+                !((AbstractRhineCard) AbstractDungeon.player.hoveredCard).isTargetStarRing) return;
+        if (!AbstractDungeon.player.isDraggingCard && !isDead) {
             if (hoverTimer != 0.0F) {
                 nameColor.a = Math.min(hoverTimer * 2.0F, 1.0F);
             } else {
@@ -202,6 +193,12 @@ public class StarRing extends AbstractCreature {
         }
 
     }
+
+    @Override
+    public void takeTurn() {}
+
+    @Override
+    protected void getMove(int i) {}
 
     public void update() {
         for (AbstractPower p : powers)

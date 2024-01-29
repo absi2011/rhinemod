@@ -25,23 +25,23 @@ public class NovaEruption extends AbstractRhineCard {
     public NovaEruption() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.RHINE_MATTE,
-                CardRarity.UNCOMMON, CardTarget.SELF);
+                CardRarity.UNCOMMON, CardTarget.ENEMY);
         realBranch = 2;
+        isTargetStarRing = true;
     }
 
     @Override
     public boolean canPlay(AbstractCard card) {
-        return AbstractDungeon.player instanceof RhineLab && !((RhineLab) AbstractDungeon.player).currentRings.isEmpty();
+        if (!super.canPlay(card)) return false;
+        if (card instanceof NovaEruption)
+            return AbstractDungeon.player instanceof RhineLab && !((RhineLab) AbstractDungeon.player).currentRings.isEmpty();
+        return true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (!(p instanceof RhineLab)) return;
-        StarRing target = null;
-        for (StarRing r : ((RhineLab) p).currentRings)
-            if (target == null || r.maxHealth - r.currentHealth > target.maxHealth - target.currentHealth)
-                target = r;
-        if (target != null) target.die(false);
+        if (!(m instanceof StarRing) || m.isDead) return;
+        m.die(false);
     }
 
     @Override
