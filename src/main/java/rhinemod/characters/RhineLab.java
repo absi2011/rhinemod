@@ -2,6 +2,7 @@ package rhinemod.characters;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.city.Vampires;
@@ -19,6 +20,7 @@ import com.megacrit.cardcrawl.helpers.*;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import rhinemod.cards.*;
 import rhinemod.patches.*;
@@ -27,6 +29,7 @@ import rhinemod.util.GlobalAttributes;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.logging.Logger;
 
 public class RhineLab extends CustomPlayer {
 
@@ -275,6 +278,25 @@ public class RhineLab extends CustomPlayer {
             currentRings.get(currentRings.size() - 1).damage(info);
         } else {
             super.damage(info);
+        }
+    }
+
+    public void draw(AbstractCard c) {
+        if (!(drawPile.group.contains(c))) {
+            Logger.getLogger(RhineLab.class.getName()).info("ERROR: card not in draw pile!");
+        } else {
+            c.current_x = CardGroup.DRAW_PILE_X;
+            c.current_y = CardGroup.DRAW_PILE_Y;
+            c.setAngle(0.0F, true);
+            c.lighten(false);
+            c.drawScale = 0.12F;
+            c.targetDrawScale = 0.75F;
+            c.triggerWhenDrawn();
+            hand.addToHand(c);
+            drawPile.group.remove(c);
+            for (AbstractPower p : powers) p.onCardDraw(c);
+            for (AbstractRelic r : relics) r.onCardDraw(c);
+            hand.refreshHandLayout();
         }
     }
 }

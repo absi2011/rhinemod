@@ -129,6 +129,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new TechnologyRisingStar()); // 科技新星
         BaseMod.addCard(new UnusedBoxingGloves()); // 闲置拳击手套
         BaseMod.addCard(new BionicDevice()); // 迷惑装置
+        BaseMod.addCard(new NovaEruption()); // 新星爆发
 
         // Rare.
         BaseMod.addCard(new Calcification()); // 钙质化
@@ -136,6 +137,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new HallOfStasis()); // 静滞所
         BaseMod.addCard(new HeatDeath()); // 热寂
         BaseMod.addCard(new DreadnoughtProtocol()); // 无畏者协议
+        BaseMod.addCard(new SuperficialRegulation()); // 浅层非熵适应
 
         // Special
         BaseMod.addCard(new Unscrupulous()); // 出格

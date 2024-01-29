@@ -105,15 +105,20 @@ public class StarRing extends AbstractCreature {
     }
 
     public void die() {
+        die(true);
+    }
+
+    public void die(boolean includeSelf) {
         if (!isDead) {
             isDead = true;
-            AbstractDungeon.actionManager.addToTop(new StarRingBlastAction(blastDamage, true));
+            if (blastDamage == 0) blastDamage = maxHealth - currentHealth;
+            AbstractDungeon.actionManager.addToTop(new StarRingBlastAction(blastDamage, includeSelf));
             AbstractDungeon.actionManager.addToTop(new WaitAction(0.5F));
         }
     }
 
     public void blast() {
-        AbstractDungeon.actionManager.addToTop(new StarRingBlastAction(maxHealth, true));
+        AbstractDungeon.actionManager.addToTop(new StarRingBlastAction(5, true));
     }
 
     public int calculateDmg(float dmg) {
