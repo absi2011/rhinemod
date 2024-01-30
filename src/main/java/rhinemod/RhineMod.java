@@ -130,6 +130,8 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new UnusedBoxingGloves()); // 闲置拳击手套
         BaseMod.addCard(new BionicDevice()); // 迷惑装置
         BaseMod.addCard(new NovaEruption()); // 新星爆发
+        BaseMod.addCard(new ApplyFullForce()); // 放开手脚
+        BaseMod.addCard(new TwoToOne()); // 二比一
 
         // Rare.
         BaseMod.addCard(new Calcification()); // 钙质化

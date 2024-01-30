@@ -97,6 +97,15 @@ public abstract class AbstractRhineCard extends CustomCard {
         this.initializeTitle();
     }
 
+    protected void upgradeName(int branchIndex, String newName) {
+        timesUpgraded++;
+        upgraded = true;
+        if (realBranch == 0)
+            realBranch = branchIndex;
+        this.name = newName + TEXT[branchIndex];
+        this.initializeTitle();
+    }
+
     static public void copyStat(AbstractRhineCard s, AbstractRhineCard t) {
         t.chosenBranch = s.chosenBranch;
         for (int i = 0; i < s.timesUpgraded; ++i) {

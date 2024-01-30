@@ -155,6 +155,20 @@
         "DESCRIPTION": "引爆一个星环，此次引爆不对你造成伤害。",
         "UPGRADE_DESCRIPTION": ""
     },
+    "rhinemod:ApplyFullForce": {
+        "NAME": "放开手脚",
+        "DESCRIPTION": "造成 !D! 点伤害，如果目标处于眩晕状态，改为 !M! 点。",
+        "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:TwoToOne": {
+        "NAME": "二比一",
+        "DESCRIPTION": "造成 !D! 点伤害。只有你的手牌中没有任何一个倾向的卡牌数达到总数的一半时才能打出。",
+        "UPGRADE_DESCRIPTION": "",
+        "EXTENDED_DESCRIPTION": [
+            "一比二",
+            "造成 !D! 点伤害。只有你的手牌中存在一个倾向的卡牌数达到总数的一半时才能打出。"
+        ]
+    },
 
     "rhinemod:Calcification": {
         "NAME": "钙质化",
