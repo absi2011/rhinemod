@@ -231,5 +231,20 @@
         "NAME": "重置",
         "DESCRIPTION": "重置 rhinemod:重力 。",
         "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:GiantRing": {
+        "NAME": "巨大环",
+        "DESCRIPTION": "召唤一个 20 点生命值的 rhinemod:星环 。 NL 消耗 。",
+        "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:BipolarNebula": {
+        "NAME": "多极星云",
+        "DESCRIPTION": "召唤两个 15 点生命值的 rhinemod:星环 。 NL 消耗 。",
+        "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:StellarRing": {
+        "NAME": "恒星环",
+        "DESCRIPTION": "召唤一个 15 点生命值的 rhinemod:星环 ，并使其获得 5 点 力量 。 NL 消耗 。",
+        "UPGRADE_DESCRIPTION": ""
     }
 }

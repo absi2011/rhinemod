@@ -146,6 +146,9 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new Seeker()); // 求道者
         BaseMod.addCard(new Loner()); // 独行者
         BaseMod.addCard(new Pioneer()); // 先驱者
+        BaseMod.addCard(new GiantRing()); // 巨大环
+        BaseMod.addCard(new BipolarNebula()); // 双极星云
+        BaseMod.addCard(new StellarRing()); // 恒星环
     }
 
     @Override
