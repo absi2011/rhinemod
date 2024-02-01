@@ -25,9 +25,11 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import rhinemod.cards.*;
 import rhinemod.patches.*;
 import rhinemod.powers.InvisibleGlobalAttributes;
+import rhinemod.relics.LoneTrail;
 import rhinemod.util.GlobalAttributes;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.logging.Logger;
 
@@ -56,6 +58,8 @@ public class RhineLab extends CustomPlayer {
     public static final float[] POSY = new float[] { 25.0F, 15.0F, 195.0F, 185.0F, 345.0F, 335.0F };
     public final StarRing[] starRings = new StarRing[6];
     public final ArrayList<StarRing> currentRings = new ArrayList<>();
+    public final HashSet<String> playedSpecialCard = new HashSet<>();
+    public boolean specialRelicGained = false;
 
     public RhineLab(String name) {
         // 参数列表：角色名，角色类枚举，能量面板贴图路径列表，能量面板特效贴图路径，能量面板贴图旋转速度列表，能量面板，模型资源路径，动画资源路径
@@ -200,6 +204,15 @@ public class RhineLab extends CustomPlayer {
         globalAttributes.atStartOfCombat();
         currentRings.clear();
         for (int i = 0; i < 6; i++) starRings[i] = null;
+        playedSpecialCard.clear();
+    }
+
+    public void addPlayedSpecialCard(String c) {
+        playedSpecialCard.add(c);
+        if (playedSpecialCard.size() >= 5 && !specialRelicGained) {
+            AbstractDungeon.getCurrRoom().addRelicToRewards(new LoneTrail());
+            specialRelicGained = true;
+        }
     }
 
     @Override

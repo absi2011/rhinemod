@@ -7,8 +7,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import rhinemod.characters.RhineLab;
 import rhinemod.powers.EgotistPower;
-import rhinemod.powers.PioneerPower;
 
 public class Egotist extends CustomCard {
     public static final String ID = "rhinemod:Egotist";
@@ -29,6 +29,7 @@ public class Egotist extends CustomCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new EgotistPower(p)));
+        if (p instanceof RhineLab) ((RhineLab) p).addPlayedSpecialCard("Egotist");
     }
 
     @Override

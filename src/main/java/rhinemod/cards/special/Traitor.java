@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import rhinemod.characters.RhineLab;
 import rhinemod.powers.TraitorPower;
 
 public class Traitor extends CustomCard {
@@ -28,6 +29,7 @@ public class Traitor extends CustomCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new TraitorPower(p)));
+        if (p instanceof RhineLab) ((RhineLab) p).addPlayedSpecialCard("Traitor");
     }
 
     @Override
