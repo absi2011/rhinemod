@@ -151,6 +151,9 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new GiantRing()); // 巨大环
         BaseMod.addCard(new BipolarNebula()); // 双极星云
         BaseMod.addCard(new StellarRing()); // 恒星环
+        BaseMod.addCard(new SquareSunflower()); // 方形葵
+        BaseMod.addCard(new IcefieldsCottongrass()); // 冰原棉草
+        BaseMod.addCard(new Sarracenia()); // 雪瓶子草
     }
 
     @Override

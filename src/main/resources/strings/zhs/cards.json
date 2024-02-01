@@ -260,5 +260,20 @@
         "NAME": "恒星环",
         "DESCRIPTION": "召唤一个 15 点生命值的 rhinemod:星环 ，并使其获得 5 点 力量 。 NL 消耗 。",
         "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:SquareSunflower": {
+        "NAME": "方形葵",
+        "DESCRIPTION": "获得 [B] [B] 。如果本回合你打出过其他植物牌，额外获得 [B] 。 NL 消耗 。",
+        "UPGRADE_DESCRIPTION": "获得 [B] [B] 。如果本回合你打出过其他植物牌，额外获得 [B] [B] 。 NL 消耗 。"
+    },
+    "rhinemod:IcefieldsCottongrass": {
+        "NAME": "冰原棉草",
+        "DESCRIPTION": "获得 !B! 点格挡，抽一张牌，将这张牌的一张复制品随机放入你的手牌、弃牌堆或者抽牌堆。 NL 消耗 。",
+        "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:Sarracenia": {
+        "NAME": "雪瓶子草",
+        "DESCRIPTION": "给予目标 !M! 层 rhinemod:水渍 ，并使其获得 rhinemod:眩晕 。 NL 消耗 。",
+        "UPGRADE_DESCRIPTION": ""
     }
 }
