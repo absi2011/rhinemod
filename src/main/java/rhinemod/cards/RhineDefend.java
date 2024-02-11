@@ -1,5 +1,6 @@
 package rhinemod.cards;
 
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -9,6 +10,7 @@ import rhinemod.actions.AddCalciumAction;
 import rhinemod.actions.AddFlowingShapeAction;
 import rhinemod.patches.AbstractCardEnum;
 import rhinemod.interfaces.UpgradeBranch;
+import rhinemod.powers.ResearchProgress;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +24,9 @@ public class RhineDefend extends AbstractRhineCard {
     public static final String IMG = "images/cards/RhineDefend.png";
     public static final int COST = 1;
     public static final int BLOCK_AMT = 5;
-    public static final int[] UPGRADE_PLUS_BLOCK = {3, 3, 4, 0};
-    public static final int UPGRADE_PLUS_CALCIUM = 2;
+    public static final int[] UPGRADE_PLUS_BLOCK = {3, 3, 2, 0};
+    public static final int UPGRADE_PLUS_CALCIUM = 1;
+    public static final int UPGRADE_PLUS_RESEARCH = 1;
     public static final int UPGRADE_PLUS_FLOWSP = 2;
     public RhineDefend() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
@@ -40,6 +43,8 @@ public class RhineDefend extends AbstractRhineCard {
             case 1:
                 addToBot(new AddCalciumAction(magicNumber));
                 break;
+            case 2:
+                addToBot(new ApplyPowerAction(p, p, new ResearchProgress(p, magicNumber)));
             case 3:
                 addToBot(new AddFlowingShapeAction(magicNumber));
                 break;
@@ -60,7 +65,7 @@ public class RhineDefend extends AbstractRhineCard {
                 if (!upgraded) {
                     upgradeName(1);
                     rawDescription = EXTENDED_DESCRIPTION[0];
-                    upgradeDamage(UPGRADE_PLUS_BLOCK[1]);
+                    upgradeBlock(UPGRADE_PLUS_BLOCK[1]);
                     magicNumber = baseMagicNumber = UPGRADE_PLUS_CALCIUM;
                     initializeDescription();
                 }
@@ -68,15 +73,17 @@ public class RhineDefend extends AbstractRhineCard {
             add(() -> {
                 if (!upgraded) {
                     upgradeName(2);
+                    rawDescription = EXTENDED_DESCRIPTION[1];
                     upgradeBlock(UPGRADE_PLUS_BLOCK[2]);
+                    magicNumber = baseMagicNumber = UPGRADE_PLUS_RESEARCH;
                     initializeDescription();
                 }
             });
             add(() -> {
                 if (!upgraded) {
                     upgradeName(3);
-                    rawDescription = EXTENDED_DESCRIPTION[1];
-                    upgradeDamage(UPGRADE_PLUS_BLOCK[3]);
+                    rawDescription = EXTENDED_DESCRIPTION[2];
+                    upgradeBlock(UPGRADE_PLUS_BLOCK[3]);
                     magicNumber = baseMagicNumber = UPGRADE_PLUS_FLOWSP;
                     initializeDescription();
                 }

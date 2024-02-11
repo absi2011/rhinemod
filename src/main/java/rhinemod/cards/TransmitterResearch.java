@@ -23,7 +23,7 @@ public class TransmitterResearch extends AbstractRhineCard {
     public static final int COST = 1;
     public static final int BASIC_RESEARCH = 7;
     public static final int BASIC_CARDS = 2;
-    public static final int UPGRADE_RESEARCH = 3;
+    public static final int UPGRADE_RESEARCH = 5;
     public static final int[] UPGRADE_CARDS = {-1, 0, 1, 0};
     public TransmitterResearch() {
         super(ID, NAME, IMG, COST, DESCRIPTION,

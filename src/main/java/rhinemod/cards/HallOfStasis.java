@@ -25,7 +25,7 @@ public class HallOfStasis extends AbstractRhineCard {
     public HallOfStasis() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.RHINE_MATTE,
-                CardRarity.UNCOMMON, CardTarget.ENEMY);
+                CardRarity.RARE, CardTarget.ENEMY);
         magicNumber = baseMagicNumber = LOSS_TIME;
     }
 

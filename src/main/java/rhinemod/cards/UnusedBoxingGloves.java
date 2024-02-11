@@ -23,7 +23,7 @@ public class UnusedBoxingGloves extends AbstractRhineCard {
     public static final int ATTACK_DMG = 2;
     public static final int ATTACK_TIMES = 3;
     public static final int UPGRADE_PLUS_TIMES = 1;
-    public static final int CAL_GAIN = 6;
+    public static final int CAL_GAIN = 2;
     public UnusedBoxingGloves() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.RHINE_MATTE,

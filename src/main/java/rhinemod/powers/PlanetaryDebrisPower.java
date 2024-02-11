@@ -37,8 +37,4 @@ public class PlanetaryDebrisPower extends AbstractPower {
         addToBot(new DamageAllEnemiesAction((AbstractPlayer)owner, amount, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
     }
 
-    @Override
-    public void atStartOfTurn() {
-        addToBot(new RemoveSpecificPowerAction(owner, owner, this));
-    }
 }

@@ -1,6 +1,7 @@
 package rhinemod.cards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
@@ -19,7 +20,7 @@ public class EcologicalSection extends AbstractRhineCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String IMG = "images/cards/EcologicalSection.png";
     public static final int COST = 0;
-    public static final int WATER_DMG = 8;
+    public static final int WATER_DMG = 9;
     public static final int UPGRADE_PLUS_WATER = 3;
     public EcologicalSection() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
@@ -32,6 +33,7 @@ public class EcologicalSection extends AbstractRhineCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(m, p, new WaterDamage(m, magicNumber)));
+        addToBot(new DrawCardAction(1));
     }
 
     @Override

@@ -14,6 +14,7 @@
         "UPGRADE_DESCRIPTION": "",
         "EXTENDED_DESCRIPTION": [
             "获得 !B! 点 格挡 。 NL rhinemod:钙质粒子 ： !M!",
+            "获得 !B! 点 格挡 。 NL rhinemod:科研进度 ： !M!",
             "获得 !B! 点 格挡 。 NL rhinemod:流形 ： !M!"
         ]
     },
@@ -29,12 +30,12 @@
     },
     "rhinemod:ComponentsControlSection": {
         "NAME": "总辖构件科",
-        "DESCRIPTION": "改变 rhinemod:重力 。",
+        "DESCRIPTION": "改变 rhinemod:重力 。 NL 召唤一个 !M! 点生命的 rhinemod:星环 。",
         "UPGRADE_DESCRIPTION": ""
     },
     "rhinemod:EcologicalSection": {
         "NAME": "生态科",
-        "DESCRIPTION": "使目标获得 !M! 点 rhinemod:水渍 。",
+        "DESCRIPTION": "使目标获得 !M! 点 rhinemod:水渍 。 NL 抽一张牌。",
         "UPGRADE_DESCRIPTION": ""
     },
 
@@ -157,7 +158,7 @@
     },
     "rhinemod:ApplyFullForce": {
         "NAME": "放开手脚",
-        "DESCRIPTION": "造成 !D! 点伤害，如果目标处于眩晕状态，改为 !M! 点。",
+        "DESCRIPTION": "造成 !D! 点伤害，如果目标处于眩晕状态，本次伤害翻倍。",
         "UPGRADE_DESCRIPTION": ""
     },
     "rhinemod:TwoToOne": {
@@ -177,7 +178,7 @@
     },
     "rhinemod:Solidify": {
         "NAME": "凝固",
-        "DESCRIPTION": "rhinemod:钙质粒子 不再在回合开始时减少。",
+        "DESCRIPTION": "rhinemod:钙质粒子 不再减少。",
         "UPGRADE_DESCRIPTION": ""
     },
     "rhinemod:HallOfStasis": {

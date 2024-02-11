@@ -30,16 +30,17 @@ public class ApplyFullForce extends AbstractRhineCard {
                 CardRarity.UNCOMMON, CardTarget.ENEMY);
         realBranch = 1;
         damage = baseDamage = ATTACK_DMG;
-        magicNumber = baseMagicNumber = ATTACK_STUN_DMG;
+        // magicNumber = baseMagicNumber = ATTACK_STUN_DMG;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         calculateCardDamage(m);
-        if (m.hasPower(Stunned.POWER_ID)) addToBot(new DamageAction(m, new DamageInfo(p, magicNumber), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        if (m.hasPower(Stunned.POWER_ID)) addToBot(new DamageAction(m, new DamageInfo(p, damage * 2), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
         else addToBot(new DamageAction(m, new DamageInfo(p, damage), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
     }
 
+    /*
     @Override
     public void applyPowers() {
         int tmp = baseDamage;
@@ -61,6 +62,7 @@ public class ApplyFullForce extends AbstractRhineCard {
         baseDamage = tmp;
         super.calculateCardDamage(m);
     }
+    */
 
     @Override
     public List<UpgradeBranch> possibleBranches() {
@@ -69,7 +71,7 @@ public class ApplyFullForce extends AbstractRhineCard {
                 if (!upgraded) {
                     upgradeName(0);
                     upgradeDamage(UPGRADE_PLUS_DMG);
-                    upgradeMagicNumber(UPGRADE_PLUS_DMG);
+                    // upgradeMagicNumber(UPGRADE_PLUS_DMG);
                     initializeDescription();
                 }
             });

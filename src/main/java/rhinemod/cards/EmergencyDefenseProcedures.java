@@ -27,7 +27,7 @@ public class EmergencyDefenseProcedures extends AbstractRhineCard {
     public static final int BLOCK_AMT = 10;
     public static final int UPGRADE_PLUS_BLOCK = 3;
     public static final int BLOCK_DEC = 2;
-    public static final int CAL_AMT = 5;
+    public static final int CAL_AMT = 3;
     public static final int KRISTEN_PLUS_BLOCK = -2;
     public static final int KRISTEN_EXTRA_BLOCK = 4;
     public String baseDescription;
