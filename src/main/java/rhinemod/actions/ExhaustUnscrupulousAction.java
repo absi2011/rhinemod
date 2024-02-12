@@ -5,11 +5,11 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.vfx.cardManip.ExhaustCardEffect;
 import rhinemod.cards.special.Unscrupulous;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 public class ExhaustUnscrupulousAction extends AbstractGameAction {
     public final AbstractPlayer p;
@@ -35,7 +35,7 @@ public class ExhaustUnscrupulousAction extends AbstractGameAction {
         if (list.size() <= amount) {
             for (AbstractCard c : list) exhaustCard(c);
         } else {
-            Collections.shuffle(list);
+            Collections.shuffle(list, new Random(AbstractDungeon.cardRng.randomLong()));
             for (int i = 0; i < amount; i++) exhaustCard(list.get(i));
         }
         isDone = true;

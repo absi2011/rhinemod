@@ -170,6 +170,11 @@
             "造成 !D! 点伤害。只有你的手牌中存在一个倾向的卡牌数达到总数的一半时才能打出。"
         ]
     },
+    "rhinemod:EcologicalInteraction": {
+        "NAME": "生态耦合",
+        "DESCRIPTION": "随机将 X 张植物牌加入你的手牌。",
+        "UPGRADE_DESCRIPTION": "随机将 X+1 张植物牌加入你的手牌。"
+    },
 
     "rhinemod:Calcification": {
         "NAME": "钙质化",

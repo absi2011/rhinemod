@@ -8,6 +8,7 @@ import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.*;
 import com.megacrit.cardcrawl.localization.*;
@@ -132,6 +133,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new NovaEruption()); // 新星爆发
         BaseMod.addCard(new ApplyFullForce()); // 放开手脚
         BaseMod.addCard(new TwoToOne()); // 二比一
+        BaseMod.addCard(new EcologicalInteraction()); // 生态耦合
 
         // Rare.
         BaseMod.addCard(new Calcification()); // 钙质化
@@ -225,5 +227,15 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
 //        }
 //        return lang;
         return "zhs";
+    }
+
+    public static ArrayList<AbstractCard> getPlantCards() {
+        ArrayList<AbstractCard> list = new ArrayList<>();
+        list.add(new SquareSunflower());
+        list.add(new SheathedBeech());
+        list.add(new IcefieldsCottongrass());
+        list.add(new Sarracenia());
+        list.add(new PaleFir());
+        return list;
     }
 }
