@@ -51,6 +51,10 @@
     ]
   },
 
+  "rhinemod:SheathedBeechPower": {
+    "NAME": "鞘叶榉",
+    "DESCRIPTIONS": ["本回合内，你每打出一张技能牌，获得 #b", " 点临时 #y敏捷 和 #b", " 点 #y格挡 。"]
+  },
   "rhinemod:EgotistPower": {
     "NAME": "自私者",
     "DESCRIPTIONS": ["对战结束时， #y星环 不再对你造成伤害。"]

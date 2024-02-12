@@ -276,5 +276,15 @@
         "NAME": "雪瓶子草",
         "DESCRIPTION": "给予目标 !M! 层 rhinemod:水渍 ，并使其获得 rhinemod:眩晕 。 NL 消耗 。",
         "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:SheathedBeech": {
+        "NAME": "鞘叶榉",
+        "DESCRIPTION": "本回合内，你每打出一张技能牌，获得 1 点临时 敏捷 与 !M! 点 格挡 。 NL 消耗 。",
+        "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:PaleFir": {
+        "NAME": "淡杉",
+        "DESCRIPTION": "获得 !B! 点 格挡 ，你每已损失 5 点生命值，额外获得 !M! 点。 NL 消耗 。",
+        "UPGRADE_DESCRIPTION": ""
     }
 }
