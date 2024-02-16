@@ -25,8 +25,7 @@ public class EcologicalInteraction extends AbstractRhineCard {
     public EcologicalInteraction() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.RHINE_MATTE,
-                CardRarity.RARE, CardTarget.SELF);
-        exhaust = true;
+                CardRarity.UNCOMMON, CardTarget.SELF);
         realBranch = 3;
     }
 
