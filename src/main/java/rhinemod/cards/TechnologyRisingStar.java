@@ -42,24 +42,22 @@ public class TechnologyRisingStar extends AbstractRhineCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (upgraded) {
-            switch (chosenBranch) {
-                case 0:
-                    addToBot(new DrawCardAction(magicNumber, new GainProgressByCostAction(p)));
-                    break;
-                case 1:
-                    addToBot(new ApplyPowerAction(p, p, new ResearchProgress(p, magicNumber)));
-                    addToBot(new ExhaustUnscrupulousAction(secondMagicNumber));
-                    break;
-                case 2:
-                    ArrayList<AbstractCard> list = new ArrayList<>();
-                    list.add(new GravityUp());
-                    list.add(new GravityNone());
-                    list.add(new GravityDown());
-                    addToBot(new ChooseOneAction(list));
-                    addToBot(new SummonStarRingAction(1));
-                    break;
-            }
+        switch (chosenBranch) {
+            case 0:
+                addToBot(new DrawCardAction(magicNumber, new GainProgressByCostAction(p)));
+                break;
+            case 1:
+                addToBot(new ApplyPowerAction(p, p, new ResearchProgress(p, magicNumber)));
+                addToBot(new ExhaustUnscrupulousAction(secondMagicNumber));
+                break;
+            case 2:
+                ArrayList<AbstractCard> list = new ArrayList<>();
+                list.add(new GravityUp());
+                list.add(new GravityNone());
+                list.add(new GravityDown());
+                addToBot(new ChooseOneAction(list));
+                addToBot(new SummonStarRingAction(1));
+                break;
         }
     }
 

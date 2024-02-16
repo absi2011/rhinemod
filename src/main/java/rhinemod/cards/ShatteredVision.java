@@ -41,39 +41,37 @@ public class ShatteredVision extends AbstractRhineCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (upgraded) {
-            switch (chosenBranch) {
-                case 0:
-                    addToBot(new AverageDamageAllAction(damage, p, DamageInfo.DamageType.NORMAL));
-                    break;
-                case 1:
-                    addToBot(new DamageAllEnemiesAction(p, damage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-                    for (AbstractCard c : p.masterDeck.group)
-                        if (c.uuid == uuid) {
-                            CardCrawlGame.sound.play("CARD_EXHAUST");
-                            AbstractDungeon.topLevelEffects.add(new PurgeCardEffect(c, (float)(Settings.WIDTH / 2), (float)(Settings.HEIGHT / 2)));
-                            p.masterDeck.removeCard(c);
-                            break;
-                        }
-                    break;
-                case 2:
-                    ArrayList<AbstractMonster> aimList = new ArrayList<>();
-                    for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters)
-                        if (!mo.isDeadOrEscaped())
-                            aimList.add(mo);
-                    if (!aimList.isEmpty()) {
-                        int[] dmgList = new int[aimList.size()];
-                        int baseDmg = magicNumber / aimList.size();
-                        for (int i = 0; i < aimList.size(); i++)
-                            dmgList[i] = baseDmg;
-                        int res = magicNumber % aimList.size();
-                        for (int i = 0; i < res; i++)
-                            dmgList[i]++;
-                        for (int i = 0; i < aimList.size(); i++)
-                            addToBot(new ApplyPowerAction(aimList.get(i), p, new WaterDamage(aimList.get(i), dmgList[i])));
+        switch (chosenBranch) {
+            case 0:
+                addToBot(new AverageDamageAllAction(damage, p, DamageInfo.DamageType.NORMAL));
+                break;
+            case 1:
+                addToBot(new DamageAllEnemiesAction(p, damage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+                for (AbstractCard c : p.masterDeck.group)
+                    if (c.uuid == uuid) {
+                        CardCrawlGame.sound.play("CARD_EXHAUST");
+                        AbstractDungeon.topLevelEffects.add(new PurgeCardEffect(c, (float)(Settings.WIDTH / 2), (float)(Settings.HEIGHT / 2)));
+                        p.masterDeck.removeCard(c);
+                        break;
                     }
-                    break;
-            }
+                break;
+            case 2:
+                ArrayList<AbstractMonster> aimList = new ArrayList<>();
+                for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters)
+                    if (!mo.isDeadOrEscaped())
+                        aimList.add(mo);
+                if (!aimList.isEmpty()) {
+                    int[] dmgList = new int[aimList.size()];
+                    int baseDmg = magicNumber / aimList.size();
+                    for (int i = 0; i < aimList.size(); i++)
+                        dmgList[i] = baseDmg;
+                    int res = magicNumber % aimList.size();
+                    for (int i = 0; i < res; i++)
+                        dmgList[i]++;
+                    for (int i = 0; i < aimList.size(); i++)
+                        addToBot(new ApplyPowerAction(aimList.get(i), p, new WaterDamage(aimList.get(i), dmgList[i])));
+                }
+                break;
         }
     }
 
