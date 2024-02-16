@@ -28,7 +28,9 @@ public class Enkephalin extends AbstractRhineCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new GainBlockAction(p, p.maxHealth - p.currentHealth));
+        baseBlock = p.maxHealth - p.currentHealth;
+        applyPowersToBlock();
+        addToBot(new GainBlockAction(p, block));
     }
 
     @Override
