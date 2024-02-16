@@ -51,6 +51,9 @@ public class Submersion extends AbstractPower {
     @Override
     public void atStartOfTurn() {
         addToBot(new SubmersionLoseHpAction(owner, AbstractDungeon.player, DAMAGE_TAKE[amount]));
+    }
+
+    public void atEndOfRound() {
         if (!owner.hasPower(Stunned.POWER_ID)) {
             addToBot(new ReducePowerAction(owner, owner, WaterDamage.POWER_ID, 10));
         }

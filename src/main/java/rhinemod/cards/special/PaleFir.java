@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import rhinemod.patches.RhineTags;
 
 public class PaleFir extends CustomCard {
     public static final String ID = "rhinemod:PaleFir";
@@ -15,15 +16,16 @@ public class PaleFir extends CustomCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String IMG_PATH = "images/cards/PaleFir.png";
     private static final int COST = 0;
-    private static final int BLOCK_AMT = 3;
-    private static final int UPGRADE_PLUS_BLOCK = 3;
-    private static final int EXTRA_BLOCK = 2;
+    private static final int BLOCK_AMT = 6;
+    private static final int UPGRADE_PLUS_BLOCK = 2;
+    private static final int EXTRA_BLOCK = 1;
 
     public PaleFir() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, CardColor.COLORLESS,
                 CardRarity.SPECIAL, CardTarget.SELF);
         exhaust = true;
+        tags.add(RhineTags.IS_PLANT);
         block = baseBlock = BLOCK_AMT;
         magicNumber = baseMagicNumber = EXTRA_BLOCK;
     }

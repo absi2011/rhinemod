@@ -47,7 +47,7 @@ public class GlobalAttributes {
 
     public GlobalAttributes() {
         gravity = GravityDirection.NONE;
-        calciumReduceNum = 3;
+        calciumReduceNum = 1;
         smashThreshold = 15;
         calciumNum = 0;
         flowspX = 380.0F * Settings.scale;

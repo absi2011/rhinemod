@@ -36,7 +36,7 @@ public class Stunned extends AbstractPower {
     }
 
     @Override
-    public void atStartOfTurn() {
+    public void atEndOfRound() {
         addToBot(new RemoveSpecificPowerAction(owner, owner, this));
     }
 }

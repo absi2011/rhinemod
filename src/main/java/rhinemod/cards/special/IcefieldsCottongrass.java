@@ -19,7 +19,7 @@ public class IcefieldsCottongrass extends CustomCard {
     public static final String IMG_PATH = "images/cards/IcefieldsCottongrass.png";
     private static final int COST = 0;
     private static final int BLOCK_AMT = 4;
-    private static final int UPGRADE_PLUS_BLOCK = 3;
+    private static final int UPGRADE_PLUS_BLOCK = 2;
 
     public IcefieldsCottongrass() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,

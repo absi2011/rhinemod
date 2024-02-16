@@ -1,6 +1,7 @@
 package rhinemod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
@@ -32,6 +33,7 @@ public class ExhaustUnscrupulousAction extends AbstractGameAction {
         for (AbstractCard c : p.drawPile.group)
             if (c instanceof Unscrupulous)
                 list.add(c);
+        // TODO:来点特效！
         if (list.size() <= amount) {
             for (AbstractCard c : list) exhaustCard(c);
         } else {

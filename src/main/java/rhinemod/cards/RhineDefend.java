@@ -45,6 +45,7 @@ public class RhineDefend extends AbstractRhineCard {
                 break;
             case 2:
                 addToBot(new ApplyPowerAction(p, p, new ResearchProgress(p, magicNumber)));
+                break;
             case 3:
                 addToBot(new AddFlowingShapeAction(magicNumber));
                 break;

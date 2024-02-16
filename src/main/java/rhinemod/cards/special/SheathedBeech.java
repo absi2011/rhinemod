@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import rhinemod.patches.RhineTags;
 import rhinemod.powers.SheathedBeechPower;
 
 public class SheathedBeech extends CustomCard {
@@ -24,6 +25,7 @@ public class SheathedBeech extends CustomCard {
                 CardType.SKILL, CardColor.COLORLESS,
                 CardRarity.SPECIAL, CardTarget.SELF);
         exhaust = true;
+        tags.add(RhineTags.IS_PLANT);
         magicNumber = baseMagicNumber = BLOCK_AMT;
     }
 

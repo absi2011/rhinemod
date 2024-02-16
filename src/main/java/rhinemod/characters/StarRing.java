@@ -105,6 +105,7 @@ public class StarRing extends AbstractMonster {
         if (!isDead) {
             isDead = true;
             if (blastDamage == 0) blastDamage = maxHealth - currentHealth;
+            blastDamage /= 2;
             AbstractDungeon.actionManager.addToTop(new StarRingBlastAction(blastDamage, includeSelf));
             AbstractDungeon.actionManager.addToTop(new WaitAction(0.5F));
         }
