@@ -6,10 +6,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Interpolation;
-import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -19,10 +17,8 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.HbBlockBrokenEffect;
 import com.megacrit.cardcrawl.vfx.combat.StrikeEffect;
-import javassist.CtBehavior;
 import rhinemod.actions.StarRingBlastAction;
 import rhinemod.cards.AbstractRhineCard;
-import rhinemod.powers.EgotistPower;
 
 public class StarRing extends AbstractMonster {
     public static final String ID = "rhinemod:StarRing";
@@ -105,6 +101,7 @@ public class StarRing extends AbstractMonster {
         if (!isDead) {
             isDead = true;
             if (blastDamage == 0) blastDamage = maxHealth - currentHealth;
+            blastDamage /= 2;
             AbstractDungeon.actionManager.addToTop(new StarRingBlastAction(blastDamage, includeSelf));
             AbstractDungeon.actionManager.addToTop(new WaitAction(0.5F));
         }
@@ -205,24 +202,5 @@ public class StarRing extends AbstractMonster {
             p.updateParticles();
         updateHealthBar();
         tint.update();
-    }
-
-    @SpirePatch(clz = AbstractMonster.class, method = "die", paramtypez = {boolean.class})
-    public static class EndBattlePatch {
-        @SpireInsertPatch(locator = Locator.class)
-        public static void insert(AbstractMonster _inst) {
-            AbstractPlayer p = AbstractDungeon.player;
-            if (p instanceof RhineLab && !p.hasPower(EgotistPower.POWER_ID)) {
-                for (StarRing r : ((RhineLab) p).currentRings)
-                    r.blast();
-            }
-        }
-        private static class Locator extends SpireInsertLocator {
-            @Override
-            public int[] Locate(CtBehavior ctMethodToPatch) throws Exception {
-                Matcher.FieldAccessMatcher matcher = new Matcher.FieldAccessMatcher(AbstractDungeon.class, "overlayMenu");
-                return LineFinder.findInOrder(ctMethodToPatch, matcher);
-            }
-        }
     }
 }
