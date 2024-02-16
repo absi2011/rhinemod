@@ -86,6 +86,11 @@
             "对所有敌人均匀给予共计 !M! 点 rhinemod:水渍 。"
         ]
     },
+    "rhinemod:HighEfficiencyFreezingModule": {
+        "NAME": "高效制冷模块",
+        "DESCRIPTION": "对所有敌人造成 !D! 点伤害，如果目标有 rhinemod:水渍 ，则改为 !M! 点。",
+        "UPGRADE_DESCRIPTION": ""
+    },
 
     "rhinemod:PlanetaryDebris": {
         "NAME": "行星碎屑",
@@ -205,6 +210,11 @@
         "NAME": "浅层非熵适应",
         "DESCRIPTION": "抽取每种倾向的卡牌各一张，将他们以随机顺序置入你的手牌，并且将你的抽牌堆以相同顺序进行排序。",
         "UPGRADE_DESCRIPTION": "抽取每种倾向的卡牌各一张，将他们以随机顺序置入你的手牌，并且将你的抽牌堆以相同顺序进行排序。 NL 保留 。"
+    },
+    "rhinemod:DancingInThrees": {
+        "NAME": "三个人的舞",
+        "DESCRIPTION": "如果你本回合打出过所有倾向的牌，获得 !M! 点 rhinemod:钙质粒子 ， rhinemod:科研进度 ， rhinemod:流形 。",
+        "UPGRADE_DESCRIPTION": ""
     },
 
     "rhinemod:Unscrupulous": {

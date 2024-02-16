@@ -117,6 +117,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new StarlightIntersection()); // 星束交汇
         BaseMod.addCard(new StarSculpt()); // 塑星
         BaseMod.addCard(new ShatteredVision()); // 破碎愿景
+        BaseMod.addCard(new HighEfficiencyFreezingModule()); // 高效制冷模块
 
         // Uncommon.
         BaseMod.addCard(new PlanetaryDebris()); // 行星碎屑
@@ -142,6 +143,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new HeatDeath()); // 热寂
         BaseMod.addCard(new DreadnoughtProtocol()); // 无畏者协议
         BaseMod.addCard(new SuperficialRegulation()); // 浅层非熵适应
+        BaseMod.addCard(new DancingInThrees()); // 三个人的舞
 
         // Special
         BaseMod.addCard(new Unscrupulous()); // 出格

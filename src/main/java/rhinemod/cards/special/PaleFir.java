@@ -28,6 +28,7 @@ public class PaleFir extends CustomCard {
         tags.add(RhineTags.IS_PLANT);
         block = baseBlock = BLOCK_AMT;
         magicNumber = baseMagicNumber = EXTRA_BLOCK;
+        tags.add(RhineTags.IS_PLANT);
     }
 
     @Override

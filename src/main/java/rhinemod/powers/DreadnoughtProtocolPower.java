@@ -34,7 +34,7 @@ public class DreadnoughtProtocolPower extends AbstractPower {
 
     @Override
     public void onVictory() {
-        if (owner.currentHealth > 0) owner.heal(amount);
+        if (!isTriggered && owner.currentHealth > 0) owner.heal(amount);
     }
 
     @Override

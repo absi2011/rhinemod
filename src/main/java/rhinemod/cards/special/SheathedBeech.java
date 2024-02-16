@@ -27,6 +27,7 @@ public class SheathedBeech extends CustomCard {
         exhaust = true;
         tags.add(RhineTags.IS_PLANT);
         magicNumber = baseMagicNumber = BLOCK_AMT;
+        tags.add(RhineTags.IS_PLANT);
     }
 
     @Override

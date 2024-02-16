@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -14,15 +13,18 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import rhinemod.cards.AbstractRhineCard;
 import rhinemod.characters.RhineLab;
+import rhinemod.characters.StarRing;
 import rhinemod.util.GlobalAttributes;
 
 public class InvisibleGlobalAttributes extends AbstractPower {
     public static final String POWER_ID = "rhinemod:InvisibleGlobalAttributes";
+    public final RhineLab p;
     public InvisibleGlobalAttributes() {
         ID = POWER_ID;
         type = PowerType.BUFF;
         this.priority = -100;
         updateDescription();
+        p = (RhineLab) AbstractDungeon.player;
     }
 
     @Override
@@ -31,20 +33,18 @@ public class InvisibleGlobalAttributes extends AbstractPower {
     }
 
     public float calcDmgScale() {
-        AbstractPlayer p = AbstractDungeon.player;
         float scale = 1.0F;
-        if (((RhineLab)p).globalAttributes.gravity == GlobalAttributes.GravityDirection.UP)
+        if (p.globalAttributes.gravity == GlobalAttributes.GravityDirection.UP)
             scale *= 1.3F;
-        else if (((RhineLab)p).globalAttributes.gravity == GlobalAttributes.GravityDirection.DOWN)
+        else if (p.globalAttributes.gravity == GlobalAttributes.GravityDirection.DOWN)
             scale /= 1.3F;
         return scale;
     }
 
     public float calcCalcium(AbstractCard c) {
-        AbstractPlayer p = AbstractDungeon.player;
-        if (!(p instanceof RhineLab) || !(c instanceof AbstractRhineCard)) return 0;
+        if (!(c instanceof AbstractRhineCard)) return 0;
         if (((AbstractRhineCard)c).realBranch == 1)
-            return ((RhineLab)p).globalAttributes.calciumNum;
+            return p.globalAttributes.calciumNum;
         else
             return 0;
     }
@@ -73,10 +73,9 @@ public class InvisibleGlobalAttributes extends AbstractPower {
 
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        AbstractPlayer p = AbstractDungeon.player;
-        if (!(p instanceof RhineLab) || !(card instanceof AbstractRhineCard)) return;
+        if (!(card instanceof AbstractRhineCard)) return;
         if (((AbstractRhineCard)card).realBranch != 1 && ((AbstractRhineCard)card).realBranch != 2) return;
-        int flowspNum = ((RhineLab)p).globalAttributes.flowspNum;
+        int flowspNum = p.globalAttributes.flowspNum;
         if (flowspNum == 0) return;
 
         AbstractMonster m = action.target == null? null : (AbstractMonster)action.target;
@@ -98,13 +97,21 @@ public class InvisibleGlobalAttributes extends AbstractPower {
         if (m != null) tmp.calculateCardDamage(m);
         tmp.purgeOnUse = true;
         AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(tmp, m, card.energyOnUse, true, true), true);
-        ((RhineLab)p).globalAttributes.clearFlowsp();
+        p.globalAttributes.clearFlowsp();
     }
 
     @Override
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
         if (info.type == DamageInfo.DamageType.NORMAL && damageAmount >= GlobalAttributes.smashThreshold) {
             addToTop(new ApplyPowerAction(target, owner, new Stunned(target)));
+        }
+    }
+
+    @Override
+    public void onVictory() {
+        if (p.currentHealth > 0 && !p.hasPower(EgotistPower.POWER_ID)) {
+            for (StarRing r : p.currentRings)
+                r.blast();
         }
     }
 }
