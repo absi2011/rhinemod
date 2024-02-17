@@ -30,11 +30,7 @@ public class SquareSunflower extends CustomCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         int energyGain = 2;
-        for (AbstractCard c : AbstractDungeon.actionManager.cardsPlayedThisTurn)
-            if (c.hasTag(RhineTags.IS_PLANT) && c != this) {
-                energyGain += (upgraded? 2 : 1);
-                break;
-            }
+        if (upgraded) energyGain += 1;
         addToBot(new GainEnergyAction(energyGain));
     }
 
