@@ -37,7 +37,7 @@ public class StarlightIntersection extends AbstractRhineCard {
             if (!mo.isDeadOrEscaped())
                 cnt++;
         for (int i = 0; i < cnt; i++)
-            addToBot(new DamageAllEnemiesAction(p, damage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+            addToBot(new DamageAllEnemiesAction(p, baseDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
     }
 
     @Override
