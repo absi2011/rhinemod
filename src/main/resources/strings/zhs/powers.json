@@ -50,6 +50,13 @@
       " 点生命值。"
     ]
   },
+  "rhinemod:FlowingWater": {
+    "NAME": "流水区域",
+    "DESCRIPTIONS": [
+      "当你下一次受到攻击后，给予攻击者 #b",
+      " 层 #y水渍 。"
+    ]
+  },
 
   "rhinemod:SheathedBeechPower": {
     "NAME": "鞘叶榉",

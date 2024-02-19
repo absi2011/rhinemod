@@ -180,6 +180,15 @@
         "DESCRIPTION": "随机将 X 张植物牌加入你的手牌。",
         "UPGRADE_DESCRIPTION": "随机将 X+1 张植物牌加入你的手牌。"
     },
+    "rhinemod:QuicksandGeneration": {
+        "NAME": "流沙区域生成",
+        "DESCRIPTION": "获得 !B! 点 格挡 。 NL 均匀给予所有意图为攻击的敌人共 !M! 层 虚弱 。",
+        "UPGRADE_DESCRIPTION": "",
+        "EXTENDED_DESCRIPTION": [
+            "流水区域生成",
+            "获得 !B! 点 格挡 。 NL 你下一次受到攻击后，给予攻击者 !M! 层 rhinemod:水渍 。"
+        ]
+    },
 
     "rhinemod:Calcification": {
         "NAME": "钙质化",
