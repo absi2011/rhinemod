@@ -288,8 +288,8 @@
     },
     "rhinemod:SquareSunflower": {
         "NAME": "方形葵",
-        "DESCRIPTION": "获得 [B] [B] 。如果本回合你打出过其他植物牌，额外获得 [B] 。 NL 消耗 。",
-        "UPGRADE_DESCRIPTION": "获得 [B] [B] 。如果本回合你打出过其他植物牌，额外获得 [B] [B] 。 NL 消耗 。"
+        "DESCRIPTION": "获得 [B] [B] 。 NL 消耗 。",
+        "UPGRADE_DESCRIPTION": "获得 [B] [B] [B] 。 NL 消耗 。"
     },
     "rhinemod:IcefieldsCottongrass": {
         "NAME": "冰原棉草",
