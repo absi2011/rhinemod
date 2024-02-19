@@ -14,15 +14,16 @@ import com.megacrit.cardcrawl.powers.FlightPower;
 public class ArclightCommando extends CustomMonster {
     public static final String ID = "rhinemod:ArclightCommando";
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
+    public static final String[] MOVES = monsterStrings.MOVES;
     public static final String NAME = monsterStrings.NAME;
     public final int FlightNumber;
     boolean isFlying;
 
     public ArclightCommando(float x, float y) {
-        super(NAME, ID, 30, 0, 0, 150.0F, 320.0F, null, x, y);
+        super(NAME, ID, 40, 0, 0, 150.0F, 320.0F, null, x, y);
         this.type = EnemyType.NORMAL;
-        if (AbstractDungeon.ascensionLevel >= 8) {
-            setHp(32);
+        if (AbstractDungeon.ascensionLevel >= 7) {
+            setHp(43);
             FlightNumber = 4;
         }
         else {

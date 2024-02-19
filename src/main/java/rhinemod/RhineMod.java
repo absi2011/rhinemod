@@ -10,8 +10,12 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.Exordium;
 import com.megacrit.cardcrawl.helpers.*;
 import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.monsters.MonsterGroup;
+import com.megacrit.cardcrawl.monsters.MonsterInfo;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.screens.custom.CustomMod;
@@ -20,6 +24,9 @@ import org.apache.logging.log4j.Logger;
 import rhinemod.cards.special.*;
 import rhinemod.cards.*;
 import rhinemod.characters.RhineLab;
+import rhinemod.monsters.ArclightCommando;
+import rhinemod.monsters.ArclightMirrorguard;
+import rhinemod.monsters.MilitaryBeckbeast;
 import rhinemod.patches.RhineEnum;
 import rhinemod.relics.*;
 
@@ -27,6 +34,7 @@ import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
+import static basemod.BaseMod.addMonster;
 import static rhinemod.patches.AbstractCardEnum.RHINE_MATTE;
 
 @SpireInitializer
@@ -66,6 +74,16 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
     public void receivePostInitialize() {
         initializeEvents();
         initializePotions();
+        initializeMonsters();
+    }
+
+    public void initializeMonsters() {
+        addMonster("Single ArcCommando",  () -> new MonsterGroup(new AbstractMonster[] {new ArclightCommando(0.0F, 0.0F)}));
+        BaseMod.addMonsterEncounter(Exordium.ID, new MonsterInfo("Single ArcCommando", 2.0F));
+        addMonster("ArcCommando And Beckbeast",  () -> new MonsterGroup(new AbstractMonster[] {new ArclightCommando(150.0F, 0.0F), new MilitaryBeckbeast(-150.0F, 0.0F)}));
+        BaseMod.addStrongMonsterEncounter(Exordium.ID, new MonsterInfo("ArcCommando And Beckbeast", 1.5F));
+        addMonster("ArcMirrorGuard",  () -> new MonsterGroup(new AbstractMonster[] {new ArclightMirrorguard(0.0F, 0.0F)}));
+        BaseMod.addEliteEncounter(Exordium.ID, new MonsterInfo("ArcMirrorGuard", 1.0F));
     }
 
     private void initializeEvents() {

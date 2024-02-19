@@ -8,5 +8,15 @@
     "NAME": "弧光突击队",
     "MOVES": ["助跑","起飞"],
     "DIALOG": []
+  },
+  "rhinemod:MilitaryBeckbeast": {
+    "NAME": "军用猎狗",
+    "MOVES": [],
+    "DIALOG": []
+  },
+  "rhinemod:ArclightMirrorguard": {
+    "NAME": "弧光镜卫",
+    "MOVES": [],
+    "DIALOG": []
   }
 }
