@@ -189,6 +189,11 @@
             "获得 !B! 点 格挡 。 NL 你下一次受到攻击后，给予攻击者 !M! 层 rhinemod:水渍 。"
         ]
     },
+    "rhinemod:Memory": {
+        "NAME": "回忆",
+        "DESCRIPTION": "你每 消耗 过一张 *出格 ，造成 !D! 点伤害。 NL 消耗 。",
+        "UPGRADE_DESCRIPTION": ""
+    },
 
     "rhinemod:Calcification": {
         "NAME": "钙质化",
