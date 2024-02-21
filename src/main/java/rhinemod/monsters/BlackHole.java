@@ -27,7 +27,7 @@ public class BlackHole extends CustomMonster {
 
     public void usePreBattleAction() {
         addToBot(new ApplyPowerAction(this, this, new DamageOutPower(this, 100, 0)));
-        addToBot(new ApplyPowerAction(this, this, new FadingPower(this, 1)));
+        // addToBot(new ApplyPowerAction(this, this, new FadingPower(this, 1)));
     }
 
     @Override
