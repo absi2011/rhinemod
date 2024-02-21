@@ -212,6 +212,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
 
         // rare.
         BaseMod.addRelicToCustomPool(new Awaken(), RHINE_MATTE);
+        BaseMod.addRelicToCustomPool(new Stargate(), RHINE_MATTE);
 
         // boss.
 
