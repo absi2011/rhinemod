@@ -112,6 +112,7 @@ public class InvisibleGlobalAttributes extends AbstractPower {
         if (p.currentHealth > 0 && !p.hasPower(EgotistPower.POWER_ID)) {
             for (StarRing r : p.currentRings)
                 r.blast();
+            p.currentRings.clear();
         }
     }
 }

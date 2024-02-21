@@ -109,6 +109,7 @@ public class StarRing extends AbstractMonster {
 
     public void blast() {
         AbstractDungeon.actionManager.addToTop(new StarRingBlastAction(5, true));
+        isDead = true;
     }
 
     public int calculateDmg(float dmg) {
