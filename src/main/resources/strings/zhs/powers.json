@@ -57,6 +57,14 @@
       " 层 #y水渍 。"
     ]
   },
+  "rhinemod:DamageOutPower": {
+    "NAME": "减免伤害",
+    "DESCRIPTIONS": [
+      "受到的攻击伤害减少#b",
+      " %，当受到 #r任意 伤害时，减少#b",
+      " 层。"
+    ]
+  },
 
   "rhinemod:SheathedBeechPower": {
     "NAME": "鞘叶榉",
