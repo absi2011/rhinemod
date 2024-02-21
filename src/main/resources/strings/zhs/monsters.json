@@ -18,5 +18,15 @@
     "NAME": "弧光镜卫",
     "MOVES": [],
     "DIALOG": []
+  },
+  "rhinemod:ArclightVanguard": {
+    "NAME": "弧光锋卫",
+    "MOVES": [],
+    "DIALOG": []
+  },
+  "rhinemod:Perpetrator": {
+    "NAME": "肇事者",
+    "MOVES": [],
+    "DIALOG": []
   }
 }

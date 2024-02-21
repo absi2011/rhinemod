@@ -17,7 +17,7 @@ public class ArclightMirrorguard extends CustomMonster {
 
     public ArclightMirrorguard(float x, float y) {
         super(NAME, ID, 70, 0, 0, 150.0F, 320.0F, null, x, y);
-        type = EnemyType.NORMAL;
+        type = EnemyType.ELITE;
         if (AbstractDungeon.ascensionLevel >= 8) {
             setHp(76);
         }

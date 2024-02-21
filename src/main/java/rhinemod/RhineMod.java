@@ -11,6 +11,7 @@ import com.google.gson.reflect.TypeToken;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.Exordium;
+import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.*;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -24,9 +25,7 @@ import org.apache.logging.log4j.Logger;
 import rhinemod.cards.special.*;
 import rhinemod.cards.*;
 import rhinemod.characters.RhineLab;
-import rhinemod.monsters.ArclightCommando;
-import rhinemod.monsters.ArclightMirrorguard;
-import rhinemod.monsters.MilitaryBeckbeast;
+import rhinemod.monsters.*;
 import rhinemod.patches.RhineEnum;
 import rhinemod.relics.*;
 
@@ -86,6 +85,12 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addStrongMonsterEncounter(Exordium.ID, new MonsterInfo("Two Commando", 1.5F));
         addMonster("ArcMirrorGuard",  () -> new MonsterGroup(new AbstractMonster[] {new ArclightMirrorguard(0.0F, 0.0F)}));
         BaseMod.addEliteEncounter(Exordium.ID, new MonsterInfo("ArcMirrorGuard", 1.0F));
+        addMonster("ArcVanguard",  () -> new MonsterGroup(new AbstractMonster[] {new ArclightVanguard(-150.0F, 0.0F),new ArclightVanguard(150.0F, 0.0F)}));
+        BaseMod.addMonsterEncounter(TheCity.ID, new MonsterInfo("ArcVanguard", 2.0F));
+        addMonster("ArcCommando And ArcVanguard",  () -> new MonsterGroup(new AbstractMonster[] {new ArclightCommando(-450.0F, 0.0F), new ArclightVanguard(-150.0F, 0.0F), new ArclightVanguard(150.0F, 0.0F)}));
+        BaseMod.addStrongMonsterEncounter(TheCity.ID, new MonsterInfo("ArcCommando And ArcVanguard", 4.5F));
+        addMonster("Perpetrator",  () -> new MonsterGroup(new AbstractMonster[] {new Perpetrator(0.0F, 0.0F)}));
+        BaseMod.addStrongMonsterEncounter(TheCity.ID, new MonsterInfo("Perpetrator", 4.5F));
     }
 
     private void initializeEvents() {

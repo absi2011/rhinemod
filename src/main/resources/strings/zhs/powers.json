@@ -65,6 +65,12 @@
       " 层。"
     ]
   },
+  "rhinemod:Fragile": {
+    "NAME": "易碎",
+    "DESCRIPTIONS": [
+      "受到 #r重击 时死亡。"
+    ]
+  },
 
   "rhinemod:SheathedBeechPower": {
     "NAME": "鞘叶榉",
