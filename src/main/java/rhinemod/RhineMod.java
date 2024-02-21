@@ -82,6 +82,8 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addMonsterEncounter(Exordium.ID, new MonsterInfo("Single ArcCommando", 2.0F));
         addMonster("ArcCommando And Beckbeast",  () -> new MonsterGroup(new AbstractMonster[] {new ArclightCommando(150.0F, 0.0F), new MilitaryBeckbeast(-150.0F, 0.0F)}));
         BaseMod.addStrongMonsterEncounter(Exordium.ID, new MonsterInfo("ArcCommando And Beckbeast", 1.5F));
+        addMonster("4 Beckbeast",  () -> new MonsterGroup(new AbstractMonster[] {new MilitaryBeckbeast(-450.0F, 0.0F), new MilitaryBeckbeast(-150.0F, 0.0F), new MilitaryBeckbeast(-150.0F, 0.0F), new MilitaryBeckbeast(450.0F, 0.0F)}));
+        BaseMod.addStrongMonsterEncounter(Exordium.ID, new MonsterInfo("4 Beckbeast", 1.5F));
         addMonster("ArcMirrorGuard",  () -> new MonsterGroup(new AbstractMonster[] {new ArclightMirrorguard(0.0F, 0.0F)}));
         BaseMod.addEliteEncounter(Exordium.ID, new MonsterInfo("ArcMirrorGuard", 1.0F));
     }

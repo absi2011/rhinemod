@@ -1,10 +1,15 @@
 package rhinemod.monsters;
 
 import basemod.abstracts.CustomMonster;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.EscapeAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
+import com.megacrit.cardcrawl.powers.FadingPower;
+import com.megacrit.cardcrawl.powers.ShiftingPower;
+import rhinemod.powers.DamageOutPower;
 
 public class BlackHole extends CustomMonster {
     public static final String ID = "rhinemod:BlackHole";
@@ -18,6 +23,11 @@ public class BlackHole extends CustomMonster {
         this.stateData.setMix("Idle", "Move_Begin", 0.1F);
         this.state.setAnimation(0, "Move_End", false);
         this.state.addAnimation(0, "Idle", true, 0.0F);
+    }
+
+    public void usePreBattleAction() {
+        addToBot(new ApplyPowerAction(this, this, new DamageOutPower(this, 100, 0)));
+        addToBot(new ApplyPowerAction(this, this, new FadingPower(this, 1)));
     }
 
     @Override

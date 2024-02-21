@@ -41,6 +41,7 @@ public class HeatDeath extends AbstractRhineCard {
         AbstractMonster bh = new BlackHole(leftX - 110.0F, 0.0F);
         bh.setMove((byte)0, AbstractMonster.Intent.UNKNOWN);
         bh.createIntent();
+        bh.usePreBattleAction();
         addToBot(new SpawnMonsterAction(bh, false));
         addToBot(new HeatDeathAction());
     }
