@@ -1,0 +1,160 @@
+
+enemy_1325_cbgpro33.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+C_F_R_Leg
+  rotate: false
+  xy: 229, 59
+  size: 25, 38
+  orig: 25, 38
+  offset: 0, 0
+  index: -1
+C_F_R_Foot
+  rotate: false
+  xy: 112, 137
+  size: 25, 12
+  orig: 27, 12
+  offset: 0, 0
+  index: -1
+C_F_R_Thigh
+  rotate: false
+  xy: 46, 101
+  size: 34, 37
+  orig: 34, 37
+  offset: 0, 0
+  index: -1
+C_L_R_Leg
+  rotate: false
+  xy: 82, 101
+  size: 28, 38
+  orig: 28, 38
+  offset: 0, 0
+  index: -1
+C_L_R_Foot
+  rotate: false
+  xy: 84, 141
+  size: 23, 11
+  orig: 24, 11
+  offset: 0, 0
+  index: -1
+C_L_R_Thigh
+  rotate: false
+  xy: 175, 108
+  size: 45, 44
+  orig: 45, 44
+  offset: 0, 0
+  index: -1
+C_Wb_2
+  rotate: false
+  xy: 84, 62
+  size: 24, 25
+  orig: 24, 25
+  offset: 0, 0
+  index: -1
+C_R_Ear
+  rotate: false
+  xy: 1, 163
+  size: 22, 17
+  orig: 22, 18
+  offset: 0, 0
+  index: -1
+C_Head_1
+  rotate: false
+  xy: 112, 114
+  size: 37, 21
+  orig: 37, 21
+  offset: 0, 0
+  index: -1
+C_Head
+  rotate: false
+  xy: 117, 1
+  size: 71, 54
+  orig: 71, 54
+  offset: 0, 0
+  index: -1
+C_Tail
+  rotate: false
+  xy: 117, 57
+  size: 56, 55
+  orig: 56, 55
+  offset: 0, 0
+  index: -1
+C_Body
+  rotate: false
+  xy: 1, 1
+  size: 114, 59
+  orig: 114, 59
+  offset: 0, 0
+  index: -1
+C_B_L_Leg
+  rotate: false
+  xy: 30, 140
+  size: 27, 38
+  orig: 27, 38
+  offset: 0, 0
+  index: -1
+C_B_L_Foot
+  rotate: false
+  xy: 59, 141
+  size: 23, 11
+  orig: 24, 11
+  offset: 0, 0
+  index: -1
+C_B_L_Thigh
+  rotate: false
+  xy: 1, 62
+  size: 43, 38
+  orig: 43, 38
+  offset: 0, 0
+  index: -1
+C_F_L_Leg
+  rotate: false
+  xy: 1, 102
+  size: 27, 39
+  orig: 27, 39
+  offset: 0, 0
+  index: -1
+C_F_L_Foot
+  rotate: false
+  xy: 139, 137
+  size: 25, 12
+  orig: 25, 13
+  offset: 0, 1
+  index: -1
+C_F_L_Thigh
+  rotate: false
+  xy: 46, 62
+  size: 36, 37
+  orig: 36, 37
+  offset: 0, 0
+  index: -1
+C_Tx
+  rotate: false
+  xy: 222, 108
+  size: 29, 45
+  orig: 29, 46
+  offset: 0, 1
+  index: -1
+C_MJ
+  rotate: false
+  xy: 190, 1
+  size: 61, 56
+  orig: 61, 56
+  offset: 0, 0
+  index: -1
+C_Wb
+  rotate: false
+  xy: 175, 59
+  size: 52, 47
+  orig: 52, 47
+  offset: 0, 0
+  index: -1
+C_Ear
+  rotate: false
+  xy: 1, 143
+  size: 22, 18
+  orig: 22, 18
+  offset: 0, 0
+  index: -1

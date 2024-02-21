@@ -156,6 +156,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new TwoToOne()); // 二比一
         BaseMod.addCard(new EcologicalInteraction()); // 生态耦合
         BaseMod.addCard(new QuicksandGeneration()); // 流沙区域生成
+        BaseMod.addCard(new Memory()); // 回忆
 
         // Rare.
         BaseMod.addCard(new Calcification()); // 钙质化
@@ -213,6 +214,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
 
         // rare.
         BaseMod.addRelicToCustomPool(new Awaken(), RHINE_MATTE);
+        BaseMod.addRelicToCustomPool(new Stargate(), RHINE_MATTE);
 
         // boss.
 

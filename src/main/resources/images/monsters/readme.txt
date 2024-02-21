@@ -1,0 +1,12 @@
+enemy_1255_lybgpa R-31重型动力装甲
+enemy_1256_lyacpa R-11突击动力装甲
+enemy_1325_cbgpro 军用猎狗
+enemy_1326_cbagen 特里蒙城防军
+enemy_1327_cbrokt 弧光突击队
+enemy_1328_cbjedi 弧光锋卫
+enemy_1329_cbshld 弧光镜卫
+enemy_1330_cbrush “肇事者”
+enemy_1331_cbsisy “十字路口”
+enemy_1332_cbterm “交通亭”
+enemy_1333_cbbgen “交通警察”
+enemy_2056_smedzi 无垠回荡克雷松
