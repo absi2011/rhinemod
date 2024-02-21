@@ -1,0 +1,139 @@
+
+enemy_1327_cbrokt33.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+C_Jetpack
+  rotate: false
+  xy: 1, 1
+  size: 115, 87
+  orig: 115, 87
+  offset: 0, 0
+  index: -1
+C_R_Arm_1
+  rotate: false
+  xy: 231, 110
+  size: 23, 36
+  orig: 23, 36
+  offset: 0, 0
+  index: -1
+C_R_Arm_2
+  rotate: false
+  xy: 1, 225
+  size: 32, 28
+  orig: 32, 28
+  offset: 0, 0
+  index: -1
+C_R_Hand
+  rotate: false
+  xy: 110, 128
+  size: 25, 26
+  orig: 25, 26
+  offset: 0, 0
+  index: -1
+C_Gun
+  rotate: false
+  xy: 181, 61
+  size: 58, 47
+  orig: 58, 47
+  offset: 0, 0
+  index: -1
+C_Bullet
+  rotate: false
+  xy: 1, 159
+  size: 47, 28
+  orig: 47, 28
+  offset: 0, 0
+  index: -1
+C_R_Finger
+  rotate: false
+  xy: 50, 151
+  size: 23, 29
+  orig: 23, 29
+  offset: 0, 0
+  index: -1
+C_Head
+  rotate: false
+  xy: 118, 1
+  size: 61, 80
+  orig: 61, 80
+  offset: 0, 0
+  index: -1
+C_R_Leg_1
+  rotate: false
+  xy: 194, 110
+  size: 35, 41
+  orig: 35, 41
+  offset: 0, 0
+  index: -1
+C_R_Leg_2
+  rotate: false
+  xy: 160, 110
+  size: 32, 47
+  orig: 32, 47
+  offset: 0, 0
+  index: -1
+C_R_Foot
+  rotate: false
+  xy: 194, 153
+  size: 42, 34
+  orig: 42, 34
+  offset: 0, 0
+  index: -1
+C_Butt
+  rotate: false
+  xy: 33, 128
+  size: 50, 21
+  orig: 50, 21
+  offset: 0, 0
+  index: -1
+C_L_Leg_1
+  rotate: false
+  xy: 1, 90
+  size: 30, 40
+  orig: 30, 40
+  offset: 0, 0
+  index: -1
+C_L_Leg_2
+  rotate: false
+  xy: 118, 83
+  size: 40, 43
+  orig: 40, 43
+  offset: 0, 0
+  index: -1
+C_L_Foot
+  rotate: false
+  xy: 1, 189
+  size: 39, 34
+  orig: 39, 34
+  offset: 0, 0
+  index: -1
+C_Chest
+  rotate: false
+  xy: 181, 1
+  size: 59, 58
+  orig: 59, 58
+  offset: 0, 0
+  index: -1
+C_L_Arm_1
+  rotate: false
+  xy: 64, 90
+  size: 29, 33
+  orig: 29, 33
+  offset: 0, 0
+  index: -1
+C_L_Arm_2
+  rotate: false
+  xy: 85, 125
+  size: 23, 33
+  orig: 23, 33
+  offset: 0, 0
+  index: -1
+C_L_Hand
+  rotate: false
+  xy: 33, 90
+  size: 29, 33
+  orig: 29, 33
+  offset: 0, 0
+  index: -1
