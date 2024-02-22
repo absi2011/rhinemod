@@ -22,15 +22,15 @@ public class ArclightVanguard extends CustomMonster {
     public ArclightVanguard(float x, float y) {
         super(NAME, ID, 40, 0, 0, 150.0F, 320.0F, null, x, y);
         type = EnemyType.NORMAL;
-        if (AbstractDungeon.ascensionLevel >= 8) {
+        if (AbstractDungeon.ascensionLevel >= 7) {
             setHp(43);
         }
-        if (AbstractDungeon.ascensionLevel >= 18) {
+        if (AbstractDungeon.ascensionLevel >= 17) {
             damage.add(new DamageInfo(this, 5));
             damage.add(new DamageInfo(this, 14));
             damage.add(new DamageInfo(this, 3));
         }
-        if (AbstractDungeon.ascensionLevel >= 3) {
+        if (AbstractDungeon.ascensionLevel >= 2) {
             damage.add(new DamageInfo(this, 4));
             damage.add(new DamageInfo(this, 12));
             damage.add(new DamageInfo(this, 3));

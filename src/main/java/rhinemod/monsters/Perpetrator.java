@@ -21,14 +21,14 @@ public class Perpetrator extends CustomMonster {
     public Perpetrator(float x, float y) {
         super(NAME, ID, 85, 0, 0, 150.0F, 320.0F, null, x, y);
         type = EnemyType.NORMAL;
-        if (AbstractDungeon.ascensionLevel >= 8) {
+        if (AbstractDungeon.ascensionLevel >= 7) {
             setHp(92);
         }
-        if (AbstractDungeon.ascensionLevel >= 18) {
+        if (AbstractDungeon.ascensionLevel >= 17) {
             damage.add(new DamageInfo(this, 5));
             AttTimes = 2;
         }
-        if (AbstractDungeon.ascensionLevel >= 3) {
+        if (AbstractDungeon.ascensionLevel >= 2) {
             damage.add(new DamageInfo(this, 5));
             AttTimes = 2;
         }

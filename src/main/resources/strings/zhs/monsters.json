@@ -28,5 +28,15 @@
     "NAME": "肇事者",
     "MOVES": [],
     "DIALOG": []
+  },
+  "rhinemod:R31": {
+    "NAME": "R-31重型动力装甲",
+    "MOVES": ["移动","超负载"],
+    "DIALOG": []
+  },
+  "rhinemod:R11": {
+    "NAME": "R-11突击动力装甲",
+    "MOVES": ["移动"],
+    "DIALOG": []
   }
 }

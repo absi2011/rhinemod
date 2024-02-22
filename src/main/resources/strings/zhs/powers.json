@@ -14,7 +14,7 @@
   },
   "rhinemod:Stunned": {
     "NAME": "眩晕",
-    "DESCRIPTIONS": ["本回合内，水渍不再减少，重力变化时受到 #b7 点伤害。"]
+    "DESCRIPTIONS": ["本回合内，水渍不再减少，重力变化时受到 #b4 点伤害。"]
   },
   "rhinemod:PlanetaryDebris": {
     "NAME": "行星碎屑",
@@ -69,6 +69,12 @@
     "NAME": "易碎",
     "DESCRIPTIONS": [
       "受到 #r重击 时死亡。"
+    ]
+  },
+  "rhinemod:NoStun": {
+    "NAME": "眩晕免疫",
+    "DESCRIPTIONS": [
+      "无法获得 #r眩晕 状态。"
     ]
   },
 
