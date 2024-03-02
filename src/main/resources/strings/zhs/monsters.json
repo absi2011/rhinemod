@@ -38,5 +38,25 @@
     "NAME": "R-11突击动力装甲",
     "MOVES": ["移动"],
     "DIALOG": []
+  },
+  "rhinemod:TrimountsCityGuard": {
+    "NAME": "特里蒙城防军",
+    "MOVES": [],
+    "DIALOG": []
+  },
+  "rhinemod:ExperimentalPowerArmor": {
+    "NAME": "实验用动力装甲",
+    "MOVES": [],
+    "DIALOG": []
+  },
+  "rhinemod:JesseltonWilliams": {
+    "NAME": "杰斯顿·威廉姆斯",
+    "MOVES": ["钢铁风暴","装甲穿刺","卸除伪装"],
+    "DIALOG": []
+  },
+  "rhinemod:Crossroads": {
+    "NAME": "十字路口",
+    "MOVES": [],
+    "DIALOG": ["警告：检测到未知能源。"]
   }
 }

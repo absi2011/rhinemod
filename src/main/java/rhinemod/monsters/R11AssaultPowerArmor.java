@@ -16,8 +16,6 @@ public class R11AssaultPowerArmor extends CustomMonster {
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
     public static final String[] MOVES = monsterStrings.MOVES;
-    public static final int StunStrike = 10;
-    public static final int StunNum = 5;
 
     public R11AssaultPowerArmor(float x, float y) {
         super(NAME, ID, 140, 0, 0, 150.0F, 320.0F, null, x, y);
@@ -29,7 +27,7 @@ public class R11AssaultPowerArmor extends CustomMonster {
             damage.add(new DamageInfo(this, 12));
             damage.add(new DamageInfo(this, 24));
         }
-        if (AbstractDungeon.ascensionLevel >= 3) {
+        else if (AbstractDungeon.ascensionLevel >= 3) {
             damage.add(new DamageInfo(this, 11));
             damage.add(new DamageInfo(this, 22));
         }

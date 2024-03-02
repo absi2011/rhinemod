@@ -29,7 +29,7 @@ public class MilitaryBeckbeast extends CustomMonster {
         if (AbstractDungeon.ascensionLevel >= 17) {
             damage.add(new DamageInfo(this, 5));
         }
-        if (AbstractDungeon.ascensionLevel >= 2) {
+        else if (AbstractDungeon.ascensionLevel >= 2) {
             damage.add(new DamageInfo(this, 4));
         }
         else {

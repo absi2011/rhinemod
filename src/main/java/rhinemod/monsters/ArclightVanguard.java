@@ -30,7 +30,7 @@ public class ArclightVanguard extends CustomMonster {
             damage.add(new DamageInfo(this, 14));
             damage.add(new DamageInfo(this, 3));
         }
-        if (AbstractDungeon.ascensionLevel >= 2) {
+        else if (AbstractDungeon.ascensionLevel >= 2) {
             damage.add(new DamageInfo(this, 4));
             damage.add(new DamageInfo(this, 12));
             damage.add(new DamageInfo(this, 3));

@@ -31,7 +31,7 @@ public class R31HeavyPowerArmor extends CustomMonster {
             damage.add(new DamageInfo(this, 5));
             damage.add(new DamageInfo(this, 30));
         }
-        if (AbstractDungeon.ascensionLevel >= 3) {
+        else if (AbstractDungeon.ascensionLevel >= 3) {
             damage.add(new DamageInfo(this, 4));
             damage.add(new DamageInfo(this, 25));
         }

@@ -22,7 +22,7 @@ public class NoStun extends AbstractPower implements CloneablePowerInterface, On
     public NoStun(AbstractCreature owner) {
         this.ID = POWER_ID;
         this.name = NAME;
-        this.type = PowerType.DEBUFF;
+        this.type = PowerType.BUFF;
         this.owner = owner;
         region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("images/powers/Stunned 128.png"), 0, 0, 128, 128);
         region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("images/powers/Stunned 48.png"), 0, 0, 48, 48);

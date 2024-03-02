@@ -11,12 +11,18 @@ import com.google.gson.reflect.TypeToken;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.Exordium;
+import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.*;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.monsters.MonsterInfo;
+import com.megacrit.cardcrawl.monsters.beyond.Exploder;
+import com.megacrit.cardcrawl.monsters.beyond.Repulsor;
+import com.megacrit.cardcrawl.monsters.beyond.Spiker;
+import com.megacrit.cardcrawl.monsters.city.BronzeOrb;
+import com.megacrit.cardcrawl.monsters.exordium.Sentry;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.screens.custom.CustomMod;
@@ -85,6 +91,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addStrongMonsterEncounter(Exordium.ID, new MonsterInfo("Two Commando", 1.5F));
         addMonster("ArcMirrorGuard",  () -> new MonsterGroup(new AbstractMonster[] {new ArclightMirrorguard(0.0F, 0.0F)}));
         BaseMod.addEliteEncounter(Exordium.ID, new MonsterInfo("ArcMirrorGuard", 1.0F));
+
         addMonster("ArcVanguard",  () -> new MonsterGroup(new AbstractMonster[] {new ArclightVanguard(-150.0F, 0.0F),new ArclightVanguard(150.0F, 0.0F)}));
         BaseMod.addMonsterEncounter(TheCity.ID, new MonsterInfo("ArcVanguard", 2.0F));
         addMonster("ArcCommando And ArcVanguard",  () -> new MonsterGroup(new AbstractMonster[] {new ArclightCommando(-450.0F, 0.0F), new ArclightVanguard(-150.0F, 0.0F), new ArclightVanguard(150.0F, 0.0F)}));
@@ -93,6 +100,15 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addStrongMonsterEncounter(TheCity.ID, new MonsterInfo("Perpetrator", 4.5F));
         addMonster("R PowerArmor",  () -> new MonsterGroup(new AbstractMonster[] {new R31HeavyPowerArmor(-500.F, 0.0F), new R11AssaultPowerArmor(-200.0F, 0.0F), }));
         BaseMod.addEliteEncounter(TheCity.ID, new MonsterInfo("R PowerArmor", 1.0F));
+
+        addMonster("LightArmor and CityGuard",  () -> new MonsterGroup(new AbstractMonster[] {new TrimountsCityGuard(-150.F, 0.0F), new ExperimentalPowerArmor(-150.0F, 0.0F)}));
+        BaseMod.addMonsterEncounter(TheBeyond.ID, new MonsterInfo("LightArmor and CityGuard", 1.0F));
+        addMonster("ArcTeam",  () -> new MonsterGroup(new AbstractMonster[] {new ArclightMirrorguard(-450.F, 0.0F), new ArclightCommando(-150.0F, 0.0F), new ArclightVanguard(150.0F, 0.0F)}));
+        BaseMod.addStrongMonsterEncounter(TheBeyond.ID, new MonsterInfo("ArcTeam", 1.0F));
+        addMonster("Jesselton",  () -> new MonsterGroup(new AbstractMonster[] {new JesseltonWilliams(0.0F, 0.0F)}));
+        BaseMod.addStrongMonsterEncounter(TheBeyond.ID, new MonsterInfo("Jesselton", 1.0F));
+        addMonster("Diaster of Machine", () -> new MonsterGroup(new AbstractMonster[] {new Perpetrator(-440.0F, 0.0F),new Exploder(-300.0F, 400.0F),  new Repulsor(-120.0F, 360.0F),  new Sentry(0.0F, 0.0F), new BronzeOrb(200.0F, 270.0F, 0), new Spiker(240.0F, 0.0F), new Crossroads(-220.0F, -50.0F)}));
+        BaseMod.addEliteEncounter(TheBeyond.ID, new MonsterInfo("Diaster of Machine", 1.0F));
     }
 
     private void initializeEvents() {

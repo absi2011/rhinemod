@@ -33,7 +33,7 @@ public class ArclightCommando extends CustomMonster {
             damage.add(new DamageInfo(this, 5));
             damage.add(new DamageInfo(this, 10));
         }
-        if (AbstractDungeon.ascensionLevel >= 2) {
+        else if (AbstractDungeon.ascensionLevel >= 2) {
             damage.add(new DamageInfo(this, 5));
             damage.add(new DamageInfo(this, 9));
         }

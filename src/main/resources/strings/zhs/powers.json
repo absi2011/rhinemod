@@ -77,6 +77,24 @@
       "无法获得 #r眩晕 状态。"
     ]
   },
+  "rhinemod:HalfDamage": {
+    "NAME": "装甲",
+    "DESCRIPTIONS": [
+      "受到的非 #r重击 伤害减半。"
+    ]
+  },
+  "rhinemod:DoubleSmash": {
+    "NAME": "弱点：重击",
+    "DESCRIPTIONS": [
+      "受到的 #r重击 伤害翻倍。"
+    ]
+  },
+  "rhinemod:DoubleNonSmash": {
+    "NAME": "弱点：非重击",
+    "DESCRIPTIONS": [
+      "受到的非 #r重击 伤害翻倍。"
+    ]
+  },
 
   "rhinemod:SheathedBeechPower": {
     "NAME": "鞘叶榉",

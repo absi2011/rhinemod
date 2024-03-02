@@ -24,7 +24,7 @@ public class ArclightMirrorguard extends CustomMonster {
         if (AbstractDungeon.ascensionLevel >= 18) {
             damage.add(new DamageInfo(this, 18));
         }
-        if (AbstractDungeon.ascensionLevel >= 3) {
+        else if (AbstractDungeon.ascensionLevel >= 3) {
             damage.add(new DamageInfo(this, 20));
         }
         else {
