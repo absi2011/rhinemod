@@ -58,5 +58,10 @@
     "NAME": "十字路口",
     "MOVES": [],
     "DIALOG": ["警告：检测到未知能源。"]
+  },
+  "rhinemod:Awaken_Monster": {
+    "NAME": "唤醒",
+    "MOVES": ["破碎愿景"],
+    "DIALOG": []
   }
 }

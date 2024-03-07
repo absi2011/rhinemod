@@ -4,16 +4,20 @@ import basemod.*;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.compression.lzma.Base;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.Exordium;
 import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.dungeons.TheCity;
+import com.megacrit.cardcrawl.dungeons.TheEnding;
 import com.megacrit.cardcrawl.helpers.*;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -24,6 +28,7 @@ import com.megacrit.cardcrawl.monsters.beyond.Repulsor;
 import com.megacrit.cardcrawl.monsters.beyond.Spiker;
 import com.megacrit.cardcrawl.monsters.city.BronzeOrb;
 import com.megacrit.cardcrawl.monsters.exordium.Sentry;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.screens.custom.CustomMod;
@@ -113,6 +118,9 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addStrongMonsterEncounter(TheBeyond.ID, new MonsterInfo("Jesselton", 1.0F * NewMonsterMulti));
         addMonster("Diaster of Machine", names[11], () -> new MonsterGroup(new AbstractMonster[] {new Perpetrator(-440.0F, 0.0F),new Exploder(-300.0F, 400.0F),  new Repulsor(-120.0F, 360.0F),  new Sentry(0.0F, 0.0F), new BronzeOrb(200.0F, 270.0F, 0), new Spiker(240.0F, 0.0F), new Crossroads(-220.0F, -50.0F)}));
         BaseMod.addEliteEncounter(TheBeyond.ID, new MonsterInfo("Diaster of Machine", 2.0F * NewMonsterMulti));
+
+        addMonster("Awaken", names[12], () -> new MonsterGroup(new Awaken_Monster(0.0F, 0.0F)));
+        BaseMod.addEliteEncounter(TheEnding.ID, new MonsterInfo("Awaken", 3.0F * NewMonsterMulti));
     }
 
     private void initializeEvents() {
@@ -290,5 +298,26 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         list.add(new Sarracenia());
         list.add(new PaleFir());
         return list;
+    }
+
+    public static void applyEnemyPowersOnly(DamageInfo info, AbstractCreature target) {
+        info.isModified = false;
+        float tmp = (float)info.base;
+
+        for (AbstractPower p:target.powers) {
+            tmp = p.atDamageReceive(tmp, info.type);
+        }
+
+        for (AbstractPower p:target.powers) {
+            tmp = p.atDamageFinalReceive(tmp, info.type);
+        }
+
+        if (tmp < 0.0F) {
+            tmp = 0.0F;
+        }
+        info.output = MathUtils.floor(tmp);
+        if (info.base != info.output) {
+            info.isModified = true;
+        }
     }
 }

@@ -52,8 +52,11 @@ public class Crossroads extends CustomMonster {
     @Override
     public void takeTurn() {
         for (AbstractMonster m:AbstractDungeon.getCurrRoom().monsters.monsters) {
-            addToBot(new GainBlockAction(m, this, blockNum));
-            addToBot(new ApplyPowerAction(m,this, new StrengthPower(m, strNum)));
+            if (!m.isDeadOrEscaped())
+            {
+                addToBot(new GainBlockAction(m, this, blockNum));
+                addToBot(new ApplyPowerAction(m,this, new StrengthPower(m, strNum)));
+            }
         }
         AbstractPlayer p = AbstractDungeon.player;
         if (p instanceof Defect) {

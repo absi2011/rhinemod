@@ -1,35 +1,50 @@
 package rhinemod.actions;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
+import rhinemod.monsters.Awaken_Monster;
 
 import java.util.ArrayList;
-import java.util.logging.Logger;
 
 import static rhinemod.RhineMod.applyEnemyPowersOnly;
 
-public class AverageDamageAllAction extends AbstractGameAction {
-    public final ArrayList<AbstractMonster> aimList = new ArrayList<>();
+public class AwakenAction extends AbstractGameAction {
+    public final ArrayList<AbstractCreature> aimList = new ArrayList<>();
     public int[] dmgList;
-    public AverageDamageAllAction(int amount, AbstractCreature source, DamageInfo.DamageType type) {
+    public AwakenAction(int amount, AbstractCreature source) {
         actionType = ActionType.DAMAGE;
         duration = Settings.ACTION_DUR_FAST;
         this.amount = amount;
         this.source = source;
-        this.damageType = type;
-        attackEffect = AttackEffect.BLUNT_LIGHT;
+        this.damageType = DamageInfo.DamageType.NORMAL;
+        attackEffect = AttackEffect.BLUNT_HEAVY;
     }
 
+    public void applySourcePower() {
+        float tmp = amount;
+        for (AbstractPower p:source.powers) {
+            tmp = p.atDamageGive(tmp, damageType);
+        }
+
+        for (AbstractPower p:source.powers) {
+            tmp = p.atDamageFinalGive(tmp, damageType);
+        }
+        amount = MathUtils.floor(tmp);
+    }
     @Override
     public void update() {
         if (duration == Settings.ACTION_DUR_FAST) {
+            applySourcePower();
+            aimList.add(AbstractDungeon.player);
             for (AbstractMonster m : AbstractDungeon.getMonsters().monsters)
-                if (!m.isDeadOrEscaped())
+                if ((!m.isDeadOrEscaped()) && (!(m instanceof Awaken_Monster)))
                     aimList.add(m);
             if (aimList.isEmpty()) {
                 isDone = true;
@@ -44,7 +59,7 @@ public class AverageDamageAllAction extends AbstractGameAction {
                 dmgList[i]++;
 
             boolean playedMusic = false;
-            for (AbstractMonster m : aimList) {
+            for (AbstractCreature m : aimList) {
                 if (playedMusic) {
                     AbstractDungeon.effectList.add(new FlashAtkImgEffect(m.hb.cX, m.hb.cY, attackEffect, true));
                 } else {

@@ -95,6 +95,21 @@
       "受到的非 #r重击 伤害翻倍。"
     ]
   },
+  "rhinemod:Average": {
+    "NAME": "平等",
+    "DESCRIPTIONS": [
+      "造成的伤害将均匀分配给除自身外的所有角色。"
+    ]
+  },
+  "rhinemod:Journey": {
+    "NAME": "旅程",
+    "DESCRIPTIONS": [
+      "每回合第一次受到伤害后，对玩家造成 #b",
+      " 点伤害。",
+      "（本回合已触发）",
+      "（本回合未触发）"
+    ]
+  },
 
   "rhinemod:SheathedBeechPower": {
     "NAME": "鞘叶榉",
