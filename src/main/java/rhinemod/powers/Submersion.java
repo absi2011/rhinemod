@@ -55,7 +55,7 @@ public class Submersion extends AbstractPower {
 
     public void atEndOfRound() {
         if (!owner.hasPower(Stunned.POWER_ID)) {
-            addToBot(new ReducePowerAction(owner, owner, WaterDamage.POWER_ID, 10));
+            addToBot(new ReducePowerAction(owner, owner, WaterDamage.POWER_ID, 5));
         }
     }
 

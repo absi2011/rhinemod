@@ -18,8 +18,8 @@ public class Sarracenia extends CustomCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String IMG_PATH = "images/cards/Sarracenia.png";
     private static final int COST = 0;
-    private static final int WATER_DMG = 11;
-    private static final int UPGRADE_PLUS_DMG = 6;
+    private static final int WATER_DMG = 6;
+    private static final int UPGRADE_PLUS_DMG = 2;
 
     public Sarracenia() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,

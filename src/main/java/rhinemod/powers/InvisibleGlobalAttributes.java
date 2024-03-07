@@ -87,7 +87,7 @@ public class InvisibleGlobalAttributes extends AbstractPower {
         tmp.target_x = Settings.WIDTH / 2.0F - 300.0F * Settings.scale;
         tmp.target_y = Settings.HEIGHT / 2.0F;
 
-        float multi = flowspNum * 0.25F;
+        float multi = flowspNum * 0.2F;
         float eps = 0.0001F;
         tmp.baseDamage = MathUtils.ceil(tmp.baseDamage * multi - eps);
         tmp.baseBlock = MathUtils.ceil(tmp.baseBlock * multi - eps);

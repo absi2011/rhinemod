@@ -20,8 +20,8 @@ public class EcologicalSection extends AbstractRhineCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String IMG = "images/cards/EcologicalSection.png";
     public static final int COST = 0;
-    public static final int WATER_DMG = 9;
-    public static final int UPGRADE_PLUS_WATER = 3;
+    public static final int WATER_DMG = 4;
+    public static final int UPGRADE_PLUS_WATER = 2;
     public EcologicalSection() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.RHINE_MATTE,

@@ -27,6 +27,7 @@ public class HallOfStasis extends AbstractRhineCard {
                 CardType.SKILL, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.RARE, CardTarget.ENEMY);
         magicNumber = baseMagicNumber = LOSS_TIME;
+        exhaust = true;
     }
 
     @Override

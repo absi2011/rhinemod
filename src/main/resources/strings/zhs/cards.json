@@ -207,7 +207,7 @@
     },
     "rhinemod:HallOfStasis": {
         "NAME": "静滞所",
-        "DESCRIPTION": "使一名敌人失去1点生命 !M! 次。",
+        "DESCRIPTION": "使一名敌人失去1点生命 !M! 次。 NL 消耗 。",
         "UPGRADE_DESCRIPTION": ""
     },
     "rhinemod:HeatDeath": {
