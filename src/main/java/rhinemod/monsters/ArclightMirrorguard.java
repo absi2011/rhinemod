@@ -15,6 +15,8 @@ public class ArclightMirrorguard extends CustomMonster {
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
 
+    public final int damageOut;
+
     public ArclightMirrorguard(float x, float y) {
         super(NAME, ID, 70, 0, 0, 150.0F, 320.0F, null, x, y);
         type = EnemyType.ELITE;
@@ -22,13 +24,16 @@ public class ArclightMirrorguard extends CustomMonster {
             setHp(76);
         }
         if (AbstractDungeon.ascensionLevel >= 18) {
-            damage.add(new DamageInfo(this, 18));
+            damage.add(new DamageInfo(this, 20));
+            damageOut = 66;
         }
         else if (AbstractDungeon.ascensionLevel >= 3) {
             damage.add(new DamageInfo(this, 20));
+            damageOut = 60;
         }
         else {
             damage.add(new DamageInfo(this, 18));
+            damageOut = 60;
         }
         loadAnimation("images/monsters/enemy_1329_cbshld/enemy_1329_cbshld.atlas", "images/monsters/enemy_1329_cbshld/enemy_1329_cbshld33.json", 1.5F);
         state.setAnimation(0, "Idle", true);
@@ -37,10 +42,8 @@ public class ArclightMirrorguard extends CustomMonster {
 
     @Override
     public void usePreBattleAction() {
-        if (AbstractDungeon.ascensionLevel < 18) {
-            addToBot(new ApplyPowerAction(this, this, new ShiftingPower(this)));
-        }
-        addToBot(new ApplyPowerAction(this, this, new DamageOutPower(this, 60, 3)));
+        addToBot(new ApplyPowerAction(this, this, new ShiftingPower(this)));
+        addToBot(new ApplyPowerAction(this, this, new DamageOutPower(this, damageOut, 3)));
     }
 
     @Override

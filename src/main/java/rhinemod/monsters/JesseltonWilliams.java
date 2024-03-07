@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
+import com.megacrit.cardcrawl.powers.MetallicizePower;
 import rhinemod.powers.DoubleSmash;
 import rhinemod.powers.DoubleNonSmash;
 
@@ -21,11 +22,17 @@ public class JesseltonWilliams extends CustomMonster {
     public boolean isStage2 = false;
     private boolean notTriggered = true;
 
+    public final int metalNum;
+
     public JesseltonWilliams(float x, float y) {
         super(NAME, ID, 300, 0, 0, 150.0F, 320.0F, null, x, y);
         type = EnemyType.NORMAL;
         if (AbstractDungeon.ascensionLevel >= 7) {
             setHp(320);
+            metalNum = 8;
+        }
+        else {
+            metalNum = 6;
         }
         if (AbstractDungeon.ascensionLevel >= 17) {
             damage.add(new DamageInfo(this, 6));
@@ -71,6 +78,7 @@ public class JesseltonWilliams extends CustomMonster {
             addToBot(new HealAction(this, this, maxHealth / 2 - currentHealth));
             addToBot(new RemoveSpecificPowerAction(this, this, DoubleSmash.POWER_ID));
             addToBot(new ApplyPowerAction(this, this, new DoubleNonSmash(this)));
+            addToBot(new ApplyPowerAction(this, this, new MetallicizePower(this, metalNum)));
         }
     }
 
