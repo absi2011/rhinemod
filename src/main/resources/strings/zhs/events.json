@@ -1,7 +1,7 @@
 {
-  "rhinemod:": {
-    "NAME": "",
-    "DESCRIPTIONS": [],
-    "OPTIONS": []
+  "rhinemod:SkyEvent": {
+    "NAME": "冲破天幕",
+    "DESCRIPTIONS": ["长大了我要当太空人，塞雷娅听了，给我我最爱的钙质化拳（"],
+    "OPTIONS": ["[前进]"]
   }
 }
