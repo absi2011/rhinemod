@@ -20,8 +20,8 @@ public class ProgressiveMoisturization extends AbstractRhineCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String IMG = "images/cards/ProgressiveMoisturization.png";
     public static final int COST = 1;
-    public static final int WATER_AMT = 9;
-    public static final int UPGRADE_PLUS_WATER = 3;
+    public static final int WATER_AMT = 4;
+    public static final int UPGRADE_PLUS_WATER = 2;
     public static final int FLOW_AMT = 1;
     public static final int UPGRADE_PLUS_FLOW = 1;
     public ProgressiveMoisturization() {
