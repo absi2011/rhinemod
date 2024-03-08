@@ -1,6 +1,8 @@
 package rhinemod;
 
 import basemod.*;
+import basemod.eventUtil.AddEventParams;
+import basemod.eventUtil.EventUtils;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -14,10 +16,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.Exordium;
-import com.megacrit.cardcrawl.dungeons.TheBeyond;
-import com.megacrit.cardcrawl.dungeons.TheCity;
-import com.megacrit.cardcrawl.dungeons.TheEnding;
+import com.megacrit.cardcrawl.dungeons.*;
 import com.megacrit.cardcrawl.helpers.*;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -37,6 +36,7 @@ import org.apache.logging.log4j.Logger;
 import rhinemod.cards.special.*;
 import rhinemod.cards.*;
 import rhinemod.characters.RhineLab;
+import rhinemod.events.MysteriousInvent;
 import rhinemod.monsters.*;
 import rhinemod.patches.RhineEnum;
 import rhinemod.relics.*;
@@ -124,6 +124,13 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
     }
 
     private void initializeEvents() {
+        BaseMod.addEvent(new AddEventParams.Builder(MysteriousInvent.ID, MysteriousInvent.class).
+                eventType(EventUtils.EventType.NORMAL).
+                dungeonID("TheCity").
+                dungeonID("TheBeyond").
+                endsWithRewardsUI(false).
+                spawnCondition(() -> (!(AbstractDungeon.player instanceof RhineLab))).
+                create());
     }
 
     private void initializePotions() {
