@@ -36,6 +36,7 @@ import org.apache.logging.log4j.Logger;
 import rhinemod.cards.special.*;
 import rhinemod.cards.*;
 import rhinemod.characters.RhineLab;
+import rhinemod.events.HeartEvent;
 import rhinemod.events.MysteriousInvent;
 import rhinemod.monsters.*;
 import rhinemod.patches.RhineEnum;
@@ -130,6 +131,11 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
                 dungeonID("TheBeyond").
                 endsWithRewardsUI(false).
                 spawnCondition(() -> (!(AbstractDungeon.player instanceof RhineLab))).
+                create());
+        BaseMod.addEvent(new AddEventParams.Builder(HeartEvent.ID, HeartEvent.class).
+                eventType(EventUtils.EventType.NORMAL).
+                dungeonID("TheSky").
+                endsWithRewardsUI(false).
                 create());
     }
 

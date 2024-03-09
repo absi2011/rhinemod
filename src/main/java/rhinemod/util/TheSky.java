@@ -159,11 +159,18 @@ public class TheSky extends AbstractDungeon {
     }
 
     @Override
-    protected void initializeEventList() {}
+    protected void initializeEventList() {
+        shrineList.clear();
+        eventList.clear();
+        specialOneTimeEventList.clear();
+        eventList.add("rhinemod:HeartEvent");
+    }
 
     @Override
     protected void initializeEventImg() {}
 
     @Override
     protected void initializeShrineList() {}
+
+
 }
