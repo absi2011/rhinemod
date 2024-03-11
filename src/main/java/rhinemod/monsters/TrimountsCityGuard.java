@@ -38,7 +38,6 @@ public class TrimountsCityGuard extends CustomMonster {
 
     @Override
     public void usePreBattleAction() {
-        addToBot(new ApplyPowerAction(this, this, new Fragile(this)));
     }
 
     @Override

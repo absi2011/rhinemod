@@ -63,5 +63,15 @@
     "NAME": "唤醒",
     "MOVES": ["破碎愿景"],
     "DIALOG": []
+  },
+  "rhinemod:Turnpike": {
+    "NAME": "交通亭",
+    "MOVES": [],
+    "DIALOG": []
+  },
+  "rhinemod:TrafficPolice": {
+    "NAME": "交通警长",
+    "MOVES": [],
+    "DIALOG": []
   }
 }

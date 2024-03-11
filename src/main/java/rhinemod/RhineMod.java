@@ -41,6 +41,7 @@ import rhinemod.events.MysteriousInvent;
 import rhinemod.monsters.*;
 import rhinemod.patches.RhineEnum;
 import rhinemod.relics.*;
+import rhinemod.util.TheSky;
 
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
@@ -122,6 +123,13 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
 
         addMonster("Awaken", names[12], () -> new MonsterGroup(new Awaken_Monster(0.0F, 0.0F)));
         BaseMod.addEliteEncounter(TheEnding.ID, new MonsterInfo("Awaken", 3.0F * NewMonsterMulti));
+        // Add a name.
+        addMonster("Turnpike", names[13], () -> new MonsterGroup(new Turnpike(0.0F, 0.0F)));
+        addMonster("Traffic Police", names[14], () -> new MonsterGroup(new TrafficPolice(0.0F, 0.0F)));
+        // Just Testing
+        BaseMod.addEliteEncounter(TheSky.ID, new MonsterInfo("Turnpike", 3.0F * NewMonsterMulti));
+        BaseMod.addStrongMonsterEncounter(TheSky.ID, new MonsterInfo("Traffic Police", 3.0F * NewMonsterMulti));
+
     }
 
     private void initializeEvents() {

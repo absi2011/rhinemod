@@ -132,14 +132,14 @@ public class TheSky extends AbstractDungeon {
     @Override
     protected void generateMonsters() {
         monsterList = new ArrayList<>();
-        monsterList.add("Shield and Spear");
-        monsterList.add("Shield and Spear");
-        monsterList.add("Shield and Spear");
+        monsterList.add("Turnpike");
+        monsterList.add("Turnpike");
+        monsterList.add("Turnpike");
 
         eliteMonsterList = new ArrayList<>();
-        eliteMonsterList.add("Shield and Spear");
-        eliteMonsterList.add("Shield and Spear");
-        eliteMonsterList.add("Shield and Spear");
+        eliteMonsterList.add("Turnpike");
+        eliteMonsterList.add("Turnpike");
+        eliteMonsterList.add("Turnpike");
     }
 
     @Override
