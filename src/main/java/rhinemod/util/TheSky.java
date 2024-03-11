@@ -153,9 +153,7 @@ public class TheSky extends AbstractDungeon {
 
     @Override
     protected void initializeBoss() {
-        bossList.add("The Heart");
-        bossList.add("The Heart");
-        bossList.add("The Heart");
+        bossList.add("The Sky");
     }
 
     @Override

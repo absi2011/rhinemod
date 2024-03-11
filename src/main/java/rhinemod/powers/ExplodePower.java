@@ -1,6 +1,7 @@
 package rhinemod.powers;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.SpawnMonsterAction;
@@ -11,6 +12,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.vfx.combat.ExplosionSmallEffect;
 import rhinemod.monsters.TrafficPolice;
 import rhinemod.monsters.Turnpike;
 
@@ -43,6 +45,7 @@ public class ExplodePower extends AbstractPower {
 
     @Override
     public void onDeath() {
+        addToBot(new VFXAction(new ExplosionSmallEffect(this.owner.hb.cX, this.owner.hb.cY), 0.5F));
         addToBot(new DamageAction(AbstractDungeon.player, new DamageInfo(owner, amount, DamageInfo.DamageType.THORNS)));
     }
 

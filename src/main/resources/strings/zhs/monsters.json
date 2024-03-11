@@ -73,5 +73,10 @@
     "NAME": "交通警长",
     "MOVES": [],
     "DIALOG": []
+  },
+  "rhinemod:TheSky": {
+    "NAME": "星荚",
+    "MOVES": ["自我修复"],
+    "DIALOG": []
   }
 }

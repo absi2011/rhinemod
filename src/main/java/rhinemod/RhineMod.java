@@ -126,9 +126,11 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         // Add a name.
         addMonster("Turnpike", names[13], () -> new MonsterGroup(new Turnpike(0.0F, 0.0F)));
         addMonster("Traffic Police", names[14], () -> new MonsterGroup(new TrafficPolice(0.0F, 0.0F)));
+        addMonster("The Sky", names[15], () -> new MonsterGroup(new AbstractMonster[] {new StarPod(0.0F, 0.0F)}));
         // Just Testing
         BaseMod.addEliteEncounter(TheSky.ID, new MonsterInfo("Turnpike", 3.0F * NewMonsterMulti));
         BaseMod.addStrongMonsterEncounter(TheSky.ID, new MonsterInfo("Traffic Police", 3.0F * NewMonsterMulti));
+        // BaseMod.addBoss(TheSky.ID, "The Sky", "icon", "icon");
 
     }
 

@@ -65,6 +65,29 @@
       " 层。"
     ]
   },
+  "rhinemod:AttackPower": {
+    "NAME": "自动开火",
+    "DESCRIPTIONS": [
+      "回合开始时，造成 #b",
+      " 点伤害，当受到 #r任意 伤害时，减少 #b",
+      " 层。"
+    ]
+  },
+  "rhinemod:DefendPower": {
+    "NAME": "自动防护",
+    "DESCRIPTIONS": [
+      "回合开始时，获得 #b",
+      " 点格挡，当受到 #r任意 伤害时，减少 #b",
+      " 层。"
+    ]
+  },
+  "rhinemod:VoidPower": {
+    "NAME": "干扰",
+    "DESCRIPTIONS": [
+      "回合开始时，将 #b",
+      " 张 #y虚空 加入你的弃牌堆。",
+    ]
+  },
   "rhinemod:Fragile": {
     "NAME": "易碎",
     "DESCRIPTIONS": [
