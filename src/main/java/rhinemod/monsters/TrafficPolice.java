@@ -2,11 +2,9 @@ package rhinemod.monsters;
 
 import basemod.abstracts.CustomMonster;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ChangeStateAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.unique.CanLoseAction;
 import com.megacrit.cardcrawl.actions.unique.CannotLoseAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -17,7 +15,6 @@ import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.*;
 import rhinemod.actions.SummonLTEnemyAction;
-import rhinemod.actions.SummonMechAction;
 import rhinemod.powers.HiddenPower;
 
 public class TrafficPolice extends CustomMonster {
@@ -45,10 +42,9 @@ public class TrafficPolice extends CustomMonster {
         }
         turn = 0;
 
-        loadAnimation("images/monsters/enemy_2056_smedzi/enemy_2056_smedzi.atlas", "images/monsters/enemy_2056_smedzi/enemy_2056_smedzi33.json", 2F);
-        this.stateData.setMix("Idle", "Move_Begin", 0.1F);
-        this.state.setAnimation(0, "Move_End", false);
-        this.state.addAnimation(0, "Idle", true, 0.0F);
+        loadAnimation("images/monsters/enemy_1333_cbbgen/enemy_1333_cbbgen33.atlas", "images/monsters/enemy_1333_cbbgen/enemy_1333_cbbgen33.json", 2F);
+        state.setAnimation(0, "Idle", true);
+        flipHorizontal = true;
     }
 
     @Override
@@ -81,6 +77,8 @@ public class TrafficPolice extends CustomMonster {
         if (turn <= 2) {
             t.type = DamageInfo.DamageType.THORNS;
         }
+        state.setAnimation(0, "Attack", false);
+        state.addAnimation(0, "Idle", true, 0);
         addToBot(new DamageAction(AbstractDungeon.player, t));
         int debuff = AbstractDungeon.aiRng.random(1, maxDebuff);
         int anotherDebuff = AbstractDungeon.aiRng.random(1, maxDebuff-1);

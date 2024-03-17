@@ -1,0 +1,209 @@
+
+enemy_1332_cbterm33.png
+size: 256,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+C_R_Arm
+  rotate: false
+  xy: 191, 71
+  size: 48, 69
+  orig: 48, 69
+  offset: 0, 0
+  index: -1
+C_R_Forearm
+  rotate: false
+  xy: 89, 278
+  size: 51, 36
+  orig: 51, 36
+  offset: 0, 0
+  index: -1
+C_R_Shoulder
+  rotate: false
+  xy: 54, 200
+  size: 50, 38
+  orig: 50, 38
+  offset: 0, 0
+  index: -1
+C_R_Hand
+  rotate: false
+  xy: 192, 195
+  size: 53, 42
+  orig: 53, 42
+  offset: 0, 0
+  index: -1
+C_Skirt_R
+  rotate: false
+  xy: 45, 240
+  size: 42, 45
+  orig: 42, 45
+  offset: 0, 0
+  index: -1
+C_R_Leg
+  rotate: false
+  xy: 144, 142
+  size: 46, 53
+  orig: 46, 53
+  offset: 0, 0
+  index: -1
+C_R_Calf_A
+  rotate: false
+  xy: 183, 239
+  size: 44, 44
+  orig: 44, 44
+  offset: 0, 0
+  index: -1
+C_R_Calf
+  rotate: false
+  xy: 1, 325
+  size: 47, 39
+  orig: 47, 39
+  offset: 0, 0
+  index: -1
+C_R_Foot
+  rotate: false
+  xy: 189, 285
+  size: 59, 22
+  orig: 59, 22
+  offset: 0, 0
+  index: -1
+C_R_Knee
+  rotate: false
+  xy: 50, 325
+  size: 32, 27
+  orig: 32, 27
+  offset: 0, 0
+  index: -1
+C_L_Leg
+  rotate: false
+  xy: 1, 167
+  size: 51, 53
+  orig: 51, 53
+  offset: 0, 0
+  index: -1
+C_L_Calf_A
+  rotate: false
+  xy: 142, 285
+  size: 45, 40
+  orig: 45, 40
+  offset: 0, 0
+  index: -1
+C_L_Calf
+  rotate: false
+  xy: 131, 197
+  size: 50, 41
+  orig: 50, 41
+  offset: 0, 0
+  index: -1
+C_L_Foot
+  rotate: false
+  xy: 189, 309
+  size: 58, 22
+  orig: 58, 22
+  offset: 0, 0
+  index: -1
+C_L_Knee
+  rotate: false
+  xy: 54, 287
+  size: 32, 27
+  orig: 32, 27
+  offset: 0, 0
+  index: -1
+C_Waist
+  rotate: false
+  xy: 1, 62
+  size: 73, 59
+  orig: 73, 59
+  offset: 0, 0
+  index: -1
+C_Pelvic
+  rotate: false
+  xy: 54, 169
+  size: 75, 29
+  orig: 75, 29
+  offset: 0, 0
+  index: -1
+C_Skirt_L
+  rotate: false
+  xy: 1, 222
+  size: 42, 45
+  orig: 42, 45
+  offset: 0, 0
+  index: -1
+C_Chest
+  rotate: false
+  xy: 101, 61
+  size: 88, 59
+  orig: 88, 59
+  offset: 0, 0
+  index: -1
+C_Chest_Borken
+  rotate: false
+  xy: 1, 1
+  size: 98, 59
+  orig: 98, 59
+  offset: 0, 0
+  index: -1
+C_Chest_R
+  rotate: false
+  xy: 143, 240
+  size: 36, 34
+  orig: 36, 34
+  offset: 0, 0
+  index: -1
+C_Chest_L
+  rotate: false
+  xy: 1, 287
+  size: 51, 36
+  orig: 51, 36
+  offset: 0, 0
+  index: -1
+C_Head
+  rotate: false
+  xy: 101, 1
+  size: 97, 58
+  orig: 97, 58
+  offset: 0, 0
+  index: -1
+C_L_Arm
+  rotate: false
+  xy: 200, 1
+  size: 53, 68
+  orig: 53, 68
+  offset: 0, 0
+  index: -1
+C_L_Shoulder
+  rotate: false
+  xy: 1, 123
+  size: 67, 42
+  orig: 67, 42
+  offset: 0, 0
+  index: -1
+C_Light
+  rotate: false
+  xy: 106, 200
+  size: 22, 29
+  orig: 22, 29
+  offset: 0, 0
+  index: -1
+C_L_Forearm
+  rotate: false
+  xy: 89, 240
+  size: 52, 36
+  orig: 52, 36
+  offset: 0, 0
+  index: -1
+C_L_Hand
+  rotate: false
+  xy: 76, 122
+  size: 66, 45
+  orig: 66, 45
+  offset: 0, 0
+  index: -1
+C_Crack
+  rotate: false
+  xy: 192, 142
+  size: 45, 51
+  orig: 61, 63
+  offset: 8, 5
+  index: -1

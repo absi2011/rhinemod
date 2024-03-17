@@ -7,8 +7,6 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
-import com.megacrit.cardcrawl.powers.ShiftingPower;
-import rhinemod.powers.DamageOutPower;
 import rhinemod.powers.Fragile;
 
 public class ArclightVanguard extends CustomMonster {
@@ -40,10 +38,9 @@ public class ArclightVanguard extends CustomMonster {
             damage.add(new DamageInfo(this, 10));
             damage.add(new DamageInfo(this, 2));
         }
-        loadAnimation("images/monsters/enemy_2056_smedzi/enemy_2056_smedzi.atlas", "images/monsters/enemy_2056_smedzi/enemy_2056_smedzi33.json", 2F);
-        this.stateData.setMix("Idle", "Move_Begin", 0.1F);
-        this.state.setAnimation(0, "Move_End", false);
-        this.state.addAnimation(0, "Idle", true, 0.0F);
+        loadAnimation("images/monsters/enemy_1328_cbjedi/enemy_1328_cbjedi33.atlas", "images/monsters/enemy_1328_cbjedi/enemy_1328_cbjedi33.json", 1.5F);
+        state.setAnimation(0, "Idle", true);
+        flipHorizontal = true;
     }
 
     @Override
@@ -53,6 +50,8 @@ public class ArclightVanguard extends CustomMonster {
 
     @Override
     public void takeTurn() {
+        state.setAnimation(0, "Attack", false);
+        state.addAnimation(0, "Idle", true, 0);
         if (nextMove == 1) {
             for (int i = 1; i <= LowDamageTimes; i++) {
                 addToBot(new DamageAction(AbstractDungeon.player, damage.get(0)));

@@ -3,10 +3,7 @@ package rhinemod.monsters;
 import basemod.abstracts.CustomMonster;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.ChangeStateAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.characters.Defect;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -43,17 +40,15 @@ public class Crossroads extends CustomMonster {
             blockNum = 6;
             strNum = 1;
         }
-        loadAnimation("images/monsters/enemy_2056_smedzi/enemy_2056_smedzi.atlas", "images/monsters/enemy_2056_smedzi/enemy_2056_smedzi33.json", 2F);
-        this.stateData.setMix("Idle", "Move_Begin", 0.1F);
-        this.state.setAnimation(0, "Move_End", false);
-        this.state.addAnimation(0, "Idle", true, 0.0F);
+        loadAnimation("images/monsters/enemy_1331_cbsisy/enemy_1331_cbsisy33.atlas", "images/monsters/enemy_1331_cbsisy/enemy_1331_cbsisy33.json", 2F);
+        state.setAnimation(0, "Idle", true);
+        flipHorizontal = true;
     }
 
     @Override
     public void takeTurn() {
         for (AbstractMonster m:AbstractDungeon.getCurrRoom().monsters.monsters) {
-            if (!m.isDeadOrEscaped())
-            {
+            if (!m.isDeadOrEscaped()) {
                 addToBot(new GainBlockAction(m, this, blockNum));
                 addToBot(new ApplyPowerAction(m,this, new StrengthPower(m, strNum)));
             }

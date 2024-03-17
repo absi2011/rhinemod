@@ -1,0 +1,181 @@
+
+enemy_1331_cbsisy33.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+C_R_Track_Back
+  rotate: false
+  xy: 100, 1
+  size: 72, 27
+  orig: 72, 27
+  offset: 0, 0
+  index: -1
+C_R_Tire_1
+  rotate: false
+  xy: 172, 44
+  size: 22, 20
+  orig: 22, 20
+  offset: 0, 0
+  index: -1
+C_R_Tire_2
+  rotate: false
+  xy: 148, 30
+  size: 22, 20
+  orig: 22, 20
+  offset: 0, 0
+  index: -1
+C_R_Tire_3
+  rotate: false
+  xy: 190, 218
+  size: 22, 20
+  orig: 22, 20
+  offset: 0, 0
+  index: -1
+C_R_Track_D
+  rotate: false
+  xy: 153, 218
+  size: 35, 27
+  orig: 35, 27
+  offset: 0, 0
+  index: -1
+C_R_Track_1
+  rotate: false
+  xy: 173, 247
+  size: 28, 7
+  orig: 28, 7
+  offset: 0, 0
+  index: -1
+C_R_Track_2
+  rotate: false
+  xy: 1, 239
+  size: 27, 9
+  orig: 27, 9
+  offset: 0, 0
+  index: -1
+C_R_Track_3
+  rotate: false
+  xy: 30, 239
+  size: 29, 6
+  orig: 29, 6
+  offset: 0, 0
+  index: -1
+C_Body
+  rotate: false
+  xy: 1, 1
+  size: 97, 161
+  orig: 97, 161
+  offset: 0, 0
+  index: -1
+C_R_Fluid
+  rotate: false
+  xy: 1, 164
+  size: 67, 73
+  orig: 67, 73
+  offset: 0, 0
+  index: -1
+C_R_Coil
+  rotate: false
+  xy: 70, 164
+  size: 81, 54
+  orig: 81, 54
+  offset: 0, 0
+  index: -1
+C_L_Fluid
+  rotate: false
+  xy: 215, 164
+  size: 29, 69
+  orig: 29, 69
+  offset: 0, 0
+  index: -1
+C_L_Coil
+  rotate: false
+  xy: 153, 164
+  size: 60, 52
+  orig: 60, 52
+  offset: 0, 0
+  index: -1
+C_L_Track_Back
+  rotate: false
+  xy: 70, 220
+  size: 72, 27
+  orig: 72, 27
+  offset: 0, 0
+  index: -1
+C_L_Track_2
+  rotate: false
+  xy: 190, 240
+  size: 8, 5
+  orig: 8, 5
+  offset: 0, 0
+  index: -1
+C_L_Track_1
+  rotate: false
+  xy: 200, 240
+  size: 8, 5
+  orig: 8, 5
+  offset: 0, 0
+  index: -1
+C_L_Tire_1
+  rotate: false
+  xy: 124, 30
+  size: 22, 20
+  orig: 22, 20
+  offset: 0, 0
+  index: -1
+C_L_Tire_2
+  rotate: false
+  xy: 214, 235
+  size: 22, 20
+  orig: 22, 20
+  offset: 0, 0
+  index: -1
+C_L_Tire_3
+  rotate: false
+  xy: 100, 30
+  size: 22, 20
+  orig: 22, 20
+  offset: 0, 0
+  index: -1
+C_L_Track_D
+  rotate: false
+  xy: 216, 1
+  size: 35, 26
+  orig: 35, 26
+  offset: 0, 0
+  index: -1
+C_L_Track_3
+  rotate: false
+  xy: 61, 249
+  size: 28, 6
+  orig: 28, 6
+  offset: 0, 0
+  index: -1
+C_L_Track_4
+  rotate: false
+  xy: 144, 247
+  size: 27, 8
+  orig: 27, 8
+  offset: 0, 0
+  index: -1
+C_L_Track_5
+  rotate: false
+  xy: 30, 247
+  size: 29, 6
+  orig: 29, 6
+  offset: 0, 0
+  index: -1
+C_M_Window
+  rotate: false
+  xy: 174, 1
+  size: 40, 41
+  orig: 40, 41
+  offset: 0, 0
+  index: -1
+C_M_Fluid
+  rotate: false
+  xy: 216, 29
+  size: 27, 28
+  orig: 27, 28
+  offset: 0, 0
+  index: -1
