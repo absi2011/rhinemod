@@ -3,9 +3,7 @@ package rhinemod.monsters;
 import basemod.abstracts.CustomMonster;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.cards.status.Dazed;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
@@ -35,10 +33,9 @@ public class R11AssaultPowerArmor extends CustomMonster {
             damage.add(new DamageInfo(this, 10));
             damage.add(new DamageInfo(this, 20));
         }
-        loadAnimation("images/monsters/enemy_2056_smedzi/enemy_2056_smedzi.atlas", "images/monsters/enemy_2056_smedzi/enemy_2056_smedzi33.json", 2F);
-        this.stateData.setMix("Idle", "Move_Begin", 0.1F);
-        this.state.setAnimation(0, "Move_End", false);
-        this.state.addAnimation(0, "Idle", true, 0.0F);
+        loadAnimation("images/monsters/enemy_1256_lyacpa/enemy_1256_lyacpa33.atlas", "images/monsters/enemy_1256_lyacpa/enemy_1256_lyacpa33.json", 1.5F);
+        state.setAnimation(0, "Idle", true);
+        flipHorizontal = true;
     }
 
     @Override
@@ -49,11 +46,15 @@ public class R11AssaultPowerArmor extends CustomMonster {
     @Override
     public void takeTurn() {
         if (nextMove == 7) {
+            state.setAnimation(0, "Attack_2", false);
+            state.addAnimation(0, "Idle", true, 0);
             addToBot(new DamageAction(AbstractDungeon.player, damage.get(1)));
         }
         else {
+            state.setAnimation(0, "Attack", false);
+            state.addAnimation(0, "Move", false, 0);
+            state.addAnimation(0, "Idle", true, 0);
             addToBot(new DamageAction(AbstractDungeon.player, damage.get(0)));
-            // TODO: MOVE!
         }
         if (nextMove <= 5) {
             setMove(MOVES[0], (byte)(nextMove + 1), Intent.ATTACK, damage.get(0).base);

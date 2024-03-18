@@ -50,7 +50,7 @@ public class TrafficPolice extends CustomMonster {
     @Override
     public void usePreBattleAction() {
         addToBot(new CannotLoseAction());
-        addToBot(new ApplyPowerAction(this, this, new HiddenPower(this, 2)));
+        addToBot(new ApplyPowerAction(this, this, new HiddenPower(this, 1.5)));
         addToBot(new ChangeStateAction(this, "HIDDEN"));
         // 隐匿特效
     }
