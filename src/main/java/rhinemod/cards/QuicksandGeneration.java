@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QuicksandGeneration extends AbstractRhineCard {
-    public static final String ID = "rhinemod:TwoToOne";
+    public static final String ID = "rhinemod:QuicksandGeneration";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -27,7 +27,7 @@ public class QuicksandGeneration extends AbstractRhineCard {
     public static final int UPGRADE_PLUS_BLOCK = 3;
     public static final int WEAKNESS_AMT = 2;
     public static final int UPGRADE_PLUS_WK = 1;
-    public static final int WATER_DMG = 20;
+    public static final int WATER_DMG = 10;
     public QuicksandGeneration() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.RHINE_MATTE,

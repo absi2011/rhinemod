@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.MinionPower;
 import rhinemod.actions.AwakenAction;
 import rhinemod.actions.SummonMechAction;
 import rhinemod.powers.Average;
@@ -101,16 +102,22 @@ public class Awaken_Monster extends CustomMonster {
     int MechNum()
     {
         int count = 0;
-        Iterator var2 = AbstractDungeon.getMonsters().monsters.iterator();
-
-        while(var2.hasNext()) {
-            AbstractMonster m = (AbstractMonster)var2.next();
+        for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
             if (m != null && m != this && !m.isDying) {
                 ++count;
             }
         }
-
         return count;
+    }
+
+    @Override
+    public void die() {
+        for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
+            if (m.hasPower(MinionPower.POWER_ID)) {
+                m.die(false);
+            }
+        }
+        super.die();
     }
 
     @Override

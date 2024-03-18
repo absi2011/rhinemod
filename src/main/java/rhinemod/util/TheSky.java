@@ -16,6 +16,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class TheSky extends AbstractDungeon {
     private static final Logger logger = LogManager.getLogger(TheSky.class.getName());
@@ -62,25 +63,30 @@ public class TheSky extends AbstractDungeon {
         map = new ArrayList<>();
         ArrayList<MapRoomNode> col = new ArrayList<>();
         ArrayList<MapRoomNode> row;
-        MapRoomNode shopNode = new MapRoomNode(3, 0);
+        MapRoomNode restNode = new MapRoomNode(3, 0);
+        restNode.room = new RestRoom();
+        MapRoomNode shopNode = new MapRoomNode(3, 1);
         shopNode.room = new ShopRoom();
-        MapRoomNode enemyNode = new MapRoomNode(3, 1);
+        MapRoomNode enemyNode = new MapRoomNode(3, 2);
         enemyNode.room = new MonsterRoomElite();
-        MapRoomNode eventNode = new MapRoomNode(3, 2);
+        MapRoomNode eventNode = new MapRoomNode(3, 3);
         eventNode.room = new EventRoom();
-        MapRoomNode bossNode = new MapRoomNode(3, 3);
+        MapRoomNode bossNode = new MapRoomNode(3, 4);
         bossNode.room = new MonsterRoomBoss();
-        MapRoomNode victoryNode = new MapRoomNode(3, 4);
+        bossNode.room.rewardAllowed = false;
+        MapRoomNode victoryNode = new MapRoomNode(3, 5);
         victoryNode.room = new TrueVictoryRoom();
+        connectNode(restNode, shopNode);
         connectNode(shopNode, enemyNode);
         connectNode(enemyNode, eventNode);
         connectNode(eventNode, bossNode);
+        col.add(restNode);
         col.add(shopNode);
         col.add(enemyNode);
         col.add(eventNode);
         col.add(bossNode);
         col.add(victoryNode);
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 6; i++) {
             row = new ArrayList<>();
             for (int j = 0; j < 3; j++) row.add(new MapRoomNode(j, i));
             row.add(col.get(i));
@@ -153,6 +159,8 @@ public class TheSky extends AbstractDungeon {
 
     @Override
     protected void initializeBoss() {
+        bossList.add("The Sky");
+        bossList.add("The Sky");
         bossList.add("The Sky");
     }
 
