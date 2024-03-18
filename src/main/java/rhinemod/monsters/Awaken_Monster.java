@@ -1,7 +1,9 @@
 package rhinemod.monsters;
 
 import basemod.abstracts.CustomMonster;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
+import com.megacrit.cardcrawl.actions.utility.HideHealthBarAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -9,6 +11,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.MinionPower;
+import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
 import rhinemod.actions.AwakenAction;
 import rhinemod.actions.SummonMechAction;
 import rhinemod.powers.Average;
@@ -112,11 +115,12 @@ public class Awaken_Monster extends CustomMonster {
 
     @Override
     public void die() {
-        for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-            if (m.hasPower(MinionPower.POWER_ID)) {
-                m.die(false);
+        for (AbstractMonster m : AbstractDungeon.getMonsters().monsters)
+            if (!m.isDeadOrEscaped()) {
+                addToTop(new HideHealthBarAction(m));
+                addToTop(new SuicideAction(m));
+                addToTop(new VFXAction(m, new InflameEffect(m), 0.2F));
             }
-        }
         super.die();
     }
 
