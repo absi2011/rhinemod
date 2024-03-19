@@ -4,9 +4,11 @@ import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.map.DungeonMap;
 import com.megacrit.cardcrawl.map.MapRoomNode;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.rooms.TrueVictoryRoom;
 import com.megacrit.cardcrawl.rooms.VictoryRoom;
 import com.megacrit.cardcrawl.saveAndContinue.SaveFile;
 import com.megacrit.cardcrawl.ui.buttons.ProceedButton;
@@ -15,6 +17,7 @@ import javassist.CtBehavior;
 import javassist.expr.ExprEditor;
 import javassist.expr.MethodCall;
 import rhinemod.events.SkyEvent;
+import rhinemod.monsters.StarPod;
 import rhinemod.relics.LoneTrail;
 import rhinemod.util.TheSky;
 
@@ -109,16 +112,25 @@ public class SkyScenePatch {
 
     @SpirePatch(clz = ProceedButton.class, method = "update")
     public static class ProceedButtonPatch {
-        @SpireInstrumentPatch
-        public static ExprEditor Instrument() {
-            return new ExprEditor() {
-                @Override
-                public void edit(MethodCall m) throws CannotCompileException {
-                    if (m.getClassName().equals(String.class.getName()) && m.getMethodName().equals("equals")) {
-                        m.replace("$_ = ($0.equals(\"rhinemod:TheSky\") || $proceed($$));");
-                    }
-                }
-            };
+        @SpireInsertPatch(locator = Locator.class)
+        public static void Insert(ProceedButton _inst) {
+            if (AbstractDungeon.id.equals("rhinemod:TheSky")) {
+                CardCrawlGame.music.fadeOutBGM();
+                MapRoomNode node = new MapRoomNode(3, 5);
+                node.room = new TrueVictoryRoom();
+                AbstractDungeon.nextRoom = node;
+                AbstractDungeon.closeCurrentScreen();
+                AbstractDungeon.nextRoomTransitionStart();
+                _inst.hide();
+            }
+        }
+
+        private static class Locator extends SpireInsertLocator {
+            @Override
+            public int[] Locate(CtBehavior ctBehavior) throws Exception {
+                Matcher.FieldAccessMatcher fieldAccessMatcher = new Matcher.FieldAccessMatcher(AbstractDungeon.class, "id");
+                return LineFinder.findInOrder(ctBehavior, fieldAccessMatcher);
+            }
         }
     }
 
@@ -174,6 +186,18 @@ public class SkyScenePatch {
             if (_inst.eType == SKY) {
                 _inst.event = new SkyEvent();
                 _inst.event.onEnterRoom();
+            }
+        }
+    }
+
+    @SpirePatch(clz = AbstractDungeon.class, method = "setBoss")
+    public static class SetBossPatch {
+        @SpirePostfixPatch
+        public static void Postfix(AbstractDungeon _inst, String key) {
+            if (key.equals(StarPod.ID)) {
+                DungeonMap.boss = ImageMaster.loadImage("images/ui/map/boss/heart.png");
+                DungeonMap.bossOutline = ImageMaster.loadImage("images/ui/map/bossOutline/heart.png");
+                // TODO image
             }
         }
     }

@@ -8,15 +8,10 @@ import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.unique.CannotLoseAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.FontHelper;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import rhinemod.powers.*;
-
-import java.util.Iterator;
 
 public class StarPod extends CustomMonster {
     public static final String ID = "rhinemod:TheSky";
@@ -149,6 +144,9 @@ public class StarPod extends CustomMonster {
         }
         else {
             super.die();
+            onBossVictoryLogic();
+            onFinalBossVictoryLogic();
+            CardCrawlGame.stopClock = true;
         }
     }
 
