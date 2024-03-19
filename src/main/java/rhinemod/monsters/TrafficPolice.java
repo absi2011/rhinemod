@@ -42,7 +42,7 @@ public class TrafficPolice extends CustomMonster {
         }
         turn = 0;
 
-        loadAnimation("images/monsters/enemy_1333_cbbgen/enemy_1333_cbbgen33.atlas", "images/monsters/enemy_1333_cbbgen/enemy_1333_cbbgen33.json", 2F);
+        loadAnimation("images/monsters/enemy_1333_cbbgen/enemy_1333_cbbgen33.atlas", "images/monsters/enemy_1333_cbbgen/enemy_1333_cbbgen33.json", 1.5F);
         state.setAnimation(0, "Idle", true);
         flipHorizontal = true;
     }
@@ -50,7 +50,7 @@ public class TrafficPolice extends CustomMonster {
     @Override
     public void usePreBattleAction() {
         addToBot(new CannotLoseAction());
-        addToBot(new ApplyPowerAction(this, this, new HiddenPower(this, 1.5)));
+        addToBot(new ApplyPowerAction(this, this, new HiddenPower(this, 2)));
         addToBot(new ChangeStateAction(this, "HIDDEN"));
         // 隐匿特效
     }
