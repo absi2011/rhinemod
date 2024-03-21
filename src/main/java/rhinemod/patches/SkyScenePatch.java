@@ -75,6 +75,7 @@ public class SkyScenePatch {
                     if (m.getClassName().equals(String.class.getName()) && m.getMethodName().equals("equals")) {
                         m.replace("$_ = ($0.equals(\"rhinemod:TheSky\") || $proceed($$));");
                     }
+                    // 这里的TheEnding的size是对的，你的size是错的（地图太大了）
                 }
             };
         }

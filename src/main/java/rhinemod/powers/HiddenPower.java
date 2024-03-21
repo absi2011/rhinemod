@@ -35,7 +35,7 @@ public class HiddenPower extends AbstractPower {
     }
 
     @Override
-    public void atStartOfTurn() {
+    public void atEndOfRound() {
         addToBot(new ReducePowerAction(this.owner, this.owner, this, 1));
     }
 

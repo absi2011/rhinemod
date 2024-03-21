@@ -69,6 +69,9 @@ public class TheSky extends AbstractDungeon {
         shopNode.room = new ShopRoom();
         MapRoomNode enemyNode = new MapRoomNode(3, 2);
         enemyNode.room = new MonsterRoomElite();
+        if (!Settings.hasEmeraldKey) {
+            enemyNode.hasEmeraldKey = true;
+        }
         MapRoomNode eventNode = new MapRoomNode(3, 3);
         eventNode.room = new EventRoom();
         MapRoomNode bossNode = new MapRoomNode(3, 4);

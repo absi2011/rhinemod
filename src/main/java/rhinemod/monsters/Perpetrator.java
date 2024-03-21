@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import rhinemod.powers.Fragile;
+import rhinemod.powers.Stunned;
 
 public class Perpetrator extends CustomMonster {
     public static final String ID = "rhinemod:Perpetrator";
@@ -80,6 +81,15 @@ public class Perpetrator extends CustomMonster {
             AttTimes ++;
         }
         getMove(0);
+    }
+
+    // TODO: 眩晕机制全局后删掉这一部分
+    @Override
+    public void damage(DamageInfo info) {
+        super.damage(info);
+        if (lastDamageTaken >= 15) {
+            addToBot(new ApplyPowerAction(this, this, new Stunned(this)));
+        }
     }
 
     @Override
