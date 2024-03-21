@@ -93,7 +93,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
     }
 
     public void initializeMonsters() {
-        String[] names = CardCrawlGame.languagePack.getUIString("RunHistoryMonsterNames").TEXT;
+        String[] names = CardCrawlGame.languagePack.getUIString("rhinemod:RunHistoryMonsterNames").TEXT;
         addMonster("Single ArcCommando", names[0], () -> new MonsterGroup(new AbstractMonster[] {new ArclightCommando(0.0F, 0.0F)}));
         BaseMod.addMonsterEncounter(Exordium.ID, new MonsterInfo("Single ArcCommando", 2.0F * NewMonsterMulti));
         addMonster("ArcCommando And Beckbeast",  names[1], () -> new MonsterGroup(new AbstractMonster[] {new ArclightCommando(-150.0F, 0.0F), new MilitaryBeckbeast(150.0F, 0.0F)}));
@@ -121,13 +121,13 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         addMonster("Diaster of Machine", names[11], () -> new MonsterGroup(new AbstractMonster[] {new Perpetrator(-440.0F, 0.0F),new Exploder(-300.0F, 400.0F),  new Repulsor(-120.0F, 360.0F),  new Sentry(0.0F, 0.0F), new BronzeOrb(200.0F, 270.0F, 0), new Spiker(240.0F, 0.0F), new Crossroads(-220.0F, -50.0F)}));
         BaseMod.addEliteEncounter(TheBeyond.ID, new MonsterInfo("Diaster of Machine", 2.0F * NewMonsterMulti));
 
-        addMonster("Awaken", names[12], () -> new MonsterGroup(new Awaken_Monster(0.0F, 0.0F)));
-        BaseMod.addEliteEncounter(TheEnding.ID, new MonsterInfo("Awaken", 3.0F * NewMonsterMulti));
         // Add a name.
+        addMonster("Awaken", names[12], () -> new MonsterGroup(new Awaken_Monster(0.0F, 0.0F)));
         addMonster("Turnpike", names[13], () -> new MonsterGroup(new Turnpike(0.0F, 0.0F)));
         addMonster("Traffic Police", names[14], () -> new MonsterGroup(new TrafficPolice(0.0F, 0.0F)));
         addMonster("The Sky", names[15], () -> new MonsterGroup(new AbstractMonster[] {new StarPod(0.0F, 0.0F)}));
         // Just Testing
+        BaseMod.addEliteEncounter(TheEnding.ID, new MonsterInfo("Awaken", 3.0F * NewMonsterMulti));
         BaseMod.addEliteEncounter(TheSky.ID, new MonsterInfo("Turnpike", 3.0F * NewMonsterMulti));
         BaseMod.addStrongMonsterEncounter(TheSky.ID, new MonsterInfo("Traffic Police", 3.0F * NewMonsterMulti));
         // BaseMod.addBoss(TheSky.ID, "The Sky", "icon", "icon");

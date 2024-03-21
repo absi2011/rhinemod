@@ -143,6 +143,7 @@ public class StarPod extends CustomMonster {
             currentHealth = maxHealth;
         }
         else {
+            AbstractDungeon.getCurrRoom().rewardAllowed = false;
             super.die();
             onBossVictoryLogic();
             onFinalBossVictoryLogic();
