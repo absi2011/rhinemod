@@ -1,0 +1,59 @@
+{
+  "rhinemod:AbstractRhineCard": {
+    "TEXT": [
+      "+",
+      "S",
+      "K",
+      "M"
+    ]
+  },
+  "rhinemod:DestinyAction": {
+    "TEXT": [
+      "选择一张卡牌升级"
+    ]
+  },
+  "rhinemod:StarRing": {
+    "TEXT": [
+      "星环",
+      "回合开始时对所有敌人造成",
+      "点伤害。优先受到敌人攻击，被击破时引爆，对所有角色造成所受伤害总和一半的伤害。"
+    ]
+  },
+  "rhinemod:ChangeBranchOption": {
+    "TEXT": [
+      "重塑",
+      "修改你牌组中一张牌的倾向。",
+      "没有可以修改倾向的牌。"
+    ]
+  },
+  "rhinemod:CampfireChangeBranchEffect": {
+    "TEXT": [
+      "选择一张牌 修改倾向。"
+    ]
+  },
+  "rhinemod:RunHistoryMonsterNames": {
+    "TEXT": [
+      "弧光突击队",
+      "猎犬与突击队",
+      "双突击队",
+      "弧光镜卫",
+      "双弧光锋卫",
+      "锋卫与突击队",
+      "肇事者",
+      "R系列机甲",
+      "实验机甲与城防军",
+      "弧光小队",
+      "杰斯顿·威廉姆斯",
+      "“机械之灾”",
+      "“唤醒”",
+      "交通亭",
+      "交通警察",
+      "星空"
+    ]
+  },
+  "rhinemod:TheSky": {
+    "TEXT": [
+      "天幕"
+    ]
+  }
+}

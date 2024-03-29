@@ -1,0 +1,28 @@
+{
+  "rhinemod:Awaken": {
+    "NAME": "“唤醒”",
+    "FLAVOR": "向前或向后都是科技的方向，它不分正反，永远进步。",
+    "DESCRIPTIONS": ["每 #b3 回合结束时，对所有敌人均匀造成共计 #b20 点伤害。"]
+  },
+  "rhinemod:ThreeDimensionArtDisplay": {
+    "NAME": "立体艺术装置",
+    "FLAVOR": "莱茵生命有时给人的印象就如同这件艺术品：神秘莫测，层层叠叠，永远探不清虚实。",
+    "DESCRIPTIONS": ["立即回复 #b14 点生命，每场战斗结束后回复 #b2 点生命。"]
+  },
+  "rhinemod:Stargate": {
+    "NAME": "星门",
+    "FLAVOR": "无根花园圃泛起点点星光，圆环现出幽深空洞。",
+    "DESCRIPTIONS": ["不处于战斗时，右键此遗物前往商店。最多触发2次。", "星门的能量已经耗尽。"]
+  },
+
+  "rhinemod:Melt": {
+    "NAME": "融化",
+    "FLAVOR": "汪洋温柔地包裹了一切。",
+    "DESCRIPTIONS": ["#b", " 场战斗内不能再打出缪尔赛思倾向的卡牌"]
+  },
+  "rhinemod:LoneTrail": {
+    "NAME": "孤星",
+    "FLAVOR": "晚安，泰拉的诸位。晚安，宇宙。",
+    "DESCRIPTIONS": ["使探索走向不同的结局。"]
+  }
+}
