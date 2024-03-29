@@ -22,7 +22,7 @@ public class EmergencyDefenseProcedures extends AbstractRhineCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
-    public static final String IMG = "rhinemod/images/cards/EmergencyDefenseProcedures.png";
+    public static final String IMG = "resources/rhinemod/images/cards/EmergencyDefenseProcedures.png";
     public static final int COST = 1;
     public static final int BLOCK_AMT = 10;
     public static final int UPGRADE_PLUS_BLOCK = 3;

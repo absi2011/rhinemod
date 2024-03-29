@@ -14,7 +14,7 @@ public class PaleFir extends CustomCard {
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String IMG_PATH = "images/cards/PaleFir.png";
+    public static final String IMG_PATH = "resources/rhinemod/images/cards/PaleFir.png";
     private static final int COST = 0;
     private static final int BLOCK_AMT = 6;
     private static final int UPGRADE_PLUS_BLOCK = 2;

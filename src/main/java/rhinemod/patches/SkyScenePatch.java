@@ -198,8 +198,8 @@ public class SkyScenePatch {
         @SpirePostfixPatch
         public static void Postfix(AbstractDungeon _inst, String key) {
             if (key.equals("The Sky")) {
-                DungeonMap.boss = ImageMaster.loadImage("images/ui/map/boss/heart.png");
-                DungeonMap.bossOutline = ImageMaster.loadImage("images/ui/map/bossOutline/heart.png");
+                DungeonMap.boss = ImageMaster.loadImage("resources/rhinemod/images/ui/map/boss/heart.png");
+                DungeonMap.bossOutline = ImageMaster.loadImage("resources/rhinemod/images/ui/map/bossOutline/heart.png");
                 // TODO image
             }
         }

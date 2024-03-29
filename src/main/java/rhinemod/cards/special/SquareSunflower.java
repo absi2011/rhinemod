@@ -15,7 +15,7 @@ public class SquareSunflower extends CustomCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG_PATH = "rhinemod/images/cards/SquareSunflower.png";
+    public static final String IMG_PATH = "resources/rhinemod/images/cards/SquareSunflower.png";
     private static final int COST = 0;
 
     public SquareSunflower() {

@@ -20,8 +20,8 @@ public class DreadnoughtProtocolPower extends AbstractPower {
         this.type = PowerType.BUFF;
         this.owner = owner;
         this.amount = amount;
-        region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("rhinemod/images/powers/Solidify 84.png"), 0, 0, 84, 84);
-        region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("rhinemod/images/powers/Solidify 32.png"), 0, 0, 32, 32);
+        region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/Solidify 84.png"), 0, 0, 84, 84);
+        region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/Solidify 32.png"), 0, 0, 32, 32);
         priority = 100;
         isTriggered = false;
         updateDescription();

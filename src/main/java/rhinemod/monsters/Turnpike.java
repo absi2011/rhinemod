@@ -39,7 +39,7 @@ public class Turnpike extends CustomMonster {
             damage.add(new DamageInfo(this, 22));
         }
 
-        loadAnimation("images/monsters/enemy_1332_cbterm/enemy_1332_cbterm33.atlas", "images/monsters/enemy_1332_cbterm/enemy_1332_cbterm33.json", 1.5F);
+        loadAnimation("resources/rhinemod/images/monsters/enemy_1332_cbterm/enemy_1332_cbterm33.atlas", "resources/rhinemod/images/monsters/enemy_1332_cbterm/enemy_1332_cbterm33.json", 1.5F);
         state.setAnimation(0, "Idle", true);
         flipHorizontal = true;
     }

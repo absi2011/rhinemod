@@ -24,8 +24,8 @@ public class HighSpeedRTPower extends AbstractPower {
         this.type = PowerType.DEBUFF;
         this.owner = owner;
         this.source = source;
-        region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("rhinemod/images/powers/HighSpeedResonatingTroubleshooter 84.png"), 0, 0, 84, 84);
-        region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("rhinemod/images/powers/HighSpeedResonatingTroubleshooter 32.png"), 0, 0, 32, 32);
+        region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/HighSpeedResonatingTroubleshooter 84.png"), 0, 0, 84, 84);
+        region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/HighSpeedResonatingTroubleshooter 32.png"), 0, 0, 32, 32);
         this.amount = 0;
         updateDescription();
     }

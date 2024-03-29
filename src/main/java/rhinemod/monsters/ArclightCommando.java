@@ -42,7 +42,7 @@ public class ArclightCommando extends CustomMonster {
             damage.add(new DamageInfo(this, 4));
             damage.add(new DamageInfo(this, 8));
         }
-        loadAnimation("images/monsters/enemy_1327_cbrokt/enemy_1327_cbrokt33.atlas", "images/monsters/enemy_1327_cbrokt/enemy_1327_cbrokt33.json", 1.5F);
+        loadAnimation("resources/rhinemod/images/monsters/enemy_1327_cbrokt/enemy_1327_cbrokt33.atlas", "resources/rhinemod/images/monsters/enemy_1327_cbrokt/enemy_1327_cbrokt33.json", 1.5F);
         state.setAnimation(0, "Idle_1", true);
         isFlying = false;
         flipHorizontal = true;

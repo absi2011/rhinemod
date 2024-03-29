@@ -39,19 +39,19 @@ public class RhineLab extends CustomPlayer {
     public static final String NAME = characterStrings.NAMES[0];
     public static final String[] TEXT = characterStrings.TEXT;
     private static final Color RhineMatte = CardHelper.getColor(188, 187, 145);
-    public static final String IDLE = "rhinemod/images/char/idle.png";
-    public static final String DIE = "rhinemod/images/char/die.png";
-    public static final String SHOULDER = "rhinemod/images/char/shoulder.png";
+    public static final String IDLE = "resources/rhinemod/images/char/idle.png";
+    public static final String DIE = "resources/rhinemod/images/char/die.png";
+    public static final String SHOULDER = "resources/rhinemod/images/char/shoulder.png";
     public static final String[] orbTextures = {
-        "rhinemod/images/char/orb/layer1.png",
-        "rhinemod/images/char/orb/layer2.png",
-        "rhinemod/images/char/orb/layer3.png",
-        "rhinemod/images/char/orb/layer4.png",
-        "rhinemod/images/char/orb/layer5.png",
-        "rhinemod/images/char/orb/layer1d.png",
-        "rhinemod/images/char/orb/layer2d.png",
-        "rhinemod/images/char/orb/layer3d.png",
-        "rhinemod/images/char/orb/layer4d.png"
+        "resources/rhinemod/images/char/orb/layer1.png",
+        "resources/rhinemod/images/char/orb/layer2.png",
+        "resources/rhinemod/images/char/orb/layer3.png",
+        "resources/rhinemod/images/char/orb/layer4.png",
+        "resources/rhinemod/images/char/orb/layer5.png",
+        "resources/rhinemod/images/char/orb/layer1d.png",
+        "resources/rhinemod/images/char/orb/layer2d.png",
+        "resources/rhinemod/images/char/orb/layer3d.png",
+        "resources/rhinemod/images/char/orb/layer4d.png"
     };
     public GlobalAttributes globalAttributes = new GlobalAttributes();
     public static final float[] POSX = new float[] { 255.0F, -235.0F, 285.0F, -265.0F, 225.0F, -205.0F };
@@ -63,14 +63,14 @@ public class RhineLab extends CustomPlayer {
 
     public RhineLab(String name) {
         // 参数列表：角色名，角色类枚举，能量面板贴图路径列表，能量面板特效贴图路径，能量面板贴图旋转速度列表，能量面板，模型资源路径，动画资源路径
-        super(name, RhineEnum.RHINE_CLASS, orbTextures, "rhinemod/images/char/orb/vfx.png", null, null, null);
+        super(name, RhineEnum.RHINE_CLASS, orbTextures, "resources/rhinemod/images/char/orb/vfx.png", null, null, null);
 
         dialogX = this.drawX;
         dialogY = this.drawY + 200.0F * Settings.scale;
 
         // 参数列表：静态贴图路径，越肩视角2贴图路径，越肩视角贴图路径，失败时贴图路径，角色选择界面信息，碰撞箱XY宽高，初始能量数
         initializeClass(IDLE, SHOULDER, SHOULDER, DIE, getLoadout(), 20.0F, -10.0F, 220.0F, 290.0F, new EnergyManager(3));
-//        loadAnimation("rhinemod/images/char/char_148_nearl.atlas", "rhinemod/images/char/char_148_nearl.json", 1.5F);
+//        loadAnimation("resources/rhinemod/images/char/char_148_nearl.atlas", "resources/rhinemod/images/char/char_148_nearl.json", 1.5F);
 //        this.stateData.setMix("Idle", "Die", 0.1F);
 //        this.state.setAnimation(0, "Idle", true);
     }

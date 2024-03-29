@@ -20,7 +20,7 @@ public class EcologicalInteraction extends AbstractRhineCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG = "images/cards/EcologicalInteraction.png";
+    public static final String IMG = "resources/rhinemod/images/cards/EcologicalInteraction.png";
     public static final int COST = -1;
     public EcologicalInteraction() {
         super(ID, NAME, IMG, COST, DESCRIPTION,

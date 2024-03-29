@@ -33,7 +33,7 @@ public class R11AssaultPowerArmor extends CustomMonster {
             damage.add(new DamageInfo(this, 10));
             damage.add(new DamageInfo(this, 20));
         }
-        loadAnimation("images/monsters/enemy_1256_lyacpa/enemy_1256_lyacpa33.atlas", "images/monsters/enemy_1256_lyacpa/enemy_1256_lyacpa33.json", 1.5F);
+        loadAnimation("resources/rhinemod/images/monsters/enemy_1256_lyacpa/enemy_1256_lyacpa33.atlas", "resources/rhinemod/images/monsters/enemy_1256_lyacpa/enemy_1256_lyacpa33.json", 1.5F);
         state.setAnimation(0, "Idle", true);
         flipHorizontal = true;
     }

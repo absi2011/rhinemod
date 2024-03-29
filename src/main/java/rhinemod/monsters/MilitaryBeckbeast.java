@@ -35,7 +35,7 @@ public class MilitaryBeckbeast extends CustomMonster {
         else {
             damage.add(new DamageInfo(this, 3));
         }
-        loadAnimation("images/monsters/enemy_1325_cbgpro/enemy_1325_cbgpro33.atlas", "images/monsters/enemy_1325_cbgpro/enemy_1325_cbgpro33.json", 1.5F);
+        loadAnimation("resources/rhinemod/images/monsters/enemy_1325_cbgpro/enemy_1325_cbgpro33.atlas", "resources/rhinemod/images/monsters/enemy_1325_cbgpro/enemy_1325_cbgpro33.json", 1.5F);
         state.setAnimation(0, "Idle", true);
         flipHorizontal = true;
     }

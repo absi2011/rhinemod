@@ -42,7 +42,7 @@ public class TrafficPolice extends CustomMonster {
         }
         turn = 0;
 
-        loadAnimation("images/monsters/enemy_1333_cbbgen/enemy_1333_cbbgen33.atlas", "images/monsters/enemy_1333_cbbgen/enemy_1333_cbbgen33.json", 1.5F);
+        loadAnimation("resources/rhinemod/images/monsters/enemy_1333_cbbgen/enemy_1333_cbbgen33.atlas", "resources/rhinemod/images/monsters/enemy_1333_cbbgen/enemy_1333_cbbgen33.json", 1.5F);
         state.setAnimation(0, "Idle", true);
         flipHorizontal = true;
     }

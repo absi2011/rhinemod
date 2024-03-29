@@ -20,8 +20,8 @@ public class Awaken extends CustomRelic {
     public static final RelicStrings relicStrings = CardCrawlGame.languagePack.getRelicStrings(ID);
     public static final String NAME = relicStrings.NAME;
     public static final String[] DESCRIPTIONS = relicStrings.DESCRIPTIONS;
-    public static final Texture IMG = new Texture("rhinemod/images/relics/Awaken.png");
-    public static final Texture IMG_OUTLINE = new Texture("rhinemod/images/relics/Awaken_p.png");
+    public static final Texture IMG = new Texture("resources/rhinemod/images/relics/Awaken.png");
+    public static final Texture IMG_OUTLINE = new Texture("resources/rhinemod/images/relics/Awaken_p.png");
     public static final int TOTAL_DMG = 20;
     public Awaken() {
         super(ID, IMG, IMG_OUTLINE, RelicTier.RARE, LandingSound.HEAVY);

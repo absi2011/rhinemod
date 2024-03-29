@@ -18,7 +18,7 @@ public class HallOfStasis extends AbstractRhineCard {
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String IMG = "images/cards/HallOfStasis.png";
+    public static final String IMG = "resources/rhinemod/images/cards/HallOfStasis.png";
     public static final int COST = 1;
     public static final int LOSS_TIME = 10;
     public static final int UPGRADE_PLUS_TIME = 5;

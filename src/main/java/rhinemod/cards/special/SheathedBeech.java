@@ -15,7 +15,7 @@ public class SheathedBeech extends CustomCard {
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String IMG_PATH = "images/cards/SheathedBeech.png";
+    public static final String IMG_PATH = "resources/rhinemod/images/cards/SheathedBeech.png";
     private static final int COST = 0;
     private static final int BLOCK_AMT = 2;
     private static final int UPGRADE_PLUS_BLOCK = 1;

@@ -20,7 +20,7 @@ public class HighEfficiencyFreezingModule extends AbstractRhineCard {
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String IMG = "images/cards/HighEfficiencyFreezingModule.png";
+    public static final String IMG = "resources/rhinemod/images/cards/HighEfficiencyFreezingModule.png";
     public static final int COST = 1;
     public static final int DAMAGE_AMT = 7;
     public static final int EXTRA_DMG = 10;

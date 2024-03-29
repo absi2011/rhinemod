@@ -18,7 +18,7 @@ public class UnusedBoxingGloves extends AbstractRhineCard {
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String IMG = "rhinemod/images/cards/UnusedBoxingGloves.png";
+    public static final String IMG = "resources/rhinemod/images/cards/UnusedBoxingGloves.png";
     public static final int COST = 1;
     public static final int ATTACK_DMG = 2;
     public static final int ATTACK_TIMES = 3;

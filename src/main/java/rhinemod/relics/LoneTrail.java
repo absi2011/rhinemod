@@ -12,8 +12,8 @@ public class LoneTrail extends CustomRelic {
     public static final RelicStrings relicStrings = CardCrawlGame.languagePack.getRelicStrings(ID);
     public static final String NAME = relicStrings.NAME;
     public static final String[] DESCRIPTIONS = relicStrings.DESCRIPTIONS;
-    public static final Texture IMG = new Texture("rhinemod/images/relics/LoneTrail.png");
-    public static final Texture IMG_OUTLINE = new Texture("rhinemod/images/relics/LoneTrail_p.png");
+    public static final Texture IMG = new Texture("resources/rhinemod/images/relics/LoneTrail.png");
+    public static final Texture IMG_OUTLINE = new Texture("resources/rhinemod/images/relics/LoneTrail_p.png");
     public LoneTrail() {
         super(ID, IMG, IMG_OUTLINE, RelicTier.SPECIAL, LandingSound.MAGICAL);
     }

@@ -30,7 +30,7 @@ public class TrimountsCityGuard extends CustomMonster {
         else {
             damage.add(new DamageInfo(this, 4));
         }
-        loadAnimation("images/monsters/enemy_2056_smedzi/enemy_2056_smedzi.atlas", "images/monsters/enemy_2056_smedzi/enemy_2056_smedzi33.json", 2F);
+        loadAnimation("resources/rhinemod/images/monsters/enemy_2056_smedzi/enemy_2056_smedzi.atlas", "resources/rhinemod/images/monsters/enemy_2056_smedzi/enemy_2056_smedzi33.json", 2F);
         this.stateData.setMix("Idle", "Move_Begin", 0.1F);
         this.state.setAnimation(0, "Move_End", false);
         this.state.addAnimation(0, "Idle", true, 0.0F);

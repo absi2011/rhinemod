@@ -15,7 +15,7 @@ public class SkyEvent extends AbstractImageEvent {
     public static final String[] OPTIONS = eventStrings.OPTIONS;
 
     public SkyEvent() {
-        super(NAME, DESCRIPTIONS[0], "images/ui/SkyScene/scene.png");
+        super(NAME, DESCRIPTIONS[0], "resources/rhinemod/images/ui/SkyScene/scene.png");
         imageEventText.setDialogOption(OPTIONS[0]);
     }
 

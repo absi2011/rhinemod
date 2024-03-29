@@ -40,7 +40,7 @@ public class Crossroads extends CustomMonster {
             blockNum = 6;
             strNum = 1;
         }
-        loadAnimation("images/monsters/enemy_1331_cbsisy/enemy_1331_cbsisy33.atlas", "images/monsters/enemy_1331_cbsisy/enemy_1331_cbsisy33.json", 2F);
+        loadAnimation("resources/rhinemod/images/monsters/enemy_1331_cbsisy/enemy_1331_cbsisy33.atlas", "resources/rhinemod/images/monsters/enemy_1331_cbsisy/enemy_1331_cbsisy33.json", 2F);
         state.setAnimation(0, "Idle", true);
         flipHorizontal = true;
     }

@@ -54,17 +54,17 @@ import static rhinemod.patches.AbstractCardEnum.RHINE_MATTE;
 public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, EditKeywordsSubscriber, EditRelicsSubscriber, EditStringsSubscriber, PostBattleSubscriber, PostInitializeSubscriber, PostDungeonInitializeSubscriber, AddCustomModeModsSubscriber, OnStartBattleSubscriber, OnPlayerLoseBlockSubscriber, RelicGetSubscriber {
 
     public static final Color RhineMatte = CardHelper.getColor(188, 187, 145);
-    private static final String attackCard = "rhinemod/images/512/bg_attack_rhine.png";
-    private static final String skillCard = "rhinemod/images/512/bg_skill_rhine.png";
-    private static final String powerCard = "rhinemod/images/512/bg_power_rhine.png";
-    private static final String energyOrb = "rhinemod/images/512/card_nearl_orb.png";
-    private static final String attackCardPortrait = "rhinemod/images/1024/bg_attack_rhine.png";
-    private static final String skillCardPortrait = "rhinemod/images/1024/bg_skill_rhine.png";
-    private static final String powerCardPortrait = "rhinemod/images/1024/bg_power_rhine.png";
-    private static final String energyOrbPortrait = "rhinemod/images/1024/card_nearl_orb.png";
-    private static final String charButton = "rhinemod/images/charSelect/button.png";
-    private static final String charPortrait = "rhinemod/images/charSelect/portrait.png";
-    private static final String miniManaSymbol = "rhinemod/images/manaSymbol.png";
+    private static final String attackCard = "resources/rhinemod/images/512/bg_attack_rhine.png";
+    private static final String skillCard = "resources/rhinemod/images/512/bg_skill_rhine.png";
+    private static final String powerCard = "resources/rhinemod/images/512/bg_power_rhine.png";
+    private static final String energyOrb = "resources/rhinemod/images/512/card_nearl_orb.png";
+    private static final String attackCardPortrait = "resources/rhinemod/images/1024/bg_attack_rhine.png";
+    private static final String skillCardPortrait = "resources/rhinemod/images/1024/bg_skill_rhine.png";
+    private static final String powerCardPortrait = "resources/rhinemod/images/1024/bg_power_rhine.png";
+    private static final String energyOrbPortrait = "resources/rhinemod/images/1024/card_nearl_orb.png";
+    private static final String charButton = "resources/rhinemod/images/charSelect/button.png";
+    private static final String charPortrait = "resources/rhinemod/images/charSelect/portrait.png";
+    private static final String miniManaSymbol = "resources/rhinemod/images/manaSymbol.png";
     private static final Logger logger = LogManager.getLogger(RhineMod.class.getName());
 
     private static final float NewMonsterMulti = 4.0F;
@@ -251,7 +251,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
     public void receiveEditKeywords() {
         Gson gson = new Gson();
 
-        String keywordStrings = Gdx.files.internal("rhinemod/strings/" + getLang() + "/keywords.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        String keywordStrings = Gdx.files.internal("resources/rhinemod/strings/" + getLang() + "/keywords.json").readString(String.valueOf(StandardCharsets.UTF_8));
         Type typeToken = new TypeToken<Map<String, Keyword>>() {}.getType();
 
         Map<String, Keyword> keywords = gson.fromJson(keywordStrings, typeToken);
@@ -286,21 +286,21 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
     @Override
     public void receiveEditStrings() {
         String lang = getLang();
-        String cardStrings = Gdx.files.internal("rhinemod/strings/" + lang + "/cards.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        String cardStrings = Gdx.files.internal("resources/rhinemod/strings/" + lang + "/cards.json").readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(CardStrings.class, cardStrings);
-        String characterStrings = Gdx.files.internal("rhinemod/strings/" + lang + "/character.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        String characterStrings = Gdx.files.internal("resources/rhinemod/strings/" + lang + "/character.json").readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(CharacterStrings.class, characterStrings);
-        String powerStrings = Gdx.files.internal("rhinemod/strings/" + lang + "/powers.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        String powerStrings = Gdx.files.internal("resources/rhinemod/strings/" + lang + "/powers.json").readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(PowerStrings.class, powerStrings);
-        String relicStrings = Gdx.files.internal("rhinemod/strings/" + lang + "/relics.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        String relicStrings = Gdx.files.internal("resources/rhinemod/strings/" + lang + "/relics.json").readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
-        String eventStrings = Gdx.files.internal("rhinemod/strings/" + lang + "/events.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        String eventStrings = Gdx.files.internal("resources/rhinemod/strings/" + lang + "/events.json").readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(EventStrings.class, eventStrings);
-        String monsterStrings = Gdx.files.internal("rhinemod/strings/" + lang + "/monsters.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        String monsterStrings = Gdx.files.internal("resources/rhinemod/strings/" + lang + "/monsters.json").readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(MonsterStrings.class, monsterStrings);
-        String uiStrings = Gdx.files.internal("rhinemod/strings/" + lang + "/ui.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        String uiStrings = Gdx.files.internal("resources/rhinemod/strings/" + lang + "/ui.json").readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(UIStrings.class, uiStrings);
-        String potionStrings = Gdx.files.internal("rhinemod/strings/" + lang + "/potions.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        String potionStrings = Gdx.files.internal("resources/rhinemod/strings/" + lang + "/potions.json").readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(PotionStrings.class, potionStrings);
     }
 

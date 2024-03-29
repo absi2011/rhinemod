@@ -14,7 +14,7 @@ public class GravityDown extends CustomCard {
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String IMG_PATH = "images/cards/GravityDown.png";
+    public static final String IMG_PATH = "resources/rhinemod/images/cards/GravityDown.png";
 
     public GravityDown() {
         super(ID, NAME, IMG_PATH, -2, DESCRIPTION,

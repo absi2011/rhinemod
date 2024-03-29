@@ -37,7 +37,7 @@ public class R31HeavyPowerArmor extends CustomMonster {
             damage.add(new DamageInfo(this, 3));
             damage.add(new DamageInfo(this, 20));
         }
-        loadAnimation("images/monsters/enemy_1255_lybgpa/enemy_1255_lybgpa33.atlas", "images/monsters/enemy_1255_lybgpa/enemy_1255_lybgpa33.json", 1.5F);
+        loadAnimation("resources/rhinemod/images/monsters/enemy_1255_lybgpa/enemy_1255_lybgpa33.atlas", "resources/rhinemod/images/monsters/enemy_1255_lybgpa/enemy_1255_lybgpa33.json", 1.5F);
         state.setAnimation(0, "Idle", true);
         flipHorizontal = true;
     }

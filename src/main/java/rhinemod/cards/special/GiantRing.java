@@ -13,7 +13,7 @@ public class GiantRing extends CustomCard {
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String IMG_PATH = "images/cards/GiantRing.png";
+    public static final String IMG_PATH = "resources/rhinemod/images/cards/GiantRing.png";
     private static final int COST = 0;
 
     public GiantRing() {

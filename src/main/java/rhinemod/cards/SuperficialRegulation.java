@@ -17,7 +17,7 @@ public class SuperficialRegulation extends AbstractRhineCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG = "rhinemod/images/cards/SuperficialRegulation.png";
+    public static final String IMG = "resources/rhinemod/images/cards/SuperficialRegulation.png";
     public static final int COST = 1;
     public SuperficialRegulation() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
