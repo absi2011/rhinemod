@@ -43,7 +43,7 @@ public class Stargate extends CustomRelic implements ClickableRelic {
         if (counter <= 0) {
             return;
         }
-        if (!isObtained || AbstractDungeon.screen == AbstractDungeon.CurrentScreen.SETTINGS || AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
+        if (!isObtained || AbstractDungeon.screen == AbstractDungeon.CurrentScreen.SETTINGS || AbstractDungeon.getCurrRoom().phase != AbstractRoom.RoomPhase.COMPLETE) {
             return;
         }
         if (AbstractDungeon.currMapNode == null) {

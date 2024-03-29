@@ -20,7 +20,7 @@ public class IcefieldsAdventure extends AbstractRhineCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG = "images/cards/IcefieldsAdventure.png";
+    public static final String IMG = "rhinemod/images/cards/IcefieldsAdventure.png";
     public static final int COST = 1;
     public static final int BLOCK_AMT = 7;
     public static final int RESEARCH_AMT = 1;

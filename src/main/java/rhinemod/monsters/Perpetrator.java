@@ -87,7 +87,7 @@ public class Perpetrator extends CustomMonster {
     @Override
     public void damage(DamageInfo info) {
         super.damage(info);
-        if (lastDamageTaken >= 15) {
+        if ((lastDamageTaken >= 15) && (info.type == DamageInfo.DamageType.NORMAL)) {
             addToBot(new ApplyPowerAction(this, this, new Stunned(this)));
         }
     }

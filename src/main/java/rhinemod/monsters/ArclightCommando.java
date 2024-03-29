@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.powers.FlightPower;
+import rhinemod.powers.Stunned;
 
 public class ArclightCommando extends CustomMonster {
     public static final String ID = "rhinemod:ArclightCommando";
@@ -99,6 +100,15 @@ public class ArclightCommando extends CustomMonster {
         }
         else {
             setMove((byte)3, Intent.ATTACK, damage.get(0).base);
+        }
+    }
+
+    // TODO: 眩晕机制全局后删掉这一部分
+    @Override
+    public void damage(DamageInfo info) {
+        super.damage(info);
+        if ((lastDamageTaken >= 15) && (info.type == DamageInfo.DamageType.NORMAL)) {
+            addToBot(new ApplyPowerAction(this, this, new Stunned(this)));
         }
     }
 

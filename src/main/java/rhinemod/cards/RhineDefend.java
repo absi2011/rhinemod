@@ -21,7 +21,7 @@ public class RhineDefend extends AbstractRhineCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
-    public static final String IMG = "images/cards/RhineDefend.png";
+    public static final String IMG = "rhinemod/images/cards/RhineDefend.png";
     public static final int COST = 1;
     public static final int BLOCK_AMT = 5;
     public static final int[] UPGRADE_PLUS_BLOCK = {3, 3, 2, 0};

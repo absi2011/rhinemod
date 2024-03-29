@@ -20,7 +20,7 @@ public class DangerousEntityRemoval extends AbstractRhineCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
-    public static final String IMG = "images/cards/DangerousEntityRemoval.png";
+    public static final String IMG = "rhinemod/images/cards/DangerousEntityRemoval.png";
     public static final int COST = 1;
     public static final int ATTACK_DMG = 7;
     public static final int VULNERABLE_AMT = 1;

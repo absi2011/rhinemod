@@ -19,7 +19,7 @@ public class TransmitterResearch extends AbstractRhineCard {
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String IMG = "images/cards/TransmitterResearch.png";
+    public static final String IMG = "rhinemod/images/cards/TransmitterResearch.png";
     public static final int COST = 1;
     public static final int BASIC_RESEARCH = 7;
     public static final int BASIC_CARDS = 2;

@@ -15,8 +15,8 @@ public class ThreeDimensionArtDisplay extends CustomRelic {
     public static final RelicStrings relicStrings = CardCrawlGame.languagePack.getRelicStrings(ID);
     public static final String NAME = relicStrings.NAME;
     public static final String[] DESCRIPTIONS = relicStrings.DESCRIPTIONS;
-    public static final Texture IMG = new Texture("images/relics/3DArtDisplay.png");
-    public static final Texture IMG_OUTLINE = new Texture("images/relics/3DArtDisplay.png");
+    public static final Texture IMG = new Texture("rhinemod/images/relics/3DArtDisplay.png");
+    public static final Texture IMG_OUTLINE = new Texture("rhinemod/images/relics/3DArtDisplay.png");
     public static final int IMMEDIATE_HEAL = 14;
     public static final int BATTLE_HEAL = 2;
     public ThreeDimensionArtDisplay() {

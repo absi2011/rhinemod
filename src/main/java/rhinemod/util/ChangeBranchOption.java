@@ -23,7 +23,7 @@ public class ChangeBranchOption extends AbstractCampfireOption {
 
     public void updateUsability(boolean canUse) {
         description = canUse? TEXT[1] : TEXT[2];
-        img = ImageMaster.loadImage("images/ui/ChangeBranch.png");
+        img = ImageMaster.loadImage("rhinemod/images/ui/ChangeBranch.png");
     }
 
     public void useOption() {

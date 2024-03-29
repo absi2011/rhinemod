@@ -1,6 +1,7 @@
 package rhinemod.powers;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -13,6 +14,7 @@ public class DoubleNonSmash extends AbstractPower {
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
+    public static final String NotTrigger = "rhinemod:Double This Damage!";
     public DoubleNonSmash(AbstractCreature owner) {
         this.ID = POWER_ID;
         this.name = NAME;
@@ -36,14 +38,13 @@ public class DoubleNonSmash extends AbstractPower {
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
         //TODO： 这个15需要联动一下重击
-        if (damageAmount < 15 || info.type != DamageInfo.DamageType.NORMAL) {
+        if ((damageAmount > 0) && (damageAmount < 15 || info.type != DamageInfo.DamageType.NORMAL) && ((info.name == null) || (!info.name.equals(NotTrigger)))) {
             this.flash();
-            return damageAmount * 2;
+            DamageInfo newInfo = new DamageInfo(owner, damageAmount, DamageInfo.DamageType.THORNS);
+            newInfo.name = NotTrigger;
+            addToBot(new DamageAction(owner, newInfo));
         }
-        else
-        {
-            return  damageAmount;
-        }
+        return  damageAmount;
     }
 
 

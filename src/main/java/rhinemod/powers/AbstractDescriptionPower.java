@@ -11,8 +11,8 @@ public class AbstractDescriptionPower extends AbstractPower {
     public final String superScript;
     public AbstractDescriptionPower(String superScript) {
         this.superScript = superScript;
-        region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("images/powers/PlanetaryDebris 84.png"), 0, 0, 84, 84);
-        region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("images/powers/PlanetaryDebris 32.png"), 0, 0, 32, 32);
+        region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("rhinemod/images/powers/PlanetaryDebris 84.png"), 0, 0, 84, 84);
+        region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("rhinemod/images/powers/PlanetaryDebris 32.png"), 0, 0, 32, 32);
     }
 
     @Override

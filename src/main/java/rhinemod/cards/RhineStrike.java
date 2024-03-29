@@ -22,7 +22,7 @@ public class RhineStrike extends AbstractRhineCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
-    public static final String IMG = "images/cards/RhineStrike.png";
+    public static final String IMG = "rhinemod/images/cards/RhineStrike.png";
     public static final int COST = 1;
     public static final int ATTACK_DMG = 6;
     public static final int[] UPGRADE_PLUS_DMG = {3, 4, 3, 2};

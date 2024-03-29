@@ -17,7 +17,7 @@ public class Destiny extends AbstractRhineCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG = "images/cards/Destiny.png";
+    public static final String IMG = "rhinemod/images/cards/Destiny.png";
     public static final int COST = 0;
     public Destiny() {
         super(ID, NAME, IMG, COST, DESCRIPTION,

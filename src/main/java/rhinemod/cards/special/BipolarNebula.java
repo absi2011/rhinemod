@@ -13,7 +13,7 @@ public class BipolarNebula extends CustomCard {
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String IMG_PATH = "images/cards/BipolarNebula.png";
+    public static final String IMG_PATH = "rhinemod/images/cards/BipolarNebula.png";
     private static final int COST = 0;
 
     public BipolarNebula() {

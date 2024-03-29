@@ -27,7 +27,7 @@ public class TechnologyRisingStar extends AbstractRhineCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
-    public static final String IMG = "images/cards/TechnologyRisingStar.png";
+    public static final String IMG = "rhinemod/images/cards/TechnologyRisingStar.png";
     public static final int COST = 1;
     public static final int CARD_DRAW = 2;
     public static final int UPGRADE_PLUS_DRAW = 1;

@@ -20,8 +20,8 @@ public class Stunned extends AbstractPower {
         this.name = NAME;
         this.type = PowerType.DEBUFF;
         this.owner = owner;
-        region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("images/powers/Stunned 128.png"), 0, 0, 128, 128);
-        region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("images/powers/Stunned 48.png"), 0, 0, 48, 48);
+        region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("rhinemod/images/powers/Stunned 128.png"), 0, 0, 128, 128);
+        region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("rhinemod/images/powers/Stunned 48.png"), 0, 0, 48, 48);
         this.priority = 100;
         updateDescription();
     }

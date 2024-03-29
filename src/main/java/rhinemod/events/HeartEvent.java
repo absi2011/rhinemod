@@ -3,6 +3,7 @@ package rhinemod.events;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.AbstractEvent;
 import com.megacrit.cardcrawl.events.AbstractImageEvent;
@@ -11,8 +12,10 @@ import com.megacrit.cardcrawl.events.city.Colosseum;
 import com.megacrit.cardcrawl.helpers.MonsterHelper;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.combat.StrikeEffect;
+import rhinemod.characters.RhineLab;
 import rhinemod.util.TheSky;
 
 public class HeartEvent extends AbstractEvent {
@@ -23,6 +26,7 @@ public class HeartEvent extends AbstractEvent {
     public static final String[] OPTIONS = eventStrings.OPTIONS;
     public static final String ENC_NAME = "The Heart";
     private int screenNum = 0;
+    private boolean isKeyGet;
     public HeartEvent() {
         this.body = DESCRIPTIONS[0];
         if (AbstractDungeon.ascensionLevel == 20)
@@ -38,7 +42,11 @@ public class HeartEvent extends AbstractEvent {
         this.hasDialog = true;
         this.hasFocus = true;
         noCardsInRewards = true;
-        AbstractDungeon.getCurrRoom().rewardAllowed = false;
+        AbstractDungeon.getCurrRoom().rewards.add(new RewardItem());
+        if (!Settings.hasEmeraldKey || !Settings.hasRubyKey || !Settings.hasSapphireKey) {
+            AbstractDungeon.getCurrRoom().rewardAllowed = false;
+            isKeyGet = false;
+        }
         AbstractDungeon.getCurrRoom().monsters = MonsterHelper.getEncounter(ENC_NAME);
     }
     public void buttonEffect(int buttonPressed) {
@@ -72,7 +80,6 @@ public class HeartEvent extends AbstractEvent {
         }
         else {
             screenNum = 10;
-            // A20, Fight!
             this.enterCombat();
             AbstractDungeon.lastCombatMetricKey = ENC_NAME;
         }

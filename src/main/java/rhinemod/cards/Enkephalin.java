@@ -16,7 +16,7 @@ public class Enkephalin extends AbstractRhineCard {
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String IMG = "images/cards/Enkephalin.png";
+    public static final String IMG = "rhinemod/images/cards/Enkephalin.png";
     public static final int COST = 2;
     public static final int UPGRADE_COST = 1;
     public Enkephalin() {

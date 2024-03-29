@@ -24,8 +24,8 @@ public class StarRing extends AbstractMonster {
     public static final String ID = "rhinemod:StarRing";
     public static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
     public static final String[] TEXT = uiStrings.TEXT;
-    public static final Texture img = new Texture("images/char/StarRing.png");
-    public static final String IMG = "images/char/StarRing.png";
+    public static final Texture img = new Texture("rhinemod/images/char/StarRing.png");
+    public static final String IMG = "rhinemod/images/char/StarRing.png";
     public int blastDamage;
     public float hoverTimer;
     public Color nameColor;

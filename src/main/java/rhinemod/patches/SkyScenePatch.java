@@ -59,6 +59,8 @@ public class SkyScenePatch {
                 public void edit(MethodCall m) throws CannotCompileException {
                     if (m.getClassName().equals(String.class.getName()) && m.getMethodName().equals("equals")) {
                         m.replace("$_ = ($0.equals(\"rhinemod:TheSky\") || $proceed($$));");
+                        // 这里这个函数应该改成当前y==3。
+                        // AbstractDungeon.id.equals("rhinemod:TheSky") && AbstractDungeon.getCurrMapNode().y == 3
                     }
                 }
             };
@@ -75,7 +77,7 @@ public class SkyScenePatch {
                     if (m.getClassName().equals(String.class.getName()) && m.getMethodName().equals("equals")) {
                         m.replace("$_ = ($0.equals(\"rhinemod:TheSky\") || $proceed($$));");
                     }
-                    // 这里的TheEnding的size是对的，你的size是错的（地图太大了）
+                    // 这里应该是Settings.MAP_DST_Y * 5.0F - 1380.0F * Settings.scale，能不能搞个PrePatch
                 }
             };
         }

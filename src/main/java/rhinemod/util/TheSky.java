@@ -76,13 +76,12 @@ public class TheSky extends AbstractDungeon {
         eventNode.room = new EventRoom();
         MapRoomNode bossNode = new MapRoomNode(3, 4);
         bossNode.room = new MonsterRoomBoss();
-        bossNode.room.rewardAllowed = false;
         MapRoomNode victoryNode = new MapRoomNode(3, 5);
         victoryNode.room = new TrueVictoryRoom();
         connectNode(restNode, shopNode);
         connectNode(shopNode, enemyNode);
         connectNode(enemyNode, eventNode);
-        connectNode(eventNode, bossNode);
+        connectNode(eventNode, bossNode, true);
         col.add(restNode);
         col.add(shopNode);
         col.add(enemyNode);
@@ -106,7 +105,10 @@ public class TheSky extends AbstractDungeon {
     }
 
     private void connectNode(MapRoomNode src, MapRoomNode dst) {
-        src.addEdge(new MapEdge(src.x, src.y, src.offsetX, src.offsetY, dst.x, dst.y, dst.offsetX, dst.offsetY, false));
+        connectNode(src, dst, false);
+    }
+    private void connectNode(MapRoomNode src, MapRoomNode dst, boolean isBoss) {
+        src.addEdge(new MapEdge(src.x, src.y, src.offsetX, src.offsetY, dst.x, dst.y, dst.offsetX, dst.offsetY, isBoss));
     }
 
     @Override

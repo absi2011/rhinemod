@@ -18,11 +18,11 @@ import rhinemod.powers.SolidifyPower;
 import java.util.ArrayList;
 
 public class GlobalAttributes {
-    public static final String UP_IMG = "images/ui/gravityUp.png";
-    public static final String DOWN_IMG = "images/ui/gravityDown.png";
-    public static final String NONE_IMG = "images/ui/gravityNone.png";
-    public static final String CA_IMG = "images/ui/calcium.png";
-    public static final String FS_IMG = "images/ui/flowingShape.png";
+    public static final String UP_IMG = "rhinemod/images/ui/gravityUp.png";
+    public static final String DOWN_IMG = "rhinemod/images/ui/gravityDown.png";
+    public static final String NONE_IMG = "rhinemod/images/ui/gravityNone.png";
+    public static final String CA_IMG = "rhinemod/images/ui/calcium.png";
+    public static final String FS_IMG = "rhinemod/images/ui/flowingShape.png";
     public enum GravityDirection {
         UP, DOWN, NONE, UNKNOWN
     }
