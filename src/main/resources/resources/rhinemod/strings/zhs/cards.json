@@ -194,6 +194,11 @@
         "DESCRIPTION": "你每 消耗 过一张 *出格 ，造成 !D! 点伤害。 NL 消耗 。",
         "UPGRADE_DESCRIPTION": ""
     },
+    "rhinemod:ResourceEconomization": {
+        "NAME": "开源节流",
+        "DESCRIPTION": "将你所有的 rhinemod:流形 转化为等量的 [B] 。 NL 消耗 。",
+        "UPGRADE_DESCRIPTION": "将你所有的 rhinemod:流形 转化为等量的 [B] 。"
+    },
 
     "rhinemod:Calcification": {
         "NAME": "钙质化",

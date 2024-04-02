@@ -215,6 +215,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new EcologicalInteraction()); // 生态耦合
         BaseMod.addCard(new QuicksandGeneration()); // 流沙区域生成
         BaseMod.addCard(new Memory()); // 回忆
+        BaseMod.addCard(new ResourceEconomization()); // 开源节流
 
         // Rare.
         BaseMod.addCard(new Calcification()); // 钙质化
