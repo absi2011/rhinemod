@@ -240,6 +240,8 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new Sarracenia()); // 雪瓶子草
         BaseMod.addCard(new SheathedBeech()); // 鞘叶榉
         BaseMod.addCard(new PaleFir()); // 淡杉
+
+        BaseMod.addCard(new AttackInsteadOfDefend()); // 以攻代守
     }
 
     @Override
