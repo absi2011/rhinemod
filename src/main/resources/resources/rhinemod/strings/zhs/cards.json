@@ -168,11 +168,11 @@
     },
     "rhinemod:TwoToOne": {
         "NAME": "二比一",
-        "DESCRIPTION": "造成 !D! 点伤害。只有你的手牌中没有任何一个倾向的卡牌数达到总数的一半时才能打出。",
+        "DESCRIPTION": "造成 !D! 点伤害。只有你的手牌中没有任何一个倾向的卡牌数超过总数的一半时才能打出。",
         "UPGRADE_DESCRIPTION": "",
         "EXTENDED_DESCRIPTION": [
             "一比二",
-            "造成 !D! 点伤害。只有你的手牌中存在一个倾向的卡牌数达到总数的一半时才能打出。"
+            "造成 !D! 点伤害。只有你的手牌中存在一个倾向的卡牌数超过总数的一半时才能打出。"
         ]
     },
     "rhinemod:EcologicalInteraction": {
@@ -233,6 +233,11 @@
     "rhinemod:DancingInThrees": {
         "NAME": "三个人的舞",
         "DESCRIPTION": "如果你本回合打出过所有倾向的牌，获得 !M! 点 rhinemod:钙质粒子 ， rhinemod:科研进度 ， rhinemod:流形 。",
+        "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:HAMHRR": {
+        "NAME": "聚焦发生器",
+        "DESCRIPTION": "造成 !D! 点伤害。 NL 如果本次伤害不是重击，再造成 !M! 点伤害。",
         "UPGRADE_DESCRIPTION": ""
     },
 
@@ -320,5 +325,9 @@
         "NAME": "淡杉",
         "DESCRIPTION": "获得 !B! 点 格挡 ，你每已损失 5 点生命值，额外获得 !M! 点。 NL 消耗 。",
         "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:AttackInsteadOfDefend": {
+        "NAME": "以攻代守",
+        "DESCRIPTION": "每当你造成小于等于 !M! 点 未被格挡的攻击伤害时，将伤害提升为 !M! 。"
     }
 }

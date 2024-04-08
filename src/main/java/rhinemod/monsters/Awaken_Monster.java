@@ -98,6 +98,7 @@ public class Awaken_Monster extends CustomMonster {
         {
             addToBot(new ApplyPowerAction(this, this, new Journey(this, stage2Add)));
             isStage2 = true;
+            notTriggered = false;
         }
         getMove(0);
     }

@@ -24,7 +24,7 @@ public class Memory extends AbstractRhineCard {
     public static final String IMG = "resources/rhinemod/images/cards/SHAFT.png";
     public static final int COST = 0;
     public static final int ATTACK_DMG = 5;
-    public static final int UPGRADE_PLUS_DMG = 1;
+    public static final int UPGRADE_PLUS_DMG = 2;
     public Memory() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.RHINE_MATTE,

@@ -42,7 +42,7 @@ public class TwoToOne extends AbstractRhineCard {
             else cnt[0]++;
         boolean hasHalf = false;
         for (int i = 0; i < 4; i++)
-            if (cnt[i] * 2 >= AbstractDungeon.player.hand.group.size()) {
+            if (cnt[i] * 2 > AbstractDungeon.player.hand.group.size()) {
                 hasHalf = true;
                 break;
             }

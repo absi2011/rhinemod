@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.combat.StrikeEffect;
 import rhinemod.characters.RhineLab;
+import rhinemod.relics.LoneTrail;
 import rhinemod.util.TheSky;
 
 public class HeartEvent extends AbstractEvent {
@@ -43,9 +44,18 @@ public class HeartEvent extends AbstractEvent {
         this.hasFocus = true;
         noCardsInRewards = true;
         AbstractDungeon.getCurrRoom().rewards.add(new RewardItem());
+        AbstractDungeon.getCurrRoom().rewardAllowed = false;
         if (!Settings.hasEmeraldKey || !Settings.hasRubyKey || !Settings.hasSapphireKey) {
-            AbstractDungeon.getCurrRoom().rewardAllowed = false;
             isKeyGet = false;
+        }
+        if (isKeyGet) {
+            if (AbstractDungeon.player.hasRelic(LoneTrail.ID)) {
+                AbstractDungeon.player.getRelic(LoneTrail.ID).counter = 9;
+                // A15: counter = 6?
+            }
+            else {
+                // ?????
+            }
         }
         AbstractDungeon.getCurrRoom().monsters = MonsterHelper.getEncounter(ENC_NAME);
     }
