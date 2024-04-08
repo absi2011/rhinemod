@@ -226,6 +226,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new SuperficialRegulation()); // 浅层非熵适应
         BaseMod.addCard(new DancingInThrees()); // 三个人的舞
         BaseMod.addCard(new HAMHRR()); // 聚焦发生器
+        BaseMod.addCard(new StartUpCapital()); // 启动资金
 
         // Special
         BaseMod.addCard(new Unscrupulous()); // 出格

@@ -36,6 +36,7 @@ public class HAMHRR extends AbstractRhineCard {
                 CardRarity.RARE, CardTarget.ENEMY);
         baseDamage = damage = BASIC_DAMAGE;
         baseMagicNumber = magicNumber = EXTRA_DAMAGE;
+        realBranch = 2; // 先做成克总的牌吧
     }
 
     @Override

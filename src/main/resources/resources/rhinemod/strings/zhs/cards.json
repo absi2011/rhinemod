@@ -237,7 +237,12 @@
     },
     "rhinemod:HAMHRR": {
         "NAME": "聚焦发生器",
-        "DESCRIPTION": "造成 !D! 点伤害。 NL 如果本次伤害不是重击，再造成 !M! 点伤害。",
+        "DESCRIPTION": "造成 !D! 点伤害。 NL 如果本次伤害不是 rhinemod:重击 ，再造成 !M! 点伤害。",
+        "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:StartUpCapital": {
+        "NAME": "启动资金",
+        "DESCRIPTION": "固有 ， 消耗 。 NL 抽 !M! 张牌，获得 [E] [E] 。 NL 将 !rhinemod:M2! 张出格洗入你的弃牌堆。",
         "UPGRADE_DESCRIPTION": ""
     },
 

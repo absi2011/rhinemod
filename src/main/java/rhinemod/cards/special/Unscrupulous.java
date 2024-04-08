@@ -28,6 +28,22 @@ public class Unscrupulous extends CustomCard {
     }
 
     @Override
+    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
+        if (p.hasPower(PioneerPower.POWER_ID)) {
+            return super.canUse(p, m);
+        }
+        else if (!p.hasPower(ResearchProgress.POWER_ID)) {
+            return false;
+        }
+        else if (p.getPower(ResearchProgress.POWER_ID).amount + magicNumber < 0) {
+            return false;
+        }
+        else {
+            return super.canUse(p, m);
+        }
+    }
+
+    @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (!p.hasPower(PioneerPower.POWER_ID)) {
             addToBot(new ApplyPowerAction(p, p, new ResearchProgress(p, baseMagicNumber)));
