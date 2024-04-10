@@ -57,6 +57,13 @@
       " 层 #y水渍 。"
     ]
   },
+  "rhinemod:ReduceCalcium": {
+    "NAME": "钙质流失",
+    "DESCRIPTIONS": [
+      "回合开始时，额外减少 #b",
+      " 点 #y钙质粒子 。"
+    ]
+  },
   "rhinemod:DamageOutPower": {
     "NAME": "减免伤害",
     "DESCRIPTIONS": [
@@ -85,7 +92,7 @@
     "NAME": "干扰",
     "DESCRIPTIONS": [
       "回合开始时，将 #b",
-      " 张 #y虚空 加入你的弃牌堆。",
+      " 张 #y虚空 加入你的弃牌堆。"
     ]
   },
   "rhinemod:Fragile": {

@@ -91,6 +91,12 @@
         "DESCRIPTION": "对所有敌人造成 !D! 点伤害，如果目标有 rhinemod:水渍 ，则改为 !M! 点。",
         "UPGRADE_DESCRIPTION": ""
     },
+    "rhinemod:DependentVariable": {
+        "NAME": "因变量",
+        "DESCRIPTION": "造成等同于你 rhinemod:科研进度 层数的伤害。",
+        "UPGRADE_DESCRIPTION": " rhinemod:科研进度 ： !M! 。 NL 造成等同于你 rhinemod:科研进度 层数的伤害。",
+        "EXTENDED_DESCRIPTION" : [" NL （造成 !D! 点伤害。）"]
+    },
 
     "rhinemod:PlanetaryDebris": {
         "NAME": "行星碎屑",
@@ -196,13 +202,18 @@
     },
     "rhinemod:ResourceEconomization": {
         "NAME": "开源节流",
-        "DESCRIPTION": "将你所有的 rhinemod:流形 转化为等量的 [B] 。 NL 消耗 。",
-        "UPGRADE_DESCRIPTION": "将你所有的 rhinemod:流形 转化为等量的 [B] 。"
+        "DESCRIPTION": "将你所有的 rhinemod:流形 转化为等量的 [E] 。 NL 消耗 。",
+        "UPGRADE_DESCRIPTION": "将你所有的 rhinemod:流形 转化为等量的 [E] 。"
+    },
+    "rhinemod:FullBlow": {
+        "NAME": "全力一击",
+        "DESCRIPTION": "造成 !D! 点伤害。 NL 消耗所有的 rhinemod:钙质粒子 ，并额外造成 !M! 倍于该数量的伤害。",
+        "UPGRADE_DESCRIPTION": ""
     },
 
     "rhinemod:Calcification": {
         "NAME": "钙质化",
-        "DESCRIPTION": "rhinemod:钙质粒子 ： !M!",
+        "DESCRIPTION": "rhinemod:钙质粒子 ： !M! 。 NL 每回合开始时，额外减少 !rhinemod:M2! 点钙质粒子。",
         "UPGRADE_DESCRIPTION": ""
     },
     "rhinemod:Solidify": {

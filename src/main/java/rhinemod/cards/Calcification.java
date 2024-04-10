@@ -28,7 +28,7 @@ public class Calcification extends AbstractRhineCard {
                 CardType.POWER, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.RARE, CardTarget.SELF);
         magicNumber = baseMagicNumber = CA_ADD;
-        secondMagicNumber = CA_RED;
+        secondMagicNumber = baseSecondMagicNumber = CA_RED;
         realBranch = 1;
     }
 

@@ -3,6 +3,7 @@ package rhinemod;
 import basemod.*;
 import basemod.eventUtil.AddEventParams;
 import basemod.eventUtil.EventUtils;
+import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -196,6 +197,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new StarSculpt()); // 塑星
         BaseMod.addCard(new ShatteredVision()); // 破碎愿景
         BaseMod.addCard(new HighEfficiencyFreezingModule()); // 高效制冷模块
+        BaseMod.addCard(new DependentVariable()); // 因变量
 
         // Uncommon.
         BaseMod.addCard(new PlanetaryDebris()); // 行星碎屑
@@ -216,6 +218,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new QuicksandGeneration()); // 流沙区域生成
         BaseMod.addCard(new Memory()); // 回忆
         BaseMod.addCard(new ResourceEconomization()); // 开源节流
+        BaseMod.addCard(new FullBlow()); // 全力一击
 
         // Rare.
         BaseMod.addCard(new Calcification()); // 钙质化
@@ -228,7 +231,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new HAMHRR()); // 聚焦发生器
         BaseMod.addCard(new StartUpCapital()); // 启动资金
 
-        // Special
+        // Special.
         BaseMod.addCard(new Unscrupulous()); // 出格
         BaseMod.addCard(new Egotist()); // 自私者
         BaseMod.addCard(new Traitor()); // 背叛者
@@ -244,6 +247,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new SheathedBeech()); // 鞘叶榉
         BaseMod.addCard(new PaleFir()); // 淡杉
 
+        // Colourless Rare.
         BaseMod.addCard(new AttackInsteadOfDefend()); // 以攻代守
     }
 
@@ -276,16 +280,17 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         // uncommon.
 
         // rare.
-        BaseMod.addRelicToCustomPool(new Awaken(), RHINE_MATTE);
-        BaseMod.addRelicToCustomPool(new Stargate(), RHINE_MATTE);
+        BaseMod.addRelic(new Awaken(), RelicType.SHARED);
+        BaseMod.addRelic(new Stargate(), RelicType.SHARED);
 
         // boss.
 
         // event.
-        BaseMod.addRelicToCustomPool(new LoneTrail(), RHINE_MATTE);
+        BaseMod.addRelic(new LoneTrail(), RelicType.SHARED);
+        // BaseMod.addRelicToCustomPool(new ThreeDimensionArtDisplay(), RHINE_MATTE);
 
         // shop.
-        BaseMod.addRelicToCustomPool(new ThreeDimensionArtDisplay(), RHINE_MATTE);
+        BaseMod.addRelic(new ThreeDimensionArtDisplay(), RelicType.SHARED);
     }
 
     @Override

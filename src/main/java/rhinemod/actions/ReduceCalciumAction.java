@@ -17,7 +17,12 @@ public class ReduceCalciumAction extends AbstractGameAction {
     public void update() {
         if (!AbstractDungeon.player.hasPower(SolidifyPower.POWER_ID)) {
             if ((AbstractDungeon.player instanceof RhineLab))   // TODO: 这个不知道能不能给点兼容性
-                ((RhineLab) AbstractDungeon.player).globalAttributes.addCalcium(amount);
+            {
+                ((RhineLab) AbstractDungeon.player).globalAttributes.calciumNum -= amount;
+                if (((RhineLab) AbstractDungeon.player).globalAttributes.calciumNum < 0) {
+                    ((RhineLab) AbstractDungeon.player).globalAttributes.calciumNum = 0;
+                }
+            }
         }
         isDone = true;
     }

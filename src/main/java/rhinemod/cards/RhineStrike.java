@@ -26,7 +26,7 @@ public class RhineStrike extends AbstractRhineCard {
     public static final int COST = 1;
     public static final int ATTACK_DMG = 6;
     public static final int[] UPGRADE_PLUS_DMG = {3, 4, 3, 2};
-    public static final int UPGRADE_PLUS_WATER = 3;
+    public static final int UPGRADE_PLUS_WATER = 2;
     public RhineStrike() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.RHINE_MATTE,

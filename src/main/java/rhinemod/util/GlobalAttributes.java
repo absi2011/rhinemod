@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.helpers.TipHelper;
+import rhinemod.actions.ReduceCalciumAction;
 import rhinemod.powers.SolidifyPower;
 
 import java.util.ArrayList;
@@ -179,10 +180,7 @@ public class GlobalAttributes {
     }
 
     public void atStartOfTurn() {
-        if (!AbstractDungeon.player.hasPower(SolidifyPower.POWER_ID)) {
-            calciumNum -= calciumReduceNum;
-            if (calciumNum < 0) calciumNum = 0;
-        }
+        AbstractDungeon.actionManager.addToBottom(new ReduceCalciumAction(calciumReduceNum));
         gravity = GravityDirection.NONE;
         AbstractDungeon.onModifyPower();
     }
