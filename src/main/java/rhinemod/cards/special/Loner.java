@@ -18,17 +18,19 @@ public class Loner extends CustomCard {
     public static final String IMG_PATH = "resources/rhinemod/images/cards/Loner.png";
     private static final int COST = 1;
     private static final int UPGRADE_COST = 0;
+    private static final int DAMAGE_AMT = 50;
 
     public Loner() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.POWER, CardColor.COLORLESS,
                 CardRarity.SPECIAL, CardTarget.SELF);
+        magicNumber = baseMagicNumber = DAMAGE_AMT;
         isEthereal = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new LonerPower(p)));
+        addToBot(new ApplyPowerAction(p, p, new LonerPower(p, magicNumber)));
         if (p instanceof RhineLab) ((RhineLab) p).addPlayedSpecialCard("Loner");
     }
 

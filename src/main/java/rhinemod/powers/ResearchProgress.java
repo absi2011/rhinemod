@@ -14,7 +14,7 @@ public class ResearchProgress extends AbstractPower {
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    public ResearchProgress(AbstractCreature owner,int amount) {
+    public ResearchProgress(AbstractCreature owner, int amount) {
         this.ID = POWER_ID;
         this.name = NAME;
         this.type = PowerType.BUFF;

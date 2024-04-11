@@ -284,12 +284,12 @@
     },
     "rhinemod:Seeker": {
         "NAME": "求道者",
-        "DESCRIPTION": "。 NL 虚无 。",
+        "DESCRIPTION": "每当你获得 rhinemod:科研进度 时，额外获得等量的 格挡 。 NL 虚无 。",
         "UPGRADE_DESCRIPTION": ""
     },
     "rhinemod:Loner": {
         "NAME": "独行者",
-        "DESCRIPTION": "。 NL 虚无 。",
+        "DESCRIPTION": "当你手牌中仅有克丽斯腾倾向牌时，每打出一张牌，对所有敌人造成 !M! 点伤害。 NL 虚无 。",
         "UPGRADE_DESCRIPTION": ""
     },
     "rhinemod:Pioneer": {
