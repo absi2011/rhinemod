@@ -171,11 +171,11 @@
   },
   "rhinemod:SeekerPower": {
     "NAME": "求道者",
-    "DESCRIPTIONS": ["TODO"]
+    "DESCRIPTIONS": ["每当你获得 #y科研进度 时，额外获得等量的 #y格挡 。"]
   },
   "rhinemod:LonerPower": {
     "NAME": "独行者",
-    "DESCRIPTIONS": ["TODO"]
+    "DESCRIPTIONS": ["当你手牌中仅有克丽斯腾倾向牌时，每打出一张牌，对所有敌人造成 #b", " 点伤害。"]
   },
   "rhinemod:PioneerPower": {
     "NAME": "先驱者",
