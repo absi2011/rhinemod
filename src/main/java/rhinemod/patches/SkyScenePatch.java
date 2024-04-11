@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.ui.buttons.ProceedButton;
 import javassist.CannotCompileException;
 import javassist.CtBehavior;
 import javassist.expr.ExprEditor;
+import javassist.expr.FieldAccess;
 import javassist.expr.MethodCall;
 import rhinemod.events.SkyEvent;
 import rhinemod.monsters.StarPod;
@@ -57,15 +58,15 @@ public class SkyScenePatch {
         public static ExprEditor Instrument() {
             return new ExprEditor() {
                 @Override
-                public void edit(MethodCall m) throws CannotCompileException {
-                    if (m.getClassName().equals(String.class.getName()) && m.getMethodName().equals("equals"))
-                        m.replace("$_ = " + UpdatePatch.class.getName() + ".specialCheck($0) || $proceed($$);");
+                public void edit(FieldAccess m) throws CannotCompileException {
+                    if (m.getClassName().equals(Settings.class.getName()) && m.getFieldName().equals("isDebug"))
+                        m.replace("$_ = " + UpdatePatch.class.getName() + ".specialCheck() || $proceed($$);");
                 }
             };
         }
 
-        public static boolean specialCheck(String id) {
-            return id.equals("rhinemod:TheSky") && AbstractDungeon.getCurrMapNode().y == 3;
+        public static boolean specialCheck() {
+            return AbstractDungeon.id.equals("rhinemod:TheSky") && AbstractDungeon.getCurrMapNode().y == 3;
         }
     }
 
