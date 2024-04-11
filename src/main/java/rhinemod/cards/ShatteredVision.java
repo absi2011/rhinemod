@@ -108,6 +108,7 @@ public class ShatteredVision extends AbstractRhineCard {
                     upgradeName(3);
                     rawDescription = EXTENDED_DESCRIPTION[1];
                     magicNumber = baseMagicNumber = WATER_TOT;
+                    type = CardType.SKILL;
                     initializeDescription();
                 }
             });

@@ -219,6 +219,8 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new Memory()); // 回忆
         BaseMod.addCard(new ResourceEconomization()); // 开源节流
         BaseMod.addCard(new FullBlow()); // 全力一击
+        BaseMod.addCard(new PreviousCourse()); // 前置课程
+        BaseMod.addCard(new ResearchCapital()); // 科研经费
 
         // Rare.
         BaseMod.addCard(new Calcification()); // 钙质化
