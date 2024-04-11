@@ -22,10 +22,12 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
+import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import rhinemod.cards.*;
 import rhinemod.patches.*;
 import rhinemod.powers.InvisibleGlobalAttributes;
 import rhinemod.relics.LoneTrail;
+import rhinemod.relics.TITStudentIdCard;
 import rhinemod.util.GlobalAttributes;
 
 import java.util.ArrayList;
@@ -184,9 +186,8 @@ public class RhineLab extends CustomPlayer {
     @Override
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> ret = new ArrayList<>();
-        // TODO
-//        ret.add(CureUp.ID);
-//        UnlockTracker.markRelicAsSeen(CureUp.ID);
+        ret.add(TITStudentIdCard.ID);
+        UnlockTracker.markRelicAsSeen(TITStudentIdCard.ID);
         return ret;
     }
 

@@ -1,4 +1,9 @@
 {
+  "rhinemod:TITStudentIdCard": {
+    "NAME": "特里蒙理工学生卡",
+    "FLAVOR": "持此卡可进入特里蒙理工学院教学楼、实验楼。",
+    "DESCRIPTIONS": ["每当你从你卡组中移除卡牌时，随机升级一张卡牌。"]
+  },
   "rhinemod:Awaken": {
     "NAME": "“唤醒”",
     "FLAVOR": "向前或向后都是科技的方向，它不分正反，永远进步。",
@@ -12,7 +17,7 @@
   "rhinemod:Stargate": {
     "NAME": "星门",
     "FLAVOR": "无根花园圃泛起点点星光，圆环现出幽深空洞。",
-    "DESCRIPTIONS": ["不处于战斗时，右键此遗物前往商店。最多触发2次。", "星门的能量已经耗尽。"]
+    "DESCRIPTIONS": ["不处于战斗时，右键此遗物前往商店。最多触发 #b2 次。", "星门的能量已经耗尽。"]
   },
 
   "rhinemod:Melt": {

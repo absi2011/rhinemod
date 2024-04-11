@@ -274,6 +274,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
     @Override
     public void receiveEditRelics() {
         // starter.
+        BaseMod.addRelicToCustomPool(new TITStudentIdCard(), RHINE_MATTE);
 
         // common.
 
