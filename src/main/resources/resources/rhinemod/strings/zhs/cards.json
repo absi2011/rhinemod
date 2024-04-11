@@ -83,7 +83,7 @@
         "UPGRADE_DESCRIPTION": "",
         "EXTENDED_DESCRIPTION": [
             "对所有敌人造成 !D! 点伤害，将这张牌移出你的牌组。 NL 消耗 。",
-            "对所有敌人均匀给予共计 !M! 点 rhinemod:水渍 。"
+            "均匀给予所有角色共计 !M! 点 rhinemod:水渍 。 NL 你获得的 rhinemod:水渍 改为 格挡 。"
         ]
     },
     "rhinemod:HighEfficiencyFreezingModule": {
@@ -208,6 +208,16 @@
     "rhinemod:FullBlow": {
         "NAME": "全力一击",
         "DESCRIPTION": "造成 !D! 点伤害。 NL 消耗所有的 rhinemod:钙质粒子 ，并额外造成 !M! 倍于该数量的伤害。",
+        "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:PreviousCourse": {
+        "NAME": "前置课程",
+        "DESCRIPTION": " 固有 ， 消耗 。 NL 获得 !M! 点科研进度。",
+        "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:ResearchCapital": {
+        "NAME": "科研经费",
+        "DESCRIPTION": "造成 !D! 点伤害。 NL 你卡组中每有一张稀有卡，再重复一次。",
         "UPGRADE_DESCRIPTION": ""
     },
 
