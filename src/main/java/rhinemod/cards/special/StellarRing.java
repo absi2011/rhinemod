@@ -15,17 +15,20 @@ public class StellarRing extends CustomCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String IMG_PATH = "resources/rhinemod/images/cards/StellarRing.png";
     private static final int COST = 0;
+    private static final int RING_STR = 5;
+    private static final int UPGRADE_PLUS_STR = 2;
 
     public StellarRing() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, CardColor.COLORLESS,
                 CardRarity.SPECIAL, CardTarget.SELF);
+        magicNumber = baseMagicNumber = RING_STR;
         exhaust = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new SummonStarRingAction(15, 5));
+        addToBot(new SummonStarRingAction(15, magicNumber));
     }
 
     @Override
@@ -37,6 +40,7 @@ public class StellarRing extends CustomCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
+            upgradeMagicNumber(UPGRADE_PLUS_STR);
         }
     }
 }
