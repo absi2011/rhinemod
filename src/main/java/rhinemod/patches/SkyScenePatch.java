@@ -3,6 +3,7 @@ package rhinemod.patches;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.map.DungeonMap;
@@ -57,29 +58,25 @@ public class SkyScenePatch {
             return new ExprEditor() {
                 @Override
                 public void edit(MethodCall m) throws CannotCompileException {
-                    if (m.getClassName().equals(String.class.getName()) && m.getMethodName().equals("equals")) {
-                        m.replace("$_ = ($0.equals(\"rhinemod:TheSky\") || $proceed($$));");
-                        // 这里这个函数应该改成当前y==3。
-                        // AbstractDungeon.id.equals("rhinemod:TheSky") && AbstractDungeon.getCurrMapNode().y == 3
-                    }
+                    if (m.getClassName().equals(String.class.getName()) && m.getMethodName().equals("equals"))
+                        m.replace("$_ = " + UpdatePatch.class.getName() + ".specialCheck($0) || $proceed($$);");
                 }
             };
+        }
+
+        public static boolean specialCheck(String id) {
+            return id.equals("rhinemod:TheSky") && AbstractDungeon.getCurrMapNode().y == 3;
         }
     }
 
     @SpirePatch(clz = DungeonMap.class, method = "calculateMapSize")
     public static class CalculateMapSizePatch {
-        @SpireInstrumentPatch
-        public static ExprEditor Instrument() {
-            return new ExprEditor() {
-                @Override
-                public void edit(MethodCall m) throws CannotCompileException {
-                    if (m.getClassName().equals(String.class.getName()) && m.getMethodName().equals("equals")) {
-                        m.replace("$_ = ($0.equals(\"rhinemod:TheSky\") || $proceed($$));");
-                    }
-                    // 这里应该是Settings.MAP_DST_Y * 5.0F - 1380.0F * Settings.scale，能不能搞个PrePatch
-                }
-            };
+        @SpirePrefixPatch
+        public static SpireReturn<?> Prefix() {
+            if (AbstractDungeon.id.equals("rhinemod:TheSky"))
+                return SpireReturn.Return(Settings.MAP_DST_Y * 5.0F - 1380.0F * Settings.scale);
+            else
+                return SpireReturn.Continue();
         }
     }
 
