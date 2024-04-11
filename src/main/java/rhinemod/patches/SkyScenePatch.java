@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rooms.TrueVictoryRoom;
 import com.megacrit.cardcrawl.rooms.VictoryRoom;
 import com.megacrit.cardcrawl.saveAndContinue.SaveFile;
+import com.megacrit.cardcrawl.screens.DungeonMapScreen;
 import com.megacrit.cardcrawl.ui.buttons.ProceedButton;
 import javassist.CannotCompileException;
 import javassist.CtBehavior;
@@ -199,6 +200,23 @@ public class SkyScenePatch {
                 DungeonMap.boss = ImageMaster.loadImage("resources/rhinemod/images/ui/map/boss/heart.png");
                 DungeonMap.bossOutline = ImageMaster.loadImage("resources/rhinemod/images/ui/map/bossOutline/heart.png");
                 // TODO image
+            }
+        }
+    }
+
+    @SpirePatch(clz = DungeonMapScreen.class, method = "open")
+    public static class OpenDungeonMapPatch {
+        @SpireInsertPatch(locator = Locator.class, localvars = {"mapScrollUpperLimit"})
+        public static void Insert(DungeonMapScreen _inst, boolean doScrollingAnimation, @ByRef float[] mapScrollUpperLimit) {
+            if (AbstractDungeon.id.equals("rhinemod:TheSky"))
+                mapScrollUpperLimit[0] = -470.0F * Settings.scale;
+        }
+
+        private static class Locator extends SpireInsertLocator {
+            @Override
+            public int[] Locate(CtBehavior ctBehavior) throws Exception {
+                Matcher.MethodCallMatcher methodCallMatcher = new Matcher.MethodCallMatcher(AbstractPlayer.class, "releaseCard");
+                return LineFinder.findInOrder(ctBehavior, methodCallMatcher);
             }
         }
     }
