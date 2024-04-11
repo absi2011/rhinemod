@@ -74,14 +74,14 @@ public class TheSky extends AbstractDungeon {
         }
         MapRoomNode eventNode = new MapRoomNode(3, 3);
         eventNode.room = new EventRoom();
-        MapRoomNode bossNode = new MapRoomNode(3, 4);
+        MapRoomNode bossNode = new MapRoomNode(3, 5);
         bossNode.room = new MonsterRoomBoss();
         MapRoomNode victoryNode = new MapRoomNode(3, 5);
         victoryNode.room = new TrueVictoryRoom();
         connectNode(restNode, shopNode);
         connectNode(shopNode, enemyNode);
         connectNode(enemyNode, eventNode);
-        connectNode(eventNode, bossNode, true);
+        connectNode(eventNode, bossNode);
         col.add(restNode);
         col.add(shopNode);
         col.add(enemyNode);

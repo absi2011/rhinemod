@@ -20,6 +20,22 @@
       "[离开]"
     ]
   },
+  "rhinemod:ConvergenceOfPastAndPresent": {
+    "NAME": "过于与未来的交会",
+    "DESCRIPTIONS": [
+      "这座高塔非常的高，克丽斯滕的梦想就在眼前。",
+      "你们选择前行。",
+      "你们选择暂时休息，先处理这座尖塔的麻烦。",
+      "啊？你真选这个？"
+    ],
+    "OPTIONS": [
+      "#g[继续] 获得 #y自私者、背叛者、独行者、求道者、先驱者 。",
+      "#g[休息] 恢复 #g",
+      " 生命。",
+      "#r[离开]",
+      "[离开]"
+    ]
+  },
   "rhinemod:HeartEvent": {
     "NAME": "腐化之心",
     "DESCRIPTIONS": [
