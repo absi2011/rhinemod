@@ -273,6 +273,9 @@ public class RhineLab extends CustomPlayer {
     }
 
     public void summonStarRing(int maxHealth, int strength) {
+        summonStarRing(maxHealth, strength, 0);
+    }
+    public void summonStarRing(int maxHealth, int strength, int block) {
         for (int i = 0; i < 6; i++)
             if (starRings[i] == null || starRings[i].isDead) {
                 starRings[i] = new StarRing(maxHealth, POSX[i], POSY[i]);

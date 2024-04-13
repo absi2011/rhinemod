@@ -109,7 +109,7 @@ public class StarRing extends AbstractMonster {
 
     public void blast() {
         AbstractDungeon.actionManager.addToTop(new StarRingBlastAction(5, true));
-        isDead = true;
+        isDead = true; //TODO: isDead会直接影响到你的伤害可能消失？
     }
 
     public int calculateDmg(float dmg) {

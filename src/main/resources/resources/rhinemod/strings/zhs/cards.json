@@ -97,6 +97,16 @@
         "UPGRADE_DESCRIPTION": " rhinemod:科研进度 ： !M! 。 NL 造成等同于你 rhinemod:科研进度 层数的伤害。",
         "EXTENDED_DESCRIPTION" : [" NL （造成 !D! 点伤害。）"]
     },
+    "rhinemod:FirstAid": {
+        "NAME": "急救",
+        "DESCRIPTION": "所有友方单位获得 !B! 点 格挡 。",
+        "UPGRADE_DESCRIPTION": "",
+        "EXTENDED_DESCRIPTION" : [
+            "获得 !B! 点 格挡 。 NL 消耗 !M! 点 rhinemod:钙质粒子 ，以再获得 !B! 点格挡。",
+            "召唤一个生命值为 !M! 的 rhinemod:星环 。 所有友方单位获得 !B! 点 格挡 。",
+            "获得 !B! 点 格挡 。 NL rhinemod:流形 ： !M!"
+        ]
+    },
 
     "rhinemod:PlanetaryDebris": {
         "NAME": "行星碎屑",
