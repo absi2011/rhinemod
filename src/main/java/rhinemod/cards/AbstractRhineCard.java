@@ -4,12 +4,15 @@ import basemod.abstracts.CustomCard;
 import basemod.abstracts.DynamicVariable;
 import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
+import rhinemod.characters.RhineLab;
 import rhinemod.interfaces.UpgradeBranch;
+import rhinemod.relics.Melt;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,6 +72,21 @@ public abstract class AbstractRhineCard extends CustomCard {
         RewardItem item = new RewardItem();
         item.cards = cards;
         AbstractDungeon.getCurrRoom().addCardReward(item);
+    }
+
+    @Override
+    public boolean canPlay(AbstractCard card) {
+        if (card instanceof AbstractRhineCard)
+        {
+            if (((AbstractRhineCard) card).realBranch == 3)
+            {
+                if ((AbstractDungeon.player.hasRelic(Melt.ID)) && (AbstractDungeon.player.getRelic(Melt.ID).counter > 0))
+                {
+                    return false;
+                }
+            }
+        }
+        return super.canPlay(card);
     }
 
     public abstract List<UpgradeBranch> possibleBranches();

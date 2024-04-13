@@ -281,6 +281,11 @@
         "DESCRIPTION": "造成 !D! 点伤害。 NL 你每控制一个 rhinemod:星环 ，本牌消耗减少 [E] 且伤害翻倍。",
         "UPGRADE_DESCRIPTION": ""
     },
+    "rhinemod:WaveBarrier": {
+        "NAME": "水波壁障",
+        "DESCRIPTION": "获得 !M! 层缓冲。 NL 在接下来的 3 场作战内不可以再打出缪尔赛思倾向的卡牌。",
+        "UPGRADE_DESCRIPTION": ""
+    },
 
     "rhinemod:Unscrupulous": {
         "NAME": "出格",

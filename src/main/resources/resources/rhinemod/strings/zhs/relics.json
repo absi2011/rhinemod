@@ -23,7 +23,7 @@
   "rhinemod:Melt": {
     "NAME": "融化",
     "FLAVOR": "汪洋温柔地包裹了一切。",
-    "DESCRIPTIONS": ["#b", " 场战斗内不能再打出缪尔赛思倾向的卡牌"]
+    "DESCRIPTIONS": ["#b", " 场战斗内不能再打出缪尔赛思倾向的卡牌。", "她恢复了，但请珍惜她。"]
   },
   "rhinemod:LoneTrail": {
     "NAME": "孤星",

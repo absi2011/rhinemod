@@ -248,6 +248,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new HAMHRR()); // 聚焦发生器
         BaseMod.addCard(new StartUpCapital()); // 启动资金
         BaseMod.addCard(new Galaxy()); // 银河
+        BaseMod.addCard(new WaveBarrier()); // 水波壁障
 
         // Special.
         BaseMod.addCard(new Unscrupulous()); // 出格
@@ -306,7 +307,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
 
         // event.
         BaseMod.addRelic(new LoneTrail(), RelicType.SHARED);
-        // BaseMod.addRelicToCustomPool(new ThreeDimensionArtDisplay(), RHINE_MATTE);
+        BaseMod.addRelicToCustomPool(new Melt(), RHINE_MATTE);
 
         // shop.
         BaseMod.addRelic(new ThreeDimensionArtDisplay(), RelicType.SHARED);
