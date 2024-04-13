@@ -34,7 +34,10 @@ public class LoneTrail extends CustomRelic {
     @Override
     public void atBattleStartPreDraw() {
         if (counter > 0) {
-            this.addToBot(new DamageAllEnemiesAction(AbstractDungeon.player, counter, DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.NONE));
+            int i;
+            for (i = 0; i < counter; i++) {
+                this.addToBot(new DamageAllEnemiesAction(AbstractDungeon.player, 1, DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.NONE));
+            }
             counter = -1;
         }
     }

@@ -48,10 +48,18 @@ public class HeartEvent extends AbstractEvent {
         if (!Settings.hasEmeraldKey || !Settings.hasRubyKey || !Settings.hasSapphireKey) {
             isKeyGet = false;
         }
+        else {
+            isKeyGet = true;
+        }
         if (isKeyGet) {
             if (AbstractDungeon.player.hasRelic(LoneTrail.ID)) {
-                AbstractDungeon.player.getRelic(LoneTrail.ID).counter = 9;
-                // A15: counter = 6?
+                if (AbstractDungeon.ascensionLevel >= 15) {
+                    AbstractDungeon.player.getRelic(LoneTrail.ID).counter = 6;
+                }
+                else {
+                    AbstractDungeon.player.getRelic(LoneTrail.ID).counter = 9;
+                }
+                AbstractDungeon.player.getRelic(LoneTrail.ID).flash();
             }
             else {
                 // ?????

@@ -210,9 +210,8 @@ public class RhineLab extends CustomPlayer {
 
     public void addPlayedSpecialCard(String c) {
         playedSpecialCard.add(c);
-        if (playedSpecialCard.size() >= 5 && !specialRelicGained) {
-            AbstractDungeon.getCurrRoom().addRelicToRewards(new LoneTrail());
-            specialRelicGained = true;
+        if (playedSpecialCard.size() >= 5 && !AbstractDungeon.player.hasRelic(LoneTrail.ID)) {
+            AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float)(Settings.WIDTH / 2), (float)(Settings.HEIGHT / 2), new LoneTrail());
         }
     }
 

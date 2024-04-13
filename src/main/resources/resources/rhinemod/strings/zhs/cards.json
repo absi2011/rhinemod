@@ -276,6 +276,11 @@
         "DESCRIPTION": "固有 ， 消耗 。 NL 抽 !M! 张牌，获得 [E] [E] 。 NL 将 !rhinemod:M2! 张出格洗入你的弃牌堆。",
         "UPGRADE_DESCRIPTION": ""
     },
+    "rhinemod:Galaxy": {
+        "NAME": "银河",
+        "DESCRIPTION": "造成 !D! 点伤害。 NL 你每控制一个 rhinemod:星环 ，本牌消耗减少 [E] 且伤害翻倍。",
+        "UPGRADE_DESCRIPTION": ""
+    },
 
     "rhinemod:Unscrupulous": {
         "NAME": "出格",

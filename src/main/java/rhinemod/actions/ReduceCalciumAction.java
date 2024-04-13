@@ -24,6 +24,9 @@ public class ReduceCalciumAction extends AbstractGameAction {
                 }
             }
         }
+        else {
+            AbstractDungeon.player.getRelic(SolidifyPower.POWER_ID).flash();
+        }
         isDone = true;
     }
 }
