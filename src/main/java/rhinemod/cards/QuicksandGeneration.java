@@ -44,6 +44,9 @@ public class QuicksandGeneration extends AbstractRhineCard {
             for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters)
                 if (!mo.isDeadOrEscaped() && mo.getIntentBaseDmg() > 0)
                     list.add(mo);
+            if (list.isEmpty()) {
+                return;
+            }
             int avg = magicNumber / list.size();
             int fir = magicNumber % list.size();
             for (int i = 0; i < list.size(); i++)

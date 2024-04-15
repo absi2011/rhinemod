@@ -236,6 +236,8 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new FullBlow()); // 全力一击
         BaseMod.addCard(new PreviousCourse()); // 前置课程
         BaseMod.addCard(new ResearchCapital()); // 科研经费
+        BaseMod.addCard(new LoneLight()); // 寂寥的光
+        BaseMod.addCard(new FlowCombo()); // 流形连击
 
         // Rare.
         BaseMod.addCard(new Calcification()); // 钙质化
@@ -249,6 +251,8 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new StartUpCapital()); // 启动资金
         BaseMod.addCard(new Galaxy()); // 银河
         BaseMod.addCard(new WaveBarrier()); // 水波壁障
+        BaseMod.addCard(new PureDewOfFreshBlossoms()); // 纯净鲜花露
+        BaseMod.addCard(new LikeMind()); // 意气相投
 
         // Special.
         BaseMod.addCard(new Unscrupulous()); // 出格

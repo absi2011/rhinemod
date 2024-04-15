@@ -64,6 +64,24 @@
       " 点 #y钙质粒子 。"
     ]
   },
+  "rhinemod:PDOFBPower": {
+    "NAME": "纯净鲜花露",
+    "DESCRIPTIONS": [
+      "处于浸没的敌人无法对你施加负面效果。"
+    ]
+  },
+  "rhinemod:LikeMindPower": {
+    "NAME": "意气相投",
+    "DESCRIPTIONS": [
+      "随机再获得三者之一 #y",
+      "再获得钙质粒子 #y",
+      "再获得科研进度 #y",
+      "再获得流形 #y",
+      "当你每回合第一次获得 #y钙质粒子 、 #y科研进度 、或 #y流形 时，",
+      " 层。"
+    ]
+  },
+
   "rhinemod:DamageOutPower": {
     "NAME": "减免伤害",
     "DESCRIPTIONS": [

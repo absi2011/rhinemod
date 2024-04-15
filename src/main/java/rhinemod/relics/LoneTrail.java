@@ -41,7 +41,7 @@ public class LoneTrail extends CustomRelic {
     public void onEquip() {
         ArrayList<AbstractCard> cards = new ArrayList<>();
         for (AbstractCard c: AbstractDungeon.player.masterDeck.group) {
-            if ((c instanceof Egotist) || (c instanceof Traitor) || (c instanceof Loner) || (c instanceof Seeker) || (c instanceof Pioneer)) {
+            if ((c instanceof Egotist) || (c instanceof Traitor) || (c instanceof Seeker) || (c instanceof Loner) || (c instanceof Pioneer)) {
                 cards.add(c);
             }
         }
