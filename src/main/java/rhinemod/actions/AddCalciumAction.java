@@ -1,9 +1,12 @@
 package rhinemod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import rhinemod.characters.RhineLab;
+import rhinemod.powers.InvisibleCalcium;
+import rhinemod.powers.LikeMindPower;
 
 public class AddCalciumAction extends AbstractGameAction {
     public AddCalciumAction(int amount) {
@@ -14,8 +17,11 @@ public class AddCalciumAction extends AbstractGameAction {
 
     @Override
     public void update() {
-        if (AbstractDungeon.player instanceof RhineLab)
+        AbstractPlayer p = AbstractDungeon.player;
+        if (p instanceof RhineLab)
             ((RhineLab)AbstractDungeon.player).globalAttributes.addCalcium(amount);
+        if (p.hasPower(LikeMindPower.POWER_ID))
+            p.getPower(LikeMindPower.POWER_ID).onApplyPower(new InvisibleCalcium(), p, p);
         isDone = true;
     }
 }

@@ -44,12 +44,8 @@ public class LikeMindPower extends AbstractPower implements OnReceivePowerPower 
 
     @Override
     public boolean onReceivePower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        if (used)
-        {
-            return true;
-        }
-        if ((power instanceof ResearchProgress)) // TODO: 不是，剩下俩咋搞啊
-        {
+        if (used) return true;
+        if (power instanceof ResearchProgress || power instanceof InvisibleFlowShape || power instanceof InvisibleCalcium) {
             this.flash();
             used = true;
             int result = branch;
