@@ -35,6 +35,7 @@ public class FlameEmitter extends CustomRelic {
     @Override
     public void atBattleStart() {
         if (AbstractDungeon.getCurrRoom() instanceof MonsterRoomBoss) {
+            flash();
             AbstractPlayer p = AbstractDungeon.player;
             addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, STRENGTH)));
         }
