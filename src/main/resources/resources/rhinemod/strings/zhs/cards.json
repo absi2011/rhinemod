@@ -112,6 +112,12 @@
         "DESCRIPTION": "使你的所有 rhinemod:星环 获得 !M! 点 力量 。 NL 消耗 。",
         "UPGRADE_DESCRIPTION": ""
     },
+    "rhinemod:CrackedSkill": {
+        "NAME": "一起研究的公式",
+        "DESCRIPTION": "获得 !B! 点格挡。",
+        "UPGRADE_DESCRIPTION": "获得 !B! 点格挡。 NL 消耗 。 NL 从你的牌组中移除这张牌。",
+        "EXTENDED_DESCRIPTION": ["被破解的技术"]
+    },
 
     "rhinemod:PlanetaryDebris": {
         "NAME": "行星碎屑",

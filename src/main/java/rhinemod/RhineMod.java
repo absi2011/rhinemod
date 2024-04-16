@@ -214,6 +214,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new DependentVariable()); // 因变量
         BaseMod.addCard(new FirstAid()); // 急救
         BaseMod.addCard(new GalaxyOrbit()); // 星系轨道
+        BaseMod.addCard(new CrackedSkill()); // 一起研究的公式/被破解的技术
 
         // Uncommon.
         BaseMod.addCard(new PlanetaryDebris()); // 行星碎屑
@@ -271,6 +272,10 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new Sarracenia()); // 雪瓶子草
         BaseMod.addCard(new SheathedBeech()); // 鞘叶榉
         BaseMod.addCard(new PaleFir()); // 淡杉
+
+        BaseMod.addCard(new GravityDown()); // 超重
+        BaseMod.addCard(new GravityNone()); // 重置
+        BaseMod.addCard(new GravityUp()); // 失重
 
         // Colourless Rare.
         BaseMod.addCard(new AttackInsteadOfDefend()); // 以攻代守
