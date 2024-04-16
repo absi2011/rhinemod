@@ -213,6 +213,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new HighEfficiencyFreezingModule()); // 高效制冷模块
         BaseMod.addCard(new DependentVariable()); // 因变量
         BaseMod.addCard(new FirstAid()); // 急救
+        BaseMod.addCard(new GalaxyOrbit()); // 星系轨道
 
         // Uncommon.
         BaseMod.addCard(new PlanetaryDebris()); // 行星碎屑

@@ -20,7 +20,7 @@ public class AddFlowingShapeAction extends AbstractGameAction {
         AbstractPlayer p = AbstractDungeon.player;
         if (p instanceof RhineLab)
             ((RhineLab)AbstractDungeon.player).globalAttributes.addFlowsp(amount);
-        if (p.hasPower(LikeMindPower.POWER_ID))
+        if (amount > 0 && p.hasPower(LikeMindPower.POWER_ID))
             p.getPower(LikeMindPower.POWER_ID).onApplyPower(new InvisibleFlowShape(), p, p);
         isDone = true;
     }

@@ -82,7 +82,7 @@
         "DESCRIPTION": "对所有敌人均匀造成共计 !D! 点伤害。",
         "UPGRADE_DESCRIPTION": "",
         "EXTENDED_DESCRIPTION": [
-            "对所有敌人造成 !D! 点伤害，将这张牌移出你的牌组。 NL 消耗 。",
+            "对所有敌人造成 !D! 点伤害，从你的牌组中移除这张牌。 NL 消耗 。",
             "均匀给予所有角色共计 !M! 点 rhinemod:水渍 。 NL 你获得的 rhinemod:水渍 改为 格挡 。"
         ]
     },
@@ -106,6 +106,11 @@
             "召唤一个生命值为 !M! 的 rhinemod:星环 。 所有友方单位获得 !B! 点 格挡 。",
             "获得 !B! 点 格挡 。 NL rhinemod:流形 ： !M!"
         ]
+    },
+    "rhinemod:GalaxyOrbit": {
+        "NAME": "星系轨道",
+        "DESCRIPTION": "使你的所有 rhinemod:星环 获得 !M! 点 力量 。 NL 消耗 。",
+        "UPGRADE_DESCRIPTION": ""
     },
 
     "rhinemod:PlanetaryDebris": {

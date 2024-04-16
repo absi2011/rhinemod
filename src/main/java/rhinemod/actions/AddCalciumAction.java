@@ -20,7 +20,7 @@ public class AddCalciumAction extends AbstractGameAction {
         AbstractPlayer p = AbstractDungeon.player;
         if (p instanceof RhineLab)
             ((RhineLab)AbstractDungeon.player).globalAttributes.addCalcium(amount);
-        if (p.hasPower(LikeMindPower.POWER_ID))
+        if (amount > 0 && p.hasPower(LikeMindPower.POWER_ID))
             p.getPower(LikeMindPower.POWER_ID).onApplyPower(new InvisibleCalcium(), p, p);
         isDone = true;
     }
