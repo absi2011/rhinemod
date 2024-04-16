@@ -313,6 +313,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         // rare.
         BaseMod.addRelic(new Awaken(), RelicType.SHARED);
         BaseMod.addRelic(new Stargate(), RelicType.SHARED);
+        BaseMod.addRelic(new FlameEmitter(), RelicType.SHARED);
 
         // boss.
 
