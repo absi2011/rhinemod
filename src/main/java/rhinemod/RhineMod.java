@@ -239,6 +239,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new ResearchCapital()); // 科研经费
         BaseMod.addCard(new LoneLight()); // 寂寥的光
         BaseMod.addCard(new FlowCombo()); // 流形连击
+        BaseMod.addCard(new AcademicResearch()); // 学术研究
 
         // Rare.
         BaseMod.addCard(new Calcification()); // 钙质化
