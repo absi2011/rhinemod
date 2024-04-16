@@ -1,13 +1,10 @@
 package rhinemod.cards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import rhinemod.actions.AddFlowingShapeAction;
-import rhinemod.characters.RhineLab;
 import rhinemod.interfaces.UpgradeBranch;
 import rhinemod.patches.AbstractCardEnum;
 import rhinemod.powers.PDOFBPower;
@@ -21,7 +18,7 @@ public class PureDewOfFreshBlossoms extends AbstractRhineCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG = "resources/rhinemod/images/cards/BionicDevice.png";
+    public static final String IMG = "resources/rhinemod/images/cards/PureDewOfFreshBlossoms.png";
     public static final int COST = 1;
     public PureDewOfFreshBlossoms() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
