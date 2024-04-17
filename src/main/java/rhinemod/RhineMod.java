@@ -215,6 +215,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new FirstAid()); // 急救
         BaseMod.addCard(new GalaxyOrbit()); // 星系轨道
         BaseMod.addCard(new CrackedSkill()); // 一起研究的公式/被破解的技术
+        BaseMod.addCard(new Inundate()); // 淹没
 
         // Uncommon.
         BaseMod.addCard(new PlanetaryDebris()); // 行星碎屑
