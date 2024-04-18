@@ -7,6 +7,8 @@ import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.compression.lzma.Base;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
@@ -70,6 +72,8 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
     private static final String miniManaSymbol = "resources/rhinemod/images/manaSymbol.png";
     private static final Logger logger = LogManager.getLogger(RhineMod.class.getName());
 
+    public static final ArrayList<TextureAtlas.AtlasRegion> specialImg = new ArrayList<>();
+
     private static final float NewMonsterMulti = 4.0F;
 
     public RhineMod() {
@@ -93,6 +97,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         initializeEvents();
         initializePotions();
         initializeMonsters();
+        initializeSpecialImg();
     }
 
     public void initializeMonsters() {
@@ -166,6 +171,12 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
 
     private void initializePotions() {
 //        BaseMod.addPotion(BottledCommand.class, Color.SKY, null, null, BottledCommand.ID, nearlmod.patches.RhineEnum.NEARL_CLASS);
+    }
+
+    private void initializeSpecialImg() {
+        specialImg.add(new TextureAtlas.AtlasRegion(new Texture("resources/rhinemod/images/512/card_saria.png"), 0, 0, 512, 512));
+        specialImg.add(new TextureAtlas.AtlasRegion(new Texture("resources/rhinemod/images/512/card_kristen.png"), 0, 0, 512, 512));
+        specialImg.add(new TextureAtlas.AtlasRegion(new Texture("resources/rhinemod/images/512/card_muelsyse.png"), 0, 0, 512, 512));
     }
 
     @Override

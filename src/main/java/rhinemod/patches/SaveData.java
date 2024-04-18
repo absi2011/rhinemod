@@ -51,7 +51,7 @@ public class SaveData {
             p.masterDeck.clear();
             for (CardSave s : ___saveFile.cards) {
                 AbstractCard c = CardLibrary.getCopy(s.id, s.upgrades, s.misc);
-                if (c instanceof AbstractRhineCard && OptFields.branch.get(s) > 0) {
+                if (c instanceof AbstractRhineCard && OptFields.branch.get(s) != null && OptFields.branch.get(s) > 0) {
                     ((AbstractRhineCard) c).swapBranch(OptFields.branch.get(s));
                 }
                 p.masterDeck.addToTop(c);
