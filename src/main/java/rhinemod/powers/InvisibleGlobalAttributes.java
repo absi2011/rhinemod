@@ -104,6 +104,8 @@ public class InvisibleGlobalAttributes extends AbstractPower {
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
         if (info.type == DamageInfo.DamageType.NORMAL && damageAmount >= GlobalAttributes.smashThreshold) {
             addToTop(new ApplyPowerAction(target, owner, new Stunned(target)));
+            if (owner.hasPower(EliminateThreatPower.POWER_ID))
+                ((EliminateThreatPower) owner.getPower(EliminateThreatPower.POWER_ID)).onSmash(target);
         }
     }
 

@@ -269,6 +269,11 @@
             "从3张随机植物牌中选择1张加入你的手牌。"
         ]
     },
+    "rhinemod:EliminateThreat": {
+        "NAME": "解除威胁",
+        "DESCRIPTION": "当你造成 rhinemod:重击 时，目标本回合减少 !M! 点 力量 。",
+        "UPGRADE_DESCRIPTION": ""
+    },
 
     "rhinemod:Calcification": {
         "NAME": "钙质化",

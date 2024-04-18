@@ -202,5 +202,9 @@
   "rhinemod:AIODPower": {
     "NAME": "以攻代守",
     "DESCRIPTIONS": ["每当造成小于等于 #b", " 点 未被格挡的 #y攻击 伤害时，将伤害提升为 #b", " 。"]
+  },
+  "rhinemod:EliminateThreatPower": {
+    "NAME": "解除威胁",
+    "DESCRIPTIONS": ["当你造成 #y重击 时，目标本回合减少 #b", " 点 #y力量 。"]
   }
 }
