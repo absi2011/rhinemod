@@ -1,11 +1,7 @@
 package rhinemod.cards;
 
 import com.badlogic.gdx.Gdx;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.watcher.ChooseOneAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
@@ -24,12 +20,12 @@ public class LoneLight extends AbstractRhineCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG = "resources/rhinemod/images/cards/SHAFT.png";
+    public static final String IMG = "resources/rhinemod/images/cards/LoneLight.png";
     public static final int COST = 2;
     public static final int UPGRADE_COST = 1;
     private double rotationTimer;
     private int previewIndex;
-    ArrayList<AbstractCard> cards = new ArrayList<AbstractCard>();
+    ArrayList<AbstractCard> cards = new ArrayList<>();
     public LoneLight() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.RHINE_MATTE,

@@ -2,13 +2,11 @@ package rhinemod.cards;
 
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.cards.red.HeavyBlade;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import rhinemod.actions.AddCalciumAction;
 import rhinemod.actions.ReduceCalciumAction;
 import rhinemod.characters.RhineLab;
 import rhinemod.interfaces.UpgradeBranch;
@@ -22,7 +20,7 @@ public class FullBlow extends AbstractRhineCard {
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String IMG = "resources/rhinemod/images/cards/UnusedBoxingGloves.png";
+    public static final String IMG = "resources/rhinemod/images/cards/FullBlow.png";
     public static final int COST = 1;
     public static final int ATTACK_DMG = 8;
     public static final int EXTRA_TIMES = 4;

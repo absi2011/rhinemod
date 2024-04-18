@@ -25,7 +25,7 @@ public class HAMHRR extends AbstractRhineCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG = "resources/rhinemod/images/cards/SHAFT.png";
+    public static final String IMG = "resources/rhinemod/images/cards/HAMHRR.png";
     public static final int COST = 3;
     public static final int BASIC_DAMAGE = 18;
     public static final int EXTRA_DAMAGE = 36;
