@@ -74,7 +74,8 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
 
     public static final ArrayList<TextureAtlas.AtlasRegion> specialImg = new ArrayList<>();
 
-    private static final float NewMonsterMulti = 4.0F;
+    private static final float NewMonsterMulti = 1.0F;
+    public boolean isDemo = true;
 
     public RhineMod() {
         BaseMod.subscribe(this);
@@ -143,6 +144,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
     }
 
     private void initializeEvents() {
+        if (isDemo) return;
         BaseMod.addEvent(new AddEventParams.Builder(MysteriousInvent.ID, MysteriousInvent.class).
                 eventType(EventUtils.EventType.NORMAL).
                 dungeonID("TheCity").
@@ -167,6 +169,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
                 dungeonID("Special").
                 endsWithRewardsUI(false).
                 create());
+
     }
 
     private void initializePotions() {
