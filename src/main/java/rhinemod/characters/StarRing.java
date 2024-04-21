@@ -19,6 +19,7 @@ import com.megacrit.cardcrawl.vfx.combat.HbBlockBrokenEffect;
 import com.megacrit.cardcrawl.vfx.combat.StrikeEffect;
 import rhinemod.actions.StarRingBlastAction;
 import rhinemod.cards.AbstractRhineCard;
+import rhinemod.powers.GalleriaStellariaPower;
 
 public class StarRing extends AbstractMonster {
     public static final String ID = "rhinemod:StarRing";
@@ -104,6 +105,9 @@ public class StarRing extends AbstractMonster {
             blastDamage /= 2;
             AbstractDungeon.actionManager.addToTop(new StarRingBlastAction(blastDamage, includeSelf));
             AbstractDungeon.actionManager.addToTop(new WaitAction(0.5F));
+            for (AbstractPower p : powers) {
+                p.onDeath();
+            }
         }
     }
 
@@ -122,7 +126,13 @@ public class StarRing extends AbstractMonster {
     public void applyStartOfTurnPowers() {
         super.applyStartOfTurnPowers();
         int dmg = calculateDmg(5);
-        AbstractDungeon.actionManager.addToTop(new StarRingBlastAction(dmg, false));
+        int cnt = 1;
+        if (AbstractDungeon.player.hasPower(GalleriaStellariaPower.POWER_ID)) {
+            cnt += AbstractDungeon.player.getPower(GalleriaStellariaPower.POWER_ID).amount;
+        }
+        for (int i = 0; i < cnt; i ++) {
+            AbstractDungeon.actionManager.addToTop(new StarRingBlastAction(dmg, false));
+        }
         AbstractDungeon.actionManager.addToTop(new WaitAction(0.5F));
     }
 

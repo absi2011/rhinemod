@@ -81,6 +81,20 @@
       " 层。"
     ]
   },
+  "rhinemod:ExperienceError": {
+    "NAME": "实验错误",
+    "DESCRIPTIONS": [
+      "该星环死亡时，将 #y",
+      " 张 #r出格 洗入你的弃牌堆。"
+    ]
+  },
+  "rhinemod:GalleriaStellariaPower": {
+    "NAME": "万星园",
+    "DESCRIPTIONS": [
+      "星环会额外攻击 #y",
+      " 次。"
+    ]
+  },
 
   "rhinemod:DamageOutPower": {
     "NAME": "减免伤害",
@@ -140,7 +154,7 @@
   "rhinemod:DoubleNonSmash": {
     "NAME": "弱点：非重击",
     "DESCRIPTIONS": [
-      "受到的非 #r重击 伤害翻倍。"
+      "受到的非 #r重击 伤害时，额外受到一次等量伤害。"
     ]
   },
   "rhinemod:Average": {

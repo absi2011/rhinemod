@@ -131,7 +131,7 @@
     },
     "rhinemod:HighSpeedResonatingTroubleshooter": {
         "NAME": "高速共振排障",
-        "DESCRIPTION": "标记一名敌人，回合结束或该敌人死亡时，对所有敌人造成等同于改名敌人标记期间受到伤害总额的伤害。",
+        "DESCRIPTION": "标记一名敌人，回合结束或该敌人死亡时，对所有敌人造成等同于该名敌人标记期间受到伤害总额的伤害。",
         "UPGRADE_DESCRIPTION": ""
     },
     "rhinemod:Starfall": {
@@ -272,6 +272,16 @@
     "rhinemod:EliminateThreat": {
         "NAME": "解除威胁",
         "DESCRIPTION": "当你造成 rhinemod:重击 时，目标本回合减少 !M! 点 力量 。",
+        "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:RedShiftExperience": {
+        "NAME": "红移实验",
+        "DESCRIPTION": "召唤一个 !M! 点生命的 rhinemod:星环 ，当它被引爆时，将 !rhinemod:M2! 张 *出格 洗入你的弃牌堆。",
+        "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:GalleriaStellaria": {
+        "NAME": "万星园",
+        "DESCRIPTION": "你的 rhinemod:星环 额外攻击一次。",
         "UPGRADE_DESCRIPTION": ""
     },
 

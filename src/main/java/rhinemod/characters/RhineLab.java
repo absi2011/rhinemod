@@ -25,6 +25,7 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import rhinemod.cards.*;
 import rhinemod.patches.*;
+import rhinemod.powers.ExperienceError;
 import rhinemod.powers.InvisibleGlobalAttributes;
 import rhinemod.relics.LoneTrail;
 import rhinemod.relics.TITStudentIdCard;
@@ -272,15 +273,19 @@ public class RhineLab extends CustomPlayer {
     }
 
     public void summonStarRing(int maxHealth, int strength) {
-        summonStarRing(maxHealth, strength, 0);
+        summonStarRing(maxHealth, strength, 0, 0);
     }
-    public void summonStarRing(int maxHealth, int strength, int block) {
+    public void summonStarRing(int maxHealth, int strength, int block, int blast) {
         for (int i = 0; i < 6; i++)
             if (starRings[i] == null || starRings[i].isDead) {
                 starRings[i] = new StarRing(maxHealth, POSX[i], POSY[i]);
+                starRings[i].currentBlock = block;
                 starRings[i].showHealthBar();
                 if (strength > 0) {
                     AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(starRings[i], this, new StrengthPower(starRings[i], strength)));
+                }
+                if (blast > 0) {
+                    AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(starRings[i], this, new ExperienceError(starRings[i], blast)));
                 }
                 currentRings.add(starRings[i]);
                 return;
