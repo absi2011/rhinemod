@@ -14,7 +14,7 @@ public class WaterDamage extends AbstractPower {
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    public static final int[] LEVEL_MAX = {0, 10, 25, 45, 70};
+    public static final int[] LEVEL_MAX = {0, 10, 25, 45, 70, 999};
     public int level;
     public WaterDamage(AbstractCreature owner, int amount) {
         this.ID = POWER_ID;
@@ -31,7 +31,7 @@ public class WaterDamage extends AbstractPower {
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+        description = DESCRIPTIONS[0] + LEVEL_MAX[level + 1] + DESCRIPTIONS[1] + amount + DESCRIPTIONS[2];
     }
 
     public void updateSubmersion() {

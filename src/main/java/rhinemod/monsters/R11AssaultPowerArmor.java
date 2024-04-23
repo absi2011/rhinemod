@@ -16,7 +16,7 @@ public class R11AssaultPowerArmor extends CustomMonster {
     public static final String[] MOVES = monsterStrings.MOVES;
 
     public R11AssaultPowerArmor(float x, float y) {
-        super(NAME, ID, 140, 0, 0, 150.0F, 320.0F, null, x, y);
+        super(NAME, ID, 140, 0, 0, 220.0F, 360.0F, null, x, y);
         type = EnemyType.ELITE;
         if (AbstractDungeon.ascensionLevel >= 8) {
             setHp(150);

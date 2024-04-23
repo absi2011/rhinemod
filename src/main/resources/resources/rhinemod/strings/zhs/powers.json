@@ -1,13 +1,13 @@
 {
   "rhinemod:WaterDamage": {
     "NAME": "水渍",
-    "DESCRIPTIONS": ["每累计 #b20 点进入 #y浸没 。当前累计 #b", " 点。"]
+    "DESCRIPTIONS": ["累计至 #b", " 点再获得一层 #y浸没 。当前累计 #b", " 点。"]
   },
   "rhinemod:Submersion": {
     "NAME": "浸没",
     "DESCRIPTIONS": [
       "回合开始时，受到 #b",
-      " 点伤害，水渍减少 #b10 点。造成的伤害降低 #b",
+      " 点伤害，水渍减少 #b5 点。造成的伤害降低 #b",
       " %。当前层数： #b",
       " 。"
     ]

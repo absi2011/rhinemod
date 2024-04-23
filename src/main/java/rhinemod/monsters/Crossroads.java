@@ -23,7 +23,7 @@ public class Crossroads extends CustomMonster {
     public boolean firstTime = true;
 
     public Crossroads(float x, float y) {
-        super(NAME, ID, 80, 0, 0, 150.0F, 320.0F, null, x, y);
+        super(NAME, ID, 80, 0, 0, 150.0F, 220.0F, null, x, y);
         type = EnemyType.ELITE;
         if (AbstractDungeon.ascensionLevel >= 8) {
             setHp(88);

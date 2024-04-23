@@ -20,7 +20,7 @@ public class R31HeavyPowerArmor extends CustomMonster {
     public static final int stunNum = 5;
 
     public R31HeavyPowerArmor(float x, float y) {
-        super(NAME, ID, 140, 0, 0, 150.0F, 320.0F, null, x, y);
+        super(NAME, ID, 140, 0, 0, 220.0F, 360.0F, null, x, y);
         type = EnemyType.ELITE;
         if (AbstractDungeon.ascensionLevel >= 8) {
             setHp(150);

@@ -28,7 +28,7 @@ public class FlowCombo extends AbstractRhineCard {
     public FlowCombo() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.RHINE_MATTE,
-                CardRarity.UNCOMMON, CardTarget.SELF);
+                CardRarity.UNCOMMON, CardTarget.ENEMY);
         damage = baseDamage = DAMAGE;
         realBranch = 3;
     }
