@@ -418,8 +418,8 @@
     },
     "rhinemod:SquareSunflower": {
         "NAME": "方形葵",
-        "DESCRIPTION": "获得 [B] [B] 。 NL 消耗 。",
-        "UPGRADE_DESCRIPTION": "获得 [B] [B] [B] 。 NL 消耗 。"
+        "DESCRIPTION": "获得 [E] [E] 。 NL 消耗 。",
+        "UPGRADE_DESCRIPTION": "获得 [E] [E] [E] 。 NL 消耗 。"
     },
     "rhinemod:IcefieldsCottongrass": {
         "NAME": "冰原棉草",

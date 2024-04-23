@@ -40,6 +40,7 @@ public class HighEfficiencyFreezingModule extends AbstractRhineCard {
             AbstractMonster mo = AbstractDungeon.getMonsters().monsters.get(i);
             DamageInfo info = new DamageInfo(p, mo.hasPower(WaterDamage.POWER_ID)? baseMagicNumber : baseDamage);
             info.applyPowers(p, mo);
+            dmg[i] = info.output;
         }
         addToBot(new DamageAllEnemiesAction(p, dmg, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.NONE));
     }

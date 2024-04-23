@@ -36,5 +36,6 @@ public class IcefieldsAdventureMuAction extends AbstractGameAction {
         for (AbstractMonster m : AbstractDungeon.getMonsters().monsters)
             if (!m.isDeadOrEscaped() && m.hasPower(WaterDamage.POWER_ID))
                 m.damage(new DamageInfo(p, amount, DamageInfo.DamageType.HP_LOSS));
+        isDone = true;
     }
 }
