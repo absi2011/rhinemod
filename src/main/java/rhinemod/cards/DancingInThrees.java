@@ -36,10 +36,15 @@ public class DancingInThrees extends AbstractRhineCard {
     public boolean extraTriggered() {
         boolean[] used = new boolean[4];
         for (AbstractCard c : AbstractDungeon.actionManager.cardsPlayedThisTurn)
-            if (c instanceof AbstractRhineCard)
-                used[((AbstractRhineCard) c).realBranch] = true;
-            else
+            if (c instanceof AbstractRhineCard) {
+                if (((AbstractRhineCard) c).realBranch != -1)
+                {
+                    used[((AbstractRhineCard) c).realBranch] = true;
+                }
+            }
+            else {
                 used[0] = true;
+            }
         return used[0] && used[1] && used[2] && used[3];
     }
 
