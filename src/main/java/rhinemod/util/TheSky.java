@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.rooms.*;
 import com.megacrit.cardcrawl.saveAndContinue.SaveFile;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import rhinemod.rooms.HeartRoom;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -73,7 +74,7 @@ public class TheSky extends AbstractDungeon {
             enemyNode.hasEmeraldKey = true;
         }
         MapRoomNode eventNode = new MapRoomNode(3, 3);
-        eventNode.room = new EventRoom();
+        eventNode.room = new HeartRoom();
         MapRoomNode bossNode = new MapRoomNode(3, 5);
         bossNode.room = new MonsterRoomBoss();
         MapRoomNode victoryNode = new MapRoomNode(3, 5);
@@ -171,10 +172,6 @@ public class TheSky extends AbstractDungeon {
 
     @Override
     protected void initializeEventList() {
-        shrineList.clear();
-        eventList.clear();
-        specialOneTimeEventList.clear();
-        eventList.add("rhinemod:HeartEvent");
     }
 
     @Override
