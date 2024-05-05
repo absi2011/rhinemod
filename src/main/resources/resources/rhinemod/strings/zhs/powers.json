@@ -73,10 +73,10 @@
   "rhinemod:LikeMindPower": {
     "NAME": "意气相投",
     "DESCRIPTIONS": [
-      "随机再获得三者之一 #y",
-      "再获得钙质粒子 #y",
-      "再获得科研进度 #y",
-      "再获得流形 #y",
+      "随机再获得三者之一 #b",
+      "再获得钙质粒子 #b",
+      "再获得科研进度 #b",
+      "再获得流形 #b",
       "当你每回合第一次获得 #y钙质粒子 、 #y科研进度 、或 #y流形 时，",
       " 层。"
     ]
@@ -84,17 +84,25 @@
   "rhinemod:ExperienceError": {
     "NAME": "实验错误",
     "DESCRIPTIONS": [
-      "该星环死亡时，将 #y",
+      "该星环死亡时，将 #b",
       " 张 #r出格 洗入你的弃牌堆。"
     ]
   },
   "rhinemod:GalleriaStellariaPower": {
     "NAME": "万星园",
     "DESCRIPTIONS": [
-      "星环会额外攻击 #y",
+      "星环会额外攻击 #b",
       " 次。"
     ]
   },
+  "rhinemod:RefreshmentPower": {
+    "NAME": "精神回复",
+    "DESCRIPTIONS": [
+      "当你获得格挡时，抽 #b",
+      " 张牌并获得等同于其费用的 #y科研进度 。"
+    ]
+  },
+
 
   "rhinemod:DamageOutPower": {
     "NAME": "减免伤害",

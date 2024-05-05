@@ -355,6 +355,12 @@
             "当你每回合第一次获得 rhinemod:钙质粒子 、 rhinemod:科研进度 、或 rhinemod:流形 时，再获得 !M! 层 rhinemod:流形 。"
         ]
     },
+    "rhinemod:Refreshment": {
+        "NAME": "精神回复",
+        "DESCRIPTION": "每当你获得 格挡 时，抽 !M! 张牌并获得等同于其费用的 rhinemod:科研进度 。",
+        "UPGRADE_DESCRIPTION": "固有 。 NL 每当你获得 格挡 时，抽 !M! 张牌并获得等同于其费用的 rhinemod:科研进度 。"
+    },
+
 
     "rhinemod:Unscrupulous": {
         "NAME": "出格",

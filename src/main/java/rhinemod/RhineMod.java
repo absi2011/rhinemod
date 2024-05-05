@@ -274,6 +274,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new WaveBarrier()); // 水波壁障
         BaseMod.addCard(new PureDewOfFreshBlossoms()); // 纯净鲜花露
         BaseMod.addCard(new LikeMind()); // 意气相投
+        BaseMod.addCard(new Refreshment()); // 精神回复
 
         // Special.
         BaseMod.addCard(new Unscrupulous()); // 出格

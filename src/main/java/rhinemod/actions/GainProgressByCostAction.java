@@ -19,7 +19,13 @@ public class GainProgressByCostAction extends AbstractGameAction {
     @Override
     public void update() {
         int sum = 0;
-        for (AbstractCard c : DrawCardAction.drawnCards) sum += c.cost;
+        for (AbstractCard c : DrawCardAction.drawnCards)
+        {
+            if (c.cost >= 0)
+            {
+                sum += c.cost;
+            }
+        }
         if (sum > 0) {
             addToTop(new ApplyPowerAction(p, p, new ResearchProgress(p, sum)));
         }
