@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.powers.*;
-import rhinemod.powers.Fragile;
 
 public class TrimountsCityGuard extends CustomMonster {
     public static final String ID = "rhinemod:TrimountsCityGuard";
@@ -30,10 +29,9 @@ public class TrimountsCityGuard extends CustomMonster {
         else {
             damage.add(new DamageInfo(this, 4));
         }
-        loadAnimation("resources/rhinemod/images/monsters/enemy_2056_smedzi/enemy_2056_smedzi.atlas", "resources/rhinemod/images/monsters/enemy_2056_smedzi/enemy_2056_smedzi33.json", 2F);
-        this.stateData.setMix("Idle", "Move_Begin", 0.1F);
-        this.state.setAnimation(0, "Move_End", false);
-        this.state.addAnimation(0, "Idle", true, 0.0F);
+        loadAnimation("resources/rhinemod/images/monsters/enemy_1326_cbagen/enemy_1326_cbagen33.atlas", "resources/rhinemod/images/monsters/enemy_1326_cbagen/enemy_1326_cbagen33.json", 1.5F);
+        state.addAnimation(0, "Idle", true, 0.0F);
+        flipHorizontal = true;
     }
 
     @Override
@@ -42,6 +40,8 @@ public class TrimountsCityGuard extends CustomMonster {
 
     @Override
     public void takeTurn() {
+        state.setAnimation(0, "Attack", false);
+        state.addAnimation(0, "Idle", true, 0);
         addToBot(new DamageAction(AbstractDungeon.player, damage.get(0)));
         int maxDebuff = 5;
         if (AbstractDungeon.player.hasOrb()) {
