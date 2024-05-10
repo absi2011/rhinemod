@@ -28,6 +28,7 @@ public class Inundate extends AbstractRhineCard {
                 CardType.ATTACK, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.COMMON, CardTarget.ENEMY);
         damage = baseDamage = ATTACK_DMG;
+        realBranch = 3;
     }
 
     @Override

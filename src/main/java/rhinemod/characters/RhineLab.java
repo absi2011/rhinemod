@@ -302,6 +302,12 @@ public class RhineLab extends CustomPlayer {
         }
     }
 
+    @Override
+    public void onVictory() {
+        super.onVictory();
+    }
+
+
     public void draw(AbstractCard c) {
         if (!(drawPile.group.contains(c))) {
             Logger.getLogger(RhineLab.class.getName()).info("ERROR: card not in draw pile!");
