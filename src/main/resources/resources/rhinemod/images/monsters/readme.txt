@@ -1,3 +1,4 @@
+enemy_1254_lypa 实验用动力装甲
 enemy_1255_lybgpa R-31重型动力装甲
 enemy_1256_lyacpa R-11突击动力装甲
 enemy_1325_cbgpro 军用猎狗
@@ -9,4 +10,6 @@ enemy_1330_cbrush “肇事者”
 enemy_1331_cbsisy “十字路口”
 enemy_1332_cbterm “交通亭”
 enemy_1333_cbbgen “交通警察”
+enemy_1516_jakill 杰斯顿·威廉姆斯
+enemy_1531_bbrain “唤醒”
 enemy_2056_smedzi 无垠回荡克雷松

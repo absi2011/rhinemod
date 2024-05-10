@@ -5,19 +5,15 @@ import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.utility.HideHealthBarAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.MinionPower;
 import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
 import rhinemod.actions.AwakenAction;
 import rhinemod.actions.SummonMechAction;
 import rhinemod.powers.Average;
 import rhinemod.powers.Journey;
-
-import java.util.Iterator;
 
 public class Awaken_Monster extends CustomMonster {
     public static final String ID = "rhinemod:Awaken_Monster";
@@ -26,8 +22,8 @@ public class Awaken_Monster extends CustomMonster {
     public static final String[] MOVES = monsterStrings.MOVES;
     public int stage1Journey;
     public int stage2Add;
-    public boolean isStage2 = false;
-    private boolean notTriggered = true;
+    public boolean isStage2;
+    private boolean notTriggered;
 
     public AbstractMonster[] mechs = new AbstractMonster[3];
 
@@ -59,10 +55,9 @@ public class Awaken_Monster extends CustomMonster {
         isStage2 = false;
         notTriggered = true;
 
-        loadAnimation("resources/rhinemod/images/monsters/enemy_2056_smedzi/enemy_2056_smedzi.atlas", "resources/rhinemod/images/monsters/enemy_2056_smedzi/enemy_2056_smedzi33.json", 2F);
-        this.stateData.setMix("Idle", "Move_Begin", 0.1F);
-        this.state.setAnimation(0, "Move_End", false);
-        this.state.addAnimation(0, "Idle", true, 0.0F);
+        loadAnimation("resources/rhinemod/images/monsters/enemy_1531_bbrain/enemy_1531_bbrain33.atlas", "resources/rhinemod/images/monsters/enemy_1531_bbrain/enemy_1531_bbrain33.json", 1.5F);
+        state.addAnimation(0, "Idle", true, 0.0F);
+        flipHorizontal = true;
     }
 
     @Override
@@ -81,9 +76,10 @@ public class Awaken_Monster extends CustomMonster {
 
     @Override
     public void takeTurn() {
-        AbstractPlayer p = AbstractDungeon.player;
         if (nextMove == 1) {
             addToBot(new AwakenAction(damage.get(0).base, this));
+            state.setAnimation(0, "Skill_1", false);
+            state.addAnimation(0, "Idle", true, 0);
             // TODO: 一阶段技能
         }
         else if (nextMove == 2) {

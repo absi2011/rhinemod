@@ -1,0 +1,125 @@
+
+enemy_1531_bbrain33.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+C_Metal_15
+  rotate: false
+  xy: 1, 242
+  size: 185, 192
+  orig: 185, 192
+  offset: 0, 0
+  index: -1
+C_Highlight
+  rotate: false
+  xy: 188, 242
+  size: 200, 154
+  orig: 200, 154
+  offset: 0, 0
+  index: -1
+C_Metal_14
+  rotate: false
+  xy: 216, 1
+  size: 140, 114
+  orig: 140, 114
+  offset: 0, 0
+  index: -1
+C_Metal_12
+  rotate: false
+  xy: 480, 1
+  size: 69, 142
+  orig: 69, 142
+  offset: 0, 0
+  index: -1
+C_Metal_11
+  rotate: false
+  xy: 773, 409
+  size: 100, 102
+  orig: 100, 102
+  offset: 0, 0
+  index: -1
+C_Metal_10
+  rotate: false
+  xy: 773, 242
+  size: 127, 165
+  orig: 127, 165
+  offset: 0, 0
+  index: -1
+C_Metal_9
+  rotate: false
+  xy: 216, 117
+  size: 124, 123
+  orig: 124, 123
+  offset: 0, 0
+  index: -1
+C_Metal_8
+  rotate: false
+  xy: 1, 1
+  size: 213, 239
+  orig: 213, 239
+  offset: 0, 0
+  index: -1
+C_Metal_7
+  rotate: false
+  xy: 518, 403
+  size: 123, 105
+  orig: 123, 105
+  offset: 0, 0
+  index: -1
+C_Metal_6
+  rotate: false
+  xy: 390, 242
+  size: 126, 216
+  orig: 126, 216
+  offset: 0, 0
+  index: -1
+C_Metal_5
+  rotate: false
+  xy: 358, 1
+  size: 120, 127
+  orig: 120, 127
+  offset: 0, 0
+  index: -1
+C_Metal_4
+  rotate: false
+  xy: 518, 242
+  size: 135, 159
+  orig: 135, 159
+  offset: 0, 0
+  index: -1
+C_Metal_3
+  rotate: false
+  xy: 643, 426
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+C_Metal_2
+  rotate: false
+  xy: 655, 242
+  size: 116, 182
+  orig: 116, 182
+  offset: 0, 0
+  index: -1
+C_Metal_clip
+  rotate: false
+  xy: 643, 403
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+C_Metal_2(2)
+  rotate: false
+  xy: 902, 242
+  size: 109, 173
+  orig: 109, 173
+  offset: 0, 0
+  index: -1
+C_Metal_1
+  rotate: false
+  xy: 709, 426
+  size: 35, 44
+  orig: 35, 44
+  offset: 0, 0
+  index: -1

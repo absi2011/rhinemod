@@ -8,13 +8,12 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import rhinemod.powers.HalfDamage;
-import rhinemod.powers.NoStun;
 
 public class ExperimentalPowerArmor extends CustomMonster {
     public static final String ID = "rhinemod:ExperimentalPowerArmor";
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
-    public static final String[] MOVES = monsterStrings.MOVES;
+    private boolean moveAnim;
 
     public ExperimentalPowerArmor(float x, float y) {
         super(NAME, ID, 50, 0, 0, 150.0F, 320.0F, null, x, y);
@@ -31,10 +30,10 @@ public class ExperimentalPowerArmor extends CustomMonster {
         else {
             damage.add(new DamageInfo(this, 6));
         }
-        loadAnimation("resources/rhinemod/images/monsters/enemy_2056_smedzi/enemy_2056_smedzi.atlas", "resources/rhinemod/images/monsters/enemy_2056_smedzi/enemy_2056_smedzi33.json", 2F);
-        this.stateData.setMix("Idle", "Move_Begin", 0.1F);
-        this.state.setAnimation(0, "Move_End", false);
-        this.state.addAnimation(0, "Idle", true, 0.0F);
+        loadAnimation("resources/rhinemod/images/monsters/enemy_1254_lypa/enemy_1254_lypa33.atlas", "resources/rhinemod/images/monsters/enemy_1254_lypa/enemy_1254_lypa33.json", 1.5F);
+        state.addAnimation(0, "Idle", true, 0.0F);
+        flipHorizontal = true;
+        moveAnim = false;
     }
 
     @Override
@@ -44,6 +43,13 @@ public class ExperimentalPowerArmor extends CustomMonster {
 
     @Override
     public void takeTurn() {
+        if (moveAnim) {
+            state.setAnimation(0, "Attack_B", false);
+        } else {
+            state.setAnimation(0, "Attack_A", false);
+        }
+        moveAnim = !moveAnim;
+        state.addAnimation(0, "Idle", true, 0);
         addToBot(new DamageAction(AbstractDungeon.player, damage.get(0)));
         getMove(0);
     }
