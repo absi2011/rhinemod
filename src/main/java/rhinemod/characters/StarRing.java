@@ -6,8 +6,11 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Interpolation;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -15,6 +18,7 @@ import com.megacrit.cardcrawl.helpers.*;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import com.megacrit.cardcrawl.vfx.combat.HbBlockBrokenEffect;
 import com.megacrit.cardcrawl.vfx.combat.StrikeEffect;
 import rhinemod.actions.StarRingBlastAction;
@@ -112,7 +116,11 @@ public class StarRing extends AbstractMonster {
     }
 
     public void blast() {
-        AbstractDungeon.actionManager.addToTop(new StarRingBlastAction(5, true));
+        AbstractPlayer p = AbstractDungeon.player;
+        AbstractDungeon.effectList.add(new FlashAtkImgEffect(p.hb.cX, p.hb.cY, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+        DamageInfo info = new DamageInfo(null, 5, DamageInfo.DamageType.THORNS);
+        info.name = "StarRing";
+        p.damage(info);
         isDead = true; //TODO: isDead会直接影响到你的伤害可能消失？
     }
 
@@ -134,6 +142,7 @@ public class StarRing extends AbstractMonster {
             AbstractDungeon.actionManager.addToTop(new StarRingBlastAction(dmg, false));
         }
         AbstractDungeon.actionManager.addToTop(new WaitAction(0.5F));
+        loseBlock();
     }
 
     @Override
