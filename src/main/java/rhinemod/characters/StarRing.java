@@ -121,7 +121,6 @@ public class StarRing extends AbstractMonster {
         DamageInfo info = new DamageInfo(null, 5, DamageInfo.DamageType.THORNS);
         info.name = "StarRing";
         p.damage(info);
-        isDead = true; //TODO: isDead会直接影响到你的伤害可能消失？
     }
 
     public int calculateDmg(float dmg) {
