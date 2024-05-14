@@ -27,6 +27,7 @@ public class BionicDevice extends AbstractRhineCard {
         super(ID, NAME, IMG, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.UNCOMMON, CardTarget.SELF);
+        exhaust = true;
     }
 
     @Override
@@ -55,6 +56,7 @@ public class BionicDevice extends AbstractRhineCard {
                 if (!upgraded) {
                     upgradeName(3);
                     magicNumber = baseMagicNumber = FLOW_GAIN;
+                    exhaust = false;
                     rawDescription = UPGRADE_DESCRIPTION;
                     initializeDescription();
                 }

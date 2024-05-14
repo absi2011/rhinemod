@@ -40,7 +40,7 @@ public class BionicDevicePower extends AbstractPower {
 
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
-        if (info.owner instanceof AbstractMonster)
+        if ((info.owner instanceof AbstractMonster) && (info.type == DamageInfo.DamageType.NORMAL))
             addToTop(new ApplyPowerAction(info.owner, owner, new StrengthPower(info.owner, -amount)));
         return damageAmount;
     }
