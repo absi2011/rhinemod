@@ -19,6 +19,7 @@ public class StarterRelicPatch {
         public static void Post(CardGroup _inst, AbstractCard c) {
             if (_inst.type == CardGroup.CardGroupType.MASTER_DECK && AbstractDungeon.player.hasRelic(TITStudentIdCard.ID)) {
                 // TODO: 一次性删除多张牌时可能会敲到被删除的牌。
+                // TODO: 和烟斗撞了，会报错
                 ArrayList<AbstractCard> list = new ArrayList<>();
                 for (AbstractCard ca : AbstractDungeon.player.masterDeck.group)
                     if (ca.canUpgrade())

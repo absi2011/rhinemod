@@ -248,7 +248,7 @@
     },
     "rhinemod:LoneLight": {
         "NAME": "寂寥的光",
-        "DESCRIPTION": "选择以下一张牌加入你的手牌： NL 自私者，背叛者，求道者，独行者，先驱者。 NL 晚安，泰拉。",
+        "DESCRIPTION": "选择以下一张牌加入你的手牌： NL 自私者，背叛者，求道者，独行者，先驱者。 NL rhinemod:晚安，泰拉 。",
         "UPGRADE_DESCRIPTION": ""
     },
     "rhinemod:FlowCombo": {
@@ -429,7 +429,7 @@
     },
     "rhinemod:IcefieldsCottongrass": {
         "NAME": "冰原棉草",
-        "DESCRIPTION": "获得 !B! 点格挡，抽一张牌，将这张牌的一张复制品随机放入你的手牌、弃牌堆或者抽牌堆。 NL 消耗 。",
+        "DESCRIPTION": "获得 !B! 点格挡，抽一张牌，将这张牌的一张复制品随机放入你的手牌、弃牌堆、抽牌堆或者消耗堆。 NL 消耗 。",
         "UPGRADE_DESCRIPTION": ""
     },
     "rhinemod:Sarracenia": {

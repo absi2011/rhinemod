@@ -57,7 +57,7 @@ public class CampfireChangeBranchEffect extends AbstractGameEffect {
                 if (c instanceof AbstractRhineCard && c.upgraded && ((AbstractRhineCard) c).possibleBranches().size() > 1)
                     list.group.add(c);
             GridCardSelectPatch.OptFields.isChangingBranch.set(AbstractDungeon.gridSelectScreen, true);
-            AbstractDungeon.gridSelectScreen.open(list, 1, TEXT[0], true, false, true, false);
+            AbstractDungeon.gridSelectScreen.open(list, 1, TEXT[0], true, false, false, false);
         }
         
         if (duration < 0.0F) {
