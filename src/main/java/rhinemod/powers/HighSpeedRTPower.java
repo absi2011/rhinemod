@@ -38,13 +38,13 @@ public class HighSpeedRTPower extends AbstractPower {
     @Override
     public void atStartOfTurn() {
         addToBot(new RemoveSpecificPowerAction(owner, owner, this));
-        addToBot(new DamageAllEnemiesAction(source, amount, DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.NONE));
+        addToBot(new DamageAllEnemiesAction(source, DamageInfo.createDamageMatrix(amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.NONE));
     }
 
     @Override
     public void onDeath() {
         addToBot(new RemoveSpecificPowerAction(owner, owner, this));
-        addToBot(new DamageAllEnemiesAction(source, amount, DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.NONE));
+        addToBot(new DamageAllEnemiesAction(source, DamageInfo.createDamageMatrix(amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.NONE));
     }
 
     @Override

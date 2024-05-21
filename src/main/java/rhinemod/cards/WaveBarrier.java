@@ -24,7 +24,7 @@ public class WaveBarrier extends AbstractRhineCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String IMG = "resources/rhinemod/images/cards/HighSpeedResonatingTroubleshooter.png";
-    public static final int COST = 2;
+    public static final int COST = 0;
     public static final int BARRIER = 4;
     public static final int UPGRADE_BARRIER = 1;
     public WaveBarrier() {
