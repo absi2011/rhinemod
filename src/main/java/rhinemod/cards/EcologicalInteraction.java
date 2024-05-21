@@ -1,5 +1,6 @@
 package rhinemod.cards;
 
+import com.badlogic.gdx.Gdx;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -22,11 +23,15 @@ public class EcologicalInteraction extends AbstractRhineCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG = "resources/rhinemod/images/cards/EcologicalInteraction.png";
     public static final int COST = -1;
+    private double rotationTimer;
+    private int previewIndex;
+    ArrayList<AbstractCard> cards = new ArrayList<>();
     public EcologicalInteraction() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.UNCOMMON, CardTarget.SELF);
         realBranch = 3;
+        cards = RhineMod.getPlantCards();
     }
 
     @Override
@@ -40,6 +45,26 @@ public class EcologicalInteraction extends AbstractRhineCard {
         }
         addToBot(new MakeSeveralCardsInHandAction(list));
         if (!freeToPlayOnce) p.energy.use(energyOnUse);
+    }
+
+    public void update() {
+        super.update();
+        if ((cards == null) || (cards.isEmpty())) {
+            return;
+        }
+        if (this.hb.hovered) {
+            if (this.rotationTimer <= 0.0F) {
+                this.rotationTimer = 2.0F;
+                this.cardsToPreview = this.cards.get(this.previewIndex);
+                if (this.previewIndex == this.cards.size() - 1) {
+                    this.previewIndex = 0;
+                } else {
+                    this.previewIndex++;
+                }
+            } else {
+                this.rotationTimer -= Gdx.graphics.getDeltaTime();
+            }
+        }
     }
 
     @Override

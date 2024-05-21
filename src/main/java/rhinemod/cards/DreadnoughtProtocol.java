@@ -26,6 +26,7 @@ public class DreadnoughtProtocol extends AbstractRhineCard {
                 CardType.POWER, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.RARE, CardTarget.SELF);
         magicNumber = baseMagicNumber = HEAL_AMT;
+        tags.add(CardTags.HEALING);
     }
 
     @Override
