@@ -23,10 +23,14 @@ public class WaterDamage extends AbstractPower {
         this.owner = owner;
         this.amount = amount;
         this.level = 0;
-        updateSubmersion();
         region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/WaterDamage 128.png"), 0, 0, 128, 128);
         region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/WaterDamage 48.png"), 0, 0, 48, 48);
         updateDescription();
+    }
+
+    @Override
+    public void onInitialApplication() {
+        updateSubmersion();
     }
 
     @Override

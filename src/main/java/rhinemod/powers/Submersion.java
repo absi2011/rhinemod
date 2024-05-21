@@ -1,16 +1,17 @@
 package rhinemod.powers;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.purple.Judgement;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import rhinemod.actions.SubmersionLoseHpAction;
 
 public class Submersion extends AbstractPower {
@@ -33,19 +34,29 @@ public class Submersion extends AbstractPower {
     }
 
     @Override
+    public void onInitialApplication() {
+        updateLevel(amount);
+    }
+    @Override
     public void updateDescription() {
         description = DESCRIPTIONS[0] + DAMAGE_TAKE[amount] + DESCRIPTIONS[1] + REDUCE_ATK[amount] + DESCRIPTIONS[2] + amount + DESCRIPTIONS[3];
     }
 
     public void updateLevel(int amount) {
-        this.amount = amount;
+        if (amount < this.amount) {
+            addToTop(new ReducePowerAction(owner, owner, name, this.amount - amount));
+        }
+        else if (amount > this.amount) {
+            addToTop(new ApplyPowerAction(owner, owner, new Submersion(owner, amount - this.amount)));
+        }
         if (amount <= 0) {
             addToBot(new RemoveSpecificPowerAction(owner, owner, this));
         }
         updateDescription();
-        if (this.amount >= 4) {
-            owner.currentHealth = 0;
-            addToBot(new DamageAction(owner, new DamageInfo(owner, 0, DamageInfo.DamageType.HP_LOSS)));
+        if (amount >= 4) {
+            AbstractDungeon.effectList.add(new FlashAtkImgEffect(owner.hb.cX, owner.hb.cY, AbstractGameAction.AttackEffect.POISON));
+            //TODO: 改个不是毒的别的特效？
+            addToBot(new InstantKillAction(owner));
         }
     }
 
