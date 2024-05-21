@@ -17,7 +17,8 @@ public class BlackHole extends CustomMonster {
     public static final String NAME = monsterStrings.NAME;
 
     public BlackHole(float x, float y) {
-        super(NAME, ID, 1, 0, 0, 200.0F, 280.0F, null, x, y);
+        super(NAME, ID, 1000, 0, 0, 200.0F, 280.0F, null, x, y);
+        currentHealth = 1;
         type = EnemyType.NORMAL;
         loadAnimation("resources/rhinemod/images/monsters/enemy_2056_smedzi/enemy_2056_smedzi.atlas", "resources/rhinemod/images/monsters/enemy_2056_smedzi/enemy_2056_smedzi33.json", 2F);
         this.stateData.setMix("Idle", "Move_Begin", 0.1F);

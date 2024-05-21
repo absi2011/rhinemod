@@ -185,7 +185,7 @@
     },
     "rhinemod:BionicDevice": {
         "NAME": "迷惑装置",
-        "DESCRIPTION": "本回合中，敌人每对你造成一次伤害，失去1点 力量 。 NL 消耗 。",
+        "DESCRIPTION": "本回合中，敌人每对你造成一次攻击伤害，失去1点 力量 。 NL 消耗 。",
         "UPGRADE_DESCRIPTION": "rhinemod:流形 ： !M!"
     },
     "rhinemod:NovaEruption": {

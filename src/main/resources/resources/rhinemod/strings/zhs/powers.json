@@ -26,7 +26,7 @@
   },
   "rhinemod:Solidify": {
     "NAME": "凝固",
-    "DESCRIPTIONS": ["#y钙质粒子 不再在回合开始时减少。"]
+    "DESCRIPTIONS": ["#y钙质粒子 不再减少。"]
   },
   "rhinemod:ResearchProgress": {
     "NAME": "科研进度",
@@ -39,7 +39,7 @@
   "rhinemod:BionicDevicePower": {
     "NAME": "迷惑装置",
     "DESCRIPTIONS": [
-      "本回合内，敌人每对你造成一次伤害，失去 #b",
+      "本回合内，敌人每对你造成一次攻击伤害，失去 #b",
       " 点 #y力量 。"
     ]
   },

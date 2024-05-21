@@ -24,7 +24,7 @@ public class HeatDeathAction extends AbstractGameAction {
             int averageHealth = totalHealth / monsterNum;
             for (AbstractMonster m : AbstractDungeon.getMonsters().monsters)
                 if (!m.isDeadOrEscaped()) {
-                    m.currentHealth = Math.min(averageHealth, m.currentHealth);
+                    m.currentHealth = Math.min(averageHealth, m.maxHealth);
                     m.healthBarUpdatedEvent();
                 }
         }

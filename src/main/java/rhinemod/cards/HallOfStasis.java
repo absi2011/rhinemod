@@ -20,8 +20,8 @@ public class HallOfStasis extends AbstractRhineCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String IMG = "resources/rhinemod/images/cards/HallOfStasis.png";
     public static final int COST = 1;
-    public static final int LOSS_TIME = 10;
-    public static final int UPGRADE_PLUS_TIME = 5;
+    public static final int LOSS_TIME = 12;
+    public static final int UPGRADE_PLUS_TIME = 6;
     public HallOfStasis() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.RHINE_MATTE,

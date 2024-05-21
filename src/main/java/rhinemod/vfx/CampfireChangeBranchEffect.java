@@ -11,8 +11,10 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.UIStrings;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.CampfireUI;
 import com.megacrit.cardcrawl.rooms.RestRoom;
+import com.megacrit.cardcrawl.ui.campfire.AbstractCampfireOption;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import rhinemod.cards.AbstractRhineCard;
@@ -24,11 +26,13 @@ public class CampfireChangeBranchEffect extends AbstractGameEffect {
     public static final String[] TEXT = uiStrings.TEXT;
     private boolean openedScreen = false;
     private final Color screenColor = AbstractDungeon.fadeColor.cpy();
+    private ChangeBranchOption changeBranchOption;
 
-    public CampfireChangeBranchEffect() {
+    public CampfireChangeBranchEffect(ChangeBranchOption c) {
         duration = 1.5F;
         screenColor.a = 0.0F;
         AbstractDungeon.overlayMenu.proceedButton.hide();
+        changeBranchOption = c;
     }
 
     @Override
@@ -62,8 +66,12 @@ public class CampfireChangeBranchEffect extends AbstractGameEffect {
         
         if (duration < 0.0F) {
             isDone = true;
-            if (AbstractDungeon.getCurrRoom() instanceof RestRoom)
-                ((RestRoom)AbstractDungeon.getCurrRoom()).campfireUI.reopen();
+            if (AbstractDungeon.getCurrRoom() instanceof RestRoom) {
+                CampfireUI campfireUI = ((RestRoom) AbstractDungeon.getCurrRoom()).campfireUI;
+                changeBranchOption.usable = false;
+                AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
+                campfireUI.reopen();
+            }
         }
     }
 

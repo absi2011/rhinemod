@@ -77,7 +77,8 @@ public class EmergencyDefenseProcedures extends AbstractRhineCard {
                 super.applyPowersToBlock();
                 secondMagicNumber = block;
                 if (secondMagicNumber != baseSecondMagicNumber) isSecondMagicNumberModified = true;
-                baseBlock = block = tmp;
+                baseBlock = tmp;
+                super.applyPowersToBlock();
                 break;
             case 1:
                 baseBlock = 0;

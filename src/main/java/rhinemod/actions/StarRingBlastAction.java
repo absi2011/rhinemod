@@ -41,10 +41,11 @@ public class StarRingBlastAction extends AbstractGameAction {
             tickDuration();
             return;
         }
-        DamageInfo info = new DamageInfo(null, amount, DamageInfo.DamageType.THORNS);
-        info.name = "StarRing";
-        for (AbstractCreature m : aimList)
+        for (AbstractCreature m : aimList) {
+            DamageInfo info = new DamageInfo(null, amount, DamageInfo.DamageType.THORNS);
+            info.name = "StarRing";
             m.damage(info);
+        }
         isDone = true;
     }
 }

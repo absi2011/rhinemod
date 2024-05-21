@@ -15,7 +15,7 @@ public class BookOfFairyTalesAction extends AbstractGameAction {
     @Override
     public void update() {
         for (AbstractCard c : DrawCardAction.drawnCards)
-            if (AbstractDungeon.cardRng.random(0, 4) == 0) {
+            if ((c.canUpgrade()) && (AbstractDungeon.cardRng.random(0, 4) == 0)) {
                 c.upgrade();
                 c.displayUpgrades();
                 c.applyPowers();

@@ -35,7 +35,7 @@ public class LikeMind extends AbstractRhineCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new LikeMindPower(p, magicNumber, realBranch)));
+        addToBot(new ApplyPowerAction(p, p, new LikeMindPower(p, magicNumber, chosenBranch)));
     }
 
     @Override

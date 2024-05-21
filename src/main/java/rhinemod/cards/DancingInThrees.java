@@ -23,7 +23,7 @@ public class DancingInThrees extends AbstractRhineCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String IMG = "resources/rhinemod/images/cards/Calcification.png";
     public static final int COST = 0;
-    public static final int ATTR_ADD = 4;
+    public static final int ATTR_ADD = 6;
     public static final int UPGRADE_PLUS_ATTR = 2;
     public DancingInThrees() {
         super(ID, NAME, IMG, COST, DESCRIPTION,

@@ -2,7 +2,7 @@
   "rhinemod:TITStudentIdCard": {
     "NAME": "特里蒙理工学生卡",
     "FLAVOR": "持此卡可进入特里蒙理工学院教学楼、实验楼。",
-    "DESCRIPTIONS": ["每当你从你卡组中移除卡牌时，随机升级一张卡牌。"]
+    "DESCRIPTIONS": ["你每从你卡组中移除2张卡牌，在进入下一个房间时随机升级一张卡牌。"]
   },
   "rhinemod:Awaken": {
     "NAME": "“唤醒”",

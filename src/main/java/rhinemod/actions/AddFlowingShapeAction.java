@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import rhinemod.characters.RhineLab;
+import rhinemod.powers.InvisibleCalcium;
 import rhinemod.powers.InvisibleFlowShape;
 import rhinemod.powers.LikeMindPower;
 
@@ -21,7 +22,7 @@ public class AddFlowingShapeAction extends AbstractGameAction {
         if (p instanceof RhineLab)
             ((RhineLab)AbstractDungeon.player).globalAttributes.addFlowsp(amount);
         if (amount > 0 && p.hasPower(LikeMindPower.POWER_ID))
-            p.getPower(LikeMindPower.POWER_ID).onApplyPower(new InvisibleFlowShape(), p, p);
+            ((LikeMindPower)(p.getPower(LikeMindPower.POWER_ID))).onReceivePower(new InvisibleCalcium(), p, p);
         isDone = true;
     }
 }

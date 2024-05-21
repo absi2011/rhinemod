@@ -18,20 +18,7 @@ public class StarterRelicPatch {
         @SpirePostfixPatch
         public static void Post(CardGroup _inst, AbstractCard c) {
             if (_inst.type == CardGroup.CardGroupType.MASTER_DECK && AbstractDungeon.player.hasRelic(TITStudentIdCard.ID)) {
-                // TODO: 一次性删除多张牌时可能会敲到被删除的牌。
-                // TODO: 和烟斗撞了，会报错
-                ArrayList<AbstractCard> list = new ArrayList<>();
-                for (AbstractCard ca : AbstractDungeon.player.masterDeck.group)
-                    if (ca.canUpgrade())
-                        list.add(ca);
-                if (!list.isEmpty()) {
-                    AbstractCard cardToUpgrade = list.get(AbstractDungeon.cardRng.random(0, list.size() - 1));
-                    float x = MathUtils.random(0.1F, 0.9F) * Settings.WIDTH;
-                    float y = MathUtils.random(0.2F, 0.8F) * Settings.HEIGHT;
-                    AbstractDungeon.effectList.add(new ShowCardBrieflyEffect(cardToUpgrade.makeStatEquivalentCopy(), x, y));
-                    AbstractDungeon.topLevelEffects.add(new UpgradeShineEffect(x, y));
-                    cardToUpgrade.upgrade();
-                }
+                AbstractDungeon.player.getRelic(TITStudentIdCard.ID).counter ++;
             }
         }
     }

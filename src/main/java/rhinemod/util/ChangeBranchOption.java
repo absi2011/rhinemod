@@ -28,7 +28,7 @@ public class ChangeBranchOption extends AbstractCampfireOption {
 
     public void useOption() {
         if (usable)
-            AbstractDungeon.effectList.add(new CampfireChangeBranchEffect());
+            AbstractDungeon.effectList.add(new CampfireChangeBranchEffect(this));
     }
 
     @Override
