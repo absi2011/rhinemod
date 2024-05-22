@@ -4,6 +4,7 @@ import basemod.abstracts.CustomMonster;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.utility.HideHealthBarAction;
+import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -29,26 +30,26 @@ public class Awaken_Monster extends CustomMonster {
 
 
     public Awaken_Monster(float x, float y) {
-        super(NAME, ID, 600, 0, 0, 150.0F, 320.0F, null, x, y);
+        super(NAME, ID, 600, 0, 0, 370.0F, 520.0F, null, x, y);
         type = EnemyType.ELITE;
         if (AbstractDungeon.ascensionLevel >= 8) {
             setHp(630);
         }
         if (AbstractDungeon.ascensionLevel >= 18) {
-            damage.add(new DamageInfo(this, 80));
             damage.add(new DamageInfo(this, 140));
+            damage.add(new DamageInfo(this, 200));
             stage1Journey = 10;
             stage2Add = 6;
         }
         else if (AbstractDungeon.ascensionLevel >= 3) {
-            damage.add(new DamageInfo(this, 80));
             damage.add(new DamageInfo(this, 140));
+            damage.add(new DamageInfo(this, 200));
             stage1Journey = 8;
             stage2Add = 4;
         }
         else {
-            damage.add(new DamageInfo(this, 68));
             damage.add(new DamageInfo(this, 120));
+            damage.add(new DamageInfo(this, 176));
             stage1Journey = 8;
             stage2Add = 4;
         }
@@ -77,17 +78,27 @@ public class Awaken_Monster extends CustomMonster {
     @Override
     public void takeTurn() {
         if (nextMove == 1) {
-            addToBot(new AwakenAction(damage.get(0).base, this));
-            state.setAnimation(0, "Skill_1", false);
+            state.setAnimation(0, "Skill_2_Start", false);
+            state.setAnimation(0, "Skill_2_Loop", false);
+            state.setAnimation(0, "Skill_2_End", false);
             state.addAnimation(0, "Idle", true, 0);
+            addToBot(new WaitAction(0.3F));
+            addToBot(new AwakenAction(damage.get(0).base, this));
             // TODO: 一阶段技能
         }
         else if (nextMove == 2) {
+            state.setAnimation(0, "Skill_2_Start", false);
+            state.setAnimation(0, "Skill_2_Loop", false);
+            state.setAnimation(0, "Skill_2_End", false);
+            state.addAnimation(0, "Idle", true, 0);
+            addToBot(new WaitAction(0.3F));
             addToBot(new AwakenAction(damage.get(1).base, this));
             // TODO: 二阶段技能
         }
         else if (nextMove == 3) {
             // TODO: 召唤
+            state.setAnimation(0, "Skill_1", false);
+            state.addAnimation(0, "Idle", true, 0);
             addToBot(new SummonMechAction(mechs));
         }
         if ((currentHealth <= maxHealth / 2) && (notTriggered))
