@@ -190,7 +190,7 @@
     },
     "rhinemod:NovaEruption": {
         "NAME": "新星爆发",
-        "DESCRIPTION": "引爆一个星环，此次引爆不对你造成伤害。",
+        "DESCRIPTION": "引爆一个 rhinemod:星环 ，此次引爆不对你造成伤害。",
         "UPGRADE_DESCRIPTION": ""
     },
     "rhinemod:ApplyFullForce": {
@@ -284,6 +284,11 @@
         "DESCRIPTION": "你的 rhinemod:星环 额外攻击一次。",
         "UPGRADE_DESCRIPTION": ""
     },
+    "rhinemod:Truth": {
+        "NAME": "真理",
+        "DESCRIPTION": "所有的 rhinemod:星环 立刻行动一次。如果你拥有至少 !M! 个 rhinemod:星环 ，将一张 *自私者 加入你的手牌。",
+        "UPGRADE_DESCRIPTION": ""
+    },
 
     "rhinemod:Calcification": {
         "NAME": "钙质化",
@@ -343,7 +348,7 @@
     "rhinemod:PureDewOfFreshBlossoms": {
         "NAME": "纯净鲜花露",
         "DESCRIPTION": "被浸没的敌人无法对你施加负面状态。",
-        "UPGRADE_DESCRIPTION": "固有 。 NL 被浸没的敌人无法对你施加负面状态。"
+        "UPGRADE_DESCRIPTION": "保留 。 NL 被浸没的敌人无法对你施加负面状态。"
     },
     "rhinemod:LikeMind": {
         "NAME": "意气相投",
@@ -358,7 +363,7 @@
     "rhinemod:Refreshment": {
         "NAME": "精神回复",
         "DESCRIPTION": "每当你获得 格挡 时，抽 !M! 张牌并获得等同于其费用的 rhinemod:科研进度 。",
-        "UPGRADE_DESCRIPTION": "固有 。 NL 每当你获得 格挡 时，抽 !M! 张牌并获得等同于其费用的 rhinemod:科研进度 。"
+        "UPGRADE_DESCRIPTION": "保留 。 NL 每当你获得 格挡 时，抽 !M! 张牌并获得等同于其费用的 rhinemod:科研进度 。"
     },
 
 
@@ -369,7 +374,7 @@
     },
     "rhinemod:Egotist": {
         "NAME": "自私者",
-        "DESCRIPTION": "对战结束时，星环不再对你造成伤害。 NL 虚无 。",
+        "DESCRIPTION": "战斗结束时， rhinemod:星环 不再对你造成伤害。 NL 虚无 。",
         "UPGRADE_DESCRIPTION": ""
     },
     "rhinemod:Traitor": {

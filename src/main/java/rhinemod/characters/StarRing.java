@@ -23,6 +23,7 @@ import com.megacrit.cardcrawl.vfx.combat.HbBlockBrokenEffect;
 import com.megacrit.cardcrawl.vfx.combat.StrikeEffect;
 import rhinemod.actions.StarRingBlastAction;
 import rhinemod.cards.AbstractRhineCard;
+import rhinemod.powers.EgotistPower;
 import rhinemod.powers.GalleriaStellariaPower;
 
 public class StarRing extends AbstractMonster {
@@ -129,9 +130,7 @@ public class StarRing extends AbstractMonster {
         return (int)Math.floor(dmg);
     }
 
-    @Override
-    public void applyStartOfTurnPowers() {
-        super.applyStartOfTurnPowers();
+    public void startOfTurnDamage() {
         int dmg = calculateDmg(5);
         int cnt = 1;
         if (AbstractDungeon.player.hasPower(GalleriaStellariaPower.POWER_ID)) {
@@ -141,6 +140,11 @@ public class StarRing extends AbstractMonster {
             AbstractDungeon.actionManager.addToTop(new StarRingBlastAction(dmg, false));
         }
         AbstractDungeon.actionManager.addToTop(new WaitAction(0.5F));
+    }
+    @Override
+    public void applyStartOfTurnPowers() {
+        super.applyStartOfTurnPowers();
+        startOfTurnDamage();
         loseBlock();
     }
 
@@ -161,7 +165,11 @@ public class StarRing extends AbstractMonster {
     @Override
     public void renderPowerTips(SpriteBatch sb) {
         tips.clear();
-        tips.add(new PowerTip(TEXT[0], TEXT[1] + calculateDmg(5) + TEXT[2]));
+        String TipBody = TEXT[1] + calculateDmg(5) + TEXT[2];
+        if (!AbstractDungeon.player.hasPower(EgotistPower.POWER_ID)) {
+            TipBody += TEXT[3];
+        }
+        tips.add(new PowerTip(TEXT[0], TipBody));
         for (AbstractPower p : powers) {
             if (p.region48 != null) {
                 tips.add(new PowerTip(p.name, p.description, p.region48));

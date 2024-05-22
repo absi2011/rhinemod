@@ -40,7 +40,7 @@ public class Refreshment extends AbstractRhineCard {
             add(() -> {
                 if (!upgraded) {
                     upgradeName(0);
-                    isInnate = true;
+                    selfRetain = true;
                     rawDescription = UPGRADE_DESCRIPTION;
                     initializeDescription();
                 }

@@ -259,6 +259,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new EliminateThreat()); // 解除威胁
         BaseMod.addCard(new RedShiftExperience()); // 红移实验
         BaseMod.addCard(new GalleriaStellaria()); // 万星园
+        BaseMod.addCard(new Truth()); // 真理
 
         // Rare.
         BaseMod.addCard(new Calcification()); // 钙质化

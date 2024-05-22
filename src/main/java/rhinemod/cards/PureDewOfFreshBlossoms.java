@@ -39,7 +39,7 @@ public class PureDewOfFreshBlossoms extends AbstractRhineCard {
                 if (!upgraded) {
                     upgradeName(0);
                     rawDescription = UPGRADE_DESCRIPTION;
-                    isInnate = true;
+                    selfRetain = true;
                     initializeDescription();
                 }
             });
