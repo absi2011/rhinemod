@@ -48,6 +48,7 @@ public class MysteriousInvent extends AbstractImageEvent {
                         this.imageEventText.updateBodyText(DESCRIPTIONS[1]);
                         this.screen = CurScreen.LEAVE;
                         AbstractRelic r = new LoneTrail();
+                        r.counter = -1;
                         AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float)(Settings.WIDTH / 2), (float)(Settings.HEIGHT / 2), r);
                         imageEventText.updateDialogOption(0, OPTIONS[4]);
                         imageEventText.clearRemainingOptions();

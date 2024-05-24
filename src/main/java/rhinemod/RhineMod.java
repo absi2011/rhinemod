@@ -144,6 +144,13 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
     }
 
     private void initializeEvents() {
+        BaseMod.addEvent(new AddEventParams.Builder(ConvergenceOfPastAndPresent.ID, ConvergenceOfPastAndPresent.class).
+                eventType(EventUtils.EventType.NORMAL).
+                dungeonID("TheCity").
+                dungeonID("TheBeyond").
+                endsWithRewardsUI(false).
+                spawnCondition(() -> ((AbstractDungeon.player instanceof RhineLab))).
+                create());
         if (isDemo) return;
         BaseMod.addEvent(new AddEventParams.Builder(MysteriousInvent.ID, MysteriousInvent.class).
                 eventType(EventUtils.EventType.NORMAL).
@@ -151,13 +158,6 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
                 dungeonID("TheBeyond").
                 endsWithRewardsUI(false).
                 spawnCondition(() -> (!(AbstractDungeon.player instanceof RhineLab))).
-                create());
-        BaseMod.addEvent(new AddEventParams.Builder(ConvergenceOfPastAndPresent.ID, ConvergenceOfPastAndPresent.class).
-                eventType(EventUtils.EventType.NORMAL).
-                dungeonID("TheCity").
-                dungeonID("TheBeyond").
-                endsWithRewardsUI(false).
-                spawnCondition(() -> ((AbstractDungeon.player instanceof RhineLab))).
                 create());
         BaseMod.addEvent(new AddEventParams.Builder(HeartEvent.ID, HeartEvent.class).
                 eventType(EventUtils.EventType.NORMAL).

@@ -224,9 +224,9 @@ public class StarRing extends AbstractMonster {
     @Override
     protected void getMove(int i) {}
 
+    @Override
     public void update() {
-        for (AbstractPower p : powers)
-            p.updateParticles();
+        updatePowers();
         updateHealthBar();
         tint.update();
     }

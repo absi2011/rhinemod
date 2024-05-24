@@ -2,6 +2,7 @@ package rhinemod.characters;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -214,7 +215,9 @@ public class RhineLab extends CustomPlayer {
     public void addPlayedSpecialCard(String c) {
         playedSpecialCard.add(c);
         if (playedSpecialCard.size() >= 5 && !AbstractDungeon.player.hasRelic(LoneTrail.ID)) {
-            AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float)(Settings.WIDTH / 2), (float)(Settings.HEIGHT / 2), new LoneTrail());
+            AbstractRelic loneTrail = new LoneTrail();
+            loneTrail.counter = -1;
+            AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float)(Settings.WIDTH / 2), (float)(Settings.HEIGHT / 2), loneTrail);
         }
     }
 
@@ -281,8 +284,11 @@ public class RhineLab extends CustomPlayer {
         for (int i = 0; i < 6; i++)
             if (starRings[i] == null || starRings[i].isDead) {
                 starRings[i] = new StarRing(maxHealth, POSX[i], POSY[i]);
-                starRings[i].currentBlock = block;
                 starRings[i].showHealthBar();
+                if (block > 0)
+                {
+                    AbstractDungeon.actionManager.addToTop(new GainBlockAction(starRings[i], block));
+                }
                 if (strength > 0) {
                     AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(starRings[i], this, new StrengthPower(starRings[i], strength)));
                 }

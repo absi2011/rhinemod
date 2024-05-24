@@ -3,10 +3,7 @@ package rhinemod.relics;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
-import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
-import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
@@ -14,9 +11,12 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.RelicStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
 import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
 import rhinemod.cards.special.*;
+import rhinemod.rooms.HeartRoom;
 
 import java.util.ArrayList;
 
@@ -30,6 +30,7 @@ public class LoneTrail extends CustomRelic {
     public static final Texture IMG_OUTLINE = new Texture("resources/rhinemod/images/relics/LoneTrail_p.png");
     public LoneTrail() {
         super(ID, IMG, IMG_OUTLINE, RelicTier.SPECIAL, LandingSound.MAGICAL);
+        counter = 0;
     }
 
     @Override
@@ -54,10 +55,18 @@ public class LoneTrail extends CustomRelic {
 
     @Override
     public void atBattleStartPreDraw() {
-        if (counter > 0) {
+        if ((counter == 0) && (AbstractDungeon.getCurrRoom() instanceof HeartRoom)) {
+            AbstractMonster m = null;
+            m.applyPowers(); // 搞个NPE，防止其他方式获取孤星。
+        }
+        if ((counter > 0) && (AbstractDungeon.getCurrRoom() instanceof MonsterRoomBoss)) {
+            flash();
             int i;
             for (i = 0; i < counter; i++) {
-                this.addToBot(new DamageAllEnemiesAction(AbstractDungeon.player, 1, DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.NONE));
+                // 这里无论如何应该只有一个敌人。
+                AbstractMonster m = AbstractDungeon.getCurrRoom().monsters.monsters.get(0);
+                AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(AbstractDungeon.player, 1, DamageInfo.DamageType.HP_LOSS)));
+                //TODO: 如果以后有技术力可以做一个星光特效
             }
             counter = -1;
         }
