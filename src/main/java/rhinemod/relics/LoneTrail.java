@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
 import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
 import rhinemod.cards.special.*;
@@ -54,11 +55,15 @@ public class LoneTrail extends CustomRelic {
     }
 
     @Override
-    public void atBattleStartPreDraw() {
+    public void onEnterRoom(AbstractRoom room) {
         if ((counter == 0) && (AbstractDungeon.getCurrRoom() instanceof HeartRoom)) {
             AbstractMonster m = null;
             m.applyPowers(); // 搞个NPE，防止其他方式获取孤星。
         }
+    }
+
+    @Override
+    public void atBattleStartPreDraw() {
         if ((counter > 0) && (AbstractDungeon.getCurrRoom() instanceof MonsterRoomBoss)) {
             flash();
             int i;
