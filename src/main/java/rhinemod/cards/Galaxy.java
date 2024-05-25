@@ -39,7 +39,6 @@ public class Galaxy extends AbstractRhineCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-        addToBot(new ChangeGravityAction());
     }
 
     @Override

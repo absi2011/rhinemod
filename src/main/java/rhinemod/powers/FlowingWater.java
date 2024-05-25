@@ -33,8 +33,11 @@ public class FlowingWater extends AbstractPower {
 
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
-        addToTop(new RemoveSpecificPowerAction(owner, owner, this));
-        addToTop(new ApplyPowerAction(info.owner, owner, new WaterDamage(info.owner, amount)));
+        if (info.type == DamageInfo.DamageType.NORMAL)
+        {
+            addToTop(new RemoveSpecificPowerAction(owner, owner, this));
+            addToTop(new ApplyPowerAction(info.owner, owner, new WaterDamage(info.owner, amount)));
+        }
         return damageAmount;
     }
 }
