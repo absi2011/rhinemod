@@ -30,7 +30,7 @@ public class TraitorPower extends AbstractDescriptionPower {
     @Override
     public int onAttackToChangeDamage(DamageInfo info, int damageAmount) {
         // TODO: patch 在 onAttackedToChangeDamage 之后
-        if (AbstractDungeon.player instanceof RhineLab && damageAmount >= GlobalAttributes.smashThreshold) {
+        if (AbstractDungeon.player instanceof RhineLab && info.type == DamageInfo.DamageType.NORMAL && damageAmount >= GlobalAttributes.smashThreshold) {
             flashWithoutSound();
             return damageAmount * 2;
         } else {
