@@ -54,6 +54,7 @@ public class SHAFT extends AbstractRhineCard {
                 if (!upgraded) {
                     upgradeName(2);
                     upgradeBaseCost(KRISTEN_COST);
+                    costForTurn = KRISTEN_COST;
                     rawDescription = UPGRADE_DESCRIPTION;
                     cardsToPreview = new Traitor();
                     initializeDescription();

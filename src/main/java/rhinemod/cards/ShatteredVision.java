@@ -38,7 +38,7 @@ public class ShatteredVision extends AbstractRhineCard {
     public ShatteredVision() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.RHINE_MATTE,
-                CardRarity.COMMON, CardTarget.SELF);
+                CardRarity.COMMON, CardTarget.ALL_ENEMY);
         damage = baseDamage = ATTACK_DMG;
     }
 
@@ -46,10 +46,11 @@ public class ShatteredVision extends AbstractRhineCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         switch (chosenBranch) {
             case 0:
+                applyPowers();
                 addToBot(new AverageDamageAllAction(damage, p, DamageInfo.DamageType.NORMAL));
                 break;
             case 1:
-                addToBot(new DamageAllEnemiesAction(p, damage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+                addToBot(new DamageAllEnemiesAction(p, multiDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
                 addToBot(new RemoveCardAction(uuid));
                 break;
             case 2:
