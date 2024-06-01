@@ -37,15 +37,18 @@ public class SingleCardViewBranchPatch {
 
     public static void setBranchesPreview(SingleCardViewPopup _inst, AbstractRhineCard card) {
         if (!cardChecked) {
-            branchesNum = card.possibleBranches().size();
+            AbstractRhineCard _card = card.makeStatEquivalentCopy();
+            if (_card.upgraded) _card.resetUpgrade();
+            branchesNum = _card.possibleBranches().size();
             for (int i = 0; i < branchesNum; i++) {
-                AbstractRhineCard preview = card.makeStatEquivalentCopy();
+                AbstractRhineCard preview = _card.makeStatEquivalentCopy();
                 preview.chosenBranch = i;
                 preview.possibleBranches().get(i).upgrade();
                 preview.displayUpgrades();
                 branches[i] = preview;
                 hitboxes[i] = new Hitbox(0, 0);
             }
+            if (card.chosenBranch != 0) Collections.swap(Arrays.asList(branches), 0, card.chosenBranch);
             cardChecked = true;
         }
         updateBranchPreview();
@@ -79,6 +82,7 @@ public class SingleCardViewBranchPatch {
                 setBranchesPreview(_inst, (AbstractRhineCard) GetHoveredCard());
             } else {
                 branchesNum = 0;
+                cardChecked = false;
             }
         }
     }
