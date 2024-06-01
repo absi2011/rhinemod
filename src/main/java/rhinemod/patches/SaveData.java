@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.CardSave;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.saveAndContinue.SaveAndContinue;
@@ -43,8 +44,8 @@ public class SaveData {
 
     @SpirePatch(clz = CardCrawlGame.class, method = "loadPlayerSave")
     public static class LoadPlayerSavePatch {
-        @SpirePostfixPatch
-        public static void Postfix(CardCrawlGame _inst, AbstractPlayer p, SaveFile ___saveFile) {
+        @SpireInsertPatch(locator = Locator.class)
+        public static void Insert(CardCrawlGame _inst, AbstractPlayer p, SaveFile ___saveFile) {
             p.masterDeck.clear();
             for (CardSave s : ___saveFile.cards) {
                 AbstractCard c;
@@ -56,6 +57,12 @@ public class SaveData {
                     c = CardLibrary.getCopy(s.id, s.upgrades, s.misc);
                 }
                 p.masterDeck.addToTop(c);
+            }
+        }
+        private static class Locator extends SpireInsertLocator {
+            public int[] Locate(CtBehavior ctMethodToPatch) throws Exception {
+                Matcher.FieldAccessMatcher fieldAccessMatcher = new Matcher.FieldAccessMatcher(Settings.class, "isEndless");
+                return LineFinder.findInOrder(ctMethodToPatch, fieldAccessMatcher);
             }
         }
     }

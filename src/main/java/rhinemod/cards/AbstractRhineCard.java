@@ -171,6 +171,9 @@ public abstract class AbstractRhineCard extends CustomCard {
 
     public void resetUpgrade() {
         AbstractRhineCard card = (AbstractRhineCard) this.makeCopy();
+        card.inBottleLightning = inBottleLightning;
+        card.inBottleFlame = inBottleFlame;
+        card.inBottleTornado = inBottleTornado;
         copyStat(card, this);
     }
 
