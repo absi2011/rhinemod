@@ -56,7 +56,7 @@ public class LoneTrail extends CustomRelic {
 
     @Override
     public void onEnterRoom(AbstractRoom room) {
-        if ((counter == 0) && (AbstractDungeon.getCurrRoom() instanceof HeartRoom)) {
+        if ((counter == 0) && (room instanceof HeartRoom)) {
             AbstractMonster m = null;
             m.applyPowers(); // 搞个NPE，防止其他方式获取孤星。
         }
