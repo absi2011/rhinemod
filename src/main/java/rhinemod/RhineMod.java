@@ -144,6 +144,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
     }
 
     private void initializeEvents() {
+        if (isDemo) return;
         BaseMod.addEvent(new AddEventParams.Builder(ConvergenceOfPastAndPresent.ID, ConvergenceOfPastAndPresent.class).
                 eventType(EventUtils.EventType.NORMAL).
                 dungeonID("TheCity").
@@ -151,7 +152,6 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
                 endsWithRewardsUI(false).
                 spawnCondition(() -> ((AbstractDungeon.player instanceof RhineLab))).
                 create());
-        if (isDemo) return;
         BaseMod.addEvent(new AddEventParams.Builder(MysteriousInvent.ID, MysteriousInvent.class).
                 eventType(EventUtils.EventType.NORMAL).
                 dungeonID("TheCity").
@@ -260,6 +260,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new RedShiftExperience()); // 红移实验
         BaseMod.addCard(new GalleriaStellaria()); // 万星园
         BaseMod.addCard(new Truth()); // 真理
+        BaseMod.addCard(new FreeFromDream()); // 挣脱美梦
 
         // Rare.
         BaseMod.addCard(new Calcification()); // 钙质化

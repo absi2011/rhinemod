@@ -34,7 +34,7 @@ public class ExhaustUnscrupulousAction extends AbstractGameAction {
             if (c instanceof Unscrupulous)
                 list.add(c);
         // TODO:来点特效！
-        if (list.size() <= amount) {
+        if ((list.size() <= amount) || (amount == -1)) {
             for (AbstractCard c : list) exhaustCard(c);
         } else {
             Collections.shuffle(list, new Random(AbstractDungeon.cardRng.randomLong()));

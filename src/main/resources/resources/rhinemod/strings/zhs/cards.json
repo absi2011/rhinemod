@@ -64,7 +64,7 @@
     },
     "rhinemod:BookOfFairyTales": {
         "NAME": "童话书",
-        "DESCRIPTION": "抽 !M! 张牌，每张牌有20%概率在本场战斗中升级。",
+        "DESCRIPTION": "抽 !M! 张牌，每张牌有20%概率在本场战斗中 升级 。",
         "UPGRADE_DESCRIPTION": ""
     },
     "rhinemod:StarlightIntersection": {
@@ -288,6 +288,15 @@
         "NAME": "真理",
         "DESCRIPTION": "所有的 rhinemod:星环 立刻行动一次。如果你拥有至少 !M! 个 rhinemod:星环 ，将一张 *自私者 加入你的手牌。",
         "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:FreeFromDream": {
+        "NAME": "挣脱美梦",
+        "DESCRIPTION": "造成 !D! 点伤害。 NL 给予所有攻击意图低于本次伤害的敌人 rhinemod:眩晕 和 !M! 层 易伤 。",
+        "UPGRADE_DESCRIPTION": "",
+        "EXTENDED_DESCRIPTION": [
+            "消耗 所有的 *出格 。 NL 如果你至少消耗了 !rhinemod:M2! 张 *出格 ，将一张 *先驱者 置入手牌。 NL 消耗 。",
+            "给予所有处于 rhinemod:眩晕 的敌人 !rhinemod:M2! 层 rhinemod:水渍 。"
+        ]
     },
 
     "rhinemod:Calcification": {
