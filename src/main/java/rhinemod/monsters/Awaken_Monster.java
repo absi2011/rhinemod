@@ -58,7 +58,7 @@ public class Awaken_Monster extends CustomMonster {
 
         loadAnimation("resources/rhinemod/images/monsters/enemy_1531_bbrain/enemy_1531_bbrain33.atlas", "resources/rhinemod/images/monsters/enemy_1531_bbrain/enemy_1531_bbrain33.json", 1.5F);
         state.addAnimation(0, "Idle", true, 0.0F);
-        flipHorizontal = true;
+        // flipHorizontal = true;
     }
 
     @Override
