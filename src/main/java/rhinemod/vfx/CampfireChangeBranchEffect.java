@@ -14,7 +14,6 @@ import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.CampfireUI;
 import com.megacrit.cardcrawl.rooms.RestRoom;
-import com.megacrit.cardcrawl.ui.campfire.AbstractCampfireOption;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import rhinemod.cards.AbstractRhineCard;
@@ -26,7 +25,7 @@ public class CampfireChangeBranchEffect extends AbstractGameEffect {
     public static final String[] TEXT = uiStrings.TEXT;
     private boolean openedScreen = false;
     private final Color screenColor = AbstractDungeon.fadeColor.cpy();
-    private ChangeBranchOption changeBranchOption;
+    private final ChangeBranchOption changeBranchOption;
 
     public CampfireChangeBranchEffect(ChangeBranchOption c) {
         duration = 1.5F;

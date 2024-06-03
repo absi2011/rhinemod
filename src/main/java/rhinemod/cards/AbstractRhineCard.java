@@ -4,13 +4,11 @@ import basemod.abstracts.CustomCard;
 import basemod.abstracts.DynamicVariable;
 import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
-import rhinemod.characters.RhineLab;
 import rhinemod.interfaces.UpgradeBranch;
 import rhinemod.relics.Melt;
 
@@ -91,11 +89,6 @@ public abstract class AbstractRhineCard extends CustomCard {
     }
 
     public abstract List<UpgradeBranch> possibleBranches();
-    public List<UpgradeBranch> swappableBranches() {
-        List<UpgradeBranch> list = possibleBranches();
-        list.remove(chosenBranch);
-        return list;
-    }
 
     @Override
     public void upgrade() {
@@ -127,10 +120,7 @@ public abstract class AbstractRhineCard extends CustomCard {
 
     static public void copyStat(AbstractRhineCard s, AbstractRhineCard t) {
         t.chosenBranch = s.chosenBranch;
-        for (int i = 0; i < s.timesUpgraded; ++i) {
-            t.upgrade();
-        }
-
+        t.realBranch = s.realBranch;
         t.name = s.name;
         t.target = s.target;
         t.upgraded = s.upgraded;
@@ -138,6 +128,7 @@ public abstract class AbstractRhineCard extends CustomCard {
         t.baseDamage = s.baseDamage;
         t.baseBlock = s.baseBlock;
         t.baseMagicNumber = s.baseMagicNumber;
+        t.baseSecondMagicNumber = s.baseSecondMagicNumber;
         t.cost = s.cost;
         t.costForTurn = s.costForTurn;
         t.isCostModified = s.isCostModified;
