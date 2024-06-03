@@ -46,6 +46,7 @@ public class CampfireChangeBranchEffect extends AbstractGameEffect {
                 CardCrawlGame.metricData.addCampfireChoiceData("CHANGE_BRANCH", c.getMetricID());
                 if (!(c instanceof AbstractRhineCard)) continue;
                 ((AbstractRhineCard) c).swapBranch(((AbstractRhineCard) c).chosenBranch);
+                AbstractDungeon.player.bottledCardUpgradeCheck(c);
                 AbstractDungeon.effectsQueue.add(new ShowCardBrieflyEffect(c.makeStatEquivalentCopy()));
                 ChangeBranchOption.changeNum++;
             }
