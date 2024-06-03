@@ -136,10 +136,10 @@ public class StarRing extends AbstractMonster {
         if (AbstractDungeon.player.hasPower(GalleriaStellariaPower.POWER_ID)) {
             cnt += AbstractDungeon.player.getPower(GalleriaStellariaPower.POWER_ID).amount;
         }
+        addToBot(new WaitAction(0.5F));
         for (int i = 0; i < cnt; i ++) {
-            AbstractDungeon.actionManager.addToTop(new StarRingBlastAction(dmg, false));
+            addToBot(new StarRingBlastAction(dmg, false));
         }
-        AbstractDungeon.actionManager.addToTop(new WaitAction(0.5F));
     }
     @Override
     public void applyStartOfTurnPowers() {
