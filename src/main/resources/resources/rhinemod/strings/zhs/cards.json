@@ -236,13 +236,13 @@
         "DESCRIPTION": "造成 !D! 点伤害。 NL 消耗所有的 rhinemod:钙质粒子 ，并额外造成 !M! 倍于该数量的伤害。",
         "UPGRADE_DESCRIPTION": ""
     },
-    "rhinemod:PreviousCourse": {
-        "NAME": "前置课程",
+    "rhinemod:HeadquarterBuilding": {
+        "NAME": "总部大楼",
         "DESCRIPTION": " 固有 ， 消耗 。 NL 获得 !M! 点科研进度。",
         "UPGRADE_DESCRIPTION": ""
     },
-    "rhinemod:ResearchCapital": {
-        "NAME": "科研经费",
+    "rhinemod:LightPenetratingClouds": {
+        "NAME": "穿云之光",
         "DESCRIPTION": "造成 !D! 点伤害。 NL 你卡组中每有一张 NL [#EFC851]稀有[] 卡，再重复一次。",
         "UPGRADE_DESCRIPTION": ""
     },
