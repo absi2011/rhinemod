@@ -20,6 +20,8 @@ import rhinemod.cards.AbstractRhineCard;
 import rhinemod.patches.GridCardSelectPatch;
 import rhinemod.util.ChangeBranchOption;
 
+import java.util.logging.Logger;
+
 public class CampfireChangeBranchEffect extends AbstractGameEffect {
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("rhinemod:CampfireChangeBranchEffect");
     public static final String[] TEXT = uiStrings.TEXT;
@@ -45,6 +47,7 @@ public class CampfireChangeBranchEffect extends AbstractGameEffect {
             for (AbstractCard c : AbstractDungeon.gridSelectScreen.selectedCards) {
                 CardCrawlGame.metricData.addCampfireChoiceData("CHANGE_BRANCH", c.getMetricID());
                 if (!(c instanceof AbstractRhineCard)) continue;
+                Logger.getLogger(CampfireChangeBranchEffect.class.getName()).info("here change branch, " + c.cardID + " -> " + ((AbstractRhineCard) c).chosenBranch);
                 ((AbstractRhineCard) c).swapBranch(((AbstractRhineCard) c).chosenBranch);
                 AbstractDungeon.player.bottledCardUpgradeCheck(c);
                 AbstractDungeon.effectsQueue.add(new ShowCardBrieflyEffect(c.makeStatEquivalentCopy()));

@@ -19,7 +19,7 @@ public class ResourceEconomization extends AbstractRhineCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG = "resources/rhinemod/images/cards/BionicDevice.png";
+    public static final String IMG = "resources/rhinemod/images/cards/ResourceEconomization.png";
     public static final int COST = 0;
     public ResourceEconomization() {
         super(ID, NAME, IMG, COST, DESCRIPTION,

@@ -10,7 +10,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.utils.compression.lzma.Base;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
@@ -229,7 +228,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new FirstAid()); // 急救
         BaseMod.addCard(new GalaxyOrbit()); // 星系轨道
         BaseMod.addCard(new CrackedSkill()); // 一起研究的公式/被破解的技术
-        BaseMod.addCard(new Inundate()); // 淹没
+        BaseMod.addCard(new ReflectionInWater()); // 水中倒影
 
         // Uncommon.
         BaseMod.addCard(new PlanetaryDebris()); // 行星碎屑

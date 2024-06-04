@@ -13,17 +13,17 @@ import rhinemod.powers.Submersion;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Inundate extends AbstractRhineCard {
-    public static final String ID = "rhinemod:Inundate";
+public class ReflectionInWater extends AbstractRhineCard {
+    public static final String ID = "rhinemod:ReflectionInWater";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG = "resources/rhinemod/images/cards/BionicDevice.png";
+    public static final String IMG = "resources/rhinemod/images/cards/ReflectionInWater.png";
     public static final int COST = 1;
     public static final int ATTACK_DMG = 8;
     public static final int UPGRADE_PLUS_DMG = 3;
-    public Inundate() {
+    public ReflectionInWater() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.COMMON, CardTarget.ENEMY);

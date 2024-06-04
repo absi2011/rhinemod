@@ -118,8 +118,8 @@
         "UPGRADE_DESCRIPTION": "获得 !B! 点格挡。 NL 消耗 。 NL 从你的牌组中移除这张牌。",
         "EXTENDED_DESCRIPTION": ["被破解的技术"]
     },
-    "rhinemod:Inundate": {
-        "NAME": "淹没",
+    "rhinemod:ReflectionInWater": {
+        "NAME": "水中倒影",
         "DESCRIPTION": "造成 !D! 点伤害，目标每有一层 rhinemod:浸没 ，额外造成一次伤害。",
         "UPGRADE_DESCRIPTION": ""
     },

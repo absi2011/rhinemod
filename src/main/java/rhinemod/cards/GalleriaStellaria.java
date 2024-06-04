@@ -5,7 +5,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import rhinemod.actions.SummonStarRingAction;
 import rhinemod.interfaces.UpgradeBranch;
 import rhinemod.patches.AbstractCardEnum;
 import rhinemod.powers.GalleriaStellariaPower;
@@ -18,7 +17,7 @@ public class GalleriaStellaria extends AbstractRhineCard {
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String IMG = "resources/rhinemod/images/cards/Starfall.png";
+    public static final String IMG = "resources/rhinemod/images/cards/GalleriaStellaria.png";
     public static final int COST = 1;
     public static final int UPGRADED_COST = 0;
     public GalleriaStellaria() {
