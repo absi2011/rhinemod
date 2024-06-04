@@ -3,16 +3,19 @@ package rhinemod.patches;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
+import com.megacrit.cardcrawl.map.DungeonMap;
 import com.megacrit.cardcrawl.screens.select.HandCardSelectScreen;
 import com.megacrit.cardcrawl.ui.buttons.PeekButton;
 import javassist.CannotCompileException;
 import javassist.CtBehavior;
 import javassist.expr.ExprEditor;
+import javassist.expr.FieldAccess;
 import javassist.expr.MethodCall;
 import rhinemod.cards.AbstractRhineCard;
 
@@ -203,5 +206,57 @@ public class HandCardSelectPatch {
                 return new int[] {totalTimes[lastTime]};
             }
         }
+    }
+
+    @SpirePatch(clz = HandCardSelectScreen.class, method = "update")
+    public static class FastHandConfUpdatePatch {
+        @SpireInstrumentPatch
+        public static ExprEditor Instrument() {
+            return new ExprEditor() {
+                @Override
+                public void edit(FieldAccess m) throws CannotCompileException {
+                    if (m.getClassName().equals(Settings.class.getName()) && m.getFieldName().equals("FAST_HAND_CONF")) {
+                        m.replace("$_ = !" + HandCardSelectPatch.class.getName() +  ".needChoose(this.selectedCards) && $proceed($$);");
+                    }
+                }
+            };
+        }
+    }
+
+    @SpirePatch(clz = HandCardSelectScreen.class, method = "startDraggingCardCheck")
+    public static class FastHandConfDragPatch {
+        @SpireInstrumentPatch
+        public static ExprEditor Instrument() {
+            return new ExprEditor() {
+                @Override
+                public void edit(FieldAccess m) throws CannotCompileException {
+                    if (m.getClassName().equals(HandCardSelectScreen.class.getName()) && m.getFieldName().equals("canPickZero")) {
+                        m.replace("$_ = " + HandCardSelectPatch.class.getName() +  ".needChoose(this.selectedCards) || $proceed($$);");
+                    }
+                }
+            };
+        }
+    }
+
+    @SpirePatch(clz = HandCardSelectScreen.class, method = "render")
+    public static class FastHandConfRenderPatch {
+        @SpireInstrumentPatch
+        public static ExprEditor Instrument() {
+            return new ExprEditor() {
+                @Override
+                public void edit(FieldAccess m) throws CannotCompileException {
+                    if (m.getClassName().equals(HandCardSelectScreen.class.getName()) && m.getFieldName().equals("canPickZero")) {
+                        m.replace("$_ = " + HandCardSelectPatch.class.getName() +  ".needChoose(this.selectedCards) || $proceed($$);");
+                    }
+                }
+            };
+        }
+    }
+
+    public static boolean needChoose(CardGroup g) {
+        if (g.size() > 1) return true;
+        if (g.isEmpty()) return false;
+        AbstractCard c = g.getBottomCard();
+        return c instanceof AbstractRhineCard && ((AbstractRhineCard) c).possibleBranches().size() > 1;
     }
 }
