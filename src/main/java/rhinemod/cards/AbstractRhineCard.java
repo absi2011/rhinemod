@@ -30,7 +30,6 @@ public abstract class AbstractRhineCard extends CustomCard {
                              AbstractCard.CardType type, AbstractCard.CardColor color,
                              AbstractCard.CardRarity rarity, AbstractCard.CardTarget target) {
         super(id, name, img, cost, rawDescription, type, color, rarity, target);
-        isSeen = true; // TODO: 看看有没有bug。
     }
 
     @Override

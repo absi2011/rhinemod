@@ -20,8 +20,8 @@
     },
     "rhinemod:Destiny": {
         "NAME": "命运",
-        "DESCRIPTION": "选择一张手牌，随机一个倾向，在本场战斗中升级它。",
-        "UPGRADE_DESCRIPTION": "选择一张手牌，选择一个倾向，在本场战斗中升级它。"
+        "DESCRIPTION": "选择一张手牌，随机一个 rhinemod:倾向 ，在本场战斗中升级它。",
+        "UPGRADE_DESCRIPTION": "选择一张手牌，选择一个 rhinemod:倾向 ，在本场战斗中升级它。"
     },
     "rhinemod:DefenseSection": {
         "NAME": "防卫科",
@@ -200,11 +200,11 @@
     },
     "rhinemod:TwoToOne": {
         "NAME": "二比一",
-        "DESCRIPTION": "造成 !D! 点伤害。只有你的手牌中没有任何一个倾向的卡牌数超过总数的一半时才能打出。",
+        "DESCRIPTION": "造成 !D! 点伤害。只有你的手牌中没有任何一个 rhinemod:倾向 的卡牌数超过总数的一半时才能打出。",
         "UPGRADE_DESCRIPTION": "",
         "EXTENDED_DESCRIPTION": [
             "一比二",
-            "造成 !D! 点伤害。只有你的手牌中存在一个倾向的卡牌数超过总数的一半时才能打出。"
+            "造成 !D! 点伤害。只有你的手牌中存在一个 rhinemod:倾向 的卡牌数超过总数的一半时才能打出。"
         ]
     },
     "rhinemod:EcologicalInteraction": {
@@ -326,12 +326,12 @@
     },
     "rhinemod:SuperficialRegulation": {
         "NAME": "浅层非熵适应",
-        "DESCRIPTION": "抽取每种倾向的卡牌各一张，将他们以随机顺序置入你的手牌，并且将你的抽牌堆以相同顺序进行排序。",
-        "UPGRADE_DESCRIPTION": "抽取每种倾向的卡牌各一张，将他们以随机顺序置入你的手牌，并且将你的抽牌堆以相同顺序进行排序。 NL 保留 。"
+        "DESCRIPTION": "抽取每种 rhinemod:倾向 的卡牌各一张，将他们以随机顺序置入你的手牌，并且将你的抽牌堆以相同顺序进行排序。",
+        "UPGRADE_DESCRIPTION": "抽取每种 rhinemod:倾向 的卡牌各一张，将他们以随机顺序置入你的手牌，并且将你的抽牌堆以相同顺序进行排序。 NL 保留 。"
     },
     "rhinemod:DancingInThrees": {
         "NAME": "三个人的舞",
-        "DESCRIPTION": "如果你本回合打出过所有倾向的牌，获得 !M! 点 rhinemod:钙质粒子 ， rhinemod:科研进度 ， rhinemod:流形 。",
+        "DESCRIPTION": "如果你本回合打出过所有 rhinemod:倾向 的牌，获得 !M! 点 rhinemod:钙质粒子 ， rhinemod:科研进度 ， rhinemod:流形 。",
         "UPGRADE_DESCRIPTION": ""
     },
     "rhinemod:HAMHRR": {
@@ -351,12 +351,12 @@
     },
     "rhinemod:WaveBarrier": {
         "NAME": "水波壁障",
-        "DESCRIPTION": "获得 !M! 层缓冲。 NL 在接下来的 3 场作战内不可以再打出缪尔赛思倾向的卡牌。",
+        "DESCRIPTION": "获得 !M! 层缓冲。 NL 在接下来的 3 场作战内不可以再打出缪尔赛思 rhinemod:倾向 的卡牌。",
         "UPGRADE_DESCRIPTION": ""
     },
     "rhinemod:PureDewOfFreshBlossoms": {
         "NAME": "纯净鲜花露",
-        "DESCRIPTION": "被浸没的敌人无法对你施加负面状态。",
+        "DESCRIPTION": "被 rhinemod:浸没 的敌人无法对你施加负面状态。",
         "UPGRADE_DESCRIPTION": "保留 。 NL 被浸没的敌人无法对你施加负面状态。"
     },
     "rhinemod:LikeMind": {
