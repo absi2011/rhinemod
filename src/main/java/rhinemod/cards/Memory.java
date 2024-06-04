@@ -21,7 +21,7 @@ public class Memory extends AbstractRhineCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG = "resources/rhinemod/images/cards/SHAFT.png";
+    public static final String IMG = "resources/rhinemod/images/cards/Memory.png";
     public static final int COST = 0;
     public static final int ATTACK_DMG = 5;
     public static final int UPGRADE_PLUS_DMG = 2;

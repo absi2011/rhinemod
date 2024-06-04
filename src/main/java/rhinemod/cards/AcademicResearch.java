@@ -34,7 +34,7 @@ public class AcademicResearch extends AbstractRhineCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
-    public static final String IMG = "resources/rhinemod/images/cards/RhineStrike.png";
+    public static final String IMG = "resources/rhinemod/images/cards/AcademicResearch.png";
     public static final int COST = 1;
     public static final int[] UPGRADE_COST = {0, 0, 2, 1};
     public static final int S_BLK = 4;

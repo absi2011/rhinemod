@@ -1,18 +1,12 @@
 package rhinemod.powers;
 
-import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 
 public class NoStun extends AbstractPower implements OnReceivePowerPower {
     public static final String POWER_ID = "rhinemod:NoStun";
@@ -37,10 +31,7 @@ public class NoStun extends AbstractPower implements OnReceivePowerPower {
 
     @Override
     public boolean onReceivePower(AbstractPower abstractPower, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
-        if (abstractPower.ID.equals("rhinemod:Stunned")) {
-            return false;
-        }
-        return true;
+        return !abstractPower.ID.equals("rhinemod:Stunned");
     }
 
 }

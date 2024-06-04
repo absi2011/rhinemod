@@ -1,15 +1,11 @@
 package rhinemod.cards;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import rhinemod.actions.ChangeGravityAction;
 import rhinemod.cards.special.Egotist;
 import rhinemod.characters.RhineLab;
 import rhinemod.characters.StarRing;
@@ -24,7 +20,7 @@ public class Truth extends AbstractRhineCard {
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String IMG = "resources/rhinemod/images/cards/Starfall.png";
+    public static final String IMG = "resources/rhinemod/images/cards/Truth.png";
     public static final int COST = 1;
     public static final int RING_NEED = 3;
     public static final int UPGRADE_MINUS_RING_NEED = -1;
