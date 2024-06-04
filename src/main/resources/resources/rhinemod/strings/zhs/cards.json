@@ -298,6 +298,15 @@
             "给予所有处于 rhinemod:眩晕 的敌人 !rhinemod:M2! 层 rhinemod:水渍 。"
         ]
     },
+    "rhinemod:Dreamer": {
+        "NAME": "梦想家",
+        "DESCRIPTION": "造成 !D! 点伤害。 NL 你消耗堆中每有一张牌，伤害提高的 !M! 点 。",
+        "UPGRADE_DESCRIPTION": "",
+        "EXTENDED_DESCRIPTION": [
+            "造成 !D! 点伤害。 NL rhinemod:重力 每次改变后，伤害提高 !M! 点。",
+            "造成 !D! 点伤害。 NL ??? 后，伤害提高 !M! 点。"
+        ]
+    },
 
     "rhinemod:Calcification": {
         "NAME": "钙质化",

@@ -71,6 +71,7 @@ public class QuicksandGeneration extends AbstractRhineCard {
                 if (!upgraded) {
                     upgradeName(3, EXTENDED_DESCRIPTION[0]);
                     rawDescription = EXTENDED_DESCRIPTION[1];
+                    upgradeMagicNumber(0); // Make it green.
                     magicNumber = baseMagicNumber = WATER_DMG;
                     initializeDescription();
                 }

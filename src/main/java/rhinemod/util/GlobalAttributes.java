@@ -30,6 +30,7 @@ public class GlobalAttributes {
     public int flowspNum;
     public GravityDirection gravity;
     public int calciumNum;
+    public static int gravityChanges = 0;
     public static int calciumReduceNum;
     public static int smashThreshold;
     public final float flowspX;
@@ -78,8 +79,10 @@ public class GlobalAttributes {
             if (gravity == GravityDirection.UP) aimGravity = GravityDirection.DOWN;
             else aimGravity = GravityDirection.UP;
         }
+        if (aimGravity == gravity) return;
         gravity = aimGravity;
         gravityFlash = 2.0F;
+        gravityChanges ++;
         AbstractDungeon.onModifyPower();
     }
 
@@ -181,7 +184,7 @@ public class GlobalAttributes {
 
     public void atStartOfTurn() {
         AbstractDungeon.actionManager.addToBottom(new ReduceCalciumAction(calciumReduceNum));
-        gravity = GravityDirection.NONE;
+        changeGravity(GravityDirection.NONE);
         AbstractDungeon.onModifyPower();
     }
 }
