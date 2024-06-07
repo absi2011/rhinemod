@@ -36,32 +36,26 @@ public class Truth extends AbstractRhineCard {
 
     @Override
     public boolean extraTriggered() {
-        return starRingcnt() >= magicNumber;
+        return starRingCnt() >= magicNumber;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (AbstractDungeon.player instanceof RhineLab)
-        {
+        if (AbstractDungeon.player instanceof RhineLab) {
             RhineLab player = (RhineLab)AbstractDungeon.player;
             for (StarRing s: player.currentRings) {
                 s.startOfTurnDamage();
             }
         }
-        if (starRingcnt() >= magicNumber)
-        {
+        if (extraTriggered()) {
             addToBot(new MakeTempCardInHandAction(new Egotist()));
         }
     }
 
-    int starRingcnt()
-    {
-        if (AbstractDungeon.player instanceof RhineLab)
-        {
+    int starRingCnt() {
+        if (AbstractDungeon.player instanceof RhineLab) {
             return ((RhineLab) AbstractDungeon.player).currentRings.size();
-        }
-        else
-        {
+        } else {
             return 0;
         }
     }

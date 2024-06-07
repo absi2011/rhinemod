@@ -1,12 +1,10 @@
 package rhinemod.cards;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import rhinemod.actions.AddCalciumAction;
 import rhinemod.actions.AddFlowingShapeAction;
 import rhinemod.actions.ReduceCalciumAction;
 import rhinemod.actions.SummonStarRingAction;
@@ -14,7 +12,6 @@ import rhinemod.characters.RhineLab;
 import rhinemod.characters.StarRing;
 import rhinemod.interfaces.UpgradeBranch;
 import rhinemod.patches.AbstractCardEnum;
-import rhinemod.powers.ResearchProgress;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,13 +39,11 @@ public class FirstAid extends AbstractRhineCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (chosenBranch == 2)
-        {
+        if (chosenBranch == 2) {
             addToBot(new SummonStarRingAction(magicNumber, 0, block));
         }
         addToBot(new GainBlockAction(p, block));
-        if ((chosenBranch == 0) || (chosenBranch == 2))
-        {
+        if ((chosenBranch == 0) || (chosenBranch == 2)) {
             if (p instanceof RhineLab) {
                 for (StarRing star : ((RhineLab) p).currentRings) {
                     addToBot(new GainBlockAction(star, block));
