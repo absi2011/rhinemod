@@ -34,10 +34,12 @@ public class InvisibleGlobalAttributes extends AbstractPower {
 
     public float calcDmgScale() {
         float scale = 1.0F;
+        float gravityAffect = 0.3F;
+        if (p.hasPower(LonerPower.POWER_ID)) gravityAffect = 0.5F;
         if (p.globalAttributes.gravity == GlobalAttributes.GravityDirection.UP)
-            scale *= 1.3F;
+            scale += gravityAffect;
         else if (p.globalAttributes.gravity == GlobalAttributes.GravityDirection.DOWN)
-            scale /= 1.3F;
+            scale -= gravityAffect;
         return scale;
     }
 

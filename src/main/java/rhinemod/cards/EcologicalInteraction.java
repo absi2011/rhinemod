@@ -25,7 +25,7 @@ public class EcologicalInteraction extends AbstractRhineCard {
     public static final int COST = -1;
     private double rotationTimer;
     private int previewIndex;
-    ArrayList<AbstractCard> cards = new ArrayList<>();
+    ArrayList<AbstractCard> cards;
     public EcologicalInteraction() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.RHINE_MATTE,

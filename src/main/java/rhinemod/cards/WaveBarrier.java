@@ -1,7 +1,6 @@
 package rhinemod.cards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.SpawnMonsterAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -9,9 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.BufferPower;
-import rhinemod.actions.HeatDeathAction;
 import rhinemod.interfaces.UpgradeBranch;
-import rhinemod.monsters.BlackHole;
 import rhinemod.patches.AbstractCardEnum;
 import rhinemod.relics.Melt;
 
@@ -38,12 +35,9 @@ public class WaveBarrier extends AbstractRhineCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new BufferPower(p, magicNumber)));
-        if (p.hasRelic(Melt.ID))
-        {
+        if (p.hasRelic(Melt.ID)) {
             p.getRelic(Melt.ID).counter = 3;
-        }
-        else
-        {
+        } else {
             AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float)(Settings.WIDTH / 2), (float)(Settings.HEIGHT / 2), new Melt());
         }
     }

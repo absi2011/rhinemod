@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import rhinemod.interfaces.UpgradeBranch;
 import rhinemod.patches.AbstractCardEnum;
 import rhinemod.powers.RefreshmentPower;
-import rhinemod.powers.SolidifyPower;
 
 import java.util.ArrayList;
 import java.util.List;

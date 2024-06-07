@@ -1,17 +1,13 @@
 package rhinemod.cards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
-import rhinemod.actions.ChangeGravityAction;
 import rhinemod.actions.ExhaustUnscrupulousAction;
 import rhinemod.actions.FreeFromDreamAction;
 import rhinemod.cards.special.Pioneer;
@@ -51,31 +47,23 @@ public class FreeFromDream extends AbstractRhineCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (chosenBranch == 0)
-        {
+        if (chosenBranch == 0) {
             addToBot(new FreeFromDreamAction(m, damage, magicNumber));
-        }
-        else if (chosenBranch == 3)
-        {
-            for (AbstractMonster mo: AbstractDungeon.getCurrRoom().monsters.monsters) {
+        } else if (chosenBranch == 3) {
+            for (AbstractMonster mo: AbstractDungeon.getCurrRoom().monsters.monsters)
                 if (mo.hasPower(Stunned.POWER_ID))
-                {
                     addToBot(new ApplyPowerAction(mo, p, new WaterDamage(mo, secondMagicNumber)));
-                }
-            }
-        }
-        else if (chosenBranch == 1)
-        {
+        } else if (chosenBranch == 1) {
             int cnt = 0;
             for (AbstractCard c : p.hand.group)
                 if (c instanceof Unscrupulous)
-                    cnt ++;
+                    cnt++;
             for (AbstractCard c : p.discardPile.group)
                 if (c instanceof Unscrupulous)
-                    cnt ++;
+                    cnt++;
             for (AbstractCard c : p.drawPile.group)
                 if (c instanceof Unscrupulous)
-                    cnt ++;
+                    cnt++;
             addToBot(new ExhaustUnscrupulousAction(-1));
             if (cnt >= secondMagicNumber) {
                 addToBot(new MakeTempCardInHandAction(new Pioneer()));
