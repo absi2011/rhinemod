@@ -398,8 +398,13 @@
     },
     "rhinemod:Loner": {
         "NAME": "独行者",
-        "DESCRIPTION": "当你手牌中仅有克丽斯腾倾向牌时，每打出一张牌，对所有敌人造成 !M! 点伤害。 NL 虚无 。",
+        "DESCRIPTION": "rhinemod:重力 效果提升至50%，每回合开始时将一张 *倾斜 置入你的手牌。 NL 虚无 。",
         "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:Lean": {
+        "NAME": "倾斜",
+        "DESCRIPTION": "选择一个方向，改变 rhinemod:重力 到该方向。 NL 虚无 。 NL 消耗 。",
+        "UPGRADE_DESCRIPTION": "选择一个方向，改变 rhinemod:重力 到该方向。 NL 保留 。 NL 消耗 。"
     },
     "rhinemod:Pioneer": {
         "NAME": "先驱者",

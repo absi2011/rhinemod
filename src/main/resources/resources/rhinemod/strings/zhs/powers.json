@@ -215,7 +215,7 @@
   },
   "rhinemod:LonerPower": {
     "NAME": "独行者",
-    "DESCRIPTIONS": ["当你手牌中仅有克丽斯腾倾向牌时，每打出一张牌，对所有敌人造成 #b", " 点伤害。"]
+    "DESCRIPTIONS": ["#y重力 效果提升至 #b50% ，每回合开始时将一张 #y倾斜 置入你的手牌。"]
   },
   "rhinemod:PioneerPower": {
     "NAME": "先驱者",
