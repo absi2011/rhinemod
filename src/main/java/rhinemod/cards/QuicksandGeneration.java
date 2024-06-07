@@ -39,7 +39,7 @@ public class QuicksandGeneration extends AbstractRhineCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, block));
-        if (realBranch == 0) {
+        if (chosenBranch == 0) {
             ArrayList<AbstractMonster> list = new ArrayList<>();
             for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters)
                 if (!mo.isDeadOrEscaped() && mo.getIntentBaseDmg() > 0)

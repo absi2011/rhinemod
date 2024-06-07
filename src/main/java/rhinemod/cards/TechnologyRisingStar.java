@@ -2,6 +2,7 @@ package rhinemod.cards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.watcher.ChooseOneAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -14,6 +15,7 @@ import rhinemod.actions.SummonStarRingAction;
 import rhinemod.cards.special.GravityDown;
 import rhinemod.cards.special.GravityNone;
 import rhinemod.cards.special.GravityUp;
+import rhinemod.cards.special.PaleFir;
 import rhinemod.interfaces.UpgradeBranch;
 import rhinemod.patches.AbstractCardEnum;
 import rhinemod.powers.ResearchProgress;
@@ -33,6 +35,7 @@ public class TechnologyRisingStar extends AbstractRhineCard {
     public static final int UPGRADE_PLUS_DRAW = 1;
     public static final int PROGRESS = 3;
     public static final int EXHAUST = 2;
+    public static final int PROGRESS_M = 5;
     public TechnologyRisingStar() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.RHINE_MATTE,
@@ -58,6 +61,9 @@ public class TechnologyRisingStar extends AbstractRhineCard {
                 addToBot(new ChooseOneAction(list));
                 addToBot(new SummonStarRingAction(1));
                 break;
+            case 3:
+                addToBot(new ApplyPowerAction(p, p, new ResearchProgress(p, magicNumber)));
+                addToBot(new MakeTempCardInHandAction(new PaleFir()));
         }
     }
 
@@ -84,6 +90,15 @@ public class TechnologyRisingStar extends AbstractRhineCard {
                 if (!upgraded) {
                     upgradeName(2);
                     rawDescription = EXTENDED_DESCRIPTION[1];
+                    initializeDescription();
+                }
+            });
+            add(() -> {
+                if (!upgraded) {
+                    upgradeName(3);
+                    magicNumber = baseMagicNumber = PROGRESS_M;
+                    cardsToPreview = new PaleFir();
+                    rawDescription = EXTENDED_DESCRIPTION[2];
                     initializeDescription();
                 }
             });

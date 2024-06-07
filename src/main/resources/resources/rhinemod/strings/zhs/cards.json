@@ -175,7 +175,8 @@
         "UPGRADE_DESCRIPTION": "",
         "EXTENDED_DESCRIPTION": [
             "rhinemod:科研进度 ： !M! 。 NL 随机 消耗 不超过 !rhinemod:M2! 张 *出格 。",
-            "选择一个方向，改变 rhinemod:重力 到该方向。召唤一个 1 点生命的 rhinemod:星环 。"
+            "选择一个方向，改变 rhinemod:重力 到该方向。召唤一个 1 点生命的 rhinemod:星环 。",
+            "rhinemod:科研进度 ： !M! 。 NL 将一张 *淡杉 置入手牌。"
         ]
     },
     "rhinemod:UnusedBoxingGloves": {
@@ -304,7 +305,7 @@
         "UPGRADE_DESCRIPTION": "",
         "EXTENDED_DESCRIPTION": [
             "造成 !D! 点伤害。 NL rhinemod:重力 每次改变后，伤害提高 !M! 点。",
-            "造成 !D! 点伤害。 NL ??? 后，伤害提高 !M! 点。"
+            "造成 !D! 点伤害。 NL 每当有敌人被 rhinemod:浸没 [#EFC851]4[] 后，伤害提高 !M! 点。"
         ]
     },
 

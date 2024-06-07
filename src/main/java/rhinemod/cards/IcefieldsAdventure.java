@@ -38,7 +38,7 @@ public class IcefieldsAdventure extends AbstractRhineCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, block));
-        if (realBranch == 0) {
+        if (chosenBranch == 0) {
             addToBot(new ApplyPowerAction(p, p, new ResearchProgress(p, magicNumber)));
         } else {
             addToBot(new IcefieldsAdventureMuAction(magicNumber));

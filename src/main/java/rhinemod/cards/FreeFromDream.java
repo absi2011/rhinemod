@@ -49,7 +49,7 @@ public class FreeFromDream extends AbstractRhineCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (chosenBranch == 0) {
             addToBot(new FreeFromDreamAction(m, damage, magicNumber));
-        } else if (chosenBranch == 3) {
+        } else if (chosenBranch == 2) {
             for (AbstractMonster mo: AbstractDungeon.getCurrRoom().monsters.monsters)
                 if (mo.hasPower(Stunned.POWER_ID))
                     addToBot(new ApplyPowerAction(mo, p, new WaterDamage(mo, secondMagicNumber)));

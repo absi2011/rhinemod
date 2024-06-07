@@ -3,6 +3,8 @@ package rhinemod.powers;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.*;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -11,7 +13,11 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
+import org.apache.logging.log4j.LogManager;
+import rhinemod.RhineMod;
 import rhinemod.actions.SubmersionLoseHpAction;
+import rhinemod.cards.AbstractRhineCard;
+import rhinemod.cards.Dreamer;
 
 public class Submersion extends AbstractPower {
     public static final String POWER_ID = "rhinemod:Submersion";
@@ -55,7 +61,22 @@ public class Submersion extends AbstractPower {
         if (amount >= 4) {
             AbstractDungeon.effectList.add(new FlashAtkImgEffect(owner.hb.cX, owner.hb.cY, AbstractGameAction.AttackEffect.POISON));
             //TODO: 改个不是毒的别的特效？
+            updateDreamer(AbstractDungeon.player.masterDeck);
+            updateDreamer(AbstractDungeon.player.hand);
+            updateDreamer(AbstractDungeon.player.drawPile);
+            updateDreamer(AbstractDungeon.player.discardPile);
+            updateDreamer(AbstractDungeon.player.exhaustPile);
             addToBot(new InstantKillAction(owner));
+        }
+    }
+
+    void updateDreamer(CardGroup cardGroup)
+    {
+        for (AbstractCard c : cardGroup.group) {
+            if ((c instanceof Dreamer) && (((Dreamer)c).chosenBranch == 2)) {
+                c.baseDamage += c.baseMagicNumber;
+                c.applyPowers();
+            }
         }
     }
 
