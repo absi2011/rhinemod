@@ -59,10 +59,10 @@ public class AcademicResearch extends AbstractRhineCard {
                 addToBot(new DiscoveryAction());
                 break;
             case 1:
+                addToBot(new RemoveCardAction(uuid));
                 addToBot(new GainBlockAction(p, block));
                 addToBot(new DamageAction(m, new DamageInfo(p, damage)));
                 addToBot(new AddCalciumAction(magicNumber));
-                addToBot(new RemoveCardAction(uuid));
                 break;
             case 2:
                 addToBot(new ApplyPowerAction(p, p, new ResearchProgress(p, magicNumber)));

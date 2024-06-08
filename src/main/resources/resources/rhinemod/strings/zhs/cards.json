@@ -301,7 +301,7 @@
     },
     "rhinemod:Dreamer": {
         "NAME": "梦想家",
-        "DESCRIPTION": "造成 !D! 点伤害。 NL 你消耗堆中每有一张牌，伤害提高的 !M! 点 。",
+        "DESCRIPTION": "造成 !D! 点伤害。 NL 你消耗堆中每有一张牌，伤害提高 !M! 点 。",
         "UPGRADE_DESCRIPTION": "",
         "EXTENDED_DESCRIPTION": [
             "造成 !D! 点伤害。 NL rhinemod:重力 每次改变后，伤害提高 !M! 点。",

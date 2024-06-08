@@ -33,10 +33,10 @@ public class CrackedSkill extends AbstractRhineCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new GainBlockAction(p, p, block));
         if (upgraded) {
             addToBot(new RemoveCardAction(uuid));
         }
+        addToBot(new GainBlockAction(p, p, block));
     }
 
     @Override

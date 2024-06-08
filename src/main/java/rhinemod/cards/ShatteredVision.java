@@ -47,8 +47,8 @@ public class ShatteredVision extends AbstractRhineCard {
                 addToBot(new AverageDamageAllAction(damage, p, DamageInfo.DamageType.NORMAL));
                 break;
             case 1:
-                addToBot(new DamageAllEnemiesAction(p, multiDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
                 addToBot(new RemoveCardAction(uuid));
+                addToBot(new DamageAllEnemiesAction(p, multiDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
                 break;
             case 2:
                 ArrayList<AbstractCreature> aimList = new ArrayList<>();

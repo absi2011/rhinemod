@@ -128,6 +128,10 @@ public abstract class AbstractRhineCard extends CustomCard {
         t.baseBlock = s.baseBlock;
         t.baseMagicNumber = s.baseMagicNumber;
         t.baseSecondMagicNumber = s.baseSecondMagicNumber;
+        t.damage = s.damage;
+        t.block = s.block;
+        t.magicNumber = s.magicNumber;
+        t.secondMagicNumber = s.secondMagicNumber;
         t.cost = s.cost;
         t.costForTurn = s.costForTurn;
         t.isCostModified = s.isCostModified;
