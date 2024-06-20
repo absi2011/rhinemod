@@ -103,10 +103,13 @@ public class StarRing extends AbstractMonster {
         die(true);
     }
 
-    public void die(boolean includeSelf) {
+    public void die(boolean includeSelf) { die(includeSelf, 1); }
+
+    public void die(boolean includeSelf, int blastTimes) {
         if (!isDead) {
             isDead = true;
             if (blastDamage == 0) blastDamage = maxHealth - currentHealth;
+            blastDamage *= blastTimes;
             blastDamage /= 2;
             AbstractDungeon.actionManager.addToTop(new StarRingBlastAction(blastDamage, includeSelf));
             AbstractDungeon.actionManager.addToTop(new WaitAction(0.5F));
@@ -115,6 +118,8 @@ public class StarRing extends AbstractMonster {
             }
         }
     }
+
+
 
     public void blast() {
         AbstractPlayer p = AbstractDungeon.player;

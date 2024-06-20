@@ -21,13 +21,15 @@ public class NovaEruption extends AbstractRhineCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String IMG = "resources/rhinemod/images/cards/NovaEruption.png";
     public static final int COST = 1;
-    public static final int UPGRADE_COST = 0;
+    public static final int MULTI = 4;
+    public static final int EXTRA_MULTI = 2;
     public NovaEruption() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.UNCOMMON, CardTarget.ENEMY);
         realBranch = 2;
         isTargetStarRing = true;
+        magicNumber = baseMagicNumber = MULTI;
     }
 
     @Override
@@ -41,7 +43,7 @@ public class NovaEruption extends AbstractRhineCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (!(m instanceof StarRing) || m.isDead) return;
-        m.die(false);
+        ((StarRing)m).die(false, magicNumber);
     }
 
     @Override
@@ -50,7 +52,7 @@ public class NovaEruption extends AbstractRhineCard {
             add(() -> {
                 if (!upgraded) {
                     upgradeName(0);
-                    upgradeBaseCost(UPGRADE_COST);
+                    upgradeMagicNumber(EXTRA_MULTI);
                     initializeDescription();
                 }
             });

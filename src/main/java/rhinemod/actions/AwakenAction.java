@@ -18,7 +18,8 @@ import static rhinemod.RhineMod.applyEnemyPowersOnly;
 public class AwakenAction extends AbstractGameAction {
     public final ArrayList<AbstractCreature> aimList = new ArrayList<>();
     public int[] dmgList;
-    public AwakenAction(int amount, AbstractCreature source) {
+
+    public AwakenAction(int amount, Awaken_Monster source) {
         actionType = ActionType.DAMAGE;
         duration = Settings.ACTION_DUR_FAST;
         this.amount = amount;
@@ -75,6 +76,7 @@ public class AwakenAction extends AbstractGameAction {
             applyEnemyPowersOnly(info, aimList.get(i));
             aimList.get(i).damage(info);
         }
+        ((AbstractMonster)source).rollMove();
         isDone = true;
     }
 }

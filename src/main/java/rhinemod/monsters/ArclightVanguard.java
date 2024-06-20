@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
+import com.megacrit.cardcrawl.powers.VulnerablePower;
 import rhinemod.powers.Fragile;
 
 public class ArclightVanguard extends CustomMonster {
@@ -60,12 +61,14 @@ public class ArclightVanguard extends CustomMonster {
         else if (nextMove == 2) {
             addToBot(new DamageAction(AbstractDungeon.player, damage.get(1)));
             addToBot(new DamageAction(this, new DamageInfo(this, AttackHPLoss, DamageInfo.DamageType.HP_LOSS)));
+            addToBot(new ApplyPowerAction(this,this,new VulnerablePower(this,1,true)));
         }
         else {
             for (int i = 1; i <= HighDamageTimes; i++) {
                 addToBot(new DamageAction(AbstractDungeon.player, damage.get(2)));
             }
             addToBot(new DamageAction(this, new DamageInfo(this, 2 * AttackHPLoss, DamageInfo.DamageType.HP_LOSS)));
+            addToBot(new ApplyPowerAction(this,this,new VulnerablePower(this,2,true)));
         }
         getMove(0);
     }

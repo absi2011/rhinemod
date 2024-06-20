@@ -33,7 +33,7 @@ public class TechnologyRisingStar extends AbstractRhineCard {
     public static final int COST = 1;
     public static final int CARD_DRAW = 2;
     public static final int UPGRADE_PLUS_DRAW = 1;
-    public static final int PROGRESS = 3;
+    public static final int PROGRESS = 4;
     public static final int EXHAUST = 2;
     public static final int PROGRESS_M = 5;
     public TechnologyRisingStar() {

@@ -40,7 +40,7 @@ public class AcademicResearch extends AbstractRhineCard {
     public static final int S_BLK = 4;
     public static final int S_DMG = 4;
     public static final int S_CA = 4;
-    public static final int K_RP = 4;
+    public static final int K_RP = 10;
     public static final int K_TH = 14;
     private double rotationTimer;
     private int previewIndex;

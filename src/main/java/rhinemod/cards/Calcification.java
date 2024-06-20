@@ -21,7 +21,7 @@ public class Calcification extends AbstractRhineCard {
     public static final String IMG = "resources/rhinemod/images/cards/Calcification.png";
     public static final int COST = 3;
     public static final int CA_ADD = 12;
-    public static final int CA_RED = 3;
+    public static final int CA_RED = 2;
     public static final int UPGRADE_PLUS_CA = 4;
     public Calcification() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
