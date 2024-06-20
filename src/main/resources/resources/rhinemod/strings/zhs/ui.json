@@ -56,5 +56,10 @@
     "TEXT": [
       "天幕"
     ]
+  },
+  "rhinemod:SelectScreenText": {
+    "TEXT": [
+      "选择每种倾向的卡牌各一张"
+    ]
   }
 }

@@ -336,8 +336,8 @@
     },
     "rhinemod:SuperficialRegulation": {
         "NAME": "浅层非熵适应",
-        "DESCRIPTION": "抽取每种 rhinemod:倾向 的卡牌各一张，将他们以随机顺序置入你的手牌，并且将你的抽牌堆以相同顺序进行排序。",
-        "UPGRADE_DESCRIPTION": "抽取每种 rhinemod:倾向 的卡牌各一张，将他们以随机顺序置入你的手牌，并且将你的抽牌堆以相同顺序进行排序。 NL 保留 。"
+        "DESCRIPTION": "从抽牌堆选择每种 rhinemod:倾向 的卡牌各一张，以随机顺序抽取它们，并且将你的抽牌堆以相同顺序进行排序。",
+        "UPGRADE_DESCRIPTION": "从抽牌堆选择每种 rhinemod:倾向 的卡牌各一张，以随机顺序抽取它们，并且将你的抽牌堆以相同顺序进行排序。 NL 保留 。"
     },
     "rhinemod:DancingInThrees": {
         "NAME": "三个人的舞",
