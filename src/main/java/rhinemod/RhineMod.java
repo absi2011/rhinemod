@@ -283,6 +283,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addCard(new Truth()); // 真理
         BaseMod.addCard(new FreeFromDream()); // 挣脱美梦
         BaseMod.addCard(new Dreamer()); // 梦想家
+        BaseMod.addCard(new CriticalPoint()); // 临界点
 
         // Rare.
         BaseMod.addCard(new Calcification()); // 钙质化

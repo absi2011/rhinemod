@@ -10,7 +10,6 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -23,6 +22,7 @@ import com.megacrit.cardcrawl.vfx.combat.HbBlockBrokenEffect;
 import com.megacrit.cardcrawl.vfx.combat.StrikeEffect;
 import rhinemod.actions.StarRingBlastAction;
 import rhinemod.cards.AbstractRhineCard;
+import rhinemod.powers.CriticalPointPower;
 import rhinemod.powers.EgotistPower;
 import rhinemod.powers.GalleriaStellariaPower;
 
@@ -111,7 +111,11 @@ public class StarRing extends AbstractMonster {
             if (blastDamage == 0) blastDamage = maxHealth - currentHealth;
             blastDamage *= blastTimes;
             blastDamage /= 2;
-            AbstractDungeon.actionManager.addToTop(new StarRingBlastAction(blastDamage, includeSelf));
+            if (hasPower(CriticalPointPower.POWER_ID)) {
+                AbstractDungeon.actionManager.addToTop(new StarRingBlastAction(blastDamage, includeSelf, getPower(CriticalPointPower.POWER_ID).amount));
+            } else {
+                AbstractDungeon.actionManager.addToTop(new StarRingBlastAction(blastDamage, includeSelf));
+            }
             AbstractDungeon.actionManager.addToTop(new WaitAction(0.5F));
             for (AbstractPower p : powers) {
                 p.onDeath();

@@ -123,6 +123,11 @@
         "DESCRIPTION": "造成 !D! 点伤害，目标每有一层 rhinemod:浸没 ，额外造成一次伤害。",
         "UPGRADE_DESCRIPTION": ""
     },
+    "rhinemod:CriticalPoint": {
+        "NAME": "临界点",
+        "DESCRIPTION": "选择一个 rhinemod:星环 ，当它被引爆时，对敌人造成的伤害提高 !M! %。",
+        "UPGRADE_DESCRIPTION": ""
+    },
 
     "rhinemod:PlanetaryDebris": {
         "NAME": "行星碎屑",

@@ -2,6 +2,7 @@ package rhinemod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -13,11 +14,17 @@ import java.util.ArrayList;
 public class StarRingBlastAction extends AbstractGameAction {
     public ArrayList<AbstractCreature> aimList = new ArrayList<>();
     public final boolean includeSelf;
+    public final int extraMultiDmg;
     public StarRingBlastAction(int amount, boolean includeSelf) {
+        this(amount, includeSelf, 0);
+    }
+
+    public StarRingBlastAction(int amount, boolean includeSelf, int extraMultiDmg) {
         actionType = ActionType.DAMAGE;
         duration = Settings.ACTION_DUR_FAST;
         this.amount = amount;
         this.includeSelf = includeSelf;
+        this.extraMultiDmg = extraMultiDmg;
     }
 
     @Override
@@ -41,8 +48,9 @@ public class StarRingBlastAction extends AbstractGameAction {
             tickDuration();
             return;
         }
+        int enemyDmg = amount * (100 + extraMultiDmg) / 100;
         for (AbstractCreature m : aimList) {
-            DamageInfo info = new DamageInfo(null, amount, DamageInfo.DamageType.THORNS);
+            DamageInfo info = new DamageInfo(null, m instanceof AbstractPlayer ? amount : enemyDmg, DamageInfo.DamageType.THORNS);
             info.name = "StarRing";
             m.damage(info);
         }
