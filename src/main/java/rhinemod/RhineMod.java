@@ -33,6 +33,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.screens.custom.CustomMod;
+import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import rhinemod.cards.special.*;
@@ -149,6 +150,17 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
                 new Spiker(240.0F, 0.0F),
                 new Crossroads(-220.0F, -50.0F)
         }));
+        /* 联机时不能削弱，不然会NPE
+        addMonster("Disaster of Machine", names[11], () -> new MonsterGroup(new AbstractMonster[] {
+                new Perpetrator(-440.0F, 0.0F),
+                new Exploder(-300.0F, 400.0F),
+                new Repulsor(-120.0F, 360.0F),
+                new Sentry(0.0F, 0.0F),
+                new BronzeOrb(200.0F, 270.0F, 0),
+                new Spiker(240.0F, 0.0F),
+                new Crossroads(-220.0F, -50.0F)
+        }));
+        */
         BaseMod.addEliteEncounter(TheBeyond.ID, new MonsterInfo("Disaster of Machine", 2.0F * NewMonsterMulti));
 
         // Add a name.
@@ -227,102 +239,115 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
     @Override
     public void receiveEditCards() {
         BaseMod.addDynamicVariable(new AbstractRhineCard.SecondMagicNumber());
+        
+        ArrayList<AbstractCard> cards = new ArrayList<>();
 
         // Basic.
-        BaseMod.addCard(new RhineStrike()); // 打击
-        BaseMod.addCard(new RhineDefend()); // 防御
-        BaseMod.addCard(new Destiny()); // 命运
-        BaseMod.addCard(new DefenseSection()); // 防卫科
-        BaseMod.addCard(new ComponentsControlSection()); // 总辖构件科
-        BaseMod.addCard(new EcologicalSection()); // 生态科
+        cards.add(new RhineStrike()); // 打击
+        cards.add(new RhineDefend()); // 防御
+        cards.add(new Destiny()); // 命运
+        cards.add(new DefenseSection()); // 防卫科
+        cards.add(new ComponentsControlSection()); // 总辖构件科
+        cards.add(new EcologicalSection()); // 生态科
 
         // Common.
-        BaseMod.addCard(new DangerousEntityRemoval()); // 危险目标清除
-        BaseMod.addCard(new ProgressiveMoisturization()); // 渐进性润化
-        BaseMod.addCard(new TransmitterResearch()); // 递质研究
-        BaseMod.addCard(new IcefieldsAdventure()); // 冰原探险
-        BaseMod.addCard(new BookOfFairyTales()); // 童话书
-        BaseMod.addCard(new StarlightIntersection()); // 星束交汇
-        BaseMod.addCard(new StarSculpt()); // 塑星
-        BaseMod.addCard(new ShatteredVision()); // 破碎愿景
-        BaseMod.addCard(new HighEfficiencyFreezingModule()); // 高效制冷模块
-        BaseMod.addCard(new DependentVariable()); // 因变量
-        BaseMod.addCard(new FirstAid()); // 急救
-        BaseMod.addCard(new GalaxyOrbit()); // 星系轨道
-        BaseMod.addCard(new CrackedSkill()); // 一起研究的公式/被破解的技术
-        BaseMod.addCard(new ReflectionInWater()); // 水中倒影
+        cards.add(new DangerousEntityRemoval()); // 危险目标清除
+        cards.add(new ProgressiveMoisturization()); // 渐进性润化
+        cards.add(new TransmitterResearch()); // 递质研究
+        cards.add(new IcefieldsAdventure()); // 冰原探险
+        cards.add(new BookOfFairyTales()); // 童话书
+        cards.add(new StarlightIntersection()); // 星束交汇
+        cards.add(new StarSculpt()); // 塑星
+        cards.add(new ShatteredVision()); // 破碎愿景
+        cards.add(new HighEfficiencyFreezingModule()); // 高效制冷模块
+        cards.add(new DependentVariable()); // 因变量
+        cards.add(new FirstAid()); // 急救
+        cards.add(new GalaxyOrbit()); // 星系轨道
+        cards.add(new CrackedSkill()); // 一起研究的公式/被破解的技术
+        cards.add(new ReflectionInWater()); // 水中倒影
+        cards.add(new CriticalPoint()); // 临界点
+        cards.add(new DressingFlowingShape()); // 梳妆流形
 
         // Uncommon.
-        BaseMod.addCard(new PlanetaryDebris()); // 行星碎屑
-        BaseMod.addCard(new HighSpeedRT()); // 高速共振排障
-        BaseMod.addCard(new Starfall()); // 星辰坠落
-        BaseMod.addCard(new PureWaterIsLife()); // 净水即生命
-        BaseMod.addCard(new MedicineDispensing()); // 药物配置
-        BaseMod.addCard(new Enkephalin()); // 脑啡肽
-        BaseMod.addCard(new SHAFT()); // 能量井
-        BaseMod.addCard(new EmergencyDefenseProcedures()); // 紧急防卫程序
-        BaseMod.addCard(new TechnologyRisingStar()); // 科技新星
-        BaseMod.addCard(new UnusedBoxingGloves()); // 闲置拳击手套
-        BaseMod.addCard(new BionicDevice()); // 迷惑装置
-        BaseMod.addCard(new NovaEruption()); // 新星爆发
-        BaseMod.addCard(new ApplyFullForce()); // 放开手脚
-        BaseMod.addCard(new TwoToOne()); // 二比一
-        BaseMod.addCard(new EcologicalInteraction()); // 生态耦合
-        BaseMod.addCard(new QuicksandGeneration()); // 流沙区域生成
-        BaseMod.addCard(new Memory()); // 回忆
-        BaseMod.addCard(new ResourceEconomization()); // 开源节流
-        BaseMod.addCard(new FullBlow()); // 全力一击
-        BaseMod.addCard(new HeadquarterBuilding()); // 总部大楼
-        BaseMod.addCard(new LightPenetratingClouds()); // 穿云之光
-        BaseMod.addCard(new LoneLight()); // 寂寥的光
-        BaseMod.addCard(new FlowCombo()); // 流形连击
-        BaseMod.addCard(new AcademicResearch()); // 学术研究
-        BaseMod.addCard(new EliminateThreat()); // 解除威胁
-        BaseMod.addCard(new RedShiftExperience()); // 红移实验
-        BaseMod.addCard(new GalleriaStellaria()); // 万星园
-        BaseMod.addCard(new Truth()); // 真理
-        BaseMod.addCard(new FreeFromDream()); // 挣脱美梦
-        BaseMod.addCard(new Dreamer()); // 梦想家
-        BaseMod.addCard(new CriticalPoint()); // 临界点
+        cards.add(new PlanetaryDebris()); // 行星碎屑
+        cards.add(new HighSpeedRT()); // 高速共振排障
+        cards.add(new Starfall()); // 星辰坠落
+        cards.add(new PureWaterIsLife()); // 净水即生命
+        cards.add(new MedicineDispensing()); // 药物配置
+        cards.add(new Enkephalin()); // 脑啡肽
+        cards.add(new SHAFT()); // 能量井
+        cards.add(new EmergencyDefenseProcedures()); // 紧急防卫程序
+        cards.add(new TechnologyRisingStar()); // 科技新星
+        cards.add(new UnusedBoxingGloves()); // 闲置拳击手套
+        cards.add(new BionicDevice()); // 迷惑装置
+        cards.add(new NovaEruption()); // 新星爆发
+        cards.add(new ApplyFullForce()); // 放开手脚
+        cards.add(new TwoToOne()); // 二比一
+        cards.add(new EcologicalInteraction()); // 生态耦合
+        cards.add(new QuicksandGeneration()); // 流沙区域生成
+        cards.add(new Memory()); // 回忆
+        cards.add(new ResourceEconomization()); // 开源节流
+        cards.add(new FullBlow()); // 全力一击
+        cards.add(new HeadquarterBuilding()); // 总部大楼
+        cards.add(new LightPenetratingClouds()); // 穿云之光
+        cards.add(new LoneLight()); // 寂寥的光
+        cards.add(new FlowCombo()); // 流形连击
+        cards.add(new AcademicResearch()); // 学术研究
+        cards.add(new EliminateThreat()); // 解除威胁
+        cards.add(new RedShiftExperience()); // 红移实验
+        cards.add(new GalleriaStellaria()); // 万星园
+        cards.add(new Truth()); // 真理
+        cards.add(new FreeFromDream()); // 挣脱美梦
+        cards.add(new Dreamer()); // 梦想家
 
         // Rare.
-        BaseMod.addCard(new Calcification()); // 钙质化
-        BaseMod.addCard(new Solidify()); // 凝固
-        BaseMod.addCard(new HallOfStasis()); // 静滞所
-        BaseMod.addCard(new HeatDeath()); // 热寂
-        BaseMod.addCard(new DreadnoughtProtocol()); // 无畏者协议
-        BaseMod.addCard(new SuperficialRegulation()); // 浅层非熵适应
-        BaseMod.addCard(new DancingInThrees()); // 三个人的舞
-        BaseMod.addCard(new HAMHRR()); // 聚焦发生器
-        BaseMod.addCard(new StartUpCapital()); // 启动资金
-        BaseMod.addCard(new Galaxy()); // 银河
-        BaseMod.addCard(new WaveBarrier()); // 水波壁障
-        BaseMod.addCard(new PureDewOfFreshBlossoms()); // 纯净鲜花露
-        BaseMod.addCard(new LikeMind()); // 意气相投
-        BaseMod.addCard(new Refreshment()); // 精神回复
+        cards.add(new Calcification()); // 钙质化
+        cards.add(new Solidify()); // 凝固
+        cards.add(new HallOfStasis()); // 静滞所
+        cards.add(new HeatDeath()); // 热寂
+        cards.add(new DreadnoughtProtocol()); // 无畏者协议
+        cards.add(new SuperficialRegulation()); // 浅层非熵适应
+        cards.add(new DancingInThrees()); // 三个人的舞
+        cards.add(new HAMHRR()); // 聚焦发生器
+        cards.add(new StartUpCapital()); // 启动资金
+        cards.add(new Galaxy()); // 银河
+        cards.add(new WaveBarrier()); // 水波壁障
+        cards.add(new PureDewOfFreshBlossoms()); // 纯净鲜花露
+        cards.add(new LikeMind()); // 意气相投
+        cards.add(new Refreshment()); // 精神回复
 
         // Special.
-        BaseMod.addCard(new Unscrupulous()); // 出格
-        BaseMod.addCard(new Egotist()); // 自私者
-        BaseMod.addCard(new Traitor()); // 背叛者
-        BaseMod.addCard(new Seeker()); // 求道者
-        BaseMod.addCard(new Loner()); // 独行者
-        BaseMod.addCard(new Pioneer()); // 先驱者
-        BaseMod.addCard(new GiantRing()); // 巨大环
-        BaseMod.addCard(new BipolarNebula()); // 双极星云
-        BaseMod.addCard(new StellarRing()); // 恒星环
-        BaseMod.addCard(new SquareSunflower()); // 方形葵
-        BaseMod.addCard(new IcefieldsCottongrass()); // 冰原棉草
-        BaseMod.addCard(new Sarracenia()); // 雪瓶子草
-        BaseMod.addCard(new SheathedBeech()); // 鞘叶榉
-        BaseMod.addCard(new PaleFir()); // 淡杉
+        cards.add(new Unscrupulous()); // 出格
+        cards.add(new Egotist()); // 自私者
+        cards.add(new Traitor()); // 背叛者
+        cards.add(new Seeker()); // 求道者
+        cards.add(new Loner()); // 独行者
+        cards.add(new Pioneer()); // 先驱者
+        cards.add(new GiantRing()); // 巨大环
+        cards.add(new BipolarNebula()); // 双极星云
+        cards.add(new StellarRing()); // 恒星环
+        cards.add(new SquareSunflower()); // 方形葵
+        cards.add(new IcefieldsCottongrass()); // 冰原棉草
+        cards.add(new Sarracenia()); // 雪瓶子草
+        cards.add(new SheathedBeech()); // 鞘叶榉
+        cards.add(new PaleFir()); // 淡杉
 
-        BaseMod.addCard(new GravityDown()); // 超重
-        BaseMod.addCard(new GravityNone()); // 重置
-        BaseMod.addCard(new GravityUp()); // 失重
+        cards.add(new GravityDown()); // 超重
+        cards.add(new GravityNone()); // 重置
+        cards.add(new GravityUp()); // 失重
+
+        // Colourless Uncommon.
+        cards.add(new AuxiliaryDrone()); // 夜灯
 
         // Colourless Rare.
-        BaseMod.addCard(new AttackInsteadOfDefend()); // 以攻代守
+        cards.add(new AttackInsteadOfDefend()); // 以攻代守
+
+
+        for (AbstractCard c:cards) {
+            BaseMod.addCard(c);
+            UnlockTracker.seenPref.putInteger(c.cardID, 1); // 开局直接解锁全部卡牌，不用一个个unlock了
+        }
+        UnlockTracker.seenPref.flush();
     }
 
     @Override

@@ -15,6 +15,7 @@ public class Unscrupulous extends CustomCard {
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+    public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     public static final String IMG_PATH = "resources/rhinemod/images/cards/Unscrupulous.png";
     private static final int COST = 0;
     private static final int ADD_RESEARCH_PROGRESS = -2;
@@ -29,6 +30,7 @@ public class Unscrupulous extends CustomCard {
 
     @Override
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
+        cantUseMessage = EXTENDED_DESCRIPTION[0];
         if (p.hasPower(PioneerPower.POWER_ID)) {
             return super.canUse(p, m);
         }

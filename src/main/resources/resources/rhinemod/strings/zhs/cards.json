@@ -128,6 +128,11 @@
         "DESCRIPTION": "选择一个 rhinemod:星环 ，当它被引爆时，对敌人造成的伤害提高 !M! %。",
         "UPGRADE_DESCRIPTION": ""
     },
+    "rhinemod:DressingFlowingShape": {
+        "NAME": "梳妆流形",
+        "DESCRIPTION": "获得 !B! 点格挡。 NL 每当抽到这张牌时，获得一个额外效果。",
+        "UPGRADE_DESCRIPTION": ""
+    },
 
     "rhinemod:PlanetaryDebris": {
         "NAME": "行星碎屑",
@@ -196,7 +201,7 @@
     },
     "rhinemod:NovaEruption": {
         "NAME": "新星爆发",
-        "DESCRIPTION": "引爆一个 rhinemod:星环 ，此次引爆不对你造成伤害。",
+        "DESCRIPTION": "引爆一个 rhinemod:星环 ，此次引爆对敌人造成 !M! 倍伤害且不对你造成伤害。",
         "UPGRADE_DESCRIPTION": ""
     },
     "rhinemod:ApplyFullForce": {
@@ -356,7 +361,7 @@
     },
     "rhinemod:StartUpCapital": {
         "NAME": "启动资金",
-        "DESCRIPTION": "固有 ， 消耗 。 NL 抽 !M! 张牌，获得 [E] [E] 。 NL 将 !rhinemod:M2! 张出格洗入你的弃牌堆。",
+        "DESCRIPTION": "固有 ， 消耗 。 NL 抽 !M! 张牌，获得 [E] [E] 。 NL 将 !rhinemod:M2! 张 *出格 洗入你的弃牌堆。",
         "UPGRADE_DESCRIPTION": ""
     },
     "rhinemod:Galaxy": {
@@ -394,7 +399,8 @@
     "rhinemod:Unscrupulous": {
         "NAME": "出格",
         "DESCRIPTION": "rhinemod:科研进度 ： !M! 。 NL 消耗 。",
-        "UPGRADE_DESCRIPTION": ""
+        "UPGRADE_DESCRIPTION": "",
+        "EXTENDED_DESCRPTION": ["科研进度不足！"]
     },
     "rhinemod:Egotist": {
         "NAME": "自私者",
@@ -481,8 +487,14 @@
         "DESCRIPTION": "获得 !B! 点 格挡 ，你每已损失 5 点生命值，额外获得 !M! 点。 NL 消耗 。",
         "UPGRADE_DESCRIPTION": ""
     },
+    "rhinemod:AuxiliaryDrone": {
+        "NAME": "夜灯",
+        "DESCRIPTION": "防止你受到的下一次 rhinemod:重击 。 NL 消耗 。",
+        "UPGRADE_DESCRIPTION": "防止你受到的下 !M! 次 rhinemod:重击 。 NL 消耗 。"
+    },
     "rhinemod:AttackInsteadOfDefend": {
         "NAME": "以攻代守",
-        "DESCRIPTION": "每当你造成小于等于 !M! 点 未被格挡的攻击伤害时，将伤害提升为 !M! 。"
+        "DESCRIPTION": "每当你造成小于等于 !M! 点 未被格挡的攻击伤害时，将伤害提升为 !M! 。",
+        "UPGRADE_DESCRIPTION": ""
     }
 }
