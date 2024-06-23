@@ -50,6 +50,8 @@ public class SuperficialRegulationAction extends AbstractGameAction {
                 else
                     exist[0] = true;
             AbstractDungeon.gridSelectScreen.open(p.drawPile, p.drawPile.group.size(), true, TEXT[0]);
+            AbstractDungeon.gridSelectScreen.confirmButton.isDisabled = true;
+            tickDuration();
         }
 
         if (!isSelected) {
@@ -64,6 +66,7 @@ public class SuperficialRegulationAction extends AbstractGameAction {
                 BranchComparator cmp = new BranchComparator();
                 p.drawPile.group.sort(cmp);
                 cardToDraw.sort(cmp);
+                AbstractDungeon.gridSelectScreen.selectedCards.clear();
                 if (cardToDraw.isEmpty()) isDone = true;
             }
             return;
@@ -110,7 +113,7 @@ public class SuperficialRegulationAction extends AbstractGameAction {
                         cnt[0]++;
                 __instance.confirmButton.isDisabled = false;
                 for (int i = 0; i < 4; i++)
-                    if (exist[i] && cnt[i] == 0) {
+                    if (exist[i] && cnt[i] != 1) {
                         __instance.confirmButton.isDisabled = true;
                         break;
                     }
@@ -143,7 +146,7 @@ public class SuperficialRegulationAction extends AbstractGameAction {
                     cnt[0]++;
                 __instance.confirmButton.isDisabled = false;
                 for (int i = 0; i < 4; i++)
-                    if (exist[i] && cnt[i] == 0) {
+                    if (exist[i] && cnt[i] != 1) {
                         __instance.confirmButton.isDisabled = true;
                         break;
                     }
