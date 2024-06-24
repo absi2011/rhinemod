@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CriticalPoint extends AbstractRhineCard {
-    public static final String ID = "rhinemod:NovaEruption";
+    public static final String ID = "rhinemod:CriticalPoint";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;

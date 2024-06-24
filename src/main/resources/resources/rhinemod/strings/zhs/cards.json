@@ -130,8 +130,14 @@
     },
     "rhinemod:DressingFlowingShape": {
         "NAME": "梳妆流形",
-        "DESCRIPTION": "获得 !B! 点格挡。 NL 每当抽到这张牌时，获得一个额外效果。",
-        "UPGRADE_DESCRIPTION": ""
+        "DESCRIPTION": "",
+        "UPGRADE_DESCRIPTION": "",
+        "EXTENDED_DESCRIPTION": [
+            "获得 !B! 点 格挡 。 NL 每当抽到这张牌时，获得一个额外效果。",
+            "获得 !B! 点 格挡 。 NL 抽 !M! 张牌。 NL （再次抽到这张牌时会改变效果）",
+            "获得 !B! 点 格挡 。 NL 给予 !M! 层 rhinemod:水渍 。 NL （再次抽到这张牌时会改变效果）",
+            "获得 !B! 点 格挡 。 NL rhinemod:流形 ： !M! 。 NL （再次抽到这张牌时会改变效果）",
+            "获得 !B! 点 格挡 。 NL 再获得 !M! 点格挡。 NL （再次抽到这张牌时会改变效果）"]
     },
 
     "rhinemod:PlanetaryDebris": {
