@@ -24,20 +24,20 @@ public class ExhaustUnscrupulousAction extends AbstractGameAction {
     @Override
     public void update() {
         ArrayList<AbstractCard> list = new ArrayList<>();
+        for (AbstractCard c : p.drawPile.group)
+            if (c instanceof Unscrupulous)
+                list.add(c);
         for (AbstractCard c : p.hand.group)
             if (c instanceof Unscrupulous)
                 list.add(c);
         for (AbstractCard c : p.discardPile.group)
             if (c instanceof Unscrupulous)
                 list.add(c);
-        for (AbstractCard c : p.drawPile.group)
-            if (c instanceof Unscrupulous)
-                list.add(c);
         // TODO:来点特效！
         if ((list.size() <= amount) || (amount == -1)) {
             for (AbstractCard c : list) exhaustCard(c);
         } else {
-            Collections.shuffle(list, new Random(AbstractDungeon.cardRng.randomLong()));
+            // Collections.shuffle(list, new Random(AbstractDungeon.cardRng.randomLong()));
             for (int i = 0; i < amount; i++) exhaustCard(list.get(i));
         }
         isDone = true;

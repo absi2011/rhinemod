@@ -19,8 +19,8 @@ public class PlanetaryDebris extends AbstractRhineCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String IMG = "resources/rhinemod/images/cards/PlanetaryDebris.png";
     public static final int COST = 1;
-    public static final int ATTACK_DMG = 4;
-    public static final int UPGRADE_PLUS_DMG = 2;
+    public static final int ATTACK_DMG = 7;
+    public static final int UPGRADE_PLUS_DMG = 3;
     public PlanetaryDebris() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
                 CardType.POWER, AbstractCardEnum.RHINE_MATTE,

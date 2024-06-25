@@ -32,7 +32,7 @@ public class VoidPower extends AbstractPower {
 
     @Override
     public void atStartOfTurn() {
-        addToBot(new MakeTempCardInDrawPileAction(new VoidCard(), amount, true, false));
+        addToBot(new MakeTempCardInDrawPileAction(new VoidCard(), amount, true, true));
     }
 
 }

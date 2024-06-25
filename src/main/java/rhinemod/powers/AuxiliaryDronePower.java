@@ -32,7 +32,7 @@ public class AuxiliaryDronePower extends AbstractPower {
     }
 
     @Override
-    public int onAttackToChangeDamage(DamageInfo info, int damageAmount) {
+    public int onAttackedToChangeDamage(DamageInfo info, int damageAmount) {
         if ((info.type == DamageInfo.DamageType.NORMAL) && (damageAmount >= 15)) {
             this.flash();
             this.addToTop(new ReducePowerAction(this.owner, this.owner, this.ID, 1));

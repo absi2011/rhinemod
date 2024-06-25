@@ -267,6 +267,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         cards.add(new ReflectionInWater()); // 水中倒影
         cards.add(new CriticalPoint()); // 临界点
         cards.add(new DressingFlowingShape()); // 梳妆流形
+        cards.add(new LokenWatertank()); // 洛肯水箱
 
         // Uncommon.
         cards.add(new PlanetaryDebris()); // 行星碎屑

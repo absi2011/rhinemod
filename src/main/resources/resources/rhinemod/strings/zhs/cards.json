@@ -139,6 +139,12 @@
             "获得 !B! 点 格挡 。 NL rhinemod:流形 ： !M! 。 NL （再次抽到这张牌时会改变效果）",
             "获得 !B! 点 格挡 。 NL 再获得 !M! 点格挡。 NL （再次抽到这张牌时会改变效果）"]
     },
+    "rhinemod:LokenWatertank": {
+        "NAME": "洛肯水箱",
+        "DESCRIPTION": "对所有角色造成 !D! 点伤害。 NL 将 !M! 张 *出格 洗入你的牌库。",
+        "UPGRADE_DESCRIPTION": ""
+    },
+
 
     "rhinemod:PlanetaryDebris": {
         "NAME": "行星碎屑",
@@ -435,7 +441,7 @@
     },
     "rhinemod:Pioneer": {
         "NAME": "先驱者",
-        "DESCRIPTION": "*出格 不再降低 rhinemod:科研进度 。 NL 虚无 。",
+        "DESCRIPTION": "*出格 不再降低 rhinemod:科研进度 。 NL 每当你消耗一张 *出格 时，抽一张牌。 NL 虚无 。",
         "UPGRADE_DESCRIPTION": ""
     },
     "rhinemod:GravityUp": {
