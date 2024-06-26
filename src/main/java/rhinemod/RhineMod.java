@@ -177,7 +177,6 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
     }
 
     private void initializeEvents() {
-        if (isDemo) return;
         BaseMod.addEvent(new AddEventParams.Builder(ConvergenceOfPastAndPresent.ID, ConvergenceOfPastAndPresent.class).
                 eventType(EventUtils.EventType.NORMAL).
                 dungeonID("TheCity").
