@@ -340,7 +340,7 @@
         "DESCRIPTION": "造成 !D! 点伤害。 NL 将一张 *出格 洗入你的抽牌堆。",
         "UPGRADE_DESCRIPTION": "",
         "EXTENDED_DESCRIPTION": [
-            "造成 !D! 点伤害。 NL 改变 rhinemod:重力 。 如果本次伤害为 rhienmod:重击 ，将一张 *独行者 置入手牌。"
+            "造成 !D! 点伤害。 NL 改变 rhinemod:重力 。 NL 如果本次伤害为 rhinemod:重击 ，将一张 *独行者 置入手牌。"
         ]
     },
 
