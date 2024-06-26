@@ -425,7 +425,7 @@
         "NAME": "出格",
         "DESCRIPTION": "rhinemod:科研进度 ： !M! 。 NL 消耗 。",
         "UPGRADE_DESCRIPTION": "",
-        "EXTENDED_DESCRPTION": ["科研进度不足！"]
+        "EXTENDED_DESCRIPTION": ["科研进度不足！"]
     },
     "rhinemod:Egotist": {
         "NAME": "自私者",
