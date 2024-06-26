@@ -35,6 +35,7 @@ public class AprilShowers extends AbstractRhineCard {
                 CardRarity.UNCOMMON, CardTarget.SELF);
         block = baseBlock = BLOCK_GAIN;
         cardsToPreview = new Seeker();
+        realBranch = 3;
     }
 
     @Override

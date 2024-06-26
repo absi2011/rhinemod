@@ -32,7 +32,7 @@ public class ProjectHorizonArc extends AbstractRhineCard {
     public static final int KRISTEN_DAMAGE = -2;
     public ProjectHorizonArc() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
-                CardType.SKILL, AbstractCardEnum.RHINE_MATTE,
+                CardType.ATTACK, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.UNCOMMON, CardTarget.ENEMY);
         damage = baseDamage = DAMAGE;
         cardsToPreview = new Unscrupulous();
@@ -64,7 +64,7 @@ public class ProjectHorizonArc extends AbstractRhineCard {
             });
             add(() -> {
                 if (!upgraded) {
-                    upgradeName(1);
+                    upgradeName(2);
                     upgradeDamage(KRISTEN_DAMAGE);
                     rawDescription = EXTENDED_DESCRIPTION[0];
                     cardsToPreview = new Loner();
