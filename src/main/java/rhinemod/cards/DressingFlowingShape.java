@@ -29,7 +29,7 @@ public class DressingFlowingShape extends AbstractRhineCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
-    public static final String IMG = "resources/rhinemod/images/cards/FullBlow.png";
+    public static final String IMG = "resources/rhinemod/images/cards/PaleFir.png";
     public static final int COST = 1;
     public static final int BASIC_BLOCK = 8;
     public static final int UPGRADE_BLOCK = 3;

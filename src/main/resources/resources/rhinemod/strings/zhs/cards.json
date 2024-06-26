@@ -178,8 +178,8 @@
     },
     "rhinemod:SHAFT": {
         "NAME": "能量井",
-        "DESCRIPTION": "抽 !M! 张牌，如果它们类型不同，将 !rhinemod:M2! 张 *灼伤 置入你的手牌。",
-        "UPGRADE_DESCRIPTION": "抽 !M! 张牌，如果它们类型相同，将 *背叛者 加入你的手牌。"
+        "DESCRIPTION": "抽 !M! 张牌，如果它们类型不同，将 !rhinemod:M2! 张 *灼伤 置入手牌。",
+        "UPGRADE_DESCRIPTION": "抽 !M! 张牌，如果它们类型相同，将 *背叛者 置入手牌。"
     },
     "rhinemod:EmergencyDefenseProcedures": {
         "NAME": "紧急防卫程序",
@@ -309,7 +309,7 @@
     },
     "rhinemod:Truth": {
         "NAME": "真理",
-        "DESCRIPTION": "所有的 rhinemod:星环 立刻行动一次。如果你拥有至少 !M! 个 rhinemod:星环 ，将一张 *自私者 加入你的手牌。",
+        "DESCRIPTION": "所有的 rhinemod:星环 立刻行动一次。如果你拥有至少 !M! 个 rhinemod:星环 ，将一张 *自私者 置入手牌。",
         "UPGRADE_DESCRIPTION": ""
     },
     "rhinemod:FreeFromDream": {
@@ -328,6 +328,19 @@
         "EXTENDED_DESCRIPTION": [
             "造成 !D! 点伤害。 NL rhinemod:重力 每次改变后，伤害提高 !M! 点。",
             "造成 !D! 点伤害。 NL 每当有敌人被 rhinemod:浸没 [#EFC851]4[] 后，伤害提高 !M! 点。"
+        ]
+    },
+    "rhinemod:AprilShowers": {
+        "NAME": "无根之雨",
+        "DESCRIPTION": "获得 !B! 点 格挡 。 NL 如果你手牌中拥有所有 rhinemod:倾向 的牌，将一张 *求道者 置入手牌。",
+        "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:ProjectHorizonArc": {
+        "NAME": "地平弧光计划",
+        "DESCRIPTION": "造成 !D! 点伤害。 NL 将一张 *出格 洗入你的抽牌堆。",
+        "UPGRADE_DESCRIPTION": "",
+        "EXTENDED_DESCRIPTION": [
+            "造成 !D! 点伤害。 NL 改变 rhinemod:重力 。 如果本次伤害为 rhienmod:重击 ，将一张 *独行者 置入手牌。"
         ]
     },
 
@@ -431,7 +444,7 @@
     },
     "rhinemod:Loner": {
         "NAME": "独行者",
-        "DESCRIPTION": "rhinemod:重力 效果提升至50%，每回合开始时将一张 *倾斜 置入你的手牌。 NL 虚无 。",
+        "DESCRIPTION": "rhinemod:重力 效果提升至50%，每回合开始时将一张 *倾斜 置入手牌。 NL 虚无 。",
         "UPGRADE_DESCRIPTION": ""
     },
     "rhinemod:Lean": {
