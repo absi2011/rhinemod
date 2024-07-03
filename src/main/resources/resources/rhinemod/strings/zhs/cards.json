@@ -247,7 +247,10 @@
     "rhinemod:Memory": {
         "NAME": "回忆",
         "DESCRIPTION": "你每 消耗 过一张 *出格 ，造成 !D! 点伤害。 NL 消耗 。",
-        "UPGRADE_DESCRIPTION": ""
+        "UPGRADE_DESCRIPTION": "",
+        "EXTENDED_DESCRIPTION": [
+            " NL （共 !M! 点）"
+        ]
     },
     "rhinemod:ResourceEconomization": {
         "NAME": "开源节流",
