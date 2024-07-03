@@ -17,13 +17,14 @@ public class HighSpeedRT extends AbstractRhineCard {
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG = "resources/rhinemod/images/cards/HighSpeedResonatingTroubleshooter.png";
     public static final int COST = 1;
-    public static final int UPGRADE_COST = 0;
     public HighSpeedRT() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.UNCOMMON, CardTarget.ENEMY);
+        exhaust = true;
     }
 
     @Override
@@ -37,7 +38,8 @@ public class HighSpeedRT extends AbstractRhineCard {
             add(() -> {
                 if (!upgraded) {
                     upgradeName(0);
-                    upgradeBaseCost(UPGRADE_COST);
+                    rawDescription = UPGRADE_DESCRIPTION;
+                    exhaust = false;
                     initializeDescription();
                 }
             });

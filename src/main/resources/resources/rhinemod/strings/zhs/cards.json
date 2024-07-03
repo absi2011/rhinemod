@@ -153,8 +153,8 @@
     },
     "rhinemod:HighSpeedResonatingTroubleshooter": {
         "NAME": "高速共振排障",
-        "DESCRIPTION": "标记一名敌人，回合结束或该敌人死亡时，对所有敌人造成等同于该名敌人标记期间受到伤害总额的伤害。",
-        "UPGRADE_DESCRIPTION": ""
+        "DESCRIPTION": "标记一名敌人，回合结束或该敌人死亡时，对所有敌人造成等同于该名敌人标记期间受到伤害总额的伤害。 NL 消耗 。",
+        "UPGRADE_DESCRIPTION": "标记一名敌人，回合结束或该敌人死亡时，对所有敌人造成等同于该名敌人标记期间受到伤害总额的伤害。"
     },
     "rhinemod:Starfall": {
         "NAME": "星辰坠落",
