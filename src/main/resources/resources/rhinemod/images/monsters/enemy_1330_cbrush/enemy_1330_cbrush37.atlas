@@ -1,0 +1,104 @@
+
+enemy_1330_cbrush37.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+C_Annex_13
+  rotate: false
+  xy: 1, 119
+  size: 54, 56
+  orig: 54, 56
+  offset: 0, 0
+  index: -1
+C_Annex_12
+  rotate: false
+  xy: 156, 76
+  size: 53, 56
+  orig: 53, 56
+  offset: 0, 0
+  index: -1
+C_Annex_11
+  rotate: false
+  xy: 100, 76
+  size: 54, 56
+  orig: 54, 56
+  offset: 0, 0
+  index: -1
+C_Annex_10
+  rotate: false
+  xy: 1, 177
+  size: 53, 56
+  orig: 53, 56
+  offset: 0, 0
+  index: -1
+C_Annex_9
+  rotate: false
+  xy: 208, 1
+  size: 35, 55
+  orig: 35, 55
+  offset: 0, 0
+  index: -1
+C_Body
+  rotate: false
+  xy: 1, 1
+  size: 205, 73
+  orig: 205, 73
+  offset: 0, 0
+  index: -1
+C_Annex_8
+  rotate: false
+  xy: 1, 235
+  size: 20, 18
+  orig: 20, 18
+  offset: 0, 0
+  index: -1
+C_Annex_7
+  rotate: false
+  xy: 56, 213
+  size: 48, 27
+  orig: 48, 27
+  offset: 0, 0
+  index: -1
+C_Annex_6
+  rotate: false
+  xy: 57, 134
+  size: 73, 28
+  orig: 73, 28
+  offset: 0, 0
+  index: -1
+C_Annex_5
+  rotate: false
+  xy: 1, 76
+  size: 97, 41
+  orig: 97, 41
+  offset: 0, 0
+  index: -1
+C_Annex_4
+  rotate: false
+  xy: 106, 213
+  size: 20, 29
+  orig: 20, 29
+  offset: 0, 0
+  index: -1
+C_Annex_3
+  rotate: false
+  xy: 245, 55
+  size: 10, 52
+  orig: 10, 52
+  offset: 0, 0
+  index: -1
+C_Annex_1
+  rotate: false
+  xy: 56, 177
+  size: 73, 34
+  orig: 73, 34
+  offset: 0, 0
+  index: -1
+C_Annex_2
+  rotate: false
+  xy: 245, 1
+  size: 10, 52
+  orig: 10, 52
+  offset: 0, 0
+  index: -1
