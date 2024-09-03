@@ -212,6 +212,13 @@ public class RhineLab extends CustomPlayer {
         playedSpecialCard.clear();
     }
 
+    @Override
+    public void movePosition(float x, float y) {
+        super.movePosition(x, y);
+        globalAttributes.gravityX = drawX;
+        globalAttributes.updateHitbox();
+    }
+
     public void addPlayedSpecialCard(String c) {
         playedSpecialCard.add(c);
         if (playedSpecialCard.size() >= 5 && !AbstractDungeon.player.hasRelic(LoneTrail.ID)) {

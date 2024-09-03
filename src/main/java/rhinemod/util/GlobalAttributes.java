@@ -14,7 +14,6 @@ import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.helpers.TipHelper;
 import rhinemod.actions.ReduceCalciumAction;
-import rhinemod.powers.SolidifyPower;
 
 import java.util.ArrayList;
 
@@ -33,12 +32,12 @@ public class GlobalAttributes {
     public static int gravityChanges = 0;
     public static int calciumReduceNum;
     public static int smashThreshold;
-    public final float flowspX;
-    public final float flowspY;
-    public final float gravityX;
-    public final float gravityY;
-    public final float calciumX;
-    public final float calciumY;
+    public float flowspX;
+    public float flowspY;
+    public float gravityX;
+    public float gravityY;
+    public float calciumX;
+    public float calciumY;
     public Hitbox flowspHb;
     public Hitbox gravityHb;
     public Hitbox calciumHb;
@@ -52,13 +51,15 @@ public class GlobalAttributes {
         calciumReduceNum = 1;
         smashThreshold = 15;
         calciumNum = 0;
-        flowspX = 380.0F * Settings.scale;
-        flowspY = 840.0F * Settings.scale;
-        gravityX = 480.0F * Settings.scale;
-        gravityY = 840.0F * Settings.scale;
-        calciumX = 580.0F * Settings.scale;
-        calciumY = 840.0F * Settings.scale;
         hbr = 33.0F * Settings.scale;
+        flowspY = gravityY = calciumY = 840.0F * Settings.scale;
+        gravityX = 480.0F * Settings.scale;
+        updateHitbox();
+    }
+
+    public void updateHitbox() {
+        flowspX = gravityX - 100.0F * Settings.scale;
+        calciumX = gravityX + 100.0F * Settings.scale;
         flowspHb = new Hitbox(flowspX - hbr, flowspY - hbr, hbr * 2, hbr * 2);
         gravityHb = new Hitbox(gravityX - hbr, gravityY - hbr, hbr * 2, hbr * 2);
         calciumHb = new Hitbox(calciumX - hbr, calciumY - hbr, hbr * 2, hbr * 2);
