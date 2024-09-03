@@ -1,7 +1,7 @@
 package rhinemod.cards;
 
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.cards.status.Burn;
+import com.megacrit.cardcrawl.cards.status.Dazed;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
@@ -24,15 +24,15 @@ public class SHAFT extends AbstractRhineCard {
     public static final int COST = 0;
     public static final int KRISTEN_COST = 1;
     public static final int DRAW_AMT = 3;
-    public static final int BURN_AMT = 2;
-    public static final int UPGRADE_PLUS_BURN = -1;
+    public static final int UNSCRUPTULOUS_AMT = 2;
+    public static final int UPGRADE_PLUS_CARD = -1;
     public SHAFT() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.UNCOMMON, CardTarget.SELF);
         magicNumber = baseMagicNumber = DRAW_AMT;
-        secondMagicNumber = baseSecondMagicNumber = BURN_AMT;
-        cardsToPreview = new Burn();
+        secondMagicNumber = baseSecondMagicNumber = UNSCRUPTULOUS_AMT;
+        cardsToPreview = new Dazed();
     }
 
     @Override
@@ -46,7 +46,7 @@ public class SHAFT extends AbstractRhineCard {
             add(() -> {
                 if (!upgraded) {
                     upgradeName(0);
-                    upgradeSecondMagicNumber(UPGRADE_PLUS_BURN);
+                    upgradeSecondMagicNumber(UPGRADE_PLUS_CARD);
                     initializeDescription();
                 }
             });
