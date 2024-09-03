@@ -2,11 +2,10 @@ package rhinemod.relics;
 
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import rhinemod.actions.AverageDamageAllAction;
 
 public class Melt extends CustomRelic {
 
@@ -20,26 +19,31 @@ public class Melt extends CustomRelic {
         super(ID, IMG, IMG_OUTLINE, RelicTier.SPECIAL, LandingSound.MAGICAL);
         counter = 3;
         description = getUpdatedDescription();
+        tips.clear();
+        tips.add(new PowerTip(name, description));
+        initializeTips();
     }
 
     @Override
     public String getUpdatedDescription() {
         if (counter > 0) {
             return DESCRIPTIONS[0] + counter + DESCRIPTIONS[1];
-        }
-        else {
+        } else {
             return DESCRIPTIONS[2];
         }
     }
 
 
     @Override
-    public void atBattleStart() {
+    public void onVictory() {
         counter --;
-        if (counter < 0) {
+        if (counter <= 0) {
             counter = -1;
         }
         description = getUpdatedDescription();
+        tips.clear();
+        tips.add(new PowerTip(name, description));
+        initializeTips();
     }
 
     @Override
