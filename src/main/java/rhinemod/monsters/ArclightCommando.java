@@ -89,6 +89,7 @@ public class ArclightCommando extends CustomMonster {
             addToBot(new DamageAction(AbstractDungeon.player, damage.get(1)));
         }
         else if (nextMove == 4) {
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this, this, Stunned.POWER_ID));
             AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "FLYING"));
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new FlightPower(this, FlightNumber)));
         }

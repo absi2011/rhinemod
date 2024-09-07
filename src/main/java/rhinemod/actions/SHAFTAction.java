@@ -20,12 +20,14 @@ public class SHAFTAction extends AbstractGameAction {
     @Override
     public void update() {
         boolean isTypeSame = true;
-        AbstractCard.CardType type = DrawCardAction.drawnCards.get(0).type;
-        for (AbstractCard c : DrawCardAction.drawnCards)
-            if (c.type != type) {
-                isTypeSame = false;
-                break;
-            }
+        if (DrawCardAction.drawnCards.size() != 0) {
+            AbstractCard.CardType type = DrawCardAction.drawnCards.get(0).type;
+            for (AbstractCard c : DrawCardAction.drawnCards)
+                if (c.type != type) {
+                    isTypeSame = false;
+                    break;
+                }
+        }
         if (chosenBranch == 0 && !isTypeSame) addToTop(new MakeTempCardInHandAction(new Burn(), amount));
         if (chosenBranch == 1 && isTypeSame) addToTop(new MakeTempCardInHandAction(new Traitor()));
         isDone = true;

@@ -145,7 +145,14 @@ public abstract class AbstractRhineCard extends CustomCard {
         t.freeToPlayOnce = s.freeToPlayOnce;
         t.exhaust = s.exhaust;
         t.isEthereal = s.isEthereal;
+        t.retain = s.retain;
+        t.isInnate = s.isInnate;
+        t.returnToHand = s.returnToHand;
+        t.shuffleBackIntoDrawPile = s.shuffleBackIntoDrawPile;
+        t.cardsToPreview = s.cardsToPreview;
         t.rawDescription = s.rawDescription;
+        t.baseDraw = s.baseDraw;
+        t.isInAutoplay = s.isInAutoplay;
         t.initializeDescription();
     }
 
