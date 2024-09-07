@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import rhinemod.actions.ChangeGravityAction;
-import rhinemod.actions.DestinyAction;
 import rhinemod.actions.PHAAction;
 import rhinemod.cards.special.Loner;
 import rhinemod.cards.special.Unscrupulous;
@@ -43,7 +42,7 @@ public class ProjectHorizonArc extends AbstractRhineCard {
         if (chosenBranch != 1)
         {
             addToBot(new DamageAction(m, new DamageInfo(p, damage)));
-            addToBot(new MakeTempCardInDrawPileAction(new Unscrupulous(), 1, false, true));
+            addToBot(new MakeTempCardInDrawPileAction(new Unscrupulous(), 1, true, true));
         }
         else
         {

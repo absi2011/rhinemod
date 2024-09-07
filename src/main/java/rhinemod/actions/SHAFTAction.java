@@ -2,11 +2,12 @@ package rhinemod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.core.Settings;
 import rhinemod.cards.special.Traitor;
+import rhinemod.cards.special.Unscrupulous;
 
 public class SHAFTAction extends AbstractGameAction {
     public final int chosenBranch;
@@ -28,7 +29,7 @@ public class SHAFTAction extends AbstractGameAction {
                     break;
                 }
         }
-        if (chosenBranch == 0 && !isTypeSame) addToTop(new MakeTempCardInHandAction(new Burn(), amount));
+        if (chosenBranch == 0 && !isTypeSame) addToTop(new MakeTempCardInDrawPileAction(new Unscrupulous(), amount, true, true));
         if (chosenBranch == 1 && isTypeSame) addToTop(new MakeTempCardInHandAction(new Traitor()));
         isDone = true;
     }

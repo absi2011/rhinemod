@@ -19,8 +19,8 @@ public class JesseltonWilliams extends CustomMonster {
     public static final String[] MOVES = monsterStrings.MOVES;
 
     public final int DazedNum;
-    public boolean isStage2 = false;
-    private boolean notTriggered = true;
+    public boolean isStage2;
+    private boolean notTriggered;
 
     public final int metalNum;
 
@@ -30,8 +30,7 @@ public class JesseltonWilliams extends CustomMonster {
         if (AbstractDungeon.ascensionLevel >= 7) {
             setHp(320);
             metalNum = 8;
-        }
-        else {
+        } else {
             metalNum = 6;
         }
         if (AbstractDungeon.ascensionLevel >= 17) {
@@ -51,10 +50,11 @@ public class JesseltonWilliams extends CustomMonster {
         }
         isStage2 = false;
         notTriggered = true;
-        loadAnimation("resources/rhinemod/images/monsters/enemy_2056_smedzi/enemy_2056_smedzi.atlas", "resources/rhinemod/images/monsters/enemy_2056_smedzi/enemy_2056_smedzi33.json", 2F);
-        this.stateData.setMix("Idle", "Move_Begin", 0.1F);
-        this.state.setAnimation(0, "Move_End", false);
-        this.state.addAnimation(0, "Idle", true, 0.0F);
+        loadAnimation("resources/rhinemod/images/monsters/enemy_1516_jakill/enemy_1516_jakill37.atlas", "resources/rhinemod/images/monsters/enemy_1516_jakill/enemy_1516_jakill37.json", 1.5F);
+        stateData.setMix("C1_Idle", "C1_Die", 0.1F);
+        stateData.setMix("C2_Idle", "C2_Die", 0.1F);
+        state.setAnimation(0, "C1_Idle", true);
+        flipHorizontal = true;
     }
 
     @Override
@@ -74,7 +74,8 @@ public class JesseltonWilliams extends CustomMonster {
 
     public void changeState(String stateName) {
         if (stateName.equals("KILLER")) {
-            // TODO: 复活动画
+            state.setAnimation(0, "C1_Die", false);
+            state.addAnimation(0, "C2_Idle", true, 0F);
             addToBot(new HealAction(this, this, maxHealth / 2 - currentHealth));
             addToBot(new RemoveSpecificPowerAction(this, this, DoubleSmash.POWER_ID));
             addToBot(new ApplyPowerAction(this, this, new DoubleNonSmash(this)));
@@ -88,14 +89,14 @@ public class JesseltonWilliams extends CustomMonster {
         if (nextMove == 1) {
             addToBot(new DamageAction(p, damage.get(0)));
             addToBot(new MakeTempCardInDiscardAction(new Dazed(), DazedNum));
-            // TODO: 一阶段技能
-        }
-        else if (nextMove == 2) {
+            state.setAnimation(0, "C1_Skill", false);
+            state.addAnimation(0, "C1_Idle", true, 0F);
+        } else if (nextMove == 2) {
             addToBot(new DamageAction(p, damage.get(1)));
             addToBot(new DamageAction(p, damage.get(1)));
-            // TODO: 二阶段技能
-        }
-        else {
+            state.setAnimation(0, "C2_Die", false);
+            state.addAnimation(0, "C2_Idle", true, 0F);
+        } else {
             isStage2 = true;
             addToBot(new ChangeStateAction(this, "KILLER"));
         }
@@ -105,12 +106,8 @@ public class JesseltonWilliams extends CustomMonster {
     @Override
     protected void getMove(int i) {
         if (isStage2)
-        {
             setMove(MOVES[1], (byte)2, Intent.ATTACK, damage.get(1).base, 2, true);
-        }
         else
-        {
             setMove(MOVES[0], (byte)1, Intent.ATTACK_DEBUFF, damage.get(0).base);
-        }
     }
 }

@@ -4,12 +4,10 @@ import basemod.abstracts.CustomMonster;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ChangeStateAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
-import rhinemod.powers.Fragile;
 import rhinemod.powers.Stunned;
 
 public class Perpetrator extends CustomMonster {
@@ -17,7 +15,7 @@ public class Perpetrator extends CustomMonster {
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
     int AttTimes;
-    boolean isRush = false;
+    boolean isRush;
 
     public Perpetrator(float x, float y) {
         super(NAME, ID, 85, 0, 0, 150.0F, 320.0F, null, x, y);
@@ -38,10 +36,9 @@ public class Perpetrator extends CustomMonster {
             AttTimes = 2;
         }
         isRush = true;
-        loadAnimation("resources/rhinemod/images/monsters/enemy_2056_smedzi/enemy_2056_smedzi.atlas", "resources/rhinemod/images/monsters/enemy_2056_smedzi/enemy_2056_smedzi33.json", 2F);
-        this.stateData.setMix("Idle", "Move_Begin", 0.1F);
-        this.state.setAnimation(0, "Move_End", false);
-        this.state.addAnimation(0, "Idle", true, 0.0F);
+        loadAnimation("resources/rhinemod/images/monsters/enemy_1330_cbrush/enemy_1330_cbrush37.atlas", "resources/rhinemod/images/monsters/enemy_1330_cbrush/enemy_1330_cbrush37.json", 2F);
+        state.setAnimation(0, "Idle", true);
+        flipHorizontal = true;
     }
 
     public void applyPowers() {
@@ -56,11 +53,11 @@ public class Perpetrator extends CustomMonster {
     public void changeState(String stateName) {
         if (stateName.equals("STOPPED")) {
             isRush = false;
-            //TODO
+            state.setAnimation(0, "Idle", true);
         }
         else if (stateName.equals("RUSH")) {
             isRush = true;
-            //TODO: 要不要搞个冲刺残影？
+            state.setAnimation(0, "Move_2", true);
         }
     }
 
