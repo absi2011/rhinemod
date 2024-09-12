@@ -31,16 +31,16 @@ public class StarPod extends CustomMonster {
         super(NAME, ID, 9999, 0, 0, 150.0F, 320.0F, null, x, y);
         type = EnemyType.BOSS;
         if (AbstractDungeon.ascensionLevel >= 19) {
-            AttackNum = 12;
-            AttackPlusNum = 4;
-            DefendNum = 4;
-            DefendPlusNum = 2;
+            AttackNum = 20;
+            AttackPlusNum = 7;
+            DefendNum = 6;
+            DefendPlusNum = 3;
             RepairNum = 10;
         } else if (AbstractDungeon.ascensionLevel >= 4) {
-            AttackNum = 10;
+            AttackNum = 14;
             AttackPlusNum = 4;
-            DefendNum = 4;
-            DefendPlusNum = 1;
+            DefendNum = 5;
+            DefendPlusNum = 2;
             RepairNum = 7;
         } else {
             AttackNum = 9;

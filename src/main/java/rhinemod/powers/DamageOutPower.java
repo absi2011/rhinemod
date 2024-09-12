@@ -28,6 +28,14 @@ public class DamageOutPower extends AbstractPower {
     }
 
     @Override
+    public void stackPower(int stackAmount) {
+        super.stackPower(stackAmount);
+        if (amount >= 100) {
+            amount = 100;
+        }
+    }
+
+    @Override
     public void updateDescription() {
         description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1] + decAmount + DESCRIPTIONS[2];
     }

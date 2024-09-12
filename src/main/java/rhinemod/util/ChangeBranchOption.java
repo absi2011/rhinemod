@@ -31,6 +31,7 @@ public class ChangeBranchOption extends AbstractCampfireOption {
             AbstractDungeon.effectList.add(new CampfireChangeBranchEffect(this));
     }
 
+    /*
     @Override
     public void update() {
         super.update();
@@ -43,4 +44,6 @@ public class ChangeBranchOption extends AbstractCampfireOption {
         usable = changeNum == 0 && valid;
         updateUsability(usable);
     }
+    */
+
 }
