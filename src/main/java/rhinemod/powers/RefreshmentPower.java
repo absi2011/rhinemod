@@ -1,5 +1,6 @@
 package rhinemod.powers;
 
+import basemod.BaseMod;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -15,12 +16,14 @@ public class RefreshmentPower extends AbstractPower {
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
+    private int rest;
     public RefreshmentPower(AbstractCreature owner, int amount) {
         this.ID = POWER_ID;
         this.name = NAME;
         this.type = PowerType.BUFF;
         this.owner = owner;
         this.amount = amount;
+        rest = amount;
         region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/Solidify 84.png"), 0, 0, 84, 84);
         region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/Solidify 32.png"), 0, 0, 32, 32);
         updateDescription();
@@ -28,14 +31,28 @@ public class RefreshmentPower extends AbstractPower {
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1] + rest + DESCRIPTIONS[2];
+    }
+
+    @Override
+    public void stackPower(int stackAmount) {
+        super.stackPower(stackAmount);
+        rest += stackAmount;
+    }
+
+    @Override
+    public void atStartOfTurn() {
+        super.atStartOfTurn();
+        rest = amount;
     }
 
     @Override
     public void onGainedBlock(float blockAmount) {
-        if (blockAmount > 0.0F) {
+        if ((blockAmount > 0.0F) && (AbstractDungeon.player.hand.size() < BaseMod.MAX_HAND_SIZE) && (rest > 0)) {
             this.flash();
-            addToBot(new DrawCardAction(amount, new GainProgressByCostAction(AbstractDungeon.player)));
+            rest --;
+            updateDescription();
+            addToBot(new DrawCardAction(1, new GainProgressByCostAction(AbstractDungeon.player)));
         }
     }
 }

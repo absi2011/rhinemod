@@ -19,12 +19,14 @@ public class Refreshment extends AbstractRhineCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG = "resources/rhinemod/images/cards/Solidify.png";
-    public static final int COST = 3;
+    public static final int COST = 2;
+    public static final int LIMIT = 4;
+    public static final int UPGRADE_EXTRA_LIMIT = 2;
     public Refreshment() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
                 CardType.POWER, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.RARE, CardTarget.SELF);
-        magicNumber = baseMagicNumber = 1;
+        magicNumber = baseMagicNumber = LIMIT;
         realBranch = 1;
     }
 
@@ -39,8 +41,7 @@ public class Refreshment extends AbstractRhineCard {
             add(() -> {
                 if (!upgraded) {
                     upgradeName(0);
-                    selfRetain = true;
-                    rawDescription = UPGRADE_DESCRIPTION;
+                    upgradeMagicNumber(UPGRADE_EXTRA_LIMIT);
                     initializeDescription();
                 }
             });

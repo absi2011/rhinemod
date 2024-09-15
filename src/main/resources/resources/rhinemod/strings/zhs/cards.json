@@ -137,7 +137,7 @@
             "获得 !B! 点 格挡 。 NL 抽 !M! 张牌。 NL （再次抽到这张牌时会改变效果）",
             "获得 !B! 点 格挡 。 NL 给予 !M! 层 rhinemod:水渍 。 NL （再次抽到这张牌时会改变效果）",
             "获得 !B! 点 格挡 。 NL rhinemod:流形 ： !M! 。 NL （再次抽到这张牌时会改变效果）",
-            "获得 !B! 点 格挡 。 NL 再获得 !M! 点格挡。 NL （再次抽到这张牌时会改变效果）"]
+            "获得 !B! 点 格挡 。 NL 再获得 !M! 点 格挡 。 NL （再次抽到这张牌时会改变效果）"]
     },
     "rhinemod:LokenWatertank": {
         "NAME": "洛肯水箱",
@@ -419,8 +419,8 @@
     },
     "rhinemod:Refreshment": {
         "NAME": "精神回复",
-        "DESCRIPTION": "每当你获得 格挡 时，抽 !M! 张牌并获得等同于其费用的 rhinemod:科研进度 。",
-        "UPGRADE_DESCRIPTION": "保留 。 NL 每当你获得 格挡 时，抽 !M! 张牌并获得等同于其费用的 rhinemod:科研进度 。"
+        "DESCRIPTION": "每当你获得 格挡 时，抽 1 张牌并获得等同于其费用的 rhinemod:科研进度 。 每回合最多触发 !M! 次。",
+        "UPGRADE_DESCRIPTION": ""
     },
 
 

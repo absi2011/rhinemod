@@ -24,8 +24,8 @@ public class HAMHRR extends AbstractRhineCard {
     public static final String IMG = "resources/rhinemod/images/cards/HAMHRR.png";
     public static final int COST = 3;
     public static final int BASIC_DAMAGE = 18;
-    public static final int EXTRA_DAMAGE = 45;
-    public static final int UPGRADE_PLUS_EXTRA = 25;
+    public static final int EXTRA_DAMAGE = 54;
+    public static final int UPGRADE_PLUS_EXTRA = 27;
     public HAMHRR() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.RHINE_MATTE,

@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import rhinemod.actions.SHAFTAction;
 import rhinemod.cards.special.Traitor;
+import rhinemod.cards.special.Unscrupulous;
 import rhinemod.interfaces.UpgradeBranch;
 import rhinemod.patches.AbstractCardEnum;
 
@@ -32,7 +33,7 @@ public class SHAFT extends AbstractRhineCard {
                 CardRarity.UNCOMMON, CardTarget.SELF);
         magicNumber = baseMagicNumber = DRAW_AMT;
         secondMagicNumber = baseSecondMagicNumber = UNSCRUPTULOUS_AMT;
-        cardsToPreview = new Dazed();
+        cardsToPreview = new Unscrupulous();
     }
 
     @Override
