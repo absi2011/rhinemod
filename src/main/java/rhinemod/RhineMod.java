@@ -317,6 +317,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         cards.add(new PureDewOfFreshBlossoms()); // 纯净鲜花露
         cards.add(new LikeMind()); // 意气相投
         cards.add(new Refreshment()); // 精神回复
+        cards.add(new IdealistForm()); // 理想者形态
 
         // Special.
         cards.add(new Unscrupulous()); // 出格

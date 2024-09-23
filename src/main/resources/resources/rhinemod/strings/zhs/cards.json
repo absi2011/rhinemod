@@ -422,7 +422,16 @@
         "DESCRIPTION": "每当你获得 格挡 时，抽 1 张牌并获得等同于其费用的 rhinemod:科研进度 。 每回合最多触发 !M! 次。",
         "UPGRADE_DESCRIPTION": ""
     },
-
+    "rhinemod:IdealistForm": {
+        "NAME": "理想者形态",
+        "DESCRIPTION": "在每回合结束时，如果你打出过所有 rhinemod:倾向 的牌，对所有敌人造成 !D! 点伤害。",
+        "UPGRADE_DESCRIPTION": "",
+        "EXTENDED_DESCRIPTION": [
+            "在每回合开始时，消耗手牌中的所有 *出格 。每消耗一张，获得 !M! 点 rhinemod:钙质粒子 。",
+            "在每回合开始时，打出一张 *寂寥的光 。",
+            "在每回合开始时，抽一张牌，获得 !M! 点 rhinemod:流形 。"
+        ]
+    },
 
     "rhinemod:Unscrupulous": {
         "NAME": "出格",
