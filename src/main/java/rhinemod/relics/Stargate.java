@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.map.MapEdge;
 import com.megacrit.cardcrawl.map.MapRoomNode;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
 import com.megacrit.cardcrawl.rooms.ShopRoom;
 
 import java.util.ArrayList;
@@ -49,6 +50,9 @@ public class Stargate extends CustomRelic implements ClickableRelic {
         if (AbstractDungeon.currMapNode == null) {
             return;
         }
+        if (AbstractDungeon.getCurrRoom() instanceof MonsterRoomBoss) {
+            return;
+        }
         counter--;
         if (counter == 0) {
             setCounter(-2);
@@ -57,6 +61,7 @@ public class Stargate extends CustomRelic implements ClickableRelic {
             tips.add(new PowerTip(name, description));
             initializeTips();
         }
+        AbstractDungeon.currMapNode.taken = true;
         MapRoomNode cur = AbstractDungeon.currMapNode;
         MapRoomNode nxt = new MapRoomNode(cur.x, cur.y);
         nxt.room = new ShopRoom();
