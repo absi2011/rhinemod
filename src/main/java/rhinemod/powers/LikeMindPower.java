@@ -20,7 +20,6 @@ public class LikeMindPower extends AbstractPower implements OnReceivePowerPower 
     public int branch;
     public boolean used;
     public LikeMindPower(AbstractCreature owner, int amount, int branch) {
-        this.ID = POWER_ID;
         this.name = NAME;
         this.type = PowerType.BUFF;
         this.owner = owner;
