@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import rhinemod.actions.ExhaustStatusAction;
 import rhinemod.actions.ExhaustUnscrupulousAction;
 import rhinemod.actions.GainProgressByCostAction;
 import rhinemod.actions.SummonStarRingAction;
@@ -51,7 +52,7 @@ public class TechnologyRisingStar extends AbstractRhineCard {
                 break;
             case 1:
                 addToBot(new ApplyPowerAction(p, p, new ResearchProgress(p, magicNumber)));
-                addToBot(new ExhaustUnscrupulousAction(secondMagicNumber));
+                addToBot(new ExhaustStatusAction(secondMagicNumber));
                 break;
             case 2:
                 ArrayList<AbstractCard> list = new ArrayList<>();

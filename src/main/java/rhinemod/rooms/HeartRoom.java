@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.events.beyond.SpireHeart;
 import com.megacrit.cardcrawl.events.exordium.Mushrooms;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
@@ -21,6 +22,7 @@ import javassist.NotFoundException;
 import javassist.expr.ExprEditor;
 import javassist.expr.Instanceof;
 import rhinemod.events.HeartEvent;
+import rhinemod.relics.LoneTrail;
 
 public class HeartRoom extends AbstractRoom{
     public HeartRoom() {
@@ -32,7 +34,15 @@ public class HeartRoom extends AbstractRoom{
 
     public void onPlayerEntry() {
         AbstractDungeon.overlayMenu.proceedButton.hide();
-        this.event = new HeartEvent();
+        if (AbstractDungeon.player.getRelic(LoneTrail.ID).counter == 0) {
+            Settings.hasSapphireKey = false;
+            Settings.hasRubyKey = false;
+            Settings.hasEmeraldKey = false;
+            this.event = new SpireHeart();
+        }
+        else {
+            this.event = new HeartEvent();
+        }
         this.event.onEnterRoom();
     }
 

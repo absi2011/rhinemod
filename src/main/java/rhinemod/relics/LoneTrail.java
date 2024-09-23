@@ -55,14 +55,6 @@ public class LoneTrail extends CustomRelic {
     }
 
     @Override
-    public void onEnterRoom(AbstractRoom room) {
-        if ((counter == 0) && (room instanceof HeartRoom)) {
-            AbstractMonster m = null;
-            m.applyPowers(); // 搞个NPE，防止其他方式获取孤星。
-        }
-    }
-
-    @Override
     public void atBattleStartPreDraw() {
         if ((counter > 0) && (AbstractDungeon.getCurrRoom() instanceof MonsterRoomBoss)) {
             flash();
@@ -70,7 +62,7 @@ public class LoneTrail extends CustomRelic {
             for (i = 0; i < counter; i++) {
                 // 这里无论如何应该只有一个敌人。
                 AbstractMonster m = AbstractDungeon.getCurrRoom().monsters.monsters.get(0);
-                AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(AbstractDungeon.player, 1, DamageInfo.DamageType.HP_LOSS)));
+                AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(AbstractDungeon.player, 1, DamageInfo.DamageType.THORNS)));
                 //TODO: 如果以后有技术力可以做一个星光特效
             }
             counter = -1;
