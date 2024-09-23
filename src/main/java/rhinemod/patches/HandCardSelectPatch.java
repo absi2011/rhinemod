@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
-import com.megacrit.cardcrawl.map.DungeonMap;
 import com.megacrit.cardcrawl.screens.select.HandCardSelectScreen;
 import com.megacrit.cardcrawl.ui.buttons.PeekButton;
 import javassist.CannotCompileException;
@@ -83,7 +82,7 @@ public class HandCardSelectPatch {
     public static class CheckIfCardHasBranches {
         public static void Insert(HandCardSelectScreen _inst) {
             AbstractCard card = _inst.selectedCards.group.get(0);
-            if (card instanceof AbstractRhineCard && ((AbstractRhineCard) card).possibleBranches().size() > 1) {
+            if (card instanceof AbstractRhineCard && !((AbstractRhineCard) card).possibleBranches().isEmpty()) {
                 setBranchesPreview(_inst, (AbstractRhineCard) card);
             } else {
                 branchesNum = 0;
