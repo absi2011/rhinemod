@@ -512,7 +512,7 @@
     },
     "rhinemod:PaleFir": {
         "NAME": "淡杉",
-        "DESCRIPTION": "获得 !B! 点 格挡 ，你每已损失 5 点生命值，额外获得 !M! 点。 NL 消耗 。",
+        "DESCRIPTION": "获得 !B! 点 格挡 ，你每已损失 !M! 点生命值，额外获得 1 点。 NL 消耗 。",
         "UPGRADE_DESCRIPTION": ""
     },
     "rhinemod:AuxiliaryDrone": {

@@ -30,6 +30,11 @@
     "FLAVOR": "塞雷娅在批准生产这个的时候，并不知道它将如何被使用。",
     "DESCRIPTIONS": ["在Boss战中，获得 #b3 点 #y力量 。"]
   },
+  "rhinemod:OrangeStorm": {
+    "NAME": "橙味风暴",
+    "FLAVOR": "约翰老妈糖果产品，以廉价美味为卖点，在孩子中很有人气。",
+    "DESCRIPTIONS": ["拾起时，最大生命值提高3点，卡牌 #y淡杉 的效果增强。"]
+  },
   "rhinemod:LoneTrail": {
     "NAME": "孤星",
     "FLAVOR": "晚安，泰拉的诸位。晚安，宇宙。",

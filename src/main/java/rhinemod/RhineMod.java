@@ -378,6 +378,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addRelicToCustomPool(new TITStudentIdCard(), RHINE_MATTE);
 
         // common.
+        BaseMod.addRelicToCustomPool(new OrangeStorm(), RHINE_MATTE);
 
         // uncommon.
 
