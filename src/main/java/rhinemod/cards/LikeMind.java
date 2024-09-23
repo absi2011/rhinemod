@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import rhinemod.interfaces.UpgradeBranch;
 import rhinemod.patches.AbstractCardEnum;
-import rhinemod.powers.LikeMindPower;
+import rhinemod.powers.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +31,20 @@ public class LikeMind extends AbstractRhineCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new LikeMindPower(p, magicNumber, chosenBranch)));
+        switch (chosenBranch) {
+            case 0:
+                addToBot(new ApplyPowerAction(p, p, new LikeMindPowerRandom(p, magicNumber)));
+                break;
+            case 1:
+                addToBot(new ApplyPowerAction(p, p, new LikeMindPowerCalcium(p, magicNumber)));
+                break;
+            case 2:
+                addToBot(new ApplyPowerAction(p, p, new LikeMindPowerResearch(p, magicNumber)));
+                break;
+            case 3:
+                addToBot(new ApplyPowerAction(p, p, new LikeMindPowerFlowsp(p, magicNumber)));
+                break;
+        }
     }
 
     @Override
