@@ -110,13 +110,4 @@ public class InvisibleGlobalAttributes extends AbstractPower {
                 ((EliminateThreatPower) p.getPower(EliminateThreatPower.POWER_ID)).onSmash(target);
         }
     }
-
-    @Override
-    public void onVictory() {
-        if (p.currentHealth > 0 && !p.hasPower(EgotistPower.POWER_ID)) {
-            for (StarRing r : p.currentRings)
-                r.blast();
-        }
-        p.currentRings.clear();
-    }
 }

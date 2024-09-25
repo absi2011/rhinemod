@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Interpolation;
+import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -20,6 +21,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import com.megacrit.cardcrawl.vfx.combat.HbBlockBrokenEffect;
 import com.megacrit.cardcrawl.vfx.combat.StrikeEffect;
+import javassist.CtBehavior;
 import rhinemod.actions.StarRingBlastAction;
 import rhinemod.cards.AbstractRhineCard;
 import rhinemod.powers.CriticalPointPower;
@@ -238,5 +240,26 @@ public class StarRing extends AbstractMonster {
         updatePowers();
         updateHealthBar();
         tint.update();
+    }
+    
+    @SpirePatch(clz = AbstractMonster.class, method = "die", paramtypez = {boolean.class})
+    public static class EndBattlePatch {
+        @SpireInsertPatch(locator = Locator.class)
+        public static void insert(AbstractMonster _inst) {
+            if (AbstractDungeon.getCurrRoom().cannotLose) return;
+            AbstractPlayer p = AbstractDungeon.player;
+            if (p instanceof RhineLab && !p.hasPower(EgotistPower.POWER_ID)) {
+                for (StarRing r : ((RhineLab) p).currentRings)
+                    r.blast();
+                ((RhineLab) p).currentRings.clear();
+            }
+        }
+        private static class Locator extends SpireInsertLocator {
+            @Override
+            public int[] Locate(CtBehavior ctMethodToPatch) throws Exception {
+                Matcher.FieldAccessMatcher matcher = new Matcher.FieldAccessMatcher(AbstractDungeon.class, "overlayMenu");
+                return LineFinder.findInOrder(ctMethodToPatch, matcher);
+            }
+        }
     }
 }
