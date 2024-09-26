@@ -24,21 +24,21 @@ public class IdealistForm extends AbstractRhineCard {
     public static final String IMG = "resources/rhinemod/images/cards/RhineStrike.png";
     public static final int COST = 3;
     public static final int ATTACK_DMG = 60;
-    public static final int UPGRADE_PLUS_DMG = 75;
+    public static final int UPGRADE_PLUS_DMG = 15;
     public static final int CALCIUM = 3;
     public static final int FLOWSP = 5;
     public IdealistForm() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
                 CardType.POWER, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.RARE, CardTarget.NONE);
-        damage = baseDamage = ATTACK_DMG;
+        magicNumber = baseMagicNumber = ATTACK_DMG;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         switch (chosenBranch) {
             case 0:
-                addToBot(new ApplyPowerAction(p, p, new IdealistFormPower(p, damage)));
+                addToBot(new ApplyPowerAction(p, p, new IdealistFormPower(p, magicNumber)));
                 break;
             case 1:
                 addToBot(new ApplyPowerAction(p, p, new IdealistFormPowerS(p, magicNumber)));

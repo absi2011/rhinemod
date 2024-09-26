@@ -424,7 +424,7 @@
     },
     "rhinemod:IdealistForm": {
         "NAME": "理想者形态",
-        "DESCRIPTION": "在每回合结束时，如果你打出过所有 rhinemod:倾向 的牌，对所有敌人造成 !D! 点伤害。",
+        "DESCRIPTION": "在每回合结束时，如果你打出过所有 rhinemod:倾向 的牌，对所有敌人造成 !M! 点伤害。",
         "UPGRADE_DESCRIPTION": "",
         "EXTENDED_DESCRIPTION": [
             "在每回合开始时，消耗手牌中的所有 *出格 。每消耗一张，获得 !M! 点 rhinemod:钙质粒子 。",
