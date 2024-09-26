@@ -28,7 +28,7 @@ public class DependentVariable extends AbstractRhineCard {
     public DependentVariable() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.RHINE_MATTE,
-                CardRarity.COMMON, CardTarget.ENEMY);
+                CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseDamage = damage = 0;
         baseMagicNumber = magicNumber = 0;
     }

@@ -432,6 +432,15 @@
             "在每回合开始时，抽一张牌，获得 !M! 点 rhinemod:流形 。"
         ]
     },
+    "rhinemod:MultiEcho": {
+        "NAME": "多重分身",
+        "DESCRIPTION": "选择一张不同名的手牌，丢弃其他手牌，将你的所有 rhinemod:流形 转化为这张牌含有 虚无 和 消耗 的的复制。",
+        "UPGRADE_DESCRIPTION": "",
+        "EXTENDED_DESCRIPTION": [
+            "复制：",
+            " NL 消耗 ， 虚无 。"
+        ]
+    },
 
     "rhinemod:Unscrupulous": {
         "NAME": "出格",
