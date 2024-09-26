@@ -81,6 +81,22 @@
       " 层。"
     ]
   },
+  "rhinemod:LikeMindPowerRandom": {
+    "NAME": "意气相投",
+    "DESCRIPTIONS": []
+  },
+  "rhinemod:LikeMindPowerCalcium": {
+    "NAME": "意气相投S",
+    "DESCRIPTIONS": []
+  },
+  "rhinemod:LikeMindPowerFlowsp": {
+    "NAME": "意气相投M",
+    "DESCRIPTIONS": []
+  },
+  "rhinemod:LikeMindPowerResearch": {
+    "NAME": "意气相投K",
+    "DESCRIPTIONS": []
+  },
   "rhinemod:ExperienceError": {
     "NAME": "实验错误",
     "DESCRIPTIONS": [
