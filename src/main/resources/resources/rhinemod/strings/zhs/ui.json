@@ -12,6 +12,11 @@
       "选择一张卡牌升级"
     ]
   },
+  "rhinemod:MultiEchoAction": {
+    "TEXT": [
+      "选择一张卡牌以复制"
+    ]
+  },
   "rhinemod:StarRing": {
     "TEXT": [
       "星环",
