@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import rhinemod.powers.NoStun;
+import rhinemod.vfx.R31MoveEffect;
 
 public class R31HeavyPowerArmor extends CustomMonster {
     public static final String ID = "rhinemod:R31";
@@ -18,6 +19,7 @@ public class R31HeavyPowerArmor extends CustomMonster {
     public static final String[] MOVES = monsterStrings.MOVES;
     public static final int stunStrike = 10;
     public static final int stunNum = 5;
+    private static float moveX;
 
     public R31HeavyPowerArmor(float x, float y) {
         super(NAME, ID, 140, 0, 0, 220.0F, 360.0F, null, x, y);
@@ -28,17 +30,16 @@ public class R31HeavyPowerArmor extends CustomMonster {
         if (AbstractDungeon.ascensionLevel >= 18) {
             damage.add(new DamageInfo(this, 5));
             damage.add(new DamageInfo(this, 30));
-        }
-        else if (AbstractDungeon.ascensionLevel >= 3) {
+        } else if (AbstractDungeon.ascensionLevel >= 3) {
             damage.add(new DamageInfo(this, 4));
             damage.add(new DamageInfo(this, 25));
-        }
-        else {
+        } else {
             damage.add(new DamageInfo(this, 3));
             damage.add(new DamageInfo(this, 20));
         }
         loadAnimation("resources/rhinemod/images/monsters/enemy_1255_lybgpa/enemy_1255_lybgpa33.atlas", "resources/rhinemod/images/monsters/enemy_1255_lybgpa/enemy_1255_lybgpa33.json", 1.5F);
         state.setAnimation(0, "Idle", true);
+        moveX = (drawX - hb.width * 0.5F - (AbstractDungeon.player.hb.cX + AbstractDungeon.player.hb.width / 2)) / 6;
         flipHorizontal = true;
     }
 
@@ -58,23 +59,22 @@ public class R31HeavyPowerArmor extends CustomMonster {
                 addToBot(new DamageAction(AbstractDungeon.player, damage.get(0)));
             }
             addToBot(new MakeTempCardInDrawPileAction(new Dazed(), stunNum, false, true)) ;
-        }
-        else if (nextMove >= 8) {
+        } else if (nextMove >= 8) {
             state.setAnimation(0, "Attack", false);
             state.addAnimation(0, "Idle", true, 0);
             addToBot(new DamageAction(AbstractDungeon.player, damage.get(1)));
-        }
-        else {
+        } else {
             state.setAnimation(0, "Move", false);
+            state.addAnimation(0, "Move", false, 0);
+            moveX = (drawX - hb.width * 0.5F - (AbstractDungeon.player.hb.cX + AbstractDungeon.player.hb.width / 2)) / (7 - nextMove);
+            AbstractDungeon.effectList.add(new R31MoveEffect(this, moveX));
             state.addAnimation(0, "Idle", true, 0);
         }
         if (nextMove <= 5) {
             setMove(MOVES[0], (byte)(nextMove + 1), Intent.UNKNOWN);
-        }
-        else if ((nextMove == 6) || (nextMove == 10)) {
+        } else if ((nextMove == 6) || (nextMove == 10)) {
             setMove(MOVES[1], (byte)7, Intent.ATTACK_DEBUFF, damage.get(0).base, stunStrike, true);
-        }
-        else {
+        } else {
             setMove((byte)(nextMove + 1), Intent.ATTACK, damage.get(1).base);
         }
     }
