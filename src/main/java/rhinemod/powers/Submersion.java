@@ -13,10 +13,7 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
-import org.apache.logging.log4j.LogManager;
-import rhinemod.RhineMod;
 import rhinemod.actions.SubmersionLoseHpAction;
-import rhinemod.cards.AbstractRhineCard;
 import rhinemod.cards.Dreamer;
 
 public class Submersion extends AbstractPower {
@@ -31,7 +28,7 @@ public class Submersion extends AbstractPower {
         this.name = NAME;
         this.type = PowerType.DEBUFF;
         this.owner = owner;
-        this.amount = amount;
+        this.amount = Math.min(4, amount);
         region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/Submersion 128.png"), 0, 0, 128, 128);
         region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/Submersion 48.png"), 0, 0, 48, 48);
         priority = 100;
@@ -42,6 +39,13 @@ public class Submersion extends AbstractPower {
     public void onInitialApplication() {
         updateLevel(amount);
     }
+
+    @Override
+    public void stackPower(int amount) {
+        super.stackPower(amount);
+        this.amount = Math.min(4, this.amount);
+    }
+
     @Override
     public void updateDescription() {
         description = DESCRIPTIONS[0] + DAMAGE_TAKE[amount] + DESCRIPTIONS[1] + REDUCE_ATK[amount] + DESCRIPTIONS[2] + amount + DESCRIPTIONS[3];
@@ -50,8 +54,7 @@ public class Submersion extends AbstractPower {
     public void updateLevel(int amount) {
         if (amount < this.amount) {
             addToTop(new ReducePowerAction(owner, owner, name, this.amount - amount));
-        }
-        else if (amount > this.amount) {
+        } else if (amount > this.amount) {
             addToTop(new ApplyPowerAction(owner, owner, new Submersion(owner, amount - this.amount)));
         }
         if (amount <= 0) {
@@ -70,8 +73,7 @@ public class Submersion extends AbstractPower {
         }
     }
 
-    void updateDreamer(CardGroup cardGroup)
-    {
+    void updateDreamer(CardGroup cardGroup) {
         for (AbstractCard c : cardGroup.group) {
             if ((c instanceof Dreamer) && (((Dreamer)c).chosenBranch == 2)) {
                 c.baseDamage += c.baseMagicNumber;
