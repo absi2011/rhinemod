@@ -18,12 +18,10 @@ import javassist.CtBehavior;
 import javassist.expr.ExprEditor;
 import javassist.expr.MethodCall;
 import rhinemod.cards.AbstractRhineCard;
-import rhinemod.interfaces.UpgradeBranch;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 import java.util.logging.Logger;
 
 public class GridCardSelectPatch {
@@ -31,7 +29,6 @@ public class GridCardSelectPatch {
     @SpirePatch(clz = GridCardSelectScreen.class, method = SpirePatch.CLASS)
     public static class OptFields {
         public static SpireField<Boolean> selectingBranch = new SpireField<>(() -> false);
-        public static SpireField<Boolean> isChangingBranch = new SpireField<>(() -> false);
     }
     static public final int MAX_BRANCH = 4;
     public static AbstractCard[] branches = new AbstractCard[MAX_BRANCH];
@@ -55,9 +52,8 @@ public class GridCardSelectPatch {
 
     public static void setBranchesPreview(GridCardSelectScreen _inst, AbstractRhineCard card) {
         if (!cardChecked) {
-            if (OptFields.isChangingBranch.get(_inst)) {
-                List<UpgradeBranch> list = card.possibleBranches();
-                branchesNum = list.size() - 1;
+            if (card.upgraded) {
+                branchesNum = card.possibleBranches().size() - 1;
                 int afterChosen = 0;
                 for (int i = 0; i < branchesNum + 1; i++) {
                     if (i == card.chosenBranch) {
@@ -205,16 +201,13 @@ public class GridCardSelectPatch {
         return true;
     }
 
-    @SpirePatch(clz = AbstractDungeon.class, method = "closeCurrentScreen")
-    public static class CloseAllLogics {
-        @SpirePostfixPatch
-        public static void Postfix() {
-            if (AbstractDungeon.screen == AbstractDungeon.CurrentScreen.GRID && OptFields.selectingBranch.get(AbstractDungeon.gridSelectScreen)) {
-                OptFields.selectingBranch.set(AbstractDungeon.gridSelectScreen, false);
-                OptFields.isChangingBranch.set(AbstractDungeon.gridSelectScreen, false);
-                cardChecked = false;
-                branchesNum = 0;
-            }
+    @SpirePatch(clz = GridCardSelectScreen.class, method = "open", paramtypez = {CardGroup.class, int.class, String.class, boolean.class, boolean.class, boolean.class, boolean.class})
+    public static class OpenCleanPatch {
+        @SpirePrefixPatch
+        public static void Prefix(GridCardSelectScreen _inst, CardGroup group, int numCards, String tipMsg, boolean forUpgrade, boolean forTransform, boolean canCancel, boolean forPurge) {
+            OptFields.selectingBranch.set(_inst, false);
+            cardChecked = false;
+            branchesNum = 0;
         }
     }
 
@@ -238,7 +231,6 @@ public class GridCardSelectPatch {
                 if (!(card instanceof AbstractRhineCard)) return;
                 ((AbstractRhineCard) card).chosenBranch = ((AbstractRhineCard) branches[0]).chosenBranch;
                 OptFields.selectingBranch.set(_inst, false);
-                OptFields.isChangingBranch.set(_inst, false);
                 cardChecked = false;
                 branchesNum = 0;
             }

@@ -1,12 +1,10 @@
 package rhinemod.util;
 
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.ui.campfire.AbstractCampfireOption;
-import rhinemod.cards.AbstractRhineCard;
 import rhinemod.vfx.CampfireChangeBranchEffect;
 
 public class ChangeBranchOption extends AbstractCampfireOption {

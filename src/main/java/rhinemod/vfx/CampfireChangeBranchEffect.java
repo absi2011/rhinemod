@@ -17,7 +17,6 @@ import com.megacrit.cardcrawl.rooms.RestRoom;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import rhinemod.cards.AbstractRhineCard;
-import rhinemod.patches.GridCardSelectPatch;
 import rhinemod.util.ChangeBranchOption;
 
 import java.util.logging.Logger;
@@ -47,7 +46,7 @@ public class CampfireChangeBranchEffect extends AbstractGameEffect {
             for (AbstractCard c : AbstractDungeon.gridSelectScreen.selectedCards) {
                 CardCrawlGame.metricData.addCampfireChoiceData("CHANGE_BRANCH", c.getMetricID());
                 if (!(c instanceof AbstractRhineCard)) continue;
-                Logger.getLogger(CampfireChangeBranchEffect.class.getName()).info("here change branch, " + c.cardID + " -> " + ((AbstractRhineCard) c).chosenBranch);
+                Logger.getLogger(CampfireChangeBranchEffect.class.getName()).info("Change branch at campfire, " + c.cardID + " -> " + ((AbstractRhineCard) c).chosenBranch);
                 ((AbstractRhineCard) c).swapBranch(((AbstractRhineCard) c).chosenBranch);
                 AbstractDungeon.player.bottledCardUpgradeCheck(c);
                 AbstractDungeon.effectsQueue.add(new ShowCardBrieflyEffect(c.makeStatEquivalentCopy()));
@@ -63,15 +62,15 @@ public class CampfireChangeBranchEffect extends AbstractGameEffect {
             for (AbstractCard c : AbstractDungeon.player.masterDeck.group)
                 if (c instanceof AbstractRhineCard && c.upgraded && ((AbstractRhineCard) c).possibleBranches().size() > 1)
                     list.group.add(c);
-            GridCardSelectPatch.OptFields.isChangingBranch.set(AbstractDungeon.gridSelectScreen, true);
-            AbstractDungeon.gridSelectScreen.open(list, 1, TEXT[0], true, false, false, false);
+            AbstractDungeon.gridSelectScreen.open(list, 1, TEXT[0], true, false, true, false);
         }
-        
+
         if (duration < 0.0F) {
             isDone = true;
             if (AbstractDungeon.getCurrRoom() instanceof RestRoom) {
                 CampfireUI campfireUI = ((RestRoom) AbstractDungeon.getCurrRoom()).campfireUI;
-                changeBranchOption.usable = false;
+                if (ChangeBranchOption.changeNum > 0)
+                    changeBranchOption.usable = false;
                 AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
                 campfireUI.reopen();
             }
