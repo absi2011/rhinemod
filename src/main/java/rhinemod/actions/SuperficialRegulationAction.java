@@ -56,7 +56,8 @@ public class SuperficialRegulationAction extends AbstractGameAction {
 
         if (!isSelected) {
             if (!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()) {
-                cardToDraw = AbstractDungeon.gridSelectScreen.selectedCards;
+                cardToDraw = new ArrayList<>();
+                cardToDraw.addAll(AbstractDungeon.gridSelectScreen.selectedCards);
                 ArrayList<Integer> branchRank = new ArrayList<>();
                 for (int i = 0; i < 4; i++) branchRank.add(i);
                 Collections.shuffle(branchRank, new Random(AbstractDungeon.miscRng.randomLong()));
@@ -82,9 +83,10 @@ public class SuperficialRegulationAction extends AbstractGameAction {
         }
         duration -= Gdx.graphics.getDeltaTime();
         if (!cardToDraw.isEmpty() && duration < 0.0F) {
-            duration = startDuration;
-            ((RhineLab) p).draw(cardToDraw.get(0));
-            cardToDraw.remove(0);
+            duration = startDuration - Gdx.graphics.getDeltaTime();
+            AbstractCard c = cardToDraw.get(cardToDraw.size() - 1);
+            ((RhineLab) p).draw(c);
+            cardToDraw.remove(c);
         }
         if (cardToDraw.isEmpty()) isDone = true;
     }
