@@ -1,6 +1,5 @@
 package rhinemod.monsters;
 
-import basemod.abstracts.CustomMonster;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ChangeStateAction;
@@ -17,7 +16,7 @@ import com.megacrit.cardcrawl.powers.*;
 import rhinemod.actions.SummonLTEnemyAction;
 import rhinemod.powers.HiddenPower;
 
-public class TrafficPolice extends CustomMonster {
+public class TrafficPolice extends AbstractRhineMonster {
     public static final String ID = "rhinemod:TrafficPolice";
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;

@@ -1,6 +1,5 @@
 package rhinemod.monsters;
 
-import basemod.abstracts.CustomMonster;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -13,7 +12,7 @@ import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import rhinemod.powers.*;
 
-public class StarPod extends CustomMonster {
+public class StarPod extends AbstractRhineMonster {
     public static final String ID = "rhinemod:TheSky";
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
@@ -66,6 +65,9 @@ public class StarPod extends CustomMonster {
             addToBot(new ApplyPowerAction(this, this, new DefendPower(this, DefendNum)));
             addToBot(new GainBlockAction(this, this, DefendNum));
         }
+        CardCrawlGame.music.fadeOutTempBGM();
+        AbstractDungeon.scene.fadeOutAmbiance();
+        CardCrawlGame.music.playTempBgmInstantly("m_bat_cstlrs_combine.mp3", true);
     }
 
 

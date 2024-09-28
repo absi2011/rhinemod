@@ -1,6 +1,5 @@
 package rhinemod.monsters;
 
-import basemod.abstracts.CustomMonster;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -13,7 +12,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.FocusPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
-public class Crossroads extends CustomMonster {
+public class Crossroads extends AbstractRhineMonster {
     public static final String ID = "rhinemod:Crossroads";
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;

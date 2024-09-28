@@ -1,6 +1,5 @@
 package rhinemod.monsters;
 
-import basemod.abstracts.CustomMonster;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ChangeStateAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -10,7 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import rhinemod.powers.Stunned;
 
-public class Perpetrator extends CustomMonster {
+public class Perpetrator extends AbstractRhineMonster {
     public static final String ID = "rhinemod:Perpetrator";
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;

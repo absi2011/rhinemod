@@ -1,6 +1,5 @@
 package rhinemod.monsters;
 
-import basemod.abstracts.CustomMonster;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ChangeStateAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -12,7 +11,7 @@ import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.powers.FlightPower;
 import rhinemod.powers.Stunned;
 
-public class ArclightCommando extends CustomMonster {
+public class ArclightCommando extends AbstractRhineMonster {
     public static final String ID = "rhinemod:ArclightCommando";
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String[] MOVES = monsterStrings.MOVES;

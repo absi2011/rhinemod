@@ -1,13 +1,12 @@
 package rhinemod.monsters;
 
-import basemod.abstracts.CustomMonster;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 
-public class MilitaryBeckbeast extends CustomMonster {
+public class MilitaryBeckbeast extends AbstractRhineMonster {
     public static final String ID = "rhinemod:MilitaryBeckbeast";
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;

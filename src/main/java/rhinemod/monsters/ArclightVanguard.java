@@ -1,6 +1,5 @@
 package rhinemod.monsters;
 
-import basemod.abstracts.CustomMonster;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -10,7 +9,7 @@ import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import rhinemod.powers.Fragile;
 
-public class ArclightVanguard extends CustomMonster {
+public class ArclightVanguard extends AbstractRhineMonster {
     public static final String ID = "rhinemod:ArclightVanguard";
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
@@ -46,6 +45,7 @@ public class ArclightVanguard extends CustomMonster {
 
     @Override
     public void usePreBattleAction() {
+        super.usePreBattleAction();
         addToBot(new ApplyPowerAction(this, this, new Fragile(this)));
     }
 

@@ -1,6 +1,5 @@
 package rhinemod.monsters;
 
-import basemod.abstracts.CustomMonster;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -10,7 +9,7 @@ import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.powers.ShiftingPower;
 import rhinemod.powers.DamageOutPower;
 
-public class ArclightMirrorguard extends CustomMonster {
+public class ArclightMirrorguard extends AbstractRhineMonster {
     public static final String ID = "rhinemod:ArclightMirrorguard";
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
@@ -42,6 +41,7 @@ public class ArclightMirrorguard extends CustomMonster {
 
     @Override
     public void usePreBattleAction() {
+        super.usePreBattleAction();
         addToBot(new ApplyPowerAction(this, this, new ShiftingPower(this)));
         addToBot(new ApplyPowerAction(this, this, new DamageOutPower(this, damageOut, 3)));
     }

@@ -1,6 +1,5 @@
 package rhinemod.monsters;
 
-import basemod.abstracts.CustomMonster;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -10,7 +9,7 @@ import com.megacrit.cardcrawl.localization.MonsterStrings;
 import rhinemod.powers.NoStun;
 import rhinemod.vfx.R11MoveEffect;
 
-public class R11AssaultPowerArmor extends CustomMonster {
+public class R11AssaultPowerArmor extends AbstractRhineMonster {
     public static final String ID = "rhinemod:R11";
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
@@ -41,6 +40,7 @@ public class R11AssaultPowerArmor extends CustomMonster {
 
     @Override
     public void usePreBattleAction() {
+        super.usePreBattleAction();
         addToBot(new ApplyPowerAction(this, this, new NoStun(this)));
     }
 

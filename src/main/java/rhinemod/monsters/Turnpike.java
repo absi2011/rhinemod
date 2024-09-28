@@ -1,6 +1,5 @@
 package rhinemod.monsters;
 
-import basemod.abstracts.CustomMonster;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.unique.CannotLoseAction;
@@ -15,7 +14,7 @@ import rhinemod.actions.SummonLTEnemyAction;
 import rhinemod.powers.DamageOutPower;
 import rhinemod.powers.ExplodePower;
 
-public class Turnpike extends CustomMonster {
+public class Turnpike extends AbstractRhineMonster {
     public static final String ID = "rhinemod:Turnpike";
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
@@ -49,6 +48,9 @@ public class Turnpike extends CustomMonster {
         addToBot(new ApplyPowerAction(this, this, new DamageOutPower(this, Armor, 1)));
         addToBot(new ApplyPowerAction(this,this, new ExplodePower(this, 30)));
         addToBot(new CannotLoseAction());
+        CardCrawlGame.music.fadeOutTempBGM();
+        AbstractDungeon.scene.fadeOutAmbiance();
+        CardCrawlGame.music.playTempBgmInstantly("m_bat_act19side_01_combine.mp3", true);
     }
 
     @Override

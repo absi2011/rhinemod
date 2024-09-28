@@ -1,6 +1,5 @@
 package rhinemod.monsters;
 
-import basemod.abstracts.CustomMonster;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -9,7 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import rhinemod.powers.HalfDamage;
 
-public class ExperimentalPowerArmor extends CustomMonster {
+public class ExperimentalPowerArmor extends AbstractRhineMonster {
     public static final String ID = "rhinemod:ExperimentalPowerArmor";
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
@@ -38,6 +37,7 @@ public class ExperimentalPowerArmor extends CustomMonster {
 
     @Override
     public void usePreBattleAction() {
+        super.usePreBattleAction();
         addToBot(new ApplyPowerAction(this, this, new HalfDamage(this)));
     }
 

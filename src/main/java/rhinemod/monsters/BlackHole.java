@@ -1,17 +1,13 @@
 package rhinemod.monsters;
 
-import basemod.abstracts.CustomMonster;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.EscapeAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
-import com.megacrit.cardcrawl.powers.FadingPower;
-import com.megacrit.cardcrawl.powers.ShiftingPower;
 import rhinemod.powers.DamageOutPower;
 
-public class BlackHole extends CustomMonster {
+public class BlackHole extends AbstractRhineMonster {
     public static final String ID = "rhinemod:BlackHole";
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;

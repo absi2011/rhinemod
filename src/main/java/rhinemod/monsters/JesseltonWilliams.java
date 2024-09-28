@@ -1,6 +1,5 @@
 package rhinemod.monsters;
 
-import basemod.abstracts.CustomMonster;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -8,14 +7,13 @@ import com.megacrit.cardcrawl.cards.status.Dazed;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.powers.MetallicizePower;
 import rhinemod.actions.JesseltonUpdateHitboxAction;
 import rhinemod.powers.DoubleSmash;
 import rhinemod.powers.DoubleNonSmash;
 
-public class JesseltonWilliams extends CustomMonster {
+public class JesseltonWilliams extends AbstractRhineMonster {
     public static final String ID = "rhinemod:JesseltonWilliams";
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
@@ -63,6 +61,9 @@ public class JesseltonWilliams extends CustomMonster {
     @Override
     public void usePreBattleAction() {
         addToBot(new ApplyPowerAction(this, this, new DoubleSmash(this)));
+        CardCrawlGame.music.fadeOutTempBGM();
+        AbstractDungeon.scene.fadeOutAmbiance();
+        CardCrawlGame.music.playTempBgmInstantly("m_bat_jakiller_combine.mp3", true);
     }
 
     @Override

@@ -1,6 +1,5 @@
 package rhinemod.monsters;
 
-import basemod.abstracts.CustomMonster;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -10,7 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.powers.*;
 
-public class TrimountsCityGuard extends CustomMonster {
+public class TrimountsCityGuard extends AbstractRhineMonster {
     public static final String ID = "rhinemod:TrimountsCityGuard";
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
@@ -32,10 +31,6 @@ public class TrimountsCityGuard extends CustomMonster {
         loadAnimation("resources/rhinemod/images/monsters/enemy_1326_cbagen/enemy_1326_cbagen33.atlas", "resources/rhinemod/images/monsters/enemy_1326_cbagen/enemy_1326_cbagen33.json", 1.5F);
         state.addAnimation(0, "Idle", true, 0.0F);
         flipHorizontal = true;
-    }
-
-    @Override
-    public void usePreBattleAction() {
     }
 
     @Override

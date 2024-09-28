@@ -1,6 +1,5 @@
 package rhinemod.monsters;
 
-import basemod.abstracts.CustomMonster;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.utility.HideHealthBarAction;
@@ -16,7 +15,7 @@ import rhinemod.actions.SummonMechAction;
 import rhinemod.powers.Average;
 import rhinemod.powers.Journey;
 
-public class Awaken_Monster extends CustomMonster {
+public class Awaken_Monster extends AbstractRhineMonster {
     public static final String ID = "rhinemod:Awaken_Monster";
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
@@ -65,14 +64,14 @@ public class Awaken_Monster extends CustomMonster {
     public void usePreBattleAction() {
         addToBot(new ApplyPowerAction(this, this, new Average(this)));
         addToBot(new ApplyPowerAction(this, this, new Journey(this, stage1Journey)));
+        CardCrawlGame.music.fadeOutTempBGM();
+        AbstractDungeon.scene.fadeOutAmbiance();
+        CardCrawlGame.music.playTempBgmInstantly("m_bat_bbrain_combine.mp3", true);
     }
 
     @Override
     public void damage(DamageInfo info) {
         super.damage(info);
-    }
-
-    public void changeState(String stateName) {
     }
 
     @Override
@@ -84,25 +83,19 @@ public class Awaken_Monster extends CustomMonster {
             state.addAnimation(0, "Idle", true, 0);
             addToBot(new WaitAction(0.3F));
             addToBot(new AwakenAction(damage.get(0).base, this));
-            // TODO: 一阶段技能
-        }
-        else if (nextMove == 2) {
+        } else if (nextMove == 2) {
             state.setAnimation(0, "Skill_2_Start", false);
             state.setAnimation(0, "Skill_2_Loop", false);
             state.setAnimation(0, "Skill_2_End", false);
             state.addAnimation(0, "Idle", true, 0);
             addToBot(new WaitAction(0.3F));
             addToBot(new AwakenAction(damage.get(1).base, this));
-            // TODO: 二阶段技能
-        }
-        else if (nextMove == 3) {
-            // TODO: 召唤
+        } else if (nextMove == 3) {
             state.setAnimation(0, "Skill_1", false);
             state.addAnimation(0, "Idle", true, 0);
             addToBot(new SummonMechAction(mechs));
         }
-        if ((currentHealth <= maxHealth / 2) && (notTriggered))
-        {
+        if ((currentHealth <= maxHealth / 2) && (notTriggered)) {
             addToBot(new ApplyPowerAction(this, this, new Journey(this, stage2Add)));
             isStage2 = true;
             notTriggered = false;
@@ -110,8 +103,7 @@ public class Awaken_Monster extends CustomMonster {
         getMove(0);
     }
 
-    int MechNum()
-    {
+    private int MechNum() {
         int count = 0;
         for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
             if (m != null && m != this && !m.isDying) {
@@ -138,16 +130,11 @@ public class Awaken_Monster extends CustomMonster {
         if (nextMove == 3) {
             Mechs ++;
         }
-        if (Mechs != 3)
-        {
+        if (Mechs != 3) {
             setMove((byte)3, Intent.UNKNOWN);
-        }
-        else if (isStage2)
-        {
+        } else if (isStage2) {
             setMove(MOVES[0], (byte)2, Intent.ATTACK, damage.get(1).base);
-        }
-        else
-        {
+        } else {
             setMove(MOVES[0], (byte)1, Intent.ATTACK, damage.get(0).base);
         }
     }
