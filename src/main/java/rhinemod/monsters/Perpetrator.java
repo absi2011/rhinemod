@@ -18,7 +18,7 @@ public class Perpetrator extends CustomMonster {
     boolean isRush;
 
     public Perpetrator(float x, float y) {
-        super(NAME, ID, 85, 0, 0, 150.0F, 320.0F, null, x, y);
+        super(NAME, ID, 85, 0, 0, 210.0F, 160.0F, null, x, y);
         type = EnemyType.NORMAL;
         if (AbstractDungeon.ascensionLevel >= 7) {
             setHp(92);
@@ -37,7 +37,7 @@ public class Perpetrator extends CustomMonster {
         }
         isRush = true;
         loadAnimation("resources/rhinemod/images/monsters/enemy_1330_cbrush/enemy_1330_cbrush37.atlas", "resources/rhinemod/images/monsters/enemy_1330_cbrush/enemy_1330_cbrush37.json", 2F);
-        state.setAnimation(0, "Idle", true);
+        state.setAnimation(0, "Move_2", true);
         flipHorizontal = true;
     }
 
@@ -63,6 +63,8 @@ public class Perpetrator extends CustomMonster {
 
     @Override
     public void takeTurn() {
+        state.setAnimation(0, "Attack", false);
+        state.addAnimation(0, "Idle", true, 0F);
         for (int i = 1; i <= AttTimes; i++) {
             addToBot(new DamageAction(AbstractDungeon.player, damage.get(0)));
         }

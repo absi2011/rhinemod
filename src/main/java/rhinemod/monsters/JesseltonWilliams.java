@@ -2,13 +2,16 @@ package rhinemod.monsters;
 
 import basemod.abstracts.CustomMonster;
 import com.megacrit.cardcrawl.actions.common.*;
+import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.status.Dazed;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.powers.MetallicizePower;
+import rhinemod.actions.JesseltonUpdateHitboxAction;
 import rhinemod.powers.DoubleSmash;
 import rhinemod.powers.DoubleNonSmash;
 
@@ -25,7 +28,7 @@ public class JesseltonWilliams extends CustomMonster {
     public final int metalNum;
 
     public JesseltonWilliams(float x, float y) {
-        super(NAME, ID, 300, 0, 0, 150.0F, 320.0F, null, x, y);
+        super(NAME, ID, 300, 0, 0, 210.0F, 340.0F, null, x, y);
         type = EnemyType.NORMAL;
         if (AbstractDungeon.ascensionLevel >= 7) {
             setHp(320);
@@ -76,11 +79,20 @@ public class JesseltonWilliams extends CustomMonster {
         if (stateName.equals("KILLER")) {
             state.setAnimation(0, "C1_Die", false);
             state.addAnimation(0, "C2_Idle", true, 0F);
+            addToBot(new WaitAction(4));
             addToBot(new HealAction(this, this, maxHealth / 2 - currentHealth));
             addToBot(new RemoveSpecificPowerAction(this, this, DoubleSmash.POWER_ID));
             addToBot(new ApplyPowerAction(this, this, new DoubleNonSmash(this)));
             addToBot(new ApplyPowerAction(this, this, new MetallicizePower(this, metalNum)));
+            addToBot(new JesseltonUpdateHitboxAction(this));
         }
+    }
+
+    public void updateHitbox() {
+        hb_w *= 2;
+        hb.width *= 2;
+        healthHb.width *= 2;
+        healthBarUpdatedEvent();
     }
 
     @Override
@@ -94,7 +106,7 @@ public class JesseltonWilliams extends CustomMonster {
         } else if (nextMove == 2) {
             addToBot(new DamageAction(p, damage.get(1)));
             addToBot(new DamageAction(p, damage.get(1)));
-            state.setAnimation(0, "C2_Die", false);
+            state.setAnimation(0, "C2_Skill", false);
             state.addAnimation(0, "C2_Idle", true, 0F);
         } else {
             isStage2 = true;
