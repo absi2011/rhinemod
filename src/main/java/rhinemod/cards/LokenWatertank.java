@@ -20,7 +20,7 @@ public class LokenWatertank extends AbstractRhineCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG = "resources/rhinemod/images/cards/Destiny.png";
+    public static final String IMG = "resources/rhinemod/images/cards/LokenWatertank.png";
     public static final int COST = 1;
     public static final int UPGRADE_COST = 0;
     public static final int ALL_DAMAGE = 30;

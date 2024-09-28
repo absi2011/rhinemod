@@ -2,26 +2,21 @@ package rhinemod.cards;
 
 import com.badlogic.gdx.Gdx;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import rhinemod.actions.AddFlowingShapeAction;
-import rhinemod.actions.ReduceCalciumAction;
-import rhinemod.characters.RhineLab;
 import rhinemod.interfaces.UpgradeBranch;
 import rhinemod.patches.AbstractCardEnum;
 import rhinemod.powers.WaterDamage;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class DressingFlowingShape extends AbstractRhineCard {
     public static final String ID = "rhinemod:DressingFlowingShape";
@@ -29,7 +24,7 @@ public class DressingFlowingShape extends AbstractRhineCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
-    public static final String IMG = "resources/rhinemod/images/cards/PaleFir.png";
+    public static final String IMG = "resources/rhinemod/images/cards/DressingFlowingShape.png";
     public static final int COST = 1;
     public static final int BASIC_BLOCK = 8;
     public static final int UPGRADE_BLOCK = 3;
@@ -37,7 +32,7 @@ public class DressingFlowingShape extends AbstractRhineCard {
     public static final int FLOWSP = 2;
     public static final int WATER_DAMAGE = 4;
     public static final int EXTRA_BLOCK = 5;
-    public int currentState = 0;
+    public int currentState;
     private double rotationTimer;
     private int previewIndex;
     ArrayList<AbstractCard> cards = new ArrayList<>();
@@ -110,7 +105,7 @@ public class DressingFlowingShape extends AbstractRhineCard {
     @Override
     public void triggerWhenDrawn() {
         int lastState = currentState;
-        for (;currentState == lastState;) {
+        while (currentState == lastState) {
             currentState = AbstractDungeon.cardRng.random(1, 4);
         }
         rawDescription = EXTENDED_DESCRIPTION[currentState];

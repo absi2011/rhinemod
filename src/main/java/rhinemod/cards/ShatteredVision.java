@@ -26,7 +26,7 @@ public class ShatteredVision extends AbstractRhineCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
-    public static final String IMG = "resources/rhinemod/images/cards/RhineStrike.png";
+    public static final String IMG = "resources/rhinemod/images/cards/ShatteredVision.png";
     public static final int COST = 1;
     public static final int ATTACK_DMG = 13;
     public static final int UPGRADE_PLUS_DMG = 4;

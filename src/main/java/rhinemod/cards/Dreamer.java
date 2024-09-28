@@ -1,22 +1,14 @@
 package rhinemod.cards;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import rhinemod.actions.AverageDamageAllAction;
-import rhinemod.actions.RemoveCardAction;
 import rhinemod.interfaces.UpgradeBranch;
 import rhinemod.patches.AbstractCardEnum;
-import rhinemod.powers.WaterDamage;
 import rhinemod.util.GlobalAttributes;
 
 import java.util.ArrayList;
@@ -28,7 +20,7 @@ public class Dreamer extends AbstractRhineCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
-    public static final String IMG = "resources/rhinemod/images/cards/RhineStrike.png";
+    public static final String IMG = "resources/rhinemod/images/cards/Dreamer.png";
     public static final int COST = 1;
     public static final int ATTACK_DMG = 8;
     public static final int EXTRA_DMG = 1;

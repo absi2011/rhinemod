@@ -1,21 +1,16 @@
 package rhinemod.cards;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.blue.Seek;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import rhinemod.actions.AddCalciumAction;
-import rhinemod.actions.AddFlowingShapeAction;
 import rhinemod.cards.special.Seeker;
 import rhinemod.interfaces.UpgradeBranch;
 import rhinemod.patches.AbstractCardEnum;
-import rhinemod.powers.ResearchProgress;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +20,7 @@ public class AprilShowers extends AbstractRhineCard {
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String IMG = "resources/rhinemod/images/cards/PaleFir.png";
+    public static final String IMG = "resources/rhinemod/images/cards/AprilShowers.png";
     public static final int COST = 1;
     public static final int BLOCK_GAIN = 8;
     public static final int UPGRADE_PLUS_BLOCK = 3;
