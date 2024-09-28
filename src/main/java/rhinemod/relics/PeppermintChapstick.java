@@ -31,7 +31,7 @@ public class PeppermintChapstick extends CustomRelic implements ClickableRelic {
     public PeppermintChapstick() {
         super(ID, IMG, IMG_OUTLINE, RelicTier.RARE, LandingSound.MAGICAL);
         counter = 3;
-        updateDescription(AbstractDungeon.player.chosenClass);
+        updateDescription();
     }
 
     @Override
@@ -56,13 +56,17 @@ public class PeppermintChapstick extends CustomRelic implements ClickableRelic {
             counter--;
             if (counter <= 0) {
                 counter = -2;
-                updateDescription(AbstractDungeon.player.chosenClass);
+                updateDescription();
             }
         }
     }
 
     @Override
     public void updateDescription(AbstractPlayer.PlayerClass c) {
+        updateDescription();
+    }
+
+    public void updateDescription() {
         description = getUpdatedDescription();
         tips.clear();
         tips.add(new PowerTip(name, description));
