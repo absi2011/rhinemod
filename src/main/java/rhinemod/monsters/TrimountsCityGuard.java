@@ -14,7 +14,7 @@ public class TrimountsCityGuard extends AbstractRhineMonster {
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
     public TrimountsCityGuard(float x, float y) {
-        super(NAME, ID, 39, 0, 0, 150.0F, 320.0F, null, x, y);
+        super(NAME, ID, 39, 0, 0, 150.0F, 260.0F, null, x, y);
         type = EnemyType.NORMAL;
         if (AbstractDungeon.ascensionLevel >= 7) {
             setHp(42);
@@ -39,7 +39,7 @@ public class TrimountsCityGuard extends AbstractRhineMonster {
         state.addAnimation(0, "Idle", true, 0);
         addToBot(new DamageAction(AbstractDungeon.player, damage.get(0)));
         int maxDebuff = 5;
-        if (AbstractDungeon.player.hasOrb()) {
+        if (!AbstractDungeon.player.orbs.isEmpty()) {
             maxDebuff ++;
         }
         int debuff = AbstractDungeon.aiRng.random(1, maxDebuff);

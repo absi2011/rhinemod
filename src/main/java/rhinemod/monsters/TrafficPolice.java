@@ -20,12 +20,11 @@ public class TrafficPolice extends AbstractRhineMonster {
     public static final String ID = "rhinemod:TrafficPolice";
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
-    private static final int maxDebuff = 6;
     private int turn;
     public AbstractMonster[] allies = new AbstractMonster[3];
     boolean isHidden = false;
     public TrafficPolice(float x, float y) {
-        super(NAME, ID, 56, 0, 0, 150.0F, 320.0F, null, x, y);
+        super(NAME, ID, 56, 0, 0, 150.0F, 290.0F, null, x, y);
         type = EnemyType.ELITE;
         if (AbstractDungeon.ascensionLevel >= 8) {
             setHp(60);
@@ -79,6 +78,10 @@ public class TrafficPolice extends AbstractRhineMonster {
         state.setAnimation(0, "Attack", false);
         state.addAnimation(0, "Idle", true, 0);
         addToBot(new DamageAction(AbstractDungeon.player, t));
+        int maxDebuff = 5;
+        if (!AbstractDungeon.player.orbs.isEmpty()) {
+            maxDebuff ++;
+        }
         int debuff = AbstractDungeon.aiRng.random(1, maxDebuff);
         int anotherDebuff = AbstractDungeon.aiRng.random(1, maxDebuff-1);
         if (anotherDebuff >= debuff) {

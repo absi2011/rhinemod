@@ -68,15 +68,15 @@ public class SummonLTEnemyAction extends AbstractGameAction {
         float y;
         // 抄的地精首领的
         if (slot == 0) {
-            x = -366.0F;
+            x = -406.0F;
             y = -4.0F;
         }
         else if (slot == 1) {
-            x = -170.0F;
+            x = -190.0F;
             y = 6.0F;
         }
         else if (slot == 2) {
-            x = -532.0F;
+            x = -612.0F;
             y = 0.0F;
         }
         else {
@@ -85,10 +85,11 @@ public class SummonLTEnemyAction extends AbstractGameAction {
         }
         String monsterName;
         if (!FromTurnpike) {
-            y += 200; // 和交通亭的做区分
+            y += 300; // 和交通亭的做区分
             monsterName = pool.get(AbstractDungeon.aiRng.random(0, pool.size() - 1));
         }
         else {
+            y -= 50;
             monsterName = TrimountsCityGuard.ID;
         }
         AbstractMonster m;

@@ -131,8 +131,8 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
                 new Perpetrator(-440.0F, 0.0F) {
                     {setHp(maxHealth / 2);}
                 },
-                new Exploder(-300.0F, 400.0F),
-                new Repulsor(-120.0F, 360.0F),
+                new Exploder(-320.0F, 280.0F),
+                new Repulsor(-140.0F, 300.0F),
                 new Sentry(0.0F, 0.0F) {
                     {setHp(maxHealth - 10);}
                     @Override
