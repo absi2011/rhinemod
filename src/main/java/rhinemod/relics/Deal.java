@@ -16,7 +16,7 @@ public class Deal extends CustomRelic {
     public static final Texture IMG_OUTLINE = new Texture("resources/rhinemod/images/relics/Deal.png");
     public Deal() {
         super(ID, IMG, IMG_OUTLINE, RelicTier.COMMON, LandingSound.MAGICAL);
-        counter = 0;
+        counter = -1;
     }
 
     @Override
