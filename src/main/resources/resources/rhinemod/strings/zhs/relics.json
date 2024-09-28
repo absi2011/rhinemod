@@ -42,7 +42,7 @@
   },
   "rhinemod:PeppermintChapstick": {
     "NAME": "薄荷味润唇膏",
-    "FLAVOR": "嘴唇是不是有些干？……好像还有些脱皮了，平常一定要多喝水啊。",
+    "FLAVOR": "之后买一支还给我就行，我只用这个牌子的，可别买错了，好吗？",
     "DESCRIPTIONS": ["战斗时右键以获得 #b2 层 #y流形 ，剩余 #b", " 次。", "已耗尽，可在商店重新购买。"]
   },
   "rhinemod:LoneTrail": {
@@ -52,7 +52,7 @@
   },
   "rhinemod:Deal": {
     "NAME": "约定",
-    "FLAVOR": "",
-    "DESCRIPTIONS": [""]
+    "FLAVOR": "这笔钱甚至买不起一个医药箱，但是总比没有好。",
+    "DESCRIPTIONS": ["来自莱茵生命的协议书，上面写明了佣金以及待办事项。"]
   }
 }
