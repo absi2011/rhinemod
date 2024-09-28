@@ -9,8 +9,7 @@ import com.megacrit.cardcrawl.scenes.AbstractScene;
 public class TheSkyScene extends AbstractScene {
     public TheSkyScene() {
         super("resources/rhinemod/images/ui/SkyScene/scene.atlas");
-//        ambianceName = "AMBIANCE_SKY";
-        ambianceName = "AMBIANCE_BEYOND";
+        ambianceName = "AMBIANCE_SKY";
         fadeInAmbiance();
     }
 
