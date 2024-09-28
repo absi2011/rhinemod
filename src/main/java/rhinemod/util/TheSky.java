@@ -17,7 +17,6 @@ import org.apache.logging.log4j.Logger;
 import rhinemod.rooms.HeartRoom;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 public class TheSky extends AbstractDungeon {
     private static final Logger logger = LogManager.getLogger(TheSky.class.getName());
@@ -37,7 +36,7 @@ public class TheSky extends AbstractDungeon {
         initializeLevelSpecificChances();
         mapRng = new Random(Settings.seed + (AbstractDungeon.actNum * 400L));
         generateSpecialMap();
-        CardCrawlGame.music.changeBGM("TheEnding");
+        CardCrawlGame.music.changeBGM("m_sys_act25side_combine.mp3");
     }
 
     public TheSky(AbstractPlayer p, SaveFile saveFile) {
