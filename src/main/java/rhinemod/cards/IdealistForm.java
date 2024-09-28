@@ -58,7 +58,7 @@ public class IdealistForm extends AbstractRhineCard {
             add(() -> {
                 if (!upgraded) {
                     upgradeName(0);
-                    upgradeDamage(UPGRADE_PLUS_DMG);
+                    upgradeMagicNumber(UPGRADE_PLUS_DMG);
                     initializeDescription();
                 }
             });

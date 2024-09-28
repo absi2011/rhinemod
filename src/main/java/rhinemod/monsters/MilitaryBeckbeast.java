@@ -14,7 +14,7 @@ public class MilitaryBeckbeast extends AbstractRhineMonster {
     public final int OnlyBlock;
 
     public MilitaryBeckbeast(float x, float y) {
-        super(NAME, ID, 30, 0, 0, 150.0F, 320.0F, null, x, y);
+        super(NAME, ID, 30, 0, 0, 170.0F, 200.0F, null, x, y);
         type = EnemyType.NORMAL;
         if (AbstractDungeon.ascensionLevel >= 7) {
             setHp(32);
