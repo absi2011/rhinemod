@@ -1,6 +1,7 @@
 package rhinemod.cards.special;
 
 import basemod.abstracts.CustomCard;
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -22,6 +23,7 @@ public class PaleFir extends CustomCard {
     private static final int UPGRADE_PLUS_BLOCK = 2;
     private static final int NO_ORANGE = 5;
     private static final int ORANGE = 3;
+    private static final Color ORANGE_BORDER_GLOW_COLOR = Color.ORANGE.cpy();
 
     public PaleFir() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
@@ -30,33 +32,29 @@ public class PaleFir extends CustomCard {
         exhaust = true;
         tags.add(RhineTags.IS_PLANT);
         block = baseBlock = BLOCK_AMT;
-        magicNumber = baseMagicNumber = NO_ORANGE;
         tags.add(RhineTags.IS_PLANT);
+        checkOrange();
+    }
+
+    private void checkOrange() {
+        if (AbstractDungeon.player != null && hasOrange()) {
+            magicNumber = baseMagicNumber = ORANGE;
+            glowColor = ORANGE_BORDER_GLOW_COLOR.cpy();
+        } else {
+            magicNumber = baseMagicNumber = NO_ORANGE;
+            glowColor = BLUE_BORDER_GLOW_COLOR.cpy();
+        }
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int extraBlock;
-        if (hasOrange()) {
-            extraBlock = (p.maxHealth - p.currentHealth) / NO_ORANGE;
-        }
-        else {
-            extraBlock = (p.maxHealth - p.currentHealth) / ORANGE;
-        }
+        checkOrange();
+        int extraBlock = (p.maxHealth - p.currentHealth) / magicNumber;
         baseBlock += extraBlock;
         applyPowersToBlock();
         addToBot(new GainBlockAction(p, block));
         baseBlock -= extraBlock;
         applyPowersToBlock();
-    }
-
-    @Override
-    public void triggerWhenCopied()
-    {
-        if (hasOrange()) {
-            baseMagicNumber = ORANGE;
-            magicNumber = ORANGE;
-        }
     }
 
     @Override
