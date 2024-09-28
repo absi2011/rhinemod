@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import javassist.CtBehavior;
 
 public class PittsAssortedFruits extends CustomRelic implements ClickableRelic {
@@ -38,7 +39,11 @@ public class PittsAssortedFruits extends CustomRelic implements ClickableRelic {
             return;
         }
         AbstractPlayer p = AbstractDungeon.player;
-        addToBot(new HealAction(p, p, HEAL_AMOUNT));
+        if (AbstractDungeon.getCurrRoom().phase != AbstractRoom.RoomPhase.COMBAT) {
+            p.heal(HEAL_AMOUNT);
+        } else {
+            addToBot(new HealAction(p, p, HEAL_AMOUNT));
+        }
         counter = -2;
     }
 

@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.shop.ShopScreen;
 import com.megacrit.cardcrawl.shop.StoreRelic;
 import rhinemod.actions.AddFlowingShapeAction;
@@ -30,6 +31,7 @@ public class PeppermintChapstick extends CustomRelic implements ClickableRelic {
     public PeppermintChapstick() {
         super(ID, IMG, IMG_OUTLINE, RelicTier.RARE, LandingSound.MAGICAL);
         counter = 3;
+        updateDescription(AbstractDungeon.player.chosenClass);
     }
 
     @Override
@@ -44,6 +46,9 @@ public class PeppermintChapstick extends CustomRelic implements ClickableRelic {
     @Override
     public void onRightClick() {
         if (counter <= 0) {
+            return;
+        }
+        if (AbstractDungeon.getCurrRoom().phase != AbstractRoom.RoomPhase.COMBAT) {
             return;
         }
         if (AbstractDungeon.player instanceof RhineLab) {
@@ -71,6 +76,9 @@ public class PeppermintChapstick extends CustomRelic implements ClickableRelic {
             r.counter = 3;
             r.updateDescription(p.chosenClass);
             r.flash();
+            this.isDone = true;
+            this.isObtained = true;
+            this.discarded = true;
         } else {
             super.instantObtain(p, slot, callOnEquip);
         }
