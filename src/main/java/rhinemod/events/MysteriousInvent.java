@@ -5,13 +5,8 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.AbstractImageEvent;
 import com.megacrit.cardcrawl.localization.EventStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.relics.SpiritPoop;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import rhinemod.relics.LoneTrail;
-import rhinemod.util.TheSky;
 
 public class MysteriousInvent extends AbstractImageEvent {
     public static final String ID = "rhinemod:MysteriousInvent";
@@ -22,15 +17,14 @@ public class MysteriousInvent extends AbstractImageEvent {
 
     private CurScreen screen = CurScreen.INTRO;
     private enum CurScreen {
-        INTRO, FIGHT, LEAVE
+        INTRO, LEAVE
     }
     int gold;
     public MysteriousInvent() {
         super(NAME, DESCRIPTIONS[0], "resources/rhinemod/images/crads/BionicDevice.png");
         if (AbstractDungeon.ascensionLevel < 15) {
             gold = 150;
-        }
-        else {
+        } else {
             gold = 100;
         }
         this.imageEventText.setDialogOption(OPTIONS[0]);

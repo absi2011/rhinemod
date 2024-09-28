@@ -1,8 +1,14 @@
 {
   "rhinemod:Melt": {
-    "NAME": "获得融化",
+    "NAME": "获得 融化",
     "DESCRIPTIONS": [
       "你差点害死了可怜的小精灵！"
+    ]
+  },
+  "rhinemod:ViolateDeal": {
+    "NAME": "违背约定",
+    "DESCRIPTIONS": [
+      "拿钱不干活，哪有这种好事"
     ]
   }
 }

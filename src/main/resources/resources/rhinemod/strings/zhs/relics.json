@@ -33,11 +33,26 @@
   "rhinemod:OrangeStorm": {
     "NAME": "橙味风暴",
     "FLAVOR": "约翰老妈糖果产品，以廉价美味为卖点，在孩子中很有人气。",
-    "DESCRIPTIONS": ["拾起时，最大生命值提高3点，卡牌 #y淡杉 的效果增强。"]
+    "DESCRIPTIONS": ["拾起时，最大生命值提高3点。卡牌 #y淡杉 的效果增强。"]
+  },
+  "rhinemod:PittsAssortedFruits": {
+    "NAME": "皮特水果什锦",
+    "FLAVOR": "以丰富的口味和超高性价比在糖果市场上与约翰老妈糖果系列相抗衡。",
+    "DESCRIPTIONS": ["右键以回复 #b8 点生命值。当你增加最大生命值后，刷新该遗物。"]
+  },
+  "rhinemod:PeppermintChapstick": {
+    "NAME": "薄荷味润唇膏",
+    "FLAVOR": "嘴唇是不是有些干？……好像还有些脱皮了，平常一定要多喝水啊。",
+    "DESCRIPTIONS": ["战斗时右键以获得 #b2 层 #y流形 ，剩余 #b", " 次。", "已耗尽，可在商店重新购买。"]
   },
   "rhinemod:LoneTrail": {
     "NAME": "孤星",
     "FLAVOR": "晚安，泰拉的诸位。晚安，宇宙。",
     "DESCRIPTIONS": ["使探索走向不同的结局。"]
+  },
+  "rhinemod:Deal": {
+    "NAME": "约定",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [""]
   }
 }

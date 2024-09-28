@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.screens.GameOverScreen;
 import com.megacrit.cardcrawl.screens.GameOverStat;
 import com.megacrit.cardcrawl.screens.VictoryScreen;
 import javassist.CtBehavior;
+import rhinemod.relics.Deal;
 import rhinemod.relics.Melt;
 
 import java.lang.reflect.Field;
@@ -17,7 +18,9 @@ import java.util.ArrayList;
 
 public class ScorePatch {
     public static boolean IS_MELT = false;
+    public static boolean VIOLATE_DEAL = false;
     public static final ScoreBonusStrings MELT = CardCrawlGame.languagePack.getScoreString("rhinemod:Melt");
+    public static final ScoreBonusStrings VDEAL = CardCrawlGame.languagePack.getScoreString("rhinemod:ViolateDeal");
     @SpirePatch(clz = GameOverScreen.class, method = "checkScoreBonus")
     public static class CheckScorePatch {
         @SpireInsertPatch(locator = Locator.class, localvars = "points")
@@ -25,6 +28,10 @@ public class ScorePatch {
             if (AbstractDungeon.player.hasRelic(Melt.ID)) {
                 IS_MELT = true;
                 points[0] -= 25;
+            }
+            if (AbstractDungeon.player.hasRelic(Deal.ID) && AbstractDungeon.id.equals("TheBeyond") && victory) {
+                VIOLATE_DEAL = true;
+                points[0] -= 500;
             }
         }
 
@@ -42,6 +49,7 @@ public class ScorePatch {
         @SpirePostfixPatch
         public static void Postfix() {
             IS_MELT = false;
+            VIOLATE_DEAL = false;
         }
     }
 
@@ -54,6 +62,15 @@ public class ScorePatch {
                     Field stats = GameOverScreen.class.getDeclaredField("stats");
                     stats.setAccessible(true);
                     ((ArrayList<GameOverStat>)stats.get(_inst)).add(new GameOverStat(MELT.NAME, MELT.DESCRIPTIONS[0], Integer.toString(-25)));
+                } catch (Exception e) {
+                    throw new RuntimeException("Unable to set game over stats.", e);
+                }
+            }
+            if (VIOLATE_DEAL) {
+                try {
+                    Field stats = GameOverScreen.class.getDeclaredField("stats");
+                    stats.setAccessible(true);
+                    ((ArrayList<GameOverStat>)stats.get(_inst)).add(new GameOverStat(VDEAL.NAME, VDEAL.DESCRIPTIONS[0], Integer.toString(-500)));
                 } catch (Exception e) {
                     throw new RuntimeException("Unable to set game over stats.", e);
                 }
