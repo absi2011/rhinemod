@@ -57,12 +57,27 @@ public class PaleFir extends CustomCard {
         applyPowersToBlock();
     }
 
+    public int calcExtraBlock() {
+        return (AbstractDungeon.player.maxHealth - AbstractDungeon.player.currentHealth) / magicNumber;
+    }
+
     @Override
     public void applyPowers() {
         if (hasOrange()) {
             isMagicNumberModified = true;
         }
+        baseBlock += calcExtraBlock();
         super.applyPowers();
+        baseBlock -= calcExtraBlock();
+        isBlockModified = (block != baseBlock);
+    }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+        baseBlock += calcExtraBlock();
+        super.calculateCardDamage(mo);
+        baseBlock -= calcExtraBlock();
+        isBlockModified = (block != baseBlock);
     }
 
     @Override

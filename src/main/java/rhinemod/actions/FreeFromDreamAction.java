@@ -33,10 +33,10 @@ public class FreeFromDreamAction extends AbstractGameAction {
             return;
         }
         for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
-            if ((m.getIntentBaseDmg() == -1) || (m.getIntentDmg() < damage_take))
+            if ((!m.isDeadOrEscaped()) && ((m.getIntentBaseDmg() == -1) || (m.getIntentDmg() < damage_take)))
             {
-                addToBot(new ApplyPowerAction(target, p, new Stunned(target)));
-                addToBot(new ApplyPowerAction(target, p, new VulnerablePower(target, vul, false)));
+                addToBot(new ApplyPowerAction(m, p, new Stunned(m)));
+                addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, vul, false)));
             }
         }
         isDone = true;
