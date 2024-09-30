@@ -282,5 +282,9 @@
   "rhinemod:CriticalPointPower": {
     "NAME": "临界点",
     "DESCRIPTIONS": ["被引爆时，对敌人造成的伤害提升 #b", " %。"]
+  },
+  "rhinemod:SHAFTPower": {
+    "NAME": "能量井",
+    "DESCRIPTIONS": ["积攒能量中（ #y", "/3 ）。", "能量积攒完毕。"]
   }
 }

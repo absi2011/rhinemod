@@ -178,8 +178,11 @@
     },
     "rhinemod:SHAFT": {
         "NAME": "能量井",
-        "DESCRIPTION": "抽 !M! 张牌，如果它们类型不同，将 !rhinemod:M2! 张 *出格 洗入你的抽牌堆。",
-        "UPGRADE_DESCRIPTION": "抽 !M! 张牌，如果它们类型相同，将 *背叛者 置入手牌。"
+        "DESCRIPTION": "如果你本场战斗至少打出过3次 *能量井 ，获得 [E] [E] [E] [E] 。",
+        "UPGRADE_DESCRIPTION": "如果你本场战斗至少打出过3次 *能量井 ，获得 [E] [E] [E] [E] 且本牌耗能为0。",
+        "EXTENDED_DESCRIPTION": [
+            "获得 [E] [E] [E] [E] ，将四张 *出格 洗入你的抽牌堆。 NL 消耗。"
+        ]
     },
     "rhinemod:EmergencyDefenseProcedures": {
         "NAME": "紧急防卫程序",
@@ -434,11 +437,11 @@
     },
     "rhinemod:MultiEcho": {
         "NAME": "多重分身",
-        "DESCRIPTION": "选择一张不同名的手牌，丢弃其他手牌，将你的所有 rhinemod:流形 转化为这张牌含有 虚无 和 消耗 的的复制。",
+        "DESCRIPTION": "选择一张不同名的手牌，丢弃其他手牌，将你的所有 rhinemod:流形 转化为这张牌含有 消耗 和 保留 的的复制。",
         "UPGRADE_DESCRIPTION": "",
         "EXTENDED_DESCRIPTION": [
             "复制：",
-            " NL 消耗 ， 虚无 。"
+            " NL 消耗 ， 保留 。"
         ]
     },
 
@@ -542,5 +545,11 @@
         "NAME": "以攻代守",
         "DESCRIPTION": "每当你造成小于等于 !M! 点 未被格挡的攻击伤害时，将伤害提升为 !M! 。",
         "UPGRADE_DESCRIPTION": ""
+    },
+
+    "rhinemod:DEPRECATED_SHAFT": {
+        "NAME": "能量井",
+        "DESCRIPTION": "抽 !M! 张牌，如果它们类型不同，将 !rhinemod:M2! 张 *出格 洗入你的抽牌堆。",
+        "UPGRADE_DESCRIPTION": "抽 !M! 张牌，如果它们类型相同，将 *背叛者 置入手牌。"
     }
 }

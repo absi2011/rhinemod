@@ -86,7 +86,7 @@ public class MultiEchoAction extends AbstractGameAction {
             for (int i = 0; i < cnt; i ++) {
                 AbstractCard c = card.makeStatEquivalentCopy();
                 c.name = EXTENDED[0] + c.name;
-                c.isEthereal = true;
+                c.selfRetain = true;
                 c.exhaust = true;
                 c.rawDescription += EXTENDED[1];
                 c.initializeDescription();

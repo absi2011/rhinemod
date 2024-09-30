@@ -9,9 +9,9 @@ import com.megacrit.cardcrawl.core.Settings;
 import rhinemod.cards.special.Traitor;
 import rhinemod.cards.special.Unscrupulous;
 
-public class SHAFTAction extends AbstractGameAction {
+public class DEPRECATED_SHAFTAction extends AbstractGameAction {
     public final int chosenBranch;
-    public SHAFTAction(int chosenBranch, int amount) {
+    public DEPRECATED_SHAFTAction(int chosenBranch, int amount) {
         actionType = ActionType.CARD_MANIPULATION;
         duration = startDuration = Settings.ACTION_DUR_XFAST;
         this.chosenBranch = chosenBranch;

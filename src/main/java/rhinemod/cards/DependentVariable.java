@@ -24,7 +24,7 @@ public class DependentVariable extends AbstractRhineCard {
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     public static final String IMG = "resources/rhinemod/images/cards/SHAFT.png";
     public static final int COST = 1;
-    public static final int EXTRA_LEVEL = 2;
+    public static final int EXTRA_LEVEL = 3;
     public DependentVariable() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.RHINE_MATTE,
