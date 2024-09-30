@@ -61,6 +61,7 @@ public class Stargate extends CustomRelic implements ClickableRelic {
             tips.add(new PowerTip(name, description));
             initializeTips();
         }
+        AbstractDungeon.combatRewardScreen.clear();
         AbstractDungeon.currMapNode.taken = true;
         MapRoomNode cur = AbstractDungeon.currMapNode;
         MapRoomNode nxt = new MapRoomNode(cur.x, cur.y);
