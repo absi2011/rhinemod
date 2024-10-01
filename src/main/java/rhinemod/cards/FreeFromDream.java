@@ -27,6 +27,7 @@ public class FreeFromDream extends AbstractRhineCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     public static final String IMG = "resources/rhinemod/images/cards/FreeFromDream.png";
+    public static final String IMG_S = "resources/rhinemod/images/cards/FreeFromDreamS.png";
     public static final int COST = 1;
     public static final int ATTACK_DMG = 7;
     public static final int UPGRADE_NONE_DMG = 3;
@@ -90,6 +91,8 @@ public class FreeFromDream extends AbstractRhineCard {
                     cardsToPreview = new Pioneer();
                     type = CardType.SKILL;
                     target = CardTarget.SELF;
+                    textureImg = IMG_S;
+                    loadCardImage(textureImg);
                     upgradeBaseCost(SARIA_COST);
                     upgradeSecondMagicNumber(EXHAUST_NUM);
                     initializeDescription();
@@ -101,6 +104,8 @@ public class FreeFromDream extends AbstractRhineCard {
                     rawDescription = EXTENDED_DESCRIPTION[1];
                     type = CardType.SKILL;
                     target = CardTarget.SELF;
+                    textureImg = IMG_S;
+                    loadCardImage(textureImg);
                     upgradeSecondMagicNumber(WATER_VAL);
                     initializeDescription();
                 }

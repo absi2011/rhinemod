@@ -35,6 +35,7 @@ public class AcademicResearch extends AbstractRhineCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     public static final String IMG = "resources/rhinemod/images/cards/AcademicResearch.png";
+    public static final String IMG_S = "resources/rhinemod/images/cards/AcademicResearchS.png";
     public static final int COST = 1;
     public static final int[] UPGRADE_COST = {0, 0, 2, 1};
     public static final int S_BLK = 4;
@@ -123,6 +124,9 @@ public class AcademicResearch extends AbstractRhineCard {
                     damage = baseDamage = S_DMG;
                     magicNumber = baseMagicNumber = S_CA;
                     target = CardTarget.ENEMY;
+                    type = CardType.ATTACK;
+                    textureImg = IMG_S;
+                    loadCardImage(textureImg);
                     name = EXTENDED_DESCRIPTION[0];
                     rawDescription = EXTENDED_DESCRIPTION[1];
                     initializeTitle();
