@@ -155,6 +155,9 @@ public class DressingFlowingShape extends AbstractRhineCard {
                 if (!upgraded) {
                     upgradeName(0);
                     upgradeBlock(UPGRADE_BLOCK);
+                    for (AbstractCard c: cards) {
+                        c.upgrade();
+                    }
                     initializeDescription();
                 }
             });

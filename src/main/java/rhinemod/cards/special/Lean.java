@@ -48,6 +48,7 @@ public class Lean extends CustomCard {
             rawDescription = UPGRADE_DESCRIPTION;
             isEthereal = false;
             selfRetain = true;
+            initializeDescription();
         }
     }
 }

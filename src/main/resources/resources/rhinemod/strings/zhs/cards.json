@@ -351,7 +351,7 @@
     },
     "rhinemod:EmergencyEscapeDoor": {
         "NAME": "紧急逃生门",
-        "DESCRIPTION": "造成 !D! 点伤害。 NL 改变 rhinemod:重力。 NL 将一张 *背叛者 置入手牌。",
+        "DESCRIPTION": "造成 !D! 点伤害。 NL 改变 rhinemod:重力 。 NL 将一张 *背叛者 置入手牌。",
         "UPGRADE_DESCRIPTION": ""
     },
 
