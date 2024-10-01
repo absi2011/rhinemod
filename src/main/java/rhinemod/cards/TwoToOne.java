@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import rhinemod.RhineMod;
 import rhinemod.interfaces.UpgradeBranch;
 import rhinemod.patches.AbstractCardEnum;
 
@@ -37,9 +38,7 @@ public class TwoToOne extends AbstractRhineCard {
         if (!super.canPlay(card)) return false;
         if (!(card instanceof TwoToOne)) return true;
         int[] cnt = new int[4];
-        for (AbstractCard c : AbstractDungeon.player.hand.group)
-            if (c instanceof AbstractRhineCard) cnt[((AbstractRhineCard) c).realBranch]++;
-            else cnt[0]++;
+        for (AbstractCard c : AbstractDungeon.player.hand.group) cnt[RhineMod.getBranch(c)]++;
         boolean hasHalf = false;
         for (int i = 0; i < 4; i++)
             if (cnt[i] * 2 > AbstractDungeon.player.hand.group.size()) {

@@ -28,20 +28,4 @@ public class ChangeBranchOption extends AbstractCampfireOption {
         if (usable)
             AbstractDungeon.effectList.add(new CampfireChangeBranchEffect(this));
     }
-
-    /*
-    @Override
-    public void update() {
-        super.update();
-        boolean valid = false;
-        for (AbstractCard c : AbstractDungeon.player.masterDeck.group)
-            if (c instanceof AbstractRhineCard && c.upgraded && ((AbstractRhineCard) c).possibleBranches().size() > 1) {
-                valid = true;
-                break;
-            }
-        usable = changeNum == 0 && valid;
-        updateUsability(usable);
-    }
-    */
-
 }

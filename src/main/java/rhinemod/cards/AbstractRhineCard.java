@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
+import rhinemod.RhineMod;
 import rhinemod.interfaces.UpgradeBranch;
 import rhinemod.relics.Melt;
 
@@ -74,14 +75,9 @@ public abstract class AbstractRhineCard extends CustomCard {
 
     @Override
     public boolean canPlay(AbstractCard card) {
-        if (card instanceof AbstractRhineCard)
-        {
-            if (((AbstractRhineCard) card).realBranch == 3)
-            {
-                if ((AbstractDungeon.player.hasRelic(Melt.ID)) && (AbstractDungeon.player.getRelic(Melt.ID).counter > 0))
-                {
-                    return false;
-                }
+        if (RhineMod.getBranch(card) == 3) {
+            if ((AbstractDungeon.player.hasRelic(Melt.ID)) && (AbstractDungeon.player.getRelic(Melt.ID).counter > 0)) {
+                return false;
             }
         }
         return super.canPlay(card);

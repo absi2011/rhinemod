@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.screens.select.GridCardSelectScreen;
 import javassist.CtBehavior;
-import rhinemod.cards.AbstractRhineCard;
+import rhinemod.RhineMod;
 import rhinemod.characters.RhineLab;
 
 import java.util.*;
@@ -44,11 +44,7 @@ public class SuperficialRegulationAction extends AbstractGameAction {
         }
         if (duration == startDuration) {
             for (int i = 0; i < 4; i++) exist[i] = false;
-            for (AbstractCard c : p.drawPile.group)
-                if (c instanceof AbstractRhineCard && ((AbstractRhineCard) c).realBranch > 0)
-                    exist[((AbstractRhineCard) c).realBranch] = true;
-                else
-                    exist[0] = true;
+            for (AbstractCard c : p.drawPile.group) exist[RhineMod.getBranch(c)] = true;
             AbstractDungeon.gridSelectScreen.open(p.drawPile, p.drawPile.group.size(), true, TEXT[0]);
             AbstractDungeon.gridSelectScreen.confirmButton.isDisabled = true;
             tickDuration();
@@ -94,25 +90,28 @@ public class SuperficialRegulationAction extends AbstractGameAction {
     public static class BranchComparator implements Comparator<AbstractCard> {
         public BranchComparator() {}
         public int compare(AbstractCard c1, AbstractCard c2) {
-            return rank.get(getBranch(c2)) - rank.get(getBranch(c1));
-        }
-        private int getBranch(AbstractCard c) {
-            if (c instanceof AbstractRhineCard) return ((AbstractRhineCard) c).realBranch;
-            else return 0;
+            return rank.get(RhineMod.getBranch(c2)) - rank.get(RhineMod.getBranch(c1));
         }
     }
     @SpirePatch(clz = GridCardSelectScreen.class, method = "update")
     public static class AddCardPatch {
         @SpireInsertPatch(locator = Locator.class)
-        public static void Insert(GridCardSelectScreen __instance, String ___tipMsg) {
+        public static void Insert(GridCardSelectScreen __instance, String ___tipMsg, AbstractCard ___hoveredCard, @ByRef int[] ___cardSelectAmount) {
             if (___tipMsg.equals(TEXT[0])) {
                 int[] cnt = new int[4];
                 for (int i = 0; i < 4; i++) cnt[i] = 0;
+                int hoveredBranch = RhineMod.getBranch(___hoveredCard);
+                HashSet<AbstractCard> cardsToRemove = new HashSet<>();
                 for (AbstractCard c : __instance.selectedCards)
-                    if (c instanceof AbstractRhineCard && ((AbstractRhineCard) c).realBranch > 0)
-                        cnt[((AbstractRhineCard) c).realBranch]++;
-                    else
-                        cnt[0]++;
+                    if (RhineMod.getBranch(c) == hoveredBranch && !c.equals(___hoveredCard)) {
+                        cardsToRemove.add(c);
+                        c.stopGlowing();
+                        ___cardSelectAmount[0]--;
+                    }
+                __instance.selectedCards.removeIf(cardsToRemove::contains);
+                for (AbstractCard c : __instance.selectedCards) {
+                    cnt[RhineMod.getBranch(c)]++;
+                }
                 __instance.confirmButton.isDisabled = false;
                 for (int i = 0; i < 4; i++)
                     if (exist[i] && cnt[i] != 1) {
@@ -138,14 +137,8 @@ public class SuperficialRegulationAction extends AbstractGameAction {
                 int[] cnt = new int[4];
                 for (int i = 0; i < 4; i++) cnt[i] = 0;
                 for (AbstractCard c : __instance.selectedCards)
-                    if (c instanceof AbstractRhineCard && ((AbstractRhineCard) c).realBranch > 0)
-                        cnt[((AbstractRhineCard) c).realBranch]++;
-                    else
-                        cnt[0]++;
-                if (___hoveredCard instanceof AbstractRhineCard && ((AbstractRhineCard) ___hoveredCard).realBranch > 0)
-                    cnt[((AbstractRhineCard) ___hoveredCard).realBranch]++;
-                else
-                    cnt[0]++;
+                    cnt[RhineMod.getBranch(c)]++;
+                cnt[RhineMod.getBranch(___hoveredCard)]--;
                 __instance.confirmButton.isDisabled = false;
                 for (int i = 0; i < 4; i++)
                     if (exist[i] && cnt[i] != 1) {

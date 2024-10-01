@@ -465,4 +465,9 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
             info.isModified = true;
         }
     }
+
+    public static int getBranch(AbstractCard c) {
+        if (c instanceof AbstractRhineCard) return ((AbstractRhineCard) c).realBranch;
+        else return 0;
+    }
 }
