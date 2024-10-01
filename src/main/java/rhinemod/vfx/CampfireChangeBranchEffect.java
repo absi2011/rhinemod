@@ -11,7 +11,6 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.UIStrings;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.CampfireUI;
 import com.megacrit.cardcrawl.rooms.RestRoom;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
@@ -67,11 +66,10 @@ public class CampfireChangeBranchEffect extends AbstractGameEffect {
 
         if (duration < 0.0F) {
             isDone = true;
-            if (AbstractDungeon.getCurrRoom() instanceof RestRoom) {
+            if (CampfireUI.hidden) {
                 CampfireUI campfireUI = ((RestRoom) AbstractDungeon.getCurrRoom()).campfireUI;
                 if (ChangeBranchOption.changeNum > 0)
                     changeBranchOption.usable = false;
-                AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
                 campfireUI.reopen();
             }
         }
