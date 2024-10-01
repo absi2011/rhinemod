@@ -206,10 +206,10 @@
       "。"
     ]
   },
-  "rhinemod:HiddenPower": {
+  "rhinemod:InvisiblePower": {
     "NAME": "隐匿",
     "DESCRIPTIONS": [
-      "无法被选中，剩余 #b",
+      "无敌且无法选中，剩余 #b",
       " 回合。"
     ]
   },

@@ -14,7 +14,7 @@ import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.*;
 import rhinemod.actions.SummonLTEnemyAction;
-import rhinemod.powers.HiddenPower;
+import rhinemod.powers.InvisiblePower;
 
 public class TrafficPolice extends AbstractRhineMonster {
     public static final String ID = "rhinemod:TrafficPolice";
@@ -48,7 +48,7 @@ public class TrafficPolice extends AbstractRhineMonster {
     @Override
     public void usePreBattleAction() {
         addToBot(new CannotLoseAction());
-        addToBot(new ApplyPowerAction(this, this, new HiddenPower(this, 2)));
+        addToBot(new ApplyPowerAction(this, this, new InvisiblePower(this, 2)));
         addToBot(new ChangeStateAction(this, "HIDDEN"));
         // 隐匿特效
     }

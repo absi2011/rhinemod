@@ -7,13 +7,15 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import rhinemod.vfx.InvisibleSmokeEffect;
 
-public class HiddenPower extends AbstractPower {
-    public static final String POWER_ID = "rhinemod:HiddenPower";
+public class InvisiblePower extends AbstractPower {
+    public static final String POWER_ID = "rhinemod:InvisiblePower";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    public HiddenPower(AbstractCreature owner, int amount) {
+    private final InvisibleSmokeEffect effect;
+    public InvisiblePower(AbstractCreature owner, int amount) {
         this.ID = POWER_ID;
         this.name = NAME;
         this.type = PowerType.BUFF;
@@ -22,6 +24,7 @@ public class HiddenPower extends AbstractPower {
         region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/BionicDevice 84.png"), 0, 0, 84, 84);
         region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/BionicDevice 32.png"), 0, 0, 32, 32);
         updateDescription();
+        effect = new InvisibleSmokeEffect(owner.hb.cX, owner.hb.cY);
     }
 
     @Override
@@ -32,6 +35,7 @@ public class HiddenPower extends AbstractPower {
     @Override
     public void atEndOfRound() {
         addToBot(new ReducePowerAction(this.owner, this.owner, this, 1));
+        if (amount == 1) effect.endEffect();
     }
 
 }
