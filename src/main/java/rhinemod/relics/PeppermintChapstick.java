@@ -56,8 +56,8 @@ public class PeppermintChapstick extends CustomRelic implements ClickableRelic {
             counter--;
             if (counter <= 0) {
                 counter = -2;
-                updateDescription();
             }
+            updateDescription();
         }
     }
 
