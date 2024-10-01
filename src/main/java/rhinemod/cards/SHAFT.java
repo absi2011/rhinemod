@@ -1,6 +1,7 @@
 package rhinemod.cards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -39,6 +40,9 @@ public class SHAFT extends AbstractRhineCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        if (chosenBranch == 0) {
+            addToBot(new DrawCardAction(1));
+        }
         if (extraTriggered() || chosenBranch != 0) {
             addToBot(new GainEnergyAction(4));
         }

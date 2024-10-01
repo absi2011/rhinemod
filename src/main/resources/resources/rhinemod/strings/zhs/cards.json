@@ -178,8 +178,8 @@
     },
     "rhinemod:SHAFT": {
         "NAME": "能量井",
-        "DESCRIPTION": "如果你本场战斗至少打出过3次 *能量井 ，获得 [E] [E] [E] [E] 。",
-        "UPGRADE_DESCRIPTION": "如果你本场战斗至少打出过3次 *能量井 ，获得 [E] [E] [E] [E] 且本牌耗能为0。",
+        "DESCRIPTION": "抽一张牌。 NL 如果你本场战斗至少打出过3次 *能量井 ，获得 [E] [E] [E] [E] 。",
+        "UPGRADE_DESCRIPTION": "抽一张牌。 NL 如果你本场战斗至少打出过3次 *能量井 ，获得 [E] [E] [E] [E] 且本牌耗能为0。",
         "EXTENDED_DESCRIPTION": [
             "获得 [E] [E] [E] [E] ，将四张 *出格 洗入你的抽牌堆。 NL 消耗。"
         ]
@@ -348,6 +348,11 @@
         "EXTENDED_DESCRIPTION": [
             "造成 !D! 点伤害。 NL 改变 rhinemod:重力 。 NL 如果本次伤害为 rhinemod:重击 ，将一张 *独行者 置入手牌。"
         ]
+    },
+    "rhinemod:EmergencyEscapeDoor": {
+        "NAME": "紧急逃生门",
+        "DESCRIPTION": "造成 !D! 点伤害。 NL 改变 rhinemod:重力。 NL 将一张 *背叛者 置入手牌。",
+        "UPGRADE_DESCRIPTION": ""
     },
 
     "rhinemod:Calcification": {

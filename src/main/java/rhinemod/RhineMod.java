@@ -301,6 +301,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         cards.add(new Dreamer()); // 梦想家
         cards.add(new AprilShowers()); // 无根之雨
         cards.add(new ProjectHorizonArc()); // 地平弧光计划
+        cards.add(new EmergencyEscapeDoor()); // 紧急逃生门
 
         // Rare.
         cards.add(new Calcification()); // 钙质化
