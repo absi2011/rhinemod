@@ -10,12 +10,12 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.StrikeEffect;
 
-public class Fragile extends AbstractPower {
-    public static final String POWER_ID = "rhinemod:Fragile";
+public class Friable extends AbstractPower {
+    public static final String POWER_ID = "rhinemod:Friable";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    public Fragile(AbstractCreature owner) {
+    public Friable(AbstractCreature owner) {
         this.ID = POWER_ID;
         this.name = NAME;
         this.type = PowerType.BUFF;

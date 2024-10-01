@@ -58,11 +58,11 @@ public class StarPod extends AbstractRhineMonster {
     @Override
     public void usePreBattleAction() {
         addToBot(new CannotLoseAction());
-        addToBot(new ApplyPowerAction(this, this, new Fragile(this)));
+        addToBot(new ApplyPowerAction(this, this, new Friable(this)));
         addToBot(new ApplyPowerAction(this, this, new NoStun(this)));
         addToBot(new ApplyPowerAction(this, this, new DamageOutPower(this, 100, 1)));
         if (AbstractDungeon.ascensionLevel >= 19) {
-            addToBot(new ApplyPowerAction(this, this, new DefendPower(this, DefendNum)));
+            addToBot(new ApplyPowerAction(this, this, new AutoDefend(this, DefendNum)));
             addToBot(new GainBlockAction(this, this, DefendNum));
         }
         CardCrawlGame.music.fadeOutTempBGM();
@@ -76,8 +76,8 @@ public class StarPod extends AbstractRhineMonster {
         currentTurn++;
         if (currentTurn % 3 == 1) {
             if (currentTurn == 1) {
-                addToBot(new ApplyPowerAction(this, this, new AttackPower(this, 1)));
-                addToBot(new ApplyPowerAction(this, this, new DefendPower(this, 1)));
+                addToBot(new ApplyPowerAction(this, this, new AutoAttack(this, 1)));
+                addToBot(new ApplyPowerAction(this, this, new AutoDefend(this, 1)));
             } else {
                 addToBot(new ApplyPowerAction(this, this, new VoidPower(this, 1)));
                 if (AbstractDungeon.ascensionLevel >= 19) {
@@ -103,7 +103,7 @@ public class StarPod extends AbstractRhineMonster {
                 } else if (currentTurn >= 7) {
                     BuffNum += AttackPlusNum;
                 }
-                addToBot(new ApplyPowerAction(this, this, new AttackPower(this, BuffNum)));
+                addToBot(new ApplyPowerAction(this, this, new AutoAttack(this, BuffNum)));
             } else {
                 int BuffNum = DefendNum;
                 if (currentTurn >= 10) {
@@ -111,7 +111,7 @@ public class StarPod extends AbstractRhineMonster {
                 } else if (currentTurn >= 7) {
                     BuffNum += DefendPlusNum;
                 }
-                addToBot(new ApplyPowerAction(this, this, new DefendPower(this, BuffNum)));
+                addToBot(new ApplyPowerAction(this, this, new AutoDefend(this, BuffNum)));
             }
         }
         getMove(0);
@@ -119,7 +119,7 @@ public class StarPod extends AbstractRhineMonster {
 
     private void cleanDebuff() {
         for (AbstractPower pow : powers)
-            if (pow != null && pow.type == AbstractPower.PowerType.DEBUFF && !(pow instanceof Fragile)) {
+            if (pow != null && pow.type == AbstractPower.PowerType.DEBUFF && !(pow instanceof Friable)) {
                 addToBot(new RemoveSpecificPowerAction(this, this, pow));
             }
     }

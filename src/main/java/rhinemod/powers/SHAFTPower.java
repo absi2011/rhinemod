@@ -19,8 +19,8 @@ public class SHAFTPower extends AbstractPower implements OnReceivePowerPower {
         this.type = PowerType.BUFF;
         this.owner = owner;
         this.amount = amount;
-        region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/Stunned 128.png"), 0, 0, 128, 128);
-        region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/Stunned 48.png"), 0, 0, 48, 48);
+        region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/SHAFTPower 84.png"), 0, 0, 84, 84);
+        region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/SHAFTPower 32.png"), 0, 0, 32, 32);
         updateDescription();
     }
 

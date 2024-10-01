@@ -26,7 +26,7 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import rhinemod.cards.*;
 import rhinemod.patches.*;
-import rhinemod.powers.ExperienceError;
+import rhinemod.powers.ExperimentError;
 import rhinemod.powers.InvisibleGlobalAttributes;
 import rhinemod.relics.LoneTrail;
 import rhinemod.relics.TITStudentIdCard;
@@ -300,7 +300,7 @@ public class RhineLab extends CustomPlayer {
                     AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(starRings[i], this, new StrengthPower(starRings[i], strength)));
                 }
                 if (blast > 0) {
-                    AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(starRings[i], this, new ExperienceError(starRings[i], blast)));
+                    AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(starRings[i], this, new ExperimentError(starRings[i], blast)));
                 }
                 currentRings.add(starRings[i]);
                 return;
