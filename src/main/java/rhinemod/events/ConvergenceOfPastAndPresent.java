@@ -7,10 +7,8 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.AbstractImageEvent;
 import com.megacrit.cardcrawl.localization.EventStrings;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import rhinemod.cards.special.*;
-import rhinemod.relics.LoneTrail;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,11 +22,11 @@ public class ConvergenceOfPastAndPresent extends AbstractImageEvent {
 
     private CurScreen screen = CurScreen.INTRO;
     private enum CurScreen {
-        INTRO, FIGHT, LEAVE
+        INTRO, LEAVE
     }
     int hp;
     public ConvergenceOfPastAndPresent() {
-        super(NAME, DESCRIPTIONS[0], "resources/rhinemod/images/crads/BionicDevice.png");
+        super(NAME, DESCRIPTIONS[0], "resources/rhinemod/images/event/ConvergenceOfPastAndPresent.png");
         if (AbstractDungeon.ascensionLevel < 15) {
             hp = MathUtils.floor(AbstractDungeon.player.maxHealth * 0.3F);
         }
@@ -49,7 +47,7 @@ public class ConvergenceOfPastAndPresent extends AbstractImageEvent {
                     case 0:
                         this.imageEventText.updateBodyText(DESCRIPTIONS[1]);
                         this.screen = CurScreen.LEAVE;
-                        ArrayList<AbstractCard> c = new ArrayList<AbstractCard>();
+                        ArrayList<AbstractCard> c = new ArrayList<>();
                         c.add(new Egotist());
                         c.add(new Traitor());
                         c.add(new Seeker());
@@ -62,9 +60,8 @@ public class ConvergenceOfPastAndPresent extends AbstractImageEvent {
                         AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(c.get(4), (float)Settings.WIDTH / 2.0F +  700.0F * Settings.xScale, (float)Settings.HEIGHT / 2.0F));
                         imageEventText.updateDialogOption(0, OPTIONS[4]);
                         imageEventText.clearRemainingOptions();
-                        List<String> cards = new ArrayList<String>();
-                        int i;
-                        for (i = 0; i < 5; i++) {
+                        List<String> cards = new ArrayList<>();
+                        for (int i = 0; i < 5; i++) {
                             cards.add(c.get(i).cardID);
                         }
                         logMetricObtainCards(ID, "Follow", cards);

@@ -10,8 +10,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.powers.MetallicizePower;
 import rhinemod.actions.JesseltonUpdateHitboxAction;
-import rhinemod.powers.DoubleSmash;
-import rhinemod.powers.DoubleNonSmash;
+import rhinemod.powers.WeaknessSmash;
+import rhinemod.powers.WeaknessNonSmash;
 
 public class JesseltonWilliams extends AbstractRhineMonster {
     public static final String ID = "rhinemod:JesseltonWilliams";
@@ -60,7 +60,7 @@ public class JesseltonWilliams extends AbstractRhineMonster {
 
     @Override
     public void usePreBattleAction() {
-        addToBot(new ApplyPowerAction(this, this, new DoubleSmash(this)));
+        addToBot(new ApplyPowerAction(this, this, new WeaknessSmash(this)));
         CardCrawlGame.music.fadeOutTempBGM();
         AbstractDungeon.scene.fadeOutAmbiance();
         CardCrawlGame.music.playTempBgmInstantly("m_bat_jakiller_combine.mp3", true);
@@ -82,8 +82,8 @@ public class JesseltonWilliams extends AbstractRhineMonster {
             state.addAnimation(0, "C2_Idle", true, 0F);
             addToBot(new WaitAction(4));
             addToBot(new HealAction(this, this, maxHealth / 2 - currentHealth));
-            addToBot(new RemoveSpecificPowerAction(this, this, DoubleSmash.POWER_ID));
-            addToBot(new ApplyPowerAction(this, this, new DoubleNonSmash(this)));
+            addToBot(new RemoveSpecificPowerAction(this, this, WeaknessSmash.POWER_ID));
+            addToBot(new ApplyPowerAction(this, this, new WeaknessNonSmash(this)));
             addToBot(new ApplyPowerAction(this, this, new MetallicizePower(this, metalNum)));
             addToBot(new JesseltonUpdateHitboxAction(this));
         }

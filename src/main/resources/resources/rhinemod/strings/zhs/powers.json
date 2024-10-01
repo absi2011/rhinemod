@@ -97,7 +97,7 @@
     "NAME": "意气相投K",
     "DESCRIPTIONS": []
   },
-  "rhinemod:ExperienceError": {
+  "rhinemod:ExperimentError": {
     "NAME": "实验错误",
     "DESCRIPTIONS": [
       "该星环死亡时，将 #b",
@@ -122,14 +122,14 @@
 
 
   "rhinemod:DamageOutPower": {
-    "NAME": "减免伤害",
+    "NAME": "伤害减免",
     "DESCRIPTIONS": [
       "受到的攻击伤害减少 #b",
       " %，当受到 #r任意 伤害时，减少 #b",
       " 层。"
     ]
   },
-  "rhinemod:AttackPower": {
+  "rhinemod:AutoAttack": {
     "NAME": "自动开火",
     "DESCRIPTIONS": [
       "回合开始时，造成 #b",
@@ -137,7 +137,7 @@
       " 层。"
     ]
   },
-  "rhinemod:DefendPower": {
+  "rhinemod:AutoDefend": {
     "NAME": "自动防护",
     "DESCRIPTIONS": [
       "回合开始时，获得 #b",
@@ -152,7 +152,7 @@
       " 张 #y虚空 加入你的弃牌堆。"
     ]
   },
-  "rhinemod:Fragile": {
+  "rhinemod:Friable": {
     "NAME": "易碎",
     "DESCRIPTIONS": [
       "受到 #r重击 时死亡。"
@@ -164,19 +164,19 @@
       "无法获得 #r眩晕 状态。"
     ]
   },
-  "rhinemod:HalfDamage": {
+  "rhinemod:Armor": {
     "NAME": "装甲",
     "DESCRIPTIONS": [
       "受到的非 #r重击 伤害减半。"
     ]
   },
-  "rhinemod:DoubleSmash": {
+  "rhinemod:WeaknessSmash": {
     "NAME": "弱点：重击",
     "DESCRIPTIONS": [
       "受到的 #r重击 伤害翻倍。"
     ]
   },
-  "rhinemod:DoubleNonSmash": {
+  "rhinemod:WeaknessNonSmash": {
     "NAME": "弱点：非重击",
     "DESCRIPTIONS": [
       "受到的非 #r重击 伤害时，额外受到一次等量伤害。"

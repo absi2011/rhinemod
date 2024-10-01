@@ -24,8 +24,8 @@ public class RefreshmentPower extends AbstractPower {
         this.owner = owner;
         this.amount = amount;
         rest = amount;
-        region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/Solidify 84.png"), 0, 0, 84, 84);
-        region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/Solidify 32.png"), 0, 0, 32, 32);
+        region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/RefreshmentPower 84.png"), 0, 0, 84, 84);
+        region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/RefreshmentPower 32.png"), 0, 0, 32, 32);
         updateDescription();
     }
 

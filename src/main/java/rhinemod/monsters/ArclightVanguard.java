@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
-import rhinemod.powers.Fragile;
+import rhinemod.powers.Friable;
 
 public class ArclightVanguard extends AbstractRhineMonster {
     public static final String ID = "rhinemod:ArclightVanguard";
@@ -46,7 +46,7 @@ public class ArclightVanguard extends AbstractRhineMonster {
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
-        addToBot(new ApplyPowerAction(this, this, new Fragile(this)));
+        addToBot(new ApplyPowerAction(this, this, new Friable(this)));
     }
 
     @Override

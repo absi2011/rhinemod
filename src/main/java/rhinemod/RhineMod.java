@@ -394,6 +394,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
 
         // boss.
         BaseMod.addRelicToCustomPool(new Future(), RHINE_MATTE);
+        BaseMod.addRelicToCustomPool(new RhineLabEmployeeCard(), RHINE_MATTE);
 
         // event.
         BaseMod.addRelic(new LoneTrail(), RelicType.SHARED);
