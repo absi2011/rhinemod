@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.rooms.CampfireUI;
 import com.megacrit.cardcrawl.ui.campfire.AbstractCampfireOption;
 import javassist.CtBehavior;
 import rhinemod.cards.AbstractRhineCard;
+import rhinemod.relics.Future;
 import rhinemod.util.ChangeBranchOption;
 
 import java.util.ArrayList;
@@ -24,7 +25,11 @@ public class CampfireOptionPatch {
                     valid = true;
                     break;
                 }
-            buttons.add(new ChangeBranchOption(valid));
+            AbstractCampfireOption option = new ChangeBranchOption(valid);
+            if (AbstractDungeon.player.hasRelic(Future.ID)) {
+                option.usable = false;
+            }
+            buttons.add(option);
         }
 
         private static class Locator extends SpireInsertLocator {
