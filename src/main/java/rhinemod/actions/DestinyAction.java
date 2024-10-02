@@ -27,6 +27,8 @@ public class DestinyAction extends AbstractGameAction {
         if (duration == Settings.ACTION_DUR_FAST) {
             for (AbstractCard c : p.hand.group)
                 if (!c.canUpgrade()) {
+                    if (upgraded && c instanceof AbstractRhineCard && ((AbstractRhineCard) c).possibleBranches().size() > 1)
+                        continue;
                     cannotUpgrade.add(c);
                 }
             if (cannotUpgrade.size() == p.hand.group.size()) {
@@ -54,10 +56,17 @@ public class DestinyAction extends AbstractGameAction {
         }
         if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
             for (AbstractCard c : AbstractDungeon.handCardSelectScreen.selectedCards.group) {
-                if (c instanceof AbstractRhineCard && !upgraded)
-                    ((AbstractRhineCard) c).randomUpgrade();
-                else
+                if (c instanceof AbstractRhineCard) {
+                    if (!upgraded) {
+                        ((AbstractRhineCard) c).randomUpgrade();
+                    } else if (c.upgraded) {
+                        ((AbstractRhineCard) c).swapBranch(((AbstractRhineCard) c).chosenBranch);
+                    } else {
+                        c.upgrade();
+                    }
+                } else {
                     c.upgrade();
+                }
                 c.superFlash();
                 c.applyPowers();
                 p.hand.addToTop(c);

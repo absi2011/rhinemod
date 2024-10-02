@@ -44,14 +44,30 @@ public class HandCardSelectPatch {
     public static void setBranchesPreview(HandCardSelectScreen _inst, AbstractRhineCard card) {
         if (!cardChecked) {
             curId = card.uuid;
-            branchesNum = card.possibleBranches().size();
-            for (int i = 0; i < branchesNum; i++) {
-                AbstractRhineCard preview = card.makeStatEquivalentCopy();
-                preview.chosenBranch = i;
-                preview.possibleBranches().get(i).upgrade();
-                preview.displayUpgrades();
-                branches[i] = preview;
-                hitboxes[i] = new Hitbox(0, 0);
+            if (card.upgraded) {
+                branchesNum = card.possibleBranches().size() - 1;
+                int afterChosen = 0;
+                for (int i = 0; i < branchesNum + 1; i++) {
+                    if (i == card.chosenBranch) {
+                        afterChosen = 1;
+                        continue;
+                    }
+                    AbstractRhineCard preview = card.makeStatEquivalentCopy();
+                    preview.swapBranch(i);
+                    preview.displayUpgrades();
+                    branches[i - afterChosen] = preview;
+                    hitboxes[i - afterChosen] = new Hitbox(0, 0);
+                }
+            } else {
+                branchesNum = card.possibleBranches().size();
+                for (int i = 0; i < branchesNum; i++) {
+                    AbstractRhineCard preview = card.makeStatEquivalentCopy();
+                    preview.chosenBranch = i;
+                    preview.possibleBranches().get(i).upgrade();
+                    preview.displayUpgrades();
+                    branches[i] = preview;
+                    hitboxes[i] = new Hitbox(0, 0);
+                }
             }
             cardChecked = true;
         }
