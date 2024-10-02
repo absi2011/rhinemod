@@ -181,6 +181,13 @@ public abstract class AbstractRhineCard extends CustomCard {
         upgrade();
     }
 
+    @Override
+    public String getMetricID() {
+        String id = cardID;
+        if (upgraded) id = id + "+" + chosenBranch;
+        return id;
+    }
+
     public static class SecondMagicNumber extends DynamicVariable {
         @Override
         public String key() {
