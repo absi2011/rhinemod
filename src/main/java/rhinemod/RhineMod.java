@@ -62,11 +62,11 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
     private static final String attackCard = "resources/rhinemod/images/512/bg_attack_rhine.png";
     private static final String skillCard = "resources/rhinemod/images/512/bg_skill_rhine.png";
     private static final String powerCard = "resources/rhinemod/images/512/bg_power_rhine.png";
-    private static final String energyOrb = "resources/rhinemod/images/512/card_nearl_orb.png";
+    private static final String energyOrb = "resources/rhinemod/images/512/card_rhine_orb.png";
     private static final String attackCardPortrait = "resources/rhinemod/images/1024/bg_attack_rhine.png";
     private static final String skillCardPortrait = "resources/rhinemod/images/1024/bg_skill_rhine.png";
     private static final String powerCardPortrait = "resources/rhinemod/images/1024/bg_power_rhine.png";
-    private static final String energyOrbPortrait = "resources/rhinemod/images/1024/card_nearl_orb.png";
+    private static final String energyOrbPortrait = "resources/rhinemod/images/1024/card_rhine_orb.png";
     private static final String charButton = "resources/rhinemod/images/charSelect/button.png";
     private static final String charPortrait = "resources/rhinemod/images/charSelect/portrait.png";
     private static final String miniManaSymbol = "resources/rhinemod/images/manaSymbol.png";
