@@ -5,11 +5,13 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.unique.CannotLoseAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ModHelper;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.*;
+import rhinemod.actions.DelayDieAction;
 import rhinemod.actions.SummonLTEnemyAction;
 import rhinemod.powers.DamageOutPower;
 import rhinemod.powers.ExplodePower;
@@ -98,9 +100,16 @@ public class Turnpike extends AbstractRhineMonster {
 
     @Override
     public void die() {
-        // TODO delay die action, add die animation.
         CardCrawlGame.sound.play("TURNPIKE_BOOM");
-        AbstractMonster m = new TrafficPolice(0.0F, 0.0F);
+        state.setAnimation(0, "Die", false);
+        addToTop(new DelayDieAction(this, 2.0F));
+    }
+
+    @Override
+    public void realDie() {
+        float offsetX = (drawX - Settings.WIDTH * 0.75F) / Settings.xScale;
+        float offsetY = (drawY - AbstractDungeon.floorY) / Settings.yScale;
+        AbstractMonster m = new TrafficPolice(offsetX, offsetY);
         m.init();
         m.applyPowers();
         AbstractDungeon.getCurrRoom().monsters.addMonster(getSmartPosition(m), m);
@@ -121,11 +130,9 @@ public class Turnpike extends AbstractRhineMonster {
 
     @Override
     protected void getMove(int i) {
-        if (!justSummon && LTAllyNum() + 2 <= 3)
-        {
+        if (!justSummon && LTAllyNum() + 2 <= 3) {
             setMove((byte)1, Intent.UNKNOWN);
-        }
-        else {
+        } else {
             setMove((byte)2, Intent.ATTACK, damage.get(0).base);
         }
     }

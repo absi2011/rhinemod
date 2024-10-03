@@ -17,4 +17,6 @@ public abstract class AbstractRhineMonster extends CustomMonster {
             CardCrawlGame.music.playTempBgmInstantly("m_bat_act19side_01_combine.mp3", true);
         }
     }
+
+    public void realDie() {}
 }
