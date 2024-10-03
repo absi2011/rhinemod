@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import rhinemod.cards.special.Traitor;
 import rhinemod.cards.special.Unscrupulous;
 import rhinemod.interfaces.UpgradeBranch;
 import rhinemod.patches.AbstractCardEnum;
@@ -28,14 +27,13 @@ public class SHAFT extends AbstractRhineCard {
     public static final String IMG = "resources/rhinemod/images/cards/SHAFT.png";
     public static final int COST = 1;
     public static final int DRAW_AMT = 3;
-    public static final int UNSCRUPTULOUS_AMT = 2;
+    public static final int UNSCRUPULOUS_AMT = 2;
     public SHAFT() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.UNCOMMON, CardTarget.SELF);
         magicNumber = baseMagicNumber = DRAW_AMT;
-        secondMagicNumber = baseSecondMagicNumber = UNSCRUPTULOUS_AMT;
-        cardsToPreview = new Unscrupulous();
+        secondMagicNumber = baseSecondMagicNumber = UNSCRUPULOUS_AMT;
     }
 
     @Override
@@ -45,8 +43,7 @@ public class SHAFT extends AbstractRhineCard {
         }
         if (extraTriggered() || chosenBranch != 0) {
             addToBot(new GainEnergyAction(4));
-        }
-        else {
+        } else {
             addToBot(new ApplyPowerAction(p, p, new SHAFTPower(p, 1)));
         }
         if (chosenBranch != 0) {
@@ -65,11 +62,7 @@ public class SHAFT extends AbstractRhineCard {
 
     @Override
     public boolean extraTriggered() {
-        if (chosenBranch == 0 && AbstractDungeon.player.hasPower(SHAFTPower.POWER_ID) && AbstractDungeon.player.getPower(SHAFTPower.POWER_ID).amount >= 3)
-        {
-            return true;
-        }
-        return false;
+        return chosenBranch == 0 && AbstractDungeon.player.hasPower(SHAFTPower.POWER_ID) && AbstractDungeon.player.getPower(SHAFTPower.POWER_ID).amount >= 3;
     }
 
     @Override
