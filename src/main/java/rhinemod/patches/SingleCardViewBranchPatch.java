@@ -153,7 +153,6 @@ public class SingleCardViewBranchPatch {
                 for (int i = 1; i < branchesNum; i++) {
                     branches[i].render(sb);
                     branches[i].updateHoverLogic();
-                    branches[i].renderCardTip(sb);
                 }
             }
         }
