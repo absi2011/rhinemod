@@ -1,6 +1,7 @@
 package rhinemod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import rhinemod.characters.RhineLab;
@@ -31,6 +32,7 @@ public class SummonStarRingAction extends AbstractGameAction {
 
     @Override
     public void update() {
+        CardCrawlGame.sound.play("SUMMON_STAR_RING");
         if (AbstractDungeon.player instanceof RhineLab)
             ((RhineLab)AbstractDungeon.player).summonStarRing(amount, strength, block, blast);
         isDone = true;

@@ -34,6 +34,7 @@ public class Calcification extends AbstractRhineCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        CardCrawlGame.sound.play("CALCIFICATION");
         addToBot(new AddCalciumAction(magicNumber));
         addToBot(new ApplyPowerAction(p, p, new ReduceCalcium(p, CA_RED)));
     }

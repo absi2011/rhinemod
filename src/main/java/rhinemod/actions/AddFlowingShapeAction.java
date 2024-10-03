@@ -2,6 +2,7 @@ package rhinemod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
@@ -18,6 +19,7 @@ public class AddFlowingShapeAction extends AbstractGameAction {
 
     @Override
     public void update() {
+        CardCrawlGame.sound.play("FS_SET");
         AbstractPlayer p = AbstractDungeon.player;
         if (p instanceof RhineLab)
             ((RhineLab)AbstractDungeon.player).globalAttributes.addFlowsp(amount);

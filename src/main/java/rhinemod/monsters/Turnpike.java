@@ -99,6 +99,7 @@ public class Turnpike extends AbstractRhineMonster {
     @Override
     public void die() {
         // TODO delay die action, add die animation.
+        CardCrawlGame.sound.play("TURNPIKE_BOOM");
         AbstractMonster m = new TrafficPolice(0.0F, 0.0F);
         m.init();
         m.applyPowers();

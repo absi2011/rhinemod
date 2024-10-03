@@ -107,6 +107,7 @@ public class JesseltonWilliams extends AbstractRhineMonster {
         } else if (nextMove == 2) {
             addToBot(new DamageAction(p, damage.get(1)));
             addToBot(new DamageAction(p, damage.get(1)));
+            CardCrawlGame.sound.play("JESSELTON_S2_SKILL");
             state.setAnimation(0, "C2_Skill", false);
             state.addAnimation(0, "C2_Idle", true, 0F);
         } else {

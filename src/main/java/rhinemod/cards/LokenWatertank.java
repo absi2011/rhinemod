@@ -36,7 +36,7 @@ public class LokenWatertank extends AbstractRhineCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        // TODO：加一个迷迭香音效吧
+        CardCrawlGame.sound.play("AS_YOU_WISH");
         addToBot(new DamageAllAction(damage, p, DamageInfo.DamageType.NORMAL));
         addToBot(new MakeTempCardInDrawPileAction(new Unscrupulous(), magicNumber, true, true));
     }

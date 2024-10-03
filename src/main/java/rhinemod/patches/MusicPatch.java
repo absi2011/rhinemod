@@ -16,7 +16,16 @@ public class MusicPatch {
     public static class SoundTrackPatch {
         @SpireInsertPatch(rloc = 3, localvars = {"map"})
         public static void Insert(SoundMaster __instance, HashMap<String, Sfx> map) {
-//            map.put("AMBIANCE_SKY", new Sfx("audio/music/m_sys_act25side_combine.mp3", false));
+            map.put("AS_YOU_WISH", new Sfx("audio/sound/p_skill_asyouwish.mp3", false));
+            map.put("FS_SET", new Sfx("audio/sound/p_skill_wtrlimeset.mp3", false));
+            map.put("ATTACK_WATER", new Sfx("audio/sound/p_imp_wtrlime_remote.mp3", false));
+            map.put("SUBMERSION_TRIG", new Sfx("audio/sound/p_atk_wtrlimepull.mp3", false));
+            map.put("STAR_RING_EXPLODE", new Sfx("audio/sound/e_imp_planetrockexplode.mp3", false));
+            map.put("CALCIFICATION", new Sfx("audio/sound/p_field_calcinosis.mp3", false));
+            map.put("SUMMON_STAR_RING", new Sfx("audio/sound/e_atk_planetrockres.mp3", false));
+            map.put("SHATTERED_VISION", new Sfx("audio/sound/e_atk_earthimpact.mp3", false));
+            map.put("JESSELTON_S2_SKILL", new Sfx("audio/sound/e_imp_magicsword_n.mp3", false));
+            map.put("TURNPIKE_BOOM", new Sfx("audio/sound/e_imp_carcrush_1.mp3", false));
         }
     }
 

@@ -74,22 +74,20 @@ public class Awaken_Monster extends AbstractRhineMonster {
         super.damage(info);
     }
 
+    private void shatteredVision(int stage) {
+        state.setAnimation(0, "Skill_2_Start", false);
+        state.setAnimation(0, "Skill_2_Loop", false);
+        state.setAnimation(0, "Skill_2_End", false);
+        state.addAnimation(0, "Idle", true, 0);
+        CardCrawlGame.sound.play("SHATTERED_VISION");
+        addToBot(new WaitAction(0.3F));
+        addToBot(new AwakenAction(damage.get(stage).base, this));
+    }
+
     @Override
     public void takeTurn() {
-        if (nextMove == 1) {
-            state.setAnimation(0, "Skill_2_Start", false);
-            state.setAnimation(0, "Skill_2_Loop", false);
-            state.setAnimation(0, "Skill_2_End", false);
-            state.addAnimation(0, "Idle", true, 0);
-            addToBot(new WaitAction(0.3F));
-            addToBot(new AwakenAction(damage.get(0).base, this));
-        } else if (nextMove == 2) {
-            state.setAnimation(0, "Skill_2_Start", false);
-            state.setAnimation(0, "Skill_2_Loop", false);
-            state.setAnimation(0, "Skill_2_End", false);
-            state.addAnimation(0, "Idle", true, 0);
-            addToBot(new WaitAction(0.3F));
-            addToBot(new AwakenAction(damage.get(1).base, this));
+        if (nextMove <= 2) {
+            shatteredVision(nextMove - 1);
         } else if (nextMove == 3) {
             state.setAnimation(0, "Skill_1", false);
             state.addAnimation(0, "Idle", true, 0);

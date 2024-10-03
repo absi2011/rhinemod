@@ -30,6 +30,7 @@ public class WaterDamage extends AbstractPower {
 
     @Override
     public void onInitialApplication() {
+        CardCrawlGame.sound.play("ATTACK_WATER");
         updateSubmersion();
     }
 
@@ -50,6 +51,7 @@ public class WaterDamage extends AbstractPower {
 
     @Override
     public void stackPower(int amount) {
+        CardCrawlGame.sound.play("ATTACK_WATER");
         this.amount += amount;
         updateSubmersion();
         updateDescription();
