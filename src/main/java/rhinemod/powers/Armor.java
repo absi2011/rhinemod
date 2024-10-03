@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import rhinemod.util.GlobalAttributes;
 
 public class Armor extends AbstractPower {
     public static final String POWER_ID = "rhinemod:Armor";
@@ -35,13 +36,10 @@ public class Armor extends AbstractPower {
 
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
-        //TODO： 这个15需要联动一下重击
-        if (damageAmount < 15 && info.type == DamageInfo.DamageType.NORMAL) {
+        if (damageAmount < GlobalAttributes.smashThreshold && info.type == DamageInfo.DamageType.NORMAL) {
             this.flash();
             return damageAmount / 2;
-        }
-        else
-        {
+        } else {
             return  damageAmount;
         }
     }

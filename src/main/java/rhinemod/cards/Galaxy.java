@@ -40,54 +40,38 @@ public class Galaxy extends AbstractRhineCard {
 
     @Override
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        int cnt = starRingcnt();
-        costForTurn = Math.max(0, cost - cnt); // TODO: 可能有bug
+        int cnt = starRingCnt();
+        costForTurn = Math.max(0, cost - cnt);
         isCostModifiedForTurn = (costForTurn != cost);
         return super.canUse(p, m);
     }
 
     @Override
     public void applyPowers() {
-        int cnt = starRingcnt();
-        costForTurn = Math.max(0, cost - cnt); // TODO: 可能有bug
+        int cnt = starRingCnt();
+        costForTurn = Math.max(0, cost - cnt);
         isCostModifiedForTurn = (costForTurn != cost);
-        for (int i = 0; i < cnt; i ++)
-        {
-            baseDamage *= 2;
-        }
+        baseDamage <<= cnt;
         super.applyPowers();
-        for (int i = 0; i < cnt; i++)
-        {
-            baseDamage /= 2;
-        }
+        baseDamage >>= cnt;
         isDamageModified = (baseDamage != damage);
     }
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
-        int cnt = starRingcnt();
-        costForTurn = Math.max(0, cost - cnt); // TODO: 可能有bug
+        int cnt = starRingCnt();
+        costForTurn = Math.max(0, cost - cnt);
         isCostModifiedForTurn = (costForTurn != cost);
-        for (int i = 0; i < cnt; i ++)
-        {
-            baseDamage *= 2;
-        }
+        baseDamage <<= cnt;
         super.calculateCardDamage(mo);
-        for (int i = 0; i < cnt; i++)
-        {
-            baseDamage /= 2;
-        }
+        baseDamage >>= cnt;
         isDamageModified = (baseDamage != damage);
     }
 
-    int starRingcnt()
-    {
-        if (AbstractDungeon.player instanceof RhineLab)
-        {
+    int starRingCnt() {
+        if (AbstractDungeon.player instanceof RhineLab) {
             return ((RhineLab) AbstractDungeon.player).currentRings.size();
-        }
-        else
-        {
+        } else {
             return 0;
         }
     }

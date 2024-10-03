@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import rhinemod.util.GlobalAttributes;
 
 public class WeaknessNonSmash extends AbstractPower {
     public static final String POWER_ID = "rhinemod:WeaknessNonSmash";
@@ -37,8 +38,7 @@ public class WeaknessNonSmash extends AbstractPower {
 
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
-        //TODO： 这个15需要联动一下重击
-        if ((damageAmount > 0) && (damageAmount < 15 || info.type != DamageInfo.DamageType.NORMAL) && ((info.name == null) || (!info.name.equals(NotTrigger)))) {
+        if ((damageAmount > 0) && (damageAmount < GlobalAttributes.smashThreshold || info.type != DamageInfo.DamageType.NORMAL) && ((info.name == null) || (!info.name.equals(NotTrigger)))) {
             this.flash();
             DamageInfo newInfo = new DamageInfo(owner, damageAmount, DamageInfo.DamageType.THORNS);
             newInfo.name = NotTrigger;
