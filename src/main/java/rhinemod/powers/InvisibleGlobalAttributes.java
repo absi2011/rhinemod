@@ -13,7 +13,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import rhinemod.cards.AbstractRhineCard;
 import rhinemod.characters.RhineLab;
-import rhinemod.characters.StarRing;
 import rhinemod.util.GlobalAttributes;
 
 public class InvisibleGlobalAttributes extends AbstractPower {

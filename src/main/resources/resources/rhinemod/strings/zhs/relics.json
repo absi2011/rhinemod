@@ -49,6 +49,11 @@
     "FLAVOR": "它们唯一注定的意义和生命最终的索求，是什么？",
     "DESCRIPTIONS": ["在每回合开始时获得 [E] 。 你无法再重塑卡牌。"]
   },
+  "rhinemod:RhineChargeSuit": {
+    "NAME": "莱茵充能护服",
+    "FLAVOR": "风暴中，唯保守者屹立不倒。",
+    "DESCRIPTIONS": ["在每回合开始时，获得 #b2 点 #y钙质粒子。"]
+  },
 
   "rhinemod:Melt": {
     "NAME": "融化",

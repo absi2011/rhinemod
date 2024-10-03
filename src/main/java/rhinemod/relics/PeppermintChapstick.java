@@ -25,8 +25,8 @@ public class PeppermintChapstick extends CustomRelic implements ClickableRelic {
     public static final RelicStrings relicStrings = CardCrawlGame.languagePack.getRelicStrings(ID);
     public static final String NAME = relicStrings.NAME;
     public static final String[] DESCRIPTIONS = relicStrings.DESCRIPTIONS;
-    public static final Texture IMG = new Texture("resources/rhinemod/images/relics/Deal.png");
-    public static final Texture IMG_OUTLINE = new Texture("resources/rhinemod/images/relics/Deal.png");
+    public static final Texture IMG = new Texture("resources/rhinemod/images/relics/PeppermintChapstick.png");
+    public static final Texture IMG_OUTLINE = new Texture("resources/rhinemod/images/relics/PeppermintChapstick_p.png");
     private static final int FLOWSP_AMOUNT = 2;
     public PeppermintChapstick() {
         super(ID, IMG, IMG_OUTLINE, RelicTier.RARE, LandingSound.MAGICAL);

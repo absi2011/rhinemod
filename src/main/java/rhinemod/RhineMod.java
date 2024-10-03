@@ -385,6 +385,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
 
         // uncommon.
         BaseMod.addRelic(new PittsAssortedFruits(), RelicType.SHARED);
+        BaseMod.addRelicToCustomPool(new RhineChargeSuit(), RHINE_MATTE);
 
         // rare.
         BaseMod.addRelic(new Awaken(), RelicType.SHARED);
