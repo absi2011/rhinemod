@@ -23,8 +23,8 @@ public class Stargate extends CustomRelic implements ClickableRelic {
     public static final RelicStrings relicStrings = CardCrawlGame.languagePack.getRelicStrings(ID);
     public static final String NAME = relicStrings.NAME;
     public static final String[] DESCRIPTIONS = relicStrings.DESCRIPTIONS;
-    public static final Texture IMG = new Texture("resources/rhinemod/images/relics/Awaken.png");
-    public static final Texture IMG_OUTLINE = new Texture("resources/rhinemod/images/relics/Awaken_p.png");
+    public static final Texture IMG = new Texture("resources/rhinemod/images/relics/Stargate.png");
+    public static final Texture IMG_OUTLINE = new Texture("resources/rhinemod/images/relics/Stargate_p.png");
     public Stargate() {
         super(ID, IMG, IMG_OUTLINE, RelicTier.RARE, LandingSound.MAGICAL);
         counter = 2;

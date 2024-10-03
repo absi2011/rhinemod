@@ -21,8 +21,8 @@ public class TITStudentIdCard extends CustomRelic {
     public static final RelicStrings relicStrings = CardCrawlGame.languagePack.getRelicStrings(ID);
     public static final String NAME = relicStrings.NAME;
     public static final String[] DESCRIPTIONS = relicStrings.DESCRIPTIONS;
-    public static final Texture IMG = new Texture("resources/rhinemod/images/relics/LoneTrail.png");
-    public static final Texture IMG_OUTLINE = new Texture("resources/rhinemod/images/relics/LoneTrail_p.png");
+    public static final Texture IMG = new Texture("resources/rhinemod/images/relics/TITStudentIdCard.png");
+    public static final Texture IMG_OUTLINE = new Texture("resources/rhinemod/images/relics/TITStudentIdCard_p.png");
     public TITStudentIdCard() {
         super(ID, IMG, IMG_OUTLINE, RelicTier.STARTER, LandingSound.FLAT);
         counter = 0;
