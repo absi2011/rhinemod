@@ -101,7 +101,7 @@
     "NAME": "实验错误",
     "DESCRIPTIONS": [
       "该星环死亡时，将 #b",
-      " 张 #r出格 洗入你的弃牌堆。"
+      " 张 #y出格 洗入你的弃牌堆。"
     ]
   },
   "rhinemod:GalleriaStellariaPower": {
@@ -125,7 +125,7 @@
     "NAME": "伤害减免",
     "DESCRIPTIONS": [
       "受到的攻击伤害减少 #b",
-      " %，当受到 #r任意 伤害时，减少 #b",
+      " %，受到伤害时，减少 #b",
       " 层。"
     ]
   },
@@ -133,7 +133,7 @@
     "NAME": "自动开火",
     "DESCRIPTIONS": [
       "回合开始时，造成 #b",
-      " 点伤害，当受到 #r任意 伤害时，减少 #b",
+      " 点伤害，当受到伤害时，减少 #b",
       " 层。"
     ]
   },
@@ -141,7 +141,7 @@
     "NAME": "自动防护",
     "DESCRIPTIONS": [
       "回合开始时，获得 #b",
-      " 点格挡，当受到 #r任意 伤害时，减少 #b",
+      " 点格挡，受到伤害时，减少 #b",
       " 层。"
     ]
   },
@@ -155,31 +155,31 @@
   "rhinemod:Friable": {
     "NAME": "易碎",
     "DESCRIPTIONS": [
-      "受到 #r重击 时死亡。"
+      "受到 #y重击 时死亡。"
     ]
   },
   "rhinemod:NoStun": {
     "NAME": "眩晕免疫",
     "DESCRIPTIONS": [
-      "无法获得 #r眩晕 状态。"
+      "无法获得 #y眩晕 状态。"
     ]
   },
   "rhinemod:Armor": {
     "NAME": "装甲",
     "DESCRIPTIONS": [
-      "受到的非 #r重击 伤害减半。"
+      "受到的非 #y重击 伤害减半。"
     ]
   },
   "rhinemod:WeaknessSmash": {
     "NAME": "弱点：重击",
     "DESCRIPTIONS": [
-      "受到的 #r重击 伤害翻倍。"
+      "受到的 #y重击 伤害翻倍。"
     ]
   },
   "rhinemod:WeaknessNonSmash": {
     "NAME": "弱点：非重击",
     "DESCRIPTIONS": [
-      "受到的非 #r重击 伤害时，额外受到一次等量伤害。"
+      "受到的非 #y重击 伤害时，额外受到一次等量伤害。"
     ]
   },
   "rhinemod:Average": {
@@ -202,7 +202,7 @@
     "DESCRIPTIONS": [
       "死亡时，对玩家造成 #b",
       " 点伤害",
-      "，并召唤一个 #r交通警察 。",
+      "，并召唤一个 #y交通警察 。",
       "。"
     ]
   },
@@ -286,5 +286,9 @@
   "rhinemod:SHAFTPower": {
     "NAME": "能量井",
     "DESCRIPTIONS": ["积攒能量中（ #y", "/3 ）。", "能量积攒完毕。"]
+  },
+  "rhinemod:BlackBeanTeaPower": {
+    "NAME": "黑豆茶",
+    "DESCRIPTIONS": ["下回合开始时，失去 #b", " #y金币。"]
   }
 }

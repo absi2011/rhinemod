@@ -39,12 +39,10 @@ import org.apache.logging.log4j.Logger;
 import rhinemod.cards.special.*;
 import rhinemod.cards.*;
 import rhinemod.characters.RhineLab;
-import rhinemod.events.ConvergenceOfPastAndPresent;
-import rhinemod.events.HeartEvent;
-import rhinemod.events.MysteriousInvent;
-import rhinemod.events.SkyEvent;
+import rhinemod.events.*;
 import rhinemod.monsters.*;
 import rhinemod.patches.RhineEnum;
+import rhinemod.potions.*;
 import rhinemod.relics.*;
 import rhinemod.util.TheSky;
 
@@ -205,7 +203,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
     }
 
     private void initializePotions() {
-//        BaseMod.addPotion(BottledCommand.class, Color.SKY, null, null, BottledCommand.ID, nearlmod.patches.RhineEnum.NEARL_CLASS);
+        BaseMod.addPotion(BlackBeanTea.class, Color.GRAY, Color.DARK_GRAY, null, BlackBeanTea.ID, RhineEnum.RHINE_CLASS);
     }
 
     private void initializeSpecialImg() {

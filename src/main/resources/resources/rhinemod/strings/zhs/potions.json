@@ -2,5 +2,9 @@
   "rhinemod:BottledCalcium": {
     "NAME": "瓶装钙质",
     "DESCRIPTIONS": ["获得 #b", " 点 #y钙质粒子 。"]
+  },
+  "rhinemod:BlackBeanTea": {
+    "NAME": "黑豆茶",
+    "DESCRIPTIONS": ["获得 #b", " 点 #y力量 ，下回合开始时，失去 #b", " #y金币 。"]
   }
 }
