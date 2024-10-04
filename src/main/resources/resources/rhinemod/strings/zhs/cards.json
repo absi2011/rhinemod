@@ -291,7 +291,7 @@
         "UPGRADE_DESCRIPTION": "",
         "EXTENDED_DESCRIPTION": [
             "“生物工程”",
-            "获得 !B! 点 格挡 ，造成 !D! 点伤害， rhinemod:钙质粒子 ： !M! 。 NL 从你的牌组中移除这张牌。 NL 消耗 。",
+            "获得 !B! 点 格挡 ， NL 造成 !D! 点伤害，  NL rhinemod:钙质粒子 ： !M! 。 NL 从你的牌组中移除这张牌。 NL 消耗 。",
             "高能物理",
             "rhinemod:科研进度 ： !M! 。 NL 如果你的 rhinemod:科研进度 达到 !rhinemod:M2! ，从3张星环牌中选择一张加入你的手牌。",
             "生态科学",

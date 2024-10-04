@@ -50,7 +50,6 @@ public class TrafficPolice extends AbstractRhineMonster {
         addToBot(new CannotLoseAction());
         addToBot(new ApplyPowerAction(this, this, new InvisiblePower(this, 2)));
         addToBot(new ChangeStateAction(this, "HIDDEN"));
-        // 隐匿特效
     }
 
     public void changeState(String stateName) {

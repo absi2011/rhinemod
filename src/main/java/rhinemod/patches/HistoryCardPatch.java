@@ -7,6 +7,9 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.screens.runHistory.RunHistoryScreen;
 import com.megacrit.cardcrawl.screens.stats.RunData;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import rhinemod.RhineMod;
 import rhinemod.cards.AbstractRhineCard;
 
 public class HistoryCardPatch {
@@ -17,9 +20,12 @@ public class HistoryCardPatch {
             if (cardID.startsWith("rhinemod")) {
                 String libraryLookupName = cardID;
                 int upgradeBranch = -1;
-                if (libraryLookupName.charAt(libraryLookupName.length() - 2) == '+') {
+                if (libraryLookupName.charAt(libraryLookupName.length() - 2) == '*') {
                     upgradeBranch = libraryLookupName.charAt(libraryLookupName.length() - 1) - '0';
                     libraryLookupName = libraryLookupName.substring(0, libraryLookupName.length() - 2);
+                }
+                else {
+                    return SpireReturn.Continue();
                 }
                 AbstractCard card = CardLibrary.getCard(libraryLookupName);
                 if (!(card instanceof AbstractRhineCard)) return SpireReturn.Continue();

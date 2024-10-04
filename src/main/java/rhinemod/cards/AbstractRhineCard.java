@@ -184,7 +184,7 @@ public abstract class AbstractRhineCard extends CustomCard {
     @Override
     public String getMetricID() {
         String id = cardID;
-        if (upgraded) id = id + "+" + chosenBranch;
+        if (upgraded) id = id + "*" + chosenBranch;
         return id;
     }
 

@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.UpgradeShineEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
+import rhinemod.relics.RhineLabEmployeeCard;
 import rhinemod.relics.TITStudentIdCard;
 
 import java.util.ArrayList;
@@ -19,6 +20,9 @@ public class StarterRelicPatch {
         public static void Post(CardGroup _inst, AbstractCard c) {
             if (_inst.type == CardGroup.CardGroupType.MASTER_DECK && AbstractDungeon.player.hasRelic(TITStudentIdCard.ID)) {
                 AbstractDungeon.player.getRelic(TITStudentIdCard.ID).counter ++;
+            }
+            if (_inst.type == CardGroup.CardGroupType.MASTER_DECK && AbstractDungeon.player.hasRelic(RhineLabEmployeeCard.ID)) {
+                AbstractDungeon.player.getRelic(RhineLabEmployeeCard.ID).counter ++;
             }
         }
     }
