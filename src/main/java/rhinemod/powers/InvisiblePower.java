@@ -14,7 +14,7 @@ public class InvisiblePower extends AbstractPower {
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    private final InvisibleSmokeEffect effect;
+    private InvisibleSmokeEffect effect;
     public InvisiblePower(AbstractCreature owner, int amount) {
         this.ID = POWER_ID;
         this.name = NAME;
@@ -24,6 +24,10 @@ public class InvisiblePower extends AbstractPower {
         region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/BionicDevice 84.png"), 0, 0, 84, 84);
         region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/BionicDevice 32.png"), 0, 0, 32, 32);
         updateDescription();
+    }
+
+    @Override
+    public void onInitialApplication() {
         effect = new InvisibleSmokeEffect(owner.hb.cX, owner.hb.cY);
     }
 
@@ -35,7 +39,10 @@ public class InvisiblePower extends AbstractPower {
     @Override
     public void atEndOfRound() {
         addToBot(new ReducePowerAction(this.owner, this.owner, this, 1));
-        if (amount == 1) effect.endEffect();
     }
 
+    @Override
+    public void onRemove() {
+        if (effect != null) effect.endEffect();
+    }
 }
