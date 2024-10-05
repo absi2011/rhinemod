@@ -57,23 +57,18 @@ public class ScorePatch {
     public static class VictoryStatsPatch {
         @SpireInsertPatch(locator = Locator.class)
         public static void Insert(VictoryScreen _inst) {
-            if (IS_MELT) {
-                try {
-                    Field stats = GameOverScreen.class.getDeclaredField("stats");
-                    stats.setAccessible(true);
-                    ((ArrayList<GameOverStat>)stats.get(_inst)).add(new GameOverStat(MELT.NAME, MELT.DESCRIPTIONS[0], Integer.toString(-25)));
-                } catch (Exception e) {
-                    throw new RuntimeException("Unable to set game over stats.", e);
+            try {
+                Field stats = GameOverScreen.class.getDeclaredField("stats");
+                stats.setAccessible(true);
+                if (IS_MELT) {
+                    ((ArrayList<GameOverStat>) stats.get(_inst)).add(new GameOverStat(MELT.NAME, MELT.DESCRIPTIONS[0], Integer.toString(-25)));
                 }
-            }
-            if (VIOLATE_DEAL) {
-                try {
-                    Field stats = GameOverScreen.class.getDeclaredField("stats");
-                    stats.setAccessible(true);
-                    ((ArrayList<GameOverStat>)stats.get(_inst)).add(new GameOverStat(VDEAL.NAME, VDEAL.DESCRIPTIONS[0], Integer.toString(-500)));
-                } catch (Exception e) {
-                    throw new RuntimeException("Unable to set game over stats.", e);
+                if (VIOLATE_DEAL) {
+                    ((ArrayList<GameOverStat>) stats.get(_inst)).add(new GameOverStat(VDEAL.NAME, VDEAL.DESCRIPTIONS[0], Integer.toString(-500)));
                 }
+
+            } catch (Exception e) {
+                throw new RuntimeException("Unable to set game over stats.", e);
             }
         }
 
@@ -90,14 +85,18 @@ public class ScorePatch {
     public static class DeathStatsPatch {
         @SpireInsertPatch(locator = Locator.class)
         public static void Insert(DeathScreen _inst) {
-            if (IS_MELT) {
-                try {
-                    Field stats = GameOverScreen.class.getDeclaredField("stats");
-                    stats.setAccessible(true);
-                    ((ArrayList<GameOverStat>)stats.get(_inst)).add(new GameOverStat(MELT.NAME, MELT.DESCRIPTIONS[0], Integer.toString(-25)));
-                } catch (Exception e) {
-                    throw new RuntimeException("Unable to set game over stats.", e);
+            try {
+                Field stats = GameOverScreen.class.getDeclaredField("stats");
+                stats.setAccessible(true);
+                if (IS_MELT) {
+                    ((ArrayList<GameOverStat>) stats.get(_inst)).add(new GameOverStat(MELT.NAME, MELT.DESCRIPTIONS[0], Integer.toString(-25)));
                 }
+                if (VIOLATE_DEAL) {
+                    ((ArrayList<GameOverStat>) stats.get(_inst)).add(new GameOverStat(VDEAL.NAME, VDEAL.DESCRIPTIONS[0], Integer.toString(-500)));
+                }
+
+            } catch (Exception e) {
+                throw new RuntimeException("Unable to set game over stats.", e);
             }
         }
 

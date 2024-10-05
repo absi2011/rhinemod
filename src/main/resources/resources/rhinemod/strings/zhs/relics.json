@@ -9,9 +9,9 @@
     "FLAVOR": "持此卡可进入莱茵生命总部及对应科室实验区域。",
     "DESCRIPTIONS": ["每当你从卡组中移除1张卡牌，进入下一个房间时随机升级一张卡牌至随机倾向。"]
   },
-  "rhinemod:Awaken": {
-    "NAME": "“唤醒”",
-    "FLAVOR": "向前或向后都是科技的方向，它不分正反，永远进步。",
+  "rhinemod:AwakenModel": {
+    "NAME": "“唤醒”模型",
+    "FLAVOR": "向前或向后都是科技的方向，\n它不分正反，永远进步。",
     "DESCRIPTIONS": ["每 #b3 回合结束时，对所有敌人均匀造成共计 #b20 点伤害。"]
   },
   "rhinemod:ThreeDimensionArtDisplay": {
@@ -21,7 +21,7 @@
   },
   "rhinemod:Stargate": {
     "NAME": "星门",
-    "FLAVOR": "无根花园圃泛起点点星光，圆环现出幽深空洞。",
+    "FLAVOR": "无根花园圃泛起点点星光\n圆环现出幽深空洞",
     "DESCRIPTIONS": ["不处于战斗时，右键此遗物前往商店。最多触发 #b2 次。", "星门的能量已经耗尽。"]
   },
   "rhinemod:FlameEmitter": {
@@ -62,12 +62,32 @@
   },
   "rhinemod:LoneTrail": {
     "NAME": "孤星",
-    "FLAVOR": "晚安，泰拉的诸位。晚安，宇宙。",
+    "FLAVOR": "晚安，泰拉的诸位。\n晚安，宇宙。",
     "DESCRIPTIONS": ["使探索走向不同的结局。"]
   },
   "rhinemod:Deal": {
     "NAME": "约定",
     "FLAVOR": "这笔钱甚至买不起一个医药箱，但是总比没有好。",
     "DESCRIPTIONS": ["来自莱茵生命的协议书，上面写明了佣金以及待办事项。"]
+  },
+  "rhinemod:Dor3Bionic": {
+    "NAME": "Dor-3改造体",
+    "FLAVOR": "它不仅仅是多萝西的造物，\n更是她的家人，她的梦想。",
+    "DESCRIPTIONS": ["遇到下一个 #y动力装甲 或 #y唤醒 时，自动消灭目标敌人，并升级成不同型号。"]
+  },
+  "rhinemod:AwakenRelic": {
+    "NAME": "“唤醒”",
+    "FLAVOR": "科技无法做到的事情，\n爱与希望可以。",
+    "DESCRIPTIONS": ["每 #b3 回合结束时，对所有敌人均匀造成共计 #b120 点伤害。"]
+  },
+  "rhinemod:R31HeavyPowerArmorRelic": {
+    "NAME": "R-31重型动力装甲",
+    "FLAVOR": "哥伦比亚人在遵守法律的同时，总是乐意寻求效率更高的方式。",
+    "DESCRIPTIONS": ["对战开始时，对一名敌人造成 #b3 点伤害 #b10 次，并给予其 #y眩晕 。"]
+  },
+  "rhinemod:ExperimentalPowerArmorRelic": {
+    "NAME": "实验用动力装甲",
+    "FLAVOR": "无人操控的动力装甲。",
+    "DESCRIPTIONS": ["你受到的非 #y重击 伤害减半。"]
   }
 }

@@ -7,37 +7,48 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.screens.runHistory.RunHistoryScreen;
 import com.megacrit.cardcrawl.screens.stats.RunData;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import rhinemod.RhineMod;
 import rhinemod.cards.AbstractRhineCard;
 
 public class HistoryCardPatch {
+    private static AbstractCard checkRhineCard(String cardID) {
+
+        if (cardID.startsWith("rhinemod")) {
+            String libraryLookupName = cardID;
+            int upgradeBranch;
+            if (libraryLookupName.charAt(libraryLookupName.length() - 2) == '*') {
+                upgradeBranch = libraryLookupName.charAt(libraryLookupName.length() - 1) - '0';
+                libraryLookupName = libraryLookupName.substring(0, libraryLookupName.length() - 2);
+            } else {
+                return null;
+            }
+            AbstractCard card = CardLibrary.getCard(libraryLookupName);
+            if (!(card instanceof AbstractRhineCard)) return null;
+            card = card.makeSameInstanceOf();
+            ((AbstractRhineCard) card).chosenBranch = upgradeBranch;
+            card.upgrade();
+            return card;
+        } else {
+            return null;
+        }
+    }
+
     @SpirePatch(clz = RunHistoryScreen.class, method = "cardForName")
     public static class CardForNamePatch {
         @SpirePrefixPatch
         public static SpireReturn<?> Prefix(RunHistoryScreen _inst, RunData runData, String cardID) {
-            if (cardID.startsWith("rhinemod")) {
-                String libraryLookupName = cardID;
-                int upgradeBranch = -1;
-                if (libraryLookupName.charAt(libraryLookupName.length() - 2) == '*') {
-                    upgradeBranch = libraryLookupName.charAt(libraryLookupName.length() - 1) - '0';
-                    libraryLookupName = libraryLookupName.substring(0, libraryLookupName.length() - 2);
-                }
-                else {
-                    return SpireReturn.Continue();
-                }
-                AbstractCard card = CardLibrary.getCard(libraryLookupName);
-                if (!(card instanceof AbstractRhineCard)) return SpireReturn.Continue();
-                card = card.makeSameInstanceOf();
-                if (upgradeBranch != -1) {
-                    ((AbstractRhineCard) card).chosenBranch = upgradeBranch;
-                    card.upgrade();
-                }
-                return SpireReturn.Return(card);
-            } else {
-                return SpireReturn.Continue();
-            }
+            AbstractCard c = checkRhineCard(cardID);
+            if (c == null) return SpireReturn.Continue();
+            else return SpireReturn.Return(c);
+        }
+    }
+
+    @SpirePatch(clz = CardLibrary.class, method = "getCardNameFromMetricID")
+    public static class GetCardNameFromMetricIDPatch {
+        @SpirePrefixPatch
+        public static SpireReturn<?> Prefix(String metricID) {
+            AbstractCard c = checkRhineCard(metricID);
+            if (c == null) return SpireReturn.Continue();
+            else return SpireReturn.Return(c.name);
         }
     }
 }

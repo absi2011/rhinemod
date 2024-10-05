@@ -199,7 +199,12 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
                 dungeonID("Special").
                 endsWithRewardsUI(false).
                 create());
-
+        BaseMod.addEvent(new AddEventParams.Builder(UnsecuredCorridors.ID, UnsecuredCorridors.class).
+                eventType(EventUtils.EventType.NORMAL).
+                dungeonID("TheCity").
+                dungeonID("TheBeyond").
+                endsWithRewardsUI(false).
+                create());
     }
 
     private void initializePotions() {
@@ -386,7 +391,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addRelicToCustomPool(new RhineChargeSuit(), RHINE_MATTE);
 
         // rare.
-        BaseMod.addRelic(new Awaken(), RelicType.SHARED);
+        BaseMod.addRelic(new AwakenModel(), RelicType.SHARED);
         BaseMod.addRelic(new Stargate(), RelicType.SHARED);
         BaseMod.addRelic(new FlameEmitter(), RelicType.SHARED);
         BaseMod.addRelicToCustomPool(new PeppermintChapstick(), RHINE_MATTE);
@@ -399,6 +404,10 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addRelic(new LoneTrail(), RelicType.SHARED);
         BaseMod.addRelicToCustomPool(new Melt(), RHINE_MATTE);
         BaseMod.addRelic(new Deal(), RelicType.SHARED);
+        BaseMod.addRelic(new Dor3Bionic(), RelicType.SHARED);
+        BaseMod.addRelic(new Awaken(), RelicType.SHARED);
+        BaseMod.addRelic(new R31HeavyPowerArmorRelic(), RelicType.SHARED);
+        BaseMod.addRelic(new ExperimentalPowerArmorRelic(), RelicType.SHARED);
 
         // shop.
         BaseMod.addRelic(new ThreeDimensionArtDisplay(), RelicType.SHARED);
