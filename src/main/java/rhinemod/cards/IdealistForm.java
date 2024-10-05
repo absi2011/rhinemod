@@ -44,7 +44,7 @@ public class IdealistForm extends AbstractRhineCard {
                 addToBot(new ApplyPowerAction(p, p, new IdealistFormPowerS(p, magicNumber)));
                 break;
             case 2:
-                addToBot(new ApplyPowerAction(p, p, new IdealistFormPowerK(p, magicNumber)));
+                addToBot(new ApplyPowerAction(p, p, new IdealistFormPowerK(p, 1)));
                 break;
             case 3:
                 addToBot(new ApplyPowerAction(p, p, new IdealistFormPowerM(p, magicNumber)));

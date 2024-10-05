@@ -1,7 +1,7 @@
 {
   "rhinemod:SkyEvent": {
-    "NAME": "冲破天幕",
-    "DESCRIPTIONS": ["长大了我要当太空人，塞雷娅听了，给我我最爱的钙质化拳（"],
+    "NAME": "天幕",
+    "DESCRIPTIONS": ["站在塔的高处，再一次望向天空，漫天繁星。这里确实很高，从这里向上无疑会节省很多力气。你们看向星空，看着错误的轨道，继续向着塔顶……"],
     "OPTIONS": ["[前进]"]
   },
   "rhinemod:MysteriousInvent": {
