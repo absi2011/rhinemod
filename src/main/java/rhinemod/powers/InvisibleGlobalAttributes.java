@@ -75,6 +75,7 @@ public class InvisibleGlobalAttributes extends AbstractPower {
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
         if (!(card instanceof AbstractRhineCard)) return;
+        if (card.isInAutoplay) return;
         if (((AbstractRhineCard)card).realBranch != 1 && ((AbstractRhineCard)card).realBranch != 2) return;
         int flowspNum = p.globalAttributes.flowspNum;
         if (flowspNum == 0) return;
