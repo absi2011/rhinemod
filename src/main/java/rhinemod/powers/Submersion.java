@@ -53,7 +53,7 @@ public class Submersion extends AbstractPower {
 
     public void updateLevel(int amount) {
         if (amount < this.amount) {
-            addToTop(new ReducePowerAction(owner, owner, name, this.amount - amount));
+            addToTop(new ReducePowerAction(owner, owner, POWER_ID, this.amount - amount));
         } else if (amount > this.amount) {
             addToTop(new ApplyPowerAction(owner, owner, new Submersion(owner, amount - this.amount)));
         }
@@ -63,6 +63,7 @@ public class Submersion extends AbstractPower {
         updateDescription();
         if (amount >= 4) {
             AbstractDungeon.effectList.add(new FlashAtkImgEffect(owner.hb.cX, owner.hb.cY, AbstractGameAction.AttackEffect.POISON));
+            //TODO: 水流音效
             //TODO: 改个不是毒的别的特效？
             updateDreamer(AbstractDungeon.player.masterDeck);
             updateDreamer(AbstractDungeon.player.hand);

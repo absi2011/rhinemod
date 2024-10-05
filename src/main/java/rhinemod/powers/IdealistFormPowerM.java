@@ -25,6 +25,7 @@ public class IdealistFormPowerM extends AbstractPower {
         region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/BionicDevice 32.png"), 0, 0, 32, 32);
         this.amount = amount;
         drawAmount = 1;
+        priority = 0;
         updateDescription();
     }
 

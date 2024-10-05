@@ -14,7 +14,7 @@
   },
   "rhinemod:Stunned": {
     "NAME": "眩晕",
-    "DESCRIPTIONS": ["本回合内，水渍不再减少，重力变化时受到 #b4 点伤害。"]
+    "DESCRIPTIONS": ["本回合内，水渍不再减少，重力变化时受到 #b7 点伤害。"]
   },
   "rhinemod:PlanetaryDebris": {
     "NAME": "行星碎屑",
@@ -217,7 +217,13 @@
     "NAME": "理想者形态",
     "DESCRIPTIONS": [
       "在每回合结束时，如果你打出过所有 #y倾向 的牌，对所有敌人造成 #b",
-      " 点伤害。"
+      " 点伤害。",
+      "塞雷娅",
+      "克丽思腾",
+      "缪尔赛思",
+      "）",
+      "，",
+      "（当前已打出："
     ]
   },
   "rhinemod:IdealistFormPowerS": {

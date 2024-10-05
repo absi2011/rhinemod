@@ -7,6 +7,8 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import rhinemod.actions.IdealistFormKAction;
+import rhinemod.actions.IdealistFormSAction;
 import rhinemod.cards.LoneLight;
 
 public class IdealistFormPowerK extends AbstractPower {
@@ -34,7 +36,6 @@ public class IdealistFormPowerK extends AbstractPower {
     @Override
     public void atStartOfTurnPostDraw() {
         flash();
-        for (int i = 0; i < amount; i++)
-            GameActionManager.queueExtraCard(new LoneLight(), null);
+        addToBot(new IdealistFormKAction(amount));
     }
 }

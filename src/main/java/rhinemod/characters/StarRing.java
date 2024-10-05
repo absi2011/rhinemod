@@ -251,6 +251,8 @@ public class StarRing extends AbstractMonster {
             if (p instanceof RhineLab && !p.hasPower(EgotistPower.POWER_ID)) {
                 for (StarRing r : ((RhineLab) p).currentRings)
                     r.blast();
+            }
+            if (p instanceof  RhineLab) {
                 ((RhineLab) p).currentRings.clear();
             }
         }

@@ -18,7 +18,7 @@ public class ArclightVanguard extends AbstractRhineMonster {
     public static final int HighDamageTimes = 6;
 
     public ArclightVanguard(float x, float y) {
-        super(NAME, ID, 40, 0, 0, 150.0F, 320.0F, null, x, y);
+        super(NAME, ID, 40, 0, 0, 200.0F, 170.0F, null, x, y);
         type = EnemyType.NORMAL;
         if (AbstractDungeon.ascensionLevel >= 7) {
             setHp(43);

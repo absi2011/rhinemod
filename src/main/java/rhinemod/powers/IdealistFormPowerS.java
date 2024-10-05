@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import rhinemod.actions.AddCalciumAction;
+import rhinemod.actions.IdealistFormSAction;
 import rhinemod.cards.special.Unscrupulous;
 
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class IdealistFormPowerS extends AbstractPower {
         region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/BionicDevice 84.png"), 0, 0, 84, 84);
         region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/BionicDevice 32.png"), 0, 0, 32, 32);
         this.amount = amount;
+        priority = 10;
         updateDescription();
     }
 
@@ -38,15 +40,7 @@ public class IdealistFormPowerS extends AbstractPower {
 
     @Override
     public void atStartOfTurnPostDraw() {
-        ArrayList<AbstractCard> list = new ArrayList<>();
-        for (AbstractCard c : AbstractDungeon.player.hand.group)
-            if (c instanceof Unscrupulous)
-                list.add(c);
-        int cnt = list.size();
-        if (cnt == 0) return;
         flash();
-        for (AbstractCard c : list)
-            addToBot(new ExhaustSpecificCardAction(c, AbstractDungeon.player.hand));
-        addToBot(new AddCalciumAction(cnt * amount));
+        addToBot(new IdealistFormSAction(amount));
     }
 }

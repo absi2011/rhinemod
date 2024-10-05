@@ -14,6 +14,8 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import rhinemod.cards.AbstractRhineCard;
 
+import java.util.logging.Logger;
+
 public class IdealistFormPower extends AbstractPower {
     public static final String POWER_ID = "rhinemod:IdealistFormPower";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -35,7 +37,27 @@ public class IdealistFormPower extends AbstractPower {
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1] + DESCRIPTIONS[7];
+        boolean first = true;
+        if ((played & 1) != 0) {
+            if (!first) description += DESCRIPTIONS[6];
+            first = false;
+            description += DESCRIPTIONS[2];
+        }
+        if ((played & 2) != 0) {
+            if (!first) description += DESCRIPTIONS[6];
+            first = false;
+            description += DESCRIPTIONS[3];
+        }
+        if ((played & 4) != 0) {
+            if (!first) description += DESCRIPTIONS[6];
+            first = false;
+            description += DESCRIPTIONS[4];
+        }
+        description += DESCRIPTIONS[5];
+        if (first) {
+            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+        }
     }
 
     @Override
@@ -43,7 +65,7 @@ public class IdealistFormPower extends AbstractPower {
         if (isPlayer) {
             if (played == 7) {
                 flash();
-                addToBot(new DamageAllEnemiesAction(AbstractDungeon.player, amount, DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.NONE));
+                addToBot(new DamageAllEnemiesAction(AbstractDungeon.player, DamageInfo.createDamageMatrix(amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
             }
             played = 0;
         }
@@ -55,5 +77,6 @@ public class IdealistFormPower extends AbstractPower {
         int branch = ((AbstractRhineCard) card).realBranch;
         if (branch == 0) return;
         played |= 1 << (branch - 1);
+        updateDescription();
     }
 }
