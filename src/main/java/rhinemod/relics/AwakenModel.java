@@ -8,17 +8,17 @@ import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import rhinemod.actions.AverageDamageAllAction;
 
-public class Awaken extends CustomRelic {
+public class AwakenModel extends CustomRelic {
 
-    public static final String ID = "rhinemod:AwakenRelic";
+    public static final String ID = "rhinemod:AwakenModel";
     public static final RelicStrings relicStrings = CardCrawlGame.languagePack.getRelicStrings(ID);
     public static final String NAME = relicStrings.NAME;
     public static final String[] DESCRIPTIONS = relicStrings.DESCRIPTIONS;
     public static final Texture IMG = new Texture("resources/rhinemod/images/relics/Awaken.png");
     public static final Texture IMG_OUTLINE = new Texture("resources/rhinemod/images/relics/Awaken_p.png");
-    public static final int TOTAL_DMG = 140;
-    public Awaken() {
-        super(ID, IMG, IMG_OUTLINE, RelicTier.SPECIAL, LandingSound.HEAVY);
+    public static final int TOTAL_DMG = 20;
+    public AwakenModel() {
+        super(ID, IMG, IMG_OUTLINE, RelicTier.RARE, LandingSound.HEAVY);
         counter = 0;
     }
 
@@ -44,6 +44,6 @@ public class Awaken extends CustomRelic {
 
     @Override
     public AbstractRelic makeCopy() {
-        return new Awaken();
+        return new AwakenModel();
     }
 }
