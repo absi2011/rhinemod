@@ -35,6 +35,7 @@ public class GridCardSelectPatch {
     public static Hitbox[] hitboxes = new Hitbox[MAX_BRANCH];
     public static int branchesNum;
     public static boolean cardChecked;
+    public static int formerBranch;
 
     public static boolean IsSelectingBranch() {
         return OptFields.selectingBranch.get(AbstractDungeon.gridSelectScreen);
@@ -229,6 +230,7 @@ public class GridCardSelectPatch {
             if (IsSelectingBranch()) {
                 Logger.getLogger(GridCardSelectPatch.class.getName()).info("final select branch:" + ((AbstractRhineCard) branches[0]).chosenBranch);
                 if (!(card instanceof AbstractRhineCard)) return;
+                formerBranch = ((AbstractRhineCard) card).chosenBranch;
                 ((AbstractRhineCard) card).chosenBranch = ((AbstractRhineCard) branches[0]).chosenBranch;
                 OptFields.selectingBranch.set(_inst, false);
                 cardChecked = false;

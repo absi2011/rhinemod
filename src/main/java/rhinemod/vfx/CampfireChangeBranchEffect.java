@@ -6,23 +6,23 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Interpolation;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
-import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.rooms.CampfireUI;
 import com.megacrit.cardcrawl.rooms.RestRoom;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import rhinemod.cards.AbstractRhineCard;
+import rhinemod.patches.GridCardSelectPatch;
 import rhinemod.util.ChangeBranchOption;
 
+import java.util.ArrayList;
 import java.util.logging.Logger;
 
 public class CampfireChangeBranchEffect extends AbstractGameEffect {
-    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("rhinemod:CampfireChangeBranchEffect");
-    public static final String[] TEXT = uiStrings.TEXT;
+    public static final String EFFECT_TEXT = ChangeBranchOption.TEXT[3];
+    public static ArrayList<String> ids = new ArrayList<>();
     private boolean openedScreen = false;
     private final Color screenColor = AbstractDungeon.fadeColor.cpy();
     private final ChangeBranchOption changeBranchOption;
@@ -43,10 +43,12 @@ public class CampfireChangeBranchEffect extends AbstractGameEffect {
 
         if (!AbstractDungeon.isScreenUp && !AbstractDungeon.gridSelectScreen.selectedCards.isEmpty() && AbstractDungeon.gridSelectScreen.forUpgrade) {
             for (AbstractCard c : AbstractDungeon.gridSelectScreen.selectedCards) {
-                CardCrawlGame.metricData.addCampfireChoiceData("CHANGE_BRANCH", c.getMetricID());
                 if (!(c instanceof AbstractRhineCard)) continue;
                 Logger.getLogger(CampfireChangeBranchEffect.class.getName()).info("Change branch at campfire, " + c.cardID + " -> " + ((AbstractRhineCard) c).chosenBranch);
                 ((AbstractRhineCard) c).swapBranch(((AbstractRhineCard) c).chosenBranch);
+                String metricID = c.getMetricID();
+                ids.add(metricID.substring(0, metricID.length() - 1) + GridCardSelectPatch.formerBranch);
+                ids.add(metricID);
                 AbstractDungeon.player.bottledCardUpgradeCheck(c);
                 AbstractDungeon.effectsQueue.add(new ShowCardBrieflyEffect(c.makeStatEquivalentCopy()));
                 ChangeBranchOption.changeNum++;
@@ -61,7 +63,7 @@ public class CampfireChangeBranchEffect extends AbstractGameEffect {
             for (AbstractCard c : AbstractDungeon.player.masterDeck.group)
                 if (c instanceof AbstractRhineCard && c.upgraded && ((AbstractRhineCard) c).possibleBranches().size() > 1)
                     list.group.add(c);
-            AbstractDungeon.gridSelectScreen.open(list, 1, TEXT[0], true, false, true, false);
+            AbstractDungeon.gridSelectScreen.open(list, 1, EFFECT_TEXT, true, false, true, false);
         }
 
         if (duration < 0.0F) {

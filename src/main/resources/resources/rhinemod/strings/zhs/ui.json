@@ -29,12 +29,9 @@
     "TEXT": [
       "重塑",
       "修改你牌组中一张牌的倾向。",
-      "没有可以修改倾向的牌。"
-    ]
-  },
-  "rhinemod:CampfireChangeBranchEffect": {
-    "TEXT": [
-      "选择一张牌 修改倾向。"
+      "没有可以修改倾向的牌。",
+      "选择一张牌 修改倾向。",
+      "#b重塑 %s #b为 %s"
     ]
   },
   "rhinemod:RunHistoryMonsterNames": {
