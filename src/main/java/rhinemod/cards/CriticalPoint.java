@@ -23,8 +23,8 @@ public class CriticalPoint extends AbstractRhineCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String IMG = "resources/rhinemod/images/cards/NovaEruption.png";
     public static final int COST = 1;
-    public static final int MULTI = 100;
-    public static final int EXTRA_MULTI = 100;
+    public static final int MULTI = 1;
+    public static final int EXTRA_MULTI = 1;
     public CriticalPoint() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.RHINE_MATTE,
