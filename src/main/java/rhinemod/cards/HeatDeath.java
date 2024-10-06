@@ -20,7 +20,7 @@ public class HeatDeath extends AbstractRhineCard {
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String IMG = "resources/rhinemod/images/cards/HighSpeedResonatingTroubleshooter.png";
+    public static final String IMG = "resources/rhinemod/images/cards/HeatDeath.png";
     public static final int COST = 3;
     public static final int UPGRADE_COST = 2;
     public HeatDeath() {

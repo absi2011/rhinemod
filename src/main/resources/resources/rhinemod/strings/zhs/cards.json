@@ -303,7 +303,7 @@
         "DESCRIPTION": "当你造成 rhinemod:重击 时，目标本回合减少 !M! 点 力量 。",
         "UPGRADE_DESCRIPTION": ""
     },
-    "rhinemod:RedShiftExperience": {
+    "rhinemod:RedShiftExperiment": {
         "NAME": "红移实验",
         "DESCRIPTION": "召唤一个 !M! 点生命的 rhinemod:星环 ，当它被引爆时，将 !rhinemod:M2! 张 *出格 洗入你的弃牌堆。",
         "UPGRADE_DESCRIPTION": ""
@@ -353,6 +353,11 @@
         "NAME": "紧急逃生门",
         "DESCRIPTION": "造成 !D! 点伤害。 NL 改变 rhinemod:重力 。 NL 将一张 *背叛者 置入手牌。",
         "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:IntricateReconstruction": {
+        "NAME": "精密重构",
+        "DESCRIPTION": "将你的 rhinemod:钙质粒子 数量翻倍。",
+        "UPGRADE_DESCRIPTION": "将你的 rhinemod:钙质粒子 数量变为三倍。"
     },
 
     "rhinemod:Calcification": {
