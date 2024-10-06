@@ -6,14 +6,18 @@ import rhinemod.monsters.AbstractRhineMonster;
 
 public class DelayDieAction extends AbstractGameAction {
     public final AbstractRhineMonster m;
+    float maxDuration;
     public DelayDieAction(AbstractRhineMonster m, float time) {
         actionType = ActionType.SPECIAL;
-        duration = time;
+        maxDuration = duration = time;
         this.m = m;
     }
 
     @Override
     public void update() {
+        if (duration == maxDuration) {
+            m.dieAnimation();
+        }
         duration -= Gdx.graphics.getDeltaTime();
         if (duration < 0.0F) {
             m.realDie();

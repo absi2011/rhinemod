@@ -19,4 +19,6 @@ public abstract class AbstractRhineMonster extends CustomMonster {
     }
 
     public void realDie() {}
+
+    public void dieAnimation() {}
 }

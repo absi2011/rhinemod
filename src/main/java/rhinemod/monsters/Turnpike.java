@@ -101,10 +101,13 @@ public class Turnpike extends AbstractRhineMonster {
     @Override
     public void die() {
         CardCrawlGame.sound.play("TURNPIKE_BOOM");
-        state.setAnimation(0, "Die", false);
-        addToTop(new DelayDieAction(this, 2.0F));
+        addToBot(new DelayDieAction(this, 2.0F));
     }
 
+    @Override
+    public void dieAnimation() {
+        state.setAnimation(0, "Die", false);
+    }
     @Override
     public void realDie() {
         float offsetX = (drawX - Settings.WIDTH * 0.75F) / Settings.xScale;
