@@ -4,38 +4,35 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import rhinemod.actions.SummonStarRingAction;
-import rhinemod.cards.special.Unscrupulous;
+import rhinemod.actions.AddCalciumAction;
+import rhinemod.characters.RhineLab;
 import rhinemod.interfaces.UpgradeBranch;
 import rhinemod.patches.AbstractCardEnum;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RedShiftExperience extends AbstractRhineCard {
-    public static final String ID = "rhinemod:RedShiftExperience";
+public class IntricateReconstruction extends AbstractRhineCard {
+    public static final String ID = "rhinemod:IntricateReconstruction";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String IMG = "resources/rhinemod/images/cards/Starfall.png";
+    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
+    public static final String IMG = "resources/rhinemod/images/cards/IntricateReconstruction.png";
     public static final int COST = 1;
-    public static final int STAR_HEALTH = 20;
-    public static final int EXPLODE_STATUS = 2;
-    public static final int UPGRADE_EXPLODE_STATUS = -1;
-
-    public RedShiftExperience() {
+    public IntricateReconstruction() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.UNCOMMON, CardTarget.SELF);
-        magicNumber = baseMagicNumber = STAR_HEALTH;
-        secondMagicNumber = baseSecondMagicNumber = EXPLODE_STATUS;
-        cardsToPreview = new Unscrupulous();
-        realBranch = 2;
+        realBranch = 1;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new SummonStarRingAction(magicNumber, 0, 0, secondMagicNumber));
+        if (!(p instanceof RhineLab)) return;
+        int amount = ((RhineLab) p).globalAttributes.calciumNum;
+        if (upgraded) amount *= 2;
+        addToBot(new AddCalciumAction(amount));
     }
 
     @Override
@@ -44,7 +41,7 @@ public class RedShiftExperience extends AbstractRhineCard {
             add(() -> {
                 if (!upgraded) {
                     upgradeName(0);
-                    upgradeSecondMagicNumber(UPGRADE_EXPLODE_STATUS);
+                    rawDescription = UPGRADE_DESCRIPTION;
                     initializeDescription();
                 }
             });

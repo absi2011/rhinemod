@@ -297,7 +297,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         cards.add(new FlowCombo()); // 流形连击
         cards.add(new AcademicResearch()); // 学术研究
         cards.add(new EliminateThreat()); // 解除威胁
-        cards.add(new RedShiftExperience()); // 红移实验
+        cards.add(new RedShiftExperiment()); // 红移实验
         cards.add(new GalleriaStellaria()); // 万星园
         cards.add(new Truth()); // 真理
         cards.add(new FreeFromDream()); // 挣脱美梦
@@ -305,6 +305,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         cards.add(new AprilShowers()); // 无根之雨
         cards.add(new ProjectHorizonArc()); // 地平弧光计划
         cards.add(new EmergencyEscapeDoor()); // 紧急逃生门
+        cards.add(new IntricateReconstruction()); // 精密重构
 
         // Rare.
         cards.add(new Calcification()); // 钙质化
