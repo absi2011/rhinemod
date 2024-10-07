@@ -116,6 +116,22 @@
     "NAMES": [
       "倾向"
     ],
-    "DESCRIPTION": "升级卡牌时可以选择不同的倾向。"
+    "DESCRIPTION": "升级卡牌时可以选择的不同分支。"
+  },
+  "EXPERIMENTERROR": {
+    "PROPER_NAME": "实验错误",
+    "NAMES": [
+      "实验错误",
+      "ExperimentError"
+    ],
+    "DESCRIPTION": "该 [#EFC851]星环[] 死亡时，将相应数量的 [#EFC851]出格[] 洗入你的弃牌堆。"
+  },
+  "CRITICALPOINT": {
+    "PROPER_NAME": "临界点",
+    "NAMES": [
+      "临界点",
+      "CriticalPoint"
+    ],
+    "DESCRIPTION": "被引爆时，对敌人造成的伤害提升相应倍数。"
   }
 }

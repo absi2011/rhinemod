@@ -3,6 +3,7 @@ package rhinemod.characters;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -19,6 +20,7 @@ import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.*;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -26,8 +28,11 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import rhinemod.cards.*;
 import rhinemod.patches.*;
+import rhinemod.powers.CriticalPointPower;
 import rhinemod.powers.ExperimentError;
 import rhinemod.powers.InvisibleGlobalAttributes;
+import rhinemod.relics.CalcareousStamp;
+import rhinemod.relics.Imperishable;
 import rhinemod.relics.LoneTrail;
 import rhinemod.relics.TITStudentIdCard;
 import rhinemod.util.GlobalAttributes;
@@ -63,7 +68,6 @@ public class RhineLab extends CustomPlayer {
     public final StarRing[] starRings = new StarRing[6];
     public final ArrayList<StarRing> currentRings = new ArrayList<>();
     public final HashSet<String> playedSpecialCard = new HashSet<>();
-    public boolean specialRelicGained = false;
 
     public RhineLab(String name) {
         // 参数列表：角色名，角色类枚举，能量面板贴图路径列表，能量面板特效贴图路径，能量面板贴图旋转速度列表，能量面板，模型资源路径，动画资源路径
@@ -288,12 +292,22 @@ public class RhineLab extends CustomPlayer {
         summonStarRing(maxHealth, strength, 0, 0);
     }
     public void summonStarRing(int maxHealth, int strength, int block, int blast) {
+        int critical = 0;
+        if (hasRelic(Imperishable.ID)) {
+            Imperishable r = (Imperishable) getRelic(Imperishable.ID);
+            if (r.status == 0) {
+                maxHealth *= 2;
+                blast += 2;
+            } else {
+                maxHealth /= 2;
+                critical++;
+            }
+        }
         for (int i = 0; i < 6; i++)
             if (starRings[i] == null || starRings[i].isDead) {
                 starRings[i] = new StarRing(maxHealth, POSX[i], POSY[i]);
                 starRings[i].showHealthBar();
-                if (block > 0)
-                {
+                if (block > 0) {
                     AbstractDungeon.actionManager.addToTop(new GainBlockAction(starRings[i], block));
                 }
                 if (strength > 0) {
@@ -301,6 +315,9 @@ public class RhineLab extends CustomPlayer {
                 }
                 if (blast > 0) {
                     AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(starRings[i], this, new ExperimentError(starRings[i], blast)));
+                }
+                if (critical > 0) {
+                    AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(starRings[i], this, new CriticalPointPower(starRings[i], critical)));
                 }
                 currentRings.add(starRings[i]);
                 return;
@@ -339,6 +356,34 @@ public class RhineLab extends CustomPlayer {
             for (AbstractPower p : powers) p.onCardDraw(c);
             for (AbstractRelic r : relics) r.onCardDraw(c);
             hand.refreshHandLayout();
+        }
+    }
+
+    @Override
+    public void useCard(AbstractCard c, AbstractMonster monster, int energyOnUse) {
+        if (hasRelic(CalcareousStamp.ID) && ((CalcareousStamp) getRelic(CalcareousStamp.ID)).status == 0 &&
+                c instanceof AbstractRhineCard && ((AbstractRhineCard) c).realBranch == 1 &&
+                c.costForTurn > 0 && !c.freeToPlay() && !c.isInAutoplay && (
+                !hasPower("Corruption") || c.type != AbstractCard.CardType.SKILL)) {
+            if (c.type == AbstractCard.CardType.ATTACK) {
+                useFastAttackAnimation();
+            }
+            globalAttributes.addCalcium(-c.costForTurn);
+            c.calculateCardDamage(monster);
+            c.use(this, monster);
+            AbstractDungeon.actionManager.addToBottom(new UseCardAction(c, monster));
+            if (!c.dontTriggerOnUseCard) {
+                hand.triggerOnOtherCardPlayed(c);
+            }
+            hand.removeCard(c);
+            cardInUse = c;
+            c.target_x = Settings.WIDTH / 2.0F;
+            c.target_y = Settings.HEIGHT / 2.0F;
+            if (!hand.canUseAnyCard() && !endTurnQueued) {
+                AbstractDungeon.overlayMenu.endTurnButton.isGlowing = true;
+            }
+        } else {
+            super.useCard(c, monster, energyOnUse);
         }
     }
 }
