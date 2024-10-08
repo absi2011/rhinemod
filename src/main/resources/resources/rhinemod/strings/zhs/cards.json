@@ -454,6 +454,11 @@
             " NL 消耗 ， 保留 。"
         ]
     },
+    "rhinemod:Disorder": {
+        "NAME": "“失序”",
+        "DESCRIPTION": "造成 !D! 点伤害，获得 !B! 点格挡，抽 !M! 张牌，重复 !rhinemod:M2! 次。每当你抽到这张牌，随机打乱其所有数据。 虚无 。",
+        "UPGRADE_DESCRIPTION": "造成 !D! 点伤害，获得 !B! 点格挡，抽 !M! 张牌，重复 !rhinemod:M2! 次。每当你抽到这张牌，随机打乱其所有数据。"
+    },
 
     "rhinemod:Unscrupulous": {
         "NAME": "出格",
