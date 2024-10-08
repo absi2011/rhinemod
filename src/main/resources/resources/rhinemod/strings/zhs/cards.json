@@ -221,7 +221,7 @@
     },
     "rhinemod:ApplyFullForce": {
         "NAME": "放开手脚",
-        "DESCRIPTION": "造成 !D! 点伤害，如果目标处于眩晕状态，本次伤害翻倍。",
+        "DESCRIPTION": "造成 !D! 点伤害，如果目标处于 rhinemod:眩晕 ，本次伤害翻倍。",
         "UPGRADE_DESCRIPTION": ""
     },
     "rhinemod:TwoToOne": {
