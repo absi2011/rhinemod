@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.GameDictionary;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.localization.PotionStrings;
@@ -35,7 +36,7 @@ public class BlackBeanTea extends AbstractPotion {
         description = DESCRIPTIONS[0] + potency + DESCRIPTIONS[1] + COIN_LOSE + DESCRIPTIONS[2];
         tips.clear();
         tips.add(new PowerTip(this.name, this.description));
-        tips.add(new PowerTip(TipHelper.capitalize(BaseMod.getKeywordTitle("Strength")), BaseMod.getKeywordDescription("Strength")));
+        tips.add(new PowerTip(TipHelper.capitalize(GameDictionary.STRENGTH.NAMES[0]), BaseMod.getKeywordDescription(GameDictionary.keywords.get(GameDictionary.STRENGTH.NAMES[0]))));
     }
 
     @Override
