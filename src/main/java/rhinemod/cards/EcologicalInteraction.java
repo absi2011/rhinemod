@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import rhinemod.RhineMod;
 import rhinemod.actions.MakeSeveralCardsInHandAction;
 import rhinemod.interfaces.UpgradeBranch;
@@ -36,15 +37,26 @@ public class EcologicalInteraction extends AbstractRhineCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int cnt = energyOnUse;
-        if (upgraded) cnt++;
-        ArrayList<AbstractCard> plantCards = RhineMod.getPlantCards();
-        ArrayList<AbstractCard> list = new ArrayList<>();
-        for (int i = 0; i < cnt; i++) {
-            list.add(plantCards.get(AbstractDungeon.cardRng.random(plantCards.size() - 1)).makeCopy());
+        int effect = EnergyPanel.totalCount;
+        if (energyOnUse != -1) {
+            effect = energyOnUse;
         }
-        addToBot(new MakeSeveralCardsInHandAction(list));
-        if (!freeToPlayOnce) p.energy.use(energyOnUse);
+        if (upgraded) {
+            effect++;
+        }
+        if (p.hasRelic("Chemical X")) {
+            effect += 2;
+            p.getRelic("Chemical X").flash();
+        }
+        if (effect > 0) {
+            ArrayList<AbstractCard> plantCards = RhineMod.getPlantCards();
+            ArrayList<AbstractCard> list = new ArrayList<>();
+            for (int i = 0; i < effect; i++) {
+                list.add(plantCards.get(AbstractDungeon.cardRng.random(plantCards.size() - 1)).makeCopy());
+            }
+            addToBot(new MakeSeveralCardsInHandAction(list));
+            if (!freeToPlayOnce) p.energy.use(energyOnUse);
+        }
     }
 
     public void update() {
