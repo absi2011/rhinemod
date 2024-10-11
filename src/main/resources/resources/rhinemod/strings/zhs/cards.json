@@ -181,7 +181,7 @@
         "DESCRIPTION": "抽一张牌。 NL 如果你本场战斗至少打出过3次 *能量井 ，获得 [E] [E] [E] [E] 。",
         "UPGRADE_DESCRIPTION": "抽一张牌。 NL 如果你本场战斗至少打出过3次 *能量井 ，获得 [E] [E] [E] [E] 且本牌耗能为0。",
         "EXTENDED_DESCRIPTION": [
-            "获得 [E] [E] [E] [E] ，将四张 *出格 洗入你的抽牌堆。 NL 消耗。"
+            "获得 [E] [E] [E] [E] ，将四张 *出格 洗入你的抽牌堆。 NL 消耗 。"
         ]
     },
     "rhinemod:EmergencyDefenseProcedures": {
@@ -199,7 +199,7 @@
         "DESCRIPTION": "抽 !M! 张牌，获得等同于它们消耗能量之和的 rhinemod:科研进度 。",
         "UPGRADE_DESCRIPTION": "",
         "EXTENDED_DESCRIPTION": [
-            "rhinemod:科研进度 ： !M! 。 NL 随机 消耗 不超过 !rhinemod:M2! 张 *出格 。",
+            "rhinemod:科研进度 ： !M! 。 NL 随机 消耗 不超过 !rhinemod:M2! 张 状态牌 。",
             "选择一个方向，改变 rhinemod:重力 到该方向。召唤一个 1 点生命的 rhinemod:星环 。",
             "rhinemod:科研进度 ： !M! 。 NL 将一张 *淡杉 置入手牌。"
         ]
@@ -456,8 +456,8 @@
     },
     "rhinemod:Disorder": {
         "NAME": "“失序”",
-        "DESCRIPTION": "造成 !D! 点伤害，获得 !B! 点格挡，抽 !M! 张牌，重复 !rhinemod:M2! 次。每当你抽到这张牌，随机打乱其所有数据。 虚无 。",
-        "UPGRADE_DESCRIPTION": "造成 !D! 点伤害，获得 !B! 点格挡，抽 !M! 张牌，重复 !rhinemod:M2! 次。每当你抽到这张牌，随机打乱其所有数据。"
+        "DESCRIPTION": "造成 !D! 点伤害，获得 !B! 点格挡，抽 !M! 张牌，重复 !rhinemod:M2! 次。每当你抽到这张牌或打出一张牌，随机打乱其所有数字。 NL 虚无 。",
+        "UPGRADE_DESCRIPTION": "造成 !D! 点伤害，获得 !B! 点格挡，抽 !M! 张牌，重复 !rhinemod:M2! 次。每当你抽到这张牌或打出一张牌，随机打乱其所有数字。"
     },
 
     "rhinemod:Unscrupulous": {

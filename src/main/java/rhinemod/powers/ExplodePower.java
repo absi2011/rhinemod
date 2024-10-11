@@ -42,8 +42,8 @@ public class ExplodePower extends AbstractPower {
 
     @Override
     public void onDeath() {
-        addToBot(new VFXAction(new ExplosionSmallEffect(this.owner.hb.cX, this.owner.hb.cY), 0.5F));
-        addToBot(new DamageAction(AbstractDungeon.player, new DamageInfo(owner, amount, DamageInfo.DamageType.THORNS)));
+        addToTop(new DamageAction(AbstractDungeon.player, new DamageInfo(owner, amount, DamageInfo.DamageType.THORNS)));
+        addToTop(new VFXAction(new ExplosionSmallEffect(this.owner.hb.cX, this.owner.hb.cY), 0.5F));
     }
 
 }

@@ -28,7 +28,7 @@ public class CalcareousStamp extends CustomRelic implements ClickableRelic {
     public int status; // 0: costCa; 1:
 
     public CalcareousStamp() {
-        super(ID, IMG, IMG_OUTLINE, RelicTier.UNCOMMON, LandingSound.FLAT);
+        super(ID, IMG, IMG_OUTLINE, RelicTier.SPECIAL, LandingSound.FLAT);
         status = 0;
         tips.add(new PowerTip(TipHelper.capitalize(BaseMod.getKeywordTitle("rhinemod:Calcium")), BaseMod.getKeywordDescription("rhinemod:Calcium")));
         initializeTips();
@@ -45,11 +45,7 @@ public class CalcareousStamp extends CustomRelic implements ClickableRelic {
         description = getUpdatedDescription();
         tips.clear();
         tips.add(new PowerTip(name, description));
-        if (status == 0) {
-            tips.add(new PowerTip(TipHelper.capitalize(BaseMod.getKeywordTitle("rhinemod:Calcium")), BaseMod.getKeywordDescription("rhinemod:Calcium")));
-        } else {
-//            tips.add(new PowerTip(TipHelper.capitalize(BaseMod.getKeywordTitle("rhinemod:CriticalPoint")), BaseMod.getKeywordDescription("rhinemod:CriticalPoint")));
-        }
+        tips.add(new PowerTip(TipHelper.capitalize(BaseMod.getKeywordTitle("rhinemod:Calcium")), BaseMod.getKeywordDescription("rhinemod:Calcium")));
         initializeTips();
     }
 

@@ -33,7 +33,7 @@ public class PlanetaryDebrisPower extends AbstractPower {
     }
 
     public void onGravityChange() {
-        addToBot(new DamageAllEnemiesAction((AbstractPlayer)owner, amount, DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+        addToBot(new DamageAllEnemiesAction((AbstractPlayer)owner, DamageInfo.createDamageMatrix(amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
     }
 
 }

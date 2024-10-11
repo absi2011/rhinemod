@@ -1,5 +1,7 @@
 package rhinemod.monsters;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.unique.CannotLoseAction;
@@ -100,8 +102,18 @@ public class Turnpike extends AbstractRhineMonster {
 
     @Override
     public void die() {
-        CardCrawlGame.sound.play("TURNPIKE_BOOM");
-        addToBot(new DelayDieAction(this, 2.0F));
+        if (!halfDead) {
+            int insert = 0;
+            int i = 0;
+            for (AbstractGameAction a : AbstractDungeon.actionManager.actions) {
+                i ++;
+                if (a.actionType == AbstractGameAction.ActionType.DAMAGE) {
+                    insert = i;
+                }
+            }
+            AbstractDungeon.actionManager.actions.add(insert, new DelayDieAction(this, 2.0F));
+            halfDead = true;
+        }
     }
 
     @Override

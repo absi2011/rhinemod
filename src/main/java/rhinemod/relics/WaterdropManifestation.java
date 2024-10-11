@@ -24,7 +24,7 @@ public class WaterdropManifestation extends CustomRelic implements ClickableReli
     public int status; // 0: energy; 1: draw
 
     public WaterdropManifestation() {
-        super(ID, IMG, IMG_OUTLINE, RelicTier.UNCOMMON, LandingSound.FLAT);
+        super(ID, IMG, IMG_OUTLINE, RelicTier.SPECIAL, LandingSound.FLAT);
         counter = 0;
         status = 0;
     }
@@ -51,7 +51,7 @@ public class WaterdropManifestation extends CustomRelic implements ClickableReli
                 flash();
                 counter = 0;
                 if (status == 0) addToBot(new GainEnergyAction(1));
-                else addToBot(new DrawCardAction(1));
+                else addToBot(new DrawCardAction(2));
             }
         }
     }

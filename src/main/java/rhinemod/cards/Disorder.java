@@ -3,6 +3,7 @@ package rhinemod.cards;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -45,6 +46,15 @@ public class Disorder extends AbstractRhineCard {
 
     @Override
     public void triggerWhenDrawn() {
+        shuffle();
+    }
+
+    @Override
+    public void onPlayCard(AbstractCard c, AbstractMonster m) {
+        shuffle();
+    }
+
+    void shuffle(){
         Collections.shuffle(DATA, new Random(AbstractDungeon.cardRng.randomLong()));
         cost = costForTurn = DATA.get(0);
         damage = baseDamage = DATA.get(1);
