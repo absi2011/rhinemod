@@ -83,7 +83,7 @@ public class GlobalAttributes {
         if (aimGravity == gravity) return;
         gravity = aimGravity;
         gravityFlash = 2.0F;
-        gravityChanges ++;
+        gravityChanges++;
         AbstractDungeon.onModifyPower();
     }
 
@@ -181,6 +181,7 @@ public class GlobalAttributes {
     public void atStartOfCombat() {
         calciumNum = 0;
         flowspNum = 0;
+        gravityChanges = 0;
     }
 
     public void atStartOfTurn() {

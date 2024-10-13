@@ -45,21 +45,15 @@ public class Dreamer extends AbstractRhineCard {
 
     @Override
     public void applyPowers() {
-        if (chosenBranch == 0)
-        {
+        if (chosenBranch == 0) {
             baseDamage += magicNumber * AbstractDungeon.player.exhaustPile.size();
-        }
-        else if (chosenBranch == 1)
-        {
+        } else if (chosenBranch == 1) {
             baseDamage += magicNumber * GlobalAttributes.gravityChanges;
         }
         super.applyPowers();
-        if (chosenBranch == 0)
-        {
+        if (chosenBranch == 0) {
             baseDamage -= magicNumber * AbstractDungeon.player.exhaustPile.size();
-        }
-        else if (chosenBranch == 1)
-        {
+        } else if (chosenBranch == 1) {
             baseDamage -= magicNumber * GlobalAttributes.gravityChanges;
         }
         isDamageModified = (baseDamage != damage);
@@ -67,21 +61,15 @@ public class Dreamer extends AbstractRhineCard {
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
-        if (chosenBranch == 0)
-        {
+        if (chosenBranch == 0) {
             baseDamage += magicNumber * AbstractDungeon.player.exhaustPile.size();
-        }
-        else if (chosenBranch == 1)
-        {
+        } else if (chosenBranch == 1) {
             baseDamage += magicNumber * GlobalAttributes.gravityChanges;
         }
         super.calculateCardDamage(mo);
-        if (chosenBranch == 0)
-        {
+        if (chosenBranch == 0) {
             baseDamage -= magicNumber * AbstractDungeon.player.exhaustPile.size();
-        }
-        else if (chosenBranch == 1)
-        {
+        } else if (chosenBranch == 1) {
             baseDamage -= magicNumber * GlobalAttributes.gravityChanges;
         }
         isDamageModified = (baseDamage != damage);

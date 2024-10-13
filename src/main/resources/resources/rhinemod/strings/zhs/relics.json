@@ -83,7 +83,7 @@
   "rhinemod:R31HeavyPowerArmorRelic": {
     "NAME": "R-31重型动力装甲",
     "FLAVOR": "哥伦比亚人在遵守法律的同时，总是乐意寻求效率更高的方式。",
-    "DESCRIPTIONS": ["对战开始时，对一名敌人造成 #b3 点伤害 #b10 次，并给予其 #y眩晕 。"]
+    "DESCRIPTIONS": ["战斗开始时，对一名敌人造成 #b3 点伤害 #b10 次，并给予其 #y眩晕 。"]
   },
   "rhinemod:ExperimentalPowerArmorRelic": {
     "NAME": "实验用动力装甲",

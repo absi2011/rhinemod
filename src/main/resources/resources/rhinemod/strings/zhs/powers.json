@@ -255,7 +255,7 @@
   },
   "rhinemod:EgotistPower": {
     "NAME": "自私者",
-    "DESCRIPTIONS": ["对战结束时， #y星环 不再对你造成伤害。"]
+    "DESCRIPTIONS": ["战斗结束时， #y星环 不再对你造成伤害。"]
   },
   "rhinemod:TraitorPower": {
     "NAME": "背叛者",
