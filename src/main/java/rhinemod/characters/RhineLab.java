@@ -70,8 +70,8 @@ public class RhineLab extends CustomPlayer {
         "resources/rhinemod/images/char/orb/layer4d.png"
     };
     public GlobalAttributes globalAttributes = new GlobalAttributes();
-    public static final float[] POSX = new float[] { 255.0F, -235.0F, 285.0F, -265.0F, 225.0F, -205.0F };
-    public static final float[] POSY = new float[] { 25.0F, 15.0F, 195.0F, 185.0F, 345.0F, 335.0F };
+    public static final float[] POSX = new float[] { 275.0F, 305.0F, 245.0F, 85.0F, -75.0F, -235.0F };
+    public static final float[] POSY = new float[] { -20.0F, 135.0F, 285.0F, 325.0F, 340.0F, 315.0F };
     public final StarRing[] starRings = new StarRing[6];
     public final ArrayList<StarRing> currentRings = new ArrayList<>();
     public final HashSet<String> playedSpecialCard = new HashSet<>();
