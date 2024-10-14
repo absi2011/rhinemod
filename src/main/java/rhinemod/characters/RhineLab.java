@@ -279,11 +279,11 @@ public class RhineLab extends CustomPlayer {
 
     @Override
     public void render(SpriteBatch sb) {
-        currentRings.removeIf(r -> r.isDead);
-        for (StarRing r : currentRings) r.render(sb);
-        globalAttributes.render(sb);
         stance.render(sb);
         if ((AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT || AbstractDungeon.getCurrRoom() instanceof MonsterRoom) && !isDead) {
+            currentRings.removeIf(r -> r.isDead);
+            for (StarRing r : currentRings) r.render(sb);
+            globalAttributes.render(sb);
             renderHealth(sb);
             if (!orbs.isEmpty()) {
                 for (AbstractOrb o : orbs)
