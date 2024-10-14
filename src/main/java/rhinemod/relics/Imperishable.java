@@ -24,7 +24,7 @@ public class Imperishable extends CustomRelic implements ClickableRelic {
         super(ID, IMG, IMG_OUTLINE, RelicTier.SPECIAL, LandingSound.FLAT);
         status = 0;
         tips.add(new PowerTip(TipHelper.capitalize(BaseMod.getKeywordTitle("rhinemod:ExperimentError")), BaseMod.getKeywordDescription("rhinemod:ExperimentError")));
-        initializeTips();
+        updateTips();
     }
 
     @Override
@@ -32,10 +32,7 @@ public class Imperishable extends CustomRelic implements ClickableRelic {
         return DESCRIPTIONS[status];
     }
 
-    @Override
-    public void onRightClick() {
-        status = 1 - status;
-        description = getUpdatedDescription();
+    private void updateTips() {
         tips.clear();
         tips.add(new PowerTip(name, description));
         if (status == 0) {
@@ -44,6 +41,13 @@ public class Imperishable extends CustomRelic implements ClickableRelic {
             tips.add(new PowerTip(TipHelper.capitalize(BaseMod.getKeywordTitle("rhinemod:CriticalPoint")), BaseMod.getKeywordDescription("rhinemod:CriticalPoint")));
         }
         initializeTips();
+    }
+
+    @Override
+    public void onRightClick() {
+        status = 1 - status;
+        description = getUpdatedDescription();
+        updateTips();
     }
 
     @Override

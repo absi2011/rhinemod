@@ -27,6 +27,7 @@ public class WaterdropManifestation extends CustomRelic implements ClickableReli
         super(ID, IMG, IMG_OUTLINE, RelicTier.SPECIAL, LandingSound.FLAT);
         counter = 0;
         status = 0;
+        updateTips();
     }
 
     @Override
@@ -34,13 +35,16 @@ public class WaterdropManifestation extends CustomRelic implements ClickableReli
         return DESCRIPTIONS[status];
     }
 
+    private void updateTips() {
+        tips.clear();
+        tips.add(new PowerTip(name, description));
+        initializeTips();
+    }
+
     @Override
     public void onRightClick() {
         status = 1 - status;
         description = getUpdatedDescription();
-        tips.clear();
-        tips.add(new PowerTip(name, description));
-        initializeTips();
     }
 
     @Override
