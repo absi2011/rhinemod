@@ -405,7 +405,7 @@ public class RhineLab extends CustomPlayer {
                     spines.get("S").setAttack();
                 } else if (((AbstractRhineCard) c).realBranch == 2) {
                     spines.get("K").setAttack();
-                } else {
+                } else if (((AbstractRhineCard) c).realBranch == 3) {
                     spines.get("M").setAttack();
                 }
             } else if (c.hasTag(RhineTags.APPLY_WATER)) {
