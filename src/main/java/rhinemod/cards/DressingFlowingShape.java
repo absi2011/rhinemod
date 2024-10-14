@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import rhinemod.actions.AddFlowingShapeAction;
 import rhinemod.interfaces.UpgradeBranch;
 import rhinemod.patches.AbstractCardEnum;
+import rhinemod.patches.RhineTags;
 import rhinemod.powers.WaterDamage;
 
 import java.util.ArrayList;
@@ -59,6 +60,7 @@ public class DressingFlowingShape extends AbstractRhineCard {
         }
         else if (state == 2) {
             magicNumber = baseMagicNumber = WATER_DAMAGE;
+            tags.add(RhineTags.APPLY_WATER);
             target = CardTarget.ENEMY;
         }
         else if (state == 3) {

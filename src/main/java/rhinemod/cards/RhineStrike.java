@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import rhinemod.actions.ChangeGravityAction;
 import rhinemod.patches.AbstractCardEnum;
+import rhinemod.patches.RhineTags;
 import rhinemod.powers.Stunned;
 import rhinemod.powers.WaterDamage;
 import rhinemod.interfaces.UpgradeBranch;
@@ -84,6 +85,7 @@ public class RhineStrike extends AbstractRhineCard {
                     rawDescription = EXTENDED_DESCRIPTION[1];
                     upgradeDamage(UPGRADE_PLUS_DMG[3]);
                     magicNumber = baseMagicNumber = UPGRADE_PLUS_WATER;
+                    tags.add(RhineTags.APPLY_WATER);
                     initializeDescription();
                 }
             });

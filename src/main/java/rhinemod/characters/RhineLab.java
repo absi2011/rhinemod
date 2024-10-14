@@ -21,14 +21,20 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.*;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.rooms.MonsterRoom;
+import com.megacrit.cardcrawl.rooms.RestRoom;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import rhinemod.cards.*;
 import rhinemod.patches.*;
 import rhinemod.powers.CriticalPointPower;
+import rhinemod.powers.EgotistPower;
 import rhinemod.powers.ExperimentError;
 import rhinemod.powers.InvisibleGlobalAttributes;
 import rhinemod.relics.CalcareousStamp;
@@ -38,6 +44,7 @@ import rhinemod.relics.TITStudentIdCard;
 import rhinemod.util.GlobalAttributes;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.logging.Logger;
@@ -68,6 +75,7 @@ public class RhineLab extends CustomPlayer {
     public final StarRing[] starRings = new StarRing[6];
     public final ArrayList<StarRing> currentRings = new ArrayList<>();
     public final HashSet<String> playedSpecialCard = new HashSet<>();
+    public final HashMap<String, AbstractCharacterSpine> spines = new HashMap<>();
 
     public RhineLab(String name) {
         // 参数列表：角色名，角色类枚举，能量面板贴图路径列表，能量面板特效贴图路径，能量面板贴图旋转速度列表，能量面板，模型资源路径，动画资源路径
@@ -77,15 +85,17 @@ public class RhineLab extends CustomPlayer {
         dialogY = this.drawY + 200.0F * Settings.scale;
 
         // 参数列表：静态贴图路径，越肩视角2贴图路径，越肩视角贴图路径，失败时贴图路径，角色选择界面信息，碰撞箱XY宽高，初始能量数
-        initializeClass(IDLE, SHOULDER, SHOULDER, DIE, getLoadout(), 20.0F, -10.0F, 220.0F, 290.0F, new EnergyManager(3));
-//        loadAnimation("resources/rhinemod/images/char/char_148_nearl.atlas", "resources/rhinemod/images/char/char_148_nearl.json", 1.5F);
-//        this.stateData.setMix("Idle", "Die", 0.1F);
-//        this.state.setAnimation(0, "Idle", true);
+        initializeClass(IDLE, SHOULDER, SHOULDER, DIE, getLoadout(), 20.0F, -10.0F, 320.0F, 290.0F, new EnergyManager(3));
+
+        spines.put("M", new AbstractCharacterSpine(this, -170.0F * Settings.scale, "resources/rhinemod/images/char/char_249_mlyss_1/char_249_mlyss.atlas", "resources/rhinemod/images/char/char_249_mlyss_1/char_249_mlyss.json", 1.5F, "Skill_3_Idle", "Skill_3_loop"));
+        spines.put("K", new AbstractCharacterSpine(this, 0.0F, "resources/rhinemod/images/char/enemy_1543_cstlrs/enemy_1543_cstlrs.atlas", "resources/rhinemod/images/char/enemy_1543_cstlrs/enemy_1543_cstlrs.json", 1.5F, "Idle_A", "Attack_A"));
+        spines.put("S", new AbstractCharacterSpine(this, 150.0F * Settings.scale, "resources/rhinemod/images/char/char_202_demkni_boc_1/char_202_demkni_boc_1.atlas", "resources/rhinemod/images/char/char_202_demkni_boc_1/char_202_demkni_boc_1.json", 1.5F, "Idle", "Attack"));
     }
 
     @Override
     public void playDeathAnimation() {
-//        this.state.setAnimation(0, "Die", false);
+        for (AbstractCharacterSpine s : spines.values())
+            s.state.setAnimation(0, "Die", false);
     }
 
     @Override
@@ -233,12 +243,6 @@ public class RhineLab extends CustomPlayer {
     }
 
     @Override
-    public void renderPlayerBattleUi(SpriteBatch sb) {
-        super.renderPlayerBattleUi(sb);
-        globalAttributes.render(sb);
-    }
-
-    @Override
     public void applyStartOfTurnRelics() {
         super.applyStartOfTurnRelics();
         globalAttributes.atStartOfTurn();
@@ -268,10 +272,34 @@ public class RhineLab extends CustomPlayer {
     }
 
     @Override
+    public void dispose() {
+        super.dispose();
+        for (AbstractCharacterSpine s : spines.values()) s.dispose();
+    }
+
+    @Override
     public void render(SpriteBatch sb) {
-        super.render(sb);
         currentRings.removeIf(r -> r.isDead);
         for (StarRing r : currentRings) r.render(sb);
+        globalAttributes.render(sb);
+        stance.render(sb);
+        if ((AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT || AbstractDungeon.getCurrRoom() instanceof MonsterRoom) && !isDead) {
+            renderHealth(sb);
+            if (!orbs.isEmpty()) {
+                for (AbstractOrb o : orbs)
+                    o.render(sb);
+            }
+        }
+
+        if (AbstractDungeon.getCurrRoom() instanceof RestRoom) {
+            sb.setColor(Color.WHITE);
+            renderShoulderImg(sb);
+        } else {
+            for (AbstractCharacterSpine s : spines.values())
+                s.render(sb);
+            hb.render(sb);
+            healthHb.render(sb);
+        }
     }
 
     @Override
@@ -288,10 +316,9 @@ public class RhineLab extends CustomPlayer {
         for (StarRing r : currentRings) r.applyStartOfTurnPowers();
     }
 
-    public void summonStarRing(int maxHealth, int strength) {
-        summonStarRing(maxHealth, strength, 0, 0);
-    }
     public void summonStarRing(int maxHealth, int strength, int block, int blast) {
+        spines.get("K").state.setAnimation(0, "Skill_A", false);
+        spines.get("K").state.addAnimation(0, spines.get("K").idle, true, 0);
         int critical = 0;
         if (hasRelic(Imperishable.ID)) {
             Imperishable r = (Imperishable) getRelic(Imperishable.ID);
@@ -337,8 +364,17 @@ public class RhineLab extends CustomPlayer {
     @Override
     public void onVictory() {
         super.onVictory();
+        spines.get("S").idle = "Idle";
+        currentRings.clear();
     }
 
+    public void blast() {
+        if (AbstractDungeon.getCurrRoom().cannotLose) return;
+        if (!hasPower(EgotistPower.POWER_ID)) {
+            for (StarRing r : currentRings)
+                r.blast();
+        }
+    }
 
     public void draw(AbstractCard c) {
         if (!(drawPile.group.contains(c))) {
@@ -361,29 +397,52 @@ public class RhineLab extends CustomPlayer {
 
     @Override
     public void useCard(AbstractCard c, AbstractMonster monster, int energyOnUse) {
-        if (hasRelic(CalcareousStamp.ID) && ((CalcareousStamp) getRelic(CalcareousStamp.ID)).status == 0 &&
-                c instanceof AbstractRhineCard && ((AbstractRhineCard) c).realBranch == 1 &&
-                c.costForTurn > 0 && !c.freeToPlay() && !c.isInAutoplay && (
-                !hasPower("Corruption") || c.type != AbstractCard.CardType.SKILL)) {
+        boolean useCa = hasRelic(CalcareousStamp.ID) && ((CalcareousStamp) getRelic(CalcareousStamp.ID)).status == 0 &&
+                c instanceof AbstractRhineCard && ((AbstractRhineCard) c).realBranch == 1;
+        if (c instanceof AbstractRhineCard) {
             if (c.type == AbstractCard.CardType.ATTACK) {
-                useFastAttackAnimation();
+                if (((AbstractRhineCard) c).realBranch == 1) {
+                    spines.get("S").setAttack();
+                } else if (((AbstractRhineCard) c).realBranch == 2) {
+                    spines.get("K").setAttack();
+                } else {
+                    spines.get("M").setAttack();
+                }
+            } else if (c.hasTag(RhineTags.APPLY_WATER)) {
+                spines.get("M").setAttack();
             }
-            globalAttributes.addCalcium(-c.costForTurn);
-            c.calculateCardDamage(monster);
-            c.use(this, monster);
-            AbstractDungeon.actionManager.addToBottom(new UseCardAction(c, monster));
-            if (!c.dontTriggerOnUseCard) {
-                hand.triggerOnOtherCardPlayed(c);
+        }
+        if (c.costForTurn > 0 && !c.freeToPlay() && !c.isInAutoplay && (!hasPower("Corruption") || c.type != AbstractCard.CardType.SKILL)) {
+            if (useCa) {
+                if (c.cost == -1 && globalAttributes.calciumNum < energyOnUse && !c.ignoreEnergyOnUse) {
+                    c.energyOnUse = globalAttributes.calciumNum;
+                }
+                if (c.cost == -1 && c.isInAutoplay) {
+                    c.freeToPlayOnce = true;
+                }
+                globalAttributes.addCalcium(-c.costForTurn);
+            } else {
+                if (c.cost == -1 && EnergyPanel.totalCount < energyOnUse && !c.ignoreEnergyOnUse) {
+                    c.energyOnUse = EnergyPanel.totalCount;
+                }
+                if (c.cost == -1 && c.isInAutoplay) {
+                    c.freeToPlayOnce = true;
+                }
+                energy.use(c.costForTurn);
             }
-            hand.removeCard(c);
-            cardInUse = c;
-            c.target_x = Settings.WIDTH / 2.0F;
-            c.target_y = Settings.HEIGHT / 2.0F;
-            if (!hand.canUseAnyCard() && !endTurnQueued) {
-                AbstractDungeon.overlayMenu.endTurnButton.isGlowing = true;
-            }
-        } else {
-            super.useCard(c, monster, energyOnUse);
+        }
+        c.calculateCardDamage(monster);
+        c.use(this, monster);
+        AbstractDungeon.actionManager.addToBottom(new UseCardAction(c, monster));
+        if (!c.dontTriggerOnUseCard) {
+            hand.triggerOnOtherCardPlayed(c);
+        }
+        hand.removeCard(c);
+        cardInUse = c;
+        c.target_x = Settings.WIDTH / 2.0F;
+        c.target_y = Settings.HEIGHT / 2.0F;
+        if (!hand.canUseAnyCard() && !endTurnQueued) {
+            AbstractDungeon.overlayMenu.endTurnButton.isGlowing = true;
         }
     }
 }

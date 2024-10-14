@@ -14,6 +14,7 @@ import rhinemod.cards.special.Pioneer;
 import rhinemod.cards.special.Unscrupulous;
 import rhinemod.interfaces.UpgradeBranch;
 import rhinemod.patches.AbstractCardEnum;
+import rhinemod.patches.RhineTags;
 import rhinemod.powers.Stunned;
 import rhinemod.powers.WaterDamage;
 
@@ -107,6 +108,7 @@ public class FreeFromDream extends AbstractRhineCard {
                     textureImg = IMG_S;
                     loadCardImage(textureImg);
                     upgradeSecondMagicNumber(WATER_VAL);
+                    tags.add(RhineTags.APPLY_WATER);
                     initializeDescription();
                 }
             });

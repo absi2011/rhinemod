@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import rhinemod.patches.AbstractCardEnum;
+import rhinemod.patches.RhineTags;
 import rhinemod.powers.WaterDamage;
 import rhinemod.interfaces.UpgradeBranch;
 
@@ -27,6 +28,7 @@ public class EcologicalSection extends AbstractRhineCard {
                 CardType.SKILL, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.BASIC, CardTarget.ENEMY);
         magicNumber = baseMagicNumber = WATER_DMG;
+        tags.add(RhineTags.APPLY_WATER);
         realBranch = 3;
     }
 

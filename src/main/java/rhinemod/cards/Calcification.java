@@ -6,6 +6,8 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import rhinemod.actions.AddCalciumAction;
+import rhinemod.characters.AbstractCharacterSpine;
+import rhinemod.characters.RhineLab;
 import rhinemod.patches.AbstractCardEnum;
 import rhinemod.interfaces.UpgradeBranch;
 import rhinemod.powers.ReduceCalcium;
@@ -35,6 +37,12 @@ public class Calcification extends AbstractRhineCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         CardCrawlGame.sound.play("CALCIFICATION");
+        if (p instanceof RhineLab) {
+            AbstractCharacterSpine sp = ((RhineLab) p).spines.get("S");
+            sp.idle = "Skill_Loop";
+            sp.state.setAnimation(0, "Skill_Begin", false);
+            sp.state.addAnimation(0, sp.idle, true, 0);
+        }
         addToBot(new AddCalciumAction(magicNumber));
         addToBot(new ApplyPowerAction(p, p, new ReduceCalcium(p, CA_RED)));
     }

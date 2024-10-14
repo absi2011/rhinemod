@@ -243,17 +243,12 @@ public class StarRing extends AbstractMonster {
     }
     
     @SpirePatch(clz = AbstractMonster.class, method = "die", paramtypez = {boolean.class})
-    public static class EndBattlePatch {
+    public static class MonsterDiePatch {
         @SpireInsertPatch(locator = Locator.class)
         public static void insert(AbstractMonster _inst) {
-            if (AbstractDungeon.getCurrRoom().cannotLose) return;
             AbstractPlayer p = AbstractDungeon.player;
-            if (p instanceof RhineLab && !p.hasPower(EgotistPower.POWER_ID)) {
-                for (StarRing r : ((RhineLab) p).currentRings)
-                    r.blast();
-            }
-            if (p instanceof  RhineLab) {
-                ((RhineLab) p).currentRings.clear();
+            if (p instanceof RhineLab) {
+                ((RhineLab) p).blast();
             }
         }
         private static class Locator extends SpireInsertLocator {
@@ -261,6 +256,17 @@ public class StarRing extends AbstractMonster {
             public int[] Locate(CtBehavior ctMethodToPatch) throws Exception {
                 Matcher.FieldAccessMatcher matcher = new Matcher.FieldAccessMatcher(AbstractDungeon.class, "overlayMenu");
                 return LineFinder.findInOrder(ctMethodToPatch, matcher);
+            }
+        }
+    }
+
+    @SpirePatch(clz = AbstractMonster.class, method = "escape")
+    public static class MonsterEscapePatch {
+        @SpirePrefixPatch
+        public static void Prefix(AbstractMonster _inst) {
+            AbstractPlayer p = AbstractDungeon.player;
+            if (AbstractDungeon.getMonsters().areMonstersBasicallyDead() && p instanceof RhineLab) {
+                ((RhineLab) p).blast();
             }
         }
     }

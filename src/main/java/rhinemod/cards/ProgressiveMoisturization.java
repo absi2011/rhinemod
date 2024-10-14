@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import rhinemod.actions.AddFlowingShapeAction;
 import rhinemod.patches.AbstractCardEnum;
+import rhinemod.patches.RhineTags;
 import rhinemod.powers.WaterDamage;
 import rhinemod.interfaces.UpgradeBranch;
 
@@ -30,6 +31,7 @@ public class ProgressiveMoisturization extends AbstractRhineCard {
                 CardRarity.COMMON, CardTarget.ENEMY);
         magicNumber = baseMagicNumber = WATER_AMT;
         secondMagicNumber = baseSecondMagicNumber = FLOW_AMT;
+        tags.add(RhineTags.APPLY_WATER);
         realBranch = 3;
     }
 

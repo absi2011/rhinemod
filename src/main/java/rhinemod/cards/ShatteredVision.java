@@ -15,6 +15,7 @@ import rhinemod.actions.AverageDamageAllAction;
 import rhinemod.actions.RemoveCardAction;
 import rhinemod.interfaces.UpgradeBranch;
 import rhinemod.patches.AbstractCardEnum;
+import rhinemod.patches.RhineTags;
 import rhinemod.powers.WaterDamage;
 
 import java.util.ArrayList;
@@ -104,6 +105,7 @@ public class ShatteredVision extends AbstractRhineCard {
                     type = CardType.SKILL;
                     textureImg = IMG_M;
                     loadCardImage(textureImg);
+                    tags.add(RhineTags.APPLY_WATER);
                     initializeDescription();
                 }
             });

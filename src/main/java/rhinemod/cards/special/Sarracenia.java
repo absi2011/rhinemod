@@ -27,6 +27,7 @@ public class Sarracenia extends CustomCard {
                 CardRarity.SPECIAL, CardTarget.ENEMY);
         magicNumber = baseMagicNumber = WATER_DMG;
         tags.add(RhineTags.IS_PLANT);
+        tags.add(RhineTags.APPLY_WATER);
         exhaust = true;
     }
 
