@@ -1,22 +1,30 @@
 package rhinemod.monsters;
 
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.unique.CannotLoseAction;
+import com.megacrit.cardcrawl.audio.TempMusic;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import javassist.CtBehavior;
 import rhinemod.powers.*;
+
+import java.util.logging.Logger;
 
 public class StarPod extends AbstractRhineMonster {
     public static final String ID = "rhinemod:TheSky";
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
     public static final String[] MOVES = monsterStrings.MOVES;
+    public static final String STAR_POD_BGM_INTRO = "m_bat_cstlrs_intro.mp3";
+    public static final String STAR_POD_BGM_LOOP = "m_bat_cstlrs_loop.mp3";
 
     int currentTurn = 0;
     int lastOp = -1;
@@ -67,7 +75,7 @@ public class StarPod extends AbstractRhineMonster {
         }
         CardCrawlGame.music.fadeOutTempBGM();
         AbstractDungeon.scene.fadeOutAmbiance();
-        CardCrawlGame.music.playTempBgmInstantly("m_bat_cstlrs_combine.mp3", true);
+        CardCrawlGame.music.playTempBgmInstantly(STAR_POD_BGM_INTRO, false);
     }
 
 
@@ -169,5 +177,24 @@ public class StarPod extends AbstractRhineMonster {
         // TODO: 在这里改，但是我真的不会，毁灭吧(需要保留格挡数与状态栏，其他的全删了）
     }
 
+    @SpirePatch(clz = TempMusic.class, method = "<ctor>", paramtypez = {String.class, boolean.class, boolean.class})
+    public static class UpdateTempBGMPatch {
+        @SpireInsertPatch(locator = Locator.class, localvars = "music")
+        public static void Insert(TempMusic _inst, Music music) {
+            if (_inst.key.equals(STAR_POD_BGM_INTRO)) {
+                music.setOnCompletionListener(music1 -> {
+                    Logger.getLogger(StarPod.class.getName()).info("StarPod BGM intro done!");
+                    CardCrawlGame.music.playTempBgmInstantly(STAR_POD_BGM_LOOP, true);
+                });
+            }
+        }
 
+        private static class Locator extends SpireInsertLocator {
+            @Override
+            public int[] Locate(CtBehavior ctBehavior) throws Exception {
+                Matcher.MethodCallMatcher methodCallMatcher = new Matcher.MethodCallMatcher(Music.class, "play");
+                return LineFinder.findInOrder(ctBehavior, methodCallMatcher);
+            }
+        }
+    }
 }
