@@ -26,28 +26,27 @@ public class SHAFT extends AbstractRhineCard {
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     public static final String IMG = "resources/rhinemod/images/cards/SHAFT.png";
     public static final int COST = 1;
-    public static final int DRAW_AMT = 3;
-    public static final int UNSCRUPULOUS_AMT = 2;
+    public static final int ENERGY_GET = 4;
+    public static final int STATUS_GET = 4;
+    public static final int DRAW_CARD = 1;
     public SHAFT() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.UNCOMMON, CardTarget.SELF);
-        magicNumber = baseMagicNumber = DRAW_AMT;
-        secondMagicNumber = baseSecondMagicNumber = UNSCRUPULOUS_AMT;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (chosenBranch == 0) {
-            addToBot(new DrawCardAction(1));
+            addToBot(new DrawCardAction(DRAW_CARD));
         }
         if (extraTriggered() || chosenBranch != 0) {
-            addToBot(new GainEnergyAction(4));
+            addToBot(new GainEnergyAction(ENERGY_GET));
         } else {
             addToBot(new ApplyPowerAction(p, p, new SHAFTPower(p, 1)));
         }
         if (chosenBranch != 0) {
-            addToBot(new MakeTempCardInDrawPileAction(new Unscrupulous(), 4, true, true));
+            addToBot(new MakeTempCardInDrawPileAction(new Unscrupulous(), STATUS_GET, true, true));
         }
     }
 

@@ -37,6 +37,7 @@ public class TechnologyRisingStar extends AbstractRhineCard {
     public static final int PROGRESS = 4;
     public static final int EXHAUST = 2;
     public static final int PROGRESS_M = 5;
+    public static final int KRISTEN_COST = 0;
     public TechnologyRisingStar() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.RHINE_MATTE,
@@ -81,6 +82,7 @@ public class TechnologyRisingStar extends AbstractRhineCard {
             add(() -> {
                 if (!upgraded) {
                     upgradeName(1);
+                    upgradeBaseCost(KRISTEN_COST);
                     magicNumber = baseMagicNumber = PROGRESS;
                     secondMagicNumber = baseSecondMagicNumber = EXHAUST;
                     rawDescription = EXTENDED_DESCRIPTION[0];

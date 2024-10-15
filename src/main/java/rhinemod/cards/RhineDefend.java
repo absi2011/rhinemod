@@ -24,7 +24,7 @@ public class RhineDefend extends AbstractRhineCard {
     public static final String IMG = "resources/rhinemod/images/cards/RhineDefend.png";
     public static final int COST = 1;
     public static final int BLOCK_AMT = 5;
-    public static final int[] UPGRADE_PLUS_BLOCK = {3, 3, 2, 0};
+    public static final int[] UPGRADE_PLUS_BLOCK = {3, 3, 3, 0};
     public static final int UPGRADE_PLUS_CALCIUM = 1;
     public static final int UPGRADE_PLUS_RESEARCH = 1;
     public static final int UPGRADE_PLUS_FLOWSP = 2;

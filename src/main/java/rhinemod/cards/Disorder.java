@@ -28,10 +28,10 @@ public class Disorder extends AbstractRhineCard {
         super(ID, NAME, IMG, DATA.get(0), DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.RARE, CardTarget.ENEMY);
-        damage = baseDamage = DATA.get(1);
+        damage = baseDamage = DATA.get(3);
         block = baseBlock = DATA.get(2);
-        magicNumber = baseMagicNumber = DATA.get(3);
-        secondMagicNumber = baseSecondMagicNumber = DATA.get(4);
+        magicNumber = baseMagicNumber = DATA.get(4);
+        secondMagicNumber = baseSecondMagicNumber = DATA.get(1);
         isEthereal = true;
     }
 
