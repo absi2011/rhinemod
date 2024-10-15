@@ -325,6 +325,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         cards.add(new IdealistForm()); // 理想者形态
         cards.add(new MultiEcho()); // 多重分身
         cards.add(new Disorder()); // “失序”
+        cards.add(new Omen()); // 山雨欲来
 
         // Special.
         cards.add(new Unscrupulous()); // 出格

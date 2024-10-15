@@ -248,6 +248,16 @@
       " 点 #y流形 。 "
     ]
   },
+  "rhinemod:OmenPower": {
+    "NAME": "山雨欲来",
+    "DESCRIPTIONS": [
+      "下回合开始时，打出",
+      "回合结束时，打出",
+      "、",
+      "的复制。",
+      "记录的卡牌"
+    ]
+  },
 
   "rhinemod:SheathedBeechPower": {
     "NAME": "鞘叶榉",
