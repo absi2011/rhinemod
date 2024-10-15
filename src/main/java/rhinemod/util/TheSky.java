@@ -37,6 +37,7 @@ public class TheSky extends AbstractDungeon {
         mapRng = new Random(Settings.seed + (AbstractDungeon.actNum * 400L));
         generateSpecialMap();
         CardCrawlGame.music.changeBGM(ID);
+        CardCrawlGame.sound.play("SKY_INTRO");
     }
 
     public TheSky(AbstractPlayer p, SaveFile saveFile) {

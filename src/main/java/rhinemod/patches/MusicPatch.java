@@ -26,6 +26,7 @@ public class MusicPatch {
             map.put("SHATTERED_VISION", new Sfx("audio/sound/e_atk_earthimpact.mp3", false));
             map.put("JESSELTON_S2_SKILL", new Sfx("audio/sound/e_imp_magicsword_n.mp3", false));
             map.put("TURNPIKE_BOOM", new Sfx("audio/sound/e_imp_carcrush_1.mp3", false));
+            map.put("SKY_INTRO", new Sfx("audio/sound/lonetrail_intro_01.wav", false));
         }
     }
 
