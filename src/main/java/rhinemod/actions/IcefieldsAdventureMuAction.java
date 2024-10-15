@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
+import rhinemod.patches.WaterAttackEffectPatch;
 import rhinemod.powers.WaterDamage;
 
 public class IcefieldsAdventureMuAction extends AbstractGameAction {
@@ -14,7 +15,7 @@ public class IcefieldsAdventureMuAction extends AbstractGameAction {
     public IcefieldsAdventureMuAction(int amount) {
         this.duration = Settings.ACTION_DUR_FAST;
         this.amount = amount;
-        this.attackEffect = AttackEffect.LIGHTNING; // TODO: water damage effect
+        this.attackEffect = WaterAttackEffectPatch.WATER;
     }
 
     @Override
