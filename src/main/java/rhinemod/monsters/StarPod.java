@@ -12,14 +12,16 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import javassist.CtBehavior;
 import rhinemod.powers.*;
 
 import java.util.logging.Logger;
 
 public class StarPod extends AbstractRhineMonster {
-    public static final String ID = "rhinemod:TheSky";
+    public static final String ID = "rhinemod:StarPod";
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
     public static final String[] MOVES = monsterStrings.MOVES;
@@ -184,7 +186,13 @@ public class StarPod extends AbstractRhineMonster {
             if (_inst.key.equals(STAR_POD_BGM_INTRO)) {
                 music.setOnCompletionListener(music1 -> {
                     Logger.getLogger(StarPod.class.getName()).info("StarPod BGM intro done!");
-                    CardCrawlGame.music.playTempBgmInstantly(STAR_POD_BGM_LOOP, true);
+                    if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
+                        for (AbstractMonster m : AbstractDungeon.getMonsters().monsters)
+                            if (m.id.equals(StarPod.ID)) {
+                                CardCrawlGame.music.playTempBgmInstantly(STAR_POD_BGM_LOOP, true);
+                                break;
+                            }
+                    }
                 });
             }
         }
