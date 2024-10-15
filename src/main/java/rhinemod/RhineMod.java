@@ -43,6 +43,7 @@ import rhinemod.events.*;
 import rhinemod.monsters.*;
 import rhinemod.patches.RhineEnum;
 import rhinemod.potions.*;
+import rhinemod.powers.InvisibleGlobalAttributes;
 import rhinemod.relics.*;
 import rhinemod.util.TheSky;
 
@@ -467,11 +468,12 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         info.isModified = false;
         float tmp = (float)info.base;
 
-        for (AbstractPower p:target.powers) {
+        for (AbstractPower p : target.powers) {
             tmp = p.atDamageReceive(tmp, info.type);
         }
 
-        for (AbstractPower p:target.powers) {
+        for (AbstractPower p : target.powers) {
+            if (info.owner.equals(target) && p instanceof InvisibleGlobalAttributes) continue;
             tmp = p.atDamageFinalReceive(tmp, info.type);
         }
 
