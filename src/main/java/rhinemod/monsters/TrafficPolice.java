@@ -1,6 +1,8 @@
 package rhinemod.monsters;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.evacipated.cardcrawl.modthespire.lib.SpireInstrumentPatch;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ChangeStateAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -8,11 +10,15 @@ import com.megacrit.cardcrawl.actions.unique.CanLoseAction;
 import com.megacrit.cardcrawl.actions.unique.CannotLoseAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.*;
+import javassist.CannotCompileException;
+import javassist.expr.ExprEditor;
+import javassist.expr.FieldAccess;
 import rhinemod.actions.SummonLTEnemyAction;
 import rhinemod.powers.InvisiblePower;
 
@@ -70,10 +76,6 @@ public class TrafficPolice extends AbstractRhineMonster {
     public void takeTurn() {
         turn ++;
         DamageInfo t = new DamageInfo(this, damage.get(0).output);
-        // TODO: 没想到一个好的办法，目前先做成打荆棘伤害吧
-        if (turn <= 2) {
-            t.type = DamageInfo.DamageType.THORNS;
-        }
         state.setAnimation(0, "Attack", false);
         state.addAnimation(0, "Idle", true, 0);
         addToBot(new DamageAction(AbstractDungeon.player, t));
@@ -154,5 +156,24 @@ public class TrafficPolice extends AbstractRhineMonster {
     @Override
     protected void getMove(int i) {
         setMove((byte)1, Intent.ATTACK_DEBUFF, damage.get(0).base);
+    }
+
+    @SpirePatch(clz = DamageAction.class, method = "update")
+    public static class DamageActionPatch {
+        @SpireInstrumentPatch
+        public static ExprEditor Instrument() {
+            return new ExprEditor() {
+                @Override
+                public void edit(FieldAccess f) throws CannotCompileException {
+                    if (f.getClassName().equals(AbstractCreature.class.getName()) && f.getFieldName().equals("halfDead")) {
+                        f.replace("$_ = (" + DamageActionPatch.class.getName() + ".checkType($0) && $proceed($$));");
+                    }
+                }
+            };
+        }
+
+        public static boolean checkType(AbstractCreature m) {
+            return !(m instanceof TrafficPolice);
+        }
     }
 }
