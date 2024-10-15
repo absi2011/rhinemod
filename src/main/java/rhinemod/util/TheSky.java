@@ -36,6 +36,7 @@ public class TheSky extends AbstractDungeon {
         initializeLevelSpecificChances();
         mapRng = new Random(Settings.seed + (AbstractDungeon.actNum * 400L));
         generateSpecialMap();
+        CardCrawlGame.music.fadeOutBGM();
         CardCrawlGame.music.changeBGM(ID);
         CardCrawlGame.sound.play("SKY_INTRO");
     }
@@ -52,11 +53,13 @@ public class TheSky extends AbstractDungeon {
 
         initializeLevelSpecificChances();
         miscRng = new Random(Settings.seed + saveFile.floor_num);
-        CardCrawlGame.music.changeBGM(ID);
         mapRng = new Random(Settings.seed + (saveFile.act_num * 400L));
         generateSpecialMap();
         firstRoomChosen = true;
         populatePathTaken(saveFile);
+        CardCrawlGame.music.fadeOutBGM();
+        CardCrawlGame.music.changeBGM(ID);
+        CardCrawlGame.sound.play("SKY_INTRO");
     }
 
     private void generateSpecialMap() {
