@@ -412,7 +412,7 @@
     },
     "rhinemod:WaveBarrier": {
         "NAME": "水波壁障",
-        "DESCRIPTION": "获得 !M! 层缓冲。 NL 在接下来的 3 场作战内不可以再打出缪尔赛思 rhinemod:倾向 的卡牌。",
+        "DESCRIPTION": "获得 !M! 层缓冲。 NL 在接下来的 3 场作战内不能打出缪尔赛思 rhinemod:倾向 的卡牌。",
         "UPGRADE_DESCRIPTION": ""
     },
     "rhinemod:PureDewOfFreshBlossoms": {
@@ -564,6 +564,11 @@
     "rhinemod:AttackInsteadOfDefend": {
         "NAME": "以攻代守",
         "DESCRIPTION": "每当你造成小于等于 !M! 点 未被格挡的攻击伤害时，将伤害提升为 !M! 。",
+        "UPGRADE_DESCRIPTION": ""
+    },
+    "rhinemod:TracingOrigins": {
+        "NAME": "追溯本源",
+        "DESCRIPTION": "rhinemod:科研进度 ：!M! 。 NL 消耗 所有 *出格 ，你本回合内不能打出会获得 *出格 的牌。",
         "UPGRADE_DESCRIPTION": ""
     },
 

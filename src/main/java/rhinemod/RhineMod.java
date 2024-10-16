@@ -202,8 +202,12 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
                 create());
         BaseMod.addEvent(new AddEventParams.Builder(UnsecuredCorridors.ID, UnsecuredCorridors.class).
                 eventType(EventUtils.EventType.NORMAL).
-                dungeonID("TheCity").
-                dungeonID("TheBeyond").
+                dungeonIDs("TheCity", "TheBeyond").
+                endsWithRewardsUI(false).
+                create());
+        BaseMod.addEvent(new AddEventParams.Builder(TheCure.ID, TheCure.class).
+                eventType(EventUtils.EventType.NORMAL).
+                dungeonIDs("Exordium", "TheCity", "TheBeyond").
                 endsWithRewardsUI(false).
                 create());
     }
@@ -348,12 +352,10 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         cards.add(new GravityNone()); // 重置
         cards.add(new GravityUp()); // 失重
 
-        // Colourless Uncommon.
+        // Colourless
         cards.add(new AuxiliaryDrone()); // 夜灯
-
-        // Colourless Rare.
         cards.add(new AttackInsteadOfDefend()); // 以攻代守
-
+        cards.add(new TracingOrigins()); // 追溯本源
 
         for (AbstractCard c:cards) {
             BaseMod.addCard(c);

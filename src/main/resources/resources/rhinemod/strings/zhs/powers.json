@@ -306,5 +306,9 @@
   "rhinemod:BlackBeanTeaPower": {
     "NAME": "黑豆茶",
     "DESCRIPTIONS": ["下回合开始时，失去 #b", " #y金币。"]
+  },
+  "rhinemod:TracingOriginsPower": {
+    "NAME": "追溯本源",
+    "DESCRIPTIONS": ["你本回合内不能打出会获得 #y出格 的牌。"]
   }
 }
