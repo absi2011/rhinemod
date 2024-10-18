@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.metrics.MetricData;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.CampfireUI;
 import com.megacrit.cardcrawl.screens.runHistory.RunPathElement;
 import com.megacrit.cardcrawl.screens.stats.CampfireChoice;
@@ -25,7 +26,7 @@ public class CampfireOptionPatch {
     @SpirePatch(clz = CampfireUI.class, method = "initializeButtons")
     public static class AddChangeBranchOption {
         @SpireInsertPatch(locator = Locator.class, localvars = "buttons")
-        public static void Insert(CampfireUI _inst, ArrayList<AbstractCampfireOption> buttons) {
+        public static SpireReturn<?> Insert(CampfireUI _inst, ArrayList<AbstractCampfireOption> buttons) {
             boolean valid = false;
             for (AbstractCard c : AbstractDungeon.player.masterDeck.group)
                 if (c instanceof AbstractRhineCard && c.upgraded && ((AbstractRhineCard) c).possibleBranches().size() > 1) {
@@ -38,6 +39,23 @@ public class CampfireOptionPatch {
             }
             buttons.add(option);
             CampfireChangeBranchEffect.ids.clear();
+
+            boolean cannotProceed = false;
+            for (AbstractCampfireOption opt : buttons)
+                if (!(opt instanceof ChangeBranchOption) && opt.usable) {
+                    cannotProceed = true;
+                    break;
+                }
+            if (Settings.isFinalActAvailable && !Settings.hasRubyKey) {
+                cannotProceed = true;
+            }
+            if (!cannotProceed) {
+                AbstractRoom.waitTimer = 0.0F;
+                AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
+                return SpireReturn.Return();
+            } else {
+                return SpireReturn.Continue();
+            }
         }
 
         private static class Locator extends SpireInsertLocator {
