@@ -67,7 +67,7 @@ public class OmenPower extends AbstractPower {
     }
 
     public void trigger() {
-        for (int i = cards.size() - 1; i >= 0; i--) {
+        for (int i = 0; i < cards.size(); i++) {
             AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(cards.get(i), true, EnergyPanel.getCurrentEnergy(), false, true), true);
         }
         addToBot(new RemoveSpecificPowerAction(owner, owner, this));
