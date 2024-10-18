@@ -44,6 +44,7 @@ public class RefreshmentPower extends AbstractPower {
     public void atStartOfTurn() {
         super.atStartOfTurn();
         rest = amount;
+        updateDescription();
     }
 
     @Override

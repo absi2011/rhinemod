@@ -23,15 +23,15 @@ public class Disorder extends AbstractRhineCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     public static final String IMG = "resources/rhinemod/images/cards/Memory.png";
-    public static ArrayList<Integer> DATA = new ArrayList<>(Arrays.asList(0, 1, 2, 3, 4));
+    public ArrayList<Integer> DATA = new ArrayList<>(Arrays.asList(0, 1, 2, 3, 4));
     public Disorder() {
-        super(ID, NAME, IMG, DATA.get(0), DESCRIPTION,
+        super(ID, NAME, IMG, 0, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.RARE, CardTarget.ENEMY);
-        damage = baseDamage = DATA.get(3);
-        block = baseBlock = DATA.get(2);
-        magicNumber = baseMagicNumber = DATA.get(4);
-        secondMagicNumber = baseSecondMagicNumber = DATA.get(1);
+        damage = baseDamage = 3;
+        block = baseBlock = 2;
+        magicNumber = baseMagicNumber = 4;
+        secondMagicNumber = baseSecondMagicNumber = 1;
         isEthereal = true;
     }
 
@@ -51,7 +51,9 @@ public class Disorder extends AbstractRhineCard {
 
     @Override
     public void onPlayCard(AbstractCard c, AbstractMonster m) {
-        shuffle();
+        if ((c.uuid != uuid) && (AbstractDungeon.player.hand.contains(this))) {
+            shuffle();
+        }
     }
 
     void shuffle(){

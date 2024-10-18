@@ -76,6 +76,7 @@ public class IdealistFormPower extends AbstractPower {
         if (!(card instanceof AbstractRhineCard)) return;
         int branch = ((AbstractRhineCard) card).realBranch;
         if (branch == 0) return;
+        if (branch == -1) return;
         played |= 1 << (branch - 1);
         updateDescription();
     }
