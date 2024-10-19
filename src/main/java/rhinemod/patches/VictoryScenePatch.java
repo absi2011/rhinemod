@@ -7,7 +7,9 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.cutscenes.Cutscene;
 import com.megacrit.cardcrawl.cutscenes.CutscenePanel;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
+import rhinemod.relics.LoneTrail;
 
 import java.util.ArrayList;
 
@@ -16,9 +18,13 @@ public class VictoryScenePatch {
     @SpirePostfixPatch
     public static void Postfix(Cutscene _inst, AbstractPlayer.PlayerClass chosenClass, @ByRef Texture[] ___bgImg, ArrayList<CutscenePanel> ___panels) {
         if (chosenClass == RhineEnum.RHINE_CLASS) {
-            ___bgImg[0] = ImageMaster.loadImage("resources/rhinemod/images/ui/SkyScene/scene.png");
+            String url = "resources/rhinemod/images/ui/VictorySceneHeart.png";
+            if (AbstractDungeon.player.hasRelic(LoneTrail.ID)) {
+                url = "resources/rhinemod/images/ui/VictoryScene.png";
+            }
+            ___bgImg[0] = ImageMaster.loadImage(url);
             ___panels.clear();
-            ___panels.add(new CutscenePanel("resources/rhinemod/images/ui/VictoryScene.png"));
+            ___panels.add(new CutscenePanel(url));
         }
     }
 }

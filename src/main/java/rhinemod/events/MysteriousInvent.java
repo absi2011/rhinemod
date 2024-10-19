@@ -21,7 +21,7 @@ public class MysteriousInvent extends AbstractImageEvent {
     }
     int gold;
     public MysteriousInvent() {
-        super(NAME, DESCRIPTIONS[0], "resources/rhinemod/images/crads/BionicDevice.png");
+        super(NAME, DESCRIPTIONS[0], "resources/rhinemod/images/event/MysteriousInvent.png");
         if (AbstractDungeon.ascensionLevel < 15) {
             gold = 150;
         } else {

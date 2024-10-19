@@ -21,7 +21,7 @@ public class IdealistForm extends AbstractRhineCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
-    public static final String IMG = "resources/rhinemod/images/cards/RhineStrike.png";
+    public static final String IMG = "resources/rhinemod/images/cards/IdealistForm.png";
     public static final int COST = 3;
     public static final int ATTACK_DMG = 60;
     public static final int UPGRADE_PLUS_DMG = 15;

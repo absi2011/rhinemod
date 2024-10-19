@@ -22,7 +22,8 @@ public class TwoToOne extends AbstractRhineCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
-    public static final String IMG = "resources/rhinemod/images/cards/PureWaterIsLife.png";
+    public static final String IMG = "resources/rhinemod/images/cards/TwoToOne.png";
+    public static final String IMG_K = "resources/rhinemod/images/cards/OneToTwo.png";
     public static final int COST = 1;
     public static final int ATTACK_DMG = 11;
     public static final int UPGRADE_PLUS_DMG = 5;
@@ -69,6 +70,8 @@ public class TwoToOne extends AbstractRhineCard {
                     upgradeName(2, EXTENDED_DESCRIPTION[0]);
                     rawDescription = EXTENDED_DESCRIPTION[1];
                     upgradeDamage(UPGRADE_PLUS_DMG);
+                    textureImg = IMG_K;
+                    loadCardImage(textureImg);
                     initializeDescription();
                 }
             });

@@ -18,7 +18,7 @@ public class Refreshment extends AbstractRhineCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG = "resources/rhinemod/images/cards/Solidify.png";
+    public static final String IMG = "resources/rhinemod/images/cards/Refreshment.png";
     public static final int COST = 2;
     public static final int LIMIT = 4;
     public static final int UPGRADE_EXTRA_LIMIT = 2;
