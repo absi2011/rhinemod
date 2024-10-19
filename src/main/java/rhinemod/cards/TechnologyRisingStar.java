@@ -82,7 +82,6 @@ public class TechnologyRisingStar extends AbstractRhineCard {
             add(() -> {
                 if (!upgraded) {
                     upgradeName(1);
-                    upgradeBaseCost(KRISTEN_COST);
                     magicNumber = baseMagicNumber = PROGRESS;
                     secondMagicNumber = baseSecondMagicNumber = EXHAUST;
                     rawDescription = EXTENDED_DESCRIPTION[0];
@@ -91,6 +90,7 @@ public class TechnologyRisingStar extends AbstractRhineCard {
             });
             add(() -> {
                 if (!upgraded) {
+                    upgradeBaseCost(KRISTEN_COST);
                     upgradeName(2);
                     rawDescription = EXTENDED_DESCRIPTION[1];
                     initializeDescription();

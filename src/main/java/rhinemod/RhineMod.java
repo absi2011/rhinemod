@@ -347,15 +347,17 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         cards.add(new Sarracenia()); // 雪瓶子草
         cards.add(new SheathedBeech()); // 鞘叶榉
         cards.add(new PaleFir()); // 淡杉
+        cards.add(new TracingOrigins()); // 追溯本源
 
         cards.add(new GravityDown()); // 超重
         cards.add(new GravityNone()); // 重置
         cards.add(new GravityUp()); // 失重
 
-        // Colourless
+        // Colourless Uncommon
         cards.add(new AuxiliaryDrone()); // 夜灯
+
+        // Colourless Rare
         cards.add(new AttackInsteadOfDefend()); // 以攻代守
-        cards.add(new TracingOrigins()); // 追溯本源
 
         for (AbstractCard c:cards) {
             BaseMod.addCard(c);

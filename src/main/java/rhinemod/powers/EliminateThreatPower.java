@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
@@ -35,6 +36,8 @@ public class EliminateThreatPower extends AbstractPower {
 
     public void onSmash(AbstractCreature target) {
         addToBot(new ApplyPowerAction(target, owner, new StrengthPower(target, -amount)));
-        addToBot(new ApplyPowerAction(target, owner, new GainStrengthPower(target, amount)));
+        if (!target.hasPower(ArtifactPower.POWER_ID)) {
+            addToBot(new ApplyPowerAction(target, owner, new GainStrengthPower(target, amount)));
+        }
     }
 }
