@@ -262,8 +262,8 @@ public class StarRing extends AbstractMonster {
 
     @SpirePatch(clz = AbstractMonster.class, method = "escape")
     public static class MonsterEscapePatch {
-        @SpirePrefixPatch
-        public static void Prefix(AbstractMonster _inst) {
+        @SpirePostfixPatch
+        public static void Postfix(AbstractMonster _inst) {
             AbstractPlayer p = AbstractDungeon.player;
             if (AbstractDungeon.getMonsters().areMonstersBasicallyDead() && p instanceof RhineLab) {
                 ((RhineLab) p).blast();
