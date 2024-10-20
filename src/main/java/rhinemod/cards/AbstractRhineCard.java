@@ -142,6 +142,7 @@ public abstract class AbstractRhineCard extends CustomCard {
         t.exhaust = s.exhaust;
         t.isEthereal = s.isEthereal;
         t.retain = s.retain;
+        t.selfRetain = s.selfRetain;
         t.isInnate = s.isInnate;
         t.returnToHand = s.returnToHand;
         t.shuffleBackIntoDrawPile = s.shuffleBackIntoDrawPile;

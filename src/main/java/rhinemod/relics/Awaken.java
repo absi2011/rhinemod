@@ -16,7 +16,7 @@ public class Awaken extends CustomRelic {
     public static final String[] DESCRIPTIONS = relicStrings.DESCRIPTIONS;
     public static final Texture IMG = new Texture("resources/rhinemod/images/relics/Awaken.png");
     public static final Texture IMG_OUTLINE = new Texture("resources/rhinemod/images/relics/Awaken_p.png");
-    public static final int TOTAL_DMG = 140;
+    public static final int TOTAL_DMG = 120;
     public Awaken() {
         super(ID, IMG, IMG_OUTLINE, RelicTier.SPECIAL, LandingSound.HEAVY);
         counter = 0;

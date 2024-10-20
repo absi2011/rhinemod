@@ -190,26 +190,28 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
                 endsWithRewardsUI(false).
                 spawnCondition(() -> (!(AbstractDungeon.player instanceof RhineLab))).
                 create());
-        BaseMod.addEvent(new AddEventParams.Builder(HeartEvent.ID, HeartEvent.class).
-                eventType(EventUtils.EventType.NORMAL).
-                dungeonID("Special").
-                endsWithRewardsUI(false).
-                create());
-        BaseMod.addEvent(new AddEventParams.Builder(SkyEvent.ID, SkyEvent.class).
-                eventType(EventUtils.EventType.NORMAL).
-                dungeonID("Special").
-                endsWithRewardsUI(false).
-                create());
         BaseMod.addEvent(new AddEventParams.Builder(UnsecuredCorridors.ID, UnsecuredCorridors.class).
                 eventType(EventUtils.EventType.NORMAL).
                 dungeonIDs("TheCity", "TheBeyond").
-                endsWithRewardsUI(false).
+                endsWithRewardsUI(true).
                 create());
-        BaseMod.addEvent(new AddEventParams.Builder(TheCure.ID, TheCure.class).
-                eventType(EventUtils.EventType.NORMAL).
-                dungeonIDs("Exordium", "TheCity", "TheBeyond").
-                endsWithRewardsUI(false).
-                create());
+        if (isDemo) {
+            BaseMod.addEvent(new AddEventParams.Builder(HeartEvent.ID, HeartEvent.class).
+                    eventType(EventUtils.EventType.NORMAL).
+                    dungeonID("Special").
+                    endsWithRewardsUI(false).
+                    create());
+            BaseMod.addEvent(new AddEventParams.Builder(SkyEvent.ID, SkyEvent.class).
+                    eventType(EventUtils.EventType.NORMAL).
+                    dungeonID("Special").
+                    endsWithRewardsUI(false).
+                    create());
+            BaseMod.addEvent(new AddEventParams.Builder(TheCure.ID, TheCure.class).
+                    eventType(EventUtils.EventType.NORMAL).
+                    dungeonIDs("Exordium", "TheCity", "TheBeyond").
+                    endsWithRewardsUI(false).
+                    create());
+        }
     }
 
     private void initializePotions() {

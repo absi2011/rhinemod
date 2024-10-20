@@ -35,7 +35,7 @@ public class ExperimentalPowerArmorRelic extends CustomRelic {
 
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
-        if (info.type == DamageInfo.DamageType.NORMAL && damageAmount >= GlobalAttributes.smashThreshold) {
+        if (info.type == DamageInfo.DamageType.NORMAL && damageAmount < GlobalAttributes.smashThreshold) {
             flash();
             return damageAmount / 2;
         } else {
