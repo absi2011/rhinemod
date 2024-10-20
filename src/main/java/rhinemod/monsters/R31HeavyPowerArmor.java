@@ -50,7 +50,7 @@ public class R31HeavyPowerArmor extends AbstractRhineMonster {
 
     @Override
     public void takeTurn() {
-        if (nextMove == 7) {
+        if (nextMove == 5) {
             state.setAnimation(0, "Skill_Begin", false);
             state.addAnimation(0, "Skill_Loop", false, 0);
             state.addAnimation(0, "Skill_End", false, 0);
@@ -59,7 +59,7 @@ public class R31HeavyPowerArmor extends AbstractRhineMonster {
                 addToBot(new DamageAction(AbstractDungeon.player, damage.get(0)));
             }
             addToBot(new MakeTempCardInDrawPileAction(new Dazed(), stunNum, false, true)) ;
-        } else if (nextMove >= 8) {
+        } else if (nextMove >= 6) {
             state.setAnimation(0, "Attack", false);
             state.addAnimation(0, "Idle", true, 0);
             addToBot(new DamageAction(AbstractDungeon.player, damage.get(1)));
@@ -70,10 +70,10 @@ public class R31HeavyPowerArmor extends AbstractRhineMonster {
             AbstractDungeon.effectList.add(new R31MoveEffect(this, moveX));
             state.addAnimation(0, "Idle", true, 0);
         }
-        if (nextMove <= 5) {
+        if (nextMove <= 3) {
             setMove(MOVES[0], (byte)(nextMove + 1), Intent.UNKNOWN);
-        } else if ((nextMove == 6) || (nextMove == 10)) {
-            setMove(MOVES[1], (byte)7, Intent.ATTACK_DEBUFF, damage.get(0).base, stunStrike, true);
+        } else if ((nextMove == 4) || (nextMove == 8)) {
+            setMove(MOVES[1], (byte)5, Intent.ATTACK_DEBUFF, damage.get(0).base, stunStrike, true);
         } else {
             setMove((byte)(nextMove + 1), Intent.ATTACK, damage.get(1).base);
         }

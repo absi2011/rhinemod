@@ -57,7 +57,9 @@ public class AverageDamageAllAction extends AbstractGameAction {
         }
         for (int i = 0; i < aimList.size(); i++) {
             DamageInfo info = new DamageInfo(source, dmgList[i], damageType);
-            applyEnemyPowersOnly(info, aimList.get(i));
+            if (info.type == DamageInfo.DamageType.NORMAL) {
+                applyEnemyPowersOnly(info, aimList.get(i));
+            }
             aimList.get(i).damage(info);
         }
         isDone = true;

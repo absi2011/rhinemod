@@ -167,7 +167,7 @@
   "rhinemod:Armor": {
     "NAME": "装甲",
     "DESCRIPTIONS": [
-      "受到的非 #y重击 伤害减半。"
+      "受到的非 #y重击 攻击伤害减半。"
     ]
   },
   "rhinemod:WeaknessSmash": {

@@ -88,7 +88,7 @@
   "rhinemod:ExperimentalPowerArmorRelic": {
     "NAME": "实验用动力装甲",
     "FLAVOR": "无人操控的动力装甲。",
-    "DESCRIPTIONS": ["你受到的非 #y重击 伤害减半。"]
+    "DESCRIPTIONS": ["你受到的非 #y重击 攻击伤害减半。"]
   },
 
   "rhinemod:WaterdropManifestation": {
