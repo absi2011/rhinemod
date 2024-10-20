@@ -7,7 +7,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import rhinemod.powers.AIODPower;
 import rhinemod.powers.AuxiliaryDronePower;
 
 public class AuxiliaryDrone extends CustomCard {
@@ -16,7 +15,7 @@ public class AuxiliaryDrone extends CustomCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG_PATH = "resources/rhinemod/images/cards/Starfall.png";
+    public static final String IMG_PATH = "resources/rhinemod/images/cards/AuxiliaryDrone.png";
     private static final int COST = 1;
     private static final int DAMAGE_OUT = 1;
     private static final int UPGRADE_DAMAGE_OUT = 1;

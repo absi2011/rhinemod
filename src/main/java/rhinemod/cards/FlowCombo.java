@@ -21,7 +21,7 @@ public class FlowCombo extends AbstractRhineCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG = "resources/rhinemod/images/cards/BionicDevice.png";
+    public static final String IMG = "resources/rhinemod/images/cards/FlowCombo.png";
     public static final int COST = 1;
     public static final int DAMAGE = 6;
     public static final int UPGRADE_DAMAGE = 2;
