@@ -211,6 +211,11 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
                     dungeonIDs("Exordium", "TheCity", "TheBeyond").
                     endsWithRewardsUI(false).
                     create());
+            BaseMod.addEvent(new AddEventParams.Builder(StarlitNight.ID, StarlitNight.class).
+                    eventType(EventUtils.EventType.NORMAL).
+                    dungeonIDs("Exordium", "TheCity", "TheBeyond").
+                    endsWithRewardsUI(false).
+                    create());
         }
     }
 
