@@ -54,6 +54,16 @@
     "FLAVOR": "风暴中，唯保守者屹立不倒。",
     "DESCRIPTIONS": ["在每回合开始时，获得 #b2 点 #y钙质粒子。"]
   },
+  "rhinemod:DeadBranches": {
+    "NAME": "“枯枝”",
+    "FLAVOR": "像是有生命般，它们似乎在跟随娜斯提思考。",
+    "DESCRIPTIONS": ["在每回合开始时获得 [E] 。 拾起时，失去 #b15 最大生命。"]
+  },
+  "rhinemod:BottleOfMemories": {
+    "NAME": "回忆瓶",
+    "FLAVOR": "在相遇的时候，他们或多或少还是真心的。",
+    "DESCRIPTIONS": ["在每回合开始时，将一张 #y回忆 加入你的手牌。"]
+  },
 
   "rhinemod:Melt": {
     "NAME": "融化",
