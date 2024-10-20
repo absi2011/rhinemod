@@ -32,6 +32,7 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import rhinemod.cards.*;
+import rhinemod.events.StarlitNight;
 import rhinemod.patches.*;
 import rhinemod.powers.CriticalPointPower;
 import rhinemod.powers.EgotistPower;
@@ -279,6 +280,9 @@ public class RhineLab extends CustomPlayer {
 
     @Override
     public void render(SpriteBatch sb) {
+        if (AbstractDungeon.getCurrRoom().event instanceof StarlitNight) {
+            return;
+        }
         stance.render(sb);
         if ((AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT || AbstractDungeon.getCurrRoom() instanceof MonsterRoom) && !isDead) {
             currentRings.removeIf(r -> r.isDead);

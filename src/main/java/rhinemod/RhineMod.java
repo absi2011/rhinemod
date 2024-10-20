@@ -205,11 +205,18 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
                 dungeonIDs("TheCity", "TheBeyond").
                 endsWithRewardsUI(false).
                 create());
-        BaseMod.addEvent(new AddEventParams.Builder(TheCure.ID, TheCure.class).
-                eventType(EventUtils.EventType.NORMAL).
-                dungeonIDs("Exordium", "TheCity", "TheBeyond").
-                endsWithRewardsUI(false).
-                create());
+        if (isDemo) {
+            BaseMod.addEvent(new AddEventParams.Builder(TheCure.ID, TheCure.class).
+                    eventType(EventUtils.EventType.NORMAL).
+                    dungeonIDs("Exordium", "TheCity", "TheBeyond").
+                    endsWithRewardsUI(false).
+                    create());
+            BaseMod.addEvent(new AddEventParams.Builder(StarlitNight.ID, StarlitNight.class).
+                    eventType(EventUtils.EventType.NORMAL).
+                    dungeonIDs("Exordium", "TheCity", "TheBeyond").
+                    endsWithRewardsUI(false).
+                    create());
+        }
     }
 
     private void initializePotions() {
