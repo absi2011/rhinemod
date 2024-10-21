@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import rhinemod.interfaces.UpgradeBranch;
 import rhinemod.patches.AbstractCardEnum;
-import rhinemod.powers.FlowingWater;
+import rhinemod.powers.QuickwaterArea;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +52,7 @@ public class QuicksandGeneration extends AbstractRhineCard {
             for (int i = 0; i < list.size(); i++)
                 addToBot(new ApplyPowerAction(list.get(i), p, new WeakPower(list.get(i), avg + (i < fir ? 1 : 0), false)));
         } else {
-            addToBot(new ApplyPowerAction(p, p, new FlowingWater(p, magicNumber)));
+            addToBot(new ApplyPowerAction(p, p, new QuickwaterArea(p, magicNumber)));
         }
     }
 

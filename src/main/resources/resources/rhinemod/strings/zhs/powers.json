@@ -50,7 +50,7 @@
       " 点生命值。"
     ]
   },
-  "rhinemod:FlowingWater": {
+  "rhinemod:QuickwaterArea": {
     "NAME": "流水区域",
     "DESCRIPTIONS": [
       "当你下一次受到攻击后，给予攻击者 #b",
@@ -182,7 +182,7 @@
       "受到的非 #y重击 伤害时，额外受到一次等量伤害。"
     ]
   },
-  "rhinemod:Average": {
+  "rhinemod:Equality": {
     "NAME": "平等",
     "DESCRIPTIONS": [
       "造成的伤害将均匀分配给除自身外的所有角色。"
@@ -227,21 +227,21 @@
     ]
   },
   "rhinemod:IdealistFormPowerS": {
-    "NAME": "理想者形态",
+    "NAME": "理想者形态S",
     "DESCRIPTIONS": [
       "在每回合开始时，消耗手牌中的所有 #y出格 。每消耗一张，获得 #b",
       " 点 #y钙质粒子 。"
     ]
   },
   "rhinemod:IdealistFormPowerK": {
-    "NAME": "理想者形态",
+    "NAME": "理想者形态K",
     "DESCRIPTIONS": [
       "在每回合开始时，打出 #b ",
       " 张 #y寂寥的光 。"
     ]
   },
   "rhinemod:IdealistFormPowerM": {
-    "NAME": "理想者形态",
+    "NAME": "理想者形态M",
     "DESCRIPTIONS": [
       "在每回合开始时，抽 #b ",
       " 张牌，获得 #b ",

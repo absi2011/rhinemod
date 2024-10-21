@@ -35,7 +35,6 @@ public class PDOFBPower extends AbstractPower implements OnReceivePowerPower {
     @Override
     public boolean onReceivePower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
         if ((source != null) && (source.hasPower(Submersion.POWER_ID)) && (power.type == PowerType.DEBUFF)) {
-            // TODO: 现在蘑菇怪死后给你上的Debuff是null给你上的，无法判断目标有没有相关power
             this.flash();
             return false;
         }

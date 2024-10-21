@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
 import rhinemod.actions.AwakenAction;
 import rhinemod.actions.SummonMechAction;
-import rhinemod.powers.Average;
+import rhinemod.powers.Equality;
 import rhinemod.powers.Journey;
 
 public class Awaken_Monster extends AbstractRhineMonster {
@@ -62,7 +62,7 @@ public class Awaken_Monster extends AbstractRhineMonster {
 
     @Override
     public void usePreBattleAction() {
-        addToBot(new ApplyPowerAction(this, this, new Average(this)));
+        addToBot(new ApplyPowerAction(this, this, new Equality(this)));
         addToBot(new ApplyPowerAction(this, this, new Journey(this, stage1Journey)));
         CardCrawlGame.music.fadeOutTempBGM();
         AbstractDungeon.scene.fadeOutAmbiance();

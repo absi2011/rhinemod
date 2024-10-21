@@ -23,8 +23,8 @@ public class AutoAttack extends AbstractPower {
         this.type = PowerType.BUFF;
         this.owner = owner;
         this.decAmount = 1;
-        region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/BionicDevice 84.png"), 0, 0, 84, 84);
-        region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/BionicDevice 32.png"), 0, 0, 32, 32);
+        region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/AutoAttack 128.png"), 0, 0, 128, 128);
+        region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/AutoAttack 48.png"), 0, 0, 48, 48);
         this.amount = amount;
         updateDescription();
     }

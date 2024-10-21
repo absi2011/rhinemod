@@ -10,18 +10,18 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class FlowingWater extends AbstractPower {
-    public static final String POWER_ID = "rhinemod:FlowingWater";
+public class QuickwaterArea extends AbstractPower {
+    public static final String POWER_ID = "rhinemod:QuickwaterArea";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    public FlowingWater(AbstractCreature owner, int amount) {
+    public QuickwaterArea(AbstractCreature owner, int amount) {
         this.ID = POWER_ID;
         this.name = NAME;
         this.type = PowerType.BUFF;
         this.owner = owner;
-        region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/BionicDevice 84.png"), 0, 0, 84, 84);
-        region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/BionicDevice 32.png"), 0, 0, 32, 32);
+        region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/QuickwaterArea 84.png"), 0, 0, 84, 84);
+        region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/QuickwaterArea 32.png"), 0, 0, 32, 32);
         this.amount = amount;
         updateDescription();
     }

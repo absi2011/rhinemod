@@ -61,14 +61,14 @@ public class RhineLab extends CustomPlayer {
     public static final String SHOULDER = "resources/rhinemod/images/char/shoulder.png";
     public static final String[] orbTextures = {
         "resources/rhinemod/images/char/orb/layer1.png",
+        "resources/rhinemod/images/char/orb/EmptyLayer.png",
+        "resources/rhinemod/images/char/orb/EmptyLayer.png",
+        "resources/rhinemod/images/char/orb/EmptyLayer.png",
         "resources/rhinemod/images/char/orb/layer2.png",
-        "resources/rhinemod/images/char/orb/layer3.png",
-        "resources/rhinemod/images/char/orb/layer4.png",
-        "resources/rhinemod/images/char/orb/layer5.png",
         "resources/rhinemod/images/char/orb/layer1d.png",
-        "resources/rhinemod/images/char/orb/layer2d.png",
-        "resources/rhinemod/images/char/orb/layer3d.png",
-        "resources/rhinemod/images/char/orb/layer4d.png"
+        "resources/rhinemod/images/char/orb/EmptyLayer.png",
+        "resources/rhinemod/images/char/orb/EmptyLayer.png",
+        "resources/rhinemod/images/char/orb/EmptyLayer.png",
     };
     public GlobalAttributes globalAttributes = new GlobalAttributes();
     public static final float[] POSX = new float[] { 275.0F, 305.0F, 245.0F, 85.0F, -75.0F, -235.0F };
@@ -80,7 +80,7 @@ public class RhineLab extends CustomPlayer {
 
     public RhineLab(String name) {
         // 参数列表：角色名，角色类枚举，能量面板贴图路径列表，能量面板特效贴图路径，能量面板贴图旋转速度列表，能量面板，模型资源路径，动画资源路径
-        super(name, RhineEnum.RHINE_CLASS, orbTextures, "resources/rhinemod/images/char/orb/vfx.png", null, null, null);
+        super(name, RhineEnum.RHINE_CLASS, orbTextures, "resources/rhinemod/images/char/orb/vfx.png", new float[]{0, 0, 0, 0, 20}, null, null);
 
         dialogX = this.drawX;
         dialogY = this.drawY + 200.0F * Settings.scale;

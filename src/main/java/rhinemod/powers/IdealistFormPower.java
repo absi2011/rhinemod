@@ -14,8 +14,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import rhinemod.cards.AbstractRhineCard;
 
-import java.util.logging.Logger;
-
 public class IdealistFormPower extends AbstractPower {
     public static final String POWER_ID = "rhinemod:IdealistFormPower";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -28,8 +26,8 @@ public class IdealistFormPower extends AbstractPower {
         this.name = NAME;
         this.type = PowerType.BUFF;
         this.owner = owner;
-        region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/BionicDevice 84.png"), 0, 0, 84, 84);
-        region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/BionicDevice 32.png"), 0, 0, 32, 32);
+        region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/IdealistForm 84.png"), 0, 0, 84, 84);
+        region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/IdealistForm 32.png"), 0, 0, 32, 32);
         this.amount = amount;
         played = 0;
         updateDescription();
@@ -37,27 +35,23 @@ public class IdealistFormPower extends AbstractPower {
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1] + DESCRIPTIONS[7];
+        StringBuilder sb = new StringBuilder();
+        sb.append(DESCRIPTIONS[0]);
+        sb.append(amount);
+        sb.append(DESCRIPTIONS[1]);
+        if (played != 0) {
+            sb.append(DESCRIPTIONS[7]);
+        }
         boolean first = true;
-        if ((played & 1) != 0) {
-            if (!first) description += DESCRIPTIONS[6];
-            first = false;
-            description += DESCRIPTIONS[2];
+        for (int i = 0; i < 3; i++) {
+            if ((played & (1 << i)) != 0) {
+                if (!first) sb.append(DESCRIPTIONS[6]);
+                first = false;
+                sb.append(DESCRIPTIONS[i + 2]);
+            }
         }
-        if ((played & 2) != 0) {
-            if (!first) description += DESCRIPTIONS[6];
-            first = false;
-            description += DESCRIPTIONS[3];
-        }
-        if ((played & 4) != 0) {
-            if (!first) description += DESCRIPTIONS[6];
-            first = false;
-            description += DESCRIPTIONS[4];
-        }
-        description += DESCRIPTIONS[5];
-        if (first) {
-            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
-        }
+        sb.append(DESCRIPTIONS[5]);
+        description = sb.toString();
     }
 
     @Override
@@ -75,8 +69,7 @@ public class IdealistFormPower extends AbstractPower {
     public void onPlayCard(AbstractCard card, AbstractMonster m) {
         if (!(card instanceof AbstractRhineCard)) return;
         int branch = ((AbstractRhineCard) card).realBranch;
-        if (branch == 0) return;
-        if (branch == -1) return;
+        if (branch <= 0) return;
         played |= 1 << (branch - 1);
         updateDescription();
     }
