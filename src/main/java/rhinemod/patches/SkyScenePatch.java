@@ -20,7 +20,6 @@ import javassist.expr.ExprEditor;
 import javassist.expr.FieldAccess;
 import javassist.expr.MethodCall;
 import rhinemod.events.SkyEvent;
-import rhinemod.monsters.StarPod;
 import rhinemod.relics.LoneTrail;
 import rhinemod.util.TheSky;
 
@@ -137,7 +136,7 @@ public class SkyScenePatch {
     }
 
     @SpirePatch(clz = AbstractDungeon.class, method = "populatePathTaken")
-    public static class PopularPathTakenPatch {
+    public static class PopulatePathTakenPatch {
         @SpirePostfixPatch
         public static void Postfix(AbstractDungeon _inst, SaveFile saveFile) {
             if (currMapNode.room instanceof VictoryRoom && AbstractDungeon.player.hasRelic(LoneTrail.ID))
@@ -162,30 +161,13 @@ public class SkyScenePatch {
         }
     }
 
-    @SpirePatch(clz = ProceedButton.class, method = "goToVictoryRoomOrTheDoor")
-    public static class GoToVictoryRoomOrTheDoorPatch {
-        @SpirePrefixPatch
-        public static SpireReturn<?> Prefix(ProceedButton _inst) {
-            if (AbstractDungeon.player.hasRelic(LoneTrail.ID)) {
-                CardCrawlGame.music.fadeOutBGM();
-                CardCrawlGame.music.fadeOutTempBGM();
-                MapRoomNode node = new MapRoomNode(-1, 15);
-                node.room = new VictoryRoom(SKY);
-                AbstractDungeon.nextRoom = node;
-                AbstractDungeon.closeCurrentScreen();
-                AbstractDungeon.nextRoomTransitionStart();
-                _inst.hide();
-                return SpireReturn.Return();
-            }
-            return SpireReturn.Continue();
-        }
-    }
-
     @SpirePatch(clz = VictoryRoom.class, method = "onPlayerEntry")
     public static class OnPlayerEntryPatch {
-        @SpirePostfixPatch
-        public static void Postfix(VictoryRoom _inst) {
-            if (_inst.eType == SKY) {
+        @SpirePrefixPatch
+        public static void Prefix(VictoryRoom _inst) {
+            if (AbstractDungeon.player.hasRelic(LoneTrail.ID)) {
+                _inst.eType = SKY;
+                AbstractDungeon.overlayMenu.proceedButton.hide();
                 _inst.event = new SkyEvent();
                 _inst.event.onEnterRoom();
             }
