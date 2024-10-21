@@ -410,7 +410,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addRelic(new Stargate(), RelicType.SHARED);
         BaseMod.addRelic(new FlameEmitter(), RelicType.SHARED);
         BaseMod.addRelicToCustomPool(new PeppermintChapstick(), RHINE_MATTE);
-        BaseMod.addRelicToCustomPool(new BottledOfMemories(), RHINE_MATTE);
+        BaseMod.addRelicToCustomPool(new BottleOfMemories(), RHINE_MATTE);
 
         // boss.
         BaseMod.addRelicToCustomPool(new Future(), RHINE_MATTE);

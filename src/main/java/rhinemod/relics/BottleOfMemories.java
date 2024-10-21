@@ -10,15 +10,15 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToHandEffect;
 import rhinemod.cards.Memory;
 
-public class BottledOfMemories extends CustomRelic {
+public class BottleOfMemories extends CustomRelic {
 
-    public static final String ID = "rhinemod:BottledOfMemories";
+    public static final String ID = "rhinemod:BottleOfMemories";
     public static final RelicStrings relicStrings = CardCrawlGame.languagePack.getRelicStrings(ID);
     public static final String NAME = relicStrings.NAME;
     public static final String[] DESCRIPTIONS = relicStrings.DESCRIPTIONS;
-    public static final Texture IMG = new Texture("resources/rhinemod/images/relics/BottledOfMemories.png");
-    public static final Texture IMG_OUTLINE = new Texture("resources/rhinemod/images/relics/BottledOfMemories_p.png");
-    public BottledOfMemories() {
+    public static final Texture IMG = new Texture("resources/rhinemod/images/relics/BottleOfMemories.png");
+    public static final Texture IMG_OUTLINE = new Texture("resources/rhinemod/images/relics/BottleOfMemories_p.png");
+    public BottleOfMemories() {
         super(ID, IMG, IMG_OUTLINE, RelicTier.RARE, LandingSound.MAGICAL);
         counter = -1;
     }
@@ -30,7 +30,7 @@ public class BottledOfMemories extends CustomRelic {
 
     @Override
     public AbstractRelic makeCopy() {
-        return new BottledOfMemories();
+        return new BottleOfMemories();
     }
 
     @Override
