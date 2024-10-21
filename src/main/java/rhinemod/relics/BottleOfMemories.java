@@ -19,7 +19,7 @@ public class BottleOfMemories extends CustomRelic {
     public static final Texture IMG = new Texture("resources/rhinemod/images/relics/BottleOfMemories.png");
     public static final Texture IMG_OUTLINE = new Texture("resources/rhinemod/images/relics/BottleOfMemories_p.png");
     public BottleOfMemories() {
-        super(ID, IMG, IMG_OUTLINE, RelicTier.RARE, LandingSound.MAGICAL);
+        super(ID, IMG, IMG_OUTLINE, RelicTier.SHOP, LandingSound.MAGICAL);
         counter = -1;
     }
 
