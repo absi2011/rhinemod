@@ -221,6 +221,8 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
 
     private void initializePotions() {
         BaseMod.addPotion(BlackBeanTea.class, Color.GRAY, Color.DARK_GRAY, null, BlackBeanTea.ID, RhineEnum.RHINE_CLASS);
+        BaseMod.addPotion(UnknownReagent.class, Color.GRAY, null, Color.DARK_GRAY, UnknownReagent.ID);
+        BaseMod.addPotion(BottledCalcium.class, Color.GRAY, null, Color.DARK_GRAY, BottledCalcium.ID, RhineEnum.RHINE_CLASS);
     }
 
     private void initializeSpecialImg() {

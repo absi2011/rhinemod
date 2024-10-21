@@ -6,5 +6,9 @@
   "rhinemod:BlackBeanTea": {
     "NAME": "黑豆茶",
     "DESCRIPTIONS": ["获得 #b", " 点 #y力量 ，下回合开始时，失去 #b", " #y金币 。"]
+  },
+  "rhinemod:UnknownReagent": {
+    "NAME": "不明试剂",
+    "DESCRIPTIONS": ["对随机敌人造成 #b", " 点伤害 #b", " 次，如果目标是来自莱茵生命mod的机械敌人，则伤害翻倍。"]
   }
 }
