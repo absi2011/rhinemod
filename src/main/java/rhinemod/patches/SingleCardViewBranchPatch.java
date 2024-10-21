@@ -15,6 +15,8 @@ import javassist.expr.MethodCall;
 import rhinemod.cards.AbstractRhineCard;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -35,7 +37,7 @@ public class SingleCardViewBranchPatch {
         }
     }
 
-    public static void setBranchesPreview(SingleCardViewPopup _inst, AbstractRhineCard card) {
+    public static void setBranchesPreview(SingleCardViewPopup _inst, AbstractRhineCard card) throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
         if (!cardChecked) {
             AbstractRhineCard _card = card.makeStatEquivalentCopy();
             if (_card.upgraded) _card.resetUpgrade();
@@ -51,10 +53,16 @@ public class SingleCardViewBranchPatch {
             if (card.chosenBranch != 0) Collections.swap(Arrays.asList(branches), 0, card.chosenBranch);
             cardChecked = true;
         }
-        updateBranchPreview();
+        updateBranchPreview(_inst);
     }
 
-    public static void updateBranchPreview() {
+    public static void updateBranchPreview(SingleCardViewPopup _inst) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        try {
+            Field card = SingleCardViewPopup.class.getDeclaredField("card");
+            card.setAccessible(true);
+            card.set(_inst, branches[0]);
+        } catch (Exception ignored) {
+        }
         for (int i = 1; i < branchesNum; i++) {
             branches[i].drawScale = 0.75F;
             branches[i].current_x = Settings.WIDTH * 0.92F;
@@ -66,6 +74,9 @@ public class SingleCardViewBranchPatch {
             hitboxes[i].move(branches[i].current_x, branches[i].current_y);
             hitboxes[i].resize(300.0F * Settings.scale * 0.75F, 420.0F * Settings.scale * 0.75F);
         }
+        Method method = SingleCardViewPopup.class.getDeclaredMethod("loadPortraitImg");
+        method.setAccessible(true);
+        method.invoke(_inst);
     }
 
     public static boolean isCardHasBranches() {
@@ -77,7 +88,7 @@ public class SingleCardViewBranchPatch {
     @SpirePatch(clz = SingleCardViewPopup.class, method = "update")
     public static class CheckIfCardHasBranches {
         @SpirePostfixPatch
-        public static void Postfix(SingleCardViewPopup _inst) {
+        public static void Postfix(SingleCardViewPopup _inst) throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
             if (isCardHasBranches()) {
                 setBranchesPreview(_inst, (AbstractRhineCard) GetHoveredCard());
             } else {
@@ -90,7 +101,7 @@ public class SingleCardViewBranchPatch {
     @SpirePatch(clz = SingleCardViewPopup.class, method = "updateInput")
     public static class UpdateInputButtons {
         @SpirePrefixPatch
-        public static void Prefix(SingleCardViewPopup _inst) {
+        public static void Prefix(SingleCardViewPopup _inst) throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
             if (isCardHasBranches()) {
                 for (int i = 1; i < branchesNum; i++) {
                     Hitbox hb = hitboxes[i];
@@ -105,7 +116,7 @@ public class SingleCardViewBranchPatch {
                     if (hb.clicked) {
                         hb.clicked = false;
                         Collections.swap(Arrays.asList(branches), 0, i);
-                        updateBranchPreview();
+                        updateBranchPreview(_inst);
                     }
                 }
             }
@@ -144,12 +155,6 @@ public class SingleCardViewBranchPatch {
         @SpireInsertPatch(locator = Locator.class)
         public static void Insert(SingleCardViewPopup _inst, SpriteBatch sb) {
             if (isCardHasBranches()) {
-                try {
-                    Field card = SingleCardViewPopup.class.getDeclaredField("card");
-                    card.setAccessible(true);
-                    card.set(CardCrawlGame.cardPopup, branches[0]);
-                } catch (Exception ignored) {
-                }
                 for (int i = 1; i < branchesNum; i++) {
                     branches[i].render(sb);
                     branches[i].updateHoverLogic();

@@ -73,6 +73,8 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
 
     public static final ArrayList<TextureAtlas.AtlasRegion> specialImg = new ArrayList<>();
 
+    public static final ArrayList<Texture> specialImgLarge = new ArrayList<>();
+
     private static final float NewMonsterMulti = 1.0F;
     public boolean isDemo = true;
 
@@ -229,6 +231,9 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         specialImg.add(new TextureAtlas.AtlasRegion(new Texture("resources/rhinemod/images/512/card_saria.png"), 0, 0, 512, 512));
         specialImg.add(new TextureAtlas.AtlasRegion(new Texture("resources/rhinemod/images/512/card_kristen.png"), 0, 0, 512, 512));
         specialImg.add(new TextureAtlas.AtlasRegion(new Texture("resources/rhinemod/images/512/card_muelsyse.png"), 0, 0, 512, 512));
+        specialImgLarge.add(new Texture("resources/rhinemod/images/1024/card_saria.png"));
+        specialImgLarge.add(new Texture("resources/rhinemod/images/1024/card_kristen.png"));
+        specialImgLarge.add(new Texture("resources/rhinemod/images/1024/card_muelsyse.png"));
     }
 
     @Override
