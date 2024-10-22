@@ -45,6 +45,7 @@ import rhinemod.patches.RhineEnum;
 import rhinemod.potions.*;
 import rhinemod.powers.InvisibleGlobalAttributes;
 import rhinemod.relics.*;
+import rhinemod.util.SettingConfig;
 import rhinemod.util.TheSky;
 
 import java.lang.reflect.Type;
@@ -75,7 +76,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
 
     public static final ArrayList<Texture> specialImgLarge = new ArrayList<>();
 
-    private static final float NewMonsterMulti = 1.0F;
+    public static float newMonsterMulti = 1.0F;
     public boolean isDemo = true;
 
     public RhineMod() {
@@ -87,6 +88,8 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
                 attackCard, skillCard, powerCard, energyOrb,                                   //attack background image, skill background image, power background image, energy orb image
                 attackCardPortrait, skillCardPortrait, powerCardPortrait, energyOrbPortrait,   //as above, but for card inspect view
                 miniManaSymbol);
+
+        SettingConfig.init();
     }
 
     @SuppressWarnings("unused")
@@ -100,34 +103,35 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         initializePotions();
         initializeMonsters();
         initializeSpecialImg();
+        SettingConfig.initMenu();
     }
 
     public void initializeMonsters() {
         String[] names = CardCrawlGame.languagePack.getUIString("rhinemod:RunHistoryMonsterNames").TEXT;
         addMonster("Single ArcCommando", names[0], () -> new MonsterGroup(new AbstractMonster[] {new ArclightCommando(0.0F, 0.0F)}));
-        BaseMod.addMonsterEncounter(Exordium.ID, new MonsterInfo("Single ArcCommando", 2.0F * NewMonsterMulti));
+        BaseMod.addMonsterEncounter(Exordium.ID, new MonsterInfo("Single ArcCommando", 2.0F * newMonsterMulti));
         addMonster("ArcCommando And Beckbeast",  names[1], () -> new MonsterGroup(new AbstractMonster[] {new ArclightCommando(-150.0F, 0.0F), new MilitaryBeckbeast(150.0F, 0.0F)}));
-        BaseMod.addStrongMonsterEncounter(Exordium.ID, new MonsterInfo("ArcCommando And Beckbeast", 1.5F * NewMonsterMulti));
+        BaseMod.addStrongMonsterEncounter(Exordium.ID, new MonsterInfo("ArcCommando And Beckbeast", 1.5F * newMonsterMulti));
         addMonster("Two Commando",  names[2], () -> new MonsterGroup(new AbstractMonster[] {new ArclightCommando(-150.0F, 0.0F), new ArclightCommando(150.0F, 0.0F)}));
-        BaseMod.addStrongMonsterEncounter(Exordium.ID, new MonsterInfo("Two Commando", 1.5F * NewMonsterMulti));
+        BaseMod.addStrongMonsterEncounter(Exordium.ID, new MonsterInfo("Two Commando", 1.5F * newMonsterMulti));
         addMonster("ArcMirrorGuard",  names[3], () -> new MonsterGroup(new AbstractMonster[] {new ArclightMirrorguard(0.0F, 0.0F)}));
-        BaseMod.addEliteEncounter(Exordium.ID, new MonsterInfo("ArcMirrorGuard", NewMonsterMulti));
+        BaseMod.addEliteEncounter(Exordium.ID, new MonsterInfo("ArcMirrorGuard", newMonsterMulti));
 
         addMonster("ArcVanguard",  names[4], () -> new MonsterGroup(new AbstractMonster[] {new ArclightVanguard(-150.0F, 0.0F),new ArclightVanguard(150.0F, 0.0F)}));
-        BaseMod.addMonsterEncounter(TheCity.ID, new MonsterInfo("ArcVanguard", 2.0F * NewMonsterMulti));
+        BaseMod.addMonsterEncounter(TheCity.ID, new MonsterInfo("ArcVanguard", 2.0F * newMonsterMulti));
         addMonster("ArcCommando And ArcVanguard",names[5],   () -> new MonsterGroup(new AbstractMonster[] {new ArclightCommando(-450.0F, 0.0F), new ArclightVanguard(-150.0F, 0.0F), new ArclightVanguard(150.0F, 0.0F)}));
-        BaseMod.addStrongMonsterEncounter(TheCity.ID, new MonsterInfo("ArcCommando And ArcVanguard", 4.5F * NewMonsterMulti));
+        BaseMod.addStrongMonsterEncounter(TheCity.ID, new MonsterInfo("ArcCommando And ArcVanguard", 4.5F * newMonsterMulti));
         addMonster("Perpetrator",  names[6], () -> new MonsterGroup(new AbstractMonster[] {new Perpetrator(0.0F, 0.0F)}));
-        BaseMod.addStrongMonsterEncounter(TheCity.ID, new MonsterInfo("Perpetrator", 4.5F * NewMonsterMulti));
+        BaseMod.addStrongMonsterEncounter(TheCity.ID, new MonsterInfo("Perpetrator", 4.5F * newMonsterMulti));
         addMonster("R PowerArmor", names[7],  () -> new MonsterGroup(new AbstractMonster[] {new R31HeavyPowerArmor(-500.F, 0.0F), new R11AssaultPowerArmor(-200.0F, 0.0F), }));
-        BaseMod.addEliteEncounter(TheCity.ID, new MonsterInfo("R PowerArmor", NewMonsterMulti));
+        BaseMod.addEliteEncounter(TheCity.ID, new MonsterInfo("R PowerArmor", newMonsterMulti));
 
         addMonster("LightArmor and CityGuard",  names[8], () -> new MonsterGroup(new AbstractMonster[] {new TrimountsCityGuard(-150.F, 0.0F), new ExperimentalPowerArmor(150.0F, 0.0F)}));
-        BaseMod.addMonsterEncounter(TheBeyond.ID, new MonsterInfo("LightArmor and CityGuard", 2.0F * NewMonsterMulti));
+        BaseMod.addMonsterEncounter(TheBeyond.ID, new MonsterInfo("LightArmor and CityGuard", 2.0F * newMonsterMulti));
         addMonster("ArcTeam", names[9],  () -> new MonsterGroup(new AbstractMonster[] {new ArclightMirrorguard(-450.F, 0.0F), new ArclightCommando(-150.0F, 0.0F), new ArclightVanguard(150.0F, 0.0F)}));
-        BaseMod.addStrongMonsterEncounter(TheBeyond.ID, new MonsterInfo("ArcTeam", NewMonsterMulti));
+        BaseMod.addStrongMonsterEncounter(TheBeyond.ID, new MonsterInfo("ArcTeam", newMonsterMulti));
         addMonster("Jesselton", names[10],  () -> new MonsterGroup(new AbstractMonster[] {new JesseltonWilliams(0.0F, 0.0F)}));
-        BaseMod.addStrongMonsterEncounter(TheBeyond.ID, new MonsterInfo("Jesselton", NewMonsterMulti));
+        BaseMod.addStrongMonsterEncounter(TheBeyond.ID, new MonsterInfo("Jesselton", newMonsterMulti));
         addMonster("Disaster of Machine", names[11], () -> new MonsterGroup(new AbstractMonster[] {
                 new Perpetrator(-440.0F, 0.0F) {
                     {setHp(maxHealth / 2);}
@@ -162,7 +166,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
                 new Crossroads(-220.0F, -50.0F)
         }));
         */
-        BaseMod.addEliteEncounter(TheBeyond.ID, new MonsterInfo("Disaster of Machine", 2.0F * NewMonsterMulti));
+        BaseMod.addEliteEncounter(TheBeyond.ID, new MonsterInfo("Disaster of Machine", 2.0F * newMonsterMulti));
 
         // Add a name.
         addMonster("Awaken", names[12], () -> new MonsterGroup(new Awaken_Monster(180.0F, 0.0F)));
@@ -170,9 +174,9 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         addMonster("Traffic Police", names[14], () -> new MonsterGroup(new TrafficPolice(0.0F, 0.0F)));
         addMonster("The Sky", names[15], () -> new MonsterGroup(new AbstractMonster[] {new StarPod(0.0F, 0.0F)}));
         // Just Testing
-        BaseMod.addEliteEncounter(TheEnding.ID, new MonsterInfo("Awaken", 3.0F * NewMonsterMulti));
-        BaseMod.addEliteEncounter(TheSky.ID, new MonsterInfo("Turnpike", 3.0F * NewMonsterMulti));
-        BaseMod.addStrongMonsterEncounter(TheSky.ID, new MonsterInfo("Traffic Police", 3.0F * NewMonsterMulti));
+        BaseMod.addEliteEncounter(TheEnding.ID, new MonsterInfo("Awaken", 3.0F * newMonsterMulti));
+        BaseMod.addEliteEncounter(TheSky.ID, new MonsterInfo("Turnpike", 3.0F * newMonsterMulti));
+        BaseMod.addStrongMonsterEncounter(TheSky.ID, new MonsterInfo("Traffic Police", 3.0F * newMonsterMulti));
         // BaseMod.addBoss(TheSky.ID, "The Sky", "icon", "icon");
 
     }
