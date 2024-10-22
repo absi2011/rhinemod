@@ -30,7 +30,7 @@ public class SettingConfig {
     public static Properties rhineModSettings = new Properties();
     public static ModPanel panel;
     public static final String NEW_MONSTER_MULTI = "newMonsterMulti";
-    public static final float[] values = new float[]{0.0F, 0.5F, 1.0F, 6.0F};
+    public static final float[] values = new float[]{0.0F, 1.0F, 2.0F, 6.0F};
     public static void init() {
         rhineModSettings.put(NEW_MONSTER_MULTI, String.valueOf(2));
         try {
