@@ -23,7 +23,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Properties;
 import java.util.function.BiConsumer;
-import java.util.logging.Logger;
 
 public class SettingConfig {
     public static SpireConfig config;
@@ -53,7 +52,6 @@ public class SettingConfig {
             menu = new DropdownMenu(this, options, font, textColor);
             xPos = 380F;
             yPos = 715F;
-            Logger.getLogger(SettingConfig.class.getName()).info("Settings scale = " + Settings.scale);
             textLabel = new ModLabel(labelText, xPos, (yPos + 20.0F), textColor, font, SettingConfig.panel, modLabel -> {});
         }
 
