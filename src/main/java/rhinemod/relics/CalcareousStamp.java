@@ -50,6 +50,7 @@ public class CalcareousStamp extends CustomRelic implements ClickableRelic {
     public void onRightClick() {
         status = 1 - status;
         description = getUpdatedDescription();
+        updateTips();
     }
 
     @Override

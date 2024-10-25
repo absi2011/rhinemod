@@ -45,6 +45,7 @@ public class WaterdropManifestation extends CustomRelic implements ClickableReli
     public void onRightClick() {
         status = 1 - status;
         description = getUpdatedDescription();
+        updateTips();
     }
 
     @Override
