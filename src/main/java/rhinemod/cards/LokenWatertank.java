@@ -10,6 +10,7 @@ import rhinemod.actions.DamageAllAction;
 import rhinemod.cards.special.Unscrupulous;
 import rhinemod.interfaces.UpgradeBranch;
 import rhinemod.patches.AbstractCardEnum;
+import rhinemod.patches.RhineTags;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +33,7 @@ public class LokenWatertank extends AbstractRhineCard {
         damage = baseDamage = ALL_DAMAGE;
         magicNumber = baseMagicNumber = CARD_NUM;
         cardsToPreview = new Unscrupulous();
+        tags.add(RhineTags.UNSCRUPULOUS);
     }
 
     @Override

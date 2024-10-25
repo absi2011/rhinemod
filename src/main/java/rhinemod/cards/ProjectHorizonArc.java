@@ -13,6 +13,7 @@ import rhinemod.cards.special.Loner;
 import rhinemod.cards.special.Unscrupulous;
 import rhinemod.interfaces.UpgradeBranch;
 import rhinemod.patches.AbstractCardEnum;
+import rhinemod.patches.RhineTags;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,17 +36,15 @@ public class ProjectHorizonArc extends AbstractRhineCard {
                 CardRarity.UNCOMMON, CardTarget.ENEMY);
         damage = baseDamage = DAMAGE;
         cardsToPreview = new Unscrupulous();
+        tags.add(RhineTags.UNSCRUPULOUS);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (chosenBranch != 1)
-        {
+        if (chosenBranch != 1) {
             addToBot(new DamageAction(m, new DamageInfo(p, damage)));
             addToBot(new MakeTempCardInDrawPileAction(new Unscrupulous(), 1, true, true));
-        }
-        else
-        {
+        } else {
             addToBot(new PHAAction(p, m, damage));
             addToBot(new ChangeGravityAction());
         }
@@ -67,6 +66,7 @@ public class ProjectHorizonArc extends AbstractRhineCard {
                     upgradeDamage(KRISTEN_DAMAGE);
                     rawDescription = EXTENDED_DESCRIPTION[0];
                     cardsToPreview = new Loner();
+                    tags.clear();
                     initializeDescription();
                 }
             });

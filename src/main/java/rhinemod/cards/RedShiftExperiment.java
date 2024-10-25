@@ -8,6 +8,7 @@ import rhinemod.actions.SummonStarRingAction;
 import rhinemod.cards.special.Unscrupulous;
 import rhinemod.interfaces.UpgradeBranch;
 import rhinemod.patches.AbstractCardEnum;
+import rhinemod.patches.RhineTags;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,7 @@ public class RedShiftExperiment extends AbstractRhineCard {
         magicNumber = baseMagicNumber = STAR_HEALTH;
         secondMagicNumber = baseSecondMagicNumber = EXPLODE_STATUS;
         cardsToPreview = new Unscrupulous();
+        tags.add(RhineTags.UNSCRUPULOUS);
         realBranch = 2;
     }
 

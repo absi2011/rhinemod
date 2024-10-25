@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import rhinemod.cards.special.Unscrupulous;
 import rhinemod.interfaces.UpgradeBranch;
 import rhinemod.patches.AbstractCardEnum;
+import rhinemod.patches.RhineTags;
 import rhinemod.powers.ResearchProgress;
 
 import java.util.ArrayList;
@@ -32,6 +33,7 @@ public class TransmitterResearch extends AbstractRhineCard {
         cardsToPreview = new Unscrupulous();
         baseMagicNumber = magicNumber = BASIC_RESEARCH;
         baseSecondMagicNumber = secondMagicNumber = BASIC_CARDS;
+        tags.add(RhineTags.UNSCRUPULOUS);
     }
 
     @Override

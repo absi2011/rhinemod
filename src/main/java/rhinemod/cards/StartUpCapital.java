@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import rhinemod.cards.special.Unscrupulous;
 import rhinemod.interfaces.UpgradeBranch;
 import rhinemod.patches.AbstractCardEnum;
+import rhinemod.patches.RhineTags;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +36,7 @@ public class StartUpCapital extends AbstractRhineCard {
         exhaust = true;
         isInnate = true;
         cardsToPreview = new Unscrupulous();
+        tags.add(RhineTags.UNSCRUPULOUS);
     }
 
     @Override

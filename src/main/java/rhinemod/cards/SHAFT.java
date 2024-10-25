@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import rhinemod.cards.special.Unscrupulous;
 import rhinemod.interfaces.UpgradeBranch;
 import rhinemod.patches.AbstractCardEnum;
+import rhinemod.patches.RhineTags;
 import rhinemod.powers.SHAFTPower;
 
 import java.util.ArrayList;
@@ -80,6 +81,7 @@ public class SHAFT extends AbstractRhineCard {
                     rawDescription = EXTENDED_DESCRIPTION[0];
                     cardsToPreview = new Unscrupulous();
                     exhaust = true;
+                    tags.add(RhineTags.UNSCRUPULOUS);
                     initializeDescription();
                 }
             });
