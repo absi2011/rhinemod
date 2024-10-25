@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
@@ -27,6 +28,8 @@ public class UnknownReagent extends AbstractPotion {
     @Override
     public void initializeData() {
         description = DESCRIPTIONS[0] + getPotency() + DESCRIPTIONS[1] + TIMES + DESCRIPTIONS[2];
+        tips.clear();
+        tips.add(new PowerTip(name, description));
     }
 
     @Override
