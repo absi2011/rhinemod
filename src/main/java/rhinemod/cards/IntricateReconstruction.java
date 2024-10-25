@@ -25,6 +25,7 @@ public class IntricateReconstruction extends AbstractRhineCard {
                 CardType.SKILL, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.UNCOMMON, CardTarget.SELF);
         realBranch = 1;
+        exhaust = true;
     }
 
     @Override

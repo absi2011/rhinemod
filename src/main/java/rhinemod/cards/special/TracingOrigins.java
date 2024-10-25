@@ -45,7 +45,6 @@ public class TracingOrigins extends CustomCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
             upgradeMagicNumber(UPGRADE_ADD_PROGRESS);
         }

@@ -19,7 +19,7 @@ public class LikeMind extends AbstractRhineCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     public static final String IMG = "resources/rhinemod/images/cards/LikeMind.png";
-    public static final int COST = 2;
+    public static final int COST = 1;
     public static final int BASIC_NUM = 2;
     public static final int UPGRADE_PLUS_NONE = 1;
     public LikeMind() {
