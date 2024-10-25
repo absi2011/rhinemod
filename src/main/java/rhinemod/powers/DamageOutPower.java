@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import rhinemod.monsters.StarPod;
 
 public class DamageOutPower extends AbstractPower {
     public static final String POWER_ID = "rhinemod:DamageOutPower";
@@ -21,8 +22,8 @@ public class DamageOutPower extends AbstractPower {
         this.type = PowerType.BUFF;
         this.owner = owner;
         this.decAmount = decAmount;
-        region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/BionicDevice 84.png"), 0, 0, 84, 84);
-        region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/BionicDevice 32.png"), 0, 0, 32, 32);
+        region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/DamageOut 84.png"), 0, 0, 84, 84);
+        region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/DamageOut 32.png"), 0, 0, 32, 32);
         this.amount = amount;
         updateDescription();
     }
@@ -41,11 +42,6 @@ public class DamageOutPower extends AbstractPower {
     }
 
     @Override
-    public void atStartOfTurn() {
-
-    }
-
-    @Override
     public float atDamageReceive(float damage, DamageInfo.DamageType damageType) {
         return damage * (100 - amount) / 100;
     }
@@ -55,8 +51,7 @@ public class DamageOutPower extends AbstractPower {
         if (damageAmount > 0) {
             this.flash();
             this.addToBot(new ReducePowerAction(this.owner, this.owner, "rhinemod:DamageOutPower", decAmount));
+            if (owner instanceof StarPod) ((StarPod) owner).damageOutAmt -= decAmount;
         }
     }
-
-
 }

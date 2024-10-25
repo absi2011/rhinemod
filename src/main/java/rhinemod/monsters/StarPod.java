@@ -1,6 +1,8 @@
 package rhinemod.monsters;
 
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -9,15 +11,21 @@ import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.unique.CannotLoseAction;
 import com.megacrit.cardcrawl.audio.TempMusic;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.FontHelper;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.vfx.combat.HbBlockBrokenEffect;
 import javassist.CtBehavior;
 import rhinemod.powers.*;
 
+import java.lang.reflect.Field;
 import java.util.logging.Logger;
 
 public class StarPod extends AbstractRhineMonster {
@@ -27,7 +35,8 @@ public class StarPod extends AbstractRhineMonster {
     public static final String[] MOVES = monsterStrings.MOVES;
     public static final String STAR_POD_BGM_INTRO = "m_bat_cstlrs_intro.mp3";
     public static final String STAR_POD_BGM_LOOP = "m_bat_cstlrs_loop.mp3";
-
+    public static final Texture BG_IMG = new Texture("resources/rhinemod/images/monsters/starpod.png");
+    public static final Texture DAMAGEOUT_IMG = new Texture("resources/rhinemod/images/ui/damageout.png");
     int currentTurn = 0;
     int lastOp = -1;
     int AttackNum;
@@ -35,9 +44,10 @@ public class StarPod extends AbstractRhineMonster {
     int DefendNum;
     int DefendPlusNum;
     int RepairNum;
+    public int damageOutAmt = 100;
 
     public StarPod(float x, float y) {
-        super(NAME, ID, 9999, 0, 0, 150.0F, 320.0F, null, x, y);
+        super(NAME, ID, 99999, 0, 0, 360.0F, 500.0F, null, x, y);
         type = EnemyType.BOSS;
         if (AbstractDungeon.ascensionLevel >= 19) {
             AttackNum = 20;
@@ -58,11 +68,6 @@ public class StarPod extends AbstractRhineMonster {
             DefendPlusNum = 1;
             RepairNum = 5;
         }
-
-        loadAnimation("resources/rhinemod/images/monsters/enemy_2056_smedzi/enemy_2056_smedzi.atlas", "resources/rhinemod/images/monsters/enemy_2056_smedzi/enemy_2056_smedzi33.json", 2F);
-        this.stateData.setMix("Idle", "Move_Begin", 0.1F);
-        this.state.setAnimation(0, "Move_End", false);
-        this.state.addAnimation(0, "Idle", true, 0.0F);
     }
 
     @Override
@@ -153,8 +158,7 @@ public class StarPod extends AbstractRhineMonster {
     public void die() {
         if (AbstractDungeon.getCurrRoom().cannotLose) {
             currentHealth = maxHealth;
-        }
-        else {
+        } else {
             AbstractDungeon.getCurrRoom().rewardAllowed = false;
             super.die();
             onBossVictoryLogic();
@@ -164,19 +168,125 @@ public class StarPod extends AbstractRhineMonster {
     }
 
     @Override
-    public void healthBarUpdatedEvent() {
-        super.healthBarUpdatedEvent();
+    public void render(SpriteBatch sb) {
+        if (!isDead && !AbstractDungeon.player.isDead) {
+            hb.render(sb);
+            renderHealth(sb);
+            renderName(sb);
+        }
     }
 
-    @Override
-    protected void updateHealthBar() {
-        super.updateHealthBar();
+    Object getObjectFromSuperClass(String fieldName) throws NoSuchFieldException, IllegalAccessException {
+        Field field = AbstractCreature.class.getDeclaredField(fieldName);
+        field.setAccessible(true);
+        return field.get(this);
     }
 
     @Override
     public void renderHealth(SpriteBatch sb) {
-        super.renderHealth(sb);
-        // TODO: 在这里改，但是我真的不会，毁灭吧(需要保留格挡数与状态栏，其他的全删了）
+        if (Settings.hideCombatElements) return;
+        float x = hb.cX - hb.width / 2.0F + 40.0F * Settings.xScale;
+        float y = hb.cY - hb.height / 2.0F;
+        try {
+            Color hbShadowColor = (Color) getObjectFromSuperClass("hbShadowColor");
+            sb.setColor(hbShadowColor);
+            sb.draw(ImageMaster.HB_SHADOW_R, x, y + hb.height, 0, 0, DAMAGEOUT_BAR_BREADTH, DAMAGEOUT_BAR_BREADTH, 1, 1, 90, 0, 0, ImageMaster.HB_SHADOW_R.getWidth(), ImageMaster.HB_SHADOW_R.getHeight(), false, false);
+            sb.draw(ImageMaster.HB_SHADOW_B, x, y, 0, 0, hb.height, DAMAGEOUT_BAR_BREADTH, 1, 1, 90, 0, 0, ImageMaster.HB_SHADOW_B.getWidth(), ImageMaster.HB_SHADOW_B.getHeight(), false, false);
+            sb.draw(ImageMaster.HB_SHADOW_L, x, y - DAMAGEOUT_BAR_BREADTH, 0, 0, DAMAGEOUT_BAR_BREADTH, DAMAGEOUT_BAR_BREADTH, 1, 1, 90, 0, 0, ImageMaster.HB_SHADOW_L.getWidth(), ImageMaster.HB_SHADOW_L.getHeight(), false, false);
+            Color orangeHbBarColor = new Color(0.8F, 0.05F, 0.05F, hbAlpha);
+            sb.setColor(orangeHbBarColor);
+            sb.draw(ImageMaster.HEALTH_BAR_R, x, y + hb.height, 0, 0, DAMAGEOUT_BAR_BREADTH, DAMAGEOUT_BAR_BREADTH, 1, 1, 90, 0, 0, ImageMaster.HEALTH_BAR_R.getWidth(), ImageMaster.HEALTH_BAR_R.getHeight(), false, false);
+            sb.draw(ImageMaster.HEALTH_BAR_B, x, y, 0, 0, hb.height, DAMAGEOUT_BAR_BREADTH, 1, 1, 90, 0, 0, ImageMaster.HEALTH_BAR_B.getWidth(), ImageMaster.HEALTH_BAR_B.getHeight(), false, false);
+            sb.draw(ImageMaster.HEALTH_BAR_L, x, y - DAMAGEOUT_BAR_BREADTH, 0, 0, DAMAGEOUT_BAR_BREADTH, DAMAGEOUT_BAR_BREADTH, 1, 1, 90, 0, 0, ImageMaster.HEALTH_BAR_L.getWidth(), ImageMaster.HEALTH_BAR_L.getHeight(), false, false);
+            Color blockColor = (Color) getObjectFromSuperClass("blockColor");
+
+            float damageOutBarLength = hb.height * damageOutAmt / 100;
+            if (damageOutAmt != 0) {
+                Color blueHbBarColor = (Color) getObjectFromSuperClass("blueHbBarColor");
+                sb.setColor(blueHbBarColor);
+                sb.draw(ImageMaster.HEALTH_BAR_R, x, y + damageOutBarLength, 0, 0, DAMAGEOUT_BAR_BREADTH, DAMAGEOUT_BAR_BREADTH, 1, 1, 90, 0, 0, ImageMaster.HEALTH_BAR_R.getWidth(), ImageMaster.HEALTH_BAR_R.getHeight(), false, false);
+                sb.draw(ImageMaster.HEALTH_BAR_B, x, y, 0, 0, damageOutBarLength, DAMAGEOUT_BAR_BREADTH, 1, 1, 90, 0, 0, ImageMaster.HEALTH_BAR_B.getWidth(), ImageMaster.HEALTH_BAR_B.getHeight(), false, false);
+                sb.draw(ImageMaster.HEALTH_BAR_L, x, y - DAMAGEOUT_BAR_BREADTH, 0, 0, DAMAGEOUT_BAR_BREADTH, DAMAGEOUT_BAR_BREADTH, 1, 1, 90, 0, 0, ImageMaster.HEALTH_BAR_L.getWidth(), ImageMaster.HEALTH_BAR_L.getHeight(), false, false);
+                Color blockOutlineColor = (Color) getObjectFromSuperClass("blockOutlineColor");
+                sb.setColor(blockOutlineColor);
+                sb.setBlendFunction(770, 1);
+                sb.draw(ImageMaster.BLOCK_BAR_R, x, y + damageOutBarLength, 0, 0, DAMAGEOUT_BAR_BREADTH, DAMAGEOUT_BAR_BREADTH, 1, 1, 90, 0, 0, ImageMaster.BLOCK_BAR_R.getWidth(), ImageMaster.BLOCK_BAR_R.getHeight(), false, false);
+                sb.draw(ImageMaster.BLOCK_BAR_B, x, y, 0, 0, damageOutBarLength, DAMAGEOUT_BAR_BREADTH, 1, 1, 90, 0, 0, ImageMaster.BLOCK_BAR_B.getWidth(), ImageMaster.BLOCK_BAR_B.getHeight(), false, false);
+                sb.draw(ImageMaster.BLOCK_BAR_L, x, y - DAMAGEOUT_BAR_BREADTH, 0, 0, DAMAGEOUT_BAR_BREADTH, DAMAGEOUT_BAR_BREADTH, 1, 1, 90, 0, 0, ImageMaster.BLOCK_BAR_L.getWidth(), ImageMaster.BLOCK_BAR_L.getHeight(), false, false);
+                sb.setBlendFunction(770, 771);
+
+                Color damageOutColor = blockColor.cpy();
+                damageOutColor.a = hbAlpha;
+                sb.setColor(damageOutColor);
+                sb.draw(DAMAGEOUT_IMG, x + BLOCK_ICON_X - 54.0F * Settings.scale, y + BLOCK_ICON_Y - 48.0F * Settings.scale + hb.height + DAMAGEOUT_BAR_BREADTH, 0, 0, 96 * Settings.scale, 96 * Settings.scale, 1, 1, 0, 0, 0, 64, 64, false, false);
+                FontHelper.renderFontCentered(sb, FontHelper.blockInfoFont, Integer.toString(damageOutAmt), x + BLOCK_ICON_X - 4.0F * Settings.scale, y - 16.0F * Settings.scale + hb.height + DAMAGEOUT_BAR_BREADTH, Color.WHITE, 1.5F);
+            }
+
+            if (currentBlock > 0) {
+                float blockOffset = (float) getObjectFromSuperClass("blockOffset");
+                float blockScale = (float) getObjectFromSuperClass("blockScale");
+                Color blockTextColor = (Color) getObjectFromSuperClass("blockTextColor");
+                sb.setColor(blockColor);
+                sb.draw(ImageMaster.BLOCK_ICON, x + BLOCK_ICON_X - 54.0F * Settings.scale, y + BLOCK_ICON_Y - 48.0F * Settings.scale + blockOffset, 0, 0, 96 * Settings.scale, 96 * Settings.scale, 1, 1, 0, 0, 0, 64, 64, false, false);
+                FontHelper.renderFontCentered(sb, FontHelper.blockInfoFont, Integer.toString(currentBlock), x + BLOCK_ICON_X - 4.0F * Settings.scale, y - 16.0F * Settings.scale, blockTextColor, blockScale * 1.5F);
+            }
+
+            Field hbTextColorField = AbstractCreature.class.getDeclaredField("hbTextColor");
+            hbTextColorField.setAccessible(true);
+            Color hbTextColor = (Color) hbTextColorField.get(this);
+            float offset = 10.0F * Settings.yScale;
+            x += 32.0F * Settings.xScale;
+            for (AbstractPower p : powers) {
+                if (p instanceof DamageOutPower) continue;
+                p.renderIcons(sb, x, y + offset, hbTextColor);
+                offset += POWER_ICON_PADDING;
+            }
+            x += 32.0F * Settings.xScale;
+            offset = -12.0F * Settings.yScale;
+            for (AbstractPower p : powers) {
+                if (p instanceof DamageOutPower) continue;
+                p.renderAmount(sb, x, y + offset, hbTextColor);
+                offset += POWER_ICON_PADDING;
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @SpirePatch(clz = AbstractCreature.class, method = "brokeBlock")
+    public static class BrokeBlockPatch {
+        @SpireInsertPatch(locator = Locator.class)
+        public static SpireReturn<?> Insert(AbstractCreature _inst) {
+            if (_inst instanceof StarPod) {
+                AbstractDungeon.effectList.add(new HbBlockBrokenEffect(_inst.hb.cX - _inst.hb.width / 2.0F + 24.0F * Settings.xScale, _inst.hb.cY - _inst.hb.height / 2.0F + BLOCK_ICON_Y));
+                CardCrawlGame.sound.play("BLOCK_BREAK");
+                return SpireReturn.Return();
+            } else {
+                return SpireReturn.Continue();
+            }
+        }
+    }
+
+    @SpirePatch(clz = AbstractCreature.class, method = "loseBlock", paramtypez = {int.class, boolean.class})
+    public static class LoseBlockPatch {
+        @SpireInsertPatch(locator = Locator.class)
+        public static SpireReturn<?> Insert(AbstractCreature _inst) {
+            if (_inst instanceof StarPod) {
+                AbstractDungeon.effectList.add(new HbBlockBrokenEffect(_inst.hb.cX - _inst.hb.width / 2.0F + 24.0F * Settings.xScale, _inst.hb.cY - _inst.hb.height / 2.0F + BLOCK_ICON_Y));
+                CardCrawlGame.sound.play("BLOCK_BREAK");
+                return SpireReturn.Return();
+            } else {
+                return SpireReturn.Continue();
+            }
+        }
+    }
+
+    private static class Locator extends SpireInsertLocator {
+        @Override
+        public int[] Locate(CtBehavior ctBehavior) throws Exception {
+            Matcher.FieldAccessMatcher fieldAccessMatcher = new Matcher.FieldAccessMatcher(AbstractDungeon.class, "effectList");
+            return LineFinder.findInOrder(ctBehavior, fieldAccessMatcher);
+        }
     }
 
     @SpirePatch(clz = TempMusic.class, method = "<ctor>", paramtypez = {String.class, boolean.class, boolean.class})
@@ -205,4 +315,28 @@ public class StarPod extends AbstractRhineMonster {
             }
         }
     }
+
+    @SpirePatch(clz = AbstractRoom.class, method = "render")
+    public static class RenderBackgroundPatch {
+        @SpirePrefixPatch
+        public static void Prefix(AbstractRoom _inst, SpriteBatch sb) {
+            boolean hasStarPod = false;
+            if (_inst.monsters == null) return;
+            for (AbstractMonster m : _inst.monsters.monsters)
+                if (m instanceof StarPod) {
+                    hasStarPod = true;
+                    break;
+                }
+            if (hasStarPod) {
+                sb.setColor(Color.WHITE);
+                float scale = Math.max(Settings.WIDTH * 1.0F / BG_IMG.getWidth(), Settings.HEIGHT * 1.0F / BG_IMG.getHeight());
+                float w = BG_IMG.getWidth() * scale;
+                float h = BG_IMG.getHeight() * scale;
+                sb.draw(BG_IMG, (Settings.WIDTH - w) / 2.0F, (Settings.HEIGHT - h) / 2.0F, w, h);
+            }
+        }
+    }
+
+    private static final float DAMAGEOUT_BAR_BREADTH = 40.0F * Settings.scale;
+    private static final float POWER_ICON_PADDING = 48.0F * Settings.scale;
 }

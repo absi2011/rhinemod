@@ -32,11 +32,6 @@ public class Friable extends AbstractPower {
     }
 
     @Override
-    public void atStartOfTurn() {
-
-    }
-
-    @Override
     public void wasHPLost(DamageInfo info, int damageAmount) {
         if (damageAmount >= GlobalAttributes.smashThreshold && info.type == DamageInfo.DamageType.NORMAL) {
             this.flash();
