@@ -13,8 +13,8 @@ public class RhineChargeSuit extends CustomRelic {
     public static final RelicStrings relicStrings = CardCrawlGame.languagePack.getRelicStrings(ID);
     public static final String NAME = relicStrings.NAME;
     public static final String[] DESCRIPTIONS = relicStrings.DESCRIPTIONS;
-    public static final Texture IMG = new Texture("resources/rhinemod/images/relics/OrangeStorm.png");
-    public static final Texture IMG_OUTLINE = new Texture("resources/rhinemod/images/relics/OrangeStorm_p.png");
+    public static final Texture IMG = new Texture("resources/rhinemod/images/relics/RhineChargeSuit.png");
+    public static final Texture IMG_OUTLINE = new Texture("resources/rhinemod/images/relics/RhineChargeSuit_p.png");
     public static final int ADD_CA = 2;
     public RhineChargeSuit() {
         super(ID, IMG, IMG_OUTLINE, RelicTier.UNCOMMON, LandingSound.HEAVY);

@@ -16,8 +16,8 @@ public class Imperishable extends CustomRelic implements ClickableRelic {
     public static final RelicStrings relicStrings = CardCrawlGame.languagePack.getRelicStrings(ID);
     public static final String NAME = relicStrings.NAME;
     public static final String[] DESCRIPTIONS = relicStrings.DESCRIPTIONS;
-    public static final Texture IMG = new Texture("resources/rhinemod/images/relics/PittsAssortedFruits.png");
-    public static final Texture IMG_OUTLINE = new Texture("resources/rhinemod/images/relics/PittsAssortedFruits_p.png");
+    public static final Texture IMG = new Texture("resources/rhinemod/images/relics/Imperishable.png");
+    public static final Texture IMG_OUTLINE = new Texture("resources/rhinemod/images/relics/Imperishable_p.png");
     public int status; // 0: double; 1: half
 
     public Imperishable() {
