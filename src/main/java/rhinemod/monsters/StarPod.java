@@ -200,6 +200,8 @@ public class StarPod extends AbstractRhineMonster {
             sb.draw(ImageMaster.HEALTH_BAR_L, x, y - DAMAGEOUT_BAR_BREADTH, 0, 0, DAMAGEOUT_BAR_BREADTH, DAMAGEOUT_BAR_BREADTH, 1, 1, 90, 0, 0, ImageMaster.HEALTH_BAR_L.getWidth(), ImageMaster.HEALTH_BAR_L.getHeight(), false, false);
             Color blockColor = (Color) getObjectFromSuperClass("blockColor");
 
+            damageOutAmt = 0;
+            if (hasPower(DamageOutPower.POWER_ID)) damageOutAmt = getPower(DamageOutPower.POWER_ID).amount;
             float damageOutBarLength = hb.height * damageOutAmt / 100;
             if (damageOutAmt != 0) {
                 Color blueHbBarColor = (Color) getObjectFromSuperClass("blueHbBarColor");

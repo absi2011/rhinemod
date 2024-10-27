@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import rhinemod.monsters.StarPod;
 
 public class DamageOutPower extends AbstractPower {
     public static final String POWER_ID = "rhinemod:DamageOutPower";
@@ -34,6 +33,7 @@ public class DamageOutPower extends AbstractPower {
         if (amount >= 100) {
             amount = 100;
         }
+
     }
 
     @Override
@@ -51,7 +51,6 @@ public class DamageOutPower extends AbstractPower {
         if (damageAmount > 0) {
             this.flash();
             this.addToBot(new ReducePowerAction(this.owner, this.owner, "rhinemod:DamageOutPower", decAmount));
-            if (owner instanceof StarPod) ((StarPod) owner).damageOutAmt -= decAmount;
         }
     }
 }
