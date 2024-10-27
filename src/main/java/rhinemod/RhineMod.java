@@ -201,6 +201,16 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
                 dungeonIDs("TheCity", "TheBeyond").
                 endsWithRewardsUI(true).
                 create());
+        BaseMod.addEvent(new AddEventParams.Builder(TheCure.ID, TheCure.class).
+                eventType(EventUtils.EventType.NORMAL).
+                dungeonIDs("Exordium", "TheCity", "TheBeyond").
+                endsWithRewardsUI(false).
+                create());
+        BaseMod.addEvent(new AddEventParams.Builder(StarlitNight.ID, StarlitNight.class).
+                eventType(EventUtils.EventType.NORMAL).
+                dungeonIDs("Exordium", "TheCity", "TheBeyond").
+                endsWithRewardsUI(false).
+                create());
         if (isDemo) {
             BaseMod.addEvent(new AddEventParams.Builder(HeartEvent.ID, HeartEvent.class).
                     eventType(EventUtils.EventType.NORMAL).
@@ -210,16 +220,6 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
             BaseMod.addEvent(new AddEventParams.Builder(SkyEvent.ID, SkyEvent.class).
                     eventType(EventUtils.EventType.NORMAL).
                     dungeonID("Special").
-                    endsWithRewardsUI(false).
-                    create());
-            BaseMod.addEvent(new AddEventParams.Builder(TheCure.ID, TheCure.class).
-                    eventType(EventUtils.EventType.NORMAL).
-                    dungeonIDs("Exordium", "TheCity", "TheBeyond").
-                    endsWithRewardsUI(false).
-                    create());
-            BaseMod.addEvent(new AddEventParams.Builder(StarlitNight.ID, StarlitNight.class).
-                    eventType(EventUtils.EventType.NORMAL).
-                    dungeonIDs("Exordium", "TheCity", "TheBeyond").
                     endsWithRewardsUI(false).
                     create());
         }
