@@ -25,7 +25,6 @@ public class BlackBeanTea extends AbstractPotion {
     public static int COIN_LOSE = 50;
     public BlackBeanTea() {
         super(NAME, ID, PotionRarity.UNCOMMON, PotionSize.BOTTLE, PotionEffect.NONE, Color.GRAY, Color.DARK_GRAY, null);
-        labOutlineColor = RhineMod.RhineMatte;
         isThrown = false;
         targetRequired = false;
     }

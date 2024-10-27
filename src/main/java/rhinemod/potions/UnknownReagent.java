@@ -21,7 +21,7 @@ public class UnknownReagent extends AbstractPotion {
     public static int TIMES = 4;
     public UnknownReagent() {
         super(NAME, ID, PotionRarity.RARE, PotionSize.T, PotionEffect.NONE, Color.GRAY, null, Color.DARK_GRAY);
-        isThrown = false;
+        isThrown = true;
         targetRequired = false;
     }
 
