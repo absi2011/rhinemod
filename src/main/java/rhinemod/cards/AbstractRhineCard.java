@@ -151,6 +151,8 @@ public abstract class AbstractRhineCard extends CustomCard {
         t.baseDraw = s.baseDraw;
         t.isInAutoplay = s.isInAutoplay;
         t.type = s.type;
+        t.tags.clear();
+        t.tags.addAll(s.tags);
         if (!t.textureImg.equals(s.textureImg)) {
             t.textureImg = s.textureImg;
             t.loadCardImage(t.textureImg);
