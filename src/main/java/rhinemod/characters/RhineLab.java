@@ -334,6 +334,7 @@ public class RhineLab extends CustomPlayer {
                 critical++;
             }
         }
+        if (maxHealth <= 0) maxHealth = 1;
         for (int i = 0; i < 6; i++)
             if (starRings[i] == null || starRings[i].isDead) {
                 starRings[i] = new StarRing(maxHealth, POSX[i], POSY[i]);
