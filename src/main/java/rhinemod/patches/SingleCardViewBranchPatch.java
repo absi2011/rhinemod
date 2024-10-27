@@ -3,6 +3,7 @@ package rhinemod.patches;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.Hitbox;
@@ -26,16 +27,7 @@ public class SingleCardViewBranchPatch {
     public static Hitbox[] hitboxes = new Hitbox[MAX_BRANCH];
     public static int branchesNum;
     public static boolean cardChecked;
-
-    public static AbstractCard GetHoveredCard() {
-        try {
-            Field card = SingleCardViewPopup.class.getDeclaredField("card");
-            card.setAccessible(true);
-            return (AbstractCard) card.get(CardCrawlGame.cardPopup);
-        } catch (Exception e) {
-            return null;
-        }
-    }
+    public static AbstractCard originCard;
 
     public static void setBranchesPreview(SingleCardViewPopup _inst, AbstractRhineCard card) throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
         if (!cardChecked) {
@@ -56,13 +48,17 @@ public class SingleCardViewBranchPatch {
         updateBranchPreview(_inst);
     }
 
-    public static void updateBranchPreview(SingleCardViewPopup _inst) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    private static void setPreviewCard(AbstractCard c) {
         try {
             Field card = SingleCardViewPopup.class.getDeclaredField("card");
             card.setAccessible(true);
-            card.set(_inst, branches[0]);
+            card.set(CardCrawlGame.cardPopup, c);
         } catch (Exception ignored) {
         }
+    }
+
+    public static void updateBranchPreview(SingleCardViewPopup _inst) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        setPreviewCard(branches[0]);
         for (int i = 1; i < branchesNum; i++) {
             branches[i].drawScale = 0.75F;
             branches[i].current_x = Settings.WIDTH * 0.92F;
@@ -80,9 +76,8 @@ public class SingleCardViewBranchPatch {
     }
 
     public static boolean isCardHasBranches() {
-        AbstractCard card = GetHoveredCard();
-        if (!(card instanceof AbstractRhineCard)) return false;
-        return ((AbstractRhineCard) card).possibleBranches().size() > 1 && SingleCardViewPopup.isViewingUpgrade;
+        if (!(originCard instanceof AbstractRhineCard)) return false;
+        return ((AbstractRhineCard) originCard).possibleBranches().size() > 1 && SingleCardViewPopup.isViewingUpgrade;
     }
 
     @SpirePatch(clz = SingleCardViewPopup.class, method = "update")
@@ -90,8 +85,9 @@ public class SingleCardViewBranchPatch {
         @SpirePostfixPatch
         public static void Postfix(SingleCardViewPopup _inst) throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
             if (isCardHasBranches()) {
-                setBranchesPreview(_inst, (AbstractRhineCard) GetHoveredCard());
+                setBranchesPreview(_inst, (AbstractRhineCard) originCard);
             } else {
+                setPreviewCard(originCard);
                 branchesNum = 0;
                 cardChecked = false;
             }
@@ -176,6 +172,22 @@ public class SingleCardViewBranchPatch {
         @SpirePostfixPatch
         public static void Postfix(SingleCardViewPopup _inst) {
             cardChecked = false;
+        }
+    }
+
+    @SpirePatch(clz = SingleCardViewPopup.class, method = "open", paramtypez = {AbstractCard.class, CardGroup.class})
+    public static class OpenPatch {
+        @SpirePrefixPatch
+        public static void Prefix(SingleCardViewPopup _inst, AbstractCard card, CardGroup group) {
+            originCard = card.makeStatEquivalentCopy();
+        }
+    }
+
+    @SpirePatch(clz = SingleCardViewPopup.class, method = "open", paramtypez = {AbstractCard.class})
+    public static class OpenPatch2 {
+        @SpirePrefixPatch
+        public static void Prefix(SingleCardViewPopup _inst, AbstractCard card) {
+            originCard = card.makeStatEquivalentCopy();
         }
     }
 }

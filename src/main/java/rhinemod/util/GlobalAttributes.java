@@ -181,6 +181,7 @@ public class GlobalAttributes {
     public void atStartOfCombat() {
         calciumNum = 0;
         flowspNum = 0;
+        changeGravity(GravityDirection.NONE);
         gravityChanges = 0;
     }
 
