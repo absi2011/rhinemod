@@ -333,7 +333,7 @@
         "UPGRADE_DESCRIPTION": "",
         "EXTENDED_DESCRIPTION": [
             "造成 !D! 点伤害。 NL 本场战斗中 rhinemod:重力 每改变过一次，伤害提高 !M! 点。",
-            "造成 !D! 点伤害。 NL 每当有敌人被 rhinemod:浸没 [#EFC851]4[] 后，伤害提高 !M! 点。"
+            "造成 !D! 点伤害。 NL 每当有敌人被 rhinemod:浸没 [#EFC851]4[] 后，伤害永久提高 !M! 点。"
         ]
     },
     "rhinemod:AprilShowers": {
