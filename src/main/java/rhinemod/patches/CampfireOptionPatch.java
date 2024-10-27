@@ -81,7 +81,7 @@ public class CampfireOptionPatch {
     public static class GetTipDescriptionTextPatch {
         @SpireInsertPatch(locator = Locator.class, localvars = {"campfireChoice", "sb"})
         public static void Insert(RunPathElement _inst, CampfireChoice campfireChoice, StringBuilder sb) {
-            if (campfireChoice.data.contains("^")) {
+            if (campfireChoice.data != null && campfireChoice.data.contains("^")) {
                 String[] ids = campfireChoice.data.split("\\^");
                 if (ids.length < 2) return;
                 sb.append(String.format(TEXT_RECAST_OPTION,
