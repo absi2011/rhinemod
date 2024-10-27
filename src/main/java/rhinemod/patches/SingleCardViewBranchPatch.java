@@ -28,6 +28,7 @@ public class SingleCardViewBranchPatch {
     public static int branchesNum;
     public static boolean cardChecked;
     public static AbstractCard originCard;
+    private static boolean wasViewingUpgrade;
 
     public static void setBranchesPreview(SingleCardViewPopup _inst, AbstractRhineCard card) throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
         if (!cardChecked) {
@@ -52,7 +53,7 @@ public class SingleCardViewBranchPatch {
         try {
             Field card = SingleCardViewPopup.class.getDeclaredField("card");
             card.setAccessible(true);
-            card.set(CardCrawlGame.cardPopup, c);
+            card.set(CardCrawlGame.cardPopup, c.makeStatEquivalentCopy());
         } catch (Exception ignored) {
         }
     }
@@ -87,10 +88,13 @@ public class SingleCardViewBranchPatch {
             if (isCardHasBranches()) {
                 setBranchesPreview(_inst, (AbstractRhineCard) originCard);
             } else {
-                setPreviewCard(originCard);
+                if (!SingleCardViewPopup.isViewingUpgrade && wasViewingUpgrade) {
+                    setPreviewCard(originCard);
+                }
                 branchesNum = 0;
                 cardChecked = false;
             }
+            wasViewingUpgrade = SingleCardViewPopup.isViewingUpgrade;
         }
     }
 
