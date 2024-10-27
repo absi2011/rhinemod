@@ -22,7 +22,7 @@ public class DependentVariable extends AbstractRhineCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
-    public static final String IMG = "resources/rhinemod/images/cards/SHAFT.png";
+    public static final String IMG = "resources/rhinemod/images/cards/DependentVariable.png";
     public static final int COST = 1;
     public static final int EXTRA_LEVEL = 3;
     public DependentVariable() {

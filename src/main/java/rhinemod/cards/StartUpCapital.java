@@ -21,7 +21,7 @@ public class StartUpCapital extends AbstractRhineCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG = "resources/rhinemod/images/cards/SHAFT.png";
+    public static final String IMG = "resources/rhinemod/images/cards/StartUpCapital.png";
     public static final int COST = 0;
     public static final int CARDS = 3;
     public static final int EXTRA_CARDS = 3;

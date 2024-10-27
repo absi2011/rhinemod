@@ -22,7 +22,7 @@ public class Disorder extends AbstractRhineCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
-    public static final String IMG = "resources/rhinemod/images/cards/Memory.png";
+    public static final String IMG = "resources/rhinemod/images/cards/Disorder.png";
     public ArrayList<Integer> DATA = new ArrayList<>(Arrays.asList(0, 1, 2, 3, 4));
     public Disorder() {
         super(ID, NAME, IMG, 0, DESCRIPTION,

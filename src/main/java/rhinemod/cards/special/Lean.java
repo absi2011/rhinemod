@@ -16,7 +16,7 @@ public class Lean extends CustomCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG_PATH = "resources/rhinemod/images/cards/PaleFir.png";
+    public static final String IMG_PATH = "resources/rhinemod/images/cards/Lean.png";
     private static final int COST = 0;
 
     public Lean() {
