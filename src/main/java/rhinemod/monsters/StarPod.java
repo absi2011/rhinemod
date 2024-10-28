@@ -73,7 +73,7 @@ public class StarPod extends AbstractRhineMonster {
     @Override
     public void usePreBattleAction() {
         addToBot(new CannotLoseAction());
-        addToBot(new ApplyPowerAction(this, this, new Friable(this)));
+        addToBot(new ApplyPowerAction(this, this, new Brittleness(this)));
         addToBot(new ApplyPowerAction(this, this, new NoStun(this)));
         addToBot(new ApplyPowerAction(this, this, new DamageOutPower(this, 100, 1)));
         if (AbstractDungeon.ascensionLevel >= 19) {
@@ -134,7 +134,7 @@ public class StarPod extends AbstractRhineMonster {
 
     private void cleanDebuff() {
         for (AbstractPower pow : powers)
-            if (pow != null && pow.type == AbstractPower.PowerType.DEBUFF && !(pow instanceof Friable)) {
+            if (pow != null && pow.type == AbstractPower.PowerType.DEBUFF && !(pow instanceof Brittleness)) {
                 addToBot(new RemoveSpecificPowerAction(this, this, pow));
             }
     }

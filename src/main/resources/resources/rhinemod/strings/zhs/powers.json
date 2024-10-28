@@ -152,8 +152,8 @@
       " 张 #y虚空 加入你的弃牌堆。"
     ]
   },
-  "rhinemod:Friable": {
-    "NAME": "易碎",
+  "rhinemod:Brittleness": {
+    "NAME": "脆性",
     "DESCRIPTIONS": [
       "受到 #y重击 时死亡。"
     ]
@@ -307,8 +307,8 @@
     "NAME": "黑豆茶",
     "DESCRIPTIONS": ["下回合开始时，失去 #b", " #y金币。"]
   },
-  "rhinemod:TracingOriginsPower": {
-    "NAME": "追溯本源",
+  "rhinemod:Order": {
+    "NAME": "秩序",
     "DESCRIPTIONS": ["你本回合内不能打出会获得 #y出格 的牌。"]
   }
 }

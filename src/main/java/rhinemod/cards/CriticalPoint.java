@@ -21,7 +21,7 @@ public class CriticalPoint extends AbstractRhineCard {
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String IMG = "resources/rhinemod/images/cards/NovaEruption.png";
+    public static final String IMG = "resources/rhinemod/images/cards/CriticalPoint.png";
     public static final int COST = 1;
     public static final int MULTI = 1;
     public static final int EXTRA_MULTI = 1;

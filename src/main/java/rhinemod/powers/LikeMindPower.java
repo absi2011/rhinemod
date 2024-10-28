@@ -26,8 +26,8 @@ public class LikeMindPower extends AbstractPower implements OnReceivePowerPower 
         this.branch = branch;
         this.amount = amount;
         used = false;
-        region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/Stunned 128.png"), 0, 0, 128, 128);
-        region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/Stunned 48.png"), 0, 0, 48, 48);
+        region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/LikeMind 84.png"), 0, 0, 84, 84);
+        region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/LikeMind 32.png"), 0, 0, 32, 32);
         updateDescription();
     }
 

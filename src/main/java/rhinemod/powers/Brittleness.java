@@ -11,18 +11,18 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.StrikeEffect;
 import rhinemod.util.GlobalAttributes;
 
-public class Friable extends AbstractPower {
-    public static final String POWER_ID = "rhinemod:Friable";
+public class Brittleness extends AbstractPower {
+    public static final String POWER_ID = "rhinemod:Brittleness";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    public Friable(AbstractCreature owner) {
+    public Brittleness(AbstractCreature owner) {
         this.ID = POWER_ID;
         this.name = NAME;
         this.type = PowerType.BUFF;
         this.owner = owner;
-        region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/BionicDevice 84.png"), 0, 0, 84, 84);
-        region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/BionicDevice 32.png"), 0, 0, 32, 32);
+        region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/Brittleness 84.png"), 0, 0, 84, 84);
+        region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/Brittleness 32.png"), 0, 0, 32, 32);
         updateDescription();
     }
 
