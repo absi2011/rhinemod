@@ -104,7 +104,7 @@ public class Awaken_Monster extends AbstractRhineMonster {
     private int MechNum() {
         int count = 0;
         for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-            if (m != null && m != this && !m.isDying && !m.isDeadOrEscaped()) {
+            if (m != null && m != this && !m.isDying && !m.isDeadOrEscaped() && !(m instanceof BlackHole)) {
                 ++count;
             }
         }
