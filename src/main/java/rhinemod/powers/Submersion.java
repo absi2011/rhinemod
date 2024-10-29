@@ -1,7 +1,6 @@
 package rhinemod.powers;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -11,12 +10,12 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import rhinemod.actions.SubmersionLoseHpAction;
 import rhinemod.cards.Dreamer;
+import rhinemod.patches.WaterAttackEffectPatch;
 
-public class Submersion extends AbstractPower {
+public class Submersion extends AbstractRhinePower {
     public static final String POWER_ID = "rhinemod:Submersion";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -62,9 +61,7 @@ public class Submersion extends AbstractPower {
         }
         updateDescription();
         if (amount >= 4) {
-            AbstractDungeon.effectList.add(new FlashAtkImgEffect(owner.hb.cX, owner.hb.cY, AbstractGameAction.AttackEffect.POISON));
-            //TODO: 水流音效
-            //TODO: 改个不是毒的别的特效？
+            AbstractDungeon.effectList.add(new FlashAtkImgEffect(owner.hb.cX, owner.hb.cY, WaterAttackEffectPatch.WATER));
             updateDreamer(AbstractDungeon.player.masterDeck);
             updateDreamer(AbstractDungeon.player.hand);
             updateDreamer(AbstractDungeon.player.drawPile);

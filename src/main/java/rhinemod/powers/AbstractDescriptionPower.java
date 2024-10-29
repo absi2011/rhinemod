@@ -5,9 +5,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class AbstractDescriptionPower extends AbstractPower {
+public class AbstractDescriptionPower extends AbstractRhinePower {
     public final String superScript;
     public AbstractDescriptionPower(String superScript) {
         this.superScript = superScript;

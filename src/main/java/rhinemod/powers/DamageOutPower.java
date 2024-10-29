@@ -7,9 +7,8 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class DamageOutPower extends AbstractPower {
+public class DamageOutPower extends AbstractRhinePower {
     public static final String POWER_ID = "rhinemod:DamageOutPower";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -33,7 +32,6 @@ public class DamageOutPower extends AbstractPower {
         if (amount >= 100) {
             amount = 100;
         }
-
     }
 
     @Override
@@ -50,7 +48,7 @@ public class DamageOutPower extends AbstractPower {
     public void wasHPLost(DamageInfo info, int damageAmount) {
         if (damageAmount > 0) {
             this.flash();
-            this.addToBot(new ReducePowerAction(this.owner, this.owner, "rhinemod:DamageOutPower", decAmount));
+            this.addToBot(new ReducePowerAction(this.owner, this.owner, this, decAmount));
         }
     }
 }

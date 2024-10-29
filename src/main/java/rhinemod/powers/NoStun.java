@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class NoStun extends AbstractPower implements OnReceivePowerPower {
+public class NoStun extends AbstractRhinePower implements OnReceivePowerPower {
     public static final String POWER_ID = "rhinemod:NoStun";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -33,5 +33,4 @@ public class NoStun extends AbstractPower implements OnReceivePowerPower {
     public boolean onReceivePower(AbstractPower abstractPower, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
         return !abstractPower.ID.equals("rhinemod:Stunned");
     }
-
 }

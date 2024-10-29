@@ -26,7 +26,7 @@ import rhinemod.cards.Omen;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
-public class OmenPower extends AbstractPower {
+public class OmenPower extends AbstractRhinePower {
     public static final String POWER_ID = "rhinemod:OmenPower";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;

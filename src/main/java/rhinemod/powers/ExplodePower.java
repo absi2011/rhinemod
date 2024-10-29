@@ -9,11 +9,10 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.ExplosionSmallEffect;
 import rhinemod.monsters.Turnpike;
 
-public class ExplodePower extends AbstractPower {
+public class ExplodePower extends AbstractRhinePower {
     public static final String POWER_ID = "rhinemod:ExplodePower";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -34,8 +33,7 @@ public class ExplodePower extends AbstractPower {
         description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
         if (this.owner instanceof Turnpike) {
             description += DESCRIPTIONS[2];
-        }
-        else {
+        } else {
             description += DESCRIPTIONS[3];
         }
     }
@@ -45,5 +43,4 @@ public class ExplodePower extends AbstractPower {
         addToTop(new DamageAction(AbstractDungeon.player, new DamageInfo(owner, amount, DamageInfo.DamageType.THORNS)));
         addToTop(new VFXAction(new ExplosionSmallEffect(this.owner.hb.cX, this.owner.hb.cY), 0.5F));
     }
-
 }

@@ -1,16 +1,12 @@
 package rhinemod.powers;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import rhinemod.util.GlobalAttributes;
 
-public class WeaknessNonSmash extends AbstractPower {
+public class WeaknessNonSmash extends AbstractRhinePower {
     public static final String POWER_ID = "rhinemod:WeaknessNonSmash";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -30,22 +26,4 @@ public class WeaknessNonSmash extends AbstractPower {
     public void updateDescription() {
         description = DESCRIPTIONS[0];
     }
-
-    @Override
-    public void atStartOfTurn() {
-
-    }
-
-    @Override
-    public int onAttacked(DamageInfo info, int damageAmount) {
-        if ((damageAmount > 0) && (damageAmount < GlobalAttributes.smashThreshold || info.type != DamageInfo.DamageType.NORMAL) && ((info.name == null) || (!info.name.equals(NotTrigger)))) {
-            this.flash();
-            DamageInfo newInfo = new DamageInfo(owner, damageAmount, DamageInfo.DamageType.THORNS);
-            newInfo.name = NotTrigger;
-            addToBot(new DamageAction(owner, newInfo));
-        }
-        return  damageAmount;
-    }
-
-
 }

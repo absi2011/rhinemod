@@ -1,21 +1,18 @@
 package rhinemod.powers;
 
 import com.badlogic.gdx.math.MathUtils;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import rhinemod.cards.AbstractRhineCard;
 import rhinemod.characters.RhineLab;
 import rhinemod.util.GlobalAttributes;
 
-public class InvisibleGlobalAttributes extends AbstractPower {
+public class InvisibleGlobalAttributes extends AbstractRhinePower {
     public static final String POWER_ID = "rhinemod:InvisibleGlobalAttributes";
     public final RhineLab p;
     public InvisibleGlobalAttributes() {
@@ -100,14 +97,5 @@ public class InvisibleGlobalAttributes extends AbstractPower {
         tmp.purgeOnUse = true;
         AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(tmp, m, card.energyOnUse, true, true), true);
         p.globalAttributes.clearFlowsp();
-    }
-
-    @Override
-    public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
-        if (info.type == DamageInfo.DamageType.NORMAL && damageAmount >= GlobalAttributes.smashThreshold && target != AbstractDungeon.player) {
-            addToTop(new ApplyPowerAction(target, p, new Stunned(target)));
-            if (p.hasPower(EliminateThreatPower.POWER_ID))
-                ((EliminateThreatPower) p.getPower(EliminateThreatPower.POWER_ID)).onSmash(target);
-        }
     }
 }

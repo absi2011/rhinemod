@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import rhinemod.actions.AddCalciumAction;
 import rhinemod.actions.AddFlowingShapeAction;
 
-public class LikeMindPower extends AbstractPower implements OnReceivePowerPower {
+public class LikeMindPower extends AbstractRhinePower implements OnReceivePowerPower {
     public static final String POWER_ID = "rhinemod:LikeMindPower";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;

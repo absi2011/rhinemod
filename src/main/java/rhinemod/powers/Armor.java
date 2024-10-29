@@ -1,15 +1,12 @@
 package rhinemod.powers;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import rhinemod.util.GlobalAttributes;
 
-public class Armor extends AbstractPower {
+public class Armor extends AbstractRhinePower {
     public static final String POWER_ID = "rhinemod:Armor";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -28,21 +25,4 @@ public class Armor extends AbstractPower {
     public void updateDescription() {
         description = DESCRIPTIONS[0];
     }
-
-    @Override
-    public void atStartOfTurn() {
-
-    }
-
-    @Override
-    public int onAttacked(DamageInfo info, int damageAmount) {
-        if (damageAmount < GlobalAttributes.smashThreshold && info.type == DamageInfo.DamageType.NORMAL) {
-            this.flash();
-            return damageAmount / 2;
-        } else {
-            return  damageAmount;
-        }
-    }
-
-
 }

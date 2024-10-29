@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.SporeCloudPower;
 import javassist.CtBehavior;
 
-public class PDOFBPower extends AbstractPower implements OnReceivePowerPower {
+public class PDOFBPower extends AbstractRhinePower implements OnReceivePowerPower {
     public static final String POWER_ID = "rhinemod:PDOFBPower";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
