@@ -436,11 +436,9 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addRelic(new Awaken(), RelicType.SHARED);
         BaseMod.addRelic(new R31HeavyPowerArmorRelic(), RelicType.SHARED);
         BaseMod.addRelic(new ExperimentalPowerArmorRelic(), RelicType.SHARED);
-        if (isDemo) {
-            BaseMod.addRelicToCustomPool(new WaterdropManifestation(), RHINE_MATTE);
-            BaseMod.addRelicToCustomPool(new Imperishable(), RHINE_MATTE);
-            BaseMod.addRelicToCustomPool(new CalcareousStamp(), RHINE_MATTE);
-        }
+        BaseMod.addRelicToCustomPool(new WaterdropManifestation(), RHINE_MATTE);
+        BaseMod.addRelicToCustomPool(new Imperishable(), RHINE_MATTE);
+        BaseMod.addRelicToCustomPool(new CalcareousStamp(), RHINE_MATTE);
 
         // shop.
         BaseMod.addRelic(new ThreeDimensionArtDisplay(), RelicType.SHARED);
