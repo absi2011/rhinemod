@@ -6,12 +6,11 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
-public class EliminateThreatPower extends AbstractPower {
+public class EliminateThreatPower extends AbstractRhinePower {
     public static final String POWER_ID = "rhinemod:EliminateThreatPower";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -34,10 +33,12 @@ public class EliminateThreatPower extends AbstractPower {
         description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
     }
 
-    public void onSmash(AbstractCreature target) {
+    @Override
+    public int onSmash(AbstractCreature target, int damageAmount) {
         addToBot(new ApplyPowerAction(target, owner, new StrengthPower(target, -amount)));
         if (!target.hasPower(ArtifactPower.POWER_ID)) {
             addToBot(new ApplyPowerAction(target, owner, new GainStrengthPower(target, amount)));
         }
+        return damageAmount;
     }
 }

@@ -1,13 +1,11 @@
 package rhinemod.monsters;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ChangeStateAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
-import rhinemod.powers.Stunned;
 
 public class Perpetrator extends AbstractRhineMonster {
     public static final String ID = "rhinemod:Perpetrator";
@@ -25,12 +23,10 @@ public class Perpetrator extends AbstractRhineMonster {
         if (AbstractDungeon.ascensionLevel >= 17) {
             damage.add(new DamageInfo(this, 5));
             AttTimes = 2;
-        }
-        else if (AbstractDungeon.ascensionLevel >= 2) {
+        } else if (AbstractDungeon.ascensionLevel >= 2) {
             damage.add(new DamageInfo(this, 5));
             AttTimes = 2;
-        }
-        else {
+        } else {
             damage.add(new DamageInfo(this, 4));
             AttTimes = 2;
         }
@@ -74,20 +70,10 @@ public class Perpetrator extends AbstractRhineMonster {
                     AttTimes = 1;
                 }
             }
-        }
-        else {
+        } else {
             AttTimes ++;
         }
         getMove(0);
-    }
-
-    // TODO: 眩晕机制全局后删掉这一部分
-    @Override
-    public void damage(DamageInfo info) {
-        super.damage(info);
-        if ((lastDamageTaken >= 15) && (info.type == DamageInfo.DamageType.NORMAL)) {
-            addToBot(new ApplyPowerAction(this, this, new Stunned(this)));
-        }
     }
 
     @Override

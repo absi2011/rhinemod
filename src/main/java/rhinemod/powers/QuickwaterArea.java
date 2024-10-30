@@ -8,9 +8,8 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class QuickwaterArea extends AbstractPower {
+public class QuickwaterArea extends AbstractRhinePower {
     public static final String POWER_ID = "rhinemod:QuickwaterArea";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -33,8 +32,7 @@ public class QuickwaterArea extends AbstractPower {
 
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
-        if (info.type == DamageInfo.DamageType.NORMAL)
-        {
+        if (info.type == DamageInfo.DamageType.NORMAL) {
             addToTop(new RemoveSpecificPowerAction(owner, owner, this));
             addToTop(new ApplyPowerAction(info.owner, owner, new WaterDamage(info.owner, amount)));
         }

@@ -1,17 +1,14 @@
 package rhinemod.powers;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.StrikeEffect;
-import rhinemod.util.GlobalAttributes;
 
-public class Brittleness extends AbstractPower {
+public class Brittleness extends AbstractRhinePower {
     public static final String POWER_ID = "rhinemod:Brittleness";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -32,14 +29,11 @@ public class Brittleness extends AbstractPower {
     }
 
     @Override
-    public void wasHPLost(DamageInfo info, int damageAmount) {
-        if (damageAmount >= GlobalAttributes.smashThreshold && info.type == DamageInfo.DamageType.NORMAL) {
-            this.flash();
-            this.owner.currentHealth = 0;
-            AbstractDungeon.effectList.add(new StrikeEffect(this.owner, this.owner.hb.cX, this.owner.hb.cY, damageAmount));
-            AbstractDungeon.getCurrRoom().cannotLose = false;
-        }
+    public int onSmashed(int damageAmount) {
+        flash();
+        owner.currentHealth = 0;
+        AbstractDungeon.effectList.add(new StrikeEffect(owner, owner.hb.cX, owner.hb.cY, damageAmount));
+        AbstractDungeon.getCurrRoom().cannotLose = false;
+        return damageAmount;
     }
-
-
 }

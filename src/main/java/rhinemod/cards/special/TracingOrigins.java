@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import rhinemod.actions.ExhaustStatusAction;
+import rhinemod.actions.ExhaustUnscrupulousAction;
 import rhinemod.powers.Order;
 import rhinemod.powers.ResearchProgress;
 
@@ -32,7 +32,7 @@ public class TracingOrigins extends CustomCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new ResearchProgress(p, magicNumber)));
-        addToBot(new ExhaustStatusAction(-1));
+        addToBot(new ExhaustUnscrupulousAction(-1));
         addToBot(new ApplyPowerAction(p, p, new Order(p)));
     }
 

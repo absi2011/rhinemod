@@ -103,15 +103,6 @@ public class ArclightCommando extends AbstractRhineMonster {
         }
     }
 
-    // TODO: 眩晕机制全局后删掉这一部分
-    @Override
-    public void damage(DamageInfo info) {
-        super.damage(info);
-        if ((lastDamageTaken >= 15) && (info.type == DamageInfo.DamageType.NORMAL)) {
-            addToBot(new ApplyPowerAction(this, this, new Stunned(this)));
-        }
-    }
-
     @Override
     protected void getMove(int i) {
         if (AbstractDungeon.ascensionLevel >= 17) {

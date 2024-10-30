@@ -9,9 +9,8 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class Journey extends AbstractPower {
+public class Journey extends AbstractRhinePower {
     public static final String POWER_ID = "rhinemod:Journey";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -34,8 +33,7 @@ public class Journey extends AbstractPower {
         description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
         if (usedThisTurn) {
             description += DESCRIPTIONS[2];
-        }
-        else {
+        } else {
             description += DESCRIPTIONS[3];
         }
     }
@@ -58,6 +56,4 @@ public class Journey extends AbstractPower {
         usedThisTurn = false;
         updateDescription();
     }
-
-
 }

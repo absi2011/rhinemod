@@ -1,15 +1,12 @@
 package rhinemod.powers;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import rhinemod.util.GlobalAttributes;
 
-public class WeaknessSmash extends AbstractPower {
+public class WeaknessSmash extends AbstractRhinePower {
     public static final String POWER_ID = "rhinemod:WeaknessSmash";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -30,21 +27,8 @@ public class WeaknessSmash extends AbstractPower {
     }
 
     @Override
-    public void atStartOfTurn() {
-
+    public int onSmashed(int damageAmount) {
+        flash();
+        return damageAmount * 2;
     }
-
-    @Override
-    public int onAttacked(DamageInfo info, int damageAmount) {
-        if (damageAmount >= GlobalAttributes.smashThreshold && info.type == DamageInfo.DamageType.NORMAL) {
-            this.flash();
-            return damageAmount * 2;
-        }
-        else
-        {
-            return  damageAmount;
-        }
-    }
-
-
 }
