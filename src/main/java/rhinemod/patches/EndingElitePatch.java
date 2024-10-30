@@ -11,7 +11,7 @@ public class EndingElitePatch {
     public static class GenerateMonstersPatch {
         @SpirePostfixPatch
         public static void Postfix(TheEnding _inst) {
-            if (AbstractDungeon.mapRng.random(0, 1 + RhineMod.newMonsterMulti) >= 1) {
+            if (AbstractDungeon.mapRng.random(0, 1 + RhineMod.newMonsterMulti) > 1) {
                 TheEnding.monsterList.clear();
                 TheEnding.eliteMonsterList.clear();
                 TheEnding.monsterList.add("Awaken");
