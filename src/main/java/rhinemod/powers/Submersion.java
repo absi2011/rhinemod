@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import rhinemod.actions.SubmersionLoseHpAction;
 import rhinemod.cards.Dreamer;
+import rhinemod.monsters.StarPod;
 import rhinemod.patches.WaterAttackEffectPatch;
 
 public class Submersion extends AbstractRhinePower {
@@ -67,7 +68,12 @@ public class Submersion extends AbstractRhinePower {
             updateDreamer(AbstractDungeon.player.drawPile);
             updateDreamer(AbstractDungeon.player.discardPile);
             updateDreamer(AbstractDungeon.player.exhaustPile);
-            addToBot(new InstantKillAction(owner));
+            if (owner instanceof StarPod) {
+                addToBot(new SubmersionLoseHpAction(owner, AbstractDungeon.player, DAMAGE_TAKE[amount]));
+            }
+            else {
+                addToBot(new InstantKillAction(owner));
+            }
         }
     }
 

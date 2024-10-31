@@ -53,9 +53,9 @@ public class TrafficPolice extends AbstractRhineMonster {
 
     @Override
     public void usePreBattleAction() {
-        addToBot(new CannotLoseAction());
-        addToBot(new ApplyPowerAction(this, this, new InvisiblePower(this, 2)));
-        addToBot(new ChangeStateAction(this, "HIDDEN"));
+        addToTop(new ChangeStateAction(this, "HIDDEN"));
+        addToTop(new ApplyPowerAction(this, this, new InvisiblePower(this, 2)));
+        addToTop(new CannotLoseAction());
     }
 
     public void changeState(String stateName) {

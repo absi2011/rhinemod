@@ -205,11 +205,13 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
                 eventType(EventUtils.EventType.NORMAL).
                 dungeonIDs("Exordium", "TheCity", "TheBeyond").
                 endsWithRewardsUI(false).
+                spawnCondition(() -> ((AbstractDungeon.player instanceof RhineLab))).
                 create());
         BaseMod.addEvent(new AddEventParams.Builder(StarlitNight.ID, StarlitNight.class).
                 eventType(EventUtils.EventType.NORMAL).
                 dungeonIDs("Exordium", "TheCity", "TheBeyond").
                 endsWithRewardsUI(false).
+                spawnCondition(() -> ((AbstractDungeon.player instanceof RhineLab))).
                 create());
         if (isDemo) {
             BaseMod.addEvent(new AddEventParams.Builder(HeartEvent.ID, HeartEvent.class).
