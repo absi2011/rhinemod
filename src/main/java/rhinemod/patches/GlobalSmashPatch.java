@@ -47,27 +47,35 @@ public class GlobalSmashPatch {
         return damageAmount;
     }
 
-    private static class Locator extends SpireInsertLocator {
-        @Override
-        public int[] Locate(CtBehavior ctBehavior) throws Exception {
-            Matcher.FieldAccessMatcher fieldAccessMatcher = new Matcher.FieldAccessMatcher(AbstractCreature.class, "lastDamageTaken");
-            return LineFinder.findInOrder(ctBehavior, fieldAccessMatcher);
-        }
-    }
-
     @SpirePatch(clz = AbstractMonster.class, method = "damage")
     public static class MonsterDamagePatch {
         @SpireInsertPatch(locator = Locator.class, localvars = {"damageAmount"})
         public static void Insert(AbstractMonster _inst, DamageInfo info, @ByRef int[] damageAmount) {
             damageAmount[0] = calcDamageAmountIfSmash(_inst, info, damageAmount[0]);
         }
+
+        private static class Locator extends SpireInsertLocator {
+            @Override
+            public int[] Locate(CtBehavior ctBehavior) throws Exception {
+                Matcher.FieldAccessMatcher fieldAccessMatcher = new Matcher.FieldAccessMatcher(AbstractMonster.class, "lastDamageTaken");
+                return LineFinder.findInOrder(ctBehavior, fieldAccessMatcher);
+            }
+        }
     }
 
     @SpirePatch(clz = AbstractPlayer.class, method = "damage")
     public static class PlayerDamagePatch {
         @SpireInsertPatch(locator = Locator.class, localvars = {"damageAmount"})
-        public static void Insert(AbstractMonster _inst, DamageInfo info, @ByRef int[] damageAmount) {
+        public static void Insert(AbstractPlayer _inst, DamageInfo info, @ByRef int[] damageAmount) {
             damageAmount[0] = calcDamageAmountIfSmash(_inst, info, damageAmount[0]);
+        }
+
+        private static class Locator extends SpireInsertLocator {
+            @Override
+            public int[] Locate(CtBehavior ctBehavior) throws Exception {
+                Matcher.FieldAccessMatcher fieldAccessMatcher = new Matcher.FieldAccessMatcher(AbstractPlayer.class, "lastDamageTaken");
+                return LineFinder.findInOrder(ctBehavior, fieldAccessMatcher);
+            }
         }
     }
 }
