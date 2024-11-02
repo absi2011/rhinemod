@@ -1,6 +1,5 @@
 package rhinemod.potions;
 
-import basemod.BaseMod;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -13,7 +12,6 @@ import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-import rhinemod.RhineMod;
 import rhinemod.powers.BlackBeanTeaPower;
 
 public class BlackBeanTea extends AbstractPotion {
@@ -35,7 +33,7 @@ public class BlackBeanTea extends AbstractPotion {
         description = DESCRIPTIONS[0] + potency + DESCRIPTIONS[1] + COIN_LOSE + DESCRIPTIONS[2];
         tips.clear();
         tips.add(new PowerTip(this.name, this.description));
-        tips.add(new PowerTip(TipHelper.capitalize(GameDictionary.STRENGTH.NAMES[0]), BaseMod.getKeywordDescription(GameDictionary.keywords.get(GameDictionary.STRENGTH.NAMES[0]))));
+        tips.add(new PowerTip(TipHelper.capitalize(GameDictionary.STRENGTH.NAMES[0]), GameDictionary.keywords.get(GameDictionary.STRENGTH.NAMES[0])));
     }
 
     @Override
