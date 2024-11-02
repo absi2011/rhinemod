@@ -23,8 +23,7 @@ public class Submersion extends AbstractRhinePower {
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     public static final int[] DAMAGE_TAKE = {0, 15, 30, 60, 999};
     public static final int[] REDUCE_ATK = {0, 25, 50, 75, 100};
-    boolean triggered = false;
-    public static int stage4cnt = 0;
+    private boolean triggered;
     public Submersion(AbstractCreature owner, int amount) {
         this.ID = POWER_ID;
         this.name = NAME;
@@ -66,8 +65,11 @@ public class Submersion extends AbstractRhinePower {
         updateDescription();
         if (amount >= 4) {
             AbstractDungeon.effectList.add(new FlashAtkImgEffect(owner.hb.cX, owner.hb.cY, WaterAttackEffectPatch.WATER));
-            stage4cnt++;
-            updateDreamer(1);
+            updateDreamer(AbstractDungeon.player.masterDeck);
+            updateDreamer(AbstractDungeon.player.hand);
+            updateDreamer(AbstractDungeon.player.drawPile);
+            updateDreamer(AbstractDungeon.player.discardPile);
+            updateDreamer(AbstractDungeon.player.exhaustPile);
             if (owner instanceof StarPod) {
                 addToBot(new SubmersionLoseHpAction(owner, AbstractDungeon.player, DAMAGE_TAKE[amount]));
             }
@@ -77,20 +79,10 @@ public class Submersion extends AbstractRhinePower {
         }
     }
 
-    public static void updateDreamer(int num) {
-        if (AbstractDungeon.player == null) return;
-        updateDreamer(AbstractDungeon.player.masterDeck, num);
-        updateDreamer(AbstractDungeon.player.hand, num);
-        updateDreamer(AbstractDungeon.player.drawPile, num);
-        updateDreamer(AbstractDungeon.player.discardPile, num);
-        updateDreamer(AbstractDungeon.player.exhaustPile, num);
-    }
-
-    private static void updateDreamer(CardGroup cardGroup, int num) {
-        if (cardGroup == null) return;
+    void updateDreamer(CardGroup cardGroup) {
         for (AbstractCard c : cardGroup.group) {
-            if (c instanceof Dreamer && ((Dreamer) c).chosenBranch == 2) {
-                c.baseDamage += c.baseMagicNumber * num;
+            if ((c instanceof Dreamer) && (((Dreamer)c).chosenBranch == 2)) {
+                c.misc += c.baseMagicNumber;
                 c.applyPowers();
             }
         }
