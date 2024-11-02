@@ -29,15 +29,13 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.MonsterRoom;
 import com.megacrit.cardcrawl.rooms.RestRoom;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
+import com.megacrit.cardcrawl.screens.stats.StatsScreen;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import rhinemod.cards.*;
 import rhinemod.events.StarlitNight;
 import rhinemod.patches.*;
-import rhinemod.powers.CriticalPointPower;
-import rhinemod.powers.EgotistPower;
-import rhinemod.powers.ExperimentError;
-import rhinemod.powers.InvisibleGlobalAttributes;
+import rhinemod.powers.*;
 import rhinemod.relics.CalcareousStamp;
 import rhinemod.relics.Imperishable;
 import rhinemod.relics.LoneTrail;
@@ -91,6 +89,8 @@ public class RhineLab extends CustomPlayer {
         spines.put("M", new AbstractCharacterSpine(this, -170.0F * Settings.scale, "resources/rhinemod/images/char/char_249_mlyss_1/char_249_mlyss.atlas", "resources/rhinemod/images/char/char_249_mlyss_1/char_249_mlyss.json", 1.5F, "Skill_3_Idle", "Skill_3_loop"));
         spines.put("K", new AbstractCharacterSpine(this, 0.0F, "resources/rhinemod/images/char/enemy_1543_cstlrs/enemy_1543_cstlrs.atlas", "resources/rhinemod/images/char/enemy_1543_cstlrs/enemy_1543_cstlrs.json", 1.5F, "Idle_A", "Attack_A"));
         spines.put("S", new AbstractCharacterSpine(this, 150.0F * Settings.scale, "resources/rhinemod/images/char/char_202_demkni_boc_1/char_202_demkni_boc_1.atlas", "resources/rhinemod/images/char/char_202_demkni_boc_1/char_202_demkni_boc_1.json", 1.5F, "Idle", "Attack"));
+
+        Submersion.stage4cnt = 0;
     }
 
     @Override
@@ -157,6 +157,11 @@ public class RhineLab extends CustomPlayer {
     @Override
     public BitmapFont getEnergyNumFont() {
         return FontHelper.energyNumFontRed;
+    }
+
+    public void renderStatScreen(SpriteBatch sb, float screenX, float screenY) {
+        StatsScreen.renderHeader(sb, "[#" + getCardRenderColor().toString() + "]" + getLocalizedCharacterName() + "[]", screenX, screenY);
+        this.getCharStat().render(sb, screenX, screenY);
     }
 
     @Override

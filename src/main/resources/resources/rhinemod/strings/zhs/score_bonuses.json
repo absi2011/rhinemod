@@ -8,7 +8,13 @@
   "rhinemod:ViolateDeal": {
     "NAME": "违背约定",
     "DESCRIPTIONS": [
-      "拿钱不干活，哪有这种好事"
+      "拿钱不干活，哪有这种好事？"
+    ]
+  },
+  "rhinemod:StarPod": {
+    "NAME": "击败 星荚",
+    "DESCRIPTIONS": [
+      "你飞上了你所梦想的深空。"
     ]
   }
 }
