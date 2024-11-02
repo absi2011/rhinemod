@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.cutscenes.Cutscene;
 import com.megacrit.cardcrawl.cutscenes.CutscenePanel;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
-import rhinemod.relics.LoneTrail;
+import rhinemod.util.TheSky;
 
 import java.util.ArrayList;
 
@@ -19,7 +19,7 @@ public class VictoryScenePatch {
     public static void Postfix(Cutscene _inst, AbstractPlayer.PlayerClass chosenClass, @ByRef Texture[] ___bgImg, ArrayList<CutscenePanel> ___panels) {
         if (chosenClass == RhineEnum.RHINE_CLASS) {
             String url = "resources/rhinemod/images/ui/VictorySceneHeart.png";
-            if (AbstractDungeon.player.hasRelic(LoneTrail.ID)) {
+            if (AbstractDungeon.id.equals(TheSky.ID)) {
                 url = "resources/rhinemod/images/ui/VictoryScene.png";
             }
             ___bgImg[0] = ImageMaster.loadImage(url);
