@@ -29,6 +29,7 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.MonsterRoom;
 import com.megacrit.cardcrawl.rooms.RestRoom;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
+import com.megacrit.cardcrawl.screens.stats.StatsScreen;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import rhinemod.cards.*;
@@ -156,6 +157,11 @@ public class RhineLab extends CustomPlayer {
     @Override
     public BitmapFont getEnergyNumFont() {
         return FontHelper.energyNumFontRed;
+    }
+
+    public void renderStatScreen(SpriteBatch sb, float screenX, float screenY) {
+        StatsScreen.renderHeader(sb, "[#" + getCardRenderColor().toString() + "]" + getLocalizedCharacterName() + "[]", screenX, screenY);
+        this.getCharStat().render(sb, screenX, screenY);
     }
 
     @Override
