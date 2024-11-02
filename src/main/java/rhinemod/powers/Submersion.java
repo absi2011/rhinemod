@@ -85,6 +85,7 @@ public class Submersion extends AbstractRhinePower {
     }
 
     private static void updateDreamer(CardGroup cardGroup, int num) {
+        if (cardGroup == null) return;
         for (AbstractCard c : cardGroup.group) {
             if (c instanceof Dreamer && ((Dreamer) c).chosenBranch == 2) {
                 c.baseDamage += c.baseMagicNumber * num;
