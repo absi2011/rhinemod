@@ -94,7 +94,10 @@ public class EmergencyDefenseProcedures extends AbstractRhineCard {
             case 1:
                 baseBlock = 0;
                 if (p instanceof RhineLab) {
-                    baseBlock = ((RhineLab) p).globalAttributes.calciumNum + magicNumber * 2;
+                    baseBlock = ((RhineLab) p).globalAttributes.calciumNum + magicNumber;
+                    if (realBranch == 1) {
+                        baseBlock += magicNumber;
+                    }
                 }
                 baseSecondMagicNumber = baseBlock;
                 super.applyPowersToBlock();
