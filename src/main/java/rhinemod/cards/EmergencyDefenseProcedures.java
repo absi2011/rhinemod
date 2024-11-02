@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import rhinemod.actions.AddCalciumAction;
 import rhinemod.cards.special.Unscrupulous;
 import rhinemod.characters.RhineLab;
 import rhinemod.interfaces.UpgradeBranch;
@@ -24,7 +25,7 @@ public class EmergencyDefenseProcedures extends AbstractRhineCard {
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     public static final String IMG = "resources/rhinemod/images/cards/EmergencyDefenseProcedures.png";
     public static final int COST = 1;
-    public static final int BLOCK_AMT = 10;
+    public static final int BLOCK_AMT = 13;
     public static final int UPGRADE_PLUS_BLOCK = 3;
     public static final int BLOCK_DEC = 2;
     public static final int CAL_AMT = 3;
@@ -42,10 +43,20 @@ public class EmergencyDefenseProcedures extends AbstractRhineCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        if (chosenBranch == 1) {
+            addToBot(new AddCalciumAction(magicNumber));
+        }
         applyPowersToBlock();
         addToBot(new GainBlockAction(p, p, secondMagicNumber));
         rawDescription = baseDescription;
         initializeDescription();
+    }
+
+    @Override
+    public EmergencyDefenseProcedures makeStatEquivalentCopy() {
+        EmergencyDefenseProcedures card = (EmergencyDefenseProcedures)super.makeStatEquivalentCopy();
+        card.baseDescription = this.baseDescription;
+        return card;
     }
 
     @Override
