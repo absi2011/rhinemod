@@ -32,7 +32,7 @@ public class InvisiblePower extends AbstractRhinePower {
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+        description = DESCRIPTIONS[0] + amount + (amount == 1? DESCRIPTIONS[1] : DESCRIPTIONS[2]);
     }
 
     @Override

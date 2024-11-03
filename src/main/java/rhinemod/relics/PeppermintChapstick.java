@@ -37,9 +37,9 @@ public class PeppermintChapstick extends CustomRelic implements ClickableRelic {
     @Override
     public String getUpdatedDescription() {
         if (counter > 0) {
-            return DESCRIPTIONS[0] + counter + DESCRIPTIONS[1];
+            return DESCRIPTIONS[0] + counter + (counter == 1? DESCRIPTIONS[1] : DESCRIPTIONS[2]);
         } else {
-            return DESCRIPTIONS[2];
+            return DESCRIPTIONS[3];
         }
     }
 

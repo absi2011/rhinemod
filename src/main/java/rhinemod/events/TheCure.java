@@ -62,7 +62,7 @@ public class TheCure extends AbstractImageEvent {
                         this.screen = CurScreen.LEAVE;
                         AbstractPotion potion = new FairyPotion();
                         tempList.add(potion.ID);
-                        logMetric(ID, "DELIBERATION", null, null, null, null, null, tempList, null, 0, 0, 0, 0, 0, 0);
+                        logMetric(ID, "VIGIL", null, null, null, null, null, tempList, null, 0, 0, 0, 0, 0, 0);
                         AbstractDungeon.effectList.add(new ObtainPotionEffect(potion));
                         break;
                     case 2:

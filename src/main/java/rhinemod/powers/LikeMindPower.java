@@ -33,7 +33,7 @@ public class LikeMindPower extends AbstractRhinePower implements OnReceivePowerP
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[4] + DESCRIPTIONS[branch] + amount + DESCRIPTIONS[5];
+        description = DESCRIPTIONS[0] + DESCRIPTIONS[branch * 2 + 1] + amount + DESCRIPTIONS[branch * 2 + 2];
     }
 
     @Override

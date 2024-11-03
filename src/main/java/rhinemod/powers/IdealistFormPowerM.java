@@ -36,7 +36,7 @@ public class IdealistFormPowerM extends AbstractRhinePower {
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + drawAmount + DESCRIPTIONS[1] + amount + DESCRIPTIONS[2];
+        description = DESCRIPTIONS[0] + drawAmount + (drawAmount == 1? DESCRIPTIONS[1] : DESCRIPTIONS[2]) + amount + DESCRIPTIONS[3];
     }
 
     @Override

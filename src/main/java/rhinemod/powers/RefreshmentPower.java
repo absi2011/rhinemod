@@ -30,7 +30,7 @@ public class RefreshmentPower extends AbstractRhinePower {
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1] + rest + DESCRIPTIONS[2];
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1] + rest + (rest <= 1? DESCRIPTIONS[2] : DESCRIPTIONS[3]);
     }
 
     @Override
