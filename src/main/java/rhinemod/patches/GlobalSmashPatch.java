@@ -33,7 +33,7 @@ public class GlobalSmashPatch {
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, info.owner, new Stunned(target)));
             }
         } else if (damageAmount > 0) {
-            if (target.hasPower(WeaknessNonSmash.POWER_ID) && !info.name.equals(NotTrigger)) {
+            if (target.hasPower(WeaknessNonSmash.POWER_ID) && (info.name == null || !info.name.equals(NotTrigger))) {
                 target.getPower(WeaknessNonSmash.POWER_ID).flash();
                 DamageInfo newInfo = new DamageInfo(null, damageAmount, DamageInfo.DamageType.THORNS);
                 newInfo.name = NotTrigger;
