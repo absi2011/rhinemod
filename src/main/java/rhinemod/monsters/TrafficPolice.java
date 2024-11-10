@@ -76,6 +76,10 @@ public class TrafficPolice extends AbstractRhineMonster {
     public void takeTurn() {
         turn ++;
         DamageInfo t = new DamageInfo(this, damage.get(0).output);
+        //TODO： 先改回去吧，避免拿到荆棘直接游戏炸了，目前会出现所有怪都死了的判定然后没法继续游戏。
+        if (turn <= 2) {
+            t.type = DamageInfo.DamageType.THORNS;
+        }
         state.setAnimation(0, "Attack", false);
         state.addAnimation(0, "Idle", true, 0);
         addToBot(new DamageAction(AbstractDungeon.player, t));

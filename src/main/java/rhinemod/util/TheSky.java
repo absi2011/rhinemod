@@ -56,7 +56,7 @@ public class TheSky extends AbstractDungeon {
         mapRng = new Random(Settings.seed + (saveFile.act_num * 400L));
         generateSpecialMap();
         firstRoomChosen = true;
-        if (!saveFile.current_room.equals(MonsterRoomBoss.class.getName())) {
+        if (!saveFile.current_room.equals(MonsterRoomBoss.class.getName()) && !saveFile.current_room.equals(MonsterRoomElite.class.getName())) {
             CardCrawlGame.music.fadeOutBGM();
             CardCrawlGame.music.changeBGM(ID);
             CardCrawlGame.sound.play("SKY_INTRO");

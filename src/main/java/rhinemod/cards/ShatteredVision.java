@@ -92,6 +92,7 @@ public class ShatteredVision extends AbstractRhineCard {
                 if (!upgraded) {
                     upgradeName(1);
                     exhaust = true;
+                    isMultiDamage = true;
                     rawDescription = EXTENDED_DESCRIPTION[0];
                     upgradeDamage(SARIA_PLUS_DMG);
                     initializeDescription();

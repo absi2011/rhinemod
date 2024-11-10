@@ -153,6 +153,7 @@ public abstract class AbstractRhineCard extends CustomCard {
         t.type = s.type;
         t.tags.clear();
         t.tags.addAll(s.tags);
+        t.isMultiDamage = s.isMultiDamage;
         if (!t.textureImg.equals(s.textureImg)) {
             t.textureImg = s.textureImg;
             t.loadCardImage(t.textureImg);
