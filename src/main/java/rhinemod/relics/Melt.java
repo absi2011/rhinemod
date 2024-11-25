@@ -13,8 +13,8 @@ public class Melt extends CustomRelic {
     public static final RelicStrings relicStrings = CardCrawlGame.languagePack.getRelicStrings(ID);
     public static final String NAME = relicStrings.NAME;
     public static final String[] DESCRIPTIONS = relicStrings.DESCRIPTIONS;
-    public static final Texture IMG = new Texture("resources/rhinemod/images/relics/Awaken.png");
-    public static final Texture IMG_OUTLINE = new Texture("resources/rhinemod/images/relics/Awaken_p.png");
+    public static final Texture IMG = new Texture("resources/rhinemod/images/relics/Melt.png");
+    public static final Texture IMG_OUTLINE = new Texture("resources/rhinemod/images/relics/Melt_p.png");
     public Melt() {
         super(ID, IMG, IMG_OUTLINE, RelicTier.SPECIAL, LandingSound.MAGICAL);
         counter = 3;
