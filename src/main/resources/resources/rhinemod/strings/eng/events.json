@@ -20,17 +20,17 @@
       "[离开]"
     ]
   },
-  "rhinemod:ConvergenceOfPastAndPresent": {
-    "NAME": "Convergence of Past And Present",
+  "rhinemod:AmongstTheStars": {
+    "NAME": "Amongst The Stars",
     "DESCRIPTIONS": [
-      "这座尖塔非常的高，天空似乎触手可及。也许，以这里为基地去探索天空也不错。",
-      "你们准备实现总辖之愿。",
-      "你们选择暂时休息，先处理这座尖塔的麻烦。",
-      "啊？你真选这个？"
+      "The dome enveloping the ceiling suddenly opens itself. False starlight floods the Tower. NL On the planetarium before you, the stars begin to move erratically. Just like in countless experiments before, no matter how many times you try, they just refuse to stay on the right track. NL From here, open the sky above, and only then can the truth be perceived.",
+      "Silver liquid spews out from the planetarium, and in an instant, all the planets are thrown out of their orbits, rushing towards a single position at a speed too fast for the naked eye. The entire galaxy pours down on you. You have weathered the storm. You cross the galaxy. The true sky is within reach.",
+      "You'd like to gaze at the stars together, just like you did before. NL ... NL The sky is beautiful.",
+      "You still have time to turn back, before you hit the barrier. Sacrifice should not be approved, even justified and inevitable. A real pioneer should be clearing the way for all humanity, instead of jumping headfirst into the abyss, never to return."
     ],
     "OPTIONS": [
       "[Continue] #gObtain #yEgotist, #yTraitor, #ySeeker, #yLoner, #yPioneer.",
-      "[Rest] #gHeal #g",
+      "[Stop] #gHeal #g",
       " #gHP.",
       "[Leave]",
       "[Leave]"
