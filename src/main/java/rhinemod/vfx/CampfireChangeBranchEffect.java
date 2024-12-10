@@ -51,7 +51,7 @@ public class CampfireChangeBranchEffect extends AbstractGameEffect {
                 ids.add(metricID);
                 AbstractDungeon.player.bottledCardUpgradeCheck(c);
                 AbstractDungeon.effectsQueue.add(new ShowCardBrieflyEffect(c.makeStatEquivalentCopy()));
-                ChangeBranchOption.changeNum++;
+                changeBranchOption.changeNum++;
             }
             AbstractDungeon.gridSelectScreen.selectedCards.clear();
             ((RestRoom)AbstractDungeon.getCurrRoom()).fadeIn();
@@ -70,7 +70,7 @@ public class CampfireChangeBranchEffect extends AbstractGameEffect {
             isDone = true;
             if (CampfireUI.hidden) {
                 CampfireUI campfireUI = ((RestRoom) AbstractDungeon.getCurrRoom()).campfireUI;
-                if (ChangeBranchOption.changeNum > 0)
+                if (changeBranchOption.changeNum > 0)
                     changeBranchOption.usable = false;
                 campfireUI.reopen();
             }

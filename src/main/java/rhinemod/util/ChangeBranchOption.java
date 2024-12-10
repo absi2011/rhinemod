@@ -10,7 +10,7 @@ import rhinemod.vfx.CampfireChangeBranchEffect;
 public class ChangeBranchOption extends AbstractCampfireOption {
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("rhinemod:ChangeBranchOption");
     public static final String[] TEXT = uiStrings.TEXT;
-    public static int changeNum;
+    public int changeNum;
 
     public ChangeBranchOption(boolean active) {
         changeNum = 0;
