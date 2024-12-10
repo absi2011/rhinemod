@@ -13,8 +13,8 @@ import rhinemod.cards.special.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConvergenceOfPastAndPresent extends AbstractImageEvent {
-    public static final String ID = "rhinemod:ConvergenceOfPastAndPresent";
+public class AmongstTheStars extends AbstractImageEvent {
+    public static final String ID = "rhinemod:AmongstTheStars";
     private static final EventStrings eventStrings = CardCrawlGame.languagePack.getEventString(ID);
     public static final String NAME = eventStrings.NAME;
     public static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
@@ -25,8 +25,8 @@ public class ConvergenceOfPastAndPresent extends AbstractImageEvent {
         INTRO, LEAVE
     }
     int hp;
-    public ConvergenceOfPastAndPresent() {
-        super(NAME, DESCRIPTIONS[0], "resources/rhinemod/images/event/ConvergenceOfPastAndPresent.png");
+    public AmongstTheStars() {
+        super(NAME, DESCRIPTIONS[0], "resources/rhinemod/images/event/AmongstTheStars.png");
         if (AbstractDungeon.ascensionLevel < 15) {
             hp = MathUtils.floor(AbstractDungeon.player.maxHealth * 0.3F);
         }
