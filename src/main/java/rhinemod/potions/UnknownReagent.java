@@ -35,6 +35,7 @@ public class UnknownReagent extends AbstractPotion {
     @Override
     public void use(AbstractCreature abstractCreature) {
         potency = getPotency();
+        //TODO: 如果没有敌人使用会崩；会重复攻击已死亡的敌人；单独做个Action吧
         for (int i = 0; i < TIMES; i++) {
             AbstractMonster m = AbstractDungeon.getCurrRoom().monsters.getRandomMonster(null, true);
             int damage = potency;
