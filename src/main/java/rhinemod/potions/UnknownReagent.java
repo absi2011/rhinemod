@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
+import rhinemod.actions.UnknownReagentAction;
 import rhinemod.monsters.*;
 
 public class UnknownReagent extends AbstractPotion {
@@ -35,16 +36,7 @@ public class UnknownReagent extends AbstractPotion {
     @Override
     public void use(AbstractCreature abstractCreature) {
         potency = getPotency();
-        //TODO: 如果没有敌人使用会崩；会重复攻击已死亡的敌人；单独做个Action吧
-        for (int i = 0; i < TIMES; i++) {
-            AbstractMonster m = AbstractDungeon.getCurrRoom().monsters.getRandomMonster(null, true);
-            int damage = potency;
-            if (m instanceof Awaken_Monster || m instanceof R11AssaultPowerArmor || m instanceof R31HeavyPowerArmor ||
-                m instanceof ExperimentalPowerArmor || m instanceof Crossroads || m instanceof Perpetrator || m instanceof Turnpike) {
-                damage *= 2;
-            }
-            addToBot(new DamageAction(m, new DamageInfo(null, damage, DamageInfo.DamageType.THORNS)));
-        }
+        addToBot(new UnknownReagentAction(potency));
     }
 
     @Override

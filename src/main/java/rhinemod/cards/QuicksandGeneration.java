@@ -49,8 +49,11 @@ public class QuicksandGeneration extends AbstractRhineCard {
             }
             int avg = magicNumber / list.size();
             int fir = magicNumber % list.size();
-            for (int i = 0; i < list.size(); i++)
-                addToBot(new ApplyPowerAction(list.get(i), p, new WeakPower(list.get(i), avg + (i < fir ? 1 : 0), false)));
+            for (int i = 0; i < list.size(); i++) {
+                if (avg + (i < fir ? 1 : 0) > 0) {
+                    addToBot(new ApplyPowerAction(list.get(i), p, new WeakPower(list.get(i), avg + (i < fir ? 1 : 0), false)));
+                }
+            }
         } else {
             addToBot(new ApplyPowerAction(p, p, new QuickwaterArea(p, magicNumber)));
         }
