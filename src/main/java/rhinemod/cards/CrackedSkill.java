@@ -19,7 +19,7 @@ public class CrackedSkill extends AbstractRhineCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
-    public static final String IMG = "resources/rhinemod/images/cards/PureWaterIsLife.png";
+    public static final String IMG = "resources/rhinemod/images/cards/CoDevelopedFormula.png";
     public static final int COST = 1;
     public static final int BLOCK_GAIN = 10;
     public static final int UPGRADE_COST = 0;
