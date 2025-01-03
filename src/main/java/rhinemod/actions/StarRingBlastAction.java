@@ -16,15 +16,17 @@ public class StarRingBlastAction extends AbstractGameAction {
     public ArrayList<AbstractCreature> aimList = new ArrayList<>();
     public final boolean includeSelf;
     public final int extraMultiDmg;
-    public StarRingBlastAction(int amount, boolean includeSelf) {
-        this(amount, includeSelf, 0);
+    public final boolean needEffect;
+    public StarRingBlastAction(int amount, boolean includeSelf, boolean needEffect) {
+        this(amount, includeSelf, needEffect, 0);
     }
 
-    public StarRingBlastAction(int amount, boolean includeSelf, int extraMultiDmg) {
+    public StarRingBlastAction(int amount, boolean includeSelf, boolean needEffect, int extraMultiDmg) {
         actionType = ActionType.DAMAGE;
         duration = Settings.ACTION_DUR_FAST;
         this.amount = amount;
         this.includeSelf = includeSelf;
+        this.needEffect = needEffect;
         this.extraMultiDmg = extraMultiDmg;
     }
 
@@ -36,7 +38,7 @@ public class StarRingBlastAction extends AbstractGameAction {
                 if (!m.isDeadOrEscaped())
                     aimList.add(m);
             if (AbstractDungeon.player.currentHealth > 0 && includeSelf) aimList.add(AbstractDungeon.player);
-            if (!aimList.isEmpty()) {
+            if (!aimList.isEmpty() && needEffect) {
                 boolean playedMusic = false;
                 for (AbstractCreature m : aimList) {
                     if (playedMusic) {

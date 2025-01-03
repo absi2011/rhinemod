@@ -43,8 +43,11 @@ public class Truth extends AbstractRhineCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (AbstractDungeon.player instanceof RhineLab) {
             RhineLab player = (RhineLab)AbstractDungeon.player;
+            player.currentRings.removeIf(r -> r.isDead);
+            boolean firstRing = true;
             for (StarRing s: player.currentRings) {
-                s.startOfTurnDamage();
+                s.startOfTurnDamage(firstRing);
+                firstRing = false;
             }
         }
         if (extraTriggered()) {

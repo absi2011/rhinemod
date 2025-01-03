@@ -114,9 +114,9 @@ public class StarRing extends AbstractMonster {
             blastDamage *= blastTimes;
             blastDamage /= 2;
             if (hasPower(CriticalPointPower.POWER_ID)) {
-                AbstractDungeon.actionManager.addToTop(new StarRingBlastAction(blastDamage, includeSelf, getPower(CriticalPointPower.POWER_ID).amount));
+                AbstractDungeon.actionManager.addToTop(new StarRingBlastAction(blastDamage, includeSelf, true, getPower(CriticalPointPower.POWER_ID).amount));
             } else {
-                AbstractDungeon.actionManager.addToTop(new StarRingBlastAction(blastDamage, includeSelf));
+                AbstractDungeon.actionManager.addToTop(new StarRingBlastAction(blastDamage, includeSelf, true));
             }
             AbstractDungeon.actionManager.addToTop(new WaitAction(0.5F));
             for (AbstractPower p : powers) {
@@ -141,21 +141,20 @@ public class StarRing extends AbstractMonster {
         return (int)Math.floor(dmg);
     }
 
-    public void startOfTurnDamage() {
+    public void startOfTurnDamage(boolean needEffect) {
         int dmg = calculateDmg(5);
         int cnt = 1;
         if (AbstractDungeon.player.hasPower(GalleriaStellariaPower.POWER_ID)) {
             cnt += AbstractDungeon.player.getPower(GalleriaStellariaPower.POWER_ID).amount;
         }
         addToBot(new WaitAction(0.5F));
-        for (int i = 0; i < cnt; i ++) {
-            addToBot(new StarRingBlastAction(dmg, false));
+        for (int i = 0; i < cnt; i++) {
+            addToBot(new StarRingBlastAction(dmg, false, i == 0 && needEffect));
         }
     }
-    @Override
-    public void applyStartOfTurnPowers() {
-        super.applyStartOfTurnPowers();
-        startOfTurnDamage();
+    public void atStartOfTurn(boolean firstRing) {
+        for (AbstractPower p : powers) p.atStartOfTurn();
+        startOfTurnDamage(firstRing);
         loseBlock();
     }
 

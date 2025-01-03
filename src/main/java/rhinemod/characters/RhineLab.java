@@ -323,7 +323,11 @@ public class RhineLab extends CustomPlayer {
     public void applyStartOfTurnPowers() {
         super.applyStartOfTurnPowers();
         currentRings.removeIf(r -> r.isDead);
-        for (StarRing r : currentRings) r.applyStartOfTurnPowers();
+        boolean firstRing = true;
+        for (StarRing r : currentRings) {
+            r.atStartOfTurn(firstRing);
+            firstRing = false;
+        }
     }
 
     public void summonStarRing(int maxHealth, int strength, int block, int blast) {
