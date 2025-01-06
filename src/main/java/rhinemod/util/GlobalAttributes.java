@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Interpolation;
 import com.megacrit.cardcrawl.core.Settings;
@@ -13,16 +14,22 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.helpers.TipHelper;
+import org.w3c.dom.Text;
 import rhinemod.actions.ReduceCalciumAction;
 
 import java.util.ArrayList;
 
 public class GlobalAttributes {
-    public static final String UP_IMG = "resources/rhinemod/images/ui/gravityUp.png";
-    public static final String DOWN_IMG = "resources/rhinemod/images/ui/gravityDown.png";
-    public static final String NONE_IMG = "resources/rhinemod/images/ui/gravityNone.png";
-    public static final String CA_IMG = "resources/rhinemod/images/ui/calcium.png";
-    public static final String FS_IMG = "resources/rhinemod/images/ui/flowingShape.png";
+    public static final Texture UP_IMG = new Texture("resources/rhinemod/images/ui/gravityUp.png");
+    public static final TextureRegion UP_REGION = new TextureRegion(UP_IMG, UP_IMG.getWidth(), UP_IMG.getHeight());
+    public static final Texture DOWN_IMG = new Texture("resources/rhinemod/images/ui/gravityDown.png");
+    public static final TextureRegion DOWN_REGION = new TextureRegion(DOWN_IMG, DOWN_IMG.getWidth(), DOWN_IMG.getHeight());
+    public static final Texture NONE_IMG = new Texture("resources/rhinemod/images/ui/gravityNone.png");
+    public static final TextureRegion NONE_REGION = new TextureRegion(NONE_IMG, NONE_IMG.getWidth(), NONE_IMG.getHeight());
+    public static final Texture CA_IMG = new Texture("resources/rhinemod/images/ui/calcium.png");
+    public static final TextureRegion CA_REGION = new TextureRegion(CA_IMG, CA_IMG.getWidth(), CA_IMG.getHeight());
+    public static final Texture FS_IMG = new Texture("resources/rhinemod/images/ui/flowingShape.png");
+    public static final TextureRegion FS_REGION = new TextureRegion(FS_IMG, FS_IMG.getWidth(), FS_IMG.getHeight());
     public enum GravityDirection {
         UP, DOWN, NONE, UNKNOWN
     }
@@ -110,8 +117,7 @@ public class GlobalAttributes {
     }
 
     public void renderFlowsp(SpriteBatch sb) {
-        Texture img = new Texture(FS_IMG);
-        TextureRegion region = new TextureRegion(img, img.getWidth(), img.getHeight());
+        TextureRegion region = FS_REGION;
         sb.setColor(Color.WHITE);
         sb.draw(region, flowspX - region.getRegionWidth() * 0.5F, flowspY - region.getRegionWidth() * 0.5F, 0, 0, region.getRegionWidth(), region.getRegionHeight(), 1.0F, 1.0F, 0.0F);
         FontHelper.renderFontCentered(sb, FontHelper.turnNumFont, Integer.toString(flowspNum), flowspX + region.getRegionWidth() * 0.5F, flowspY - region.getRegionHeight() * 0.5F, Color.LIGHT_GRAY);
@@ -122,11 +128,10 @@ public class GlobalAttributes {
     }
 
     public void renderGravity(SpriteBatch sb) {
-        Texture img;
-        if (gravity == GravityDirection.UP) img = new Texture(UP_IMG);
-        else if (gravity == GravityDirection.DOWN) img = new Texture(DOWN_IMG);
-        else img = new Texture(NONE_IMG);
-        TextureRegion region = new TextureRegion(img, img.getWidth(), img.getHeight());
+        TextureRegion region;
+        if (gravity == GravityDirection.UP) region = UP_REGION;
+        else if (gravity == GravityDirection.DOWN) region = DOWN_REGION;
+        else region = NONE_REGION;
         sb.setColor(Color.WHITE);
         sb.draw(region, gravityX - region.getRegionWidth() * 0.5F, gravityY - region.getRegionWidth() * 0.5F, 0, 0, region.getRegionWidth(), region.getRegionHeight(), 1.0F, 1.0F, 0.0F);
         if (gravityFlash > 0.0F) {
@@ -136,8 +141,7 @@ public class GlobalAttributes {
     }
 
     public void renderCalcium(SpriteBatch sb) {
-        Texture img = new Texture(CA_IMG);
-        TextureRegion region = new TextureRegion(img, img.getWidth(), img.getHeight());
+        TextureRegion region = CA_REGION;
         sb.setColor(Color.WHITE);
         sb.draw(region, calciumX - region.getRegionWidth() * 0.5F, calciumY - region.getRegionWidth() * 0.5F, 0, 0, region.getRegionWidth(), region.getRegionHeight(), 1.0F, 1.0F, 0.0F);
         FontHelper.renderFontCentered(sb, FontHelper.turnNumFont, Integer.toString(calciumNum), calciumX + region.getRegionWidth() * 0.5F, calciumY - region.getRegionHeight() * 0.5F, Color.LIGHT_GRAY);
