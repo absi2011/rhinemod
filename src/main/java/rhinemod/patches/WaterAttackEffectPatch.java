@@ -13,8 +13,9 @@ import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 
 public class WaterAttackEffectPatch {
     @SpireEnum public static AbstractGameAction.AttackEffect WATER;
-    private static final Texture WATER_IMG = ImageMaster.loadImage("resources/rhinemod/images/ui/water.png");
-    private static final TextureAtlas.AtlasRegion WATER_REGION = new TextureAtlas.AtlasRegion(WATER_IMG, 0, 0, WATER_IMG.getWidth(), WATER_IMG.getHeight());
+    private static boolean firstUse = true;
+    private static Texture WATER_IMG;
+    private static TextureAtlas.AtlasRegion WATER_REGION;
 
     @SpirePatch(clz = FlashAtkImgEffect.class, method = "playSound")
     public static class PlaySoundPatch {
@@ -33,6 +34,11 @@ public class WaterAttackEffectPatch {
         @SpirePrefixPatch
         public static SpireReturn<?> Prefix(FlashAtkImgEffect _inst, AbstractGameAction.AttackEffect ___effect) {
             if (___effect == WATER) {
+                if (firstUse) {
+                    firstUse = false;
+                    WATER_IMG = ImageMaster.loadImage("resources/rhinemod/images/ui/water.png");
+                    WATER_REGION = new TextureAtlas.AtlasRegion(WATER_IMG, 0, 0, WATER_IMG.getWidth(), WATER_IMG.getHeight());
+                }
                 return SpireReturn.Return(WATER_REGION);
             }
             return SpireReturn.Continue();
