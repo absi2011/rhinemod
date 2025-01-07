@@ -75,8 +75,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
 
     public static final ArrayList<TextureAtlas.AtlasRegion> specialImg = new ArrayList<>();
     public static final ArrayList<Texture> specialImgLarge = new ArrayList<>();
-    public static final Texture WATER_IMG = ImageMaster.loadImage("resources/rhinemod/images/ui/water.png");
-    public static final TextureAtlas.AtlasRegion WATER_REGION = new TextureAtlas.AtlasRegion(WATER_IMG, 0, 0, WATER_IMG.getWidth(), WATER_IMG.getHeight());
+    public static TextureAtlas.AtlasRegion WATER_REGION;
 
     public static float newMonsterMulti = 1.0F;
     public boolean isDemo = true;
@@ -242,6 +241,8 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         specialImgLarge.add(new Texture("resources/rhinemod/images/1024/card_saria.png"));
         specialImgLarge.add(new Texture("resources/rhinemod/images/1024/card_kristen.png"));
         specialImgLarge.add(new Texture("resources/rhinemod/images/1024/card_muelsyse.png"));
+        Texture WATER_IMG = ImageMaster.loadImage("resources/rhinemod/images/ui/water.png");
+        WATER_REGION = new TextureAtlas.AtlasRegion(WATER_IMG, 0, 0, WATER_IMG.getWidth(), WATER_IMG.getHeight());
     }
 
     @Override

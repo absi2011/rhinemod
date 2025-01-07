@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
 import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
 import rhinemod.cards.special.*;
+import rhinemod.vfx.MyLaserEffect;
 
 import java.util.ArrayList;
 
@@ -54,12 +55,10 @@ public class LoneTrail extends CustomRelic {
     public void atBattleStartPreDraw() {
         if ((counter > 0) && (AbstractDungeon.getCurrRoom() instanceof MonsterRoomBoss)) {
             flash();
-            int i;
-            for (i = 0; i < counter; i++) {
-                // 这里无论如何应该只有一个敌人。
-                AbstractMonster m = AbstractDungeon.getCurrRoom().monsters.monsters.get(0);
-                AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(AbstractDungeon.player, 1, DamageInfo.DamageType.THORNS)));
-                //TODO: 如果以后有技术力可以做一个星光特效
+            AbstractMonster m = AbstractDungeon.getCurrRoom().monsters.monsters.get(0);
+            AbstractDungeon.effectList.add(new MyLaserEffect(hb.cX, hb.cY, m.hb.cX, m.hb.cY, counter));
+            for (int i = 0; i < counter; i++) {
+                AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(AbstractDungeon.player, 1, DamageInfo.DamageType.THORNS)));
             }
             counter = -1;
         }
