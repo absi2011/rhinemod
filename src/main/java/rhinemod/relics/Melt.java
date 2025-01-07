@@ -2,7 +2,9 @@ package rhinemod.relics;
 
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -33,6 +35,13 @@ public class Melt extends CustomRelic {
         }
     }
 
+    @Override
+    public void updateDescription(AbstractPlayer.PlayerClass playerClass) {
+        description = getUpdatedDescription();
+        tips.clear();
+        tips.add(new PowerTip(name, description));
+        initializeTips();
+    }
 
     @Override
     public void onVictory() {
@@ -40,10 +49,7 @@ public class Melt extends CustomRelic {
         if (counter <= 0) {
             counter = -1;
         }
-        description = getUpdatedDescription();
-        tips.clear();
-        tips.add(new PowerTip(name, description));
-        initializeTips();
+        updateDescription(AbstractDungeon.player.chosenClass);
     }
 
     @Override

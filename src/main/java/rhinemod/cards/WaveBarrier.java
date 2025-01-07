@@ -37,6 +37,7 @@ public class WaveBarrier extends AbstractRhineCard {
         addToBot(new ApplyPowerAction(p, p, new BufferPower(p, magicNumber)));
         if (p.hasRelic(Melt.ID)) {
             p.getRelic(Melt.ID).counter = 3;
+            p.getRelic(Melt.ID).updateDescription(p.chosenClass);
         } else {
             AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float)(Settings.WIDTH / 2), (float)(Settings.HEIGHT / 2), new Melt());
         }
