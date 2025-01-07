@@ -74,8 +74,9 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
     private static final Logger logger = LogManager.getLogger(RhineMod.class.getName());
 
     public static final ArrayList<TextureAtlas.AtlasRegion> specialImg = new ArrayList<>();
-
     public static final ArrayList<Texture> specialImgLarge = new ArrayList<>();
+    public static final Texture WATER_IMG = ImageMaster.loadImage("resources/rhinemod/images/ui/water.png");
+    public static final TextureAtlas.AtlasRegion WATER_REGION = new TextureAtlas.AtlasRegion(WATER_IMG, 0, 0, WATER_IMG.getWidth(), WATER_IMG.getHeight());
 
     public static float newMonsterMulti = 1.0F;
     public boolean isDemo = true;
