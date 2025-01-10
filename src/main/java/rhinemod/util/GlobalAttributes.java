@@ -5,7 +5,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Interpolation;
 import com.megacrit.cardcrawl.core.Settings;
@@ -14,7 +13,6 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.helpers.TipHelper;
-import org.w3c.dom.Text;
 import rhinemod.actions.ReduceCalciumAction;
 
 import java.util.ArrayList;
@@ -101,8 +99,8 @@ public class GlobalAttributes {
     }
 
     public void renderSingleFlash(SpriteBatch sb, TextureRegion region, float x, float y, float scale) {
-        float w = region.getRegionWidth();
-        float h = region.getRegionHeight();
+        float w = 48.0F * Settings.scale;
+        float h = 48.0F * Settings.scale;
         sb.draw(region, x - w * scale * 0.5F, y - h * scale * 0.5F, 0, 0, w, h, scale, scale, 0.0F);
     }
 
@@ -119,8 +117,8 @@ public class GlobalAttributes {
     public void renderFlowsp(SpriteBatch sb) {
         TextureRegion region = FS_REGION;
         sb.setColor(Color.WHITE);
-        sb.draw(region, flowspX - region.getRegionWidth() * 0.5F, flowspY - region.getRegionWidth() * 0.5F, 0, 0, region.getRegionWidth(), region.getRegionHeight(), 1.0F, 1.0F, 0.0F);
-        FontHelper.renderFontCentered(sb, FontHelper.turnNumFont, Integer.toString(flowspNum), flowspX + region.getRegionWidth() * 0.5F, flowspY - region.getRegionHeight() * 0.5F, Color.LIGHT_GRAY);
+        sb.draw(region, flowspX - 24.0F * Settings.scale, flowspY - 24.0F * Settings.scale, 0, 0, 48.0F * Settings.scale, 48.0F * Settings.scale, 1.0F, 1.0F, 0.0F);
+        FontHelper.renderFontCentered(sb, FontHelper.turnNumFont, Integer.toString(flowspNum), flowspX + 24.0F * Settings.scale, flowspY - 24.0F * Settings.scale, Color.LIGHT_GRAY);
         if (flowspFlash > 0.0F) {
             renderFlash(sb, region, flowspX, flowspY, flowspFlash);
             flowspFlash -= Gdx.graphics.getDeltaTime();
@@ -133,7 +131,7 @@ public class GlobalAttributes {
         else if (gravity == GravityDirection.DOWN) region = DOWN_REGION;
         else region = NONE_REGION;
         sb.setColor(Color.WHITE);
-        sb.draw(region, gravityX - region.getRegionWidth() * 0.5F, gravityY - region.getRegionWidth() * 0.5F, 0, 0, region.getRegionWidth(), region.getRegionHeight(), 1.0F, 1.0F, 0.0F);
+        sb.draw(region, gravityX - 24.0F * Settings.scale, gravityY - 24.0F * Settings.scale, 0, 0, 48.0F * Settings.scale, 48.0F * Settings.scale, 1.0F, 1.0F, 0.0F);
         if (gravityFlash > 0.0F) {
             renderFlash(sb, region, gravityX, gravityY, gravityFlash);
             gravityFlash -= Gdx.graphics.getDeltaTime();
@@ -143,8 +141,8 @@ public class GlobalAttributes {
     public void renderCalcium(SpriteBatch sb) {
         TextureRegion region = CA_REGION;
         sb.setColor(Color.WHITE);
-        sb.draw(region, calciumX - region.getRegionWidth() * 0.5F, calciumY - region.getRegionWidth() * 0.5F, 0, 0, region.getRegionWidth(), region.getRegionHeight(), 1.0F, 1.0F, 0.0F);
-        FontHelper.renderFontCentered(sb, FontHelper.turnNumFont, Integer.toString(calciumNum), calciumX + region.getRegionWidth() * 0.5F, calciumY - region.getRegionHeight() * 0.5F, Color.LIGHT_GRAY);
+        sb.draw(region, calciumX - 24.0F * Settings.scale, calciumY - 24.0F * Settings.scale, 0, 0, 48.0F * Settings.scale, 48.0F * Settings.scale, 1.0F, 1.0F, 0.0F);
+        FontHelper.renderFontCentered(sb, FontHelper.turnNumFont, Integer.toString(calciumNum), calciumX + 24.0F * Settings.scale, calciumY - 24.0F * Settings.scale, Color.LIGHT_GRAY);
         if (calciumFlash > 0.0F) {
             renderFlash(sb, region, calciumX, calciumY, calciumFlash);
             calciumFlash -= Gdx.graphics.getDeltaTime();
