@@ -15,16 +15,16 @@
       "smash",
       "重击"
     ],
-    "DESCRIPTION": "如果一次性伤害高于15，则给予目标一层 [#EFC851]眩晕[] 。"
+    "DESCRIPTION": "如果一次性伤害高于15，则给予目标一层 [#EFC851]晕眩[] 。"
   },
   "STUNNED": {
-    "PROPER_NAME": "眩晕",
+    "PROPER_NAME": "晕眩",
     "NAMES": [
       "Stunned",
       "stunned",
-      "眩晕"
+      "晕眩"
     ],
-    "DESCRIPTION": "处于眩晕的敌人 [#EFC851]水渍[] 不再减少， [#EFC851]重力[] 改变时受到7点伤害。"
+    "DESCRIPTION": "处于晕眩的敌人 [#EFC851]水渍[] 不再减少， [#EFC851]重力[] 改变时受到7点伤害。"
   },
   "GRAVITY": {
     "PROPER_NAME": "重力",

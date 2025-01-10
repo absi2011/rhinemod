@@ -13,7 +13,7 @@
     ]
   },
   "rhinemod:Stunned": {
-    "NAME": "眩晕",
+    "NAME": "晕眩",
     "DESCRIPTIONS": ["本回合内， #y水渍 不再减少， #y重力 变化时受到 #b7 点伤害。"]
   },
   "rhinemod:PlanetaryDebris": {
@@ -164,9 +164,9 @@
     ]
   },
   "rhinemod:NoStun": {
-    "NAME": "眩晕免疫",
+    "NAME": "晕眩免疫",
     "DESCRIPTIONS": [
-      "无法获得 #y眩晕 状态。"
+      "无法获得 #y晕眩 。"
     ]
   },
   "rhinemod:Armor": {
