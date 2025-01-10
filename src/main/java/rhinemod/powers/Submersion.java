@@ -83,7 +83,12 @@ public class Submersion extends AbstractRhinePower {
         for (AbstractCard c : cardGroup.group) {
             if ((c instanceof Dreamer) && (((Dreamer)c).chosenBranch == 2)) {
                 c.misc += c.baseMagicNumber;
-                c.applyPowers();
+                if (cardGroup == AbstractDungeon.player.hand) {
+                    c.applyPowers();
+                }
+                else {
+                    c.baseDamage = c.misc;
+                }
             }
         }
     }
