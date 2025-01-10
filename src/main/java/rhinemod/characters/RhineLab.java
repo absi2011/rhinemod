@@ -226,7 +226,7 @@ public class RhineLab extends CustomPlayer {
 
     @Override
     public void preBattlePrep() {
-        if (!TipTracker.tips.getOrDefault("RHINE_COMBAT_TIP", false)) {
+        if (!TipTracker.tips.get("RHINE_COMBAT_TIP")) {
             AbstractDungeon.ftue = new RhineTipsFtue();
             TipTracker.neverShowAgain("RHINE_COMBAT_TIP");
         }
