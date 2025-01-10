@@ -35,8 +35,8 @@ public class MyLaserEffect extends AbstractGameEffect {
         if (img == null) {
             img = ImageMaster.vfxAtlas.findRegion("combat/laserThin");
         }
-        this.duration = this.startingDuration = 0.1F;
-        color = colors[0];
+        this.duration = this.startingDuration = 0.5F;
+        color = colors[cnt];
     }
 
     @Override
@@ -46,13 +46,7 @@ public class MyLaserEffect extends AbstractGameEffect {
         x = sX * prop + dX * (1 - prop);
         y = sY * prop + dY * (1 - prop);
         if (duration < 0) {
-            cnt--;
-            if (cnt < 0) {
-                isDone = true;
-            } else {
-                duration = startingDuration;
-                color = colors[cnt % 3];
-            }
+            isDone = true;
         }
     }
 

@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
 import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
+import rhinemod.actions.LaserAction;
 import rhinemod.cards.special.*;
 import rhinemod.vfx.MyLaserEffect;
 
@@ -56,10 +57,7 @@ public class LoneTrail extends CustomRelic {
         if ((counter > 0) && (AbstractDungeon.getCurrRoom() instanceof MonsterRoomBoss)) {
             flash();
             AbstractMonster m = AbstractDungeon.getCurrRoom().monsters.monsters.get(0);
-            AbstractDungeon.effectList.add(new MyLaserEffect(hb.cX, hb.cY, m.hb.cX, m.hb.cY, counter));
-            for (int i = 0; i < counter; i++) {
-                AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(AbstractDungeon.player, 1, DamageInfo.DamageType.THORNS)));
-            }
+            addToTop(new LaserAction(m, this, counter));
             counter = -1;
         }
     }
