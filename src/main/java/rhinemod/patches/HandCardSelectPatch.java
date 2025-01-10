@@ -187,8 +187,8 @@ public class HandCardSelectPatch {
 
     @SpirePatch(clz = AbstractDungeon.class, method = "closeCurrentScreen")
     public static class CloseAllLogics {
-        @SpirePostfixPatch
-        public static void Postfix() {
+        @SpirePrefixPatch
+        public static void Prefix() {
             if (AbstractDungeon.screen == AbstractDungeon.CurrentScreen.HAND_SELECT && OptFields.selectingBranch.get(AbstractDungeon.handCardSelectScreen)) {
                 OptFields.selectingBranch.set(AbstractDungeon.handCardSelectScreen, false);
                 cardChecked = false;
