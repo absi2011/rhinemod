@@ -5,9 +5,11 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.status.Dazed;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import rhinemod.powers.NoStun;
 import rhinemod.vfx.R31MoveEffect;
 
@@ -66,8 +68,23 @@ public class R31HeavyPowerArmor extends AbstractRhineMonster {
         } else {
             state.setAnimation(0, "Move", false);
             state.addAnimation(0, "Move", false, 0);
-            moveX = (drawX - hb.width * 0.5F - (AbstractDungeon.player.hb.cX + AbstractDungeon.player.hb.width / 2)) / (7 - nextMove);
-            AbstractDungeon.effectList.add(new R31MoveEffect(this, moveX));
+            moveX = (drawX - hb.width * 0.5F - (AbstractDungeon.player.hb.cX + AbstractDungeon.player.hb.width / 2)) / (5 - nextMove);
+            AbstractCreature lastOne = AbstractDungeon.player;
+            for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
+                if (m == this) {
+                    float limit;
+                    limit = lastOne.drawX + lastOne.hb.width * 0.5F + hb.width * 0.5F;
+                    moveX = Math.min(moveX, drawX - limit);
+                    break;
+                } else {
+                    if (!m.isDeadOrEscaped()) {
+                        lastOne = m;
+                    }
+                }
+            }
+            if (moveX != 0) {
+                AbstractDungeon.effectList.add(new R31MoveEffect(this, moveX));
+            }
             state.addAnimation(0, "Idle", true, 0);
         }
         if (nextMove <= 3) {

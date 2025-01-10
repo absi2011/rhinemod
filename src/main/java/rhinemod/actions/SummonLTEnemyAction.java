@@ -47,7 +47,7 @@ public class SummonLTEnemyAction extends AbstractGameAction {
 
     private int identifySlot(AbstractMonster[] allies) {
         for(int i = 0; i < allies.length; ++i) {
-            if (allies[i] == null || allies[i].isDying) {
+            if (allies[i] == null || allies[i].isDeadOrEscaped()) {
                 return i;
             }
         }

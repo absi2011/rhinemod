@@ -29,6 +29,7 @@ import rhinemod.monsters.*;
 public class SummonMechAction extends AbstractGameAction {
     private static final Logger logger = LogManager.getLogger(SummonMechAction.class.getName());
     private AbstractMonster m;
+    int slot;
 
     public SummonMechAction(AbstractMonster[] mechs) {
         this.actionType = ActionType.SPECIAL;
@@ -39,11 +40,11 @@ public class SummonMechAction extends AbstractGameAction {
         }
 
         this.duration = this.startDuration;
-        int slot = this.identifySlot(mechs);
+        slot = this.identifySlot(mechs);
         if (slot == -1) {
             logger.info("INCORRECTLY ATTEMPTED TO CHANNEL MECH.");
         } else {
-            this.m = this.getRandomMech(slot);
+            this.m = this.getRandomMech(mechs);
             mechs[slot] = this.m;
             for (AbstractRelic r : AbstractDungeon.player.relics)
                 r.onSpawnMonster(this.m);
@@ -52,7 +53,7 @@ public class SummonMechAction extends AbstractGameAction {
 
     private int identifySlot(AbstractMonster[] mechs) {
         for(int i = 0; i < mechs.length; ++i) {
-            if (mechs[i] == null || mechs[i].isDying) {
+            if (mechs[i] == null || mechs[i].isDeadOrEscaped()) {
                 return i;
             }
         }
@@ -60,7 +61,7 @@ public class SummonMechAction extends AbstractGameAction {
         return -1;
     }
 
-    private AbstractMonster getRandomMech(int slot) {
+    private AbstractMonster getRandomMech(AbstractMonster[] mechs) {
         ArrayList<String> pool = new ArrayList<String>();
         pool.add(R11AssaultPowerArmor.ID);
         pool.add(R31HeavyPowerArmor.ID);
@@ -72,6 +73,18 @@ public class SummonMechAction extends AbstractGameAction {
         pool.add(Perpetrator.ID);
         float x;
         float y;
+        String monsterName = pool.get(AbstractDungeon.aiRng.random(0, pool.size() - 1));
+        if (monsterName.equals(R31HeavyPowerArmor.ID) || monsterName.equals(R11AssaultPowerArmor.ID)) {
+            if ((mechs[2] == null) || (mechs[2].isDeadOrEscaped())) {
+                slot = 2;
+            }
+            else if ((mechs[0] == null) || (mechs[0].isDeadOrEscaped())) {
+                slot = 0;
+            }
+            else {
+                slot = 1;
+            }
+        }
         // 抄的地精首领的
         if (slot == 0) {
             x = -366.0F;
@@ -89,7 +102,6 @@ public class SummonMechAction extends AbstractGameAction {
             x = 0.0F;
             y = 0.0F;
         }
-        String monsterName = pool.get(AbstractDungeon.aiRng.random(0, pool.size() - 1));
         AbstractMonster m;
         if (monsterName.equals(R11AssaultPowerArmor.ID)) {
             m = new R11AssaultPowerArmor(x,y);
