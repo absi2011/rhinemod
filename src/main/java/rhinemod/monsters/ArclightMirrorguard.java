@@ -34,7 +34,7 @@ public class ArclightMirrorguard extends AbstractRhineMonster {
             damage.add(new DamageInfo(this, 18));
             damageOut = 60;
         }
-        loadAnimation("resources/rhinemod/images/monsters/enemy_1329_cbshld/enemy_1329_cbshld.atlas", "resources/rhinemod/images/monsters/enemy_1329_cbshld/enemy_1329_cbshld33.json", 1.5F);
+        loadAnimation("resources/rhinemod/images/monsters/enemy_1329_cbshld/enemy_1329_cbshld.atlas", "resources/rhinemod/images/monsters/enemy_1329_cbshld/enemy_1329_cbshld37.json", 1.5F);
         state.setAnimation(0, "Idle", true);
         flipHorizontal = true;
     }
