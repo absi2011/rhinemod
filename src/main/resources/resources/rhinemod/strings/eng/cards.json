@@ -226,11 +226,11 @@
     },
     "rhinemod:TwoToOne": {
         "NAME": "Two against One",
-        "DESCRIPTION": "Deal !D! damage. Can be played only if no more than half of the cards in your hand are of same rhinemod:Affinity .",
+        "DESCRIPTION": "Deal !D! damage. NL Can be played only if no more than half of the cards in your hand are of same rhinemod:Affinity .",
         "UPGRADE_DESCRIPTION": "",
         "EXTENDED_DESCRIPTION": [
             "One against Two",
-            "Deal !D! damage. Can be played only if more than half of the cards in your hand are of same rhinemod:Affinity ."
+            "Deal !D! damage. NL Can be played only if more than half of the cards in your hand are of same rhinemod:Affinity ."
         ]
     },
     "rhinemod:EcologicalInteraction": {

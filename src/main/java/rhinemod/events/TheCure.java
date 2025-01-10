@@ -5,9 +5,12 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.AbstractImageEvent;
+import com.megacrit.cardcrawl.helpers.PotionHelper;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.potions.FairyPotion;
+import com.megacrit.cardcrawl.rewards.RewardItem;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.ObtainPotionEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import rhinemod.cards.special.*;
@@ -40,6 +43,7 @@ public class TheCure extends AbstractImageEvent {
         } else {
             this.imageEventText.setDialogOption(OPTIONS[5], true);
         }
+        noCardsInRewards = true;
     }
 
     @Override
@@ -63,7 +67,9 @@ public class TheCure extends AbstractImageEvent {
                         AbstractPotion potion = new FairyPotion();
                         tempList.add(potion.ID);
                         logMetric(ID, "VIGIL", null, null, null, null, null, tempList, null, 0, 0, 0, 0, 0, 0);
-                        AbstractDungeon.effectList.add(new ObtainPotionEffect(potion));
+                        AbstractDungeon.getCurrRoom().rewards.clear();
+                        AbstractDungeon.getCurrRoom().rewards.add(new RewardItem(potion));
+                        AbstractDungeon.combatRewardScreen.open();
                         break;
                     case 2:
                         this.imageEventText.updateBodyText(DESCRIPTIONS[3]);

@@ -85,10 +85,12 @@ public class MultiEchoAction extends AbstractGameAction {
             actions.add(0, new AddFlowingShapeAction(-cnt));
             for (int i = 0; i < cnt; i ++) {
                 AbstractCard c = card.makeStatEquivalentCopy();
-                c.name = EXTENDED[0] + c.name;
                 c.selfRetain = true;
                 c.exhaust = true;
-                c.rawDescription += EXTENDED[1];
+                if (!c.name.startsWith(EXTENDED[0])) {
+                    c.name = EXTENDED[0] + c.name;
+                    c.rawDescription += EXTENDED[1];
+                }
                 c.initializeDescription();
                 actions.add(0, new MakeTempCardInHandAction(c));
             }
