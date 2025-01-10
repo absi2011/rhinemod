@@ -2,11 +2,11 @@ package rhinemod.util;
 
 import basemod.abstracts.CustomMultiPageFtue;
 import com.badlogic.gdx.graphics.Texture;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.TipTracker;
 import com.megacrit.cardcrawl.localization.TutorialStrings;
-
-import java.util.logging.Logger;
 
 public class RhineTipsFtue extends CustomMultiPageFtue {
     private static final TutorialStrings tutorialStrings = CardCrawlGame.languagePack.getTutorialString("rhinemod:RhineTips");
@@ -21,11 +21,13 @@ public class RhineTipsFtue extends CustomMultiPageFtue {
 
     public RhineTipsFtue() {
         super(IMAGES, TEXT);
-        Logger.getLogger(RhineTipsFtue.class.getName()).info("rhine tips ftue init");
-        if (AbstractDungeon.screen == AbstractDungeon.CurrentScreen.FTUE) {
-            Logger.getLogger(RhineTipsFtue.class.getName()).info("screen correct(ftue)");
-        } else {
-            Logger.getLogger(RhineTipsFtue.class.getName()).info("screen incorrect(not ftue)");
+    }
+
+    @SpirePatch(clz = TipTracker.class, method = "refresh")
+    public static class TipTrackerPatch {
+        @SpirePostfixPatch
+        public static void Postfix() {
+            TipTracker.tips.put("RHINE_COMBAT_TIP", TipTracker.pref.getBoolean("RHINE_COMBAT_TIP", false));
         }
     }
 }
