@@ -470,6 +470,8 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.loadCustomStrings(PotionStrings.class, potionStrings);
         String scoreBonusesStrings = Gdx.files.internal("resources/rhinemod/strings/" + lang + "/score_bonuses.json").readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(ScoreBonusStrings.class, scoreBonusesStrings);
+        String tutorialStrings = Gdx.files.internal("resources/rhinemod/strings/" + lang + "/tutorials.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        BaseMod.loadCustomStrings(TutorialStrings.class, tutorialStrings);
     }
 
     private String getLang() {

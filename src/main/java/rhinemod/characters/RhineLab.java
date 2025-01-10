@@ -44,6 +44,7 @@ import rhinemod.relics.Imperishable;
 import rhinemod.relics.LoneTrail;
 import rhinemod.relics.TITStudentIdCard;
 import rhinemod.util.GlobalAttributes;
+import rhinemod.util.RhineTipsFtue;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -221,6 +222,15 @@ public class RhineLab extends CustomPlayer {
         return new CharSelectInfo(NAME, TEXT[0],
                 81, 81, 0, 99, 5, //starting hp, max hp, max orbs, starting gold, starting hand size
                 this, getStartingRelics(), getStartingDeck(), false);
+    }
+
+    @Override
+    public void preBattlePrep() {
+        if (!TipTracker.tips.get("RHINE_COMBAT_TIP")) {
+            AbstractDungeon.ftue = new RhineTipsFtue();
+            TipTracker.neverShowAgain("RHINE_COMBAT_TIP");
+        }
+        super.preBattlePrep();
     }
 
     @Override

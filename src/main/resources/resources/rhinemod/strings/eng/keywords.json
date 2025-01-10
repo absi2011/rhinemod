@@ -15,7 +15,7 @@
       "smash",
       "重击"
     ],
-    "DESCRIPTION": "One-time damage that is higher than 15. Give the target [#EFC851]Stunned[] ."
+    "DESCRIPTION": "One-time damage that is not less than 15. Give the target [#EFC851]Stunned[] ."
   },
   "STUNNED": {
     "PROPER_NAME": "Stunned",
