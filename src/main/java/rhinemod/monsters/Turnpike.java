@@ -140,6 +140,7 @@ public class Turnpike extends AbstractRhineMonster {
         m.usePreBattleAction();
         m.rollMove();
         m.createIntent();
+        halfDead = false;
         super.die();
     }
 
