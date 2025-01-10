@@ -10,9 +10,7 @@ import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.map.MapEdge;
 import com.megacrit.cardcrawl.map.MapRoomNode;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
-import com.megacrit.cardcrawl.rooms.ShopRoom;
+import com.megacrit.cardcrawl.rooms.*;
 
 import java.util.ArrayList;
 import java.util.logging.Logger;
@@ -50,7 +48,7 @@ public class Stargate extends CustomRelic implements ClickableRelic {
         if (AbstractDungeon.currMapNode == null) {
             return;
         }
-        if (AbstractDungeon.getCurrRoom() instanceof MonsterRoomBoss) {
+        if (AbstractDungeon.getCurrRoom() instanceof MonsterRoomBoss || AbstractDungeon.getCurrRoom() instanceof TreasureRoomBoss || AbstractDungeon.getCurrRoom() instanceof VictoryRoom || AbstractDungeon.getCurrRoom() instanceof TrueVictoryRoom) {
             return;
         }
         counter--;
