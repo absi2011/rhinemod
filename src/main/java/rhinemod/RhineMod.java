@@ -381,6 +381,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
 
         // Colourless Rare
         cards.add(new AttackInsteadOfDefend()); // 以攻代守
+        cards.add(new RadiationFlash()); // 辐射性闪光
 
         for (AbstractCard c:cards) {
             BaseMod.addCard(c);
