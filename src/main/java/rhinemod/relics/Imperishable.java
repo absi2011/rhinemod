@@ -21,7 +21,7 @@ public class Imperishable extends CustomRelic implements ClickableRelic {
     public int status; // 0: double; 1: half
 
     public Imperishable() {
-        super(ID, IMG, IMG_OUTLINE, RelicTier.SPECIAL, LandingSound.FLAT);
+        super(ID, IMG, IMG_OUTLINE, RelicTier.SPECIAL, LandingSound.MAGICAL);
         status = 0;
         tips.add(new PowerTip(TipHelper.capitalize(BaseMod.getKeywordTitle("rhinemod:ExperimentError")), BaseMod.getKeywordDescription("rhinemod:ExperimentError")));
         updateTips();

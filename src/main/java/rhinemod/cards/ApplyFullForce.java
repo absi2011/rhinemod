@@ -22,7 +22,6 @@ public class ApplyFullForce extends AbstractRhineCard {
     public static final String IMG = "resources/rhinemod/images/cards/ApplyFullForce.png";
     public static final int COST = 1;
     public static final int ATTACK_DMG = 7;
-    public static final int ATTACK_STUN_DMG = 14;
     public static final int UPGRADE_PLUS_DMG = 4;
     public ApplyFullForce() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
@@ -30,7 +29,6 @@ public class ApplyFullForce extends AbstractRhineCard {
                 CardRarity.UNCOMMON, CardTarget.ENEMY);
         realBranch = 1;
         damage = baseDamage = ATTACK_DMG;
-        // magicNumber = baseMagicNumber = ATTACK_STUN_DMG;
     }
 
     @Override
@@ -40,30 +38,6 @@ public class ApplyFullForce extends AbstractRhineCard {
         else addToBot(new DamageAction(m, new DamageInfo(p, damage), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
     }
 
-    /*
-    @Override
-    public void applyPowers() {
-        int tmp = baseDamage;
-        baseDamage = baseMagicNumber;
-        super.applyPowers();
-        magicNumber = damage;
-        isMagicNumberModified = magicNumber != baseMagicNumber;
-        baseDamage = tmp;
-        super.applyPowers();
-    }
-
-    @Override
-    public void calculateCardDamage(AbstractMonster m) {
-        int tmp = baseDamage;
-        baseDamage = baseMagicNumber;
-        super.calculateCardDamage(m);
-        magicNumber = damage;
-        isMagicNumberModified = magicNumber != baseMagicNumber;
-        baseDamage = tmp;
-        super.calculateCardDamage(m);
-    }
-    */
-
     @Override
     public List<UpgradeBranch> possibleBranches() {
         return new ArrayList<UpgradeBranch>() {{
@@ -71,7 +45,6 @@ public class ApplyFullForce extends AbstractRhineCard {
                 if (!upgraded) {
                     upgradeName(0);
                     upgradeDamage(UPGRADE_PLUS_DMG);
-                    // upgradeMagicNumber(UPGRADE_PLUS_DMG);
                     initializeDescription();
                 }
             });

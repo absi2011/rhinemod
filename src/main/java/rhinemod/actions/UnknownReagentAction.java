@@ -1,14 +1,11 @@
 package rhinemod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import rhinemod.characters.RhineLab;
 import rhinemod.monsters.*;
-import rhinemod.powers.SolidifyPower;
 
 public class UnknownReagentAction extends AbstractGameAction {
     public UnknownReagentAction(int amount) {

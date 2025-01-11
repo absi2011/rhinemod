@@ -7,21 +7,16 @@ package rhinemod.actions;
 
 import com.badlogic.gdx.math.Interpolation;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.AbstractGameAction.ActionType;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ModHelper;
-import com.megacrit.cardcrawl.helpers.MonsterHelper;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.monsters.beyond.Exploder;
-import com.megacrit.cardcrawl.monsters.city.GremlinLeader;
 import com.megacrit.cardcrawl.powers.MinionPower;
 import com.megacrit.cardcrawl.powers.SlowPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import java.util.ArrayList;
-import java.util.Iterator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import rhinemod.monsters.*;
@@ -62,7 +57,7 @@ public class SummonMechAction extends AbstractGameAction {
     }
 
     private AbstractMonster getRandomMech(AbstractMonster[] mechs) {
-        ArrayList<String> pool = new ArrayList<String>();
+        ArrayList<String> pool = new ArrayList<>();
         pool.add(R11AssaultPowerArmor.ID);
         pool.add(R31HeavyPowerArmor.ID);
         pool.add(Crossroads.ID);
@@ -103,23 +98,25 @@ public class SummonMechAction extends AbstractGameAction {
             y = 0.0F;
         }
         AbstractMonster m;
-        if (monsterName.equals(R11AssaultPowerArmor.ID)) {
-            m = new R11AssaultPowerArmor(x,y);
-        }
-        else if (monsterName.equals(R31HeavyPowerArmor.ID)) {
-            m = new R31HeavyPowerArmor(x,y);
-        }
-        else if (monsterName.equals(Crossroads.ID)) {
-            m = new Crossroads(x,y);
-        }
-        else if (monsterName.equals(Perpetrator.ID)) {
-            m = new Perpetrator(x,y);
-        }
-        else if (monsterName.equals(ExperimentalPowerArmor.ID)) {
-            m = new ExperimentalPowerArmor(x,y);
-        }
-        else {
-            m = null;
+        switch (monsterName) {
+            case R11AssaultPowerArmor.ID:
+                m = new R11AssaultPowerArmor(x, y);
+                break;
+            case R31HeavyPowerArmor.ID:
+                m = new R31HeavyPowerArmor(x, y);
+                break;
+            case Crossroads.ID:
+                m = new Crossroads(x, y);
+                break;
+            case Perpetrator.ID:
+                m = new Perpetrator(x, y);
+                break;
+            case ExperimentalPowerArmor.ID:
+                m = new ExperimentalPowerArmor(x, y);
+                break;
+            default:
+                m = null;
+                break;
         }
         return m;
     }
@@ -127,11 +124,11 @@ public class SummonMechAction extends AbstractGameAction {
     private int getSmartPosition() {
         int position = 0;
 
-        for(Iterator var2 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator(); var2.hasNext(); ++position) {
-            AbstractMonster mo = (AbstractMonster)var2.next();
+        for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
             if (!(this.m.drawX > mo.drawX)) {
                 break;
             }
+            position++;
         }
 
         return position;

@@ -6,8 +6,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.ui.campfire.AbstractCampfireOption;
-import rhinemod.util.ChangeBranchOption;
 
 public class Future extends CustomRelic {
 

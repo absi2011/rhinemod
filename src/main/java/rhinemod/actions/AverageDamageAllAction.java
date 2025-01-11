@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 
 import java.util.ArrayList;
-import java.util.logging.Logger;
 
 import static rhinemod.RhineMod.applyEnemyPowersOnly;
 

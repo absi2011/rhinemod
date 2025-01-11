@@ -1,7 +1,6 @@
 package rhinemod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -9,13 +8,9 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
-import rhinemod.cards.AbstractRhineCard;
 import rhinemod.cards.MultiEcho;
-import rhinemod.cards.special.Traitor;
-import rhinemod.cards.special.Unscrupulous;
 import rhinemod.characters.RhineLab;
 
-import javax.swing.*;
 import java.util.ArrayList;
 
 public class MultiEchoAction extends AbstractGameAction {

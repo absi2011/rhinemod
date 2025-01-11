@@ -2,12 +2,9 @@ package rhinemod.actions;
 
 import com.badlogic.gdx.Gdx;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import rhinemod.monsters.AbstractRhineMonster;
 import rhinemod.relics.LoneTrail;
 import rhinemod.vfx.MyLaserEffect;
 

@@ -7,8 +7,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.rewards.RewardItem;
 import rhinemod.RhineMod;
 import rhinemod.interfaces.UpgradeBranch;
 import rhinemod.relics.Melt;
@@ -54,23 +52,6 @@ public abstract class AbstractRhineCard extends CustomCard {
             this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
         else
             this.glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
-    }
-
-    public static void addSpecificCardsToReward(AbstractCard card) {
-        ArrayList<AbstractCard> cards = new ArrayList<>();
-        cards.add(card);
-        addSpecificCardsToReward(cards);
-    }
-
-    public static void addSpecificCardsToReward(ArrayList<AbstractCard> cards) {
-        for (AbstractCard card : cards) {
-            if (!card.canUpgrade()) continue;
-            for (AbstractRelic r : AbstractDungeon.player.relics)
-                r.onPreviewObtainCard(card);
-        }
-        RewardItem item = new RewardItem();
-        item.cards = cards;
-        AbstractDungeon.getCurrRoom().addCardReward(item);
     }
 
     @Override

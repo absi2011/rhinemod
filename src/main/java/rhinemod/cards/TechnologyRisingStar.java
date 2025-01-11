@@ -10,7 +10,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import rhinemod.actions.ExhaustStatusAction;
-import rhinemod.actions.ExhaustUnscrupulousAction;
 import rhinemod.actions.GainProgressByCostAction;
 import rhinemod.actions.SummonStarRingAction;
 import rhinemod.cards.special.GravityDown;
