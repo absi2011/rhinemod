@@ -2,13 +2,11 @@ package rhinemod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import rhinemod.powers.Stunned;
 
@@ -33,8 +31,7 @@ public class FreeFromDreamAction extends AbstractGameAction {
             return;
         }
         for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
-            if ((!m.isDeadOrEscaped()) && ((m.getIntentBaseDmg() == -1) || (m.getIntentDmg() < damage_take)))
-            {
+            if ((!m.isDeadOrEscaped()) && ((m.getIntentBaseDmg() == -1) || (m.getIntentDmg() < damage_take))) {
                 addToBot(new ApplyPowerAction(m, p, new Stunned(m)));
                 addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, vul, false)));
             }

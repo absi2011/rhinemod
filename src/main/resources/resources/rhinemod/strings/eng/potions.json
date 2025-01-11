@@ -10,5 +10,9 @@
   "rhinemod:UnknownReagent": {
     "NAME": "Unknown Reagent",
     "DESCRIPTIONS": ["Deal #b", " damage to random enemy #b", " times. If the target is a mechanical enemy from Rhine Mod, deal double damage."]
+  },
+  "rhinemod:Flashbang": {
+    "NAME": "Flashbang",
+    "DESCRIPTIONS": ["Apply #yStunned to all enemies, enemies already #yStunned lose #b", " #yStrength."]
   }
 }

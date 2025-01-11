@@ -10,5 +10,9 @@
   "rhinemod:UnknownReagent": {
     "NAME": "不明试剂",
     "DESCRIPTIONS": ["对随机敌人造成 #b", " 点伤害 #b", " 次，如果目标是来自莱茵生命mod的机械敌人，则伤害翻倍。"]
+  },
+  "rhinemod:Flashbang": {
+    "NAME": "闪光弹",
+    "DESCRIPTIONS": ["给予所有敌人 #y晕眩 ，已经处于 #y晕眩 的敌人失去 #b6 点 #y力量 。"]
   }
 }
