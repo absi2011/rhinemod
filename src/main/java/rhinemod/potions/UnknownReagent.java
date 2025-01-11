@@ -1,17 +1,12 @@
 package rhinemod.potions;
 
 import com.badlogic.gdx.graphics.Color;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PotionStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import rhinemod.actions.UnknownReagentAction;
-import rhinemod.monsters.*;
 
 public class UnknownReagent extends AbstractPotion {
     public static String ID = "rhinemod:UnknownReagent";

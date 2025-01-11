@@ -4,7 +4,6 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -12,9 +11,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import rhinemod.RhineMod;
 import rhinemod.actions.AverageDamageAllAction;
 import rhinemod.actions.RemoveCardAction;
 import rhinemod.interfaces.UpgradeBranch;
@@ -80,16 +76,6 @@ public class ShatteredVision extends AbstractRhineCard {
                 }
                 break;
         }
-    }
-
-    @Override
-    public void onPlayCard(AbstractCard c, AbstractMonster m) {
-        super.onPlayCard(c, m);
-        Logger logger = LogManager.getLogger(ShatteredVision.class.getName());;
-        logger.info("name"+name);
-        logger.info("chosenBranch"+chosenBranch);
-        logger.info("realBranch"+realBranch);
-        logger.info("upgraded"+upgraded);
     }
 
     @Override

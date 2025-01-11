@@ -1,13 +1,22 @@
 package rhinemod.cards;
 
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.relics.WristBlade;
+import javassist.CannotCompileException;
+import javassist.CtBehavior;
+import javassist.expr.ExprEditor;
+import javassist.expr.FieldAccess;
 import rhinemod.characters.RhineLab;
 import rhinemod.interfaces.UpgradeBranch;
 import rhinemod.patches.AbstractCardEnum;
@@ -39,18 +48,8 @@ public class Galaxy extends AbstractRhineCard {
     }
 
     @Override
-    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        int cnt = starRingCnt();
-        costForTurn = Math.max(0, cost - cnt);
-        isCostModifiedForTurn = (costForTurn != cost);
-        return super.canUse(p, m);
-    }
-
-    @Override
     public void applyPowers() {
         int cnt = starRingCnt();
-        costForTurn = Math.max(0, cost - cnt);
-        isCostModifiedForTurn = (costForTurn != cost);
         baseDamage <<= cnt;
         super.applyPowers();
         baseDamage >>= cnt;
@@ -60,15 +59,13 @@ public class Galaxy extends AbstractRhineCard {
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
         int cnt = starRingCnt();
-        costForTurn = Math.max(0, cost - cnt);
-        isCostModifiedForTurn = (costForTurn != cost);
         baseDamage <<= cnt;
         super.calculateCardDamage(mo);
         baseDamage >>= cnt;
         isDamageModified = (baseDamage != damage);
     }
 
-    int starRingCnt() {
+    public static int starRingCnt() {
         if (AbstractDungeon.player instanceof RhineLab) {
             return ((RhineLab) AbstractDungeon.player).currentRings.size();
         } else {
@@ -87,5 +84,43 @@ public class Galaxy extends AbstractRhineCard {
                 }
             });
         }};
+    }
+
+    @SpirePatch(clz = AbstractCard.class, method = "renderEnergy")
+    public static class RenderEnergyPatch {
+        @SpireInsertPatch(locator = Locator.class, localvars = {"costColor", "text"})
+        public static void Insert(AbstractCard _inst, SpriteBatch sb, @ByRef Color[] costColor, @ByRef String[] text) {
+            if (_inst instanceof Galaxy) {
+                int cnt = starRingCnt();
+                if (cnt > 0) {
+                    if (costColor[0].g > 0.5F) { // still white
+                        costColor[0] = new Color(0.4F, 1.0F, 0.4F, _inst.transparency);
+                    }
+                    text[0] = Integer.toString(Math.max(0, Integer.parseInt(text[0]) - cnt));
+                }
+            }
+        }
+
+        private static class Locator extends SpireInsertLocator {
+            @Override
+            public int[] Locate(CtBehavior ctBehavior) throws Exception {
+                Matcher.MethodCallMatcher methodCallMatcher = new Matcher.MethodCallMatcher(AbstractCard.class, "getEnergyFont");
+                return LineFinder.findInOrder(ctBehavior, methodCallMatcher);
+            }
+        }
+    }
+
+    @SpirePatch(clz = AbstractCard.class, method = "hasEnoughEnergy")
+    public static class HasEnoughEnergyPatch {
+        @SpireInstrumentPatch
+        public static ExprEditor Instrument() {
+            return new ExprEditor() {
+                @Override
+                public void edit(FieldAccess m) throws CannotCompileException {
+                    if (m.getFieldName().equals("costForTurn"))
+                        m.replace("$_ = -" + Galaxy.class.getName() + ".starRingCnt() + $proceed($$);");
+                }
+            };
+        }
     }
 }

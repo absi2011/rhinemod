@@ -56,7 +56,7 @@ public class SummonLTEnemyAction extends AbstractGameAction {
     }
 
     private AbstractMonster getRandomAlly(int slot, boolean FromTurnpike) {
-        ArrayList<String> pool = new ArrayList<String>();
+        ArrayList<String> pool = new ArrayList<>();
         pool.add(ArclightCommando.ID);
         pool.add(ArclightMirrorguard.ID);
         pool.add(ArclightVanguard.ID);
@@ -93,29 +93,31 @@ public class SummonLTEnemyAction extends AbstractGameAction {
             monsterName = TrimountsCityGuard.ID;
         }
         AbstractMonster m;
-        if (monsterName.equals(ArclightCommando.ID)) {
-            m = new ArclightCommando(x,y);
-        }
-        else if (monsterName.equals(ArclightVanguard.ID)) {
-            m = new ArclightVanguard(x,y);
-        }
-        else if (monsterName.equals(Crossroads.ID)) {
-            m = new Crossroads(x,y);
-        }
-        else if (monsterName.equals(Perpetrator.ID)) {
-            m = new Perpetrator(x,y);
-        }
-        else if (monsterName.equals(ArclightMirrorguard.ID)) {
-            m = new ArclightMirrorguard(x,y);
-        }
-        else if (monsterName.equals(TrimountsCityGuard.ID)) {
-            m = new TrimountsCityGuard(x,y);
-        }
-        else if (monsterName.equals(MilitaryBeckbeast.ID)) {
-            m = new MilitaryBeckbeast(x,y);
-        }
-        else {
-            m = null;
+        switch (monsterName) {
+            case ArclightCommando.ID:
+                m = new ArclightCommando(x, y);
+                break;
+            case ArclightVanguard.ID:
+                m = new ArclightVanguard(x, y);
+                break;
+            case Crossroads.ID:
+                m = new Crossroads(x, y);
+                break;
+            case Perpetrator.ID:
+                m = new Perpetrator(x, y);
+                break;
+            case ArclightMirrorguard.ID:
+                m = new ArclightMirrorguard(x, y);
+                break;
+            case TrimountsCityGuard.ID:
+                m = new TrimountsCityGuard(x, y);
+                break;
+            case MilitaryBeckbeast.ID:
+                m = new MilitaryBeckbeast(x, y);
+                break;
+            default:
+                m = null;
+                break;
         }
         return m;
     }
@@ -123,7 +125,7 @@ public class SummonLTEnemyAction extends AbstractGameAction {
     private int getSmartPosition() {
         int position = 0;
 
-        for(AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
+        for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
             if (!(this.m.drawX > mo.drawX)) {
                 break;
             }

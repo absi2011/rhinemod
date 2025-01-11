@@ -3,12 +3,9 @@ package rhinemod.actions;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.cardManip.ExhaustCardEffect;
-
-import static com.megacrit.cardcrawl.cards.CardGroup.CardGroupType.UNSPECIFIED;
 
 public class IcefieldsCottongrassAction extends AbstractGameAction {
     public final AbstractCard card;

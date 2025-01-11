@@ -12,8 +12,6 @@ import rhinemod.characters.RhineLab;
 import rhinemod.powers.NoStun;
 import rhinemod.vfx.R11MoveEffect;
 
-import java.util.ArrayList;
-
 public class R11AssaultPowerArmor extends AbstractRhineMonster {
     public static final String ID = "rhinemod:R11";
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);

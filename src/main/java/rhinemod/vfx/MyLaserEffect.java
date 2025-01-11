@@ -17,26 +17,25 @@ public class MyLaserEffect extends AbstractGameEffect {
     private final float dY;
     private float x;
     private float y;
-    private int cnt;
     private final float dst;
-    private final Color[] colors = new Color[]{Color.RED.cpy(), Color.BLUE.cpy(), Color.GREEN.cpy()};
     private static TextureAtlas.AtlasRegion img;
 
-    public MyLaserEffect(float sX, float sY, float dX, float dY, int cnt) {
+    public MyLaserEffect(float sX, float sY, float dX, float dY, int type) {
         this.sX = sX;
         this.sY = sY;
         this.dX = dX;
         this.dY = dY;
-        this.cnt = cnt;
-        dst = Vector2.dst(sX, sY, dX, dY) / 2.0F * Settings.scale;
+        dst = Vector2.dst(sX, sY, dX, dY) / 2.0F / Settings.scale;
         rotation = MathUtils.atan2(dX - sX, dY - sY);
         rotation *= 57.295776F;
         rotation = -rotation + 90.0F;
         if (img == null) {
             img = ImageMaster.vfxAtlas.findRegion("combat/laserThin");
         }
-        this.duration = this.startingDuration = 0.5F;
-        color = colors[cnt];
+        this.duration = this.startingDuration = 0.3F;
+        if (type == 0) color = Color.RED.cpy();
+        else if (type == 1) color = Color.BLUE.cpy();
+        else color = Color.GREEN.cpy();
     }
 
     @Override

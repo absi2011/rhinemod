@@ -1,23 +1,16 @@
 package rhinemod.events;
 
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.AbstractEvent;
-import com.megacrit.cardcrawl.events.AbstractImageEvent;
-import com.megacrit.cardcrawl.events.RoomEventDialog;
-import com.megacrit.cardcrawl.events.city.Colosseum;
 import com.megacrit.cardcrawl.helpers.MonsterHelper;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.combat.StrikeEffect;
-import rhinemod.characters.RhineLab;
 import rhinemod.relics.LoneTrail;
-import rhinemod.util.TheSky;
 
 public class HeartEvent extends AbstractEvent {
     public static final String ID = "rhinemod:HeartEvent";
@@ -27,15 +20,12 @@ public class HeartEvent extends AbstractEvent {
     public static final String[] OPTIONS = eventStrings.OPTIONS;
     public static final String ENC_NAME = "The Heart";
     private int screenNum = 0;
-    private boolean isKeyGet;
     public HeartEvent() {
         this.body = DESCRIPTIONS[0];
-        if (AbstractDungeon.ascensionLevel == 20)
-        {
+        if (AbstractDungeon.ascensionLevel == 20) {
             this.roomEventText.addDialogOption(OPTIONS[8], true);
             this.roomEventText.addDialogOption(OPTIONS[1], false);
-        }
-        else {
+        } else {
             this.roomEventText.addDialogOption(OPTIONS[0], false);
             this.roomEventText.addDialogOption(OPTIONS[7], true);
         }
@@ -45,13 +35,7 @@ public class HeartEvent extends AbstractEvent {
         noCardsInRewards = true;
         AbstractDungeon.getCurrRoom().rewards.add(new RewardItem());
         AbstractDungeon.getCurrRoom().rewardAllowed = false;
-        if (!Settings.hasEmeraldKey || !Settings.hasRubyKey || !Settings.hasSapphireKey) {
-            isKeyGet = false;
-        }
-        else {
-            isKeyGet = true;
-        }
-        if (isKeyGet) {
+        if (Settings.hasEmeraldKey && Settings.hasRubyKey && Settings.hasSapphireKey) {
             if (AbstractDungeon.player.hasRelic(LoneTrail.ID)) {
                 if (AbstractDungeon.ascensionLevel >= 15) {
                     AbstractDungeon.player.getRelic(LoneTrail.ID).counter = 6;
@@ -61,27 +45,20 @@ public class HeartEvent extends AbstractEvent {
                 }
                 AbstractDungeon.player.getRelic(LoneTrail.ID).flash();
             }
-            else {
-                // ?????
-            }
         }
         AbstractDungeon.getCurrRoom().monsters = MonsterHelper.getEncounter(ENC_NAME);
     }
     public void buttonEffect(int buttonPressed) {
         if (buttonPressed == 0) {
-            if (screenNum == 5)
-            {
+            if (screenNum == 5) {
                 openMap();
-            }
-            else {
+            } else {
                 screenNum++;
-                if ((screenNum == 2) || (screenNum == 3))
-                {
+                if ((screenNum == 2) || (screenNum == 3)) {
                     AbstractMonster heart = AbstractDungeon.getCurrRoom().monsters.monsters.get(0);
                     AbstractDungeon.effectList.add(new StrikeEffect(heart, heart.hb.cX, heart.hb.cY, 300));
                 }
-                if (screenNum == 4)
-                {
+                if (screenNum == 4) {
                     AbstractMonster heart = AbstractDungeon.getCurrRoom().monsters.monsters.get(0);
                     AbstractDungeon.effectList.add(new StrikeEffect(heart, heart.hb.cX, heart.hb.cY, 300));
                     heart.currentHealth = 0;
@@ -95,8 +72,7 @@ public class HeartEvent extends AbstractEvent {
                     this.roomEventText.removeDialogOption(1);
                 }
             }
-        }
-        else {
+        } else {
             screenNum = 10;
             this.enterCombat();
             AbstractDungeon.lastCombatMetricKey = ENC_NAME;
@@ -108,5 +84,4 @@ public class HeartEvent extends AbstractEvent {
     public void reopen() {
         this.roomEventText.updateBodyText(DESCRIPTIONS[5]);
     }
-
 }

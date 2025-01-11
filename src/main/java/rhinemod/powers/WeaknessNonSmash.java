@@ -1,9 +1,7 @@
 package rhinemod.powers;
 
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 
 public class WeaknessNonSmash extends AbstractRhinePower {
@@ -17,8 +15,7 @@ public class WeaknessNonSmash extends AbstractRhinePower {
         this.name = NAME;
         this.type = PowerType.DEBUFF;
         this.owner = owner;
-        region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/BionicDevice 84.png"), 0, 0, 84, 84);
-        region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/BionicDevice 32.png"), 0, 0, 32, 32);
+        loadRegion("curiosity");
         updateDescription();
     }
 

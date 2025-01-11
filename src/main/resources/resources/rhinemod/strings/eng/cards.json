@@ -566,6 +566,11 @@
         "DESCRIPTION": "Whenever you deal unblocked damage less than !M! , increase the damage to !M! .",
         "UPGRADE_DESCRIPTION": ""
     },
+    "rhinemod:RadiationFlash": {
+        "NAME": "Radiation Flash",
+        "DESCRIPTION": "Apply !M! Weak and rhinemod:Stunned to all enemies, they lose 3 Strength. Repeat another time to enemy which is already rhinemod:Stunned. NL Exhaust.",
+        "UPGRADE_DESCRIPTION": "Apply !M! Weak and rhinemod:Stunned to all enemies, they lose 4 Strength. Repeat another time to enemy which is already rhinemod:Stunned. NL Exhaust."
+    },
     "rhinemod:TracingOrigins": {
         "NAME": "Tracing Origins",
         "DESCRIPTION": "rhinemod:Research_Progress : !M! . NL Exhaust all *Unscrupulous . NL In this turn, you cannot play cards that add *Unscrupulous .",

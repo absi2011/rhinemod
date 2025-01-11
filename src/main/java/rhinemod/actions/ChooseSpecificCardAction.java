@@ -63,10 +63,7 @@ public class ChooseSpecificCardAction extends AbstractGameAction {
                 AbstractDungeon.effectList.add(new ShowCardAndAddToDiscardEffect(card.makeStatEquivalentCopy(), MathUtils.random(Settings.WIDTH * 0.4F, Settings.WIDTH * 0.6F), MathUtils.random(Settings.HEIGHT * 0.4F, Settings.HEIGHT * 0.6F)));
             }
             AbstractDungeon.cardRewardScreen.discoveryCard = null;
-            isDone = true;
         }
-        else {
-            isDone = true;
-        }
+        isDone = true;
     }
 }

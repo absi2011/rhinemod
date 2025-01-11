@@ -3,15 +3,11 @@ package rhinemod.actions;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
 import rhinemod.cards.special.Unscrupulous;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
 import static java.util.Collections.reverse;
 

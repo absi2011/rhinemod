@@ -232,6 +232,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addPotion(BlackBeanTea.class, Color.GRAY, Color.DARK_GRAY, null, BlackBeanTea.ID);
         BaseMod.addPotion(UnknownReagent.class, Color.GRAY, null, Color.DARK_GRAY, UnknownReagent.ID);
         BaseMod.addPotion(BottledCalcium.class, Color.GRAY, null, Color.DARK_GRAY, BottledCalcium.ID, RhineEnum.RHINE_CLASS);
+        BaseMod.addPotion(Flashbang.class, Color.WHITE, null, null, Flashbang.ID);
     }
 
     private void initializeSpecialImg() {
@@ -381,6 +382,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
 
         // Colourless Rare
         cards.add(new AttackInsteadOfDefend()); // 以攻代守
+        cards.add(new RadiationFlash()); // 辐射性闪光
 
         for (AbstractCard c:cards) {
             BaseMod.addCard(c);

@@ -67,9 +67,9 @@ public class OmenPower extends AbstractRhinePower {
     }
 
     public void trigger() {
-        for (int i = 0; i < cards.size(); i++) {
-            cards.get(i).applyPowers();
-            AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(cards.get(i), true, EnergyPanel.getCurrentEnergy(), false, true), true);
+        for (AbstractCard card : cards) {
+            card.applyPowers();
+            AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(card, true, EnergyPanel.getCurrentEnergy(), false, true), true);
         }
         addToBot(new RemoveSpecificPowerAction(owner, owner, this));
     }
