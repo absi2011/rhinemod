@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import rhinemod.characters.RhineLab;
 import rhinemod.powers.NoStun;
 import rhinemod.vfx.R31MoveEffect;
 
@@ -68,12 +69,15 @@ public class R31HeavyPowerArmor extends AbstractRhineMonster {
         } else {
             state.setAnimation(0, "Move", false);
             state.addAnimation(0, "Move", false, 0);
-            moveX = (drawX - hb.width * 0.5F - (AbstractDungeon.player.hb.cX + AbstractDungeon.player.hb.width / 2)) / (5 - nextMove);
+            moveX = (drawX - hb.width * 0.6F - (AbstractDungeon.player.hb.cX + AbstractDungeon.player.hb.width * 0.6F)) / (5 - nextMove);
             AbstractCreature lastOne = AbstractDungeon.player;
             for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
                 if (m == this) {
                     float limit;
-                    limit = lastOne.drawX + lastOne.hb.width * 0.5F + hb.width * 0.5F;
+                    limit = lastOne.drawX + lastOne.hb.width * 0.6F + hb.width * 0.6F;
+                    if (lastOne instanceof RhineLab) {
+                        limit += lastOne.hb.width * 0.1F;
+                    }
                     moveX = Math.min(moveX, drawX - limit);
                     break;
                 } else {
@@ -82,7 +86,7 @@ public class R31HeavyPowerArmor extends AbstractRhineMonster {
                     }
                 }
             }
-            if (moveX != 0) {
+            if (moveX > 0) {
                 AbstractDungeon.effectList.add(new R31MoveEffect(this, moveX));
             }
             state.addAnimation(0, "Idle", true, 0);

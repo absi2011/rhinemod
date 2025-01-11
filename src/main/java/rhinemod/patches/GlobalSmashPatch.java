@@ -30,7 +30,7 @@ public class GlobalSmashPatch {
                 if (po instanceof AbstractRhinePower)
                     damageAmount = ((AbstractRhinePower) po).onSmashed(damageAmount);
             if (target instanceof AbstractMonster) {
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, info.owner, new Stunned(target)));
+                AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(target, info.owner, new Stunned(target)));
             }
         } else if (damageAmount > 0) {
             if (target.hasPower(WeaknessNonSmash.POWER_ID) && ((info.name == null) || !info.name.equals(NotTrigger))) {
