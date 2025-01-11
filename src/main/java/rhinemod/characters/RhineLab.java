@@ -453,7 +453,11 @@ public class RhineLab extends CustomPlayer {
                 if (c.cost == -1 && c.isInAutoplay) {
                     c.freeToPlayOnce = true;
                 }
-                energy.use(c.costForTurn);
+                if (c instanceof Galaxy) {
+                    energy.use(Math.max(0, c.costForTurn - currentRings.size()));
+                } else {
+                    energy.use(c.costForTurn);
+                }
             }
         }
         c.calculateCardDamage(monster);
