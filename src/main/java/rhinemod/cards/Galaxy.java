@@ -118,9 +118,17 @@ public class Galaxy extends AbstractRhineCard {
                 @Override
                 public void edit(FieldAccess m) throws CannotCompileException {
                     if (m.getFieldName().equals("costForTurn"))
-                        m.replace("$_ = -" + Galaxy.class.getName() + ".starRingCnt() + $proceed($$);");
+                        m.replace("$_ = -" + Galaxy.class.getName() + ".calcCostDec($0) + $proceed($$);");
                 }
             };
+        }
+    }
+
+    public static int calcCostDec(AbstractCard c) {
+        if (c instanceof Galaxy) {
+            return starRingCnt();
+        } else {
+            return 0;
         }
     }
 }
