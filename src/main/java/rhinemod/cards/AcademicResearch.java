@@ -79,8 +79,7 @@ public class AcademicResearch extends AbstractRhineCard {
                 break;
             case 3:
                 ArrayList<AbstractCard> list = RhineMod.getPlantCards();
-                Collections.shuffle(list, new Random(AbstractDungeon.cardRng.randomLong()));
-                addToBot(new ChooseSpecificCardAction(new ArrayList<>(list.subList(0, 3))));
+                addToBot(new ChooseSpecificCardAction(list));
                 break;
         }
     }

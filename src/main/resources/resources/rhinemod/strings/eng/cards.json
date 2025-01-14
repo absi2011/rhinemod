@@ -302,7 +302,7 @@
             "Particle Physics",
             "rhinemod:Research_Progress : !M! . NL If you have !rhinemod:M2! rhinemod:Research_Progress , choose 1 of 3 Star Ring cards to add to your hand.",
             "Ecology",
-            "Choose 1 of 3 random Plant cards to add to your hand."
+            "Choose 1 of Plant cards to add to your hand."
         ]
     },
     "rhinemod:EliminateThreat": {
