@@ -1,23 +1,23 @@
 {
   "rhinemod:SkyEvent": {
     "NAME": "The Sky",
-    "DESCRIPTIONS": ["站在塔的高处，再一次望向天空，漫天繁星。这里确实很高，从这里向上无疑会节省很多力气。你们看向星空，看着错误的轨道，继续向着塔顶……"],
-    "OPTIONS": ["[前进！]"]
+    "DESCRIPTIONS": ["Standing at the height of the tower, you gaze at the sky once again, filled with countless stars. It is indeed very high here, and ascending from this point would undoubtedly save a lot of effort. You all look at the starry sky, following the wrong trajectory, and continue toward the summit of the tower..."],
+    "OPTIONS": ["[Move On!]"]
   },
   "rhinemod:MysteriousInvent": {
     "NAME": "Mysterious Invent",
     "DESCRIPTIONS": [
-      "你碰到了一群看起来像是科考队的人，她们希望能够登上塔顶，并计划在塔顶尝试突破那神秘的天际屏障。",
-      "她们将一个徽章形状的物品放在了你的手上。",
-      "她们向你表达了感激，并给了你一些金币作为预报酬。",
-      "你摇了摇头，这个委托难度太高，而你不想做一个言而无信的人。"
+      "You encountered a group of people who appear to be a research team. They hope to reach the top of the tower and plan to attempt to break through the mysterious sky barrier at the summit.",
+      "They placed a badge-shaped object in your hand.",
+      "They expressed their gratitude to you and gave you some gold coins as an advance payment.",
+      "You shook your head. The task was too difficult, and you didn’t want to be someone who breaks their promises."
     ],
     "OPTIONS": [
-      "[共同行动] #g使本局游戏走向不同的结局。",
-      "[帮忙处理腐化之心] #g获得 #g",
-      " #g金币。",
-      "[离开]",
-      "[离开]"
+      "[Join Them] #gThe adventure will head towards a different ending.",
+      "[Help Deal with the Heart] #gGain #g",
+      " #gGold.",
+      "[Leave]",
+      "[Leave]"
     ]
   },
   "rhinemod:AmongstTheStars": {
