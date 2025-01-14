@@ -14,7 +14,7 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import rhinemod.powers.Stunned;
 
 public class Flashbang extends AbstractPotion {
-    public static String ID = "rhinemod:UnknownReagent";
+    public static String ID = "rhinemod:Flashbang";
     public static PotionStrings potionStrings = CardCrawlGame.languagePack.getPotionString(ID);
     public static String NAME = potionStrings.NAME;
     public static String[] DESCRIPTIONS = potionStrings.DESCRIPTIONS;
