@@ -3,6 +3,7 @@ package rhinemod.powers;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
@@ -60,6 +61,9 @@ public class ResearchProgress extends AbstractRhinePower {
         this.amount += stackAmount;
         int nowLevel = getLevel();
         updateLevel(prevLevel, nowLevel);
+        if (this.amount == 0) {
+            addToBot(new RemoveSpecificPowerAction(owner,owner,this));
+        }
     }
 
     public void onInitialApplication() {
