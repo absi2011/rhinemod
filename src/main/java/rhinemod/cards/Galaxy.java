@@ -45,7 +45,7 @@ public class Galaxy extends AbstractRhineCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (starRingCnt() >= 3 && !Settings.FAST_MODE && !isInAutoplay) {
+        if (starRingCnt() >= 3 && !isInAutoplay) {
             addToBot(new GalaxyWithVfxAction(m, damage));
         } else {
             addToBot(new DamageAction(m, new DamageInfo(p, damage), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
