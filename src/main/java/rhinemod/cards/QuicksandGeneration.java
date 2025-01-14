@@ -22,6 +22,7 @@ public class QuicksandGeneration extends AbstractRhineCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     public static final String IMG = "resources/rhinemod/images/cards/QuicksandGeneration.png";
+    public static final String IMG_M = "resources/rhinemod/images/cards/QuickwaterGeneration.png";
     public static final int COST = 1;
     public static final int BLOCK_AMT = 7;
     public static final int UPGRADE_PLUS_BLOCK = 3;
@@ -74,6 +75,8 @@ public class QuicksandGeneration extends AbstractRhineCard {
                 if (!upgraded) {
                     upgradeName(3, EXTENDED_DESCRIPTION[0]);
                     rawDescription = EXTENDED_DESCRIPTION[1];
+                    textureImg = IMG_M;
+                    loadCardImage(textureImg);
                     upgradeMagicNumber(0); // Make it green.
                     magicNumber = baseMagicNumber = WATER_DMG;
                     initializeDescription();

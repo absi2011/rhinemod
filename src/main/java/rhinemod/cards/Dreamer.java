@@ -21,6 +21,7 @@ public class Dreamer extends AbstractRhineCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     public static final String IMG = "resources/rhinemod/images/cards/Dreamer.png";
+    public static final String IMG_M = "resources/rhinemod/images/cards/DreamerM.png";
     public static final int COST = 1;
     public static final int ATTACK_DMG = 8;
     public static final int EXTRA_DMG = 1;
@@ -107,6 +108,8 @@ public class Dreamer extends AbstractRhineCard {
                     misc = baseDamage;
                     magicNumber = baseMagicNumber = MUELSYSE_EXTRA_DMG;
                     rawDescription = EXTENDED_DESCRIPTION[1];
+                    textureImg = IMG_M;
+                    loadCardImage(textureImg);
                     initializeDescription();
                 }
             });
