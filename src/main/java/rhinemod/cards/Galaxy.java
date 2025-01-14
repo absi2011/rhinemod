@@ -9,14 +9,15 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.relics.WristBlade;
 import javassist.CannotCompileException;
 import javassist.CtBehavior;
 import javassist.expr.ExprEditor;
 import javassist.expr.FieldAccess;
+import rhinemod.actions.GalaxyWithVfxAction;
 import rhinemod.characters.RhineLab;
 import rhinemod.interfaces.UpgradeBranch;
 import rhinemod.patches.AbstractCardEnum;
@@ -44,7 +45,11 @@ public class Galaxy extends AbstractRhineCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(m, new DamageInfo(p, damage), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        if (starRingCnt() >= 3 && !Settings.FAST_MODE && !isInAutoplay) {
+            addToBot(new GalaxyWithVfxAction(m, damage));
+        } else {
+            addToBot(new DamageAction(m, new DamageInfo(p, damage), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        }
     }
 
     @Override
