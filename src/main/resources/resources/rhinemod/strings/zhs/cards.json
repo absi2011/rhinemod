@@ -271,7 +271,11 @@
     "rhinemod:HeadquarterBuilding": {
         "NAME": "总部大楼",
         "DESCRIPTION": " 固有 ， 消耗 。 NL 获得 !M! 点科研进度。",
-        "UPGRADE_DESCRIPTION": ""
+        "UPGRADE_DESCRIPTION": "",
+        "EXTENDED_DESCRIPTION": [
+            "生态园",
+            " 固有 ， 消耗 。 NL 随机将 !M! 张植物牌加入你的手牌，抽 !rhinemod:M2! 张牌。"
+        ]
     },
     "rhinemod:LightPenetratingClouds": {
         "NAME": "穿云之光",

@@ -270,8 +270,12 @@
     },
     "rhinemod:HeadquarterBuilding": {
         "NAME": "Headquarter Building",
-        "DESCRIPTION": "Innate , Exhaust . NL Gain !M! Research_Progress.",
-        "UPGRADE_DESCRIPTION": ""
+        "DESCRIPTION": "Innate, Exhaust. NL Gain !M! rhinemod:Research_Progress.",
+        "UPGRADE_DESCRIPTION": "",
+        "EXTENDED_DESCRIPTION": [
+            "Eco-Garden",
+            "Innate, Exhaust. NL Add !M! Plant cards into your hand. Draw !rhinemod:M2! cards."
+        ]
     },
     "rhinemod:LightPenetratingClouds": {
         "NAME": "Light Penetrating Clouds",
