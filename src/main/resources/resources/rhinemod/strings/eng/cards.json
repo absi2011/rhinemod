@@ -89,7 +89,10 @@
     "rhinemod:HighEfficiencyFreezingModule": {
         "NAME": "High-Efficiency Freezing Module",
         "DESCRIPTION": "Deal !D! damage to all enemies. If the target has rhinemod:Water_Stain , changes to !M! damage.",
-        "UPGRADE_DESCRIPTION": ""
+        "UPGRADE_DESCRIPTION": "",
+        "EXTENDED_DESCRIPTION": [
+            "Apply !M! rhinemod:Water_Stain to all enemies, for each layer of rhinemod:Submersion of each enemy, draw 1 card."
+        ]
     },
     "rhinemod:DependentVariable": {
         "NAME": "Dependent Variable",

@@ -89,7 +89,10 @@
     "rhinemod:HighEfficiencyFreezingModule": {
         "NAME": "高效制冷模块",
         "DESCRIPTION": "对所有敌人造成 !D! 点伤害，如果目标敌人有 rhinemod:水渍 ，则改为 !M! 点。",
-        "UPGRADE_DESCRIPTION": ""
+        "UPGRADE_DESCRIPTION": "",
+        "EXTENDED_DESCRIPTION": [
+            "给予所有敌人 !M! 点 rhinemod:水渍 ，敌人每有一层 rhinemod:浸没 ，抽一张牌。"
+        ]
     },
     "rhinemod:DependentVariable": {
         "NAME": "因变量",

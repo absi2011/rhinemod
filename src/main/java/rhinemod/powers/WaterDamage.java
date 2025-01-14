@@ -45,7 +45,7 @@ public class WaterDamage extends AbstractRhinePower {
         if (owner.hasPower(Submersion.POWER_ID)) {
             ((Submersion) owner.getPower(Submersion.POWER_ID)).updateLevel(level);
         } else if (level > 0) {
-            addToBot(new ApplyPowerAction(owner, owner, new Submersion(owner, level)));
+            addToTop(new ApplyPowerAction(owner, owner, new Submersion(owner, level)));
         }
     }
 
@@ -62,7 +62,7 @@ public class WaterDamage extends AbstractRhinePower {
         this.amount -= amount;
         updateSubmersion();
         if (this.amount <= 0) {
-            addToBot(new RemoveSpecificPowerAction(owner, owner, this));
+            addToTop(new RemoveSpecificPowerAction(owner, owner, this));
         }
         updateDescription();
     }
