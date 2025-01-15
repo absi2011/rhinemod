@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import rhinemod.characters.RhineLab;
 import rhinemod.monsters.R11AssaultPowerArmor;
 import rhinemod.monsters.R31HeavyPowerArmor;
 import rhinemod.relics.Dor3Bionic;
@@ -29,7 +30,12 @@ public class UnsecuredCorridors extends AbstractImageEvent {
     public UnsecuredCorridors() {
         super(NAME, DESCRIPTIONS[0], "resources/rhinemod/images/event/UnsecuredCorridors.png");
         damage = MathUtils.floor(AbstractDungeon.player.maxHealth * 0.25F);
-        this.imageEventText.setDialogOption(OPTIONS[0]);
+        if (AbstractDungeon.player instanceof RhineLab) {
+            this.imageEventText.setDialogOption(OPTIONS[0]);
+        }
+        else {
+            this.imageEventText.setDialogOption(OPTIONS[5]);
+        }
         this.imageEventText.setDialogOption(OPTIONS[1] + damage + OPTIONS[2]);
         this.imageEventText.setDialogOption(OPTIONS[3]);
     }

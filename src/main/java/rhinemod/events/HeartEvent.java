@@ -42,9 +42,11 @@ public class HeartEvent extends AbstractEvent {
             this.roomEventText.addDialogOption(OPTIONS[0], false);
         }
         else if (AbstractDungeon.ascensionLevel == 20) {
+            this.body = DESCRIPTIONS[1];
             screenNum = 1;
             this.roomEventText.addDialogOption(OPTIONS[1], false);
         } else {
+            this.body = DESCRIPTIONS[1];
             screenNum = 1;
             this.roomEventText.addDialogOption(OPTIONS[0], false);
         }

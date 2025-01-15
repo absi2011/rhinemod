@@ -1,6 +1,7 @@
 package rhinemod.events;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -10,8 +11,10 @@ import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.potions.FairyPotion;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
+import rhinemod.cards.DreadnoughtProtocol;
 import rhinemod.cards.special.*;
 import rhinemod.characters.RhineLab;
+import rhinemod.relics.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,11 +45,15 @@ public class TheCure extends AbstractImageEvent {
             basic = 4;
             body = DESCRIPTIONS[basic];
             if (AbstractDungeon.player.gold >= 75) {
-                this.imageEventText.setDialogOption(OPTIONS[0], false, new AuxiliaryDrone());
+                this.imageEventText.setDialogOption(OPTIONS[5], false, new AuxiliaryDrone());
             } else {
                 this.imageEventText.setDialogOption(OPTIONS[4], true);
             }
-            this.imageEventText.setDialogOption(OPTIONS[1]);
+            this.imageEventText.setDialogOption(OPTIONS[6]);
+            AbstractPlayer p = AbstractDungeon.player;
+            if (p.hasRelic(LoneTrail.ID) || p.hasRelic(Deal.ID)) {
+                this.imageEventText.setDialogOption(OPTIONS[7], new DreadnoughtProtocol());
+            }
         }
         noCardsInRewards = true;
     }
@@ -77,12 +84,22 @@ public class TheCure extends AbstractImageEvent {
                         AbstractDungeon.combatRewardScreen.open();
                         break;
                     case 2:
-                        this.imageEventText.updateBodyText(DESCRIPTIONS[3]);
-                        this.screen = CurScreen.LEAVE;
-                        logMetric(ID, "Leave");
-                        AbstractCard tracingOrigins = new TracingOrigins();
-                        logMetricObtainCard(ID, "HESITATION", tracingOrigins);
-                        AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(tracingOrigins, Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F));
+                        if (AbstractDungeon.player instanceof RhineLab) {
+                            this.imageEventText.updateBodyText(DESCRIPTIONS[3]);
+                            this.screen = CurScreen.LEAVE;
+                            logMetric(ID, "Leave");
+                            AbstractCard tracingOrigins = new TracingOrigins();
+                            logMetricObtainCard(ID, "HESITATION", tracingOrigins);
+                            AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(tracingOrigins, Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F));
+                        }
+                        else {
+                            this.imageEventText.updateBodyText(DESCRIPTIONS[7]);
+                            this.screen = CurScreen.LEAVE;
+                            logMetric(ID, "Leave");
+                            AbstractCard dreadnoughtProtocol = new DreadnoughtProtocol();
+                            logMetricObtainCard(ID, "HESITATION", dreadnoughtProtocol);
+                            AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(dreadnoughtProtocol, Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F));
+                        }
                         break;
                 }
                 this.imageEventText.updateDialogOption(0, OPTIONS[3]);
