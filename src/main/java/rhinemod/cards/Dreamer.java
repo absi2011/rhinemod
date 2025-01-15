@@ -1,6 +1,7 @@
 package rhinemod.cards;
 
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -9,6 +10,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import rhinemod.interfaces.UpgradeBranch;
 import rhinemod.patches.AbstractCardEnum;
+import rhinemod.patches.RhineTags;
 import rhinemod.util.GlobalAttributes;
 
 import java.util.ArrayList;
@@ -30,12 +32,32 @@ public class Dreamer extends AbstractRhineCard {
     public static final int KRISTEN_EXTRA_DMG = 3;
     public static final int MUELSYSE_PLUS_DAMAGE = -3;
     public static final int MUELSYSE_EXTRA_DMG = 10;
+    public static final int SARIA_PLUS_DAMAGE = 9;
     public Dreamer() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.UNCOMMON, CardTarget.ENEMY);
         damage = baseDamage = ATTACK_DMG;
         magicNumber = baseMagicNumber = EXTRA_DMG;
+    }
+
+    @Override
+    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
+        if (chosenBranch == 1) {
+            for (AbstractCard c : p.masterDeck.group)
+                if (c.hasTag(RhineTags.UNSCRUPULOUS))
+                    return false;
+            for (AbstractCard c : p.hand.group)
+                if (c.hasTag(RhineTags.UNSCRUPULOUS))
+                    return false;
+            for (AbstractCard c : p.drawPile.group)
+                if (c.hasTag(RhineTags.UNSCRUPULOUS))
+                    return false;
+            for (AbstractCard c : p.discardPile.group)
+                if (c.hasTag(RhineTags.UNSCRUPULOUS))
+                    return false;
+        }
+        return super.canUse(p, m);
     }
 
     @Override
@@ -48,7 +70,7 @@ public class Dreamer extends AbstractRhineCard {
     public void applyPowers() {
         if (chosenBranch == 0) {
             baseDamage += magicNumber * AbstractDungeon.player.exhaustPile.size();
-        } else if (chosenBranch == 1) {
+        } else if (chosenBranch == 2) {
             baseDamage += magicNumber * GlobalAttributes.gravityChanges;
         } else {
             baseDamage = misc;
@@ -56,7 +78,7 @@ public class Dreamer extends AbstractRhineCard {
         super.applyPowers();
         if (chosenBranch == 0) {
             baseDamage -= magicNumber * AbstractDungeon.player.exhaustPile.size();
-        } else if (chosenBranch == 1) {
+        } else if (chosenBranch == 2) {
             baseDamage -= magicNumber * GlobalAttributes.gravityChanges;
         } else {
             initializeDescription();
@@ -68,13 +90,13 @@ public class Dreamer extends AbstractRhineCard {
     public void calculateCardDamage(AbstractMonster mo) {
         if (chosenBranch == 0) {
             baseDamage += magicNumber * AbstractDungeon.player.exhaustPile.size();
-        } else if (chosenBranch == 1) {
+        } else if (chosenBranch == 2) {
             baseDamage += magicNumber * GlobalAttributes.gravityChanges;
         }
         super.calculateCardDamage(mo);
         if (chosenBranch == 0) {
             baseDamage -= magicNumber * AbstractDungeon.player.exhaustPile.size();
-        } else if (chosenBranch == 1) {
+        } else if (chosenBranch == 2) {
             baseDamage -= magicNumber * GlobalAttributes.gravityChanges;
         }
         isDamageModified = (baseDamage != damage);
@@ -92,10 +114,18 @@ public class Dreamer extends AbstractRhineCard {
             });
             add(() -> {
                 if (!upgraded) {
+                    upgradeName(1);
+                    rawDescription = EXTENDED_DESCRIPTION[0];
+                    upgradeDamage(SARIA_PLUS_DAMAGE);
+                    initializeDescription();
+                }
+            });
+            add(() -> {
+                if (!upgraded) {
                     upgradeName(2);
                     upgradedMagicNumber = true;
                     magicNumber = baseMagicNumber = KRISTEN_EXTRA_DMG;
-                    rawDescription = EXTENDED_DESCRIPTION[0];
+                    rawDescription = EXTENDED_DESCRIPTION[1];
                     upgradeDamage(KRISTEN_PLUS_DAMAGE);
                     initializeDescription();
                 }
@@ -107,7 +137,7 @@ public class Dreamer extends AbstractRhineCard {
                     upgradeDamage(MUELSYSE_PLUS_DAMAGE);
                     misc = baseDamage;
                     magicNumber = baseMagicNumber = MUELSYSE_EXTRA_DMG;
-                    rawDescription = EXTENDED_DESCRIPTION[1];
+                    rawDescription = EXTENDED_DESCRIPTION[2];
                     textureImg = IMG_M;
                     loadCardImage(textureImg);
                     initializeDescription();
