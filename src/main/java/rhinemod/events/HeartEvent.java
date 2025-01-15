@@ -22,13 +22,6 @@ public class HeartEvent extends AbstractEvent {
     private int screenNum = 0;
     public HeartEvent() {
         this.body = DESCRIPTIONS[0];
-        if (AbstractDungeon.ascensionLevel == 20) {
-            this.roomEventText.addDialogOption(OPTIONS[8], true);
-            this.roomEventText.addDialogOption(OPTIONS[1], false);
-        } else {
-            this.roomEventText.addDialogOption(OPTIONS[0], false);
-            this.roomEventText.addDialogOption(OPTIONS[7], true);
-        }
         AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.EVENT;
         this.hasDialog = true;
         this.hasFocus = true;
@@ -45,31 +38,42 @@ public class HeartEvent extends AbstractEvent {
                 }
                 AbstractDungeon.player.getRelic(LoneTrail.ID).flash();
             }
+            screenNum = 0;
+            this.roomEventText.addDialogOption(OPTIONS[0], false);
+        }
+        else if (AbstractDungeon.ascensionLevel == 20) {
+            screenNum = 1;
+            this.roomEventText.addDialogOption(OPTIONS[1], false);
+        } else {
+            screenNum = 1;
+            this.roomEventText.addDialogOption(OPTIONS[0], false);
         }
         AbstractDungeon.getCurrRoom().monsters = MonsterHelper.getEncounter(ENC_NAME);
     }
     public void buttonEffect(int buttonPressed) {
-        if (buttonPressed == 0) {
-            if (screenNum == 5) {
+        if ((AbstractDungeon.ascensionLevel != 20) || (screenNum != 1)) {
+            if (screenNum == 6) {
                 openMap();
             } else {
                 screenNum++;
-                if ((screenNum == 2) || (screenNum == 3)) {
+                if ((screenNum == 3) || (screenNum == 4)) {
                     AbstractMonster heart = AbstractDungeon.getCurrRoom().monsters.monsters.get(0);
                     AbstractDungeon.effectList.add(new StrikeEffect(heart, heart.hb.cX, heart.hb.cY, 300));
                 }
-                if (screenNum == 4) {
+                if (screenNum == 5) {
                     AbstractMonster heart = AbstractDungeon.getCurrRoom().monsters.monsters.get(0);
                     AbstractDungeon.effectList.add(new StrikeEffect(heart, heart.hb.cX, heart.hb.cY, 300));
-                    heart.currentHealth = 0;
-                    heart.isDying = true;
-                    heart.update();
                     AbstractDungeon.getCurrRoom().monsters.monsters.clear();
                 }
                 this.roomEventText.updateBodyText(DESCRIPTIONS[screenNum]);
-                this.roomEventText.updateDialogOption(0, OPTIONS[screenNum + 1]);
-                if (screenNum == 1) {
-                    this.roomEventText.removeDialogOption(1);
+                if (AbstractDungeon.ascensionLevel == 20) {
+                    this.roomEventText.updateDialogOption(0, OPTIONS[1]);
+                }
+                else if (screenNum != 6) {
+                    this.roomEventText.updateDialogOption(0, OPTIONS[0]);
+                }
+                else {
+                    this.roomEventText.updateDialogOption(0, OPTIONS[2]);
                 }
             }
         } else {
@@ -82,6 +86,6 @@ public class HeartEvent extends AbstractEvent {
 
     @Override
     public void reopen() {
-        this.roomEventText.updateBodyText(DESCRIPTIONS[5]);
+        this.roomEventText.updateBodyText(DESCRIPTIONS[6]);
     }
 }
