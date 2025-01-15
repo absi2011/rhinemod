@@ -39,7 +39,8 @@
   "rhinemod:HeartEvent": {
     "NAME": "The Heart",
     "DESCRIPTIONS": [
-      "You have everything ready, but before takeoff, there’s one issue that needs to be resolved—The Heart. Its pulsation interferes with all data calculations and must be eliminated.",
+      "You gathered the residual energy from the three gem key fragments collected earlier in the tower, transforming it into points of light that gradually merged into the LoneTrail Badge.",
+      "No matter what, the Heart must still be confronted. NL Its pulsations disrupt all data calculations, and it harbors immense hostility toward you.",
       "Saria clenched her fist...",
       "~One~ ~punch~ ~...~",
       "@Two@ @punches@ @...@",
@@ -49,13 +50,7 @@
     "OPTIONS": [
       "[Continue]",
       "[Fight]",
-      "[Continue]",
-      "[Continue]",
-      "[Continue]",
-      "[Continue]",
-      "[Continue]",
-      "[Locked] Requires: AscensionLevel 20",
-      "[Locked] Requires: AscensionLevel 19 or below"
+      "[Leave]"
     ]
   },
   "rhinemod:UnsecuredCorridors": {
@@ -80,15 +75,17 @@
       "The stairs of the tower suddenly change, the passageway for the other end @instantly@ @open@ . The light coming in mapped out a brown Liberi, you recognize she is Olivia Silence from Structural Section NL \"You want to tear a corner of the sky, but even if we all raise our heads, it doesn't means the problems under our feet will simply disappear. Knowing this, do you still want to move forward regardless?\"",
       "\"Yes, at all cost.\" NL Silence gives her own unmanned aerial vehicle to you, it will help you bridge the gap between your dreams.",
       "\"Yes, unless there are insurmountable obstacles.\" NL Silence pulls out a bottle of potion that glitters with gold and wishes you all a safe trip home.",
-      "\"...\" you hesitated. NL Silence looks to one of you, \"I know how far a scientist would go for her dream. I know that feeling of rapture, which is why I know the strength it takes to fight it with morality.\" NL \"Saria, you've long been seeking a balance between science and order. You do well; perhaps too well.\" NL \"Your order is falling apart. But if you're willing to let balance go... perhaps you'll find your roots amidst the chaos.\" NL \"I believe you can.\""
+      "\"...\" you hesitated. NL Silence looks to one of you, \"I know how far a scientist would go for her dream. I know that feeling of rapture, which is why I know the strength it takes to fight it with morality.\" NL \"Saria, you've long been seeking a balance between science and order. You do well; perhaps too well.\" NL \"Your order is falling apart. But if you're willing to let balance go... perhaps you'll find your roots amidst the chaos.\" NL \"I believe you can.\"",
+      "The stairs of the tower suddenly change, the passageway for the other end @instantly@ @open@ . The light coming in mapped out a brown Liberi. \"Hello, we meet again. Is there anything you need help with this time?\"",
+      "\"Be careful, don't break it.\" After collecting the material fee, she handed the drone by her side to you.",
+      "\"I hope this can give you courage.\" She pulls out a bottle of potion that glitters with gold and wishes you a safe trip home."
     ],
     "OPTIONS": [
       "[Determination] #rLose #y75 #rGold， #gObtain #gAuxiliary #gDrone.",
       "[Vigil] #gObtain #gFairy #gin #ga #gBottle.",
       "[Hesitation] #gObtain #gTracing #gOrigins.",
       "[Leave]",
-      "[Locked] Requires: At least 75 Gold.",
-      "[Locked] Requires: Play with character Rhine Lab."
+      "[Locked] Requires: At least 75 Gold."
     ]
   },
   "rhinemod:StarlitNight": {
