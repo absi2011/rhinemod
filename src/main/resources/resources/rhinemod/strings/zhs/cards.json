@@ -339,6 +339,7 @@
         "DESCRIPTION": "造成 !D! 点伤害。 NL 你消耗堆中每有一张牌，伤害提高 !M! 点 。",
         "UPGRADE_DESCRIPTION": "",
         "EXTENDED_DESCRIPTION": [
+            "造成 !D! 点伤害。 NL 仅当你的牌组、手牌、抽牌堆、弃牌堆均没有会获得 *出格 的牌时可以打出。",
             "造成 !D! 点伤害。 NL 本场战斗中 rhinemod:重力 每改变过一次，伤害提高 !M! 点。",
             "造成 !D! 点伤害。 NL 每当有敌人被 rhinemod:浸没 [#EFC851]4[] 后，伤害永久提高 !M! 点。"
         ]

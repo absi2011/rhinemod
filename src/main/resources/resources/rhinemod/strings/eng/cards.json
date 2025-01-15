@@ -339,6 +339,7 @@
         "DESCRIPTION": "Deal !D! damage. NL Increase !M! damage for each card in your exhaust pile.",
         "UPGRADE_DESCRIPTION": "",
         "EXTENDED_DESCRIPTION": [
+            "Deal !D! damage. NL Can only be played when there are no card that add *Unscrupulous in your deck, hand, draw pile or discard pile.",
             "Deal !D! damage. NL Increase !M! damage for each time rhinemod:Gravity changes this combat.",
             "Deal !D! damage. NL Permanently increase !M! damage whenever an enemy enters rhinemod:Submersion [#EFC851]4[] ."
         ]
