@@ -24,21 +24,29 @@ public class TheCure extends AbstractImageEvent {
     public static final String[] OPTIONS = eventStrings.OPTIONS;
 
     private CurScreen screen = CurScreen.INTRO;
+    private int basic = 0;
     private enum CurScreen {
         INTRO, LEAVE
     }
     public TheCure() {
         super(NAME, DESCRIPTIONS[0], "resources/rhinemod/images/event/TheCure.png");
-        if (AbstractDungeon.player.gold >= 75) {
-            this.imageEventText.setDialogOption(OPTIONS[0], false, new AuxiliaryDrone());
-        } else {
-            this.imageEventText.setDialogOption(OPTIONS[4], true);
-        }
-        this.imageEventText.setDialogOption(OPTIONS[1]);
         if (AbstractDungeon.player instanceof RhineLab) {
+            if (AbstractDungeon.player.gold >= 75) {
+                this.imageEventText.setDialogOption(OPTIONS[0], false, new AuxiliaryDrone());
+            } else {
+                this.imageEventText.setDialogOption(OPTIONS[4], true);
+            }
+            this.imageEventText.setDialogOption(OPTIONS[1]);
             this.imageEventText.setDialogOption(OPTIONS[2], false, new TracingOrigins());
         } else {
-            this.imageEventText.setDialogOption(OPTIONS[5], true);
+            basic = 4;
+            body = DESCRIPTIONS[basic];
+            if (AbstractDungeon.player.gold >= 75) {
+                this.imageEventText.setDialogOption(OPTIONS[0], false, new AuxiliaryDrone());
+            } else {
+                this.imageEventText.setDialogOption(OPTIONS[4], true);
+            }
+            this.imageEventText.setDialogOption(OPTIONS[1]);
         }
         noCardsInRewards = true;
     }
@@ -50,7 +58,7 @@ public class TheCure extends AbstractImageEvent {
                 List<String> tempList = new ArrayList<>();
                 switch (buttonPressed) {
                     case 0:
-                        this.imageEventText.updateBodyText(DESCRIPTIONS[1]);
+                        this.imageEventText.updateBodyText(DESCRIPTIONS[basic + 1]);
                         this.screen = CurScreen.LEAVE;
                         AbstractDungeon.player.loseGold(75);
                         AbstractCard auxiliaryDrone = new AuxiliaryDrone();
@@ -59,7 +67,7 @@ public class TheCure extends AbstractImageEvent {
                         AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(auxiliaryDrone, Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F));
                         break;
                     case 1:
-                        this.imageEventText.updateBodyText(DESCRIPTIONS[2]);
+                        this.imageEventText.updateBodyText(DESCRIPTIONS[basic + 2]);
                         this.screen = CurScreen.LEAVE;
                         AbstractPotion potion = new FairyPotion();
                         tempList.add(potion.ID);
