@@ -70,12 +70,14 @@ public class StarRing extends AbstractMonster {
             for (AbstractPower p : powers) damageAmount = p.onAttackedToChangeDamage(info, damageAmount);
             for (AbstractPower p : powers) p.wasHPLost(info, damageAmount);
 
-            if (info.owner != null) {
-                for (AbstractPower p : info.owner.powers)
+            if (info.owner == this) {
+                for (AbstractPower p : powers)
                     p.onAttack(info, damageAmount, this);
             }
-
-            for (AbstractPower p : powers) p.onAttacked(info, damageAmount);
+            if (info.owner != this) {
+                for (AbstractPower p : powers)
+                    p.onAttacked(info, damageAmount);
+            }
 
             lastDamageTaken = damageAmount;
             if (damageAmount > 0) {

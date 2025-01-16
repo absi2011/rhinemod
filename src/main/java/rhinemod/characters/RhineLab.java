@@ -381,6 +381,13 @@ public class RhineLab extends CustomPlayer {
         currentRings.removeIf(r -> r.isDead);
         if (!currentRings.isEmpty() && !Objects.equals(info.name, "StarRing")) {
             currentRings.get(currentRings.size() - 1).damage(info);
+            for (AbstractRelic r : relics) r.onAttackedToChangeDamage(info, 0);
+            for (AbstractPower p : powers) p.onAttackedToChangeDamage(info, 0);
+            if (info.owner != null) {
+                for (AbstractPower p : powers) p.onAttacked(info, 0);
+                for (AbstractRelic r : relics) r.onAttacked(info, 0);
+            }
+            for (AbstractRelic r : relics)  r.onLoseHpLast(0);
         } else {
             super.damage(info);
         }
