@@ -133,5 +133,13 @@
       "CriticalPoint"
     ],
     "DESCRIPTION": "被引爆时，对敌人造成的伤害提升相应倍数。"
+  },
+  "BUFFER": {
+    "PROPER_NAME": "缓冲",
+    "NAMES": [
+      "缓冲",
+      "Buffer"
+    ],
+    "DESCRIPTION": "阻止下一次你受到的生命值损伤。"
   }
 }

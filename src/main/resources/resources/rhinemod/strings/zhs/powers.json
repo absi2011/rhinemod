@@ -288,7 +288,7 @@
   },
   "rhinemod:PioneerPower": {
     "NAME": "先驱者",
-    "DESCRIPTIONS": ["#y出格 不再降低 #y科研进度 。"]
+    "DESCRIPTIONS": ["#y出格 不再降低 #y科研进度 。每当你 #y消耗 一张 #y出格 时，抽一张牌。"]
   },
   "rhinemod:AIODPower": {
     "NAME": "以攻代守",

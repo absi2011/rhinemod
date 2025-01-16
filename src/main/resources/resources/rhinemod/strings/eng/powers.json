@@ -288,7 +288,7 @@
   },
   "rhinemod:PioneerPower": {
     "NAME": "Pioneer",
-    "DESCRIPTIONS": ["#yUnscrupulous will not decrease #yResearch #yProgress ."]
+    "DESCRIPTIONS": ["#yUnscrupulous will not decrease #yResearch #yProgress . Whenever you #yExhaust 1 #yUnscrupulous , draw a card. "]
   },
   "rhinemod:AIODPower": {
     "NAME": "Attack Instead of Defend",

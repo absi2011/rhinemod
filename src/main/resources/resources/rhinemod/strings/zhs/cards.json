@@ -420,7 +420,7 @@
     },
     "rhinemod:WaveBarrier": {
         "NAME": "水波壁障",
-        "DESCRIPTION": "获得 !M! 层缓冲。 NL 在接下来的 3 场作战内不能打出缪尔赛思 rhinemod:倾向 的卡牌。",
+        "DESCRIPTION": "获得 !M! 层 rhinemod:缓冲 。 NL 在接下来的 3 场作战内不能打出缪尔赛思 rhinemod:倾向 的卡牌。",
         "UPGRADE_DESCRIPTION": ""
     },
     "rhinemod:PureDewOfFreshBlossoms": {

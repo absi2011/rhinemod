@@ -420,7 +420,7 @@
     },
     "rhinemod:WaveBarrier": {
         "NAME": "Wave Barrier",
-        "DESCRIPTION": "Gain !M! Buffer . NL You cannot play cards of rhinemod:Affinity to Muelsyse in next 3 combats.",
+        "DESCRIPTION": "Gain !M! rhinemod:Buffer . NL You cannot play cards of rhinemod:Affinity to Muelsyse in next 3 combats.",
         "UPGRADE_DESCRIPTION": ""
     },
     "rhinemod:PureDewOfFreshBlossoms": {

@@ -158,5 +158,13 @@
       "critical_point"
     ],
     "DESCRIPTION": "When the [#EFC851]Star[] [#EFC851]Ring[] explodes, damage deal to enemy increases the same number of times."
+  },
+  "BUFFER": {
+    "PROPER_NAME": "Buffer",
+    "NAMES": [
+      "缓冲",
+      "Buffer"
+    ],
+    "DESCRIPTION": "Prevent the next time you would lose HP."
   }
 }
