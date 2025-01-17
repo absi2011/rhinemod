@@ -13,6 +13,6 @@
   },
   "rhinemod:Flashbang": {
     "NAME": "闪光弹",
-    "DESCRIPTIONS": ["给予所有敌人 #y晕眩 ，已经处于 #y晕眩 的敌人失去 #b6 点 #y力量 。"]
+    "DESCRIPTIONS": ["给予所有敌人 #y晕眩 ，已经处于 #y晕眩 的敌人失去 #b", " 点 #y力量 。"]
   }
 }
