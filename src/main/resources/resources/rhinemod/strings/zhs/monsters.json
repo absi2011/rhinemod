@@ -52,7 +52,7 @@
   "rhinemod:JesseltonWilliams": {
     "NAME": "杰斯顿·威廉姆斯",
     "MOVES": ["钢铁风暴","装甲穿刺","卸除伪装"],
-    "DIALOG": []
+    "DIALOG": ["一直以来，我都对于你是否真的强过我，抱有一丝小小的疑问。"]
   },
   "rhinemod:Crossroads": {
     "NAME": "十字路口",

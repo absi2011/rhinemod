@@ -52,7 +52,7 @@
   "rhinemod:JesseltonWilliams": {
     "NAME": "Jesselton Williams",
     "MOVES": ["Iron Storm", "Armor Piercing", "Remove Camouflage"],
-    "DIALOG": []
+    "DIALOG": ["For all these years, I've wondered whether you're actually stronger than me."]
   },
   "rhinemod:Crossroads": {
     "NAME": "Crossroads",

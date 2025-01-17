@@ -1,11 +1,13 @@
 package rhinemod.monsters;
 
+import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.status.Dazed;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.powers.MetallicizePower;
@@ -18,6 +20,7 @@ public class JesseltonWilliams extends AbstractRhineMonster {
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
     public static final String[] MOVES = monsterStrings.MOVES;
+    public static final String[] DIALOG = monsterStrings.DIALOG;
 
     public final int DazedNum;
     public boolean isStage2;
@@ -51,6 +54,8 @@ public class JesseltonWilliams extends AbstractRhineMonster {
         }
         isStage2 = false;
         notTriggered = true;
+        dialogX = -50.0F * Settings.scale;
+        dialogY = 100.0F * Settings.scale;
         loadAnimation("resources/rhinemod/images/monsters/enemy_1516_jakill/enemy_1516_jakill37.atlas", "resources/rhinemod/images/monsters/enemy_1516_jakill/enemy_1516_jakill37.json", 1.5F);
         stateData.setMix("C1_Idle", "C1_Die", 0.1F);
         stateData.setMix("C2_Idle", "C2_Die", 0.1F);
@@ -60,6 +65,7 @@ public class JesseltonWilliams extends AbstractRhineMonster {
 
     @Override
     public void usePreBattleAction() {
+        addToBot(new TalkAction(this, DIALOG[0]));
         addToBot(new ApplyPowerAction(this, this, new WeaknessSmash(this)));
         CardCrawlGame.music.fadeOutTempBGM();
         AbstractDungeon.scene.fadeOutAmbiance();
