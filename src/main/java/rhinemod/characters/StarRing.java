@@ -38,6 +38,7 @@ public class StarRing extends AbstractMonster {
     public float hoverTimer;
     public Color nameColor;
     public Color nameBgColor;
+    public boolean blasted;
 
     public StarRing(int maxHealth, float x, float y) {
         super(TEXT[0], ID, maxHealth, 0.0F, 0.0F, 150.0F, 150.0F, IMG, 0.0F, 0.0F, true);
@@ -48,6 +49,7 @@ public class StarRing extends AbstractMonster {
         hoverTimer = 0.0F;
         nameColor = new Color();
         nameBgColor = new Color(0.0F, 0.0F, 0.0F, 0.0F);
+        blasted = false;
         healthBarUpdatedEvent();
     }
 
@@ -130,11 +132,13 @@ public class StarRing extends AbstractMonster {
 
 
     public void blast() {
+        if (blasted) return;
         AbstractPlayer p = AbstractDungeon.player;
         AbstractDungeon.effectList.add(new FlashAtkImgEffect(p.hb.cX, p.hb.cY, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
         DamageInfo info = new DamageInfo(null, 5, DamageInfo.DamageType.THORNS);
         info.name = "StarRing";
         p.damage(info);
+        blasted = true;
     }
 
     public int calculateDmg(float dmg) {
