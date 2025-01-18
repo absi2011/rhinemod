@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import rhinemod.powers.Stunned;
+import rhinemod.vfx.FlashbangEffect;
 
 public class RadiationFlash extends CustomCard {
     public static final String ID = "rhinemod:RadiationFlash";
@@ -36,6 +37,7 @@ public class RadiationFlash extends CustomCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        AbstractDungeon.effectList.add(new FlashbangEffect());
         for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
             int times = 1;
             if (mo.hasPower(Stunned.POWER_ID)) times = 2;

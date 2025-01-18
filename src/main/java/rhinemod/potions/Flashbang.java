@@ -38,9 +38,7 @@ public class Flashbang extends AbstractPotion {
     public void use(AbstractCreature abstractCreature) {
         potency = getPotency();
         AbstractPlayer p = AbstractDungeon.player;
-        if (!Settings.FAST_MODE) {
-            AbstractDungeon.effectList.add(new FlashbangEffect());
-        }
+        AbstractDungeon.effectList.add(new FlashbangEffect());
         for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters)
             if (m.hasPower(Stunned.POWER_ID)) {
                 addToBot(new ApplyPowerAction(m, p, new StrengthPower(m, -potency)));
