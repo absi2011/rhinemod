@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.InvinciblePower;
 import javassist.CtBehavior;
 import rhinemod.powers.AbstractRhinePower;
 import rhinemod.powers.Armor;
@@ -21,6 +22,7 @@ import static rhinemod.powers.WeaknessNonSmash.NotTrigger;
 public class GlobalSmashPatch {
     private static int calcDamageAmountIfSmash(AbstractCreature target, DamageInfo info, int damageAmount) {
         if (info.type == DamageInfo.DamageType.NORMAL && damageAmount >= GlobalAttributes.smashThreshold) {
+            int prevDamageAmount = damageAmount;
             if (info.owner != null) {
                 for (AbstractPower po : info.owner.powers)
                     if (po instanceof AbstractRhinePower)
@@ -31,6 +33,12 @@ public class GlobalSmashPatch {
                     damageAmount = ((AbstractRhinePower) po).onSmashed(damageAmount);
             if (target instanceof AbstractMonster) {
                 AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(target, info.owner, new Stunned(target)));
+            }
+            if (target.hasPower(InvinciblePower.POWER_ID)) {
+                int diff = Math.min(damageAmount - prevDamageAmount, target.getPower(InvinciblePower.POWER_ID).amount);
+                target.getPower(InvinciblePower.POWER_ID).amount -= diff;
+                target.getPower(InvinciblePower.POWER_ID).updateDescription();
+                damageAmount = prevDamageAmount + diff;
             }
         } else if (damageAmount > 0) {
             if (target.hasPower(WeaknessNonSmash.POWER_ID) && ((info.name == null) || !info.name.equals(NotTrigger))) {
