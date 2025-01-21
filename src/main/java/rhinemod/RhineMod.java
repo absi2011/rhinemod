@@ -133,40 +133,49 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addStrongMonsterEncounter(TheBeyond.ID, new MonsterInfo("ArcTeam", newMonsterMulti));
         addMonster("Jesselton", names[10],  () -> new MonsterGroup(new AbstractMonster[] {new JesseltonWilliams(0.0F, 0.0F)}));
         BaseMod.addStrongMonsterEncounter(TheBeyond.ID, new MonsterInfo("Jesselton", newMonsterMulti));
-        addMonster("Disaster of Machine", names[11], () -> new MonsterGroup(new AbstractMonster[] {
-                new Perpetrator(-440.0F, 0.0F) {
-                    {setHp(maxHealth / 2);}
-                },
-                new Exploder(-320.0F, 280.0F),
-                new Repulsor(-140.0F, 300.0F),
-                new Sentry(0.0F, 0.0F) {
-                    {setHp(maxHealth - 10);}
-                    @Override
-                    protected void getMove(int num) {
-                        if (this.lastMove((byte)3)) {
-                            this.setMove((byte)4, Intent.ATTACK, this.damage.get(0).base);
-                        } else {
-                            this.setMove((byte)3, Intent.DEBUFF);
+        if (BaseMod.hasModID("spireTogether:")) {
+            logger.info("Find Mod TogetherInSpine");
+            addMonster("Disaster of Machine", names[11], () -> new MonsterGroup(new AbstractMonster[] {
+                    new Perpetrator(-440.0F, 0.0F),
+                    new Exploder(-300.0F, 400.0F),
+                    new Repulsor(-120.0F, 360.0F),
+                    new Sentry(0.0F, 0.0F),
+                    new BronzeOrb(200.0F, 270.0F, 0),
+                    new Spiker(240.0F, 0.0F),
+                    new Crossroads(-220.0F, -50.0F)
+            }));
+        } else {
+            addMonster("Disaster of Machine", names[11], () -> new MonsterGroup(new AbstractMonster[]{
+                    new Perpetrator(-440.0F, 0.0F) {
+                        {
+                            setHp(maxHealth / 2);
                         }
-                    }
-                },
-                new BronzeOrb(200.0F, 270.0F, 0) {
-                    {setHp(maxHealth - 10);}
-                },
-                new Spiker(240.0F, 0.0F),
-                new Crossroads(-220.0F, -50.0F)
-        }));
-        /* 联机时不能削弱，不然会NPE
-        addMonster("Disaster of Machine", names[11], () -> new MonsterGroup(new AbstractMonster[] {
-                new Perpetrator(-440.0F, 0.0F),
-                new Exploder(-300.0F, 400.0F),
-                new Repulsor(-120.0F, 360.0F),
-                new Sentry(0.0F, 0.0F),
-                new BronzeOrb(200.0F, 270.0F, 0),
-                new Spiker(240.0F, 0.0F),
-                new Crossroads(-220.0F, -50.0F)
-        }));
-        */
+                    },
+                    new Exploder(-320.0F, 280.0F),
+                    new Repulsor(-140.0F, 300.0F),
+                    new Sentry(0.0F, 0.0F) {
+                        {
+                            setHp(maxHealth - 10);
+                        }
+
+                        @Override
+                        protected void getMove(int num) {
+                            if (this.lastMove((byte) 3)) {
+                                this.setMove((byte) 4, Intent.ATTACK, this.damage.get(0).base);
+                            } else {
+                                this.setMove((byte) 3, Intent.DEBUFF);
+                            }
+                        }
+                    },
+                    new BronzeOrb(200.0F, 270.0F, 0) {
+                        {
+                            setHp(maxHealth - 10);
+                        }
+                    },
+                    new Spiker(240.0F, 0.0F),
+                    new Crossroads(-220.0F, -50.0F)
+            }));
+        }
         BaseMod.addEliteEncounter(TheBeyond.ID, new MonsterInfo("Disaster of Machine", 2.0F * newMonsterMulti));
 
         // Add a name.
