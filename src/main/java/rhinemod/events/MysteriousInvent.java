@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.AbstractImageEvent;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import rhinemod.relics.Deal;
 import rhinemod.relics.LoneTrail;
 
 public class MysteriousInvent extends AbstractImageEvent {
@@ -41,20 +42,22 @@ public class MysteriousInvent extends AbstractImageEvent {
                     case 0:
                         this.imageEventText.updateBodyText(DESCRIPTIONS[1]);
                         this.screen = CurScreen.LEAVE;
-                        AbstractRelic r = new LoneTrail();
-                        r.counter = -1;
-                        AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float)(Settings.WIDTH / 2), (float)(Settings.HEIGHT / 2), r);
+                        AbstractRelic loneTrail = new LoneTrail();
+                        loneTrail.counter = -1;
+                        AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float)(Settings.WIDTH / 2), (float)(Settings.HEIGHT / 2), loneTrail);
                         imageEventText.updateDialogOption(0, OPTIONS[4]);
                         imageEventText.clearRemainingOptions();
-                        logMetricObtainRelic(ID, "Follow", r);
+                        logMetricObtainRelic(ID, "Follow", loneTrail);
                         break;
                     case 1:
                         this.imageEventText.updateBodyText(DESCRIPTIONS[2]);
                         this.screen = CurScreen.LEAVE;
                         AbstractDungeon.player.gainGold(gold);
+                        AbstractRelic deal = new Deal();
+                        AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float)(Settings.WIDTH / 2), (float)(Settings.HEIGHT / 2), deal);
                         imageEventText.updateDialogOption(0, OPTIONS[4]);
                         imageEventText.clearRemainingOptions();
-                        logMetricGainGold(ID, "Accept", gold);
+                        logMetricGainGoldAndRelic(ID, "Accept", deal, gold);
                         break;
                     case 2:
                         this.imageEventText.updateBodyText(DESCRIPTIONS[3]);
