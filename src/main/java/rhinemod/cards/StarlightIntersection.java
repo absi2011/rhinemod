@@ -28,6 +28,7 @@ public class StarlightIntersection extends AbstractRhineCard {
                 CardType.ATTACK, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.COMMON, CardTarget.ALL_ENEMY);
         damage = baseDamage = ATTACK_DMG;
+        isMultiDamage = true;
     }
 
     @Override

@@ -27,6 +27,7 @@ public class Starfall extends AbstractRhineCard {
                 CardType.ATTACK, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
         damage = baseDamage = ATTACK_DMG;
+        isMultiDamage = true;
         realBranch = 2;
     }
 

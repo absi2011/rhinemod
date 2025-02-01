@@ -32,6 +32,7 @@ public class RadiationFlash extends CustomCard {
                 CardType.SKILL, CardColor.COLORLESS,
                 CardRarity.RARE, CardTarget.SELF);
         magicNumber = baseMagicNumber = DEBUFF_NUM;
+        exhaust = true;
         secondMagicNumber = STRENGTH_LOSE;
     }
 
