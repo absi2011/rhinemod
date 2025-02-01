@@ -24,7 +24,7 @@ public class IcefieldsAdventure extends AbstractRhineCard {
     public static final int COST = 1;
     public static final int BLOCK_AMT = 7;
     public static final int RESEARCH_AMT = 1;
-    public static final int[] UPGRADE_PLUS_BLOCK = {2, -2};
+    public static final int[] UPGRADE_PLUS_BLOCK = {2, 2};
     public static final int UPGRADE_PLUS_RESEARCH = 1;
     public static final int UPGRADE_HP_LOSS_AMT = 4;
     public IcefieldsAdventure() {
