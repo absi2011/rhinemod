@@ -72,7 +72,7 @@ public class Dreamer extends AbstractRhineCard {
             baseDamage += magicNumber * AbstractDungeon.player.exhaustPile.size();
         } else if (chosenBranch == 2) {
             baseDamage += magicNumber * GlobalAttributes.gravityChanges;
-        } else {
+        } else if (chosenBranch == 3) {
             baseDamage = misc;
         }
         super.applyPowers();
