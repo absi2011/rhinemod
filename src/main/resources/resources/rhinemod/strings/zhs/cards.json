@@ -202,7 +202,7 @@
         "DESCRIPTION": "抽 !M! 张牌，获得等同于它们耗能之和的 rhinemod:科研进度 。",
         "UPGRADE_DESCRIPTION": "",
         "EXTENDED_DESCRIPTION": [
-            "rhinemod:科研进度 ： !M! 。 NL 随机 消耗 不超过 !rhinemod:M2! 张 状态牌 。",
+            "rhinemod:科研进度 ： !M! 。 NL 随机 消耗 !rhinemod:M2! 张 状态牌 。",
             "选择一个方向，改变 rhinemod:重力 到该方向。召唤一个 1 点生命的 rhinemod:星环 。",
             "rhinemod:科研进度 ： !M! 。 NL 将一张 *淡杉 置入手牌。"
         ]

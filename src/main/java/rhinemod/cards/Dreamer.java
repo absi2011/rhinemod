@@ -93,6 +93,9 @@ public class Dreamer extends AbstractRhineCard {
         } else if (chosenBranch == 2) {
             baseDamage += magicNumber * GlobalAttributes.gravityChanges;
         }
+        else if (chosenBranch == 3) {
+            baseDamage = misc;
+        }
         super.calculateCardDamage(mo);
         if (chosenBranch == 0) {
             baseDamage -= magicNumber * AbstractDungeon.player.exhaustPile.size();
