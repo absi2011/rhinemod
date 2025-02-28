@@ -270,7 +270,7 @@
     },
     "rhinemod:HeadquarterBuilding": {
         "NAME": "总部大楼",
-        "DESCRIPTION": " 固有 ， 消耗 。 NL 获得 !M! 点科研进度。",
+        "DESCRIPTION": " 固有 ， 消耗 。 NL 获得 !M! 点 rhinemod:科研进度 。",
         "UPGRADE_DESCRIPTION": "",
         "EXTENDED_DESCRIPTION": [
             "生态园",
