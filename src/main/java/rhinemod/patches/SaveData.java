@@ -49,7 +49,7 @@ public class SaveData {
                     c = CardLibrary.getCopy(s.id, 0, s.misc);
                     ((AbstractRhineCard) c).chosenBranch = -(s.upgrades + 1);
                     c.upgrade();
-                    if (c instanceof Dreamer && ((Dreamer) c).chosenBranch == 2) {
+                    if (c instanceof Dreamer && ((Dreamer) c).chosenBranch == 3) {
                         c.baseDamage = c.damage = c.misc = s.misc;
                         c.initializeDescription();
                     }

@@ -100,6 +100,8 @@ public class HighEfficiencyFreezingModule extends AbstractRhineCard {
             add(() -> {
                 if (!upgraded) {
                     upgradeName(3);
+                    type = CardType.SKILL;
+                    //TODO: 大概要改图，你看着改.jpg
                     magicNumber = baseMagicNumber = WATER_AMT;
                     rawDescription = EXTENDED_DESCRIPTION[0];
                     initializeDescription();
