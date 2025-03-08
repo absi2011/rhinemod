@@ -24,6 +24,7 @@ public class HighEfficiencyFreezingModule extends AbstractRhineCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     public static final String IMG = "resources/rhinemod/images/cards/HighEfficiencyFreezingModule.png";
+    public static final String IMG_M = "resources/rhinemod/images/cards/HighEfficiencyFreezingModuleM.png";
     public static final int COST = 1;
     public static final int DAMAGE_AMT = 7;
     public static final int EXTRA_DMG = 10;
@@ -101,7 +102,8 @@ public class HighEfficiencyFreezingModule extends AbstractRhineCard {
                 if (!upgraded) {
                     upgradeName(3);
                     type = CardType.SKILL;
-                    //TODO: 大概要改图，你看着改.jpg
+                    textureImg = IMG_M;
+                    loadCardImage(textureImg);
                     magicNumber = baseMagicNumber = WATER_AMT;
                     rawDescription = EXTENDED_DESCRIPTION[0];
                     initializeDescription();
