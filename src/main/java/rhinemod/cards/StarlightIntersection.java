@@ -2,14 +2,17 @@ package rhinemod.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import rhinemod.interfaces.UpgradeBranch;
 import rhinemod.patches.AbstractCardEnum;
+import rhinemod.vfx.StarlightIntersectionEffect;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,10 +38,15 @@ public class StarlightIntersection extends AbstractRhineCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         int cnt = 0;
         for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters)
-            if (!mo.isDeadOrEscaped())
+            if (!mo.isDeadOrEscaped()) {
                 cnt++;
+                AbstractDungeon.effectList.add(new StarlightIntersectionEffect(mo.hb.cX, mo.hb.y));
+            }
+        if (!Settings.FAST_MODE) {
+            addToBot(new WaitAction(0.5F));
+        }
         for (int i = 0; i < cnt; i++)
-            addToBot(new DamageAllEnemiesAction(p, baseDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+            addToBot(new DamageAllEnemiesAction(p, baseDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.NONE));
     }
 
     @Override

@@ -48,6 +48,7 @@ import rhinemod.powers.InvisibleGlobalAttributes;
 import rhinemod.relics.*;
 import rhinemod.util.SettingConfig;
 import rhinemod.util.TheSky;
+import rhinemod.vfx.StarlightIntersectionEffect;
 
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
@@ -253,6 +254,11 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         specialImgLarge.add(new Texture("resources/rhinemod/images/1024/card_muelsyse.png"));
         Texture WATER_IMG = ImageMaster.loadImage("resources/rhinemod/images/ui/water.png");
         WATER_REGION = new TextureAtlas.AtlasRegion(WATER_IMG, 0, 0, WATER_IMG.getWidth(), WATER_IMG.getHeight());
+
+        for (int i = 1; i <= StarlightIntersectionEffect.texture_cnt; i++) {
+            StarlightIntersectionEffect.textures.add(new TextureAtlas.AtlasRegion(new Texture("resources/rhinemod/images/vfx/StarlightIntersection/" + i + ".png"),
+                    0, 0,StarlightIntersectionEffect.width, StarlightIntersectionEffect.height));
+        }
     }
 
     @Override
