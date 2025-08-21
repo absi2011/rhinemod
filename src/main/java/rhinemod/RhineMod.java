@@ -79,6 +79,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
     public static TextureAtlas.AtlasRegion WATER_REGION;
 
     public static float newMonsterMulti = 1.0F;
+    public static int tagLevel = 0;
     public boolean isDemo = true;
 
     public RhineMod() {
