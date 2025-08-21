@@ -1,9 +1,6 @@
 package rhinemod.monsters;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.ChangeStateAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -66,8 +63,10 @@ public class ArclightCommando extends AbstractRhineMonster {
     @Override
     public void usePreBattleAction() {
         if (RhineMod.tagLevel >= 3) {
+            addToBot(new ChangeStateAction(this, "FLYING"));
+            addToBot(new ApplyPowerAction(this, this, new FlightPower(this, flightNumber)));
             addToBot(new ApplyPowerAction(this, this, new PlatedArmorPower(this, 5)));
-            addToBot(new MonsterTakeTurnAction(this));
+            addToBot(new GainBlockAction(this, 5));
         }
     }
 
@@ -107,7 +106,6 @@ public class ArclightCommando extends AbstractRhineMonster {
             AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "FLYING"));
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new FlightPower(this, flightNumber)));
         }
-        Logger.getLogger(this.getClass().getName()).info("curMove: " + nextMove);
         if (nextMove == 1 || nextMove == 2) {
             setMove(MOVES[1], (byte)4, Intent.BUFF);
         } else if (nextMove == 4 || nextMove == 11) {
@@ -115,12 +113,14 @@ public class ArclightCommando extends AbstractRhineMonster {
         } else {
             setMove((byte)3, Intent.ATTACK, damage.get(0).base);
         }
-        Logger.getLogger(this.getClass().getName()).info("nextMove: " + nextMove);
     }
 
     @Override
     protected void getMove(int i) {
-        if (RhineMod.tagLevel >= 1) {
+        if (RhineMod.tagLevel >= 3) {
+            setMove((byte)11, Intent.ATTACK, damage.get(1).base);
+        }
+        else if (RhineMod.tagLevel >= 1) {
             setMove(MOVES[1], (byte)4, Intent.BUFF);
         } else if (AbstractDungeon.ascensionLevel >= 17) {
             setMove((byte)2, Intent.ATTACK, damage.get(0).base);
