@@ -5,8 +5,8 @@
     "DESCRIPTIONS": ["Whenever you remove 2 cards from your deck, random upgrade 1 card when entering next room."]
   },
   "rhinemod:RhineLabEmployeeCard": {
-    "NAME": "莱茵生命员工证",
-    "FLAVOR": "持此卡可进入莱茵生命总部及对应科室实验区域。",
+    "NAME": "Rhine Lab Employee Card",
+    "FLAVOR": "This card provides access to Rhine Lab headquarter building and research area of corresponding Section.",
     "DESCRIPTIONS": ["Whenever you remove 1 card from your deck, random upgrade 1 card to random #yaffinity when entering next room."]
   },
   "rhinemod:AwakenModel": {
