@@ -1,5 +1,6 @@
 package rhinemod.monsters;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -33,7 +34,7 @@ public class ArclightCommando extends AbstractRhineMonster {
         if (RhineMod.tagLevel >= 2) {
             flightNumber++;
         }
-        if (RhineMod.tagLevel >= 1) {
+        if (RhineMod.tagLevel >= 2) {
             damage.add(new DamageInfo(this, 5));
             damage.add(new DamageInfo(this, 14));
         } else if (AbstractDungeon.ascensionLevel >= 17) {
@@ -126,6 +127,21 @@ public class ArclightCommando extends AbstractRhineMonster {
             setMove((byte)2, Intent.ATTACK, damage.get(0).base);
         } else {
             setMove(MOVES[0], (byte)1, Intent.UNKNOWN);
+        }
+    }
+
+    @Override
+    public void addCCTags() {
+        if (RhineMod.tagLevel == 1) {
+            addTag(1);
+        }
+        else if (RhineMod.tagLevel == 2) {
+            addTag(1);
+            addTag(2);
+        }
+        else if (RhineMod.tagLevel == 3) {
+            addTag(2);
+            addTag(3);
         }
     }
 }

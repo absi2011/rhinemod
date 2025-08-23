@@ -317,5 +317,59 @@
   "rhinemod:Order": {
     "NAME": "秩序",
     "DESCRIPTIONS": ["你本回合内不能打出会获得 #y出格 的牌。"]
+  },
+  "rhinemod:ArclightCommandoTag1": {
+    "NAME": "弧光突击队：冲刺",
+    "DESCRIPTIONS": [
+      "起飞意图提前至第一回合。"
+    ]
+  },
+  "rhinemod:ArclightCommandoTag2": {
+    "NAME": "弧光突击队：气流传动",
+    "DESCRIPTIONS": [
+      "起飞时，飞行层数 #b+1 ，攻击 #b+4 。"
+    ]
+  },
+  "rhinemod:ArclightCommandoTag3": {
+    "NAME": "弧光突击队：紧急升空",
+    "DESCRIPTIONS": [
+      "初始即处于起飞状态，且拥有 #b5 层 #y多层护甲 与 #b5 点 #y格挡 。"
+    ]
+  },
+  "rhinemod:ArclightMirrorguardTag1": {
+    "NAME": "弧光镜卫：神经活跃",
+    "DESCRIPTIONS": [
+      "初始拥有 #b4 点 #y力量 。"
+    ]
+  },
+  "rhinemod:ArclightMirrorguardTag2": {
+    "NAME": "弧光镜卫：内稳态",
+    "DESCRIPTIONS": [
+      "每次受伤时， #y伤害减免 损失层数 #b-1 。"
+    ]
+  },
+  "rhinemod:ArclightMirrorguardTag3": {
+    "NAME": "弧光镜卫：稳固",
+    "DESCRIPTIONS": [
+      "初始的 #y伤害减免 层数提升至 #b75 。"
+    ]
+  },
+  "rhinemod:ArclightVanguardTag1": {
+    "NAME": "弧光锋卫：配重",
+    "DESCRIPTIONS": [
+      "攻击时，不再给自己添加 #y易伤 。"
+    ]
+  },
+  "rhinemod:ArclightVanguardTag2": {
+    "NAME": "弧光锋卫：稳固",
+    "DESCRIPTIONS": [
+      "攻击时，不会自流血。"
+    ]
+  },
+  "rhinemod:ArclightVanguardTag3": {
+    "NAME": "弧光锋卫：锋锐",
+    "DESCRIPTIONS": [
+      "移除最低伤害的意图。"
+    ]
   }
 }

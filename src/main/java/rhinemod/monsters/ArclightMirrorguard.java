@@ -7,6 +7,8 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.powers.ShiftingPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
+import rhinemod.RhineMod;
 import rhinemod.powers.DamageOutPower;
 
 public class ArclightMirrorguard extends AbstractRhineMonster {
@@ -22,7 +24,11 @@ public class ArclightMirrorguard extends AbstractRhineMonster {
         if (AbstractDungeon.ascensionLevel >= 8) {
             setHp(76);
         }
-        if (AbstractDungeon.ascensionLevel >= 18) {
+        if (RhineMod.tagLevel >= 3) {
+            damage.add(new DamageInfo(this, 20));
+            damageOut = 75;
+        }
+        else if (AbstractDungeon.ascensionLevel >= 18) {
             damage.add(new DamageInfo(this, 20));
             damageOut = 66;
         }
@@ -43,7 +49,15 @@ public class ArclightMirrorguard extends AbstractRhineMonster {
     public void usePreBattleAction() {
         super.usePreBattleAction();
         addToBot(new ApplyPowerAction(this, this, new ShiftingPower(this)));
-        addToBot(new ApplyPowerAction(this, this, new DamageOutPower(this, damageOut, 3)));
+        if (RhineMod.tagLevel >= 1) {
+            addToBot(new ApplyPowerAction(this, this, new StrengthPower(this, 4)));
+        }
+        if (RhineMod.tagLevel >= 2) {
+            addToBot(new ApplyPowerAction(this, this, new DamageOutPower(this, damageOut, 2)));
+        }
+        else {
+            addToBot(new ApplyPowerAction(this, this, new DamageOutPower(this, damageOut, 3)));
+        }
     }
 
     @Override
