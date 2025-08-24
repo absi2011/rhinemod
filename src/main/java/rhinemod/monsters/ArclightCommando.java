@@ -1,6 +1,5 @@
 package rhinemod.monsters;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -9,10 +8,7 @@ import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.powers.FlightPower;
 import com.megacrit.cardcrawl.powers.PlatedArmorPower;
 import rhinemod.RhineMod;
-import rhinemod.actions.MonsterTakeTurnAction;
 import rhinemod.powers.Stunned;
-
-import java.util.logging.Logger;
 
 public class ArclightCommando extends AbstractRhineMonster {
     public static final String ID = "rhinemod:ArclightCommando";

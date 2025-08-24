@@ -5,12 +5,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.helpers.FontHelper;
-import com.megacrit.cardcrawl.helpers.Hitbox;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
-import com.megacrit.cardcrawl.helpers.TipHelper;
+import com.megacrit.cardcrawl.helpers.*;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.screens.charSelect.CharacterOption;
 import com.megacrit.cardcrawl.screens.charSelect.CharacterSelectScreen;
 import javassist.CtBehavior;
 import rhinemod.RhineMod;
@@ -105,13 +103,47 @@ public class TagLevelPatch {
 
                 if (tagLevelLeftHb.clicked) {
                     tagLevelLeftHb.clicked = false;
-                    if (RhineMod.tagLevel != 0) RhineMod.tagLevel--;
+                    if (RhineMod.tagLevel != 0) {
+                        RhineMod.tagLevel--;
+                        for (CharacterOption o : _inst.options) {
+                            if (o.selected) {
+                                Prefs pref = o.c.getPrefs();
+                                pref.putInteger("LAST_TAG_LEVEL", RhineMod.tagLevel);
+                                pref.flush();
+                            }
+                        }
+                    }
                 }
 
                 if (tagLevelRightHb.clicked) {
                     tagLevelRightHb.clicked = false;
-                    if (RhineMod.tagLevel != 3) RhineMod.tagLevel++;
+                    if (RhineMod.tagLevel != 3) {
+                        RhineMod.tagLevel++;
+                        for (CharacterOption o : _inst.options) {
+                            if (o.selected) {
+                                Prefs pref = o.c.getPrefs();
+                                pref.putInteger("LAST_TAG_LEVEL", RhineMod.tagLevel);
+                                pref.flush();
+                            }
+                        }
+                    }
                 }
+            }
+        }
+    }
+
+    @SpirePatch(clz = CharacterOption.class, method = "updateHitbox")
+    public static class OptionSetTagLevelPatch {
+        @SpireInsertPatch(locator = Locator.class, localvars = {"pref"})
+        public static void Insert(CharacterOption _inst, Prefs pref) {
+            RhineMod.tagLevel = pref.getInteger("LAST_TAG_LEVEL", 0);
+        }
+
+        private static class Locator extends SpireInsertLocator {
+            @Override
+            public int[] Locate(CtBehavior ctBehavior) throws Exception {
+                Matcher.FieldAccessMatcher fieldAccessMatcher = new Matcher.FieldAccessMatcher(CharacterSelectScreen.class, "ascensionLevel");
+                return LineFinder.findInOrder(ctBehavior, fieldAccessMatcher);
             }
         }
     }

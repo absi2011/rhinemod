@@ -7,7 +7,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import org.apache.logging.log4j.LogManager;
 import rhinemod.RhineMod;
 
@@ -43,7 +42,7 @@ public abstract class AbstractRhineMonster extends CustomMonster {
     public void addCCTags()
     {
         for (int i = 1; i <= RhineMod.tagLevel; i++) {
-            LogManager.getLogger(AbstractRhineMonster.class.getName()).info("Tag " + i + ":");
+            LogManager.getLogger(AbstractRhineMonster.class.getName()).info("Tag {}:", i);
             addTag(i);
         }
     }
@@ -51,7 +50,7 @@ public abstract class AbstractRhineMonster extends CustomMonster {
     public void addTag(int i) {
         PowerStrings tags = CardCrawlGame.languagePack.getPowerStrings(id + "Tag" + i);
         if (!tags.NAME.equals("[MISSING_NAME]")) {
-            LogManager.getLogger(AbstractRhineMonster.class.getName()).info(tags.NAME + "//" + tags.DESCRIPTIONS[0]);
+            LogManager.getLogger(AbstractRhineMonster.class.getName()).info("{}//{}", tags.NAME, tags.DESCRIPTIONS[0]);
             tips.add(new PowerTip(tags.NAME, tags.DESCRIPTIONS[0]));
         }
     }
