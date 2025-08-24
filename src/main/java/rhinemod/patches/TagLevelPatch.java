@@ -161,8 +161,10 @@ public class TagLevelPatch {
     public static void applyTags(AbstractMonster m) {
         if (RhineMod.tagLevel > 0) {
             AbstractDungeon.actionManager.addToBottom(new AddMaxHpAction(m));
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new StrengthPower(m, RhineMod.tagLevel)));
-            // TODO: 塞眩晕
+            if (!(m instanceof AbstractRhineMonster)) {
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new StrengthPower(m, RhineMod.tagLevel)));
+                // TODO: 塞眩晕
+            }
         }
     }
 
