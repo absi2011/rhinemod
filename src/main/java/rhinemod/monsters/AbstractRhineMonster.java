@@ -28,19 +28,7 @@ public abstract class AbstractRhineMonster extends CustomMonster {
 
     public void realDie() {}
 
-    @Override
-    public void renderTip(SpriteBatch sb) {
-        super.renderTip(sb);
-        addCCTags();
-        if (this.hb.cX + this.hb.width / 2.0F < TIP_X_THRESHOLD) {
-            TipHelper.queuePowerTips(this.hb.cX + this.hb.width / 2.0F + TIP_OFFSET_R_X, this.hb.cY + TipHelper.calculateAdditionalOffset(this.tips, this.hb.cY), this.tips);
-        } else {
-            TipHelper.queuePowerTips(this.hb.cX - this.hb.width / 2.0F + TIP_OFFSET_L_X, this.hb.cY + TipHelper.calculateAdditionalOffset(this.tips, this.hb.cY), this.tips);
-        }
-    }
-
-    public void addCCTags()
-    {
+    public void addCCTags() {
         for (int i = 1; i <= RhineMod.tagLevel; i++) {
             LogManager.getLogger(AbstractRhineMonster.class.getName()).info("Tag {}:", i);
             addTag(i);

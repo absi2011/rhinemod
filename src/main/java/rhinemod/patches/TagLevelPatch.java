@@ -3,17 +3,27 @@ package rhinemod.patches;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.*;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.*;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
+import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.monsters.MonsterGroup;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.screens.charSelect.CharacterOption;
 import com.megacrit.cardcrawl.screens.charSelect.CharacterSelectScreen;
 import javassist.CtBehavior;
 import rhinemod.RhineMod;
+import rhinemod.actions.AddMaxHpAction;
+import rhinemod.monsters.AbstractRhineMonster;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class TagLevelPatch {
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString("rhinemod:TagLevel").TEXT;
@@ -148,19 +158,63 @@ public class TagLevelPatch {
         }
     }
 
-    @SpirePatch(clz = AbstractMonster.class, method = "<ctor>", paramtypez = {String.class, String.class, int.class, float.class, float.class, float.class, float.class, String.class, float.class, float.class, boolean.class})
-    public static class AbstractMonsterTagPatch {
-        @SpireInsertPatch(locator = Locator.class)
+    public static void applyTags(AbstractMonster m) {
+        if (RhineMod.tagLevel > 0) {
+            AbstractDungeon.actionManager.addToBottom(new AddMaxHpAction(m));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new StrengthPower(m, RhineMod.tagLevel)));
+            // TODO: 塞眩晕
+        }
+    }
+
+    @SpirePatch(clz = MonsterGroup.class, method = "usePreBattleAction")
+    public static class AbstractMonsterAtkTagPatch {
+        @SpirePostfixPatch
+        public static void Postfix(MonsterGroup _inst) {
+            if (!AbstractDungeon.loading_post_combat) {
+                for (AbstractMonster m : _inst.monsters)
+                    applyTags(m);
+            }
+        }
+    }
+
+    @SpirePatch(clz = AbstractMonster.class, method = "init")
+    public static class AbstractMonsterAtkTagPatch2 {
+        @SpirePostfixPatch
         public static void Postfix(AbstractMonster _inst) {
-            _inst.maxHealth = (int)(_inst.maxHealth * (1.0F + 0.1F * RhineMod.tagLevel));
+            applyTags(_inst);
+        }
+    }
+
+    @SpirePatch(clz = AbstractMonster.class, method = "renderTip")
+    public static class RenderTipPatch {
+        @SpireInsertPatch(locator = Locator.class)
+        public static void Insert(AbstractMonster _inst, SpriteBatch sb) {
+            try {
+                Field field = AbstractCreature.class.getDeclaredField("tips");
+                field.setAccessible(true);
+                ArrayList<PowerTip> tips = (ArrayList<PowerTip>) field.get(_inst);
+                if (_inst instanceof AbstractRhineMonster) {
+                    ((AbstractRhineMonster) _inst).addCCTags();
+                } else {
+                    if (RhineMod.tagLevel > 0) {
+                        PowerStrings tag = CardCrawlGame.languagePack.getPowerStrings("rhinemod:AddAtkTag");
+                        tips.add(new PowerTip(tag.NAME + String.join("", Collections.nCopies(RhineMod.tagLevel, "I")), tag.DESCRIPTIONS[0] + RhineMod.tagLevel + tag.DESCRIPTIONS[1] + (8 >> RhineMod.tagLevel) + tag.DESCRIPTIONS[2]));
+                    }
+                }
+                if (RhineMod.tagLevel > 0) {
+                    PowerStrings tag = CardCrawlGame.languagePack.getPowerStrings("rhinemod:AddHpTag");
+                    tips.add(new PowerTip(tag.NAME + String.join("", Collections.nCopies(RhineMod.tagLevel, "I")), tag.DESCRIPTIONS[0] + RhineMod.tagLevel * 10 + tag.DESCRIPTIONS[1]));
+                }
+            } catch (Exception ignored) {}
         }
 
         private static class Locator extends SpireInsertLocator {
             @Override
             public int[] Locate(CtBehavior ctBehavior) throws Exception {
-                Matcher.FieldAccessMatcher fieldAccessMatcher = new Matcher.FieldAccessMatcher(Settings.class, "isMobile");
-                return LineFinder.findInOrder(ctBehavior, fieldAccessMatcher);
+                Matcher.MethodCallMatcher methodCallMatcher = new Matcher.MethodCallMatcher(ArrayList.class, "isEmpty");
+                return LineFinder.findInOrder(ctBehavior, methodCallMatcher);
             }
         }
     }
+
 }

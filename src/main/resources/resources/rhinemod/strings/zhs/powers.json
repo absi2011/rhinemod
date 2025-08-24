@@ -318,6 +318,22 @@
     "NAME": "秩序",
     "DESCRIPTIONS": ["你本回合内不能打出会获得 #y出格 的牌。"]
   },
+
+  "rhinemod:AddHpTag": {
+    "NAME": "源石环境：活性 ",
+    "DESCRIPTIONS": [
+      "最大生命值增加 #b",
+      "% 。"
+    ]
+  },
+  "rhinemod:AddAtkTag": {
+    "NAME": "源石环境：刺激 ",
+    "DESCRIPTIONS": [
+      "入场时，获得 #b",
+      " 点 #y力量 。（暂未实现）每 #b",
+      " 回合将一张 #y晕眩 加入你的抽牌堆。"
+    ]
+  },
   "rhinemod:ArclightCommandoTag1": {
     "NAME": "弧光突击队：冲刺",
     "DESCRIPTIONS": [
