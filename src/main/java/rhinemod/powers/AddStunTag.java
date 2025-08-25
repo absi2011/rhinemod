@@ -21,8 +21,8 @@ public class AddStunTag extends AbstractRhinePower {
         this.name = DESCRIPTIONS[3 + amount];
         this.type = PowerType.BUFF;
         this.owner = owner;
+        this.counter = amount;
         this.amount = amount;
-        counter = amount;
         region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/Armor 84.png"), 0, 0, 84, 84);
         region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/Armor 32.png"), 0, 0, 32, 32);
         updateDescription();
@@ -31,17 +31,17 @@ public class AddStunTag extends AbstractRhinePower {
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1] + counter + DESCRIPTIONS[2];
+        description = DESCRIPTIONS[0] + counter + DESCRIPTIONS[1] + amount + DESCRIPTIONS[2];
     }
 
     @Override
     public void atEndOfTurn(boolean isPlayer) {
         super.atEndOfTurn(isPlayer);
-        counter --;
-        if (counter == 0) {
+        amount --;
+        if (amount == 0) {
             flash();
             addToBot(new MakeTempCardInDiscardAction(new Dazed(), 1));
-            counter = amount;
+            amount = counter;
         }
         updateDescription();
     }

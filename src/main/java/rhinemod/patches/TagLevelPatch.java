@@ -201,7 +201,7 @@ public class TagLevelPatch {
                 } else {
                     if (RhineMod.tagLevel > 0) {
                         PowerStrings tag = CardCrawlGame.languagePack.getPowerStrings("rhinemod:AddAtkTag");
-                        tips.add(new PowerTip(tag.NAME + String.join("", Collections.nCopies(RhineMod.tagLevel, "I")), tag.DESCRIPTIONS[0] + RhineMod.tagLevel + tag.DESCRIPTIONS[1] + (8 >> RhineMod.tagLevel) + tag.DESCRIPTIONS[2]));
+                        tips.add(new PowerTip(tag.NAME + String.join("", Collections.nCopies(RhineMod.tagLevel, "I")), tag.DESCRIPTIONS[0] + RhineMod.tagLevel + tag.DESCRIPTIONS[1]));
                     }
                 }
                 if (RhineMod.tagLevel > 0) {
