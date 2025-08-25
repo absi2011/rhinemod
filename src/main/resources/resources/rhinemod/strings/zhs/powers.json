@@ -387,5 +387,29 @@
     "DESCRIPTIONS": [
       "移除最低伤害的意图。"
     ]
+  },
+  "rhinemod:JesseltonWilliamsTag3": {
+    "NAME": "杰斯顿：憎恨",
+    "DESCRIPTIONS": [
+      "一阶段攻击 #b+4 ，二阶段攻击 #b+11 。"
+    ]
+  },
+  "rhinemod:MilitaryBeckbeastTag1": {
+    "NAME": "军用猎狗：反装甲",
+    "DESCRIPTIONS": [
+      "每回合获得的格挡 #b+2 。"
+    ]
+  },
+  "rhinemod:MilitaryBeckbeastTag2": {
+    "NAME": "军用猎狗：反装甲II",
+    "DESCRIPTIONS": [
+      "每回合获得的格挡 #b+4 。"
+    ]
+  },
+  "rhinemod:DefendBackPower": {
+    "NAME": "军用猎狗：尖刺改装",
+    "DESCRIPTIONS": [
+      "回合开始时，这名敌人 #y格挡 将转化为对玩家的伤害。"
+    ]
   }
 }

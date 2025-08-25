@@ -5,13 +5,16 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
+import com.megacrit.cardcrawl.powers.BarricadePower;
+import rhinemod.RhineMod;
+import rhinemod.powers.DefendBackPower;
 
 public class MilitaryBeckbeast extends AbstractRhineMonster {
     public static final String ID = "rhinemod:MilitaryBeckbeast";
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
-    public final int AttackBlock;
-    public final int OnlyBlock;
+    public int AttackBlock;
+    public int OnlyBlock;
 
     public MilitaryBeckbeast(float x, float y) {
         super(NAME, ID, 30, 0, 0, 170.0F, 200.0F, null, x, y);
@@ -25,6 +28,14 @@ public class MilitaryBeckbeast extends AbstractRhineMonster {
             AttackBlock = 5;
             OnlyBlock = 10;
         }
+        if (RhineMod.tagLevel >= 1) {
+            AttackBlock += 2;
+            OnlyBlock += 2;
+        }
+        if (RhineMod.tagLevel >= 2) {
+            AttackBlock += 2;
+            OnlyBlock += 2;
+        }
         if (AbstractDungeon.ascensionLevel >= 17) {
             damage.add(new DamageInfo(this, 5));
         }
@@ -37,6 +48,25 @@ public class MilitaryBeckbeast extends AbstractRhineMonster {
         loadAnimation("resources/rhinemod/images/monsters/enemy_1325_cbgpro/enemy_1325_cbgpro33.atlas", "resources/rhinemod/images/monsters/enemy_1325_cbgpro/enemy_1325_cbgpro33.json", 1.5F);
         state.setAnimation(0, "Idle", true);
         flipHorizontal = true;
+    }
+
+    @Override
+    public void usePreBattleAction() {
+        super.usePreBattleAction();
+        if (RhineMod.tagLevel >= 3) {
+            addToBot(new ApplyPowerAction(this, this, new BarricadePower(this)));
+            addToBot(new ApplyPowerAction(this, this, new DefendBackPower(this)));
+        }
+    }
+
+    @Override
+    public void addCCTags() {
+        if (RhineMod.tagLevel >= 2) {
+            addTag(2);
+        }
+        else if (RhineMod.tagLevel == 1) {
+            addTag(1);
+        }
     }
 
     @Override
