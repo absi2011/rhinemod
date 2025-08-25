@@ -3,6 +3,7 @@ package rhinemod.monsters;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.MonsterStartTurnAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.characters.Defect;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -11,6 +12,9 @@ import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.FocusPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import rhinemod.RhineMod;
+import rhinemod.actions.MonsterMoveAction;
+import rhinemod.powers.CrossroadsThorns;
 
 public class Crossroads extends AbstractRhineMonster {
     public static final String ID = "rhinemod:Crossroads";
@@ -42,6 +46,25 @@ public class Crossroads extends AbstractRhineMonster {
         loadAnimation("resources/rhinemod/images/monsters/enemy_1331_cbsisy/enemy_1331_cbsisy33.atlas", "resources/rhinemod/images/monsters/enemy_1331_cbsisy/enemy_1331_cbsisy33.json", 2F);
         state.setAnimation(0, "Idle", true);
         flipHorizontal = true;
+    }
+
+    @Override
+    public void usePreBattleAction() {
+        super.usePreBattleAction();
+        if (RhineMod.tagLevel >= 2) {
+            addToBot(new ApplyPowerAction(this, this, new CrossroadsThorns(this)));
+        }
+        if (RhineMod.tagLevel == 3) {
+            addToBot(new MonsterMoveAction(this, 5));
+        }
+    }
+
+    @Override
+    public void applyPowers() {
+        super.applyPowers();
+        if (hasPower(CrossroadsThorns.POWER_ID)) {
+            getPower(CrossroadsThorns.POWER_ID).updateDescription();
+        }
     }
 
     @Override

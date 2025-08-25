@@ -1,11 +1,14 @@
 package rhinemod.monsters;
 
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ChangeStateAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
+import rhinemod.RhineMod;
+import rhinemod.powers.RushPower;
 
 public class Perpetrator extends AbstractRhineMonster {
     public static final String ID = "rhinemod:Perpetrator";
@@ -13,6 +16,7 @@ public class Perpetrator extends AbstractRhineMonster {
     public static final String NAME = monsterStrings.NAME;
     int AttTimes;
     boolean isRush;
+    boolean isDamaged;
 
     public Perpetrator(float x, float y) {
         super(NAME, ID, 85, 0, 0, 210.0F, 160.0F, null, x, y);
@@ -36,6 +40,14 @@ public class Perpetrator extends AbstractRhineMonster {
         flipHorizontal = true;
     }
 
+    @Override
+    public void usePreBattleAction() {
+        super.usePreBattleAction();
+        if (RhineMod.tagLevel >= 2) {
+            addToBot(new ApplyPowerAction(this, this, new RushPower(this, RhineMod.tagLevel - 2)));
+        }
+    }
+
     public void applyPowers() {
         super.applyPowers();
         if (hasPower("rhinemod:Stunned") && isRush) {
@@ -57,6 +69,14 @@ public class Perpetrator extends AbstractRhineMonster {
     }
 
     @Override
+    public void damage(DamageInfo info) {
+        super.damage(info);
+        if (lastDamageTaken > 0) {
+            isDamaged = true;
+        }
+    }
+
+    @Override
     public void takeTurn() {
         state.setAnimation(0, "Attack", false);
         state.addAnimation(0, "Idle", true, 0F);
@@ -73,6 +93,10 @@ public class Perpetrator extends AbstractRhineMonster {
         } else {
             AttTimes ++;
         }
+        if ((!isDamaged) && (RhineMod.tagLevel >= 1)) {
+            AttTimes ++;
+        }
+        isDamaged = false;
         getMove(0);
     }
 

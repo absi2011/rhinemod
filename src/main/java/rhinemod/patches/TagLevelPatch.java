@@ -20,6 +20,7 @@ import javassist.CtBehavior;
 import rhinemod.RhineMod;
 import rhinemod.actions.AddMaxHpAction;
 import rhinemod.monsters.AbstractRhineMonster;
+import rhinemod.powers.AddStunTag;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -163,7 +164,7 @@ public class TagLevelPatch {
             AbstractDungeon.actionManager.addToBottom(new AddMaxHpAction(m));
             if (!(m instanceof AbstractRhineMonster)) {
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new StrengthPower(m, RhineMod.tagLevel)));
-                // TODO: 塞眩晕
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new AddStunTag(m, 5 - RhineMod.tagLevel)));
             }
         }
     }
