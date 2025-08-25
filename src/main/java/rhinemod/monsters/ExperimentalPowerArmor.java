@@ -6,6 +6,8 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
+import com.megacrit.cardcrawl.powers.MetallicizePower;
+import rhinemod.RhineMod;
 import rhinemod.powers.Armor;
 
 public class ExperimentalPowerArmor extends AbstractRhineMonster {
@@ -39,6 +41,9 @@ public class ExperimentalPowerArmor extends AbstractRhineMonster {
     public void usePreBattleAction() {
         super.usePreBattleAction();
         addToBot(new ApplyPowerAction(this, this, new Armor(this)));
+        if (RhineMod.tagLevel >= 1) {
+            addToBot(new ApplyPowerAction(this, this, new MetallicizePower(this, 3)));
+        }
     }
 
     @Override
@@ -51,11 +56,19 @@ public class ExperimentalPowerArmor extends AbstractRhineMonster {
         moveAnim = !moveAnim;
         state.addAnimation(0, "Idle", true, 0);
         addToBot(new DamageAction(AbstractDungeon.player, damage.get(0)));
+        if (RhineMod.tagLevel >= 3) {
+            addToBot(new DamageAction(AbstractDungeon.player, damage.get(0)));
+        }
         getMove(0);
     }
 
     @Override
     protected void getMove(int i) {
-        setMove((byte)1, Intent.ATTACK, damage.get(0).base);
+        if (RhineMod.tagLevel >= 3) {
+            setMove((byte) 1, Intent.ATTACK, damage.get(0).base, 2, true);
+        }
+        else {
+            setMove((byte) 1, Intent.ATTACK, damage.get(0).base);
+        }
     }
 }

@@ -411,5 +411,35 @@
     "DESCRIPTIONS": [
       "回合开始时，这名敌人 #y格挡 将转化为对玩家的伤害。"
     ]
+  },
+  "rhinemod:TrimountsCityGuardTag1": {
+    "NAME": "城防军：新型护具",
+    "DESCRIPTIONS": [
+      "生命提高 #b20% 。"
+    ]
+  },
+  "rhinemod:TrimountsCityGuardTag2": {
+    "NAME": "城防军：新型护具II",
+    "DESCRIPTIONS": [
+      "生命提高 #b40%  。"
+    ]
+  },
+  "rhinemod:TrimountsCityGuardTag3": {
+    "NAME": "城防军：干扰",
+    "DESCRIPTIONS": [
+      "攻击时产生的负面效果层数 #y+1 。"
+    ]
+  },
+  "rhinemod:ExperimentalPowerArmorTag1": {
+    "NAME": "动力装甲：加固机体",
+    "DESCRIPTIONS": [
+      "初始获得 #b3 层 #y金属化 。"
+    ]
+  },
+  "rhinemod:ExperimentalPowerArmorTag3": {
+    "NAME": "动力装甲：火控升级",
+    "DESCRIPTIONS": [
+      "行动变为 #b2 连击。"
+    ]
   }
 }
