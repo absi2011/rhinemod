@@ -18,7 +18,7 @@ public class AddStunTag extends AbstractRhinePower {
     public int counter = 0;
     public AddStunTag(AbstractCreature owner, int amount) {
         this.ID = POWER_ID;
-        this.name = DESCRIPTIONS[3 + amount];
+        this.name = DESCRIPTIONS[7 - amount];
         this.type = PowerType.BUFF;
         this.owner = owner;
         this.counter = amount;

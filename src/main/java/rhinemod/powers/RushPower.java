@@ -24,8 +24,8 @@ public class RushPower extends AbstractRhinePower {
         this.owner = owner;
         region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/Armor 84.png"), 0, 0, 84, 84);
         region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/Armor 32.png"), 0, 0, 32, 32);
-        updateDescription();
         this.level = level;
+        updateDescription();
         if (level == 1) {
             name = DESCRIPTIONS[2];
         }
