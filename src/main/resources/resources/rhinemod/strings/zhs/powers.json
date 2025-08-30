@@ -493,7 +493,7 @@
       "远程意图伤害 #b+4 ，近战意图伤害 #b+14 。"
     ]
   },
-  "rhinemod:R11LossHPPower": {
+  "rhinemod:R11LoseHPPower": {
     "NAME": "R-11：原型机",
     "DESCRIPTIONS": [
       "生命 #g+100% 。每当攻击未造成伤害，自身流失 #r10% 最大生命。"
@@ -531,7 +531,7 @@
       "隐匿回合数 #b+1 。"
     ]
   },
-  "rhinemod:Awaken_MonsterTag1": {
+  "//rhinemod:Awaken_MonsterTag1": {
     "NAME": "唤醒：Tag1",
     "DESCRIPTIONS": [
       "场上额外出现 #y多萝西 （ #r没做 ）。"
