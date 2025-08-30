@@ -531,10 +531,22 @@
       "隐匿回合数 #b+1 。"
     ]
   },
-  "rhinemod:TrafficPoliceTag3": {
-    "NAME": "交通警察：行动技巧",
+  "rhinemod:Awaken_MonsterTag1": {
+    "NAME": "唤醒：Tag1",
     "DESCRIPTIONS": [
-      "出场时，立刻行动一次。"
+      "场上额外出现 #y多萝西 （ #r没做 ）。"
+    ]
+  },
+  "rhinemod:Awaken_MonsterTag2": {
+    "NAME": "唤醒：Tag2",
+    "DESCRIPTIONS": [
+      "更早进入第二阶段（变为 #b80% 最大生命值）"
+    ]
+  },
+  "rhinemod:Awaken_MonsterTag3": {
+    "NAME": "唤醒：Tag3",
+    "DESCRIPTIONS": [
+      "#y旅程 每回合可以触发两次。"
     ]
   }
 }
