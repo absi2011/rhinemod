@@ -1,5 +1,6 @@
 package rhinemod.patches;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -10,6 +11,7 @@ import com.megacrit.cardcrawl.screens.GameOverScreen;
 import com.megacrit.cardcrawl.screens.GameOverStat;
 import com.megacrit.cardcrawl.screens.VictoryScreen;
 import javassist.CtBehavior;
+import rhinemod.RhineMod;
 import rhinemod.relics.Deal;
 import rhinemod.relics.Melt;
 import rhinemod.util.TheSky;
@@ -24,6 +26,18 @@ public class ScorePatch {
     public static final ScoreBonusStrings MELT = CardCrawlGame.languagePack.getScoreString("rhinemod:Melt");
     public static final ScoreBonusStrings VDEAL = CardCrawlGame.languagePack.getScoreString("rhinemod:ViolateDeal");
     public static final ScoreBonusStrings STARPOD = CardCrawlGame.languagePack.getScoreString("rhinemod:StarPod");
+    public static final ScoreBonusStrings CCTAGS = CardCrawlGame.languagePack.getScoreString("rhinemod:CCTag");
+    public static int CCPoints;
+    @SpirePatch(clz = GameOverScreen.class, method = "calcScore")
+    public static class CalcScorePatch {
+        @SpireInsertPatch(rloc = 44 , localvars = "tmp")
+        public static void Insert(@ByRef int[] tmp) {
+            float extra = 0.1F * RhineMod.tagLevel * (RhineMod.tagLevel + 1) / 2;
+            CCPoints = MathUtils.floor(extra * tmp[0]);
+            tmp[0] += CCPoints;
+        }
+    }
+    // calcScore
     @SpirePatch(clz = GameOverScreen.class, method = "checkScoreBonus")
     public static class CheckScorePatch {
         @SpireInsertPatch(locator = Locator.class, localvars = "points")
@@ -74,6 +88,11 @@ public class ScorePatch {
             if (BEAT_STARPOD) {
                 ((ArrayList<GameOverStat>) stats.get(_inst)).add(new GameOverStat(STARPOD.NAME, STARPOD.DESCRIPTIONS[0], Integer.toString(350)));
             }
+            if (RhineMod.tagLevel > 0) {
+                ((ArrayList<GameOverStat>) stats.get(_inst)).add(new GameOverStat(CCTAGS.NAME + RhineMod.tagLevel + CCTAGS.DESCRIPTIONS[0],
+                        CCTAGS.DESCRIPTIONS[1]+ RhineMod.tagLevel + CCTAGS.DESCRIPTIONS[2] + (RhineMod.tagLevel*(RhineMod.tagLevel+1)/2) + CCTAGS.DESCRIPTIONS[3],
+                        Integer.toString(CCPoints)));
+            }
         } catch (Exception e) {
             throw new RuntimeException("Unable to set game over stats.", e);
         }
@@ -89,7 +108,7 @@ public class ScorePatch {
         private static class Locator extends SpireInsertLocator {
             @Override
             public int[] Locate(CtBehavior ctBehavior) throws Exception {
-                Matcher.FieldAccessMatcher fieldAccessMatcher = new Matcher.FieldAccessMatcher(VictoryScreen.class, "IS_POOPY");
+                Matcher.FieldAccessMatcher fieldAccessMatcher = new Matcher.FieldAccessMatcher(AbstractDungeon.class, "isAscensionMode");
                 return LineFinder.findInOrder(ctBehavior, fieldAccessMatcher);
             }
         }

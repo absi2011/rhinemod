@@ -140,6 +140,9 @@ public class TagLevelPatch {
                     }
                 }
             }
+            else {
+                RhineMod.tagLevel = 0;
+            }
         }
     }
 

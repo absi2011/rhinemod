@@ -540,7 +540,7 @@
   "rhinemod:Awaken_MonsterTag2": {
     "NAME": "唤醒：Tag2",
     "DESCRIPTIONS": [
-      "更早进入第二阶段（变为 #b80% 最大生命值）"
+      "#y旅程 与 #y破碎愿景 伤害更早提高（变为 #b80% 最大生命值）。"
     ]
   },
   "rhinemod:Awaken_MonsterTag3": {
