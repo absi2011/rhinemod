@@ -26,7 +26,10 @@ public class R11AssaultPowerArmor extends AbstractRhineMonster {
     public R11AssaultPowerArmor(float x, float y) {
         super(NAME, ID, 140, 0, 0, 220.0F, 360.0F, null, x, y);
         type = EnemyType.ELITE;
-        if (AbstractDungeon.ascensionLevel >= 8) {
+        if (RhineMod.tagLevel >= 3) {
+            setHp(300);
+        }
+        else if (AbstractDungeon.ascensionLevel >= 8) {
             setHp(150);
         }
         if (RhineMod.tagLevel >= 2) {
@@ -58,7 +61,6 @@ public class R11AssaultPowerArmor extends AbstractRhineMonster {
         super.usePreBattleAction();
         addToBot(new ApplyPowerAction(this, this, new NoStun(this)));
         if (RhineMod.tagLevel >= 3) {
-            addToBot(new AddMaxHpAction(this, 100));
             addToBot(new ApplyPowerAction(this, this, new R11LoseHPPower(this)));
         }
     }

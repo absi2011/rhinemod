@@ -24,8 +24,10 @@ import java.util.ArrayList;
 public class SummonLTEnemyAction extends AbstractGameAction {
     private static final Logger logger = LogManager.getLogger(SummonLTEnemyAction.class.getName());
     private AbstractMonster m;
+    boolean needIntent = false;
 
-    public SummonLTEnemyAction(AbstractMonster[] allies, boolean FromTurnpike) {
+    public SummonLTEnemyAction(AbstractMonster[] allies, boolean FromTurnpike, boolean needIntent) {
+        this.needIntent = needIntent;
         this.actionType = ActionType.SPECIAL;
         if (Settings.FAST_MODE) {
             this.startDuration = Settings.ACTION_DUR_FAST;
@@ -43,6 +45,10 @@ public class SummonLTEnemyAction extends AbstractGameAction {
             for (AbstractRelic r : AbstractDungeon.player.relics)
                 r.onSpawnMonster(this.m);
         }
+    }
+
+    public SummonLTEnemyAction(AbstractMonster[] allies, boolean FromTurnpike) {
+        this(allies,FromTurnpike,false);
     }
 
     private int identifySlot(AbstractMonster[] allies) {
@@ -156,6 +162,10 @@ public class SummonLTEnemyAction extends AbstractGameAction {
             this.m.animX = 0.0F;
             this.m.showHealthBar();
             this.m.usePreBattleAction();
+            if (needIntent) {
+                m.rollMove();
+                m.createIntent();
+            }
         } else {
             this.m.animX = Interpolation.fade.apply(0.0F, 1200.0F * Settings.xScale, this.duration);
         }

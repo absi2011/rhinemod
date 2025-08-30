@@ -1,5 +1,6 @@
 package rhinemod.monsters;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -44,10 +45,10 @@ public class TrimountsCityGuard extends AbstractRhineMonster {
     public void usePreBattleAction() {
         super.usePreBattleAction();
         if (RhineMod.tagLevel >= 2) {
-            addToBot(new AddMaxHpAction(this, 40));
+            addToBot(new AddMaxHpAction(this, MathUtils.floor(0.4F * maxHealth)));
         }
         else if (RhineMod.tagLevel >= 1) {
-            addToBot(new AddMaxHpAction(this, 20));
+            addToBot(new AddMaxHpAction(this, MathUtils.floor(0.2F * maxHealth)));
         }
     }
 

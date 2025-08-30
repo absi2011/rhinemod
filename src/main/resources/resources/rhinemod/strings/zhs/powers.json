@@ -507,5 +507,29 @@
       "每次成功造成伤害后，获得 #g1 点 #y力量 。",
       "肇事者：阻力优化II"
     ]
+  },
+  "rhinemod:TurnpikeTag2": {
+    "NAME": "交通亭：固件更新",
+    "DESCRIPTIONS": [
+      "首次被击倒时改为弹出 #y交通亭 。"
+    ]
+  },
+  "rhinemod:TurnpikeTag3": {
+    "NAME": "交通亭：交通管制",
+    "DESCRIPTIONS": [
+      "出场时召唤 #y特里蒙城防军 至 #b3 个。"
+    ]
+  },
+  "rhinemod:TrafficPoliceTag1": {
+    "NAME": "交通警察：技艺增幅",
+    "DESCRIPTIONS": [
+      "隐匿回合数 #b+1 。"
+    ]
+  },
+  "rhinemod:TrafficPoliceTag3": {
+    "NAME": "交通警察：行动技巧",
+    "DESCRIPTIONS": [
+      "出场时，立刻行动一次。"
+    ]
   }
 }

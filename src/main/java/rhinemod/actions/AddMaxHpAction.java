@@ -10,24 +10,22 @@ import com.megacrit.cardcrawl.vfx.TextAboveCreatureEffect;
 import rhinemod.RhineMod;
 
 public class AddMaxHpAction extends AbstractGameAction {
-    int percent;
-    public AddMaxHpAction(AbstractCreature target, int percent) {
+    public AddMaxHpAction(AbstractCreature target, int amount) {
         actionType = ActionType.SPECIAL;
         duration = Settings.ACTION_DUR_XFAST;
         this.target = target;
-        this.percent = percent;
+        this.amount = amount;
     }
 
     public AddMaxHpAction(AbstractCreature target) {
-        this(target, RhineMod.tagLevel * 10);
+        this(target, MathUtils.floor(RhineMod.tagLevel * 0.1F * target.maxHealth));
     }
 
     @Override
     public void update() {
-        int amount = (int)(target.maxHealth * 0.01F * percent);
         float percent = (float)target.currentHealth / target.maxHealth;
         target.maxHealth += amount;
-        AbstractDungeon.effectsQueue.add(new TextAboveCreatureEffect(target.hb.cX - target.animX, target.hb.cY, AbstractCreature.TEXT[2] + Integer.toString(amount), Settings.GREEN_TEXT_COLOR));
+        AbstractDungeon.effectsQueue.add(new TextAboveCreatureEffect(target.hb.cX - target.animX, target.hb.cY, AbstractCreature.TEXT[2] + amount, Settings.GREEN_TEXT_COLOR));
         target.heal(MathUtils.floor(amount * percent), true);
         target.healthBarUpdatedEvent();
         isDone = true;

@@ -59,6 +59,7 @@ public class ArclightCommando extends AbstractRhineMonster {
 
     @Override
     public void usePreBattleAction() {
+        super.usePreBattleAction();
         if (RhineMod.tagLevel >= 3) {
             addToBot(new ChangeStateAction(this, "FLYING"));
             addToBot(new ApplyPowerAction(this, this, new FlightPower(this, flightNumber)));
