@@ -35,6 +35,7 @@ public class TagLevelPatch {
     public static Hitbox tagLevelLabelHb;
     public static Hitbox tagLevelLeftHb;
     public static Hitbox tagLevelRightHb;
+    public static int curTagLevel;
 
     @SpirePatch(clz = CharacterSelectScreen.class, method = "initialize")
     public static class RenderInitPatch {
@@ -71,7 +72,7 @@ public class TagLevelPatch {
                             TipHelper.renderGenericTip(InputHelper.mX - 140.0F * Settings.scale, InputHelper.mY + 340.0F * Settings.scale, TEXT[0], TEXT[2]);
                         }
                         FontHelper.renderFontCentered(sb, FontHelper.cardTitleFont, TEXT[0], LABEL_POS - TAG_LEVEL_LABEL_W / 2.0F, 70.0F * Settings.scale, Settings.GOLD_COLOR);
-                        FontHelper.renderFontCentered(sb, FontHelper.cardTitleFont, TEXT[1] + RhineMod.tagLevel, LEVEL_POS + TAG_LEVEL_W / 2.0F, 70.0F * Settings.scale, Settings.BLUE_TEXT_COLOR);
+                        FontHelper.renderFontCentered(sb, FontHelper.cardTitleFont, TEXT[1] + curTagLevel, LEVEL_POS + TAG_LEVEL_W / 2.0F, 70.0F * Settings.scale, Settings.BLUE_TEXT_COLOR);
 
                         if (tagLevelLeftHb.hovered) {
                             sb.setColor(Color.WHITE);
@@ -114,12 +115,12 @@ public class TagLevelPatch {
 
                 if (tagLevelLeftHb.clicked) {
                     tagLevelLeftHb.clicked = false;
-                    if (RhineMod.tagLevel != 0) {
-                        RhineMod.tagLevel--;
+                    if (curTagLevel != 0) {
+                        curTagLevel--;
                         for (CharacterOption o : _inst.options) {
                             if (o.selected) {
                                 Prefs pref = o.c.getPrefs();
-                                pref.putInteger("LAST_TAG_LEVEL", RhineMod.tagLevel);
+                                pref.putInteger("LAST_TAG_LEVEL", curTagLevel);
                                 pref.flush();
                             }
                         }
@@ -128,20 +129,17 @@ public class TagLevelPatch {
 
                 if (tagLevelRightHb.clicked) {
                     tagLevelRightHb.clicked = false;
-                    if (RhineMod.tagLevel != 3) {
-                        RhineMod.tagLevel++;
+                    if (curTagLevel != 3) {
+                        curTagLevel++;
                         for (CharacterOption o : _inst.options) {
                             if (o.selected) {
                                 Prefs pref = o.c.getPrefs();
-                                pref.putInteger("LAST_TAG_LEVEL", RhineMod.tagLevel);
+                                pref.putInteger("LAST_TAG_LEVEL", curTagLevel);
                                 pref.flush();
                             }
                         }
                     }
                 }
-            }
-            else {
-                RhineMod.tagLevel = 0;
             }
         }
     }
@@ -150,13 +148,33 @@ public class TagLevelPatch {
     public static class OptionSetTagLevelPatch {
         @SpireInsertPatch(locator = Locator.class, localvars = {"pref"})
         public static void Insert(CharacterOption _inst, Prefs pref) {
-            RhineMod.tagLevel = pref.getInteger("LAST_TAG_LEVEL", 0);
+            curTagLevel = pref.getInteger("LAST_TAG_LEVEL", 0);
         }
 
         private static class Locator extends SpireInsertLocator {
             @Override
             public int[] Locate(CtBehavior ctBehavior) throws Exception {
                 Matcher.FieldAccessMatcher fieldAccessMatcher = new Matcher.FieldAccessMatcher(CharacterSelectScreen.class, "ascensionLevel");
+                return LineFinder.findInOrder(ctBehavior, fieldAccessMatcher);
+            }
+        }
+    }
+
+    @SpirePatch(clz = CharacterSelectScreen.class, method = "updateButtons")
+    public static class ConfirmSelectPatch {
+        @SpireInsertPatch(locator = Locator.class)
+        public static void Insert(CharacterSelectScreen _inst) {
+            if (_inst.isAscensionMode && _inst.ascensionLevel == 20) {
+                RhineMod.tagLevel = curTagLevel;
+            } else {
+                RhineMod.tagLevel = 0;
+            }
+        }
+
+        private static class Locator extends SpireInsertLocator {
+            @Override
+            public int[] Locate(CtBehavior ctBehavior) throws Exception {
+                Matcher.FieldAccessMatcher fieldAccessMatcher = new Matcher.FieldAccessMatcher(AbstractDungeon.class, "isAscensionMode");
                 return LineFinder.findInOrder(ctBehavior, fieldAccessMatcher);
             }
         }

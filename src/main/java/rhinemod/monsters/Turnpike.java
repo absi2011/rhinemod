@@ -80,7 +80,11 @@ public class Turnpike extends AbstractRhineMonster {
         addToBot(new CannotLoseAction());
         CardCrawlGame.music.fadeOutTempBGM();
         AbstractDungeon.scene.fadeOutAmbiance();
-        CardCrawlGame.music.playTempBgmInstantly("m_bat_act19side_01_combine.mp3", true);
+        if (RhineMod.tagLevel >= 2) {
+            CardCrawlGame.music.playTempBgmInstantly("m_bat_ccs_v2_4_loop.mp3", true);
+        } else {
+            CardCrawlGame.music.playTempBgmInstantly("m_bat_act19side_01_combine.mp3", true);
+        }
         if (RhineMod.tagLevel >= 3) {
             for (int i = LTAllyNum(); i < 3; i++) {
                 addToBot(new SummonLTEnemyAction(allies, true, summonMyself == 0));
