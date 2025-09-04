@@ -1,6 +1,9 @@
+enemy_1250_lyengs 莱茵生命工程科成员
+enemy_1251_lysyta dor-1失败品
 enemy_1254_lypa 实验用动力装甲
 enemy_1255_lybgpa R-31重型动力装甲
 enemy_1256_lyacpa R-11突击动力装甲
+enemy_1257_lydrty 多萝西
 enemy_1325_cbgpro 军用猎狗
 enemy_1326_cbagen 特里蒙城防军
 enemy_1327_cbrokt 弧光突击队
