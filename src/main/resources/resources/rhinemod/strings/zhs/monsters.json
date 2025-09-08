@@ -78,5 +78,10 @@
     "NAME": "星荚",
     "MOVES": ["自我修复"],
     "DIALOG": []
+  },
+  "rhinemod:Dorothy": {
+    "NAME": "多萝西",
+    "MOVES": [""],
+    "DIALOG": []
   }
 }

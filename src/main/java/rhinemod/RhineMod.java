@@ -77,6 +77,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
     public static final ArrayList<TextureAtlas.AtlasRegion> specialImg = new ArrayList<>();
     public static final ArrayList<Texture> specialImgLarge = new ArrayList<>();
     public static TextureAtlas.AtlasRegion WATER_REGION;
+    public static TextureAtlas.AtlasRegion resonatorImg;
 
     public static float newMonsterMulti = 1.0F;
     public static int tagLevel = 0;
@@ -185,6 +186,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         addMonster("Turnpike", names[13], () -> new MonsterGroup(new Turnpike(0.0F, 0.0F)));
         addMonster("Traffic Police", names[14], () -> new MonsterGroup(new TrafficPolice(0.0F, 0.0F)));
         addMonster("The Sky", names[15], () -> new MonsterGroup(new AbstractMonster[] {new StarPod(0.0F, 0.0F)}));
+        addMonster("Dorothy", names[16], () -> new MonsterGroup(new Dorothy(0.0F, 0.0F)));
         // Just Testing
         BaseMod.addEliteEncounter(TheEnding.ID, new MonsterInfo("Awaken", 3.0F * newMonsterMulti));
         BaseMod.addEliteEncounter(TheSky.ID, new MonsterInfo("Turnpike", 3.0F * newMonsterMulti));
@@ -255,6 +257,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         specialImgLarge.add(new Texture("resources/rhinemod/images/1024/card_muelsyse.png"));
         Texture WATER_IMG = ImageMaster.loadImage("resources/rhinemod/images/ui/water.png");
         WATER_REGION = new TextureAtlas.AtlasRegion(WATER_IMG, 0, 0, WATER_IMG.getWidth(), WATER_IMG.getHeight());
+        resonatorImg = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/ui/resonator.png"), 0, 0, 512, 512);
 
         for (int i = 1; i <= StarlightIntersectionEffect.texture_cnt; i++) {
             StarlightIntersectionEffect.textures.add(new TextureAtlas.AtlasRegion(new Texture("resources/rhinemod/images/vfx/StarlightIntersection/" + i + ".png"),

@@ -1,7 +1,6 @@
 package rhinemod.powers;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -29,13 +28,8 @@ public class BlockDamage extends AbstractRhinePower {
 
     @Override
     public void updateDescription() {
-        if (RhineMod.tagLevel >= 1)
-        {
-            description = DESCRIPTIONS[2] + amount + DESCRIPTIONS[3];
-        }
-        else {
-            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
-        }
+        if (RhineMod.tagLevel >= 1) description = DESCRIPTIONS[2] + amount + DESCRIPTIONS[3];
+        else description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
     }
 
     @Override

@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.screens.DeathScreen;
-import com.megacrit.cardcrawl.vfx.combat.HbBlockBrokenEffect;
 
 public class DreamBreakPower extends AbstractRhinePower {
     public static final String POWER_ID = "rhinemod:DreamBreakPower";
