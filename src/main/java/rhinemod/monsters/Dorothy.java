@@ -2,6 +2,9 @@ package rhinemod.monsters;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -10,6 +13,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.RegenPower;
+import com.megacrit.cardcrawl.vfx.cardManip.ExhaustCardEffect;
 import rhinemod.RhineMod;
 import rhinemod.actions.AwakenAction;
 import rhinemod.actions.SetTripAction;
@@ -78,6 +82,7 @@ public class Dorothy extends AbstractRhineMonster {
                 addToBot(new ApplyPowerAction(target, this, new HealPower(target)));
             } else {
                 addToBot(new AwakenAction(damage.get(1).base, this));
+                addToBot(new RemoveSpecificPowerAction(this, this, Equality.POWER_ID));
             }
             state.setAnimation(0, "F_Skill", false);
             state.addAnimation(0, "F_Idle", true, 0);
@@ -108,7 +113,27 @@ public class Dorothy extends AbstractRhineMonster {
             setMove((byte)2, Intent.UNKNOWN);
         }
         else {
+            addToBot(new ApplyPowerAction(this, this, new Equality(this)));
             setMove((byte)3, Intent.ATTACK, damage.get(1).base);
+        }
+    }
+
+    @Override
+    public void heal(int healAmount) {
+        super.heal(healAmount);
+        if (currentHealth == maxHealth) {
+            hideHealthBar();
+            escaped = true;
+            isEscaping = true;
+            AbstractDungeon.getCurrRoom().monsters.monsters.remove(this);
+            if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
+                AbstractDungeon.overlayMenu.endTurnButton.disable();
+                for (AbstractCard c : AbstractDungeon.player.limbo.group) {
+                    AbstractDungeon.effectList.add(new ExhaustCardEffect(c));
+                }
+                AbstractDungeon.player.limbo.clear();
+                //End Battle
+            }
         }
     }
 }

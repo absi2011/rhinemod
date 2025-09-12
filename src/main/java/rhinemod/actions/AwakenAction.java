@@ -76,7 +76,9 @@ public class AwakenAction extends AbstractGameAction {
             applyEnemyPowersOnly(info, aimList.get(i));
             aimList.get(i).damage(info);
         }
-        ((AbstractMonster)source).rollMove();
+        if (source instanceof Awaken_Monster) {
+            ((AbstractMonster)source).rollMove();
+        }
         isDone = true;
     }
 }
