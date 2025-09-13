@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.MinionPower;
 import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
 import rhinemod.RhineMod;
 import rhinemod.actions.AwakenAction;
@@ -75,6 +76,11 @@ public class Awaken_Monster extends AbstractRhineMonster {
         CardCrawlGame.music.fadeOutTempBGM();
         AbstractDungeon.scene.fadeOutAmbiance();
         CardCrawlGame.music.playTempBgmInstantly("m_bat_bbrain_combine.mp3", true);
+        if (RhineMod.tagLevel >= 1) {
+            mechs[1] = new Dorothy(-170.F, 6.0F);
+            mechs[1].usePreBattleAction();
+            addToBot(new SpawnMonsterAction(mechs[1], false));
+        }
     }
 
     @Override
@@ -122,7 +128,7 @@ public class Awaken_Monster extends AbstractRhineMonster {
     @Override
     public void die() {
         for (AbstractMonster m : AbstractDungeon.getMonsters().monsters)
-            if (!m.isDeadOrEscaped()) {
+            if ((!m.isDeadOrEscaped()) && (m.hasPower(MinionPower.POWER_ID))) {
                 addToTop(new HideHealthBarAction(m));
                 addToTop(new SuicideAction(m));
                 addToTop(new VFXAction(m, new InflameEffect(m), 0.2F));

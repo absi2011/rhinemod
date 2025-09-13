@@ -25,13 +25,12 @@ public class Turnpike extends AbstractRhineMonster {
     private int Armor = 70;
     public AbstractMonster[] allies = new AbstractMonster[3];
     boolean justSummon = false;
-    int summonMyself;
+    public int summonMyself;
     public Turnpike(float x, float y,int summon) {
         super(NAME, ID, 150, 0, 0, 150.0F, 320.0F, null, x, y);
         if ((RhineMod.tagLevel >= 2) && (summon == 1))
         {
             summonMyself = 1;
-            // TODO: 切换BGM
         }
         else
         {

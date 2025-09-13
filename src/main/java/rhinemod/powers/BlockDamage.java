@@ -41,8 +41,8 @@ public class BlockDamage extends AbstractRhinePower {
             }
             if ((RhineMod.tagLevel >= 1) && (damageAmount > 0)) {
                 flash();
-                addToTop(new ApplyPowerAction(owner, owner, new BlockDamage(owner, 1)));
-                addToTop(new ApplyPowerAction(owner, owner, new DreamBreakPower(owner, amount)));
+                amount ++;
+                addToTop(new ApplyPowerAction(owner, owner, new DreamBreakPower(owner, damageAmount)));
             }
         }
         return damageAmount;

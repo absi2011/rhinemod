@@ -1,13 +1,18 @@
 package rhinemod.powers;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.watcher.JudgementAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.screens.DeathScreen;
+import com.megacrit.cardcrawl.vfx.TextAboveCreatureEffect;
 
 public class DreamBreakPower extends AbstractRhinePower {
     public static final String POWER_ID = "rhinemod:DreamBreakPower";
@@ -39,6 +44,11 @@ public class DreamBreakPower extends AbstractRhinePower {
             return;
         }
         AbstractDungeon.player.currentHealth -= amount;
+        if (AbstractDungeon.player.currentHealth <= 0) {
+            AbstractDungeon.player.currentHealth = 0;
+            AbstractDungeon.player.damage(new DamageInfo(owner, 1, DamageInfo.DamageType.HP_LOSS));
+        }
+        AbstractDungeon.effectsQueue.add(new TextAboveCreatureEffect(AbstractDungeon.player.hb.cX - AbstractDungeon.player.animX, AbstractDungeon.player.hb.cY, DESCRIPTIONS[2] + amount, Settings.RED_TEXT_COLOR));
         AbstractDungeon.player.decreaseMaxHealth(amount);
     }
 

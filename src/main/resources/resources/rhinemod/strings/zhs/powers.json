@@ -213,7 +213,8 @@
       "死亡时，对你造成 #b",
       " 点伤害",
       "，并召唤一个 #y交通警察 。",
-      "。"
+      "。",
+      "，并召唤一个新的 #y交通亭 。"
     ]
   },
   "rhinemod:InvisiblePower": {
@@ -224,6 +225,38 @@
       " 回合。"
     ]
   },
+  "rhinemod:BlockDamage": {
+    "NAME": "手下留情",
+    "DESCRIPTIONS": [
+      "受到来自玩家的伤害最多为 #b",
+      " 点。",
+      "受到来自玩家的伤害最多为 #b",
+      " 点。每次受到来自玩家的伤害后，获得等量的 #y梦碎 层数并提高 #b1 层 #y手下留情 。"
+    ]
+  },
+  "rhinemod:DreamBreakPower": {
+    "NAME": "梦碎",
+    "DESCRIPTIONS": [
+      "死亡时，扣除玩家 #b",
+      " 点生命与最大生命值（可能致死）。生命值满时，自动退场。 #r这不是敌人，请不要攻击她！ ",
+      "最大生命值 -"
+    ]
+  },
+  "rhinemod:DreamingPower": {
+    "NAME": "美梦",
+    "DESCRIPTIONS": [
+      "该层数积攒至 #b24 层后，跳过你的下一回合。损失生命时减少等量层数。（当前 #b",
+      " 层） "
+    ]
+  },
+  "rhinemod:HealPower": {
+    "NAME": "治疗模式",
+    "DESCRIPTIONS": [
+      "下次攻击将改为治疗。"
+    ]
+  },
+
+
   "rhinemod:IdealistFormPower": {
     "NAME": "理想者形态",
     "DESCRIPTIONS": [
@@ -531,10 +564,10 @@
       "隐匿回合数 #b+1 。"
     ]
   },
-  "//rhinemod:Awaken_MonsterTag1": {
+  "rhinemod:Awaken_MonsterTag1": {
     "NAME": "唤醒：封闭研究室",
     "DESCRIPTIONS": [
-      "场上额外出现 #y多萝西 （ #r没做 ）。"
+      "场上额外出现 #y多萝西 。"
     ]
   },
   "rhinemod:Awaken_MonsterTag2": {
@@ -547,6 +580,24 @@
     "NAME": "唤醒：经费充足",
     "DESCRIPTIONS": [
       "#y旅程 每回合可以触发两次。"
+    ]
+  },
+  "rhinemod:DorothyTag1": {
+    "NAME": "多萝西：潜能认知项目",
+    "DESCRIPTIONS": [
+      "受到来自玩家的伤害会逐渐提高，且会增加 #y梦碎 层数。"
+    ]
+  },
+  "rhinemod:DorothyTag2": {
+    "NAME": "多萝西：美梦成真",
+    "DESCRIPTIONS": [
+      "普通攻击附带 #b8 层 #b美梦 标记。该标记超过 #b24 层时会跳过你的一回合。损失生命可以扣除等量的标记。"
+    ]
+  },
+  "rhinemod:DorothyTag3": {
+    "NAME": "多萝西：共振串联项目",
+    "DESCRIPTIONS": [
+      "#y陷阱标记 改为标记两张陷阱，每当你抽到一张陷阱牌，如果你的手牌中已有陷阱牌，立即往抽牌堆里塞一张 #b眩晕 。"
     ]
   }
 }

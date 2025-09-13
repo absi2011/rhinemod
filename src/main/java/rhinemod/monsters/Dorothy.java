@@ -16,7 +16,7 @@ import com.megacrit.cardcrawl.powers.RegenPower;
 import com.megacrit.cardcrawl.vfx.cardManip.ExhaustCardEffect;
 import rhinemod.RhineMod;
 import rhinemod.actions.AwakenAction;
-import rhinemod.actions.SetTripAction;
+import rhinemod.actions.SetTrapAction;
 import rhinemod.powers.*;
 
 import java.util.ArrayList;
@@ -56,7 +56,7 @@ public class Dorothy extends AbstractRhineMonster {
         addToBot(new ApplyPowerAction(this, this, new RegenPower(this, 10)));
         addToBot(new ApplyPowerAction(this, this, new BlockDamage(this, 1)));
         addToBot(new ApplyPowerAction(this, this, new DreamBreakPower(this, Math.max(AbstractDungeon.player.maxHealth / 2, 50))));
-
+        //TODO: 如果在三层，放尖灭 BGM（还是说给修 maker 做这个？）
     }
 
     @Override
@@ -72,11 +72,16 @@ public class Dorothy extends AbstractRhineMonster {
         } else {
             if (nextMove == 2) {
                 ArrayList<AbstractCreature> targetPossible = new ArrayList<>();
-                targetPossible.add(p);
+                if (!p.hasPower(HealPower.POWER_ID)) {
+                    targetPossible.add(p);
+                }
                 for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-                    if (m != this) {
+                    if ((!m.isDeadOrEscaped()) && (!m.hasPower(HealPower.POWER_ID)) && (m != this)) {
                         targetPossible.add(m);
                     }
+                }
+                if (targetPossible.isEmpty()) {
+                    targetPossible.add(p);
                 }
                 AbstractCreature target = targetPossible.get(AbstractDungeon.monsterRng.random(0, targetPossible.size() - 1));
                 addToBot(new ApplyPowerAction(target, this, new HealPower(target)));
@@ -87,7 +92,7 @@ public class Dorothy extends AbstractRhineMonster {
             state.setAnimation(0, "F_Skill", false);
             state.addAnimation(0, "F_Idle", true, 0);
         }
-        addToBot(new SetTripAction(RhineMod.tagLevel >= 3? 2 : 1)); // TODO: 可能做成power？
+        addToBot(new SetTrapAction(RhineMod.tagLevel >= 3? 2 : 1)); // TODO: 可能做成power？
         getMove(0);
     }
 
@@ -99,6 +104,7 @@ public class Dorothy extends AbstractRhineMonster {
                 legalMoves.add(j);
             }
         }
+        legalMoves.add(2);
         int nextMove = legalMoves.get(AbstractDungeon.monsterRng.random(0, legalMoves.size()-1));
         lastMove = nextMove;
         if (nextMove == 1) {
@@ -118,6 +124,24 @@ public class Dorothy extends AbstractRhineMonster {
         }
     }
 
+    @Override
+    public void heal(int healAmount, boolean showEffect) {
+        super.heal(healAmount);
+        if (currentHealth == maxHealth) {
+            hideHealthBar();
+            escaped = true;
+            isEscaping = true;
+            AbstractDungeon.getCurrRoom().monsters.monsters.remove(this);
+            if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
+                AbstractDungeon.overlayMenu.endTurnButton.disable();
+                for (AbstractCard c : AbstractDungeon.player.limbo.group) {
+                    AbstractDungeon.effectList.add(new ExhaustCardEffect(c));
+                }
+                AbstractDungeon.player.limbo.clear();
+                //End Battle
+            }
+        }
+    }
     @Override
     public void heal(int healAmount) {
         super.heal(healAmount);
