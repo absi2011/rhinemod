@@ -56,6 +56,7 @@ public class Dorothy extends AbstractRhineMonster {
         addToBot(new ApplyPowerAction(this, this, new RegenPower(this, 10)));
         addToBot(new ApplyPowerAction(this, this, new BlockDamage(this, 1)));
         addToBot(new ApplyPowerAction(this, this, new DreamBreakPower(this, Math.max(AbstractDungeon.player.maxHealth / 2, 50))));
+        addToBot(new ApplyPowerAction(this, this, new TrapPower(this)));
         //TODO: 如果在三层，放尖灭 BGM（还是说给修 maker 做这个？）
     }
 
@@ -81,7 +82,7 @@ public class Dorothy extends AbstractRhineMonster {
                     }
                 }
                 if (targetPossible.isEmpty()) {
-                    targetPossible.add(p);
+                    targetPossible.add(p);  // TODO: 要不要允许这种时候选自身（如果选的话对玩家威胁大幅降低）
                 }
                 AbstractCreature target = targetPossible.get(AbstractDungeon.monsterRng.random(0, targetPossible.size() - 1));
                 addToBot(new ApplyPowerAction(target, this, new HealPower(target)));

@@ -122,6 +122,10 @@ public class R31HeavyPowerArmor extends AbstractRhineMonster {
         }
     }
 
+    public void SpecialMove() {
+        setMove(MOVES[1], (byte)5, Intent.ATTACK_DEBUFF, damage.get(0).base, stunStrike, true);
+    }
+
     @Override
     protected void getMove(int i) {
         if (RhineMod.tagLevel >= 3) {

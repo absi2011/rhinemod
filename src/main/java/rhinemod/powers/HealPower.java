@@ -45,18 +45,25 @@ public class HealPower extends AbstractRhinePower {
     @Override
     public int onAttackToChangeDamage(DamageInfo info, int damageAmount) {
         // 保险起见，留下这个时间点，一般来说不会触发
-        flash();
-        recordAmount = damageAmount;
-        return 0;
+        if (info.type == DamageInfo.DamageType.NORMAL) {
+            flash();
+            recordAmount = damageAmount;
+            return 0;
+        }
+        else {
+            return damageAmount;
+        }
     }
 
     @Override
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
         // 我在这个时间点治疗不是因为我有品，而是因为之前根本不知道打的是谁
-        addToBot(new HealAction(target, owner, recordAmount));
-        if (needRemove == 1) {
-            needRemove = 0;
-            addToBot(new RemoveSpecificPowerAction(owner, owner, this));
+        if (info.type == DamageInfo.DamageType.NORMAL) {
+            addToBot(new HealAction(target, owner, recordAmount));
+            if (needRemove == 1) {
+                needRemove = 0;
+                addToBot(new RemoveSpecificPowerAction(owner, owner, this));
+            }
         }
     }
 
@@ -64,7 +71,7 @@ public class HealPower extends AbstractRhinePower {
     public static class HealPatch {
         @SpirePrefixPatch
         public static SpireReturn<?> Prefix(AbstractMonster _inst, DamageInfo info) {
-            if ((info.owner != null) && (info.owner.hasPower(POWER_ID))) {
+            if ((info.owner != null) && (info.owner.hasPower(POWER_ID)) && (info.type == DamageInfo.DamageType.NORMAL)) {
                 AbstractDungeon.actionManager.addToBottom(new HealAction(_inst, info.owner, info.output));
                 HealPower p = (HealPower)info.owner.getPower(POWER_ID);
                 p.flash();
@@ -82,7 +89,7 @@ public class HealPower extends AbstractRhinePower {
     public static class HealPatchPlayer {
         @SpirePrefixPatch
         public static SpireReturn<?> Prefix(AbstractPlayer _inst, DamageInfo info) {
-            if ((info.owner != null) && (info.owner.hasPower(POWER_ID))) {
+            if ((info.owner != null) && (info.owner.hasPower(POWER_ID)) && (info.type == DamageInfo.DamageType.NORMAL)) {
                 AbstractDungeon.actionManager.addToBottom(new HealAction(_inst, info.owner, info.output));
                 HealPower p = (HealPower)info.owner.getPower(POWER_ID);
                 p.flash();

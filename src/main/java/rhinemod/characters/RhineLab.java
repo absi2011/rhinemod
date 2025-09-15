@@ -377,7 +377,7 @@ public class RhineLab extends CustomPlayer {
 
     @Override
     public void damage(DamageInfo info) {
-        if ((info.owner != null) && (info.owner.hasPower(HealPower.POWER_ID))) {
+        if ((info.owner != null) && (info.owner.hasPower(HealPower.POWER_ID)) && (info.type == DamageInfo.DamageType.NORMAL)) {
             AbstractDungeon.actionManager.addToBottom(new HealAction(this, info.owner, info.output));
             HealPower p = (HealPower) info.owner.getPower(HealPower.POWER_ID);
             p.flash();

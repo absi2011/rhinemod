@@ -255,6 +255,20 @@
       "下次攻击将改为治疗。"
     ]
   },
+  "rhinemod:TrapPower": {
+    "NAME": "陷阱标记",
+    "DESCRIPTIONS": [
+      "回合结束时，随机选择抽牌堆的一张牌标记为陷阱牌。陷阱牌在打出时会将一张 #y晕眩 加入你的弃牌堆。",
+      "回合结束时，随机选择抽牌堆的两张牌标记为陷阱牌。陷阱牌在打出时会将一张 #y晕眩 加入你的弃牌堆。"
+    ]
+  },
+  "rhinemod:FeedingPower": {
+    "NAME": "实验中",
+    "DESCRIPTIONS": [
+      "当它生命值满或吃掉 #b ",
+      " 个 #rDor-1实验体 后，会苏醒成为 #rR31重型动力甲 。"
+    ]
+  },
 
 
   "rhinemod:IdealistFormPower": {
@@ -597,7 +611,25 @@
   "rhinemod:DorothyTag3": {
     "NAME": "多萝西：共振串联项目",
     "DESCRIPTIONS": [
-      "#y陷阱标记 改为标记两张陷阱，每当你抽到一张陷阱牌，如果你的手牌中已有陷阱牌，立即往抽牌堆里塞一张 #b眩晕 。"
+      "#y陷阱标记 改为标记两张陷阱。且每当你抽到一张陷阱牌，如果你的手牌中已有陷阱牌，立即往抽牌堆里塞一张 #b眩晕 。"
+    ]
+  },
+  "rhinemod:SleepingR31Tag1": {
+    "NAME": "SleepingR31：休眠保护",
+    "DESCRIPTIONS": [
+      "初始生命 #b+100 ，苏醒时获得 #b3 点 #r力量 。"
+    ]
+  },
+  "rhinemod:SleepingR31Tag2": {
+    "NAME": "SleepingR31：Tag2",
+    "DESCRIPTIONS": [
+      "处于休眠状态时，每回合对 #g多萝西 造成 #b10 点伤害并为其增加 #b5 层 #y梦碎 。"
+    ]
+  },
+  "rhinemod:SleepingR31Tag3": {
+    "NAME": "SleepingR31：Tag3",
+    "DESCRIPTIONS": [
+      "仅需要一个 #rDor-1实验体 即可苏醒。"
     ]
   }
 }
