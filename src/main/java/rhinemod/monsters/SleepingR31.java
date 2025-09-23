@@ -35,7 +35,7 @@ public class SleepingR31 extends AbstractRhineMonster {
         if (RhineMod.tagLevel >= 1) {
             currentHealth = 400;
         }
-        else if (AbstractDungeon.ascensionLevel >= 8) {
+        else if (AbstractDungeon.ascensionLevel >= 9) {
             currentHealth = 300;
         }
         else {
