@@ -16,11 +16,13 @@ import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.screens.charSelect.CharacterOption;
 import com.megacrit.cardcrawl.screens.charSelect.CharacterSelectScreen;
+import com.megacrit.cardcrawl.screens.mainMenu.MainMenuScreen;
 import javassist.CtBehavior;
 import rhinemod.RhineMod;
 import rhinemod.actions.AddMaxHpAction;
 import rhinemod.monsters.AbstractRhineMonster;
 import rhinemod.powers.AddStunTag;
+import rhinemod.util.TagScreen;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -36,6 +38,7 @@ public class TagLevelPatch {
     public static Hitbox tagLevelLeftHb;
     public static Hitbox tagLevelRightHb;
     public static int curTagLevel;
+    public static final TagScreen tagScreen = new TagScreen();
 
     @SpirePatch(clz = CharacterSelectScreen.class, method = "initialize")
     public static class RenderInitPatch {
@@ -140,6 +143,11 @@ public class TagLevelPatch {
                         }
                     }
                 }
+
+                if (tagLevelLabelHb.clicked) {
+                    tagLevelLabelHb.clicked = false;
+                    tagScreen.open();
+                }
             }
         }
     }
@@ -241,4 +249,23 @@ public class TagLevelPatch {
         }
     }
 
+    @SpirePatch(clz = MainMenuScreen.class, method = "update")
+    public static class MainMenuScreenUpdatePatch {
+        @SpirePrefixPatch()
+        public static void Prefix(MainMenuScreen _inst) {
+            if (_inst.screen == TagScreen.TAG_LIST) {
+                tagScreen.update();
+            }
+        }
+    }
+
+    @SpirePatch(clz = MainMenuScreen.class, method = "render")
+    public static class MainMenuScreenRenderPatch {
+        @SpirePostfixPatch()
+        public static void Postfix(MainMenuScreen _inst, SpriteBatch sb) {
+            if (_inst.screen == TagScreen.TAG_LIST) {
+                tagScreen.render(sb);
+            }
+        }
+    }
 }
