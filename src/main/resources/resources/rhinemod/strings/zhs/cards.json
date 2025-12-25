@@ -144,7 +144,7 @@
     },
     "rhinemod:LokenWatertank": {
         "NAME": "洛肯水箱",
-        "DESCRIPTION": "对所有角色造成 !D! 点伤害。 NL 将 !M! 张 *出格 洗入你的抽牌堆。",
+        "DESCRIPTION": "对所有角色造成 !D! 点伤害。 将 !M! 张 *出格 洗入你的抽牌堆。",
         "UPGRADE_DESCRIPTION": ""
     },
 
@@ -156,8 +156,8 @@
     },
     "rhinemod:HighSpeedResonatingTroubleshooter": {
         "NAME": "高速共振排障",
-        "DESCRIPTION": "标记一名敌人，回合结束或该敌人死亡时，对所有敌人造成等同于该名敌人标记期间受到伤害总额的伤害。 NL 消耗 。",
-        "UPGRADE_DESCRIPTION": "标记一名敌人，回合结束或该敌人死亡时，对所有敌人造成等同于该名敌人标记期间受到伤害总额的伤害。"
+        "DESCRIPTION": "标记一名敌人，在回合结束或其死亡时，对所有敌人造成其标记期间所受伤害的等额伤害。 消耗 。",
+        "UPGRADE_DESCRIPTION": "标记一名敌人，在回合结束或其死亡时，对所有敌人造成其标记期间所受伤害的等额伤害。"
     },
     "rhinemod:Starfall": {
         "NAME": "星辰坠落",
@@ -229,17 +229,17 @@
     },
     "rhinemod:TwoToOne": {
         "NAME": "二比一",
-        "DESCRIPTION": "造成 !D! 点伤害。 NL 只有你的手牌中没有任何一个 rhinemod:倾向 的卡牌数超过总手牌数的一半时才能打出。",
+        "DESCRIPTION": "造成 !D! 点伤害。 只有你的手牌中没有任何 rhinemod:倾向 的卡牌数超过总数的一半时才能打出。",
         "UPGRADE_DESCRIPTION": "",
         "EXTENDED_DESCRIPTION": [
             "一比二",
-            "造成 !D! 点伤害。 NL 只有你的手牌中存在一个 rhinemod:倾向 的卡牌数超过总手牌数的一半时才能打出。"
+            "造成 !D! 点伤害。 NL 只有你的手牌中存在一个 rhinemod:倾向 的卡牌数超过总数的一半时才能打出。"
         ]
     },
     "rhinemod:EcologicalInteraction": {
         "NAME": "生态耦合",
-        "DESCRIPTION": "随机将 X 张植物牌加入你的手牌。",
-        "UPGRADE_DESCRIPTION": "随机将 X+1 张植物牌加入你的手牌。"
+        "DESCRIPTION": "随机将 X 张植物牌置入你的手牌。",
+        "UPGRADE_DESCRIPTION": "随机将 X+1 张植物牌置入你的手牌。"
     },
     "rhinemod:QuicksandGeneration": {
         "NAME": "流沙区域生成",
@@ -274,7 +274,7 @@
         "UPGRADE_DESCRIPTION": "",
         "EXTENDED_DESCRIPTION": [
             "生态园",
-            " 固有 ， 消耗 。 NL 随机将 !M! 张植物牌加入你的手牌，抽 !rhinemod:M2! 张牌。"
+            " 固有 ， 消耗 。 NL 随机将 !M! 张植物牌置入你的手牌，抽 !rhinemod:M2! 张牌。"
         ]
     },
     "rhinemod:LightPenetratingClouds": {
@@ -284,7 +284,7 @@
     },
     "rhinemod:LoneLight": {
         "NAME": "寂寥的光",
-        "DESCRIPTION": "选择以下一张牌加入你的手牌： NL 自私者，背叛者，求道者，独行者，先驱者。 NL rhinemod:晚安，泰拉 。",
+        "DESCRIPTION": "选择一张置入手牌： NL 自私者，背叛者，求道者，独行者，先驱者。 NL rhinemod:晚安，泰拉 。",
         "UPGRADE_DESCRIPTION": ""
     },
     "rhinemod:FlowCombo": {
@@ -294,15 +294,15 @@
     },
     "rhinemod:AcademicResearch": {
         "NAME": "学术研究",
-        "DESCRIPTION": "从3张随机牌中选择1张加入你的手牌。这张牌在本回合耗能变为0。 NL 消耗 。",
+        "DESCRIPTION": "从3张随机牌中选择1张置入你的手牌。这张牌在本回合耗能变为0。 消耗 。",
         "UPGRADE_DESCRIPTION": "",
         "EXTENDED_DESCRIPTION": [
             "“生物工程”",
-            "获得 !B! 点 格挡 ， NL 造成 !D! 点伤害， NL rhinemod:钙质粒子 ： !M! 。 NL 从你的牌组中移除这张牌。 NL 消耗 。",
+            "获得 !B! 点 格挡 ， NL 造成 !D! 点伤害， NL rhinemod:钙质粒子 ： !M! 。 NL 从你的牌组中移除这张牌。 消耗 。",
             "高能物理",
-            "rhinemod:科研进度 ： !M! 。 NL 如果你的 rhinemod:科研进度 达到 !rhinemod:M2! ，从3张星环牌中选择一张加入你的手牌。",
+            "rhinemod:科研进度 ： !M! 。 NL 如果你的 rhinemod:科研进度 达到 !rhinemod:M2! ，从3张星环牌中选择一张置入手牌。",
             "生态科学",
-            "从所有植物牌中选择1张加入你的手牌。"
+            "从所有植物牌中选择1张置入你的手牌。"
         ]
     },
     "rhinemod:EliminateThreat": {
@@ -430,12 +430,12 @@
     },
     "rhinemod:LikeMind": {
         "NAME": "意气相投",
-        "DESCRIPTION": "当你每回合第一次获得 rhinemod:钙质粒子 、 rhinemod:科研进度 、或 rhinemod:流形 时，随机再获得三者之一 !M! 层。",
+        "DESCRIPTION": "当你每回合第一次获得 rhinemod:钙质粒子 、 rhinemod:流形 、或 rhinemod:科研进度 时，随机再获得三者之一 !M! 层。",
         "UPGRADE_DESCRIPTION": "",
         "EXTENDED_DESCRIPTION": [
-            "当你每回合第一次获得 rhinemod:钙质粒子 、 rhinemod:科研进度 、或 rhinemod:流形 时，再获得 !M! 层 rhinemod:钙质粒子 。",
-            "当你每回合第一次获得 rhinemod:钙质粒子 、 rhinemod:科研进度 、或 rhinemod:流形 时，再获得 !M! 层 rhinemod:科研进度 。",
-            "当你每回合第一次获得 rhinemod:钙质粒子 、 rhinemod:科研进度 、或 rhinemod:流形 时，再获得 !M! 层 rhinemod:流形 。"
+            "当你每回合第一次获得 rhinemod:钙质粒子 、 rhinemod:流形 、或 rhinemod:科研进度 时，再获得 !M! 层 rhinemod:钙质粒子 。",
+            "当你每回合第一次获得 rhinemod:钙质粒子 、 rhinemod:流形 、或 rhinemod:科研进度 时，再获得 !M! 层 rhinemod:科研进度 。",
+            "当你每回合第一次获得 rhinemod:钙质粒子 、 rhinemod:流形 、或 rhinemod:科研进度 时，再获得 !M! 层 rhinemod:流形 。"
         ]
     },
     "rhinemod:Refreshment": {
@@ -455,7 +455,7 @@
     },
     "rhinemod:MultiEcho": {
         "NAME": "多重分身",
-        "DESCRIPTION": "选择一张不同名的手牌，丢弃其他手牌，将你的所有 rhinemod:流形 转化为这张牌含有 消耗 和 保留 的的复制。",
+        "DESCRIPTION": "选择一张不同名的手牌，丢弃其他手牌，将你的所有 rhinemod:流形 转化为这张牌含有 消耗 和 保留 的复制。",
         "UPGRADE_DESCRIPTION": "",
         "EXTENDED_DESCRIPTION": [
             "复制：",
@@ -464,8 +464,8 @@
     },
     "rhinemod:Disorder": {
         "NAME": "“失序”",
-        "DESCRIPTION": "造成 !D! 点伤害，获得 !B! 点 格挡 ，抽 !M! 张牌，结算 !rhinemod:M2! 次。 NL 每当你抽到这张牌或打出一张牌，随机打乱其所有数字。 NL 虚无 。",
-        "UPGRADE_DESCRIPTION": "造成 !D! 点伤害，获得 !B! 点 格挡 ，抽 !M! 张牌，结算 !rhinemod:M2! 次。 NL 每当你抽到这张牌或打出一张牌，随机打乱其所有数字。"
+        "DESCRIPTION": "执行 !rhinemod:M2! 次：造成 !D! 点伤害，获得 !B! 点 格挡 ，抽 !M! 张牌。 NL 每当你抽到此牌或打出一张牌，打乱所有数字。 虚无 。",
+        "UPGRADE_DESCRIPTION": "执行 !rhinemod:M2! 次：造成 !D! 点伤害，获得 !B! 点 格挡 ，抽 !M! 张牌。 NL 每当你抽到此牌或打出一张牌，打乱所有数字。"
     },
     "rhinemod:Omen": {
         "NAME": "山雨欲来",
@@ -491,7 +491,7 @@
     },
     "rhinemod:Seeker": {
         "NAME": "求道者",
-        "DESCRIPTION": "每当你获得 rhinemod:科研进度 时，额外获得等量的 格挡 。 NL 虚无 。",
+        "DESCRIPTION": "每当你获得 rhinemod:科研进度 ，额外获得等量的 格挡 。 NL 虚无 。",
         "UPGRADE_DESCRIPTION": ""
     },
     "rhinemod:Loner": {
@@ -501,7 +501,7 @@
     },
     "rhinemod:Pioneer": {
         "NAME": "先驱者",
-        "DESCRIPTION": "*出格 不再降低 rhinemod:科研进度 。 NL 每当你 消耗 一张 *出格 时，抽一张牌。 NL 虚无 。",
+        "DESCRIPTION": "*出格 不再降低 rhinemod:科研进度 。 NL 每当你 消耗 一张 *出格 ，抽一张牌。 虚无 。",
         "UPGRADE_DESCRIPTION": ""
     },
     "rhinemod:Lean": {
@@ -546,7 +546,7 @@
     },
     "rhinemod:IcefieldsCottongrass": {
         "NAME": "冰原棉草",
-        "DESCRIPTION": "获得 !B! 点格挡，抽一张牌，将这张牌的一张复制品随机放入你的手牌、弃牌堆、抽牌堆或者消耗堆。 NL 消耗 。",
+        "DESCRIPTION": "获得 !B! 点 格挡 ，抽一张牌。将自身的一张复制随机置入你的手牌、弃牌堆、抽牌堆或消耗堆。 消耗 。",
         "UPGRADE_DESCRIPTION": ""
     },
     "rhinemod:Sarracenia": {
@@ -576,8 +576,8 @@
     },
     "rhinemod:RadiationFlash": {
         "NAME": "辐射性闪光",
-        "DESCRIPTION": "给予所有敌人 !M! 层 虚弱 和 rhinemod:晕眩 ，并使其失去 3 点 力量 。 对已处于 rhinemod:晕眩 的敌人额外执行一次。 NL 消耗 。",
-        "UPGRADE_DESCRIPTION": "给予所有敌人 !M! 层 虚弱 和 rhinemod:晕眩 ，并使其失去 4 点 力量 。 对已处于 rhinemod:晕眩 的敌人额外执行一次。 NL 消耗 。"
+        "DESCRIPTION": "给予所有敌人 !M! 层 虚弱 和 rhinemod:晕眩 ，并使其失去 3 点 力量 。 对已处于 rhinemod:晕眩 的敌人额外执行一次。 消耗 。",
+        "UPGRADE_DESCRIPTION": "给予所有敌人 !M! 层 虚弱 和 rhinemod:晕眩 ，并使其失去 4 点 力量 。 对已处于 rhinemod:晕眩 的敌人额外执行一次。 消耗 。"
     },
     "rhinemod:TracingOrigins": {
         "NAME": "追溯本源",
