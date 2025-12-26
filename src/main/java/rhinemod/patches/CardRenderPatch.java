@@ -1,13 +1,17 @@
 package rhinemod.patches;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.screens.SingleCardViewPopup;
+import javassist.CtBehavior;
 import rhinemod.RhineMod;
 import rhinemod.cards.AbstractRhineCard;
+import rhinemod.characters.RhineLab;
 
 public class CardRenderPatch {
     @SpirePatch(clz = AbstractCard.class, method = "renderEnergy")
@@ -41,4 +45,41 @@ public class CardRenderPatch {
             }
         }
     }
+
+//    private static final float IMG_HEIGHT = 420.0F * Settings.scale;
+//    private static final float MY_DESC_OFFSET_Y = IMG_HEIGHT * 0.28F;
+//
+//    @SpirePatch(clz = AbstractCard.class, method = "renderDescription")
+//    public static class RenderDescriptionPatch {
+//        @SpireInsertPatch(locator = Locator.class, localvars = {"draw_y"})
+//        public static void Insert(AbstractCard _inst, SpriteBatch sb, @ByRef float[] draw_y) {
+//            if (!(AbstractDungeon.player instanceof RhineLab) || !RhineMod.useLoneTrail) return;
+//            draw_y[0] = _inst.current_y - IMG_HEIGHT * _inst.drawScale / 2.0F + MY_DESC_OFFSET_Y * _inst.drawScale;
+//        }
+//
+//        private static class Locator extends SpireInsertLocator {
+//            @Override
+//            public int[] Locate(CtBehavior ctBehavior) throws Exception {
+//                Matcher.MethodCallMatcher methodCallMatcher = new Matcher.MethodCallMatcher(BitmapFont.class, "getCapHeight");
+//                return LineFinder.findInOrder(ctBehavior, methodCallMatcher);
+//            }
+//        }
+//    }
+//
+//    @SpirePatch(clz = AbstractCard.class, method = "renderDescriptionCN")
+//    public static class RenderDescriptionCNPatch {
+//        @SpireInsertPatch(locator = Locator.class, localvars = {"draw_y"})
+//        public static void Insert(AbstractCard _inst, SpriteBatch sb, @ByRef float[] draw_y) {
+//            if (!(AbstractDungeon.player instanceof RhineLab) || !RhineMod.useLoneTrail) return;
+//            draw_y[0] = _inst.current_y - IMG_HEIGHT * _inst.drawScale / 2.0F + MY_DESC_OFFSET_Y * _inst.drawScale;
+//        }
+//
+//        private static class Locator extends SpireInsertLocator {
+//            @Override
+//            public int[] Locate(CtBehavior ctBehavior) throws Exception {
+//                Matcher.MethodCallMatcher methodCallMatcher = new Matcher.MethodCallMatcher(BitmapFont.class, "getCapHeight");
+//                return LineFinder.findInOrder(ctBehavior, methodCallMatcher);
+//            }
+//        }
+//    }
 }
