@@ -45,7 +45,7 @@ public class Dorothy extends AbstractRhineMonster {
             damage.add(new DamageInfo(this, 6));
             damage.add(new DamageInfo(this, 20));
         }
-        loadAnimation("resources/rhinemod/images/monsters/enemy_1257_lydrty/enemy_1257_lydrty33.atlas", "resources/rhinemod/images/monsters/enemy_1257_lydrty/enemy_1257_lydrty33.json", 2F);
+        loadAnimation("resources/rhinemod/images/monsters/enemy_1257_lydrty/enemy_1257_lydrty33.atlas", "resources/rhinemod/images/monsters/enemy_1257_lydrty/enemy_1257_lydrty33.json", 1.5F);
         state.setAnimation(0, "F_Idle", true);
         flipHorizontal = true;
     }

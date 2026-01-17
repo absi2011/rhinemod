@@ -3,8 +3,6 @@ package rhinemod.monsters;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -14,15 +12,13 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.SlowPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import rhinemod.RhineMod;
-import rhinemod.characters.RhineLab;
+import rhinemod.actions.WaitAndAwakeAction;
 import rhinemod.powers.DreamBreakPower;
 import rhinemod.powers.FeedingPower;
 import rhinemod.powers.NoStun;
-import rhinemod.powers.R11LoseHPPower;
-import rhinemod.vfx.R11MoveEffect;
 
 public class SleepingR31 extends AbstractRhineMonster {
-    public static final String ID = "rhinemod:R31";
+    public static final String ID = "rhinemod:SleepingR31";
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
     public static final String[] MOVES = monsterStrings.MOVES;
@@ -47,7 +43,7 @@ public class SleepingR31 extends AbstractRhineMonster {
         else {
             feedLeft = 2;
         }
-        loadAnimation("resources/rhinemod/images/monsters/enemy_1256_lyacpa/enemy_1256_lyacpa33.atlas", "resources/rhinemod/images/monsters/enemy_1256_lyacpa/enemy_1256_lyacpa33.json", 1.5F);
+        loadAnimation("resources/rhinemod/images/monsters/trap_075_bgarmn/trap_075_bgarmn33.atlas", "resources/rhinemod/images/monsters/trap_075_bgarmn/trap_075_bgarmn33.json", 1.5F);
         state.setAnimation(0, "Idle", true);
         flipHorizontal = true;
     }
@@ -60,8 +56,7 @@ public class SleepingR31 extends AbstractRhineMonster {
     }
 
     @Override
-    public void takeTurn()
-    {
+    public void takeTurn() {
         if (RhineMod.tagLevel >= 2) {
             for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
                 if (m instanceof Dorothy) {
@@ -112,7 +107,8 @@ public class SleepingR31 extends AbstractRhineMonster {
     public void heal(int healAmount) {
         super.heal(healAmount);
         if (currentHealth == maxHealth) {
-            Awaken();
+            state.setAnimation(0, "Start", false);
+            addToTop(new WaitAndAwakeAction(this));
         }
     }
 

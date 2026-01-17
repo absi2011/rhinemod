@@ -7,19 +7,13 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.ModHelper;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.IntangiblePower;
-import com.megacrit.cardcrawl.powers.SlowPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 import rhinemod.RhineMod;
 import rhinemod.characters.RhineLab;
-import rhinemod.powers.DreamBreakPower;
 import rhinemod.powers.FeedingPower;
-import rhinemod.powers.NoStun;
 import rhinemod.vfx.R31MoveEffect;
 
 public class Dor1 extends AbstractRhineMonster {
@@ -58,7 +52,7 @@ public class Dor1 extends AbstractRhineMonster {
             damage.add(new DamageInfo(this, 8));
             damage.add(new DamageInfo(this, 4));
         }
-        loadAnimation("resources/rhinemod/images/monsters/enemy_1256_lyacpa/enemy_1256_lyacpa33.atlas", "resources/rhinemod/images/monsters/enemy_1256_lyacpa/enemy_1256_lyacpa33.json", 1.5F);
+        loadAnimation("resources/rhinemod/images/monsters/enemy_1251_lysyta/enemy_1251_lysyta33.atlas", "resources/rhinemod/images/monsters/enemy_1251_lysyta/enemy_1251_lysyta33.json", 1.5F);
         state.setAnimation(0, "Idle", true);
         flipHorizontal = true;
     }
@@ -72,8 +66,7 @@ public class Dor1 extends AbstractRhineMonster {
     }
 
     @Override
-    public void takeTurn()
-    {
+    public void takeTurn() {
         turn ++;
         if (nextMove == 3) {
             AbstractPlayer p = AbstractDungeon.player;
@@ -104,7 +97,7 @@ public class Dor1 extends AbstractRhineMonster {
             }
             else {
                 for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-                    if ((m instanceof Dorothy) && (!m.isDeadOrEscaped())) {
+                    if (m instanceof Dorothy) {
                         target = m;
                         break;
                     }
@@ -134,15 +127,12 @@ public class Dor1 extends AbstractRhineMonster {
             }
             if ((possibleMoves == 1) || (AbstractDungeon.monsterRng.randomBoolean())) {
                 setMove((byte) 1, Intent.ATTACK, damage.get(0).base);
+                attackTarget = AttackTarget.PLAYER;
             }
             else {
                 setMove((byte) 2, Intent.ATTACK, damage.get(1).base);
+                attackTarget = AttackTarget.DOROTHY;
             }
         }
-    }
-
-    @Override
-    public void applyPowers() {
-        super.applyPowers();
     }
 }
