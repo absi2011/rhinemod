@@ -23,6 +23,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.combat.HbBlockBrokenEffect;
 import javassist.CtBehavior;
+import rhinemod.patches.MusicPatch;
 import rhinemod.powers.*;
 
 import java.lang.reflect.Field;
@@ -33,8 +34,6 @@ public class StarPod extends AbstractRhineMonster {
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
     public static final String[] MOVES = monsterStrings.MOVES;
-    public static final String STAR_POD_BGM_INTRO = "m_bat_cstlrs_intro.mp3";
-    public static final String STAR_POD_BGM_LOOP = "m_bat_cstlrs_loop.mp3";
     public static final Texture BG_IMG = new Texture("resources/rhinemod/images/monsters/starpod.png");
     public static final Texture DAMAGEOUT_IMG = new Texture("resources/rhinemod/images/ui/damageout.png");
     int currentTurn = 0;
@@ -82,7 +81,7 @@ public class StarPod extends AbstractRhineMonster {
         }
         CardCrawlGame.music.fadeOutTempBGM();
         AbstractDungeon.scene.fadeOutAmbiance();
-        CardCrawlGame.music.playTempBgmInstantly(STAR_POD_BGM_INTRO, false);
+        CardCrawlGame.music.playTempBgmInstantly(MusicPatch.STAR_POD_BGM_INTRO, false);
     }
 
 
@@ -288,33 +287,6 @@ public class StarPod extends AbstractRhineMonster {
         public int[] Locate(CtBehavior ctBehavior) throws Exception {
             Matcher.FieldAccessMatcher fieldAccessMatcher = new Matcher.FieldAccessMatcher(AbstractDungeon.class, "effectList");
             return LineFinder.findInOrder(ctBehavior, fieldAccessMatcher);
-        }
-    }
-
-    @SpirePatch(clz = TempMusic.class, method = "<ctor>", paramtypez = {String.class, boolean.class, boolean.class})
-    public static class UpdateTempBGMPatch {
-        @SpireInsertPatch(locator = Locator.class, localvars = "music")
-        public static void Insert(TempMusic _inst, Music music) {
-            if (_inst.key.equals(STAR_POD_BGM_INTRO)) {
-                music.setOnCompletionListener(music1 -> {
-                    Logger.getLogger(StarPod.class.getName()).info("StarPod BGM intro done!");
-                    if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
-                        for (AbstractMonster m : AbstractDungeon.getMonsters().monsters)
-                            if (m.id.equals(StarPod.ID)) {
-                                CardCrawlGame.music.playTempBgmInstantly(STAR_POD_BGM_LOOP, true);
-                                break;
-                            }
-                    }
-                });
-            }
-        }
-
-        private static class Locator extends SpireInsertLocator {
-            @Override
-            public int[] Locate(CtBehavior ctBehavior) throws Exception {
-                Matcher.MethodCallMatcher methodCallMatcher = new Matcher.MethodCallMatcher(Music.class, "play");
-                return LineFinder.findInOrder(ctBehavior, methodCallMatcher);
-            }
         }
     }
 

@@ -17,6 +17,7 @@ import com.megacrit.cardcrawl.vfx.cardManip.ExhaustCardEffect;
 import rhinemod.RhineMod;
 import rhinemod.actions.AwakenAction;
 import rhinemod.actions.SetTrapAction;
+import rhinemod.patches.MusicPatch;
 import rhinemod.powers.*;
 
 import java.util.ArrayList;
@@ -57,7 +58,9 @@ public class Dorothy extends AbstractRhineMonster {
         addToBot(new ApplyPowerAction(this, this, new BlockDamage(this, 1)));
         addToBot(new ApplyPowerAction(this, this, new DreamBreakPower(this, Math.max(AbstractDungeon.player.maxHealth / 2, 50))));
         addToBot(new ApplyPowerAction(this, this, new TrapPower(this)));
-        //TODO: 如果在三层，放尖灭 BGM（还是说给修 maker 做这个？）
+        if (AbstractDungeon.id.equals("TheBeyond")) {
+            CardCrawlGame.music.playTempBgmInstantly(MusicPatch.DOROTHY_BGM_INTRO, false);
+        }
     }
 
     @Override

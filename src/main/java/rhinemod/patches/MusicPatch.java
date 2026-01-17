@@ -1,17 +1,28 @@
 package rhinemod.patches;
 
-import com.evacipated.cardcrawl.modthespire.lib.SpireInsertPatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
+import com.badlogic.gdx.audio.Music;
+import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.audio.MainMusic;
 import com.megacrit.cardcrawl.audio.Sfx;
 import com.megacrit.cardcrawl.audio.SoundMaster;
+import com.megacrit.cardcrawl.audio.TempMusic;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import javassist.CtBehavior;
+import rhinemod.monsters.Dorothy;
+import rhinemod.monsters.StarPod;
 import rhinemod.util.TheSky;
 
 import java.util.HashMap;
+import java.util.logging.Logger;
 
 public class MusicPatch {
+    public static final String STAR_POD_BGM_INTRO = "m_bat_cstlrs_intro.mp3";
+    public static final String STAR_POD_BGM_LOOP = "m_bat_cstlrs_loop.mp3";
+    public static final String DOROTHY_BGM_INTRO = "m_bat_peo_intro.mp3";
+    public static final String DOROTHY_BGM_LOOP = "m_bat_peo_loop.mp3";
     @SpirePatch(clz = SoundMaster.class, method = "<ctor>")
     public static class SoundTrackPatch {
         @SpireInsertPatch(rloc = 3, localvars = {"map"})
@@ -38,6 +49,44 @@ public class MusicPatch {
                 return SpireReturn.Return(MainMusic.newMusic("audio/music/m_sys_act25side_combine.mp3"));
             }
             return SpireReturn.Continue();
+        }
+    }
+
+    @SpirePatch(clz = TempMusic.class, method = "<ctor>", paramtypez = {String.class, boolean.class, boolean.class})
+    public static class UpdateTempBGMPatch {
+        @SpireInsertPatch(locator = Locator.class, localvars = "music")
+        public static void Insert(TempMusic _inst, Music music) {
+            if (_inst.key.equals(STAR_POD_BGM_INTRO)) {
+                music.setOnCompletionListener(music1 -> {
+                    Logger.getLogger(MusicPatch.class.getName()).info("StarPod BGM intro done!");
+                    if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
+                        for (AbstractMonster m : AbstractDungeon.getMonsters().monsters)
+                            if (m.id.equals(StarPod.ID)) {
+                                CardCrawlGame.music.playTempBgmInstantly(STAR_POD_BGM_LOOP, true);
+                                break;
+                            }
+                    }
+                });
+            } else if (_inst.key.equals(DOROTHY_BGM_INTRO)) {
+                music.setOnCompletionListener(music1 -> {
+                    Logger.getLogger(MusicPatch.class.getName()).info("Dorothy BGM intro done!");
+                    if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
+                        for (AbstractMonster m : AbstractDungeon.getMonsters().monsters)
+                            if (m.id.equals(Dorothy.ID)) {
+                                CardCrawlGame.music.playTempBgmInstantly(DOROTHY_BGM_LOOP, true);
+                                break;
+                            }
+                    }
+                });
+            }
+        }
+
+        private static class Locator extends SpireInsertLocator {
+            @Override
+            public int[] Locate(CtBehavior ctBehavior) throws Exception {
+                Matcher.MethodCallMatcher methodCallMatcher = new Matcher.MethodCallMatcher(Music.class, "play");
+                return LineFinder.findInOrder(ctBehavior, methodCallMatcher);
+            }
         }
     }
 }
