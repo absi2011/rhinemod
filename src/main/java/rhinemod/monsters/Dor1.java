@@ -104,7 +104,7 @@ public class Dor1 extends AbstractRhineMonster {
             }
             else {
                 for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-                    if (m instanceof Dorothy) {
+                    if ((m instanceof Dorothy) && (!m.isDeadOrEscaped())) {
                         target = m;
                         break;
                     }
@@ -122,7 +122,6 @@ public class Dor1 extends AbstractRhineMonster {
 
     @Override
     protected void getMove(int i) {
-
         if (turn == 3) {
             setMove((byte) 50, Intent.UNKNOWN);
         }
@@ -140,5 +139,10 @@ public class Dor1 extends AbstractRhineMonster {
                 setMove((byte) 2, Intent.ATTACK, damage.get(1).base);
             }
         }
+    }
+
+    @Override
+    public void applyPowers() {
+        super.applyPowers();
     }
 }

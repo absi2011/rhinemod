@@ -81,7 +81,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
 
     public static float newMonsterMulti = 1.0F;
     public static int tagLevel = 0;
-    public boolean isDemo = true;
+    public boolean isDemo = false;
 
     public RhineMod() {
         BaseMod.subscribe(this);
@@ -180,18 +180,19 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
             }));
         }
         BaseMod.addEliteEncounter(TheBeyond.ID, new MonsterInfo("Disaster of Machine", 2.0F * newMonsterMulti));
+        addMonster("Repairing R31", names[16], () -> new MonsterGroup(new AbstractMonster[] {new SleepingR31(-800.0F, 0.0F), new RhineEngineeringMember(-400.0F, 0.0F), new Dorothy(0.0F, 0.0F)}));
+        // BaseMod.addBoss(TheBeyond.ID, "Repairing R31", "resources/rhinemod/images/ui/repair_maker.png", "resources/rhinemod/images/ui/repair_maker.png");
 
         // Add a name.
         addMonster("Awaken", names[12], () -> new MonsterGroup(new Awaken_Monster(180.0F, 0.0F)));
         addMonster("Turnpike", names[13], () -> new MonsterGroup(new Turnpike(0.0F, 0.0F)));
         addMonster("Traffic Police", names[14], () -> new MonsterGroup(new TrafficPolice(0.0F, 0.0F)));
         addMonster("The Sky", names[15], () -> new MonsterGroup(new AbstractMonster[] {new StarPod(0.0F, 0.0F)}));
-        addMonster("Dorothy", names[16], () -> new MonsterGroup(new Dorothy(0.0F, 0.0F)));
         // Just Testing
         BaseMod.addEliteEncounter(TheEnding.ID, new MonsterInfo("Awaken", 3.0F * newMonsterMulti));
         BaseMod.addEliteEncounter(TheSky.ID, new MonsterInfo("Turnpike", 3.0F * newMonsterMulti));
         BaseMod.addStrongMonsterEncounter(TheSky.ID, new MonsterInfo("Traffic Police", 3.0F * newMonsterMulti));
-        // BaseMod.addBoss(TheSky.ID, "The Sky", "icon", "icon");
+        BaseMod.addBoss(TheSky.ID, "The Sky", "resources/rhinemod/images/ui/starpod.png", "resources/rhinemod/images/ui/starpod_outline.png");
 
     }
 

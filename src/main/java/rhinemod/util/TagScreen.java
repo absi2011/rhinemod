@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.screens.mainMenu.MainMenuScreen;
 import com.megacrit.cardcrawl.screens.mainMenu.MenuCancelButton;
 import com.megacrit.cardcrawl.screens.mainMenu.ScrollBar;
 import com.megacrit.cardcrawl.screens.mainMenu.ScrollBarListener;
+import org.apache.logging.log4j.LogManager;
 import rhinemod.patches.TagLevelPatch;
 
 import java.util.ArrayList;
@@ -52,7 +53,8 @@ public class TagScreen implements ScrollBarListener {
         if (TagLevelPatch.curTagLevel == 0) {
             return;
         }
-        UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("rhinemod:Level" + TagLevelPatch.curTagLevel + "Tags");       tagList.addAll(Arrays.asList(uiStrings.TEXT));
+        UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("rhinemod:Level" + TagLevelPatch.curTagLevel + "Tags");
+        tagList.addAll(Arrays.asList(uiStrings.TEXT));
     }
 
     @SpireEnum public static MainMenuScreen.CurScreen TAG_LIST;

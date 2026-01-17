@@ -1,10 +1,7 @@
 package rhinemod.monsters;
 
 import com.badlogic.gdx.math.MathUtils;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.HealAction;
-import com.megacrit.cardcrawl.actions.common.SpawnMonsterAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -62,20 +59,21 @@ public class RhineEngineeringMember extends AbstractRhineMonster {
         if (nextMove == 1) {
             addToBot(new DamageAction(AbstractDungeon.player, damage.get(0)));
             for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
-                if (m instanceof Dorothy) {
+                if ((m instanceof Dorothy) && (!m.isDeadOrEscaped())) {
                     addToBot(new DamageAction(m, damage.get(0)));
                 }
             }
         }
         else if (nextMove == 2) {
             for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
-                if ((m instanceof SleepingR31) || (m instanceof R31HeavyPowerArmor)) {
+                if (((m instanceof SleepingR31) || (m instanceof R31HeavyPowerArmor)) && (!m.isDeadOrEscaped())) {
                     addToBot(new HealAction(m, this, MathUtils.floor(m.maxHealth * repairPercent)));
                 }
             }
         }
         else {
             summon = new Dor1(0.0F, 0.0F);
+            summon.usePreBattleAction();
             addToBot(new SpawnMonsterAction(summon, true));
         }
         getMove(0);
@@ -88,12 +86,14 @@ public class RhineEngineeringMember extends AbstractRhineMonster {
         }
         else
         {
+            boolean remainR31 = false;
             for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
-                if ((m instanceof SleepingR31) || (m instanceof R31HeavyPowerArmor)) {
+                if (!m.isDeadOrEscaped() && ((m instanceof SleepingR31) || (m instanceof R31HeavyPowerArmor))) {
+                    remainR31 = true;
                     break;
                 }
             }
-            if (lastMove == 0) {
+            if ((lastMove == 0) || !remainR31) {
                 lastMove = 1;
                 setMove((byte)1, Intent.ATTACK, damage.get(0).base);
             }
@@ -107,6 +107,8 @@ public class RhineEngineeringMember extends AbstractRhineMonster {
     @Override
     public void die() {
         super.die();
-        summon.die();
+        if ((summon != null) && (!summon.isDeadOrEscaped())) {
+            addToBot(new SuicideAction(summon, false));
+        }
     }
 }
