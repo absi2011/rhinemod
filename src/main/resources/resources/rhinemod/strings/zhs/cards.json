@@ -464,8 +464,8 @@
     },
     "rhinemod:Disorder": {
         "NAME": "“失序”",
-        "DESCRIPTION": "执行 !rhinemod:M2! 次：造成 !D! 点伤害，获得 !B! 点 格挡 ，抽 !M! 张牌。 NL 每当你抽到此牌或打出一张牌，打乱所有数字。 虚无 。",
-        "UPGRADE_DESCRIPTION": "执行 !rhinemod:M2! 次：造成 !D! 点伤害，获得 !B! 点 格挡 ，抽 !M! 张牌。 NL 每当你抽到此牌或打出一张牌，打乱所有数字。"
+        "DESCRIPTION": "执行 !rhinemod:M2! 次：造成 !D! 点伤害，获得 !B! 点 格挡 ，抽 !M! 张牌。每当你抽到此牌或打出一张牌，打乱所有数字。 虚无 。",
+        "UPGRADE_DESCRIPTION": "执行 !rhinemod:M2! 次：造成 !D! 点伤害，获得 !B! 点 格挡 ，抽 !M! 张牌。每当你抽到此牌或打出一张牌，打乱所有数字。"
     },
     "rhinemod:Omen": {
         "NAME": "山雨欲来",

@@ -48,6 +48,7 @@ import rhinemod.powers.InvisibleGlobalAttributes;
 import rhinemod.relics.*;
 import rhinemod.util.SettingConfig;
 import rhinemod.util.TheSky;
+import rhinemod.vfx.SelectBannerEffect;
 import rhinemod.vfx.StarlightIntersectionEffect;
 
 import java.lang.reflect.Type;
@@ -64,13 +65,13 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
     private static final String attackCard = "resources/rhinemod/images/512/bg_attack_rhine.png";
     private static final String skillCard = "resources/rhinemod/images/512/bg_skill_rhine.png";
     private static final String powerCard = "resources/rhinemod/images/512/bg_power_rhine.png";
-    private static final String loneTrailCard = "resources/rhinemod/images/512/bg_lone_trail.png";
+    private static final String loneTrailCard = "resources/rhinemod/images/512/bg_lone_trail_2.png";
     private static final String energyOrb = "resources/rhinemod/images/512/card_rhine_orb.png";
     private static final String energyOrb2 = "resources/rhinemod/images/512/card_lone_trail_orb.png";
     private static final String attackCardPortrait = "resources/rhinemod/images/1024/bg_attack_rhine.png";
     private static final String skillCardPortrait = "resources/rhinemod/images/1024/bg_skill_rhine.png";
     private static final String powerCardPortrait = "resources/rhinemod/images/1024/bg_power_rhine.png";
-    private static final String loneTrailCardPortrait = "resources/rhinemod/images/1024/bg_lone_trail.png";
+    private static final String loneTrailCardPortrait = "resources/rhinemod/images/1024/bg_lone_trail_2.png";
     private static final String energyOrbPortrait = "resources/rhinemod/images/1024/card_rhine_orb.png";
     private static final String energyOrb2Portrait = "resources/rhinemod/images/1024/card_lone_trail_orb.png";
     private static final String charButton = "resources/rhinemod/images/charSelect/button.png";
@@ -82,6 +83,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
     public static final ArrayList<TextureAtlas.AtlasRegion> specialImg = new ArrayList<>();
     public static final ArrayList<Texture> specialImgLarge = new ArrayList<>();
     public static TextureAtlas.AtlasRegion WATER_REGION;
+    public static SelectBannerEffect selectBannerEffect;
 
     public static float newMonsterMulti = 1.0F;
     public boolean isDemo = true;
@@ -273,6 +275,8 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
             StarlightIntersectionEffect.textures.add(new TextureAtlas.AtlasRegion(new Texture("resources/rhinemod/images/vfx/StarlightIntersection/" + i + ".png"),
                     0, 0,StarlightIntersectionEffect.width, StarlightIntersectionEffect.height));
         }
+
+        selectBannerEffect = new SelectBannerEffect(Settings.WIDTH / 2.0F - 300.0F, Settings.HEIGHT - 282.0F, 600.0F, 50.0F);
     }
 
     @Override
