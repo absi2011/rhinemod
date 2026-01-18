@@ -39,7 +39,7 @@ public class ArclightVanguard extends AbstractRhineMonster {
             damage.add(new DamageInfo(this, 10));
             damage.add(new DamageInfo(this, 2));
         }
-        loadAnimation("resources/rhinemod/images/monsters/enemy_1328_cbjedi/enemy_1328_cbjedi33.atlas", "resources/rhinemod/images/monsters/enemy_1328_cbjedi/enemy_1328_cbjedi33.json", 2F);
+        loadAnimation("resources/rhinemod/images/monsters/enemy_1328_cbjedi/enemy_1328_cbjedi33.atlas", "resources/rhinemod/images/monsters/enemy_1328_cbjedi/enemy_1328_cbjedi33.json", 1.7F);
         state.setAnimation(0, "Idle", true);
         flipHorizontal = true;
     }
