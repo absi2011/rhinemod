@@ -441,7 +441,7 @@
   "rhinemod:ArclightVanguardTag2": {
     "NAME": "弧光锋卫：稳固",
     "DESCRIPTIONS": [
-      "攻击时，不会自流血。"
+      "攻击时，不再损失生命值。"
     ]
   },
   "rhinemod:ArclightVanguardTag3": {
@@ -471,7 +471,7 @@
   "rhinemod:DefendBackPower": {
     "NAME": "军用猎狗：尖刺改装",
     "DESCRIPTIONS": [
-      "回合开始时，这名敌人 #y格挡 将转化为对玩家的伤害。"
+      "回合开始时，这名敌人的 #y格挡 将转化为对玩家的伤害。"
     ]
   },
   "rhinemod:TrimountsCityGuardTag1": {
@@ -507,7 +507,7 @@
   "rhinemod:CrossroadsThorns": {
     "NAME": "十字路口：交通管制",
     "DESCRIPTIONS": [
-      "受到伤害时，对伤害来源造成等同于自身力量的伤害（ #b", " 点）。"
+      "受到伤害时，对伤害来源造成等同于自身 #y力量 的伤害（ #b", " 点）。"
     ]
   },
   "rhinemod:CrossroadsTag3": {
@@ -519,13 +519,13 @@
   "rhinemod:R31Tag1": {
     "NAME": "R-31：超载核心",
     "DESCRIPTIONS": [
-      "技能额外塞 #b5 张 #y晕眩 。"
+      "技能额外置入 #b5 张 #y晕眩 。"
     ]
   },
   "rhinemod:R31Tag3": {
     "NAME": "R-31：增压动力模块",
     "DESCRIPTIONS": [
-      "移速 #y+100% 。"
+      "移动速度 #y+100% 。"
     ]
   },
   "rhinemod:R11Tag1": {
@@ -549,11 +549,11 @@
   "rhinemod:PerpetratorTag1": {
     "NAME": "肇事者：横冲直撞",
     "DESCRIPTIONS": [
-      "如果本回合未受到伤害，攻击段数额外 #b+1 。"
+      "如果一回合内未受到伤害，当次攻击段数额外 #b+1 。"
     ]
   },
   "rhinemod:RushPower": {
-    "NAME": "肇事者：阻力优化",
+    "NAME": "肇事者：阻力优化I",
     "DESCRIPTIONS": [
       "每次成功造成伤害后，获得 #g1 点 #y力量 ；未成功造成伤害后，减少 #r1 点 #y力量 （但不低于 #b0 ）。",
       "每次成功造成伤害后，获得 #g1 点 #y力量 。",
@@ -615,21 +615,21 @@
     ]
   },
   "rhinemod:SleepingR31Tag1": {
-    "NAME": "SleepingR31：休眠保护",
+    "NAME": "休眠R-31：休眠保护",
     "DESCRIPTIONS": [
       "初始生命 #b+100 ，苏醒时获得 #b3 点 #r力量 。"
     ]
   },
   "rhinemod:SleepingR31Tag2": {
-    "NAME": "SleepingR31：Tag2",
+    "NAME": "休眠R-31：Tag2",
     "DESCRIPTIONS": [
-      "处于休眠状态时，每回合对 #g多萝西 造成 #b10 点伤害并为其增加 #b5 层 #y梦碎 。"
+      "处于休眠状态时，每回合对 #y多萝西 造成 #b10 点伤害并为其增加 #b5 层 #y梦碎 。"
     ]
   },
   "rhinemod:SleepingR31Tag3": {
-    "NAME": "SleepingR31：Tag3",
+    "NAME": "休眠R-31：Tag3",
     "DESCRIPTIONS": [
-      "仅需要一个 #rDor-1实验体 即可苏醒。"
+      "仅需要一个 #yDor-1实验体 即可苏醒。"
     ]
   }
 }
