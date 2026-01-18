@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -20,14 +19,18 @@ import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.map.DungeonMap;
+import com.megacrit.cardcrawl.map.LegendItem;
 import com.megacrit.cardcrawl.map.MapEdge;
 import com.megacrit.cardcrawl.map.MapRoomNode;
+import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.screens.*;
 import com.megacrit.cardcrawl.screens.mainMenu.MenuCancelButton;
 import com.megacrit.cardcrawl.screens.options.*;
 import com.megacrit.cardcrawl.ui.buttons.*;
 import com.megacrit.cardcrawl.ui.panels.*;
+import com.megacrit.cardcrawl.vfx.FlameAnimationEffect;
+import com.megacrit.cardcrawl.vfx.ObtainKeyEffect;
 import com.megacrit.cardcrawl.vfx.TintEffect;
 import javassist.CannotCompileException;
 import javassist.CtBehavior;
@@ -722,11 +725,12 @@ public class RhineUIPatch {
     @SpirePatch(clz = DungeonMap.class, method = "<ctor>")
     public static class DungeonMapPatch {
         @SpirePostfixPatch
-        public static void Postfix(DungeonMap _inst, @ByRef Texture[] ___top, @ByRef Texture[] ___mid, @ByRef Texture[] ___bot) {
+        public static void Postfix(DungeonMap _inst, @ByRef Texture[] ___top, @ByRef Texture[] ___mid, @ByRef Texture[] ___bot, @ByRef Texture[] ___blend) {
             if (RhineMod.useLoneTrail) {
                 ___top[0] = RhineImageMaster.mapTop;
                 ___mid[0] = RhineImageMaster.mapMid;
                 ___bot[0] = RhineImageMaster.mapBot;
+                ___blend[0] = RhineImageMaster.mapBlender;
             }
         }
     }
@@ -745,13 +749,14 @@ public class RhineUIPatch {
         @SpirePostfixPatch
         public static void Postfix(MapRoomNode _inst, int x, int y) {
             if (RhineMod.useLoneTrail) {
-                MapRoomNode.AVAILABLE_COLOR.r = 1.0F;
-                MapRoomNode.AVAILABLE_COLOR.g = 1.0F;
-                MapRoomNode.AVAILABLE_COLOR.b = 1.0F;
+                MapRoomNode.AVAILABLE_COLOR.r = 0.9F;
+                MapRoomNode.AVAILABLE_COLOR.g = 0.5F;
+                MapRoomNode.AVAILABLE_COLOR.b = 0.27F;
                 Color notTakenColor = ReflectionHacks.getPrivateStatic(MapRoomNode.class, "NOT_TAKEN_COLOR");
-                notTakenColor.r = 0.8F;
-                notTakenColor.g = 0.8F;
-                notTakenColor.b = 0.8F;
+                notTakenColor.r = 0.9F;
+                notTakenColor.g = 0.5F;
+                notTakenColor.b = 0.27F;
+                notTakenColor.a = 0.5F;
             }
         }
     }
@@ -811,6 +816,55 @@ public class RhineUIPatch {
             sb.draw(RhineImageMaster.mapDot, srcX - r, srcY + DungeonMapScreen.offsetY + OFFSET_Y, r, 0, width, width, 1, 1, angle - 270, 0, 0, 16, 16, false, false);
             sb.draw(RhineImageMaster.mapDot, dstX - r, dstY + DungeonMapScreen.offsetY + OFFSET_Y, r, 0, width, width, 1, 1, angle - 90, 0, 0, 16, 16, false, false);
             return SpireReturn.Return();
+        }
+    }
+
+    @SpirePatch(clz = RewardItem.class, method = SpirePatch.CONSTRUCTOR, paramtypez = {RewardItem.class, RewardItem.RewardType.class})
+    public static class RewardItemPatch {
+        public static int count = 0;
+        public static ExprEditor Instrument() {
+            return new ExprEditor() {
+                public void edit(MethodCall m) throws CannotCompileException {
+                    if (m.getClassName().equals(ImageMaster.class.getName()) && m.getMethodName().equals("loadImage")) {
+                        count++;
+                        if (count <= 2) {
+                            m.replace("if (" + RhineMod.class.getName() + ".useLoneTrail) { $1 = " + RhineImageMaster.class.getName() + ".blueKey; $_ = $proceed($$); } else { $proceed($$); }");
+                        } else {
+                            m.replace("if (" + RhineMod.class.getName() + ".useLoneTrail) { $1 = " + RhineImageMaster.class.getName() + ".greenKey; $_ = $proceed($$); } else { $proceed($$); }");
+                        }
+                    }
+                }
+            };
+        }
+    }
+
+    @SpirePatch(clz = ObtainKeyEffect.class, method = "update")
+    public static class ObtainKeyEffectPatch {
+        @SpirePrefixPatch
+        public static void Prefix(ObtainKeyEffect _inst) {
+            if (RhineMod.useLoneTrail) _inst.duration = 0.0F;
+        }
+    }
+
+    @SpirePatch(clz = FlameAnimationEffect.class, method = SpirePatch.CONSTRUCTOR)
+    public static class FlameAnimationEffectPatch {
+        @SpirePostfixPatch
+        public static void Postfix(FlameAnimationEffect _inst, Hitbox hb, @ByRef Color[] ___color) {
+            ___color[0] = new Color(0.9F, 0.5F, 0.27F, 1.0F);
+        }
+    }
+
+    @SpirePatch(clz = LegendItem.class, method = "render")
+    public static class LegendItemRenderPatch {
+        @SpirePrefixPatch
+        public static void Prefix(LegendItem _inst, SpriteBatch sb, Color c) {
+            if (RhineMod.useLoneTrail) {
+                if (!_inst.hb.hovered) {
+                    c.r = 0.09F;
+                    c.g = 0.13F;
+                    c.b = 0.17F;
+                }
+            }
         }
     }
 }
