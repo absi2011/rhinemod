@@ -281,7 +281,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
                     0, 0,StarlightIntersectionEffect.width, StarlightIntersectionEffect.height));
         }
 
-        selectBannerEffect = new SelectBannerEffect(Settings.WIDTH / 2.0F - 300.0F, Settings.HEIGHT - 282.0F, 600.0F, 50.0F);
+        selectBannerEffect = new SelectBannerEffect(Settings.WIDTH / 2.0F - 300.0F * Settings.scale, Settings.HEIGHT / 2.0F + 379.0F, 600.0F * Settings.scale, 50.0F * Settings.scale);
     }
 
     @Override

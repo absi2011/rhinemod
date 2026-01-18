@@ -50,11 +50,11 @@ public class SettingConfig {
         private final DropdownMenu menu;
         private final ModLabel textLabel;
 
-        public ModDropdownMenu(BiConsumer<Integer, String> listener, ArrayList<String> options, BitmapFont font, Color textColor, String labelText) {
+        public ModDropdownMenu(BiConsumer<Integer, String> listener, ArrayList<String> options, BitmapFont font, Color textColor, String labelText, int id) {
             onChangeSelectionTo = listener;
             menu = new DropdownMenu(this, options, font, textColor);
             xPos = 380F;
-            yPos = 715F;
+            yPos = 715F - id * 100.0f;
             textLabel = new ModLabel(labelText, xPos, (yPos + 20.0F), textColor, font, SettingConfig.panel, modLabel -> {});
         }
 
@@ -130,7 +130,7 @@ public class SettingConfig {
                         e.printStackTrace();
                     }
                 },
-                new ArrayList<>(Arrays.asList(uiStrings.EXTRA_TEXT).subList(0, 4)), FontHelper.charDescFont, Settings.CREAM_COLOR, uiStrings.TEXT[0]);
+                new ArrayList<>(Arrays.asList(uiStrings.EXTRA_TEXT).subList(0, 4)), FontHelper.charDescFont, Settings.CREAM_COLOR, uiStrings.TEXT[0], 0);
         modMenu.menu.setSelectedIndex(config.getInt(NEW_MONSTER_MULTI));
         panel.addUIElement(modMenu);
 
@@ -144,7 +144,7 @@ public class SettingConfig {
                         e.printStackTrace();
                     }
                 },
-                new ArrayList<>(Arrays.asList(uiStrings.EXTRA_TEXT).subList(4, 6)), FontHelper.charDescFont, Settings.CREAM_COLOR, uiStrings.TEXT[1]);
+                new ArrayList<>(Arrays.asList(uiStrings.EXTRA_TEXT).subList(4, 6)), FontHelper.charDescFont, Settings.CREAM_COLOR, uiStrings.TEXT[1], 1);
         modMenu2.menu.setSelectedIndex(config.getInt(NEW_UI));
         panel.addUIElement(modMenu2);
 

@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.GameCursor;
 import com.megacrit.cardcrawl.core.Settings;
@@ -17,7 +18,9 @@ import com.megacrit.cardcrawl.events.GenericEventDialog;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
+import com.megacrit.cardcrawl.helpers.MathHelper;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
+import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.map.DungeonMap;
 import com.megacrit.cardcrawl.map.LegendItem;
 import com.megacrit.cardcrawl.map.MapEdge;
@@ -40,8 +43,11 @@ import rhinemod.RhineMod;
 import rhinemod.cards.AbstractRhineCard;
 import rhinemod.util.RhineImageMaster;
 import rhinemod.vfx.PileFilesEffect;
+import rhinemod.vfx.TargetingUiEffect;
 
 public class RhineUIPatch {
+    public static Color ORANGE_COLOR = new Color(0.9F, 0.5F, 0.1F, 1.0f);
+
     @SpirePatch(clz = CardCrawlGame.class, method = "create")
     public static class InitializePatch {
         @SpireInsertPatch(loc = 10)
@@ -126,8 +132,8 @@ public class RhineUIPatch {
 
     @SpirePatch(clz = GameCursor.class, method = "render")
     public static class CursorRenderPatch {
-        public static final float OFFSET_X = 24.0F * Settings.scale;
-        public static final float OFFSET_Y = -24.0F * Settings.scale;
+        public static final float OFFSET_X = 24.0f * Settings.scale;
+        public static final float OFFSET_Y = -24.0f * Settings.scale;
         @SpireInsertPatch(rloc = 5)
         public static SpireReturn<?> Insert(GameCursor _inst, SpriteBatch sb) {
             float rotation = ReflectionHacks.getPrivate(_inst, GameCursor.class, "rotation");
@@ -136,10 +142,10 @@ public class RhineUIPatch {
                 sb.setColor(Color.WHITE);
                 switch (type) {
                     case NORMAL:
-                        sb.draw(RhineImageMaster.cursor1, InputHelper.mX - 32.0F + OFFSET_X, InputHelper.mY - 32.0F + OFFSET_Y, 32.0F, 32.0F, 64.0F, 64.0F, Settings.scale, Settings.scale, rotation, 0, 0, 64, 64, false, false);
+                        sb.draw(RhineImageMaster.cursor1, InputHelper.mX - 32.0f + OFFSET_X, InputHelper.mY - 32.0f + OFFSET_Y, 32.0f, 32.0f, 64.0f, 64.0f, Settings.scale, Settings.scale, rotation, 0, 0, 64, 64, false, false);
                         break;
                     case INSPECT:
-                        sb.draw(RhineImageMaster.cursor2, InputHelper.mX - 32.0F + OFFSET_X, InputHelper.mY - 32.0F + OFFSET_Y, 32.0F, 32.0F, 64.0F, 64.0F, Settings.scale, Settings.scale, rotation, 0, 0, 64, 64, false, false);
+                        sb.draw(RhineImageMaster.cursor2, InputHelper.mX - 32.0f + OFFSET_X, InputHelper.mY - 32.0f + OFFSET_Y, 32.0f, 32.0f, 64.0f, 64.0f, Settings.scale, Settings.scale, rotation, 0, 0, 64, 64, false, false);
                         break;
                 }
                 _inst.changeType(GameCursor.CursorType.NORMAL);
@@ -155,22 +161,22 @@ public class RhineUIPatch {
         public static SpireReturn<?> Prefix(TopPanel _inst, SpriteBatch sb, String ___name, float ___nameX, String ___title, float ___titleX, float ___titleY, float ___ICON_Y, float ___NAME_Y) {
             if (RhineMod.useLoneTrail) {
                 if (Settings.isEndless) {
-                    sb.draw(RhineImageMaster.topPanelEndless, -32.0F + 46.0F * Settings.scale, ___ICON_Y - 32.0F + 29.0F * Settings.scale, 32.0F, 32.0F, 64.0F, 64.0F, Settings.scale, Settings.scale, 0.0F, 0, 0, 64, 64, false, false);
+                    sb.draw(RhineImageMaster.topPanelEndless, -32.0f + 46.0f * Settings.scale, ___ICON_Y - 32.0f + 29.0f * Settings.scale, 32.0f, 32.0f, 64.0f, 64.0f, Settings.scale, Settings.scale, 0.0f, 0, 0, 64, 64, false, false);
                 } else if (Settings.isFinalActAvailable) {
                     if (Settings.hasSapphireKey) {
-                        sb.draw(RhineImageMaster.topPanelKeyBlue, -32.0F + 46.0F * Settings.scale, ___ICON_Y - 32.0F + 29.0F * Settings.scale, 32.0F, 32.0F, 64.0F, 64.0F, Settings.scale, Settings.scale, 0.0F, 0, 0, 64, 64, false, false);
+                        sb.draw(RhineImageMaster.topPanelKeyBlue, -32.0f + 46.0f * Settings.scale, ___ICON_Y - 32.0f + 29.0f * Settings.scale, 32.0f, 32.0f, 64.0f, 64.0f, Settings.scale, Settings.scale, 0.0f, 0, 0, 64, 64, false, false);
                     }
                     if (Settings.hasRubyKey) {
-                        sb.draw(RhineImageMaster.topPanelKeyRed, -32.0F + 46.0F * Settings.scale, ___ICON_Y - 32.0F + 29.0F * Settings.scale, 32.0F, 32.0F, 64.0F, 64.0F, Settings.scale, Settings.scale, 0.0F, 0, 0, 64, 64, false, false);
+                        sb.draw(RhineImageMaster.topPanelKeyRed, -32.0f + 46.0f * Settings.scale, ___ICON_Y - 32.0f + 29.0f * Settings.scale, 32.0f, 32.0f, 64.0f, 64.0f, Settings.scale, Settings.scale, 0.0f, 0, 0, 64, 64, false, false);
                     }
                     if (Settings.hasEmeraldKey) {
-                        sb.draw(RhineImageMaster.topPanelKeyGreen, -32.0F + 46.0F * Settings.scale, ___ICON_Y - 32.0F + 29.0F * Settings.scale, 32.0F, 32.0F, 64.0F, 64.0F, Settings.scale, Settings.scale, 0.0F, 0, 0, 64, 64, false, false);
+                        sb.draw(RhineImageMaster.topPanelKeyGreen, -32.0f + 46.0f * Settings.scale, ___ICON_Y - 32.0f + 29.0f * Settings.scale, 32.0f, 32.0f, 64.0f, 64.0f, Settings.scale, Settings.scale, 0.0f, 0, 0, 64, 64, false, false);
                     }
                 }
 
                 FontHelper.renderFontLeftTopAligned(sb, FontHelper.panelNameFont, ___name, ___nameX, ___NAME_Y, Color.WHITE);
                 if (Settings.isMobile) {
-                    FontHelper.renderFontLeftTopAligned(sb, FontHelper.tipBodyFont, ___title, ___nameX, ___titleY - 30.0F * Settings.scale, Color.LIGHT_GRAY);
+                    FontHelper.renderFontLeftTopAligned(sb, FontHelper.tipBodyFont, ___title, ___nameX, ___titleY - 30.0f * Settings.scale, Color.LIGHT_GRAY);
                 } else {
                     FontHelper.renderFontLeftTopAligned(sb, FontHelper.tipBodyFont, ___title, ___titleX, ___titleY, Color.LIGHT_GRAY);
                 }
@@ -227,7 +233,7 @@ public class RhineUIPatch {
             return new ExprEditor() {
                 public void edit(MethodCall m) throws CannotCompileException {
                     if (m.getClassName().equals(FontHelper.class.getName()) && m.getMethodName().equals("renderFontCentered")) {
-                        m.replace("if (" + RhineMod.class.getName() + ".useLoneTrail) { $4 = $4 + 20.0F * " + Settings.class.getName() + ".scale; $_ = $proceed($$); } else { $proceed($$); }");
+                        m.replace("if (" + RhineMod.class.getName() + ".useLoneTrail) { $4 = $4 + 20.0f * " + Settings.class.getName() + ".scale; $_ = $proceed($$); } else { $proceed($$); }");
                     }
                 }
             };
@@ -286,7 +292,7 @@ public class RhineUIPatch {
                 }
                 ReflectionHacks.RMethod method = ReflectionHacks.privateMethod(SingleCardViewPopup.class, "renderHelper", SpriteBatch.class, float.class, float.class, TextureAtlas.AtlasRegion.class);
                 TextureAtlas.AtlasRegion region = new TextureAtlas.AtlasRegion(img, 0, 0, 1024, 1024);
-                method.invoke(_inst, sb, Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F, region);
+                method.invoke(_inst, sb, Settings.WIDTH / 2.0f, Settings.HEIGHT / 2.0f, region);
                 return SpireReturn.Return();
             }
             return SpireReturn.Continue();
@@ -314,7 +320,7 @@ public class RhineUIPatch {
                 }
                 ReflectionHacks.RMethod method = ReflectionHacks.privateMethod(SingleCardViewPopup.class, "renderHelper", SpriteBatch.class, float.class, float.class, TextureAtlas.AtlasRegion.class);
                 TextureAtlas.AtlasRegion region = new TextureAtlas.AtlasRegion(img, 0, 0, 1024, 1024);
-                method.invoke(_inst, sb, Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F, region);
+                method.invoke(_inst, sb, Settings.WIDTH / 2.0f, Settings.HEIGHT / 2.0f, region);
                 return SpireReturn.Return();
             }
             return SpireReturn.Continue();
@@ -444,25 +450,25 @@ public class RhineUIPatch {
 
     @SpirePatch(clz = DynamicBanner.class, method = "render")
     public static class RenderDynamicBannerPatch2 {
-        public static float angle = 0.0F;
+        public static float angle = 0.0f;
         @SpirePrefixPatch
         public static SpireReturn<?> Prefix(DynamicBanner _inst, SpriteBatch sb, TintEffect ___textTint, TintEffect ___tint, String ___label) {
             if (!RhineMod.useLoneTrail) return SpireReturn.Continue();
-            if (!_inst.show || ___textTint.color.a == 0.0F || ___label == null) return SpireReturn.Return();
+            if (!_inst.show || ___textTint.color.a == 0.0f || ___label == null) return SpireReturn.Return();
             sb.setColor(___textTint.color);
-            sb.draw(RhineImageMaster.selectBanner, Settings.WIDTH / 2.0F - 556.0F, _inst.y - 119.0F, 556.0F, 119.0F, 1112.0F, 238.0F, Settings.scale, Settings.scale, 0.0F, 0, 0, 1112, 238, false, false);
-            sb.draw(RhineImageMaster.bannerRing, Settings.WIDTH / 2.0F - 290.0F, _inst.y - 20.0F, 45.0F, 45.0F, 90.0F, 90.0F, Settings.scale, Settings.scale, 0.0F, 0, 0, 90, 90, false, false);
-            sb.draw(RhineImageMaster.bannerRing, Settings.WIDTH / 2.0F + 200.0F, _inst.y - 20.0F, 45.0F, 45.0F, 90.0F, 90.0F, Settings.scale, Settings.scale, 0.0F, 0, 0, 90, 90, false, false);
-            RhineMod.selectBannerEffect.setPosition(Settings.WIDTH / 2.0F - 300.0F, _inst.y);
+            sb.draw(RhineImageMaster.selectBanner, Settings.WIDTH / 2.0f - 556.0f, _inst.y - 119.0f, 556.0f, 119.0f, 1112.0f, 238.0f, Settings.scale, Settings.scale, 0.0f, 0, 0, 1112, 238, false, false);
+            sb.draw(RhineImageMaster.bannerRing, Settings.WIDTH / 2.0f - 245.0f * Settings.scale - 45.0f, _inst.y + 25.0f * Settings.scale - 45.0f, 45.0f, 45.0f, 90.0f, 90.0f, Settings.scale, Settings.scale, 0.0f, 0, 0, 90, 90, false, false);
+            sb.draw(RhineImageMaster.bannerRing, Settings.WIDTH / 2.0f + 245.0f * Settings.scale - 45.0f, _inst.y + 25.0f * Settings.scale - 45.0f, 45.0f, 45.0f, 90.0f, 90.0f, Settings.scale, Settings.scale, 0.0f, 0, 0, 90, 90, false, false);
+            RhineMod.selectBannerEffect.setPosition(Settings.WIDTH / 2.0f - 300.0f * Settings.scale, _inst.y);
             RhineMod.selectBannerEffect.render(sb, ___tint.color.a);
 
             sb.setColor(___textTint.color);
             angle += 1.2F;
-            sb.draw(RhineImageMaster.bannerCircleL, Settings.WIDTH / 2.0F - 290.0F, _inst.y - 20.0F, 45.0F, 45.0F, 90.0F, 90.0F, Settings.scale, Settings.scale, angle, 0, 0, 90, 90, false, false);
-            sb.draw(RhineImageMaster.bannerCircleR, Settings.WIDTH / 2.0F + 200.0F, _inst.y - 20.0F, 45.0F, 45.0F, 90.0F, 90.0F, Settings.scale, Settings.scale, angle * 2, 0, 0, 90, 90, false, false);
-            sb.draw(RhineImageMaster.bannerPointer, Settings.WIDTH / 2.0F + 200.0F, _inst.y - 20.0F, 45.0F, 45.0F, 90.0F, 90.0F, Settings.scale, Settings.scale, 0.0F, 0, 0, 90, 90, false, false);
+            sb.draw(RhineImageMaster.bannerCircleL, Settings.WIDTH / 2.0f - 245.0f * Settings.scale - 45.0f, _inst.y + 25.0f * Settings.scale - 45.0f, 45.0f, 45.0f, 90.0f, 90.0f, Settings.scale, Settings.scale, angle, 0, 0, 90, 90, false, false);
+            sb.draw(RhineImageMaster.bannerCircleR, Settings.WIDTH / 2.0f + 245.0f * Settings.scale - 45.0f, _inst.y + 25.0f * Settings.scale - 45.0f, 45.0f, 45.0f, 90.0f, 90.0f, Settings.scale, Settings.scale, angle * 2, 0, 0, 90, 90, false, false);
+            sb.draw(RhineImageMaster.bannerPointer, Settings.WIDTH / 2.0f + 245.0f * Settings.scale - 45.0f, _inst.y + 25.0f * Settings.scale - 45.0f, 45.0f, 45.0f, 90.0f, 90.0f, Settings.scale, Settings.scale, 0.0f, 0, 0, 90, 90, false, false);
 
-            FontHelper.renderFontCentered(sb, FontHelper.losePowerFont, ___label, (float)Settings.WIDTH / 2.0F, _inst.y + 22.0F * Settings.scale, ___textTint.color, _inst.scale);
+            FontHelper.renderFontCentered(sb, FontHelper.losePowerFont, ___label, Settings.WIDTH / 2.0f, _inst.y + 22.0f * Settings.scale, ___textTint.color, _inst.scale);
             return SpireReturn.Return();
         }
 
@@ -535,7 +541,7 @@ public class RhineUIPatch {
                         if (count == 1) {
                             m.replace("if (" + RhineMod.class.getName() + ".useLoneTrail && " + AbstractDungeon.class.getName() + ".screen != " +
                                     AbstractDungeon.class.getName() + ".CurrentScreen.FTUE) { $1 = " + RhineImageMaster.class.getName() +
-                                    ".proceedButtonOutline; $3 = $3 + 200.0F * " + Settings.class.getName() + ".scale; $_ = $proceed($$); } else { $proceed($$); }");
+                                    ".proceedButtonOutline; $3 = $3 + 200.0f * " + Settings.class.getName() + ".scale; $_ = $proceed($$); } else { $proceed($$); }");
                         }
                     }
                 }
@@ -551,7 +557,7 @@ public class RhineUIPatch {
                     if (m.getClassName().equals(SpriteBatch.class.getName()) && m.getMethodName().equals("draw")) {
                         m.replace("if (" + RhineMod.class.getName() + ".useLoneTrail && " + AbstractDungeon.class.getName() + ".screen != " +
                                 AbstractDungeon.class.getName() + ".CurrentScreen.FTUE) { $1 = " + RhineImageMaster.class.getName() +
-                                ".proceedButton; $3 = $3 + 200.0F * " + Settings.class.getName() + ".scale; $_ = $proceed($$); } else { $proceed($$); }");
+                                ".proceedButton; $3 = $3 + 200.0f * " + Settings.class.getName() + ".scale; $_ = $proceed($$); } else { $proceed($$); }");
                     }
                 }
             };
@@ -571,7 +577,21 @@ public class RhineUIPatch {
     public static class ProceedButtonHitboxPatch {
         @SpirePostfixPatch
         public static void Postfix(ProceedButton _inst, Hitbox ___hb) {
-            if (RhineMod.useLoneTrail) ___hb.height += 250.0F * Settings.scale;
+            if (RhineMod.useLoneTrail) ___hb.height += 250.0f * Settings.scale;
+        }
+    }
+
+    @SpirePatch(clz = CombatRewardScreen.class, method = "setLabel")
+    public static class CombatRewardTextPatch {
+        public static UIStrings uiStrings;
+        @SpirePrefixPatch
+        public static SpireReturn<?> Prefix(CombatRewardScreen _inst) {
+            if (RhineMod.useLoneTrail && !_inst.rewards.isEmpty()) {
+                if (uiStrings == null) uiStrings = CardCrawlGame.languagePack.getUIString("rhinemod:NewUi");
+                AbstractDungeon.overlayMenu.proceedButton.setLabel(uiStrings.TEXT[0]);
+                return SpireReturn.Return();
+            }
+            return SpireReturn.Continue();
         }
     }
 
@@ -591,9 +611,9 @@ public class RhineUIPatch {
                 ___hoveredCard.renderCardTip(sb);
             }
             if (!AbstractDungeon.player.hasRelic("Frozen Eye")) {
-                FontHelper.renderDeckViewTip(sb, DrawPileViewScreen.TEXT[1], 48.0F * Settings.scale, Settings.GOLD_COLOR);
+                FontHelper.renderDeckViewTip(sb, DrawPileViewScreen.TEXT[1], 48.0f * Settings.scale, Settings.GOLD_COLOR);
             }
-            FontHelper.renderDeckViewTip(sb, DrawPileViewScreen.TEXT[0], 96.0F * Settings.scale, Settings.CREAM_COLOR);
+            FontHelper.renderDeckViewTip(sb, DrawPileViewScreen.TEXT[0], 96.0f * Settings.scale, Settings.CREAM_COLOR);
             AbstractDungeon.overlayMenu.combatDeckPanel.render(sb);
             return SpireReturn.Return();
         }
@@ -609,7 +629,7 @@ public class RhineUIPatch {
         public static PileFilesEffect effect = null;
 
         public static void renderFiles(SpriteBatch sb) {
-            if (effect == null) effect = new PileFilesEffect(-400.0F * Settings.scale, 600.0F * Settings.scale, 400.0F * Settings.scale, 0.0F, -0.1F);
+            if (effect == null) effect = new PileFilesEffect(-400.0f * Settings.scale, 600.0f * Settings.scale, 400.0f * Settings.scale, 0.0f, -0.1F);
             effect.render(sb);
         }
     }
@@ -628,7 +648,7 @@ public class RhineUIPatch {
                 ___hoveredCard.render(sb);
                 ___hoveredCard.renderCardTip(sb);
             }
-            FontHelper.renderDeckViewTip(sb, DiscardPileViewScreen.TEXT[0], 96.0F * Settings.scale, Settings.CREAM_COLOR);
+            FontHelper.renderDeckViewTip(sb, DiscardPileViewScreen.TEXT[0], 96.0f * Settings.scale, Settings.CREAM_COLOR);
             AbstractDungeon.overlayMenu.discardPilePanel.render(sb);
             return SpireReturn.Return();
         }
@@ -644,7 +664,7 @@ public class RhineUIPatch {
         public static PileFilesEffect effect = null;
 
         public static void renderFiles(SpriteBatch sb) {
-            if (effect == null) effect = new PileFilesEffect(Settings.WIDTH + 400.0F * Settings.scale, 600.0F * Settings.scale, Settings.WIDTH - 400.0F * Settings.scale, 0.0F, 0.1F);
+            if (effect == null) effect = new PileFilesEffect(Settings.WIDTH + 400.0f * Settings.scale, 600.0f * Settings.scale, Settings.WIDTH - 400.0f * Settings.scale, 0.0f, 0.1F);
             effect.render(sb);
         }
     }
@@ -749,13 +769,13 @@ public class RhineUIPatch {
         @SpirePostfixPatch
         public static void Postfix(MapRoomNode _inst, int x, int y) {
             if (RhineMod.useLoneTrail) {
-                MapRoomNode.AVAILABLE_COLOR.r = 0.9F;
-                MapRoomNode.AVAILABLE_COLOR.g = 0.5F;
-                MapRoomNode.AVAILABLE_COLOR.b = 0.27F;
+                MapRoomNode.AVAILABLE_COLOR.r = ORANGE_COLOR.r;
+                MapRoomNode.AVAILABLE_COLOR.g = ORANGE_COLOR.g;
+                MapRoomNode.AVAILABLE_COLOR.b = ORANGE_COLOR.b;
                 Color notTakenColor = ReflectionHacks.getPrivateStatic(MapRoomNode.class, "NOT_TAKEN_COLOR");
-                notTakenColor.r = 0.9F;
-                notTakenColor.g = 0.5F;
-                notTakenColor.b = 0.27F;
+                notTakenColor.r = ORANGE_COLOR.r;
+                notTakenColor.g = ORANGE_COLOR.g;
+                notTakenColor.b = ORANGE_COLOR.b;
                 notTakenColor.a = 0.5F;
             }
         }
@@ -763,10 +783,10 @@ public class RhineUIPatch {
 
     @SpirePatch(clz = MapEdge.class, method = SpirePatch.CLASS)
     public static class OptFields {
-        public static SpireField<Float> sx = new SpireField<>(() -> 0.0F);
-        public static SpireField<Float> sy = new SpireField<>(() -> 0.0F);
-        public static SpireField<Float> dx = new SpireField<>(() -> 0.0F);
-        public static SpireField<Float> dy = new SpireField<>(() -> 0.0F);
+        public static SpireField<Float> sx = new SpireField<>(() -> 0.0f);
+        public static SpireField<Float> sy = new SpireField<>(() -> 0.0f);
+        public static SpireField<Float> dx = new SpireField<>(() -> 0.0f);
+        public static SpireField<Float> dy = new SpireField<>(() -> 0.0f);
     }
 
     @SpirePatch(clz = MapEdge.class, method = "<ctor>", paramtypez = {int.class, int.class, float.class, float.class, int.class, int.class, float.class, float.class, boolean.class})
@@ -809,9 +829,9 @@ public class RhineUIPatch {
             float dy = dstY - srcY;
             float len = (float)Math.sqrt(dx * dx + dy * dy);
             float angle = (float)Math.toDegrees(Math.atan2(dy, dx));
-            float width = 16.0F;
+            float width = 16.0f;
             float r = width * 0.5F;
-            float OFFSET_Y = 172.0F * Settings.scale;
+            float OFFSET_Y = 172.0f * Settings.scale;
             sb.draw(RhineImageMaster.mapLine, srcX - r, srcY + DungeonMapScreen.offsetY + OFFSET_Y, r, 0, width, len, 1, 1, angle - 90, 0, 0, 16, 16, false, false);
             sb.draw(RhineImageMaster.mapDot, srcX - r, srcY + DungeonMapScreen.offsetY + OFFSET_Y, r, 0, width, width, 1, 1, angle - 270, 0, 0, 16, 16, false, false);
             sb.draw(RhineImageMaster.mapDot, dstX - r, dstY + DungeonMapScreen.offsetY + OFFSET_Y, r, 0, width, width, 1, 1, angle - 90, 0, 0, 16, 16, false, false);
@@ -842,7 +862,7 @@ public class RhineUIPatch {
     public static class ObtainKeyEffectPatch {
         @SpirePrefixPatch
         public static void Prefix(ObtainKeyEffect _inst) {
-            if (RhineMod.useLoneTrail) _inst.duration = 0.0F;
+            if (RhineMod.useLoneTrail) _inst.duration = 0.0f;
         }
     }
 
@@ -850,21 +870,39 @@ public class RhineUIPatch {
     public static class FlameAnimationEffectPatch {
         @SpirePostfixPatch
         public static void Postfix(FlameAnimationEffect _inst, Hitbox hb, @ByRef Color[] ___color) {
-            ___color[0] = new Color(0.9F, 0.5F, 0.27F, 1.0F);
+            ___color[0] = ORANGE_COLOR.cpy();
         }
     }
 
     @SpirePatch(clz = LegendItem.class, method = "render")
     public static class LegendItemRenderPatch {
         @SpirePrefixPatch
-        public static void Prefix(LegendItem _inst, SpriteBatch sb, Color c) {
+        public static void Prefix(LegendItem _inst, SpriteBatch sb, @ByRef Color[] c) {
             if (RhineMod.useLoneTrail) {
                 if (!_inst.hb.hovered) {
-                    c.r = 0.09F;
-                    c.g = 0.13F;
-                    c.b = 0.17F;
+                    c[0] = c[0].cpy();
+                    c[0].r = 0.09F;
+                    c[0].g = 0.13F;
+                    c[0].b = 0.17F;
                 }
             }
+        }
+    }
+
+    @SpirePatch(clz = AbstractPlayer.class, method = "renderTargetingUi")
+    public static class RenderTargetingUiPatch {
+        @SpirePrefixPatch
+        public static SpireReturn<?> Prefix(AbstractPlayer _inst, SpriteBatch sb, @ByRef float[] ___arrowX, @ByRef float[] ___arrowY) {
+            if (!RhineMod.useLoneTrail) return SpireReturn.Continue();
+            ___arrowX[0] = MathHelper.mouseLerpSnap(___arrowX[0], InputHelper.mX);
+            ___arrowY[0] = MathHelper.mouseLerpSnap(___arrowY[0], InputHelper.mY);
+            if (ReflectionHacks.getPrivate(_inst, AbstractPlayer.class, "hoveredMonster") == null) {
+                sb.setColor(Color.WHITE);
+            } else {
+                sb.setColor(ORANGE_COLOR);
+            }
+            TargetingUiEffect.drawLinkWithEndSquare(sb, _inst.hoveredCard.current_x, _inst.hoveredCard.current_y + _inst.hoveredCard.hb.height * 0.4f, ___arrowX[0], ___arrowY[0]);
+            return SpireReturn.Return();
         }
     }
 }

@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 
 public class SelectBannerEffect extends AbstractGameEffect {
@@ -15,10 +16,10 @@ public class SelectBannerEffect extends AbstractGameEffect {
     public float speedPxPerSec = 60f;
 
     // 2) 线距太窄：把 spacing 调大（比如 16~28）
-    public float spacing = 20f;
+    public float spacing = 20f * Settings.scale;
 
-    public float minWidth = 1f;
-    public float maxWidth = 15f;
+    public float minWidth = Settings.scale;
+    public float maxWidth = 15f * Settings.scale;
 
     // 颜色与透明度要求
     private static final Color BASE = new Color(0xC24830FF); // #C24830
