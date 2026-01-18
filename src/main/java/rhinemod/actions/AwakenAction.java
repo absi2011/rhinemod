@@ -19,7 +19,7 @@ public class AwakenAction extends AbstractGameAction {
     public final ArrayList<AbstractCreature> aimList = new ArrayList<>();
     public int[] dmgList;
 
-    public AwakenAction(int amount, Awaken_Monster source) {
+    public AwakenAction(int amount, AbstractMonster source) {
         actionType = ActionType.DAMAGE;
         duration = Settings.ACTION_DUR_FAST;
         this.amount = amount;
@@ -45,7 +45,7 @@ public class AwakenAction extends AbstractGameAction {
             applySourcePower();
             aimList.add(AbstractDungeon.player);
             for (AbstractMonster m : AbstractDungeon.getMonsters().monsters)
-                if ((!m.isDeadOrEscaped()) && (!(m instanceof Awaken_Monster)))
+                if ((!m.isDeadOrEscaped()) && (m != source))
                     aimList.add(m);
             if (aimList.isEmpty()) {
                 isDone = true;
@@ -76,7 +76,9 @@ public class AwakenAction extends AbstractGameAction {
             applyEnemyPowersOnly(info, aimList.get(i));
             aimList.get(i).damage(info);
         }
-        ((AbstractMonster)source).rollMove();
+        if (source instanceof Awaken_Monster) {
+            ((AbstractMonster)source).rollMove();
+        }
         isDone = true;
     }
 }

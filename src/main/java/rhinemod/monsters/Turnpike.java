@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.helpers.ModHelper;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.*;
+import rhinemod.RhineMod;
 import rhinemod.actions.DelayDieAction;
 import rhinemod.actions.SummonLTEnemyAction;
 import rhinemod.powers.DamageOutPower;
@@ -24,8 +25,17 @@ public class Turnpike extends AbstractRhineMonster {
     private int Armor = 70;
     public AbstractMonster[] allies = new AbstractMonster[3];
     boolean justSummon = false;
-    public Turnpike(float x, float y) {
+    public int summonMyself;
+    public Turnpike(float x, float y,int summon) {
         super(NAME, ID, 150, 0, 0, 150.0F, 320.0F, null, x, y);
+        if ((RhineMod.tagLevel >= 2) && (summon == 1))
+        {
+            summonMyself = 1;
+        }
+        else
+        {
+            summonMyself = 0;
+        }
         type = EnemyType.ELITE;
         if (AbstractDungeon.ascensionLevel >= 8) {
             setHp(160);
@@ -47,13 +57,38 @@ public class Turnpike extends AbstractRhineMonster {
     }
 
     @Override
+    public void addCCTags() {
+        if (summonMyself == 1) {
+            super.addCCTags();
+        }
+        else {
+            if (RhineMod.tagLevel >= 3) {
+                addTag(3);
+            }
+        }
+    }
+
+    public Turnpike(float x, float y) {
+        this(x, y, 1);
+    }
+
+    @Override
     public void usePreBattleAction() {
         addToBot(new ApplyPowerAction(this, this, new DamageOutPower(this, Armor, 1)));
         addToBot(new ApplyPowerAction(this,this, new ExplodePower(this, 30)));
         addToBot(new CannotLoseAction());
         CardCrawlGame.music.fadeOutTempBGM();
         AbstractDungeon.scene.fadeOutAmbiance();
-        CardCrawlGame.music.playTempBgmInstantly("m_bat_act19side_01_combine.mp3", true);
+        if (RhineMod.tagLevel >= 2) {
+            CardCrawlGame.music.playTempBgmInstantly("m_bat_ccs_v2_4_loop.mp3", true);
+        } else {
+            CardCrawlGame.music.playTempBgmInstantly("m_bat_act19side_01_combine.mp3", true);
+        }
+        if (RhineMod.tagLevel >= 3) {
+            for (int i = LTAllyNum(); i < 3; i++) {
+                addToBot(new SummonLTEnemyAction(allies, true, summonMyself == 0));
+            }
+        }
     }
 
     @Override
@@ -72,15 +107,15 @@ public class Turnpike extends AbstractRhineMonster {
             state.addAnimation(0, "Idle", true, 0);
             addToBot(new DamageAction(AbstractDungeon.player, damage.get(0)));
         }
-        getMove(0);
+        getMove(-1);
     }
 
     int LTAllyNum()
     {
         int count = 0;
-        for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-            if (m != null && m != this && !m.isDying) {
-                ++count;
+        for (AbstractMonster m : allies) {
+            if ((m != null) && (!m.isDeadOrEscaped())) {
+                count++;
             }
         }
 
@@ -123,7 +158,14 @@ public class Turnpike extends AbstractRhineMonster {
     public void realDie() {
         float offsetX = (drawX - Settings.WIDTH * 0.75F) / Settings.xScale;
         float offsetY = (drawY - AbstractDungeon.floorY) / Settings.yScale;
-        AbstractMonster m = new TrafficPolice(offsetX, offsetY);
+        AbstractMonster m;
+        if (summonMyself == 1) {
+            m = new Turnpike(offsetX, offsetY, 0);
+            ((Turnpike)m).allies = allies;
+        }
+        else {
+            m = new TrafficPolice(offsetX, offsetY);
+        }
         m.init();
         m.applyPowers();
         AbstractDungeon.getCurrRoom().monsters.addMonster(getSmartPosition(m), m);
@@ -145,7 +187,10 @@ public class Turnpike extends AbstractRhineMonster {
 
     @Override
     protected void getMove(int i) {
-        if (!justSummon && LTAllyNum() + 2 <= 3) {
+        if ((RhineMod.tagLevel >= 3) && (i != -1)) {
+            setMove((byte)2, Intent.ATTACK, damage.get(0).base);
+        }
+        else if (!justSummon && LTAllyNum() + 2 <= 3) {
             setMove((byte)1, Intent.UNKNOWN);
         } else {
             setMove((byte)2, Intent.ATTACK, damage.get(0).base);

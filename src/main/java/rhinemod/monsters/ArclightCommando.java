@@ -1,14 +1,13 @@
 package rhinemod.monsters;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.ChangeStateAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.powers.FlightPower;
+import com.megacrit.cardcrawl.powers.PlatedArmorPower;
+import rhinemod.RhineMod;
 import rhinemod.powers.Stunned;
 
 public class ArclightCommando extends AbstractRhineMonster {
@@ -16,7 +15,7 @@ public class ArclightCommando extends AbstractRhineMonster {
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String[] MOVES = monsterStrings.MOVES;
     public static final String NAME = monsterStrings.NAME;
-    public final int FlightNumber;
+    public int flightNumber;
     boolean isFlying;
 
     public ArclightCommando(float x, float y) {
@@ -24,20 +23,23 @@ public class ArclightCommando extends AbstractRhineMonster {
         type = EnemyType.NORMAL;
         if (AbstractDungeon.ascensionLevel >= 7) {
             setHp(43);
-            FlightNumber = 4;
+            flightNumber = 4;
+        } else {
+            flightNumber = 3;
         }
-        else {
-            FlightNumber = 3;
+        if (RhineMod.tagLevel >= 2) {
+            flightNumber++;
         }
-        if (AbstractDungeon.ascensionLevel >= 17) {
+        if (RhineMod.tagLevel >= 2) {
+            damage.add(new DamageInfo(this, 5));
+            damage.add(new DamageInfo(this, 14));
+        } else if (AbstractDungeon.ascensionLevel >= 17) {
             damage.add(new DamageInfo(this, 5));
             damage.add(new DamageInfo(this, 10));
-        }
-        else if (AbstractDungeon.ascensionLevel >= 2) {
+        } else if (AbstractDungeon.ascensionLevel >= 2) {
             damage.add(new DamageInfo(this, 5));
             damage.add(new DamageInfo(this, 9));
-        }
-        else {
+        } else {
             damage.add(new DamageInfo(this, 4));
             damage.add(new DamageInfo(this, 8));
         }
@@ -47,10 +49,22 @@ public class ArclightCommando extends AbstractRhineMonster {
         flipHorizontal = true;
     }
 
+    @Override
     public void applyPowers() {
         super.applyPowers();
         if (hasPower("rhinemod:Stunned") && isFlying) {
             addToBot(new ChangeStateAction(this, "GROUNDED"));
+        }
+    }
+
+    @Override
+    public void usePreBattleAction() {
+        super.usePreBattleAction();
+        if (RhineMod.tagLevel >= 3) {
+            addToBot(new ChangeStateAction(this, "FLYING"));
+            addToBot(new ApplyPowerAction(this, this, new FlightPower(this, flightNumber)));
+            addToBot(new ApplyPowerAction(this, this, new PlatedArmorPower(this, 5)));
+            addToBot(new GainBlockAction(this, 5));
         }
     }
 
@@ -83,33 +97,48 @@ public class ArclightCommando extends AbstractRhineMonster {
         }
         if (nextMove == 2 || nextMove == 3) {
             addToBot(new DamageAction(AbstractDungeon.player, damage.get(0)));
-        }
-        else if (nextMove == 11) {
+        } else if (nextMove == 11) {
             addToBot(new DamageAction(AbstractDungeon.player, damage.get(1)));
-        }
-        else if (nextMove == 4) {
+        } else if (nextMove == 4) {
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this, this, Stunned.POWER_ID));
             AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "FLYING"));
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new FlightPower(this, FlightNumber)));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new FlightPower(this, flightNumber)));
         }
         if (nextMove == 1 || nextMove == 2) {
             setMove(MOVES[1], (byte)4, Intent.BUFF);
-        }
-        else if (nextMove == 4 || nextMove == 11) {
+        } else if (nextMove == 4 || nextMove == 11) {
             setMove((byte)11, Intent.ATTACK, damage.get(1).base);
-        }
-        else {
+        } else {
             setMove((byte)3, Intent.ATTACK, damage.get(0).base);
         }
     }
 
     @Override
     protected void getMove(int i) {
-        if (AbstractDungeon.ascensionLevel >= 17) {
-            setMove((byte)2, Intent.ATTACK, damage.get(0).base);
+        if (RhineMod.tagLevel >= 3) {
+            setMove((byte)11, Intent.ATTACK, damage.get(1).base);
         }
-        else {
+        else if (RhineMod.tagLevel >= 1) {
+            setMove(MOVES[1], (byte)4, Intent.BUFF);
+        } else if (AbstractDungeon.ascensionLevel >= 17) {
+            setMove((byte)2, Intent.ATTACK, damage.get(0).base);
+        } else {
             setMove(MOVES[0], (byte)1, Intent.UNKNOWN);
+        }
+    }
+
+    @Override
+    public void addCCTags() {
+        if (RhineMod.tagLevel == 1) {
+            addTag(1);
+        }
+        else if (RhineMod.tagLevel == 2) {
+            addTag(1);
+            addTag(2);
+        }
+        else if (RhineMod.tagLevel == 3) {
+            addTag(2);
+            addTag(3);
         }
     }
 }

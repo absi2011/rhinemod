@@ -9,8 +9,11 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import rhinemod.RhineMod;
+import rhinemod.actions.AddMaxHpAction;
 import rhinemod.characters.RhineLab;
 import rhinemod.powers.NoStun;
+import rhinemod.powers.R11LoseHPPower;
 import rhinemod.vfx.R11MoveEffect;
 
 public class R11AssaultPowerArmor extends AbstractRhineMonster {
@@ -23,10 +26,21 @@ public class R11AssaultPowerArmor extends AbstractRhineMonster {
     public R11AssaultPowerArmor(float x, float y) {
         super(NAME, ID, 140, 0, 0, 220.0F, 360.0F, null, x, y);
         type = EnemyType.ELITE;
-        if (AbstractDungeon.ascensionLevel >= 8) {
+        if (RhineMod.tagLevel >= 3) {
+            setHp(300);
+        }
+        else if (AbstractDungeon.ascensionLevel >= 8) {
             setHp(150);
         }
-        if (AbstractDungeon.ascensionLevel >= 18) {
+        if (RhineMod.tagLevel >= 2) {
+            damage.add(new DamageInfo(this, 16));
+            damage.add(new DamageInfo(this, 40));
+        }
+        else if (RhineMod.tagLevel >= 1) {
+            damage.add(new DamageInfo(this, 12));
+            damage.add(new DamageInfo(this, 30));
+        }
+        else if (AbstractDungeon.ascensionLevel >= 18) {
             damage.add(new DamageInfo(this, 12));
             damage.add(new DamageInfo(this, 24));
         } else if (AbstractDungeon.ascensionLevel >= 3) {
@@ -46,6 +60,9 @@ public class R11AssaultPowerArmor extends AbstractRhineMonster {
     public void usePreBattleAction() {
         super.usePreBattleAction();
         addToBot(new ApplyPowerAction(this, this, new NoStun(this)));
+        if (RhineMod.tagLevel >= 3) {
+            addToBot(new ApplyPowerAction(this, this, new R11LoseHPPower(this)));
+        }
     }
 
     @Override
@@ -101,6 +118,16 @@ public class R11AssaultPowerArmor extends AbstractRhineMonster {
             setMove(MOVES[0], (byte)(nextMove + 1), Intent.ATTACK, damage.get(0).base);
         } else {
             setMove((byte)7, Intent.ATTACK, damage.get(1).base);
+        }
+    }
+
+    @Override
+    public void addCCTags() {
+        if (RhineMod.tagLevel == 1) {
+            addTag(1);
+        }
+        else if (RhineMod.tagLevel >= 2) {
+            addTag(2);
         }
     }
 

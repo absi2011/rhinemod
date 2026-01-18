@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
+import rhinemod.RhineMod;
 import rhinemod.powers.Brittleness;
 
 public class ArclightVanguard extends AbstractRhineMonster {
@@ -60,22 +61,36 @@ public class ArclightVanguard extends AbstractRhineMonster {
         }
         else if (nextMove == 2) {
             addToBot(new DamageAction(AbstractDungeon.player, damage.get(1)));
-            addToBot(new DamageAction(this, new DamageInfo(this, AttackHPLoss, DamageInfo.DamageType.HP_LOSS)));
-            addToBot(new ApplyPowerAction(this,this,new VulnerablePower(this,1,true)));
+            if (RhineMod.tagLevel < 2) {
+                addToBot(new DamageAction(this, new DamageInfo(this, AttackHPLoss, DamageInfo.DamageType.HP_LOSS)));
+            }
+            if (RhineMod.tagLevel < 1) {
+                addToBot(new ApplyPowerAction(this, this, new VulnerablePower(this, 1, true)));
+            }
         }
         else {
             for (int i = 1; i <= HighDamageTimes; i++) {
                 addToBot(new DamageAction(AbstractDungeon.player, damage.get(2)));
             }
-            addToBot(new DamageAction(this, new DamageInfo(this, 2 * AttackHPLoss, DamageInfo.DamageType.HP_LOSS)));
-            addToBot(new ApplyPowerAction(this,this,new VulnerablePower(this,2,true)));
+            if (RhineMod.tagLevel < 2) {
+                addToBot(new DamageAction(this, new DamageInfo(this, 2 * AttackHPLoss, DamageInfo.DamageType.HP_LOSS)));
+            }
+            if (RhineMod.tagLevel < 1) {
+                addToBot(new ApplyPowerAction(this, this, new VulnerablePower(this, 2, true)));
+            }
         }
         getMove(0);
     }
 
     @Override
     protected void getMove(int i) {
-        int nextMove = AbstractDungeon.aiRng.random(1, 3);
+        int nextMove;
+        if (RhineMod.tagLevel == 3) {
+            nextMove = AbstractDungeon.aiRng.random(2, 3);
+        }
+        else {
+            nextMove = AbstractDungeon.aiRng.random(1, 3);
+        }
         if (nextMove == 1) {
             setMove((byte)1, Intent.ATTACK, damage.get(0).base,LowDamageTimes,true);
         }

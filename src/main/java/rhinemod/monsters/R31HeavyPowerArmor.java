@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import rhinemod.RhineMod;
 import rhinemod.characters.RhineLab;
 import rhinemod.powers.NoStun;
 import rhinemod.vfx.R31MoveEffect;
@@ -21,7 +22,7 @@ public class R31HeavyPowerArmor extends AbstractRhineMonster {
     public static final String NAME = monsterStrings.NAME;
     public static final String[] MOVES = monsterStrings.MOVES;
     public static final int stunStrike = 10;
-    public static final int stunNum = 5;
+    public static int stunNum = 5;
     private static float moveX;
 
     public R31HeavyPowerArmor(float x, float y) {
@@ -29,6 +30,9 @@ public class R31HeavyPowerArmor extends AbstractRhineMonster {
         type = EnemyType.ELITE;
         if (AbstractDungeon.ascensionLevel >= 8) {
             setHp(150);
+        }
+        if (RhineMod.tagLevel >= 1) {
+            stunNum += 5;
         }
         if (AbstractDungeon.ascensionLevel >= 18) {
             damage.add(new DamageInfo(this, 5));
@@ -118,8 +122,17 @@ public class R31HeavyPowerArmor extends AbstractRhineMonster {
         }
     }
 
+    public void SpecialMove() {
+        setMove(MOVES[1], (byte)5, Intent.ATTACK_DEBUFF, damage.get(0).base, stunStrike, true);
+    }
+
     @Override
     protected void getMove(int i) {
-        setMove(MOVES[0], (byte)1, Intent.UNKNOWN);
+        if (RhineMod.tagLevel >= 3) {
+            setMove(MOVES[0], (byte)3, Intent.UNKNOWN);
+        }
+        else {
+            setMove(MOVES[0], (byte)1, Intent.UNKNOWN);
+        }
     }
 }

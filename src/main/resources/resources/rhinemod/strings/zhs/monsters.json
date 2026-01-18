@@ -78,5 +78,25 @@
     "NAME": "星荚",
     "MOVES": ["自我修复"],
     "DIALOG": []
+  },
+  "rhinemod:Dorothy": {
+    "NAME": "多萝西",
+    "MOVES": [""],
+    "DIALOG": ["谢谢你，让我看到了一段新的旅途。"]
+  },
+  "rhinemod:RhineEngineeringMember": {
+    "NAME": "莱茵生命工程科成员",
+    "MOVES": [""],
+    "DIALOG": []
+  },
+  "rhinemod:Dor1": {
+    "NAME": "Dor-1 失败品",
+    "MOVES": [""],
+    "DIALOG": []
+  },
+  "rhinemod:SleepingR31": {
+    "NAME": "R-31重型动力装甲（休眠）",
+    "MOVES": [""],
+    "DIALOG": []
   }
 }

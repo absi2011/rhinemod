@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.powers.MetallicizePower;
+import rhinemod.RhineMod;
 import rhinemod.actions.JesseltonUpdateHitboxAction;
 import rhinemod.powers.WeaknessSmash;
 import rhinemod.powers.WeaknessNonSmash;
@@ -37,7 +38,12 @@ public class JesseltonWilliams extends AbstractRhineMonster {
         } else {
             metalNum = 6;
         }
-        if (AbstractDungeon.ascensionLevel >= 17) {
+        if (RhineMod.tagLevel >= 3) {
+            damage.add(new DamageInfo(this, 10));
+            damage.add(new DamageInfo(this, 27));
+            DazedNum = 3;
+        }
+        else if (AbstractDungeon.ascensionLevel >= 17) {
             damage.add(new DamageInfo(this, 6));
             damage.add(new DamageInfo(this, 16));
             DazedNum = 3;

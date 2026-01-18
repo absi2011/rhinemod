@@ -19,6 +19,8 @@ import com.megacrit.cardcrawl.powers.*;
 import javassist.CannotCompileException;
 import javassist.expr.ExprEditor;
 import javassist.expr.FieldAccess;
+import rhinemod.RhineMod;
+import rhinemod.actions.MonsterMoveAction;
 import rhinemod.actions.SummonLTEnemyAction;
 import rhinemod.powers.InvisiblePower;
 
@@ -29,11 +31,15 @@ public class TrafficPolice extends AbstractRhineMonster {
     private int turn;
     public AbstractMonster[] allies = new AbstractMonster[3];
     boolean isHidden = false;
+    int hiddenTurn = 2;
     public TrafficPolice(float x, float y) {
         super(NAME, ID, 56, 0, 0, 150.0F, 290.0F, null, x, y);
         type = EnemyType.ELITE;
         if (AbstractDungeon.ascensionLevel >= 8) {
             setHp(60);
+        }
+        if (RhineMod.tagLevel >= 1) {
+            hiddenTurn = 3;
         }
         if (AbstractDungeon.ascensionLevel >= 18) {
             damage.add(new DamageInfo(this, 28));
@@ -45,6 +51,9 @@ public class TrafficPolice extends AbstractRhineMonster {
             damage.add(new DamageInfo(this, 22));
         }
         turn = 0;
+        if (RhineMod.tagLevel >= 3) {
+            turn = -1;  // 先攻会turn++
+        }
 
         loadAnimation("resources/rhinemod/images/monsters/enemy_1333_cbbgen/enemy_1333_cbbgen33.atlas", "resources/rhinemod/images/monsters/enemy_1333_cbbgen/enemy_1333_cbbgen33.json", 1.5F);
         state.setAnimation(0, "Idle", true);
@@ -54,8 +63,11 @@ public class TrafficPolice extends AbstractRhineMonster {
     @Override
     public void usePreBattleAction() {
         addToTop(new ChangeStateAction(this, "HIDDEN"));
-        addToTop(new ApplyPowerAction(this, this, new InvisiblePower(this, 2)));
+        addToTop(new ApplyPowerAction(this, this, new InvisiblePower(this, hiddenTurn)));
         addToTop(new CannotLoseAction());
+        if (RhineMod.tagLevel >= 3) {
+            addToBot(new MonsterMoveAction(this, 5));
+        }
     }
 
     public void changeState(String stateName) {
@@ -77,7 +89,7 @@ public class TrafficPolice extends AbstractRhineMonster {
         turn ++;
         DamageInfo t = new DamageInfo(this, damage.get(0).output);
         //TODO： 先改回去吧，避免拿到荆棘直接游戏炸了，目前会出现所有怪都死了的判定然后没法继续游戏。
-        if (turn <= 2) {
+        if (turn <= hiddenTurn) {
             t.type = DamageInfo.DamageType.THORNS;
         }
         state.setAnimation(0, "Attack", false);
@@ -97,9 +109,9 @@ public class TrafficPolice extends AbstractRhineMonster {
             applyDebuff(anotherDebuff);
         }
         if (haveSlot(allies)) {
-            addToBot(new SummonLTEnemyAction(allies, false));
+            addToBot(new SummonLTEnemyAction(allies, false, turn == 0));
         }
-        if (turn == 2) {
+        if (turn == hiddenTurn) {
             addToBot(new ChangeStateAction(this, "NORMAL"));
         }
         getMove(0);

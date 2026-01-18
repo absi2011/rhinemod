@@ -3,6 +3,8 @@ package rhinemod.characters;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.HealAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -36,10 +38,7 @@ import rhinemod.RhineMod;
 import rhinemod.cards.*;
 import rhinemod.events.StarlitNight;
 import rhinemod.patches.*;
-import rhinemod.powers.CriticalPointPower;
-import rhinemod.powers.EgotistPower;
-import rhinemod.powers.ExperimentError;
-import rhinemod.powers.InvisibleGlobalAttributes;
+import rhinemod.powers.*;
 import rhinemod.relics.CalcareousStamp;
 import rhinemod.relics.Imperishable;
 import rhinemod.relics.LoneTrail;
@@ -399,6 +398,16 @@ public class RhineLab extends CustomPlayer {
 
     @Override
     public void damage(DamageInfo info) {
+        if ((info.owner != null) && (info.owner.hasPower(HealPower.POWER_ID)) && (info.type == DamageInfo.DamageType.NORMAL)) {
+            AbstractDungeon.actionManager.addToBottom(new HealAction(this, info.owner, info.output));
+            HealPower p = (HealPower) info.owner.getPower(HealPower.POWER_ID);
+            p.flash();
+            if (p.needRemove == 1) {
+                p.needRemove = 0;
+                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p.owner, p.owner, p));
+            }
+            return;
+        }
         currentRings.removeIf(r -> r.isDead);
         if (!currentRings.isEmpty() && !Objects.equals(info.name, "StarRing")) {
             currentRings.get(currentRings.size() - 1).damage(info);

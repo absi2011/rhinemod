@@ -83,11 +83,13 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
     public static final ArrayList<TextureAtlas.AtlasRegion> specialImg = new ArrayList<>();
     public static final ArrayList<Texture> specialImgLarge = new ArrayList<>();
     public static TextureAtlas.AtlasRegion WATER_REGION;
+    public static TextureAtlas.AtlasRegion resonatorImg;
     public static SelectBannerEffect selectBannerEffect;
 
     public static float newMonsterMulti = 1.0F;
-    public boolean isDemo = true;
     public static boolean useLoneTrail = true;
+    public static int tagLevel = 0;
+    public boolean isDemo = true;
 
     public RhineMod() {
         BaseMod.subscribe(this);
@@ -194,6 +196,8 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
             }));
         }
         BaseMod.addEliteEncounter(TheBeyond.ID, new MonsterInfo("Disaster of Machine", 2.0F * newMonsterMulti));
+        addMonster("Repairing R31", names[16], () -> new MonsterGroup(new AbstractMonster[] {new SleepingR31(-800.0F, 0.0F), new RhineEngineeringMember(-400.0F, 0.0F), new Dorothy(0.0F, 0.0F)}));
+        BaseMod.addBoss(TheBeyond.ID, "Repairing R31", "resources/rhinemod/images/ui/dorothy.png", "resources/rhinemod/images/ui/dorothy_outline.png");
 
         // Add a name.
         addMonster("Awaken", names[12], () -> new MonsterGroup(new Awaken_Monster(180.0F, 0.0F)));
@@ -204,7 +208,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         BaseMod.addEliteEncounter(TheEnding.ID, new MonsterInfo("Awaken", 3.0F * newMonsterMulti));
         BaseMod.addEliteEncounter(TheSky.ID, new MonsterInfo("Turnpike", 3.0F * newMonsterMulti));
         BaseMod.addStrongMonsterEncounter(TheSky.ID, new MonsterInfo("Traffic Police", 3.0F * newMonsterMulti));
-        // BaseMod.addBoss(TheSky.ID, "The Sky", "icon", "icon");
+        BaseMod.addBoss(TheSky.ID, "The Sky", "resources/rhinemod/images/ui/starpod.png", "resources/rhinemod/images/ui/starpod_outline.png");
 
     }
 
@@ -270,6 +274,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
         specialImgLarge.add(new Texture("resources/rhinemod/images/1024/card_muelsyse.png"));
         Texture WATER_IMG = ImageMaster.loadImage("resources/rhinemod/images/ui/water.png");
         WATER_REGION = new TextureAtlas.AtlasRegion(WATER_IMG, 0, 0, WATER_IMG.getWidth(), WATER_IMG.getHeight());
+        resonatorImg = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/ui/resonator.png"), 0, 0, 512, 512);
 
         for (int i = 1; i <= StarlightIntersectionEffect.texture_cnt; i++) {
             StarlightIntersectionEffect.textures.add(new TextureAtlas.AtlasRegion(new Texture("resources/rhinemod/images/vfx/StarlightIntersection/" + i + ".png"),

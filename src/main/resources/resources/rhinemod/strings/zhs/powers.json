@@ -199,7 +199,12 @@
       "每回合第一次受到伤害后，对你造成 #b",
       " 点伤害。",
       "（本回合已触发）",
-      "（本回合未触发）"
+      "（本回合未触发）",
+      "每回合前两次受到伤害后，对你造成 #b",
+      " 点伤害。",
+      "（本回合还可触发 #b2 次）",
+      "（本回合还可触发 #b1 次）",
+      "（本回合已触发）"
     ]
   },
   "rhinemod:ExplodePower": {
@@ -208,7 +213,8 @@
       "死亡时，对你造成 #b",
       " 点伤害",
       "，并召唤一个 #y交通警察 。",
-      "。"
+      "。",
+      "，并召唤一个新的 #y交通亭 。"
     ]
   },
   "rhinemod:InvisiblePower": {
@@ -219,6 +225,52 @@
       " 回合。"
     ]
   },
+  "rhinemod:BlockDamage": {
+    "NAME": "手下留情",
+    "DESCRIPTIONS": [
+      "受到来自玩家的伤害最多为 #b",
+      " 点。",
+      "受到来自玩家的伤害最多为 #b",
+      " 点。每次受到来自玩家的伤害后，获得等量的 #y梦碎 层数并提高 #b1 层 #y手下留情 。"
+    ]
+  },
+  "rhinemod:DreamBreakPower": {
+    "NAME": "梦碎",
+    "DESCRIPTIONS": [
+      "死亡时，扣除玩家 #b",
+      " 点生命与最大生命值（可能致死）。生命值满时，自动退场。 #r这不是敌人，请不要攻击她！ ",
+      "最大生命值 -"
+    ]
+  },
+  "rhinemod:DreamingPower": {
+    "NAME": "美梦",
+    "DESCRIPTIONS": [
+      "该层数积攒至 #b24 层后，跳过你的下一回合。损失生命时减少等量层数。（当前 #b",
+      " 层） "
+    ]
+  },
+  "rhinemod:HealPower": {
+    "NAME": "治疗模式",
+    "DESCRIPTIONS": [
+      "下次攻击将改为治疗。"
+    ]
+  },
+  "rhinemod:TrapPower": {
+    "NAME": "陷阱标记",
+    "DESCRIPTIONS": [
+      "回合结束时，随机选择抽牌堆的一张牌标记为陷阱牌。陷阱牌在打出时会将一张 #y晕眩 加入你的弃牌堆。",
+      "回合结束时，随机选择抽牌堆的两张牌标记为陷阱牌。陷阱牌在打出时会将一张 #y晕眩 加入你的弃牌堆。"
+    ]
+  },
+  "rhinemod:FeedingPower": {
+    "NAME": "实验中",
+    "DESCRIPTIONS": [
+      "当它生命值满或吃掉 #b ",
+      " 个 #rDor-1实验体 后，会苏醒成为 #rR31重型动力甲 。"
+    ]
+  },
+
+
   "rhinemod:IdealistFormPower": {
     "NAME": "理想者形态",
     "DESCRIPTIONS": [
@@ -317,5 +369,267 @@
   "rhinemod:Order": {
     "NAME": "秩序",
     "DESCRIPTIONS": ["你本回合内不能打出会获得 #y出格 的牌。"]
+  },
+
+  "rhinemod:AddHpTag": {
+    "NAME": "源石环境：活性 ",
+    "DESCRIPTIONS": [
+      "最大生命值增加 #b",
+      "% 。"
+    ]
+  },
+  "rhinemod:AddAtkTag": {
+    "NAME": "源石环境：刺激 ",
+    "DESCRIPTIONS": [
+      "入场时，获得 #b",
+      " 点 #y力量 。"
+    ]
+  },
+  "rhinemod:AddStunTag": {
+    "NAME": "",
+    "DESCRIPTIONS": [
+      "每 #b",
+      " 回合将一张 #y晕眩 加入你的弃牌堆。（还有 #b",
+      " 回合）",
+      "源石环境：疲惫",
+      "源石环境：疲惫加剧",
+      "源石环境：深层疲惫"
+    ]
+  },
+  "rhinemod:ArclightCommandoTag1": {
+    "NAME": "弧光突击队：冲刺",
+    "DESCRIPTIONS": [
+      "起飞意图提前至第一回合。"
+    ]
+  },
+  "rhinemod:ArclightCommandoTag2": {
+    "NAME": "弧光突击队：气流传动",
+    "DESCRIPTIONS": [
+      "起飞时，飞行层数 #b+1 ，攻击 #b+4 。"
+    ]
+  },
+  "rhinemod:ArclightCommandoTag3": {
+    "NAME": "弧光突击队：紧急升空",
+    "DESCRIPTIONS": [
+      "初始即处于起飞状态，且拥有 #b5 层 #y多层护甲 与 #b5 点 #y格挡 。"
+    ]
+  },
+  "rhinemod:ArclightMirrorguardTag1": {
+    "NAME": "弧光镜卫：神经活跃",
+    "DESCRIPTIONS": [
+      "入场时获得 #b4 点 #y力量 。"
+    ]
+  },
+  "rhinemod:ArclightMirrorguardTag2": {
+    "NAME": "弧光镜卫：内稳态",
+    "DESCRIPTIONS": [
+      "每次受伤时， #y伤害减免 损失层数 #b-1 。"
+    ]
+  },
+  "rhinemod:ArclightMirrorguardTag3": {
+    "NAME": "弧光镜卫：稳固",
+    "DESCRIPTIONS": [
+      "初始的 #y伤害减免 层数提升至 #b75 。"
+    ]
+  },
+  "rhinemod:ArclightVanguardTag1": {
+    "NAME": "弧光锋卫：配重",
+    "DESCRIPTIONS": [
+      "攻击时，不再给自己添加 #y易伤 。"
+    ]
+  },
+  "rhinemod:ArclightVanguardTag2": {
+    "NAME": "弧光锋卫：稳固",
+    "DESCRIPTIONS": [
+      "攻击时，不再损失生命值。"
+    ]
+  },
+  "rhinemod:ArclightVanguardTag3": {
+    "NAME": "弧光锋卫：锋锐",
+    "DESCRIPTIONS": [
+      "移除最低伤害的意图。"
+    ]
+  },
+  "rhinemod:JesseltonWilliamsTag3": {
+    "NAME": "杰斯顿：憎恨",
+    "DESCRIPTIONS": [
+      "一阶段攻击 #b+4 ，二阶段攻击 #b+11 。"
+    ]
+  },
+  "rhinemod:MilitaryBeckbeastTag1": {
+    "NAME": "军用猎狗：反装甲I",
+    "DESCRIPTIONS": [
+      "每回合获得的格挡 #b+2 。"
+    ]
+  },
+  "rhinemod:MilitaryBeckbeastTag2": {
+    "NAME": "军用猎狗：反装甲II",
+    "DESCRIPTIONS": [
+      "每回合获得的格挡 #b+4 。"
+    ]
+  },
+  "rhinemod:DefendBackPower": {
+    "NAME": "军用猎狗：尖刺改装",
+    "DESCRIPTIONS": [
+      "回合开始时，这名敌人的 #y格挡 将转化为对玩家的伤害。"
+    ]
+  },
+  "rhinemod:TrimountsCityGuardTag1": {
+    "NAME": "城防军：新型护具I",
+    "DESCRIPTIONS": [
+      "生命提高 #b20% 。"
+    ]
+  },
+  "rhinemod:TrimountsCityGuardTag2": {
+    "NAME": "城防军：新型护具II",
+    "DESCRIPTIONS": [
+      "生命提高 #b40%  。"
+    ]
+  },
+  "rhinemod:TrimountsCityGuardTag3": {
+    "NAME": "城防军：干扰",
+    "DESCRIPTIONS": [
+      "攻击时产生的负面效果层数 #y+1 。"
+    ]
+  },
+  "rhinemod:ExperimentalPowerArmorTag1": {
+    "NAME": "动力装甲：加固机体",
+    "DESCRIPTIONS": [
+      "初始获得 #b3 层 #y金属化 。"
+    ]
+  },
+  "rhinemod:ExperimentalPowerArmorTag3": {
+    "NAME": "动力装甲：火控升级",
+    "DESCRIPTIONS": [
+      "行动变为 #b2 连击。"
+    ]
+  },
+  "rhinemod:CrossroadsThorns": {
+    "NAME": "十字路口：交通管制",
+    "DESCRIPTIONS": [
+      "受到伤害时，对伤害来源造成等同于自身 #y力量 的伤害（ #b", " 点）。"
+    ]
+  },
+  "rhinemod:CrossroadsTag3": {
+    "NAME": "十字路口：出厂标准",
+    "DESCRIPTIONS": [
+      "出场时，立刻行动一次。"
+    ]
+  },
+  "rhinemod:R31Tag1": {
+    "NAME": "R-31：超载核心",
+    "DESCRIPTIONS": [
+      "技能额外置入 #b5 张 #y晕眩 。"
+    ]
+  },
+  "rhinemod:R31Tag3": {
+    "NAME": "R-31：增压动力模块",
+    "DESCRIPTIONS": [
+      "移动速度 #y+100% 。"
+    ]
+  },
+  "rhinemod:R11Tag1": {
+    "NAME": "R-11：新型索敌系统I",
+    "DESCRIPTIONS": [
+      "近战意图伤害 #b+6 。"
+    ]
+  },
+  "rhinemod:R11Tag2": {
+    "NAME": "R-11：新型索敌系统II",
+    "DESCRIPTIONS": [
+      "远程意图伤害 #b+4 ，近战意图伤害 #b+16 。"
+    ]
+  },
+  "rhinemod:R11LoseHPPower": {
+    "NAME": "R-11：原型机",
+    "DESCRIPTIONS": [
+      "生命 #g+100% 。每当攻击未造成伤害，自身流失 #r10% 最大生命。"
+    ]
+  },
+  "rhinemod:PerpetratorTag1": {
+    "NAME": "肇事者：横冲直撞",
+    "DESCRIPTIONS": [
+      "如果一回合内未受到伤害，当次攻击段数额外 #b+1 。"
+    ]
+  },
+  "rhinemod:RushPower": {
+    "NAME": "肇事者：阻力优化I",
+    "DESCRIPTIONS": [
+      "每次成功造成伤害后，获得 #g1 点 #y力量 ；未成功造成伤害后，减少 #r1 点 #y力量 （但不低于 #b0 ）。",
+      "每次成功造成伤害后，获得 #g1 点 #y力量 。",
+      "肇事者：阻力优化II"
+    ]
+  },
+  "rhinemod:TurnpikeTag2": {
+    "NAME": "交通亭：固件更新",
+    "DESCRIPTIONS": [
+      "首次被击倒时改为弹出 #y交通亭 。"
+    ]
+  },
+  "rhinemod:TurnpikeTag3": {
+    "NAME": "交通亭：交通管制",
+    "DESCRIPTIONS": [
+      "出场时召唤 #y特里蒙城防军 至 #b3 个。"
+    ]
+  },
+  "rhinemod:TrafficPoliceTag1": {
+    "NAME": "交通警察：技艺增幅",
+    "DESCRIPTIONS": [
+      "隐匿回合数 #b+1 。"
+    ]
+  },
+  "rhinemod:Awaken_MonsterTag1": {
+    "NAME": "唤醒：封闭研究室",
+    "DESCRIPTIONS": [
+      "场上额外出现 #y多萝西 。"
+    ]
+  },
+  "rhinemod:Awaken_MonsterTag2": {
+    "NAME": "唤醒：机能增强",
+    "DESCRIPTIONS": [
+      "#y旅程 与 #y破碎愿景 伤害更早提高（变为 #b80% 最大生命值）。"
+    ]
+  },
+  "rhinemod:Awaken_MonsterTag3": {
+    "NAME": "唤醒：经费充足",
+    "DESCRIPTIONS": [
+      "#y旅程 每回合可以触发两次。"
+    ]
+  },
+  "rhinemod:DorothyTag1": {
+    "NAME": "多萝西：潜能认知项目",
+    "DESCRIPTIONS": [
+      "受到来自玩家的伤害会逐渐提高，且会增加 #y梦碎 层数。"
+    ]
+  },
+  "rhinemod:DorothyTag2": {
+    "NAME": "多萝西：美梦成真",
+    "DESCRIPTIONS": [
+      "普通攻击附带 #b8 层 #b美梦 标记。该标记超过 #b24 层时会跳过你的一回合。损失生命可以扣除等量的标记。"
+    ]
+  },
+  "rhinemod:DorothyTag3": {
+    "NAME": "多萝西：共振串联项目",
+    "DESCRIPTIONS": [
+      "#y陷阱标记 改为标记两张陷阱。且每当你抽到一张陷阱牌，如果你的手牌中已有陷阱牌，立即往抽牌堆里塞一张 #b眩晕 。"
+    ]
+  },
+  "rhinemod:SleepingR31Tag1": {
+    "NAME": "休眠R-31：休眠保护",
+    "DESCRIPTIONS": [
+      "初始生命 #b+100 ，苏醒时获得 #b3 点 #r力量 。"
+    ]
+  },
+  "rhinemod:SleepingR31Tag2": {
+    "NAME": "休眠R-31：Tag2",
+    "DESCRIPTIONS": [
+      "处于休眠状态时，每回合对 #y多萝西 造成 #b10 点伤害并为其增加 #b5 层 #y梦碎 。"
+    ]
+  },
+  "rhinemod:SleepingR31Tag3": {
+    "NAME": "休眠R-31：Tag3",
+    "DESCRIPTIONS": [
+      "仅需要一个 #yDor-1实验体 即可苏醒。"
+    ]
   }
 }

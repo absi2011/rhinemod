@@ -9,7 +9,9 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.MinionPower;
 import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
+import rhinemod.RhineMod;
 import rhinemod.actions.AwakenAction;
 import rhinemod.actions.SummonMechAction;
 import rhinemod.powers.Equality;
@@ -25,6 +27,7 @@ public class Awaken_Monster extends AbstractRhineMonster {
     public boolean isStage2;
     private boolean notTriggered;
 
+    private double stage2Percent;
     public AbstractMonster[] mechs = new AbstractMonster[3];
 
 
@@ -33,6 +36,12 @@ public class Awaken_Monster extends AbstractRhineMonster {
         type = EnemyType.ELITE;
         if (AbstractDungeon.ascensionLevel >= 8) {
             setHp(630);
+        }
+        if (RhineMod.tagLevel >= 2) {
+            stage2Percent = 0.8F;
+        }
+        else {
+            stage2Percent = 0.5F;
         }
         if (AbstractDungeon.ascensionLevel >= 18) {
             damage.add(new DamageInfo(this, 140));
@@ -67,6 +76,11 @@ public class Awaken_Monster extends AbstractRhineMonster {
         CardCrawlGame.music.fadeOutTempBGM();
         AbstractDungeon.scene.fadeOutAmbiance();
         CardCrawlGame.music.playTempBgmInstantly("m_bat_bbrain_combine.mp3", true);
+        if (RhineMod.tagLevel >= 1) {
+            mechs[1] = new Dorothy(-170.F, 6.0F);
+            mechs[1].usePreBattleAction();
+            addToBot(new SpawnMonsterAction(mechs[1], false));
+        }
     }
 
     @Override
@@ -93,7 +107,7 @@ public class Awaken_Monster extends AbstractRhineMonster {
             state.addAnimation(0, "Idle", true, 0);
             addToBot(new SummonMechAction(mechs));
         }
-        if ((currentHealth <= maxHealth / 2) && (notTriggered)) {
+        if ((currentHealth <= maxHealth * stage2Percent) && (notTriggered)) {
             addToBot(new ApplyPowerAction(this, this, new Journey(this, stage2Add)));
             isStage2 = true;
             notTriggered = false;
@@ -114,7 +128,7 @@ public class Awaken_Monster extends AbstractRhineMonster {
     @Override
     public void die() {
         for (AbstractMonster m : AbstractDungeon.getMonsters().monsters)
-            if (!m.isDeadOrEscaped()) {
+            if ((!m.isDeadOrEscaped()) && (m.hasPower(MinionPower.POWER_ID))) {
                 addToTop(new HideHealthBarAction(m));
                 addToTop(new SuicideAction(m));
                 addToTop(new VFXAction(m, new InflameEffect(m), 0.2F));

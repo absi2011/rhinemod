@@ -32,7 +32,12 @@ public class ExplodePower extends AbstractRhinePower {
     public void updateDescription() {
         description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
         if (this.owner instanceof Turnpike) {
-            description += DESCRIPTIONS[2];
+            if (((Turnpike)owner).summonMyself == 0) {
+                description += DESCRIPTIONS[2];
+            }
+            else {
+                description += DESCRIPTIONS[4];
+            }
         } else {
             description += DESCRIPTIONS[3];
         }
