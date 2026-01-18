@@ -30,11 +30,14 @@ public class SettingConfig {
     public static ModPanel panel;
     public static final String NEW_MONSTER_MULTI = "newMonsterMulti";
     public static final float[] values = new float[]{0.0F, 1.0F, 2.0F, 6.0F};
+    public static final String NEW_UI = "useNewUI";
     public static void init() {
         rhineModSettings.put(NEW_MONSTER_MULTI, String.valueOf(2));
+        rhineModSettings.put(NEW_UI, String.valueOf(1));
         try {
             config = new SpireConfig("rhinemod", "rhinemodConfig", rhineModSettings);
             RhineMod.newMonsterMulti = values[config.getInt(NEW_MONSTER_MULTI)];
+            RhineMod.useLoneTrail = config.getInt(NEW_UI) == 1;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -116,6 +119,7 @@ public class SettingConfig {
     public static void initMenu() {
         panel = new ModPanel();
         UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("rhinemod:Config");
+
         ModDropdownMenu modMenu = new ModDropdownMenu(
                 (i, s) -> {
                     RhineMod.newMonsterMulti = values[i];
@@ -126,9 +130,24 @@ public class SettingConfig {
                         e.printStackTrace();
                     }
                 },
-                new ArrayList<>(Arrays.asList(uiStrings.EXTRA_TEXT)), FontHelper.charDescFont, Settings.CREAM_COLOR, uiStrings.TEXT[0]);
+                new ArrayList<>(Arrays.asList(uiStrings.EXTRA_TEXT).subList(0, 4)), FontHelper.charDescFont, Settings.CREAM_COLOR, uiStrings.TEXT[0]);
         modMenu.menu.setSelectedIndex(config.getInt(NEW_MONSTER_MULTI));
         panel.addUIElement(modMenu);
+
+        ModDropdownMenu modMenu2 = new ModDropdownMenu(
+                (i, s) -> {
+                    RhineMod.useLoneTrail = i == 1;
+                    try {
+                        config.setInt(NEW_UI, i);
+                        config.save();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                },
+                new ArrayList<>(Arrays.asList(uiStrings.EXTRA_TEXT).subList(4, 6)), FontHelper.charDescFont, Settings.CREAM_COLOR, uiStrings.TEXT[1]);
+        modMenu2.menu.setSelectedIndex(config.getInt(NEW_UI));
+        panel.addUIElement(modMenu2);
+
         Texture badge = ImageMaster.loadImage("resources/rhinemod/images/powers/BionicDevice 32.png");
         BaseMod.registerModBadge(badge, "rhinemod", "_noname512, absi2011", "Settings", panel);
     }

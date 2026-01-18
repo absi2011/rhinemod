@@ -48,6 +48,7 @@ import rhinemod.powers.InvisibleGlobalAttributes;
 import rhinemod.relics.*;
 import rhinemod.util.SettingConfig;
 import rhinemod.util.TheSky;
+import rhinemod.vfx.SelectBannerEffect;
 import rhinemod.vfx.StarlightIntersectionEffect;
 
 import java.lang.reflect.Type;
@@ -64,34 +65,49 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
     private static final String attackCard = "resources/rhinemod/images/512/bg_attack_rhine.png";
     private static final String skillCard = "resources/rhinemod/images/512/bg_skill_rhine.png";
     private static final String powerCard = "resources/rhinemod/images/512/bg_power_rhine.png";
+    private static final String loneTrailCard = "resources/rhinemod/images/512/bg_lone_trail_2.png";
     private static final String energyOrb = "resources/rhinemod/images/512/card_rhine_orb.png";
+    private static final String energyOrb2 = "resources/rhinemod/images/512/card_lone_trail_orb.png";
     private static final String attackCardPortrait = "resources/rhinemod/images/1024/bg_attack_rhine.png";
     private static final String skillCardPortrait = "resources/rhinemod/images/1024/bg_skill_rhine.png";
     private static final String powerCardPortrait = "resources/rhinemod/images/1024/bg_power_rhine.png";
+    private static final String loneTrailCardPortrait = "resources/rhinemod/images/1024/bg_lone_trail_2.png";
     private static final String energyOrbPortrait = "resources/rhinemod/images/1024/card_rhine_orb.png";
+    private static final String energyOrb2Portrait = "resources/rhinemod/images/1024/card_lone_trail_orb.png";
     private static final String charButton = "resources/rhinemod/images/charSelect/button.png";
     private static final String charPortrait = "resources/rhinemod/images/charSelect/portrait.png";
     private static final String miniManaSymbol = "resources/rhinemod/images/manaSymbol.png";
+    private static final String miniManaSymbol2 = "resources/rhinemod/images/manaSymbol2.png";
     private static final Logger logger = LogManager.getLogger(RhineMod.class.getName());
 
     public static final ArrayList<TextureAtlas.AtlasRegion> specialImg = new ArrayList<>();
     public static final ArrayList<Texture> specialImgLarge = new ArrayList<>();
     public static TextureAtlas.AtlasRegion WATER_REGION;
     public static TextureAtlas.AtlasRegion resonatorImg;
+    public static SelectBannerEffect selectBannerEffect;
 
     public static float newMonsterMulti = 1.0F;
+    public static boolean useLoneTrail = true;
     public static int tagLevel = 0;
-    public boolean isDemo = false;
+    public boolean isDemo = true;
 
     public RhineMod() {
         BaseMod.subscribe(this);
 
         logger.info("addColor RHINE_MATTE");
-        BaseMod.addColor(RHINE_MATTE,
-                RhineMatte, RhineMatte, RhineMatte, RhineMatte, RhineMatte, RhineMatte, RhineMatte,   //Background color, back color, frame color, frame outline color, description box color, glow color
-                attackCard, skillCard, powerCard, energyOrb,                                   //attack background image, skill background image, power background image, energy orb image
-                attackCardPortrait, skillCardPortrait, powerCardPortrait, energyOrbPortrait,   //as above, but for card inspect view
-                miniManaSymbol);
+        if (useLoneTrail) {
+            BaseMod.addColor(RHINE_MATTE,
+                    RhineMatte, RhineMatte, RhineMatte, RhineMatte, RhineMatte, RhineMatte, RhineMatte,   //Background color, back color, frame color, frame outline color, description box color, glow color
+                    loneTrailCard, loneTrailCard, loneTrailCard, energyOrb2,                                   //attack background image, skill background image, power background image, energy orb image
+                    loneTrailCardPortrait, loneTrailCardPortrait, loneTrailCardPortrait, energyOrb2Portrait,   //as above, but for card inspect view
+                    miniManaSymbol2);
+        } else {
+            BaseMod.addColor(RHINE_MATTE,
+                    RhineMatte, RhineMatte, RhineMatte, RhineMatte, RhineMatte, RhineMatte, RhineMatte,   //Background color, back color, frame color, frame outline color, description box color, glow color
+                    attackCard, skillCard, powerCard, energyOrb,                                   //attack background image, skill background image, power background image, energy orb image
+                    attackCardPortrait, skillCardPortrait, powerCardPortrait, energyOrbPortrait,   //as above, but for card inspect view
+                    miniManaSymbol);
+        }
 
         SettingConfig.init();
     }
@@ -264,6 +280,8 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
             StarlightIntersectionEffect.textures.add(new TextureAtlas.AtlasRegion(new Texture("resources/rhinemod/images/vfx/StarlightIntersection/" + i + ".png"),
                     0, 0,StarlightIntersectionEffect.width, StarlightIntersectionEffect.height));
         }
+
+        selectBannerEffect = new SelectBannerEffect(Settings.WIDTH / 2.0F - 300.0F, Settings.HEIGHT - 282.0F, 600.0F, 50.0F);
     }
 
     @Override
