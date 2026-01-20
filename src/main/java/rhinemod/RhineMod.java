@@ -196,7 +196,7 @@ public class RhineMod implements EditCardsSubscriber, EditCharactersSubscriber, 
             }));
         }
         BaseMod.addEliteEncounter(TheBeyond.ID, new MonsterInfo("Disaster of Machine", 2.0F * newMonsterMulti));
-        addMonster("Repairing R31", names[16], () -> new MonsterGroup(new AbstractMonster[] {new SleepingR31(-800.0F, 0.0F), new RhineEngineeringMember(-400.0F, 0.0F), new Dorothy(0.0F, 0.0F)}));
+        addMonster("Repairing R31", names[16], () -> new MonsterGroup(new AbstractMonster[] {new SleepingR31(-600.0F, 0.0F), new RhineEngineeringMember(-400.0F, 0.0F), new Dorothy(0.0F, 0.0F)}));
         BaseMod.addBoss(TheBeyond.ID, "Repairing R31", "resources/rhinemod/images/ui/dorothy.png", "resources/rhinemod/images/ui/dorothy_outline.png");
 
         // Add a name.

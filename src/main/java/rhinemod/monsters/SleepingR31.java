@@ -26,7 +26,7 @@ public class SleepingR31 extends AbstractRhineMonster {
     public int feedLeft = 0;
 
     public SleepingR31(float x, float y) {
-        super(NAME, ID, 1000, 0, 0, 220.0F, 360.0F, null, x, y);
+        super(NAME, ID, 1000, 0, 0, 220.0F, 230.0F, null, x, y);
         type = EnemyType.BOSS;
         if (RhineMod.tagLevel >= 1) {
             currentHealth = 400;
