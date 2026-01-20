@@ -25,7 +25,7 @@ public class Dor1 extends AbstractRhineMonster {
     int turn = 0;
 
     public Dor1(float x, float y) {
-        super(NAME, ID, 28, 0, 0, 160.0F, 200.0F, null, x, y);
+        super(NAME, ID, 28, 0, 0, 140.0F, 200.0F, null, x, y);
         type = EnemyType.NORMAL;
         if (RhineMod.tagLevel >= 3) {
             setHp(60);
@@ -61,7 +61,7 @@ public class Dor1 extends AbstractRhineMonster {
     public void usePreBattleAction() {
         super.usePreBattleAction();
         if (RhineMod.tagLevel >= 2) {
-            addToBot(new ApplyPowerAction(this, this, new IntangiblePower(this, 1)));
+            addToBot(new ApplyPowerAction(this, this, new IntangiblePower(this, 2)));
         }
     }
 

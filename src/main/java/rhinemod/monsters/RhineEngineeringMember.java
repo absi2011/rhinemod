@@ -1,6 +1,7 @@
 package rhinemod.monsters;
 
 import com.badlogic.gdx.math.MathUtils;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.actions.common.SpawnMonsterAction;
@@ -10,6 +11,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import rhinemod.RhineMod;
+import rhinemod.powers.DreamBreakPower;
 
 public class RhineEngineeringMember extends AbstractRhineMonster {
     public static final String ID = "rhinemod:RhineEngineeringMember";
@@ -22,7 +24,7 @@ public class RhineEngineeringMember extends AbstractRhineMonster {
     int lastMove = 1;
 
     public RhineEngineeringMember(float x, float y) {
-        super(NAME, ID, 300, 0, 0, 220.0F, 230.0F, null, x, y);
+        super(NAME, ID, 300, 0, 0, 160.0F, 230.0F, null, x, y);
         type = EnemyType.BOSS;
         if (AbstractDungeon.ascensionLevel >= 9) {
             setHp(320);
@@ -59,6 +61,9 @@ public class RhineEngineeringMember extends AbstractRhineMonster {
             for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
                 if ((!m.isDeadOrEscaped()) && (m instanceof Dorothy)) {
                     addToBot(new DamageAction(m, damage.get(0)));
+                    if (RhineMod.tagLevel >= 2) {
+                        addToBot(new ApplyPowerAction(m, m, new DreamBreakPower(m, damage.get(0).output)));
+                    }
                 }
             }
         }

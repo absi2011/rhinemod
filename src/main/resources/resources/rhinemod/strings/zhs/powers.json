@@ -627,15 +627,45 @@
     ]
   },
   "rhinemod:SleepingR31Tag2": {
-    "NAME": "休眠R-31：Tag2",
+    "NAME": "休眠R-31：一同如梦",
     "DESCRIPTIONS": [
       "处于休眠状态时，每回合对 #y多萝西 造成 #b10 点伤害并为其增加 #b5 层 #y梦碎 。"
     ]
   },
   "rhinemod:SleepingR31Tag3": {
-    "NAME": "休眠R-31：Tag3",
+    "NAME": "休眠R-31：效率",
     "DESCRIPTIONS": [
       "仅需要一个 #yDor-1实验体 即可苏醒。"
+    ]
+  },
+  "rhinemod:RhineEngineeringMemberTag2": {
+    "NAME": "工程科成员：梦醒时分",
+    "DESCRIPTIONS": [
+      "对 #b多萝西 攻击时，同时增加 #g梦碎 层数。"
+    ]
+  },
+  "rhinemod:RhineEngineeringMemberTag3": {
+    "NAME": "工程科成员：技术革新",
+    "DESCRIPTIONS": [
+      "维修动力甲的效率 #g+100% 。"
+    ]
+  },
+  "rhinemod:Dor1Tag1": {
+    "NAME": "Dor1：坚实之梦",
+    "DESCRIPTIONS": [
+      "对 #b多萝西 造成的伤害 #b+5 。"
+    ]
+  },
+  "rhinemod:Dor1Tag2": {
+    "NAME": "Dor1：无暇之梦",
+    "DESCRIPTIONS": [
+      "出场的回合携带一层 #b无实体 。"
+    ]
+  },
+  "rhinemod:Dor1Tag3": {
+    "NAME": "Dor1：健康之梦",
+    "DESCRIPTIONS": [
+      "最大生命值增加 #g+100% 。"
     ]
   }
 }

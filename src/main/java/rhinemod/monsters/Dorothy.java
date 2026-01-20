@@ -137,7 +137,12 @@ public class Dorothy extends AbstractRhineMonster {
         if (currentHealth == maxHealth) {
             state.setAnimation(0, "F_Die", false);
             addToTop(new DelayRemoveAction(this));
-            addToTop(new TalkAction(this, DIALOG[0]));
+            if (CardCrawlGame.dungeon instanceof TheBeyond) {
+                addToTop(new TalkAction(this, DIALOG[0]));
+            }
+            else {
+                addToBot(new TalkAction(this, DIALOG[1]));
+            }
         }
     }
 

@@ -3,6 +3,7 @@ package rhinemod.monsters;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -13,9 +14,11 @@ import com.megacrit.cardcrawl.powers.SlowPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import rhinemod.RhineMod;
 import rhinemod.actions.WaitAndAwakeAction;
+import rhinemod.characters.RhineLab;
 import rhinemod.powers.DreamBreakPower;
 import rhinemod.powers.FeedingPower;
 import rhinemod.powers.NoStun;
+import rhinemod.vfx.R31MoveEffect;
 
 public class SleepingR31 extends AbstractRhineMonster {
     public static final String ID = "rhinemod:SleepingR31";
@@ -50,6 +53,15 @@ public class SleepingR31 extends AbstractRhineMonster {
 
     @Override
     public void usePreBattleAction() {
+        AbstractPlayer p = AbstractDungeon.player;
+        float destX;
+        if (p instanceof RhineLab) {
+            destX = (drawX - hb.width * 0.6F - (p.hb.cX + p.hb.width * 0.6F));
+        }
+        else {
+            destX = (drawX - hb.width * 0.5F - (p.hb.cX + p.hb.width * 0.5F));
+        }
+        drawX -= destX;
         super.usePreBattleAction();
         addToBot(new ApplyPowerAction(this, this, new NoStun(this)));
         addToBot(new ApplyPowerAction(this, this, new FeedingPower(this, feedLeft)));
@@ -95,7 +107,6 @@ public class SleepingR31 extends AbstractRhineMonster {
         m.showHealthBar();
         m.usePreBattleAction();
         m.SpecialMove();
-        m.createIntent();
         if (RhineMod.tagLevel >= 1) {
             addToBot(new ApplyPowerAction(m, m, new StrengthPower(m, 3)));
         }
