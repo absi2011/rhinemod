@@ -13,6 +13,7 @@ public class RhineImageMaster {
     public static Texture topPanelKeyRed;
     public static Texture topPanelKeyGreen;
     public static Texture topPanelHeart;
+    public static Texture topPanelHeartWhite;
     public static Texture topPanelGold;
     public static Texture topPanelEndless;
     public static Texture topPanelFloor;
@@ -144,6 +145,7 @@ public class RhineImageMaster {
         topPanelKeyRed = ImageMaster.loadImage("resources/rhinemod/images/ui/topPanel/key_red.png");
         topPanelKeyGreen = ImageMaster.loadImage("resources/rhinemod/images/ui/topPanel/key_green.png");
         topPanelHeart = ImageMaster.loadImage("resources/rhinemod/images/ui/topPanel/panelHeart.png");
+        topPanelHeartWhite = ImageMaster.loadImage("resources/rhinemod/images/ui/topPanel/panel_heart_white.png");
         topPanelGold = ImageMaster.loadImage("resources/rhinemod/images/ui/topPanel/gold.png");
         topPanelEndless = ImageMaster.loadImage("resources/rhinemod/images/ui/topPanel/endless.png");
         topPanelFloor = ImageMaster.loadImage("resources/rhinemod/images/ui/topPanel/floor.png");
