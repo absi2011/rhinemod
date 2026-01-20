@@ -25,7 +25,7 @@ public class Dor1 extends AbstractRhineMonster {
     int turn = 0;
 
     public Dor1(float x, float y) {
-        super(NAME, ID, 28, 0, 0, 220.0F, 360.0F, null, x, y);
+        super(NAME, ID, 28, 0, 0, 160.0F, 200.0F, null, x, y);
         type = EnemyType.NORMAL;
         if (RhineMod.tagLevel >= 3) {
             setHp(60);
@@ -68,7 +68,7 @@ public class Dor1 extends AbstractRhineMonster {
     @Override
     public void takeTurn() {
         turn ++;
-        if (nextMove == 3) {
+        if (nextMove == 50) {
             AbstractPlayer p = AbstractDungeon.player;
             float destX, destY;
             if (p instanceof RhineLab) {
@@ -81,7 +81,7 @@ public class Dor1 extends AbstractRhineMonster {
             AbstractDungeon.effectList.add(new R31MoveEffect(this, destX));
             // TODO: 跑到动力甲那，但是可能这里只有横向移动，也许要再写个effect？
             for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-                if (m instanceof SleepingR31) {
+                if ((!m.isDeadOrEscaped()) && (m instanceof SleepingR31)) {
                     m.getPower(FeedingPower.POWER_ID).onSpecificTrigger();
                     addToBot(new SuicideAction(this, false));
                     break;
@@ -121,7 +121,7 @@ public class Dor1 extends AbstractRhineMonster {
         else {
             int possibleMoves = 1;
             for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-                if (m instanceof Dorothy) {
+                if ((!m.isDeadOrEscaped()) && (m instanceof Dorothy)) {
                     possibleMoves = 2;
                 }
             }

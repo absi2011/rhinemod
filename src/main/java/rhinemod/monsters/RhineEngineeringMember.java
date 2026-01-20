@@ -57,18 +57,18 @@ public class RhineEngineeringMember extends AbstractRhineMonster {
             state.addAnimation(0, "Idle", true, 0);
             addToBot(new DamageAction(AbstractDungeon.player, damage.get(0)));
             for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
-                if (m instanceof Dorothy) {
+                if ((!m.isDeadOrEscaped()) && (m instanceof Dorothy)) {
                     addToBot(new DamageAction(m, damage.get(0)));
                 }
             }
         }
         else if (nextMove == 2) {
-            state.setAnimation(0, "Skill_Begin", false);
-            state.addAnimation(0, "Skill_Loop", false, 0);
-            state.addAnimation(0, "Skill_End", false, 0);
-            state.addAnimation(0, "Idle", true, 0);
             for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
-                if ((m instanceof SleepingR31) || (m instanceof R31HeavyPowerArmor)) {
+                if ((!m.isDeadOrEscaped()) && ((m instanceof SleepingR31) || (m instanceof R31HeavyPowerArmor))) {
+                    state.setAnimation(0, "Skill_Begin", false);
+                    state.addAnimation(0, "Skill_Loop", false, 0);
+                    state.addAnimation(0, "Skill_End", false, 0);
+                    state.addAnimation(0, "Idle", true, 0);
                     addToBot(new HealAction(m, this, MathUtils.floor(m.maxHealth * repairPercent)));
                 }
             }
@@ -76,7 +76,7 @@ public class RhineEngineeringMember extends AbstractRhineMonster {
         else {
             state.setAnimation(0, "Attack", false);
             state.addAnimation(0, "Idle", true, 0);
-            summon = new Dor1(0.0F, 0.0F);
+            summon = new Dor1(-200.0F, 0.0F);
             addToBot(new SpawnMonsterAction(summon, true));
         }
         getMove(0);
@@ -88,7 +88,7 @@ public class RhineEngineeringMember extends AbstractRhineMonster {
         }
         else {
             for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
-                if ((m instanceof SleepingR31) || (m instanceof R31HeavyPowerArmor)) {
+                if ((!m.isDeadOrEscaped()) && ((m instanceof SleepingR31) || (m instanceof R31HeavyPowerArmor))) {
                     break;
                 }
             }
