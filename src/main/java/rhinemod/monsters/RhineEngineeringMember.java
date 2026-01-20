@@ -22,7 +22,7 @@ public class RhineEngineeringMember extends AbstractRhineMonster {
     int lastMove = 1;
 
     public RhineEngineeringMember(float x, float y) {
-        super(NAME, ID, 300, 0, 0, 220.0F, 360.0F, null, x, y);
+        super(NAME, ID, 300, 0, 0, 220.0F, 230.0F, null, x, y);
         type = EnemyType.BOSS;
         if (AbstractDungeon.ascensionLevel >= 9) {
             setHp(320);

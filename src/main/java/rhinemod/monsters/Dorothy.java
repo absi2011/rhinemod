@@ -33,7 +33,7 @@ public class Dorothy extends AbstractRhineMonster {
     private int lastMove = -1;
 
     public Dorothy(float x, float y) {
-        super(NAME, ID, 200, 0, 0, 150.0F, 250.0F, null, x, y);
+        super(NAME, ID, 200, 0, 0, 150.0F, 270.0F, null, x, y);
         type = EnemyType.ELITE;
         currentHealth = maxHealth / 2;
         if (AbstractDungeon.ascensionLevel >= 18) {
