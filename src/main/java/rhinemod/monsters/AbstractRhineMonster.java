@@ -61,6 +61,7 @@ public abstract class AbstractRhineMonster extends CustomMonster {
             else if (attackTarget == AttackTarget.DOROTHY) tip.body += TEXT[2];
             else tip.body += TEXT[1] + TEXT[3] + TEXT[2];
             tip.body += TEXT[4];
+            ReflectionHacks.setPrivate(this, AbstractMonster.class, "intentTip", tip);
         }
     }
 
