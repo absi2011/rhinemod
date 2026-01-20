@@ -2,11 +2,16 @@ package rhinemod.monsters;
 
 import basemod.ReflectionHacks;
 import basemod.abstracts.CustomMonster;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import javassist.CannotCompileException;
+import javassist.expr.ExprEditor;
+import javassist.expr.MethodCall;
 import org.apache.logging.log4j.LogManager;
 import rhinemod.RhineMod;
 
@@ -52,15 +57,21 @@ public abstract class AbstractRhineMonster extends CustomMonster {
 
     public void dieAnimation() {}
 
+    public String getIntentTip() {
+        String tip = TEXT[0];
+        if (attackTarget == AttackTarget.PLAYER) tip += TEXT[1];
+        else if (attackTarget == AttackTarget.DOROTHY) tip += TEXT[2];
+        else if (attackTarget == AttackTarget.BOTH) tip += TEXT[1] + TEXT[3] + TEXT[2];
+        else return "";
+        tip += TEXT[4];
+        return tip;
+    }
+
     public void myUpdateIntentTip() {
         if (attackTarget == AttackTarget.NONE) return;
         if (intent == Intent.ATTACK || intent == Intent.ATTACK_BUFF || intent == Intent.ATTACK_DEBUFF || intent == Intent.ATTACK_DEFEND) {
             PowerTip tip = ReflectionHacks.getPrivate(this, AbstractMonster.class, "intentTip");
-            tip.body += TEXT[0];
-            if (attackTarget == AttackTarget.PLAYER) tip.body += TEXT[1];
-            else if (attackTarget == AttackTarget.DOROTHY) tip.body += TEXT[2];
-            else tip.body += TEXT[1] + TEXT[3] + TEXT[2];
-            tip.body += TEXT[4];
+            tip.body += getIntentTip();
             ReflectionHacks.setPrivate(this, AbstractMonster.class, "intentTip", tip);
         }
     }
@@ -75,5 +86,18 @@ public abstract class AbstractRhineMonster extends CustomMonster {
     public void applyPowers() {
         super.applyPowers();
         myUpdateIntentTip();
+    }
+
+    @SpirePatch(clz = AbstractMonster.class, method = "renderDamageRange")
+    public static class RenderDamageRangePatch {
+        public static ExprEditor Instrument() {
+            return new ExprEditor() {
+                public void edit(MethodCall m) throws CannotCompileException {
+                    if (m.getClassName().equals(FontHelper.class.getName()) && m.getMethodName().equals("renderFontLeftTopAligned")) {
+                        m.replace("if (this instanceof " + AbstractRhineMonster.class.getName() + ") { $3 = $3 + ((" + AbstractRhineMonster.class.getName() + ")this).getIntentTip(); $_ = $proceed($$); } else { $proceed($$); }");
+                    }
+                }
+            };
+        }
     }
 }
