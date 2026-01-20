@@ -17,6 +17,7 @@ import com.megacrit.cardcrawl.powers.RegenPower;
 import com.megacrit.cardcrawl.vfx.cardManip.ExhaustCardEffect;
 import rhinemod.RhineMod;
 import rhinemod.actions.AwakenAction;
+import rhinemod.actions.DelayRemoveAction;
 import rhinemod.actions.SetTrapAction;
 import rhinemod.patches.MusicPatch;
 import rhinemod.powers.*;
@@ -131,50 +132,32 @@ public class Dorothy extends AbstractRhineMonster {
     }
 
     @Override
-    public void heal(int healAmount, boolean showEffect) {
-        super.heal(healAmount);
-        if (currentHealth == maxHealth) {
-            fullHealthTalking();
-            hideHealthBar();
-            escaped = true;
-            isEscaping = true;
-            AbstractDungeon.getCurrRoom().monsters.monsters.remove(this);
-            if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
-                AbstractDungeon.overlayMenu.endTurnButton.disable();
-                for (AbstractCard c : AbstractDungeon.player.limbo.group) {
-                    AbstractDungeon.effectList.add(new ExhaustCardEffect(c));
-                }
-                AbstractDungeon.player.limbo.clear();
-                //End Battle
-            }
-        }
-    }
-    @Override
     public void heal(int healAmount) {
         super.heal(healAmount);
         if (currentHealth == maxHealth) {
-            fullHealthTalking();
-            hideHealthBar();
-            escaped = true;
-            isEscaping = true;
-            AbstractDungeon.getCurrRoom().monsters.monsters.remove(this);
-            if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
-                AbstractDungeon.overlayMenu.endTurnButton.disable();
-                for (AbstractCard c : AbstractDungeon.player.limbo.group) {
-                    AbstractDungeon.effectList.add(new ExhaustCardEffect(c));
-                }
-                AbstractDungeon.player.limbo.clear();
-                //End Battle
-            }
+            state.setAnimation(0, "F_Die", false);
+            addToTop(new DelayRemoveAction(this));
+            addToTop(new TalkAction(this, DIALOG[0]));
         }
     }
 
-    private void fullHealthTalking() {
-        if (CardCrawlGame.dungeon instanceof TheBeyond) {
-            addToBot(new TalkAction(this, DIALOG[0]));
-        }
-        else {
-            addToBot(new TalkAction(this, DIALOG[1]));
+    @Override
+    public void heal(int healAmount, boolean showEffect) {
+        heal(healAmount);
+    }
+
+    public void realRemove() {
+        hideHealthBar();
+        escaped = true;
+        isEscaping = true;
+        AbstractDungeon.getCurrRoom().monsters.monsters.remove(this);
+        if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
+            AbstractDungeon.overlayMenu.endTurnButton.disable();
+            for (AbstractCard c : AbstractDungeon.player.limbo.group) {
+                AbstractDungeon.effectList.add(new ExhaustCardEffect(c));
+            }
+            AbstractDungeon.player.limbo.clear();
+            //End Battle
         }
     }
 }

@@ -52,7 +52,7 @@ public class Dor1 extends AbstractRhineMonster {
             damage.add(new DamageInfo(this, 8));
             damage.add(new DamageInfo(this, 4));
         }
-        loadAnimation("resources/rhinemod/images/monsters/enemy_1251_lysyta/enemy_1251_lysyta33.atlas", "resources/rhinemod/images/monsters/enemy_1251_lysyta/enemy_1251_lysyta33.json", 1.5F);
+        loadAnimation("resources/rhinemod/images/monsters/enemy_1251_lysyta/enemy_1251_lysyta.atlas", "resources/rhinemod/images/monsters/enemy_1251_lysyta/enemy_1251_lysyta37.json", 1.5F);
         state.setAnimation(0, "Idle", true);
         flipHorizontal = true;
     }

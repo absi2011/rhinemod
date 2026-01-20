@@ -83,8 +83,7 @@
     "NAME": "多萝西",
     "MOVES": ["破碎愿景"],
     "DIALOG": [
-      "谢谢你，让我看到了一段新的旅途。",
-      "占位符"
+      "谢谢你，让我看到了一段新的旅途。"
     ]
   },
   "rhinemod:RhineEngineeringMember": {

@@ -1,6 +1,5 @@
 package rhinemod.cards;
 
-import basemod.BaseMod;
 import basemod.abstracts.CustomCard;
 import basemod.abstracts.DynamicVariable;
 import basemod.helpers.TooltipInfo;
@@ -13,7 +12,6 @@ import rhinemod.interfaces.UpgradeBranch;
 import rhinemod.relics.Melt;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.logging.Logger;
 
