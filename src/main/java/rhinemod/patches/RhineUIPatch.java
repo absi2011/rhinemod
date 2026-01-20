@@ -35,6 +35,7 @@ import com.megacrit.cardcrawl.ui.panels.*;
 import com.megacrit.cardcrawl.vfx.FlameAnimationEffect;
 import com.megacrit.cardcrawl.vfx.ObtainKeyEffect;
 import com.megacrit.cardcrawl.vfx.TintEffect;
+import com.megacrit.cardcrawl.vfx.combat.HealPanelEffect;
 import com.megacrit.cardcrawl.vfx.scene.LogoFlameEffect;
 import javassist.CannotCompileException;
 import javassist.CtBehavior;
@@ -940,6 +941,19 @@ public class RhineUIPatch {
 
             sb.setBlendFunction(770, 771);
             return SpireReturn.Return();
+        }
+    }
+
+    @SpirePatch(clz = HealPanelEffect.class, method = SpirePatch.CONSTRUCTOR, paramtypez = { float.class })
+    public static class HealPanelEffectPatch {
+        public static ExprEditor Instrument() {
+            return new ExprEditor() {
+                public void edit(MethodCall m) throws CannotCompileException {
+                    if (m.getClassName().equals(SpriteBatch.class.getName()) && m.getMethodName().equals("draw")) {
+                        m.replace("if (" + RhineMod.class.getName() + ".useLoneTrail) { $1 = " + RhineImageMaster.class.getName() + ".topPanelHeartWhite; $_ = $proceed($$); } else { $proceed($$); }");
+                    }
+                }
+            };
         }
     }
 }

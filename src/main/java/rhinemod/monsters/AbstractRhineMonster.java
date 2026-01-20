@@ -3,6 +3,7 @@ package rhinemod.monsters;
 import basemod.ReflectionHacks;
 import basemod.abstracts.CustomMonster;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
+import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
@@ -31,10 +32,12 @@ public abstract class AbstractRhineMonster extends CustomMonster {
 
     @Override
     public void usePreBattleAction() {
-        if (AbstractDungeon.id.equals("Exordium") || AbstractDungeon.id.equals("TheCity") || AbstractDungeon.id.equals("TheBeyond")) {
-            CardCrawlGame.music.fadeOutTempBGM();
-            AbstractDungeon.scene.fadeOutAmbiance();
-            CardCrawlGame.music.playTempBgmInstantly("m_bat_act19side_01_combine.mp3", true);
+        if (GameActionManager.turn <= 1) {
+            if (AbstractDungeon.id.equals("Exordium") || AbstractDungeon.id.equals("TheCity") || AbstractDungeon.id.equals("TheBeyond")) {
+                CardCrawlGame.music.fadeOutTempBGM();
+                AbstractDungeon.scene.fadeOutAmbiance();
+                CardCrawlGame.music.playTempBgmInstantly("m_bat_act19side_01_combine.mp3", true);
+            }
         }
     }
 
