@@ -81,8 +81,11 @@
   },
   "rhinemod:Dorothy": {
     "NAME": "多萝西",
-    "MOVES": [""],
-    "DIALOG": ["谢谢你，让我看到了一段新的旅途。"]
+    "MOVES": ["破碎愿景"],
+    "DIALOG": [
+      "谢谢你，让我看到了一段新的旅途。",
+      "占位符"
+    ]
   },
   "rhinemod:RhineEngineeringMember": {
     "NAME": "莱茵生命工程科成员",

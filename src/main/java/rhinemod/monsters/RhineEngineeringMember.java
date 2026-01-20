@@ -106,6 +106,8 @@ public class RhineEngineeringMember extends AbstractRhineMonster {
     @Override
     public void die() {
         super.die();
-        summon.die();
+        if (summon != null) {
+            summon.die();
+        }
     }
 }

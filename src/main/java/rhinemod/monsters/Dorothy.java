@@ -1,5 +1,6 @@
 package rhinemod.monsters;
 
+import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -9,6 +10,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.RegenPower;
@@ -25,6 +27,7 @@ public class Dorothy extends AbstractRhineMonster {
     public static final String ID = "rhinemod:Dorothy";
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
+    public static final String[] MOVES = monsterStrings.MOVES;
     public static final String[] DIALOG = monsterStrings.DIALOG;
 
     private int lastMove = -1;
@@ -123,7 +126,7 @@ public class Dorothy extends AbstractRhineMonster {
         }
         else {
             addToBot(new ApplyPowerAction(this, this, new Equality(this)));
-            setMove((byte)3, Intent.ATTACK, damage.get(1).base);
+            setMove(MOVES[0], (byte)3, Intent.ATTACK, damage.get(1).base);
         }
     }
 
@@ -131,6 +134,7 @@ public class Dorothy extends AbstractRhineMonster {
     public void heal(int healAmount, boolean showEffect) {
         super.heal(healAmount);
         if (currentHealth == maxHealth) {
+            fullHealthTalking();
             hideHealthBar();
             escaped = true;
             isEscaping = true;
@@ -149,6 +153,7 @@ public class Dorothy extends AbstractRhineMonster {
     public void heal(int healAmount) {
         super.heal(healAmount);
         if (currentHealth == maxHealth) {
+            fullHealthTalking();
             hideHealthBar();
             escaped = true;
             isEscaping = true;
@@ -161,6 +166,15 @@ public class Dorothy extends AbstractRhineMonster {
                 AbstractDungeon.player.limbo.clear();
                 //End Battle
             }
+        }
+    }
+
+    private void fullHealthTalking() {
+        if (CardCrawlGame.dungeon instanceof TheBeyond) {
+            addToBot(new TalkAction(this, DIALOG[0]));
+        }
+        else {
+            addToBot(new TalkAction(this, DIALOG[1]));
         }
     }
 }
