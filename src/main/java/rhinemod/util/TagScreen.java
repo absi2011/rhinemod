@@ -9,18 +9,15 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.MathHelper;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.localization.UIStrings;
-import com.megacrit.cardcrawl.screens.DrawPileViewScreen;
 import com.megacrit.cardcrawl.screens.charSelect.CharacterSelectScreen;
 import com.megacrit.cardcrawl.screens.mainMenu.MainMenuScreen;
 import com.megacrit.cardcrawl.screens.mainMenu.MenuCancelButton;
 import com.megacrit.cardcrawl.screens.mainMenu.ScrollBar;
 import com.megacrit.cardcrawl.screens.mainMenu.ScrollBarListener;
-import org.apache.logging.log4j.LogManager;
 import rhinemod.patches.TagLevelPatch;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.logging.Logger;
 
 public class TagScreen implements ScrollBarListener {
     private MenuCancelButton cancelButton = new MenuCancelButton();
@@ -118,7 +115,7 @@ public class TagScreen implements ScrollBarListener {
 
     @Override
     public void scrolledUsingBar(float newPercent) {
-        targetY = MathHelper.valueFromPercentBetween(scrollLowerBound, scrollUpperBound, newPercent);;
+        targetY = MathHelper.valueFromPercentBetween(scrollLowerBound, scrollUpperBound, newPercent);
         updateBarPosition();
     }
 
@@ -135,7 +132,7 @@ public class TagScreen implements ScrollBarListener {
         sb.setColor(Color.WHITE);
         float height = Settings.HEIGHT * 0.75F + targetY;
         for (String tag : tagList) {
-            FontHelper.renderSmartText(sb, FontHelper.charDescFont, tag, (screenX + 120.0F) * Settings.scale, height + 12.0F * Settings.scale, text_max_width, line_spacing, Settings.CREAM_COLOR);
+            FontHelper.renderSmartText(sb, FontHelper.charDescFont, tag, (screenX + 80.0F) * Settings.scale, height + 12.0F * Settings.scale, text_max_width, line_spacing, Settings.CREAM_COLOR);
             height -= 70.0F * Settings.scale - FontHelper.getSmartHeight(FontHelper.charDescFont, tag, text_max_width, line_spacing);
         }
     }

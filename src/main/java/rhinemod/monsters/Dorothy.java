@@ -2,7 +2,6 @@ package rhinemod.monsters;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -31,7 +30,7 @@ public class Dorothy extends AbstractRhineMonster {
     private int lastMove = -1;
 
     public Dorothy(float x, float y) {
-        super(NAME, ID, 200, 0, 0, 150.0F, 220.0F, null, x, y);
+        super(NAME, ID, 200, 0, 0, 150.0F, 250.0F, null, x, y);
         type = EnemyType.ELITE;
         currentHealth = maxHealth / 2;
         if (AbstractDungeon.ascensionLevel >= 18) {

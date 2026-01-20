@@ -1,5 +1,6 @@
 package rhinemod.cards;
 
+import basemod.BaseMod;
 import basemod.abstracts.CustomCard;
 import basemod.abstracts.DynamicVariable;
 import basemod.helpers.TooltipInfo;
@@ -12,7 +13,9 @@ import rhinemod.interfaces.UpgradeBranch;
 import rhinemod.relics.Melt;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.logging.Logger;
 
 public abstract class AbstractRhineCard extends CustomCard {
     public static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("rhinemod:AbstractRhineCard");
@@ -176,6 +179,40 @@ public abstract class AbstractRhineCard extends CustomCard {
         String id = cardID;
         if (upgraded) id = id + "*" + chosenBranch;
         return id;
+    }
+
+    public void updateKeywords() {
+        Logger.getLogger(AbstractRhineCard.class.getName()).info("Start updating keywords of card: " + name);
+        for (String keyword : keywords) {
+            Logger.getLogger(AbstractRhineCard.class.getName()).info("keyword: " + keyword);
+        }
+        if (keywords.contains("rhinemod:Water_Stain") && !keywords.contains("rhinemod:Submersion")) {
+            keywords.add("rhinemod:Submersion");
+        }
+        Logger.getLogger(AbstractRhineCard.class.getName()).info("contains 水渍？" + keywords.contains("rhinemod:水渍"));
+        Logger.getLogger(AbstractRhineCard.class.getName()).info("contains 浸没？" + keywords.contains("rhinemod:浸没"));
+
+        if (keywords.contains("rhinemod:水渍") && !keywords.contains("rhinemod:浸没")) {
+            keywords.add("rhinemod:浸没");
+        }
+        if (keywords.contains("rhinemod:Research_Progress") && !keywords.contains("rhinemod:Perturbation")) {
+            keywords.add("rhinemod:Perturbation");
+        }
+        if (keywords.contains("rhinemod:科研进度") && !keywords.contains("rhinemod:波骇")) {
+            keywords.add("rhinemod:波骇");
+        }
+    }
+
+    @Override
+    public void initializeDescription() {
+        super.initializeDescription();
+        updateKeywords();
+    }
+
+    @Override
+    public void initializeDescriptionCN() {
+        super.initializeDescriptionCN();
+        updateKeywords();
     }
 
     public static class SecondMagicNumber extends DynamicVariable {

@@ -27,6 +27,7 @@ import com.megacrit.cardcrawl.map.MapEdge;
 import com.megacrit.cardcrawl.map.MapRoomNode;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.scenes.TitleBackground;
 import com.megacrit.cardcrawl.screens.*;
 import com.megacrit.cardcrawl.screens.mainMenu.MenuCancelButton;
 import com.megacrit.cardcrawl.screens.options.*;
@@ -35,6 +36,7 @@ import com.megacrit.cardcrawl.ui.panels.*;
 import com.megacrit.cardcrawl.vfx.FlameAnimationEffect;
 import com.megacrit.cardcrawl.vfx.ObtainKeyEffect;
 import com.megacrit.cardcrawl.vfx.TintEffect;
+import com.megacrit.cardcrawl.vfx.scene.LogoFlameEffect;
 import javassist.CannotCompileException;
 import javassist.CtBehavior;
 import javassist.expr.ExprEditor;
@@ -44,6 +46,8 @@ import rhinemod.cards.AbstractRhineCard;
 import rhinemod.util.RhineImageMaster;
 import rhinemod.vfx.PileFilesEffect;
 import rhinemod.vfx.TargetingUiEffect;
+
+import java.util.ArrayList;
 
 public class RhineUIPatch {
     public static Color ORANGE_COLOR = new Color(0.9F, 0.5F, 0.1F, 1.0f);
@@ -126,6 +130,7 @@ public class RhineUIPatch {
                 ImageMaster.MAP_NODE_REST = RhineImageMaster.mapRest;
                 ImageMaster.MAP_NODE_MERCHANT = RhineImageMaster.mapShop;
                 ImageMaster.MAP_LEGEND = RhineImageMaster.mapLegend;
+                ImageMaster.MAP_CIRCLE_5 = RhineImageMaster.mapCircle5;
             }
         }
     }
@@ -773,10 +778,9 @@ public class RhineUIPatch {
                 MapRoomNode.AVAILABLE_COLOR.g = ORANGE_COLOR.g;
                 MapRoomNode.AVAILABLE_COLOR.b = ORANGE_COLOR.b;
                 Color notTakenColor = ReflectionHacks.getPrivateStatic(MapRoomNode.class, "NOT_TAKEN_COLOR");
-                notTakenColor.r = ORANGE_COLOR.r;
-                notTakenColor.g = ORANGE_COLOR.g;
-                notTakenColor.b = ORANGE_COLOR.b;
-                notTakenColor.a = 0.5F;
+                notTakenColor.r = 0.5f;
+                notTakenColor.g = 0.5f;
+                notTakenColor.b = 0.5f;
             }
         }
     }
@@ -874,21 +878,6 @@ public class RhineUIPatch {
         }
     }
 
-    @SpirePatch(clz = LegendItem.class, method = "render")
-    public static class LegendItemRenderPatch {
-        @SpirePrefixPatch
-        public static void Prefix(LegendItem _inst, SpriteBatch sb, @ByRef Color[] c) {
-            if (RhineMod.useLoneTrail) {
-                if (!_inst.hb.hovered) {
-                    c[0] = c[0].cpy();
-                    c[0].r = 0.09F;
-                    c[0].g = 0.13F;
-                    c[0].b = 0.17F;
-                }
-            }
-        }
-    }
-
     @SpirePatch(clz = AbstractPlayer.class, method = "renderTargetingUi")
     public static class RenderTargetingUiPatch {
         @SpirePrefixPatch
@@ -902,6 +891,55 @@ public class RhineUIPatch {
                 sb.setColor(ORANGE_COLOR);
             }
             TargetingUiEffect.drawLinkWithEndSquare(sb, _inst.hoveredCard.current_x, _inst.hoveredCard.current_y + _inst.hoveredCard.hb.height * 0.4f, ___arrowX[0], ___arrowY[0]);
+            return SpireReturn.Return();
+        }
+    }
+
+    @SpirePatch(clz = PotionPopUp.class, method = SpirePatch.CONSTRUCTOR)
+    public static class RenderPotionPopUpPatch {
+        @SpirePostfixPatch
+        public static void Postfix(PotionPopUp _inst, Color ___topHoverColor, Color ___botHoverColor) {
+            if (RhineMod.useLoneTrail) {
+                ___topHoverColor.r = ___topHoverColor.g = ___topHoverColor.b = 1.0f;
+                ___botHoverColor.r = ___botHoverColor.g = ___botHoverColor.b = 1.0f;
+            }
+        }
+    }
+
+    @SpirePatch(clz = MapRoomNode.class, method = "render")
+    public static class RenderMapRoomNodePatch {
+        public static int count = 0;
+        public static ExprEditor Instrument() {
+            return new ExprEditor() {
+                public void edit(MethodCall m) throws CannotCompileException {
+                    if (m.getClassName().equals(SpriteBatch.class.getName()) && m.getMethodName().equals("draw")) {
+                        count++;
+                        if (count >= 5) {
+                            m.replace("if (" + RhineMod.class.getName() + ".useLoneTrail) { $10 = 0; $_ = $proceed($$); } else { $proceed($$); }");
+                        }
+                    }
+                }
+            };
+        }
+    }
+
+    @SpirePatch(clz = TitleBackground.class, method = "render")
+    public static class RenderTitleBackgroundPatch {
+        @SpirePrefixPatch
+        public static SpireReturn<?> Prefix(TitleBackground _inst, SpriteBatch sb, ArrayList<LogoFlameEffect> ___flame, float ___logoAlpha, Texture ___titleLogoImg, int ___W, int ___H) {
+            if (!RhineMod.useLoneTrail) return SpireReturn.Continue();
+            sb.setColor(Color.WHITE);
+            sb.setBlendFunction(770, 771);
+            sb.draw(RhineImageMaster.mainMenuBackground, 0, 0, 0, 0, 1920, 1080, Settings.scale, Settings.scale, 0, 0, 0, 1920, 1080, false, false);
+            sb.setColor(new Color(1.0F, 1.0F, 1.0F, ___logoAlpha));
+            sb.draw(___titleLogoImg, 930.0F * Settings.xScale - ___W / 2.0F, -70.0F * Settings.scale * _inst.slider + Settings.HEIGHT / 2.0F - ___H / 2.0F + 14.0F * Settings.scale, ___W / 2.0F, ___H / 2.0F, ___W, ___H, Settings.scale, Settings.scale, 0.0F, 0, 0, ___W, ___H, false, false);
+
+            sb.setBlendFunction(770, 1);
+            for (LogoFlameEffect e : ___flame) {
+                e.render(sb, Settings.WIDTH / 2.0F, -70.0F * Settings.scale * _inst.slider + Settings.HEIGHT / 2.0F - 260.0F * Settings.scale);
+            }
+
+            sb.setBlendFunction(770, 771);
             return SpireReturn.Return();
         }
     }

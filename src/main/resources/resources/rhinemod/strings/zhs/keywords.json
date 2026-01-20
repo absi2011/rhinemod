@@ -2,105 +2,105 @@
   "CALCIUM": {
     "PROPER_NAME": "钙质粒子",
     "NAMES": [
+      "钙质粒子",
       "Calcium",
-      "calcium",
-      "钙质粒子"
+      "calcium"
     ],
     "DESCRIPTION": "每回合结束时减少1点，可以为塞雷娅倾向的卡牌提供数值加成。"
   },
   "SMASH": {
     "PROPER_NAME": "重击",
     "NAMES": [
+      "重击",
       "Smash",
-      "smash",
-      "重击"
+      "smash"
     ],
     "DESCRIPTION": "如果一次性伤害高于15，则给予目标一层 [#EFC851]晕眩[] 。"
   },
   "STUNNED": {
     "PROPER_NAME": "晕眩",
     "NAMES": [
+      "晕眩",
       "Stunned",
-      "stunned",
-      "晕眩"
+      "stunned"
     ],
     "DESCRIPTION": "如果一次性受到15点或以上伤害，则获得本效果。处于晕眩的敌人 [#EFC851]水渍[] 不再减少， [#EFC851]重力[] 改变时受到7点伤害。"
   },
   "GRAVITY": {
     "PROPER_NAME": "重力",
     "NAMES": [
+      "重力",
       "Gravity",
-      "gravity",
-      "重力"
+      "gravity"
     ],
     "DESCRIPTION": "处于失重时所有角色攻击伤害提升，处于超重时所有角色攻击伤害降低。回合开始时重置。"
   },
   "GRAVITY_UP": {
     "PROPER_NAME": "重力：失重",
     "NAMES": [
+      "失重",
       "GravityUp",
-      "gravityup",
-      "失重"
+      "gravityup"
     ],
     "DESCRIPTION": "所有角色攻击伤害提升30%。回合开始时重置。"
   },
   "GRAVITY_DOWN": {
     "PROPER_NAME": "重力：超重",
     "NAMES": [
+      "超重",
       "GravityDown",
-      "gravitydown",
-      "超重"
+      "gravitydown"
     ],
     "DESCRIPTION": "所有角色攻击伤害降低30%。回合开始时重置。"
   },
   "FLOWING_SHAPE": {
     "PROPER_NAME": "流形",
     "NAMES": [
+      "流形",
       "FlowingShape",
-      "flowingshape",
-      "流形"
+      "flowingshape"
     ],
     "DESCRIPTION": "你下一次打出塞雷娅或克丽斯腾倾向的卡牌时，打出一张伤害和格挡数值为原本的一定倍数（层数除以5）的复制。"
   },
   "WATER_DAMAGE": {
     "PROPER_NAME": "水渍",
     "NAMES": [
+      "水渍",
       "WaterDamage",
-      "waterdamage",
-      "水渍"
+      "waterdamage"
     ],
     "DESCRIPTION": "一种可叠加状态，累积到一定值会进入 [#EFC851]浸没[] 。"
   },
   "SUBMERSION": {
     "PROPER_NAME": "浸没",
     "NAMES": [
+      "浸没",
       "Submersion",
-      "submersion",
-      "浸没"
+      "submersion"
     ],
     "DESCRIPTION": "一种多层状态，根据层数，每回合开始时受到一定伤害，状态下攻击力降低。累计到 4 层时直接死亡。此状态下每回合减少5点 [#EFC851]水渍[] 。"
   },
   "RESEARCH_PROGRESS": {
     "PROPER_NAME": "科研进度",
     "NAMES": [
-      "ResearchProgress",
-      "科研进度"
+      "科研进度",
+      "ResearchProgress"
     ],
     "DESCRIPTION": "累积一定层数可以获得一层 [#EFC851]波骇[] ，所需层数线性递增。"
   },
   "PERTURBATION": {
     "PROPER_NAME": "波骇",
     "NAMES": [
-      "Perturbation",
-      "波骇"
+      "波骇",
+      "Perturbation"
     ],
     "DESCRIPTION": "每一层交替提供层数线性递增的 [#EFC851]金属化[] 和 [#EFC851]荆棘[] 。"
   },
   "STARRING": {
     "PROPER_NAME": "星环",
     "NAMES": [
-      "StarRing",
-      "星环"
+      "星环",
+      "StarRing"
     ],
     "DESCRIPTION": "一种召唤物，每回合开始时对所有敌人造成5点伤害。优先受到敌人攻击，被击破时引爆，对所有角色造成所受伤害总和一半的伤害。对局结束时对你造成5点伤害。"
   },

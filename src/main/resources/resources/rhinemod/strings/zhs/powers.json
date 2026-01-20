@@ -578,6 +578,12 @@
       "隐匿回合数 #b+1 。"
     ]
   },
+  "rhinemod:TrafficPoliceTag3": {
+    "NAME": "交通警察：行动技巧",
+    "DESCRIPTIONS": [
+      "出场时立即行动一次。"
+    ]
+  },
   "rhinemod:Awaken_MonsterTag1": {
     "NAME": "唤醒：封闭研究室",
     "DESCRIPTIONS": [

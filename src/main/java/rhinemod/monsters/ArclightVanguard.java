@@ -19,7 +19,7 @@ public class ArclightVanguard extends AbstractRhineMonster {
     public static final int HighDamageTimes = 6;
 
     public ArclightVanguard(float x, float y) {
-        super(NAME, ID, 40, 0, 0, 200.0F, 170.0F, null, x, y);
+        super(NAME, ID, 40, 0, 0, 200.0F, 230.0F, null, x, y);
         type = EnemyType.NORMAL;
         if (AbstractDungeon.ascensionLevel >= 7) {
             setHp(43);
@@ -39,7 +39,7 @@ public class ArclightVanguard extends AbstractRhineMonster {
             damage.add(new DamageInfo(this, 10));
             damage.add(new DamageInfo(this, 2));
         }
-        loadAnimation("resources/rhinemod/images/monsters/enemy_1328_cbjedi/enemy_1328_cbjedi33.atlas", "resources/rhinemod/images/monsters/enemy_1328_cbjedi/enemy_1328_cbjedi33.json", 1.7F);
+        loadAnimation("resources/rhinemod/images/monsters/enemy_1328_cbjedi/enemy_1328_cbjedi33.atlas", "resources/rhinemod/images/monsters/enemy_1328_cbjedi/enemy_1328_cbjedi33.json", 1.6F);
         state.setAnimation(0, "Idle", true);
         flipHorizontal = true;
     }

@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import rhinemod.cards.AbstractRhineCard;
 import rhinemod.characters.RhineLab;
+import rhinemod.relics.FallenLeavesOfFourSeasons;
 import rhinemod.util.GlobalAttributes;
 
 public class InvisibleGlobalAttributes extends AbstractRhinePower {
@@ -87,6 +88,7 @@ public class InvisibleGlobalAttributes extends AbstractRhinePower {
         tmp.target_y = Settings.HEIGHT / 2.0F;
 
         float multi = flowspNum * 0.2F;
+        if (AbstractDungeon.player.hasRelic(FallenLeavesOfFourSeasons.ID)) multi = flowspNum * 0.25F;
         float eps = 0.0001F;
         tmp.baseDamage = MathUtils.ceil(tmp.baseDamage * multi - eps);
         tmp.baseBlock = MathUtils.ceil(tmp.baseBlock * multi - eps);

@@ -38,6 +38,7 @@
   "GRAVITY_UP": {
     "PROPER_NAME": "Weightless",
     "NAMES": [
+      "Gravity_Up",
       "GravityUp",
       "gravityup",
       "Weightless",
@@ -49,6 +50,7 @@
   "GRAVITY_DOWN": {
     "PROPER_NAME": "Overweight",
     "NAMES": [
+      "Gravity_Down",
       "GravityDown",
       "gravitydown",
       "Overweight",
@@ -60,10 +62,10 @@
   "FLOWING_SHAPE": {
     "PROPER_NAME": "Flowing Shape",
     "NAMES": [
-      "FlowingShape",
-      "flowingshape",
       "Flowing_Shape",
       "flowing_shape",
+      "FlowingShape",
+      "flowingshape",
       "流形"
     ],
     "DESCRIPTION": "Next time you play a card with affinity to Saria or Kristen, play a copy whose value is a certain multiple (number of layers divided by 5) of the original one."
@@ -71,12 +73,12 @@
   "WATER_DAMAGE": {
     "PROPER_NAME": "Water Stain",
     "NAMES": [
+      "Water_Stain",
+      "water_stain",
       "WaterDamage",
       "waterdamage",
       "WaterStain",
       "waterstain",
-      "Water_Stain",
-      "water_stain",
       "水渍"
     ],
     "DESCRIPTION": "A stackable state. Enter [#EFC851]Submersion[] when accumulated to a certain value."
@@ -93,10 +95,10 @@
   "RESEARCH_PROGRESS": {
     "PROPER_NAME": "Research Progress",
     "NAMES": [
-      "ResearchProgress",
-      "researchprogress",
       "Research_Progress",
       "research_progress",
+      "ResearchProgress",
+      "researchprogress",
       "科研进度"
     ],
     "DESCRIPTION": "Gain 1 [#EFC851]Perturbation[] when accumulated to a certain value. The required value increases linearly."
@@ -112,10 +114,10 @@
   "STARRING": {
     "PROPER_NAME": "Star Ring",
     "NAMES": [
-      "StarRing",
-      "starring",
       "Star_Ring",
       "star_ring",
+      "StarRing",
+      "starring",
       "星环"
     ],
     "DESCRIPTION": "A summon that deals 5 damage to all enemies at the start of your turn. Prioritizes enemy attacks and blasts when broken, dealing half the total taken damage to all characters. Deals 5 damage to you at the end of the combat."
@@ -140,30 +142,30 @@
   "EXPERIMENTERROR": {
     "PROPER_NAME": "Experiment Error",
     "NAMES": [
+      "Experiment_Error",
+      "experiment_error",
       "实验错误",
       "ExperimentError",
-      "experimenterror",
-      "Experiment_Error",
-      "experiment_error"
+      "experimenterror"
     ],
     "DESCRIPTION": "When the [#EFC851]Star[] [#EFC851]Ring[] dead，Add same number of [#EFC851]Unscrupulous[] to your discard pile."
   },
   "CRITICALPOINT": {
     "PROPER_NAME": "Critical Point",
     "NAMES": [
+      "Critical_Point",
+      "critical_point",
       "临界点",
       "CriticalPoint",
-      "criticalpoint",
-      "Critical_Point",
-      "critical_point"
+      "criticalpoint"
     ],
     "DESCRIPTION": "When the [#EFC851]Star[] [#EFC851]Ring[] explodes, damage deal to enemy increases the same number of times."
   },
   "BUFFER": {
     "PROPER_NAME": "Buffer",
     "NAMES": [
-      "缓冲",
-      "Buffer"
+      "Buffer",
+      "缓冲"
     ],
     "DESCRIPTION": "Prevent the next time you would lose HP."
   }

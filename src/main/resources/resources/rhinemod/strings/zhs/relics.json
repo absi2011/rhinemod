@@ -64,6 +64,11 @@
     "FLAVOR": "在相遇的时候，他们或多或少还是真心的。",
     "DESCRIPTIONS": ["在每回合开始时，将一张 #y回忆 加入你的手牌。"]
   },
+  "rhinemod:FallenLeavesOfFourSeasons": {
+    "NAME": "落叶四季",
+    "FLAVOR": "四季轮转，春天总会到来。",
+    "DESCRIPTIONS": ["#y流形 的效果提升，数值改为原本的更高倍数（层数除以4）。"]
+  },
 
   "rhinemod:Melt": {
     "NAME": "融化",

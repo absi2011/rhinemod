@@ -125,14 +125,14 @@ public class RhineImageMaster {
     public static Texture mapShop;
     public static Texture mapLegend;
     public static Texture mapOutline;
-    public static Texture mapSelectBox;
     public static Texture mapDot;
     public static Texture mapLine;
     public static Texture mapBlender;
     public static String blueKey = "resources/rhinemod/images/relics/blue_key.png";
     public static String greenKey = "resources/rhinemod/images/relics/green_key.png";
     public static String redKey = "resources/rhinemod/images/relics/red_key.png";
-
+    public static Texture mapCircle5;
+    public static Texture mainMenuBackground;
 
     public static void initialize() {
         cursor1 = ImageMaster.loadImage("resources/rhinemod/images/ui/cursors/gold2.png");
@@ -264,5 +264,8 @@ public class RhineImageMaster {
         mapDot = ImageMaster.loadImage("resources/rhinemod/images/ui/map/dot.png");
         mapLine = ImageMaster.loadImage("resources/rhinemod/images/ui/map/line.png");
         mapBlender = ImageMaster.loadImage("resources/rhinemod/images/ui/map/mapBlend.png");
+        mapCircle5 = ImageMaster.loadImage("resources/rhinemod/images/ui/map/circle5.png");
+
+        mainMenuBackground = ImageMaster.loadImage("resources/rhinemod/images/ui/mainMenuBackground.png");
     }
 }

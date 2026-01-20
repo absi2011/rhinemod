@@ -64,6 +64,11 @@
     "FLAVOR": "○There was a time when they treated each other with sincerity, more or less.",
     "DESCRIPTIONS": ["At the start of your turn, add #b1 #yMemory into your hand."]
   },
+  "rhinemod:FallenLeavesOfFourSeasons": {
+    "NAME": "Fallen Leaves of Four Seasons",
+    "FLAVOR": "The seasons change, and spring will always come.",
+    "DESCRIPTIONS": ["Upgrade the effect of #yFlowing #yShape. Value changes to a higher multiple (number of layers divided by 4) of the original one."]
+  },
 
   "rhinemod:Melt": {
     "NAME": "Melt",
