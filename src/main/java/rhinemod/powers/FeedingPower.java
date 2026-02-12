@@ -1,11 +1,8 @@
 package rhinemod.powers;
 
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import rhinemod.RhineMod;
 import rhinemod.monsters.SleepingR31;
 
 public class FeedingPower extends AbstractRhinePower {
@@ -20,8 +17,7 @@ public class FeedingPower extends AbstractRhinePower {
         this.type = PowerType.BUFF;
         this.owner = owner;
         this.amount = amount;
-        region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/Armor 84.png"), 0, 0, 84, 84);
-        region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/Armor 32.png"), 0, 0, 32, 32);
+        loadRegion("curiosity");
         updateDescription();
     }
 
