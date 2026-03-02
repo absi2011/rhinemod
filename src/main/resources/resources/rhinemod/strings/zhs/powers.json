@@ -266,7 +266,7 @@
     "NAME": "实验中",
     "DESCRIPTIONS": [
       "当它生命值满或吃掉 #b ",
-      " 个 #rDor-1实验体 后，会苏醒成为 #rR31重型动力甲 。"
+      " 个 #yDor-1失败品 后，会苏醒成为 #yR31重型动力甲 。"
     ]
   },
 
@@ -489,7 +489,7 @@
   "rhinemod:TrimountsCityGuardTag3": {
     "NAME": "城防军：干扰",
     "DESCRIPTIONS": [
-      "攻击时产生的负面效果层数 #y+1 。"
+      "攻击时产生的负面效果层数 #b+1 。"
     ]
   },
   "rhinemod:ExperimentalPowerArmorTag1": {
@@ -505,7 +505,7 @@
     ]
   },
   "rhinemod:CrossroadsThorns": {
-    "NAME": "十字路口：交通管制",
+    "NAME": "十字路口：充能激光",
     "DESCRIPTIONS": [
       "受到伤害时，对伤害来源造成等同于自身 #y力量 的伤害（ #b", " 点）。"
     ]
@@ -543,7 +543,7 @@
   "rhinemod:R11LoseHPPower": {
     "NAME": "R-11：原型机",
     "DESCRIPTIONS": [
-      "生命 #g+100% 。每当攻击未造成伤害，自身流失 #r10% 最大生命。"
+      "生命 #b+100% 。每当攻击未造成伤害，自身流失 #b10% 最大生命。"
     ]
   },
   "rhinemod:PerpetratorTag1": {
@@ -555,8 +555,8 @@
   "rhinemod:RushPower": {
     "NAME": "肇事者：阻力优化I",
     "DESCRIPTIONS": [
-      "每次成功造成伤害后，获得 #g1 点 #y力量 ；未成功造成伤害后，减少 #r1 点 #y力量 （但不低于 #b0 ）。",
-      "每次成功造成伤害后，获得 #g1 点 #y力量 。",
+      "每次成功造成伤害后，获得 #b1 点 #y力量 ；未成功造成伤害后，减少 #b1 点 #y力量 （但不低于 #b0 ）。",
+      "每次成功造成伤害后，获得 #b1 点 #y力量 。",
       "肇事者：阻力优化II"
     ]
   },
@@ -575,7 +575,7 @@
   "rhinemod:TrafficPoliceTag1": {
     "NAME": "交通警察：技艺增幅",
     "DESCRIPTIONS": [
-      "隐匿回合数 #b+1 。"
+      "#y隐匿 持续回合数 #b+1 。"
     ]
   },
   "rhinemod:TrafficPoliceTag3": {
@@ -623,11 +623,11 @@
   "rhinemod:SleepingR31Tag1": {
     "NAME": "休眠R-31：休眠保护",
     "DESCRIPTIONS": [
-      "初始生命 #b+100 ，苏醒时获得 #b3 点 #r力量 。"
+      "初始生命 #b+100 ，苏醒时获得 #b3 点 #y力量 。"
     ]
   },
   "rhinemod:SleepingR31Tag2": {
-    "NAME": "休眠R-31：一同如梦",
+    "NAME": "休眠R-31：一同入梦",
     "DESCRIPTIONS": [
       "处于休眠状态时，每回合对 #y多萝西 造成 #b10 点伤害并为其增加 #b5 层 #y梦碎 。"
     ]
@@ -635,37 +635,37 @@
   "rhinemod:SleepingR31Tag3": {
     "NAME": "休眠R-31：效率",
     "DESCRIPTIONS": [
-      "仅需要一个 #yDor-1实验体 即可苏醒。"
+      "仅需要一个 #yDor-1失败品 即可苏醒。"
     ]
   },
   "rhinemod:RhineEngineeringMemberTag2": {
     "NAME": "工程科成员：梦醒时分",
     "DESCRIPTIONS": [
-      "对 #b多萝西 攻击时，同时增加 #g梦碎 层数。"
+      "对 #y多萝西 攻击时，同时增加她的 #y梦碎 层数。"
     ]
   },
   "rhinemod:RhineEngineeringMemberTag3": {
     "NAME": "工程科成员：技术革新",
     "DESCRIPTIONS": [
-      "维修动力甲的效率 #g+100% 。"
+      "维修动力甲的效率 #b+100% 。"
     ]
   },
   "rhinemod:Dor1Tag1": {
-    "NAME": "Dor1：坚实之梦",
+    "NAME": "Dor-1：坚实之梦",
     "DESCRIPTIONS": [
-      "对 #b多萝西 造成的伤害 #b+5 。"
+      "对 #y多萝西 造成的伤害 #b+5 。"
     ]
   },
   "rhinemod:Dor1Tag2": {
-    "NAME": "Dor1：无暇之梦",
+    "NAME": "Dor-1：无暇之梦",
     "DESCRIPTIONS": [
-      "出场的回合携带一层 #b无实体 。"
+      "出场的回合携带一层 #y无实体 。"
     ]
   },
   "rhinemod:Dor1Tag3": {
-    "NAME": "Dor1：健康之梦",
+    "NAME": "Dor-1：健康之梦",
     "DESCRIPTIONS": [
-      "最大生命值增加 #g+100% 。"
+      "最大生命值 #b+100% 。"
     ]
   }
 }

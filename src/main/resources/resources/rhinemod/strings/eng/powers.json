@@ -199,7 +199,12 @@
       "When taken damage first time each turn, deal #b",
       " damage to you.",
       "(Already triggered this turn.)",
-      "(Not triggered this turn.)"
+      "(Not triggered this turn.)",
+      "When taken damage first two times each turn, deal #b",
+      " 点伤害。",
+      "(#b2 times left this turn.)",
+      "(#b1 time left this turn.)",
+      "(Already triggered this turn.)"
     ]
   },
   "rhinemod:ExplodePower": {
@@ -207,8 +212,9 @@
     "DESCRIPTIONS": [
       "When dead, deal #b",
       " damage to you",
-      ", and summon a #yTraffic #yPolice .",
-      "."
+      ", and summon a #yTraffic #yOfficer .",
+      ".",
+      ", and summon a new #yTraffic #yTower ."
     ]
   },
   "rhinemod:InvisiblePower": {
@@ -217,6 +223,50 @@
       "Invincible and cannot be chose. #b",
       " turn left.",
       " turns left."
+    ]
+  },
+  "rhinemod:BlockDamage": {
+    "NAME": "Hold Back",
+    "DESCRIPTIONS": [
+      "Damage taken from the player is capped at #b",
+      " .",
+      "Damage taken from the player is capped at #b",
+      " . After taking player damage, gain equal #yDream #yBreak and increase #b1 #yHold #yBack ."
+    ]
+  },
+  "rhinemod:DreamBreakPower": {
+    "NAME": "Dream Break",
+    "DESCRIPTIONS": [
+      "On death, reduce the player's #b",
+      " HP and Max HP (can kill). Leaves when HP is full. #rShe is not an enemy. Do not attack her! ",
+      "Max HP -"
+    ]
+  },
+  "rhinemod:DreamingPower": {
+    "NAME": "Sweet Dream",
+    "DESCRIPTIONS": [
+      "When this reaches #b24, skip your next turn. Lose stacks equal to HP lost. (Current: #b",
+      " ) "
+    ]
+  },
+  "rhinemod:HealPower": {
+    "NAME": "Healing Mode",
+    "DESCRIPTIONS": [
+      "Next attack heals instead."
+    ]
+  },
+  "rhinemod:TrapPower": {
+    "NAME": "Trap Mark",
+    "DESCRIPTIONS": [
+      "At end of turn, mark 1 random card in your draw pile as a Trap. When played, it adds 1 #yDazed to your discard pile.",
+      "At end of turn, mark 2 random cards in your draw pile as Traps. When played, each adds 1 #yDazed to your discard pile."
+    ]
+  },
+  "rhinemod:FeedingPower": {
+    "NAME": "Under Test",
+    "DESCRIPTIONS": [
+      "When its HP is full or after eating #b ",
+      " #yDor-1 #yFailure, it awakens into #yR31 #yHeavy #yPower #yArmor ."
     ]
   },
   "rhinemod:IdealistFormPower": {
@@ -321,5 +371,304 @@
   "rhinemod:Order": {
     "NAME": "Order",
     "DESCRIPTIONS": ["In this turn, you cannot play cards that add #yUnscrupulous ."]
+  },
+
+  "rhinemod:AddHpTag": {
+    "NAME": "Originium Zone: Activation ",
+    "DESCRIPTIONS": [
+      "Increase Max HP by #b",
+      " %."
+    ]
+  },
+  "rhinemod:AddAtkTag": {
+    "NAME": "Originium Zone: Stimulus ",
+    "DESCRIPTIONS": [
+      "On spawn, gain #b",
+      " #yStrength."
+    ]
+  },
+  "rhinemod:AddStunTag": {
+    "NAME": "",
+    "DESCRIPTIONS": [
+      "Every #b",
+      " turns, add 1 #yDazed to your discard pile. (#b",
+      " turns remaining)",
+      "Originium Zone: Deep Infiltration I",
+      "Originium Zone: Deep Infiltration II",
+      "Originium Zone: Deep Infiltration III"
+    ]
+  },
+  "rhinemod:ArclightCommandoTag1": {
+    "NAME": "Arc Commando: Dash",
+    "DESCRIPTIONS": [
+      "Its takeoff intent occurs on turn 1."
+    ]
+  },
+  "rhinemod:ArclightCommandoTag2": {
+    "NAME": "Arc Commando: Airflow Drive",
+    "DESCRIPTIONS": [
+      "When taking off, gain #b+1 Flight and #b+4 Attack damage."
+    ]
+  },
+  "rhinemod:ArclightCommandoTag3": {
+    "NAME": "Arc Commando: Emergency Lift",
+    "DESCRIPTIONS": [
+      "Take off on spawn. Gain #b5 #yPlated #yArmor and #b5 #yBlock."
+    ]
+  },
+  "rhinemod:ArclightMirrorguardTag1": {
+    "NAME": "Arc Screenguard: Mental Excitement",
+    "DESCRIPTIONS": [
+      "On spawn, gain #b4 #yStrength."
+    ]
+  },
+  "rhinemod:ArclightMirrorguardTag2": {
+    "NAME": "Arc Screenguard: Inner Balance",
+    "DESCRIPTIONS": [
+      "Whenever it loses HP, #yDamage #yReduction loses #b1 fewer stack."
+    ]
+  },
+  "rhinemod:ArclightMirrorguardTag3": {
+    "NAME": "Arc Screenguard: Stabilization",
+    "DESCRIPTIONS": [
+      "Starts with #b75 #yDamage #yReduction."
+    ]
+  },
+  "rhinemod:ArclightVanguardTag1": {
+    "NAME": "Arc Frontliner: Counterweight",
+    "DESCRIPTIONS": [
+      "No longer gains #yVulnerable when attacking."
+    ]
+  },
+  "rhinemod:ArclightVanguardTag2": {
+    "NAME": "Arc Frontliner: Stabilization",
+    "DESCRIPTIONS": [
+      "No longer loses HP when attacking."
+    ]
+  },
+  "rhinemod:ArclightVanguardTag3": {
+    "NAME": "Arc Frontliner: Sharpened",
+    "DESCRIPTIONS": [
+      "Remove its lowest-damage intent."
+    ]
+  },
+  "rhinemod:JesseltonWilliamsTag3": {
+    "NAME": "Jesselton: Hatred",
+    "DESCRIPTIONS": [
+      "Phase 1 attacks deal #b+4 damage. Phase 2 attacks deal #b+11 damage."
+    ]
+  },
+  "rhinemod:MilitaryBeckbeastTag1": {
+    "NAME": "Military Hound: Anti-Armor I",
+    "DESCRIPTIONS": [
+      "Gains #b+2 #yBlock each turn."
+    ]
+  },
+  "rhinemod:MilitaryBeckbeastTag2": {
+    "NAME": "Military Hound: Anti-Armor II",
+    "DESCRIPTIONS": [
+      "Gains #b+4 #yBlock each turn."
+    ]
+  },
+  "rhinemod:DefendBackPower": {
+    "NAME": "Military Hound: Spiked Mod",
+    "DESCRIPTIONS": [
+      "At the start of its turn, convert its #yBlock into damage to the player."
+    ]
+  },
+  "rhinemod:TrimountsCityGuardTag1": {
+    "NAME": "Trimounts City Defender: Advanced Armor I",
+    "DESCRIPTIONS": [
+      "Max HP #b+20%."
+    ]
+  },
+  "rhinemod:TrimountsCityGuardTag2": {
+    "NAME": "Trimounts City Defender: Advanced Armor II",
+    "DESCRIPTIONS": [
+      "Max HP #b+40%."
+    ]
+  },
+  "rhinemod:TrimountsCityGuardTag3": {
+    "NAME": "Trimounts City Defender: Interference",
+    "DESCRIPTIONS": [
+      "Debuffs applied by its attacks gain +1 stack."
+    ]
+  },
+  "rhinemod:ExperimentalPowerArmorTag1": {
+    "NAME": "Experimental Power Armor: Reinforced Frame",
+    "DESCRIPTIONS": [
+      "On spawn, gains #b3 #yMetallicize."
+    ]
+  },
+  "rhinemod:ExperimentalPowerArmorTag3": {
+    "NAME": "Experimental Power Armor: Firearm Upgrade",
+    "DESCRIPTIONS": [
+      "Its attack becomes a #b2-hit attack."
+    ]
+  },
+  "rhinemod:CrossroadsThorns": {
+    "NAME": "Crossroads: Charged Lasers",
+    "DESCRIPTIONS": [
+      "Whenever it takes damage, deal damage equal to its #yStrength to the source ( #b",
+      " )."
+    ]
+  },
+  "rhinemod:CrossroadsTag3": {
+    "NAME": "Crossroads: Factory Standard",
+    "DESCRIPTIONS": [
+      "Acts immediately upon spawning."
+    ]
+  },
+  "rhinemod:R31Tag1": {
+    "NAME": "R-31: Core Overload",
+    "DESCRIPTIONS": [
+      "Its skill shuffles #b5 additional #yDazed into your discard pile."
+    ]
+  },
+  "rhinemod:R31Tag3": {
+    "NAME": "R-31: Turbocharged Power Module",
+    "DESCRIPTIONS": [
+      "Movement speed #b+100%."
+    ]
+  },
+  "rhinemod:R11Tag1": {
+    "NAME": "R-11: Advanced Tracking System I",
+    "DESCRIPTIONS": [
+      "Melee intent damage #b+6."
+    ]
+  },
+  "rhinemod:R11Tag2": {
+    "NAME": "R-11: Advanced Tracking System II",
+    "DESCRIPTIONS": [
+      "Ranged intent damage #b+4. Melee intent damage #b+16."
+    ]
+  },
+  "rhinemod:R11LoseHPPower": {
+    "NAME": "R-11: Prototype",
+    "DESCRIPTIONS": [
+      "Max HP +100%. Whenever it deals no damage with an attack, lose #b10% Max HP."
+    ]
+  },
+  "rhinemod:PerpetratorTag1": {
+    "NAME": "Offender: Rampaging",
+    "DESCRIPTIONS": [
+      "If it takes no damage in a turn, its next attack gains #b+1 hit."
+    ]
+  },
+  "rhinemod:RushPower": {
+    "NAME": "Offender: Optimized Resistance I",
+    "DESCRIPTIONS": [
+      "Whenever it successfully deals damage, gain #b1 #yStrength. If it fails to deal damage, lose #b1 #yStrength (minimum #b0).",
+      "Whenever it successfully deals damage, gain #b1 #yStrength.",
+      "Offender: Optimized Resistance II"
+    ]
+  },
+  "rhinemod:TurnpikeTag2": {
+    "NAME": "Traffic Tower: Firmware Update",
+    "DESCRIPTIONS": [
+      "The first time it would die, instead summon a #yTraffic #yTower."
+    ]
+  },
+  "rhinemod:TurnpikeTag3": {
+    "NAME": "Traffic Tower: Traffic Lockdown",
+    "DESCRIPTIONS": [
+      "On spawn, summon up to #b3 #yTrimounts #yCity #Defenders."
+    ]
+  },
+  "rhinemod:TrafficPoliceTag1": {
+    "NAME": "Traffic Officer: Skill Boost",
+    "DESCRIPTIONS": [
+      "#yInvisible duration #b+1 turn."
+    ]
+  },
+  "rhinemod:TrafficPoliceTag3": {
+    "NAME": "Traffic Officer: Operative Skill",
+    "DESCRIPTIONS": [
+      "Acts immediately upon spawning."
+    ]
+  },
+  "rhinemod:Awaken_MonsterTag1": {
+    "NAME": "Awaken: Sealed Lab",
+    "DESCRIPTIONS": [
+      "An additional #yDorothy appears."
+    ]
+  },
+  "rhinemod:Awaken_MonsterTag2": {
+    "NAME": "Awaken: Enhanced Function",
+    "DESCRIPTIONS": [
+      "#yJourney and #yShattered #yVision scale earlier (at #b80% Max HP)."
+    ]
+  },
+  "rhinemod:Awaken_MonsterTag3": {
+    "NAME": "Awaken: Plentiful Funding",
+    "DESCRIPTIONS": [
+      "#yJourney can trigger twice each turn."
+    ]
+  },
+  "rhinemod:DorothyTag1": {
+    "NAME": "Dorothy: Potential Discovery Project",
+    "DESCRIPTIONS": [
+      "Damage taken from the player increases over time and grants additional #yDream #yBreak."
+    ]
+  },
+  "rhinemod:DorothyTag2": {
+    "NAME": "Dorothy: Dream Come True",
+    "DESCRIPTIONS": [
+      "Normal attacks apply #b8 #ySweet #yDream. At #b24 stacks, you skip your next turn. Lose stacks equal to HP lost."
+    ]
+  },
+  "rhinemod:DorothyTag3": {
+    "NAME": "Dorothy: Resonance Series Project",
+    "DESCRIPTIONS": [
+      "#yTrap #yMark marks 2 cards instead. Whenever you draw a Trap while already holding one, shuffle 1 #yDazed into your draw pile."
+    ]
+  },
+  "rhinemod:SleepingR31Tag1": {
+    "NAME": "Inactive R-31: Sleep Protection",
+    "DESCRIPTIONS": [
+      "Max HP #b+100. When activated, gain #b3 #yStrength."
+    ]
+  },
+  "rhinemod:SleepingR31Tag2": {
+    "NAME": "Inactive R-31: Shared Dream",
+    "DESCRIPTIONS": [
+      "When inactive, deal #b10 damage to #yDorothy and apply #b5 #yDream #yBreak each turn."
+    ]
+  },
+  "rhinemod:SleepingR31Tag3": {
+    "NAME": "Inactive R-31: Efficiency",
+    "DESCRIPTIONS": [
+      "Requires only 1 #yDor-1 Failure to awaken."
+    ]
+  },
+  "rhinemod:RhineEngineeringMemberTag2": {
+    "NAME": "Rhine Engineering Member: Moment of Waking",
+    "DESCRIPTIONS": [
+      "When attacking #yDorothy, also apply #yDream #yBreak."
+    ]
+  },
+  "rhinemod:RhineEngineeringMemberTag3": {
+    "NAME": "Rhine Engineering Member: Technical Innovation",
+    "DESCRIPTIONS": [
+      "Power Armor repair efficiency #b+100%."
+    ]
+  },
+  "rhinemod:Dor1Tag1": {
+    "NAME": "Dor-1: Dream of Solidity",
+    "DESCRIPTIONS": [
+      "Damage dealt to #yDorothy #b+5."
+    ]
+  },
+  "rhinemod:Dor1Tag2": {
+    "NAME": "Dor-1: Dream of Perfection",
+    "DESCRIPTIONS": [
+      "On spawn, gains 1 #yIntangible."
+    ]
+  },
+  "rhinemod:Dor1Tag3": {
+    "NAME": "Dor-1: Dream of Health",
+    "DESCRIPTIONS": [
+      "Max HP #b+100%."
+    ]
   }
 }

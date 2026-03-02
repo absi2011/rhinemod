@@ -36,22 +36,23 @@
   },
   "rhinemod:RunHistoryMonsterNames": {
     "TEXT": [
-      "Arclight Commando",
-      "Beckbeast and Commando",
+      "Arc Commando",
+      "Hound and Commando",
       "Double Commando",
-      "Arclight Mirrorguard",
-      "Double Vanguard",
-      "Arclight Vanguard and Commando",
-      "Perpetrator",
+      "Arc Screenguard",
+      "Double Frontliners",
+      "Arc Frontliner and Commando",
+      "Offender",
       "R Series Power Armor",
       "Experiment Power Armor and Trimounts City Guard",
-      "Arclight Team",
+      "Arc Team",
       "Jesselton Williams",
       "\"Mechanical Menace\"",
       "\"Awaken\"",
-      "Turnpike",
-      "Traffic Police",
-      "Starpod"
+      "Traffic Tower",
+      "Traffic Officer",
+      "Starpod",
+      "Dorothy"
     ]
   },
   "rhinemod:TheSky": {
@@ -66,13 +67,138 @@
   },
   "rhinemod:Config": {
     "TEXT": [
-      "New enemy spawn frequency (adjustments will take effect in the next round and require restarting the game)."
+      "New enemy spawn frequency (adjustments will take effect in the next round and require restarting the game)",
+      "UI to use (require restarting the game)"
     ],
     "EXTRA_TEXT": [
       "Never",
       "Normal",
       "More",
-      "Many"
+      "Many",
+      "Default",
+      ""
+    ]
+  },
+  "rhinemod:TagLevel": {
+    "TEXT": [
+      "Contingency Contract Tags",
+      "Level ",
+      "Different enemies have different effect boosts; click to view details."
+    ]
+  },
+  "rhinemod:Level1Tags": {
+    "TEXT": [
+      "[Originium Zone: Activation I] All enemies increase Max HP by #b10%.",
+      "[Originium Zone: Stimulus I] Enemies not from Rhine Lab Mod gain #b1 #Strength on spawn.",
+      "[Originium Zone: Deep Infiltration I] Enemies not from Rhine Lab Mod add #b1 #yDazed to your discard pile every #b4 turns",
+      "[Arc Commando: Dash] Arc Commandos' takeoff intent occurs on turn 1.",
+      "[Arc Screenguard: Mental Excitement] Arc Screenguards gain #b4 #yStrength on spawn.",
+      "[Arc Frontliner: Counterweight] Arc Frontliners no longer gain #yVulnerable when attacking.",
+      "[Military Hound: Anti-Armor I] Military Hounds gain #b+2 #yBlock each turn.",
+      "[Trimounts City Defender: Advanced Armor I] Trimounts City Defenders' max HP +#b20%.",
+      "[Experimental Power Armor: Reinforced Frame] Experimental Power Armors gain #b3 #yMetallicize on spawn.",
+      "[R-31: Core Overload] R-31 Heavy Power Armors' skill shuffles #b5 additional #yDazed into your discard pile.",
+      "[R-11: Advanced Tracking System I] R-11 Assault Power Armors' melee intent damage #b+6.",
+      "[Offender: Rampaging] If an Offender takes no damage in a turn, its next attack gains #b+1 hit.",
+      "[Traffic Officer: Skill Boost] Traffic Officers' #yInvisible duration #b+1 turn.",
+      "[Awaken: Sealed Lab] In Awaken battle, An additional #yDorothy appears.",
+      "[Dorothy: Potential Discovery Project] Dorothy's damage taken from the player increases over time and grants additional #yDream #yBreak.",
+      "[Inactive R-31: Sleep Protection] Inactive R-31 Heavy Power Armors' max HP #b+100. On awakening, gain #b3 #yStrength.",
+      "[Dor-1: Dream of Solidity] Dor-1 Failures' damage dealt to #yDorothy #b+5."
+    ]
+  },
+  "rhinemod:Level2Tags": {
+    "TEXT": [
+      "[Originium Zone: Activation II] All enemies increase Max HP by #b20%.",
+      "[Originium Zone: Stimulus II] Enemies not from Rhine Lab Mod gain #b2 #Strength on spawn.",
+      "[Originium Zone: Deep Infiltration II] Enemies not from Rhine Lab Mod add #b1 #yDazed to your discard pile every #b3 turns",
+      "[Arc Commando: Dash] Arc Commandos' takeoff intent occurs on turn 1.",
+      "[Arc Commando: Airflow Drive] When Arc Commandos taking off, gain #b+1 #yFlight and #b+4 Attack damage.",
+      "[Arc Screenguard: Mental Excitement] Arc Screenguards gain #b4 #yStrength on spawn.",
+      "[Arc Screenguard: Inner Balance] Whenever Arc Screenguards lose HP, #yDamage #yReduction loses #b1 fewer stack.",
+      "[Arc Frontliner: Counterweight] Arc Frontliners no longer gain #yVulnerable when attacking.",
+      "[Arc Frontliner: Stabilization] Arc Frontliners no longer lose HP when attacking.",
+      "[Military Hound: Anti-Armor II] Military Hounds gain #b+4 #yBlock each turn.",
+      "[Trimounts City Defender: Advanced Armor II] Trimounts City Defenders' max HP +#b40%.",
+      "[Experimental Power Armor: Reinforced Frame] Experimental Power Armors gain #b3 #yMetallicize on spawn.",
+      "[Crossroads: Charged Lasers] Whenever Crossroads takes damage, deal damage equal to its #yStrength to the source",
+      "[R-31: Core Overload] R-31 Heavy Power Armors' skill shuffles #b5 additional #yDazed into your discard pile.",
+      "[R-11: Advanced Tracking System II] R-11 Assault Power Armors' ranged intent damage #b+4 and melee intent damage #b+16. ",
+      "[Offender: Rampaging] If an Offender takes no damage in a turn, its next attack gains #b+1 hit.",
+      "[Offender: Optimized Resistance I] Whenever an Offender successfully deals damage, gain #b1 #yStrength. If it fails to deal damage, lose #b1 #yStrength (minimum #b0).",
+      "[Traffic Tower: Firmware Update] The first time a Traffic Tower would die, instead summon a #yTraffic #yTower.",
+      "[Traffic Officer: Skill Boost] Traffic Officers' #yInvisible duration #b+1 turn.",
+      "[Awaken: Sealed Lab] In Awaken battle, An additional #yDorothy appears.",
+      "[Awaken: Enhanced Function] Awaken's #yJourney and #yShattered #yVision scale earlier (at #b80% Max HP).",
+      "[Dorothy: Potential Discovery Project] Dorothy's damage taken from the player increases over time and grants additional #yDream #yBreak.",
+      "[Dorothy: Dream Come True] Dorothy's normal attacks apply #b8 #ySweet #yDream. At #b24 stacks, you skip your next turn. Lose stacks equal to HP lost.",
+      "[Inactive R-31: Sleep Protection] Inactive R-31 Heavy Power Armors' max HP #b+100. On awakening, gain #b3 #yStrength.",
+      "[Inactive R-31: Shared Dream] When R-31 Heavy Power Armors inactive, deal #b10 damage to #yDorothy and apply #b5 #yDream #yBreak each turn.",
+      "[Rhine Engineering Member: Moment of Waking] When Rhine Engineer Member attacking #yDorothy, also apply #yDream #yBreak.",
+      "[Dor-1: Dream of Solidity] Dor-1 Failures' damage dealt to #yDorothy #b+5.",
+      "[Dor-1: Dream of Perfection] Dor-1 Failures gain 1 #yIntangible on spawn."
+    ]
+  },
+  "rhinemod:Level3Tags": {
+    "TEXT": [
+      "[Originium Zone: Activation III] All enemies increase Max HP by #b30%.",
+      "[Originium Zone: Stimulus III] Enemies not from Rhine Lab Mod gain #b3 #Strength on spawn.",
+      "[Originium Zone: Deep Infiltration III] Enemies not from Rhine Lab Mod add #b1 #yDazed to your discard pile every #b2 turns",
+      "[Arc Commando: Airflow Drive] When Arc Commandos taking off, gain #b+1 #yFlight and #b+4 Attack damage.",
+      "[Arc Commando: Emergency Lift] Arc Commandos take off on spawn, and gain #b5 #yPlated #yArmor and #b5 #yBlock.",
+      "[Arc Screenguard: Mental Excitement] Arc Screenguards gain #b4 #yStrength on spawn.",
+      "[Arc Screenguard: Inner Balance] Whenever Arc Screenguards lose HP, #yDamage #yReduction loses #b1 fewer stack.",
+      "[Arc Screenguard: Stabilization] Arc Screenguards start with #b75 #yDamage #yReduction.",
+      "[Arc Frontliner: Counterweight] Arc Frontliners no longer gain #yVulnerable when attacking.",
+      "[Arc Frontliner: Stabilization] Arc Frontliners no longer lose HP when attacking.",
+      "[Arc Frontliner: Sharpened] Remove Arc Frontliners' lowest-damage intent.",
+      "[Jesselton: Hatred] Jesselton Williams' Phase 1 attacks deal #b+4 damage, and Phase 2 attacks deal #b+11 damage.",
+      "[Military Hound: Anti-Armor II] Military Hounds gain #b+4 #yBlock each turn.",
+      "[Military Hound: Spiked Mod] At the start of turn, Military Hounds convert their #yBlock into damage to the player.",
+      "[Trimounts City Defender: Advanced Armor II] Trimounts City Defenders' max HP +#b40%.",
+      "[Trimounts City Defender: Interference] Debuffs applied by Trimounts City Defenders' attacks gain +1 stack.",
+      "[Experimental Power Armor: Reinforced Frame] Experimental Power Armors gain #b3 #yMetallicize on spawn.",
+      "[Experimental Power Armor: Firearm Upgrade] Experimental Power Armors' attack becomes a #b2-hit attack.",
+      "[Crossroads: Charged Lasers] Whenever Crossroads takes damage, deal damage equal to its #yStrength to the source",
+      "[Crossroads: Factory Standard] Crossroads acts immediately upon spawning.",
+      "[R-31: Core Overload] R-31 Heavy Power Armors' skill shuffles #b5 additional #yDazed into your discard pile.",
+      "[R-31: Turbocharged Power Module] R-31 Heavy Power Armors' movement speed +#b100%",
+      "[R-11: Advanced Tracking System II] R-11 Assault Power Armors' ranged intent damage #b+4 and melee intent damage #b+16. ",
+      "[R-11: Prototype] R-11 Assault Power Armors' max HP +100%. Whenever deal no damage with an attack, lose #b10% Max HP.",
+      "[Offender: Rampaging] If an Offender takes no damage in a turn, its next attack gains #b+1 hit.",
+      "[Offender: Optimized Resistance II] Whenever an Offender successfully deals damage, gain #b1 #yStrength.",
+      "[Traffic Tower: Firmware Update] The first time a Traffic Tower would die, instead summon a #yTraffic #yTower.",
+      "[Traffic Tower: Traffic Lockdown] Traffic Tower summons up to #b3 #yTrimounts #yCity #Defenders on spawn",
+      "[Traffic Officer: Skill Boost] Traffic Officers' #yInvisible duration #b+1 turn.",
+      "[Traffic Officer: Operative Skill] Traffic Officer acts immediately upon spawning.",
+      "[Awaken: Sealed Lab] In Awaken battle, An additional #yDorothy appears.",
+      "[Awaken: Enhanced Function] Awaken's #yJourney and #yShattered #yVision scale earlier (at #b80% Max HP).",
+      "[Awaken: Plentiful Funding] Awaken's #yJourney can trigger twice each turn.",
+      "[Dorothy: Potential Discovery Project] Dorothy's damage taken from the player increases over time and grants additional #yDream #yBreak.",
+      "[Dorothy: Dream Come True] Dorothy's normal attacks apply #b8 #ySweet #yDream. At #b24 stacks, you skip your next turn. Lose stacks equal to HP lost.",
+      "[Dorothy: Resonance Series Project] Dorothy's #yTrap #yMark marks 2 cards instead. Whenever you draw a Trap while already holding one, shuffle 1 #yDazed into your draw pile.",
+      "[Inactive R-31: Sleep Protection] Inactive R-31 Heavy Power Armors' max HP #b+100. On awakening, gain #b3 #yStrength.",
+      "[Inactive R-31: Shared Dream] When R-31 Heavy Power Armors inactive, deal #b10 damage to #yDorothy and apply #b5 #yDream #yBreak each turn.",
+      "[Inactive R-31: Efficiency] R-31 Heavy Power Armor requires only 1 #yDor-1 #yFailure to activate.",
+      "[Rhine Engineering Member: Moment of Waking] When Rhine Engineer Member attacking #yDorothy, also apply #yDream #yBreak.",
+      "[Rhine Engineering Member: Technical Innovation] Rhine Engineer Members' Power Armor repair efficiency #b+100%.",
+      "[Dor-1: Dream of Solidity] Dor-1 Failures' damage dealt to #yDorothy #b+5.",
+      "[Dor-1: Dream of Perfection] Dor-1 Failures gain 1 #yIntangible on spawn.",
+      "[Dor-1: Dream of Health] Dor-1 Failures' max HP #b+100%."
+    ]
+  },
+  "rhinemod:IntentTip": {
+    "TEXT": [
+      "(",
+      "You",
+      "Dorothy",
+      ", ",
+      ")"
+    ]
+  },
+  "rhinemod:NewUi": {
+    "TEXT": [
+      "Leave"
     ]
   }
 }

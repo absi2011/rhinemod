@@ -584,6 +584,11 @@
         "DESCRIPTION": "rhinemod:Research_Progress : !M! . NL Exhaust all *Unscrupulous . NL In this turn, you cannot play cards that add *Unscrupulous .",
         "UPGRADE_DESCRIPTION": ""
     },
+    "rhinemod:CreateMiracle": {
+        "NAME": "Create Miracle",
+        "DESCRIPTION": "Deal !D! damage. For every !M! of the target's max HP, this damage is doubled once.",
+        "UPGRADE_DESCRIPTION": ""
+    },
 
     "rhinemod:DEPRECATED_SHAFT": {
         "NAME": "S.H.A.F.T",

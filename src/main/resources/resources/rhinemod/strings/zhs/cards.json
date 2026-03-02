@@ -584,6 +584,11 @@
         "DESCRIPTION": "rhinemod:科研进度 ： !M! 。 NL 消耗 所有 *出格 ，你本回合内不能打出会获得 *出格 的牌。",
         "UPGRADE_DESCRIPTION": ""
     },
+    "rhinemod:CreateMiracle": {
+        "NAME": "创造奇迹",
+        "DESCRIPTION": "造成 !D! 点伤害。目标每有 !M! 点最大生命值，该伤害翻倍一次。",
+        "UPGRADE_DESCRIPTION": ""
+    },
 
     "rhinemod:DEPRECATED_SHAFT": {
         "NAME": "能量井",

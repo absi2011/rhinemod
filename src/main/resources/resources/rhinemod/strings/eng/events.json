@@ -59,7 +59,8 @@
       "You pushed open a heavy door, only to be greeted by an unexpectedly shabby sight. The walls around you were smooth and flat, resembling an ordinary storage room. The only exception was a partition door on one side, exuding an air of mystery, as if something extremely important was hidden behind it.",
       "A phrase rings in your head:\" ~If~ ~I~ ~had~ ~any~ ~say~ ~in~ ~it,~ ~this~ ~place~ ~would~ ~be~ ~stuffed~ ~full~ ~of~ @power@ @armor@ .\" NL In an instant, several power armors appeared before you, their metallic joints emitting a low, rumbling @hum@ as they charged toward you.",
       "\"There must be quite a few traps here,\" you decided to quickly cross the corridor to avoid them as much as possible. NL You navigated through @the@ @spears@ @emerged@ @from@ @the@ @ground@ , @floor@ @that@ @suddenly@ @collapsed@ , but didn't dodge @the@ @flying@ @blades@ , resulting in injuries as you entered the partition door. Behind the door was only a #gsmall #gball covered with glass, which you put into your pocket.",
-      "You felt you should stay focused on the goal of being here and not waste time on such irrelevant matters. You turned around and left."
+      "You felt you should stay focused on the goal of being here and not waste time on such irrelevant matters. You turned around and left.",
+      "“You were sure there had to be a miracle inside.” In your mind, you thought this. When you opened the door, your head began to spin, and you seemed to see a vision: you repeatedly used an Entropic Brew potion and obtained a Fire Potion, a Block Potion, and another Entropic Brew, and with them you defeated the Time Eater. You shook your head, only to find a combat log left behind by someone unknown."
     ],
     "OPTIONS": [
       "[Recollect] You recalled a classic comment made by a colleague.",
@@ -67,7 +68,8 @@
       " #rDamage. #gObtain #gDor-3 #gBionic.",
       "[Leave]",
       "[Fight] #rEngage #rin #ra #rdifficult #rbattle. #gObtain #g2 #gRelics.",
-      "[Recollect] You recalled a classic comment."
+      "[Recollect] You recalled a classic comment.",
+      "[Continue] #gObtain an Entropic Brew. #gObtain Create Miracle."
     ]
   },
   "rhinemod:TheCure": {

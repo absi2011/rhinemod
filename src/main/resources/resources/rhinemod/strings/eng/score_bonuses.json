@@ -16,5 +16,14 @@
     "DESCRIPTIONS": [
       "You fly for outer space just like you've been dreaming of."
     ]
+  },
+  "rhinemod:CCTag": {
+    "NAME": "Contingency Contract Level (",
+    "DESCRIPTIONS": [
+      ")",
+      "You choose to challenge level ",
+      " , increase score by ",
+      "0% ."
+    ]
   }
 }

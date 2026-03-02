@@ -5,27 +5,27 @@
     "DIALOG": []
   },
   "rhinemod:ArclightCommando": {
-    "NAME": "Arclight Commando",
+    "NAME": "Arc Commando",
     "MOVES": ["Run up", "Take off"],
     "DIALOG": []
   },
   "rhinemod:MilitaryBeckbeast": {
-    "NAME": "Military Beckbeast",
+    "NAME": "Military Hound",
     "MOVES": [],
     "DIALOG": []
   },
   "rhinemod:ArclightMirrorguard": {
-    "NAME": "Arclight Mirrorguard",
+    "NAME": "Arc Screenguard",
     "MOVES": [],
     "DIALOG": []
   },
   "rhinemod:ArclightVanguard": {
-    "NAME": "Arclight Vanguard",
+    "NAME": "Arc Frontliner",
     "MOVES": [],
     "DIALOG": []
   },
   "rhinemod:Perpetrator": {
-    "NAME": "Perpetrator",
+    "NAME": "Offender",
     "MOVES": [],
     "DIALOG": []
   },
@@ -40,7 +40,7 @@
     "DIALOG": []
   },
   "rhinemod:TrimountsCityGuard": {
-    "NAME": "Trimounts City Guard",
+    "NAME": "Trimounts City Defender",
     "MOVES": [],
     "DIALOG": []
   },
@@ -65,18 +65,41 @@
     "DIALOG": []
   },
   "rhinemod:Turnpike": {
-    "NAME": "Turnpike",
+    "NAME": "Traffic Tower",
     "MOVES": [],
     "DIALOG": []
   },
   "rhinemod:TrafficPolice": {
-    "NAME": "Traffic Police",
+    "NAME": "Traffic Officer",
     "MOVES": [],
     "DIALOG": []
   },
   "rhinemod:StarPod": {
     "NAME": "Star Pod",
     "MOVES": ["Self-Healing"],
+    "DIALOG": []
+  },
+  "rhinemod:Dorothy": {
+    "NAME": "Dorothy",
+    "MOVES": ["Shattered Vision"],
+    "DIALOG": [
+      "Yes, the dream should end. NL Thank you.",
+      "Thank you for letting me see a new journey."
+    ]
+  },
+  "rhinemod:RhineEngineeringMember": {
+    "NAME": "Rhine Engineering Member",
+    "MOVES": [""],
+    "DIALOG": []
+  },
+  "rhinemod:Dor1": {
+    "NAME": "Dor-1 Failure",
+    "MOVES": [""],
+    "DIALOG": []
+  },
+  "rhinemod:SleepingR31": {
+    "NAME": "R-31 Heavy Power Armor (Inactive)",
+    "MOVES": [""],
     "DIALOG": []
   }
 }
