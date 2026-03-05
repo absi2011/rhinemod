@@ -1,6 +1,7 @@
 package rhinemod.events;
 
 import com.badlogic.gdx.math.MathUtils;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -9,11 +10,20 @@ import com.megacrit.cardcrawl.events.AbstractImageEvent;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
+import com.megacrit.cardcrawl.potions.AbstractPotion;
+import com.megacrit.cardcrawl.potions.EntropicBrew;
+import com.megacrit.cardcrawl.potions.FairyPotion;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.rewards.RewardItem;
+import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
+import rhinemod.cards.special.CreateMiracle;
 import rhinemod.characters.RhineLab;
 import rhinemod.monsters.R11AssaultPowerArmor;
 import rhinemod.monsters.R31HeavyPowerArmor;
 import rhinemod.relics.Dor3Bionic;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class UnsecuredCorridors extends AbstractImageEvent {
     public static final String ID = "rhinemod:UnsecuredCorridors";
@@ -36,6 +46,9 @@ public class UnsecuredCorridors extends AbstractImageEvent {
         else {
             this.imageEventText.setDialogOption(OPTIONS[5]);
         }
+        if (AbstractDungeon.player.currentHealth <= damage) {
+            this.imageEventText.setDialogOption(OPTIONS[6]);
+        }
         this.imageEventText.setDialogOption(OPTIONS[1] + damage + OPTIONS[2]);
         this.imageEventText.setDialogOption(OPTIONS[3]);
     }
@@ -52,13 +65,31 @@ public class UnsecuredCorridors extends AbstractImageEvent {
                         logMetric(ID, "Recollections");
                         break;
                     case 1:
-                        this.imageEventText.updateBodyText(DESCRIPTIONS[2]);
-                        this.screen = CurScreen.LEAVE;
-                        AbstractDungeon.player.damage(new DamageInfo(null, damage));
-                        AbstractRelic r = new Dor3Bionic();
-                        AbstractDungeon.getCurrRoom().spawnRelicAndObtain(Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F, r);
-                        logMetricObtainRelicAndDamage(ID, "Onward", r, damage);
-                        imageEventText.updateDialogOption(0, OPTIONS[3]);
+                        if (AbstractDungeon.player.currentHealth <= damage) {
+                            this.imageEventText.updateBodyText(DESCRIPTIONS[4]);
+                            this.screen = CurScreen.LEAVE;
+                            AbstractCard card = new CreateMiracle();
+                            List<String> record = new ArrayList<>();
+                            record.add(card.cardID);
+                            AbstractPotion potion = new EntropicBrew();
+                            List<String> tempList = new ArrayList<>();
+                            tempList.add(potion.ID);
+                            logMetric(ID, "Miracle", record, null, null, null, null, tempList, null, 0, 0, 0, 0, 0, 0);
+                            AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(card, Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F));
+                            AbstractDungeon.getCurrRoom().rewards.clear();
+                            AbstractDungeon.getCurrRoom().rewards.add(new RewardItem(potion));
+                            AbstractDungeon.combatRewardScreen.open();
+                            imageEventText.updateDialogOption(0, OPTIONS[3]);
+                        }
+                        else {
+                            this.imageEventText.updateBodyText(DESCRIPTIONS[2]);
+                            this.screen = CurScreen.LEAVE;
+                            AbstractDungeon.player.damage(new DamageInfo(null, damage));
+                            AbstractRelic r = new Dor3Bionic();
+                            AbstractDungeon.getCurrRoom().spawnRelicAndObtain(Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F, r);
+                            logMetricObtainRelicAndDamage(ID, "Onward", r, damage);
+                            imageEventText.updateDialogOption(0, OPTIONS[3]);
+                        }
                         break;
                     case 2:
                         this.imageEventText.updateBodyText(DESCRIPTIONS[3]);
