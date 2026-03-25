@@ -170,6 +170,13 @@ public class TrafficPolice extends AbstractRhineMonster {
     }
 
     @Override
+    public void damage(DamageInfo info) {
+        if (!this.halfDead) {
+            super.damage(info);
+        }
+    }
+
+    @Override
     protected void getMove(int i) {
         setMove((byte)1, Intent.ATTACK_DEBUFF, damage.get(0).base);
     }
