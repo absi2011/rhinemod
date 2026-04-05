@@ -18,7 +18,6 @@ import rhinemod.characters.RhineLab;
 import rhinemod.powers.DreamBreakPower;
 import rhinemod.powers.FeedingPower;
 import rhinemod.powers.NoStun;
-import rhinemod.vfx.R31MoveEffect;
 
 public class SleepingR31 extends AbstractRhineMonster {
     public static final String ID = "rhinemod:SleepingR31";
@@ -47,7 +46,6 @@ public class SleepingR31 extends AbstractRhineMonster {
             feedLeft = 2;
         }
         loadAnimation("resources/rhinemod/images/monsters/trap_075_bgarmn/trap_075_bgarmn33.atlas", "resources/rhinemod/images/monsters/trap_075_bgarmn/trap_075_bgarmn33.json", 1.5F);
-        state.setAnimation(0, "Idle", true);
         flipHorizontal = true;
     }
 
