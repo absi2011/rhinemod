@@ -1,19 +1,25 @@
 package rhinemod.powers;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import rhinemod.actions.IdealistFormSAction;
+import rhinemod.actions.AddCalciumAction;
+import rhinemod.cards.special.Unscrupulous;
 
 public class IdealistFormPowerS extends AbstractRhinePower {
     public static final String POWER_ID = "rhinemod:IdealistFormPowerS";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
+    public int blockAmount;
 
-    public IdealistFormPowerS(AbstractCreature owner, int amount) {
+    public IdealistFormPowerS(AbstractCreature owner, int amount, int blockAmount) {
         this.ID = POWER_ID;
         this.name = NAME;
         this.type = PowerType.BUFF;
@@ -21,18 +27,23 @@ public class IdealistFormPowerS extends AbstractRhinePower {
         region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/IdealistForm 84.png"), 0, 0, 84, 84);
         region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("resources/rhinemod/images/powers/IdealistForm 32.png"), 0, 0, 32, 32);
         this.amount = amount;
+        this.blockAmount = blockAmount;
         priority = 10;
         updateDescription();
     }
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1] + blockAmount + DESCRIPTIONS[2];
     }
 
     @Override
-    public void atStartOfTurnPostDraw() {
-        flash();
-        addToBot(new IdealistFormSAction(amount));
+    public void onCardDraw(AbstractCard card) {
+        if (card instanceof Unscrupulous) {
+            flash();
+            addToBot(new ExhaustSpecificCardAction(card, AbstractDungeon.player.hand));
+            addToBot(new AddCalciumAction(amount));
+            addToBot(new GainBlockAction(owner, blockAmount));
+        }
     }
 }

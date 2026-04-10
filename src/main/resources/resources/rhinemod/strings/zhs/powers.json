@@ -287,8 +287,9 @@
   "rhinemod:IdealistFormPowerS": {
     "NAME": "理想者形态S",
     "DESCRIPTIONS": [
-      "在每回合开始时，消耗手牌中的所有 #y出格 。每消耗一张，获得 #b",
-      " 点 #y钙质粒子 。"
+      "当你抽到一张 #y出格 时，将其 #y消耗 ，并获得 #b",
+      " 点 #y钙质粒子 及 #b",
+      " 点 #y格挡 。"
     ]
   },
   "rhinemod:IdealistFormPowerK": {

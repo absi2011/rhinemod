@@ -285,8 +285,9 @@
   "rhinemod:IdealistFormPowerS": {
     "NAME": "Idealist Form S",
     "DESCRIPTIONS": [
-      "At the start of your turn, #yExhaust all #yUnscrupulous in your hand. For each one you #yExhaust , gain #b",
-      " #yCalcium ."
+      "Whenever you draw an #yUnscrupulous , #yExhaust it and gain #b",
+      " #yCalcium and #b",
+      " #yBlock."
     ]
   },
   "rhinemod:IdealistFormPowerK": {

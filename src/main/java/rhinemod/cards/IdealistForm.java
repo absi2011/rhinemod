@@ -27,11 +27,13 @@ public class IdealistForm extends AbstractRhineCard {
     public static final int UPGRADE_PLUS_DMG = 15;
     public static final int CALCIUM = 3;
     public static final int FLOWSP = 5;
+    public static final int BLOCK_GAIN = 8;
     public IdealistForm() {
         super(ID, NAME, IMG, COST, DESCRIPTION,
                 CardType.POWER, AbstractCardEnum.RHINE_MATTE,
                 CardRarity.RARE, CardTarget.NONE);
         magicNumber = baseMagicNumber = ATTACK_DMG;
+        secondMagicNumber = baseSecondMagicNumber = 0;
     }
 
     @Override
@@ -41,7 +43,7 @@ public class IdealistForm extends AbstractRhineCard {
                 addToBot(new ApplyPowerAction(p, p, new IdealistFormPower(p, magicNumber)));
                 break;
             case 1:
-                addToBot(new ApplyPowerAction(p, p, new IdealistFormPowerS(p, magicNumber)));
+                addToBot(new ApplyPowerAction(p, p, new IdealistFormPowerS(p, magicNumber, secondMagicNumber)));
                 break;
             case 2:
                 addToBot(new ApplyPowerAction(p, p, new IdealistFormPowerK(p, 1)));
@@ -66,6 +68,7 @@ public class IdealistForm extends AbstractRhineCard {
                 if (!upgraded) {
                     upgradeName(1);
                     magicNumber = baseMagicNumber = CALCIUM;
+                    secondMagicNumber = baseSecondMagicNumber = BLOCK_GAIN;
                     rawDescription = EXTENDED_DESCRIPTION[0];
                     initializeDescription();
                 }

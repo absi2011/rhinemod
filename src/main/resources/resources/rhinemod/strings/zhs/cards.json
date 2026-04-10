@@ -448,7 +448,7 @@
         "DESCRIPTION": "在每回合结束时，如果你打出过所有 rhinemod:倾向 的牌，对所有敌人造成 !M! 点伤害。",
         "UPGRADE_DESCRIPTION": "",
         "EXTENDED_DESCRIPTION": [
-            "在每回合开始时， 消耗 手牌中的所有 *出格 。每 消耗 一张，获得 !M! 点 rhinemod:钙质粒子 。",
+            "当你抽到一张 *出格 时，将其 消耗 ，并获得 !M! 点 rhinemod:钙质粒子 及 !rhinemod:M2! 点 格挡 。",
             "在每回合开始时，打出一张 *寂寥的光 。",
             "在每回合开始时，抽一张牌，获得 !M! 点 rhinemod:流形 。"
         ]

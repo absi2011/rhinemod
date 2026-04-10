@@ -448,7 +448,7 @@
         "DESCRIPTION": "At the end of each turn, if you played cards of all rhinemod:Affinity , deal !M! damage to all enemies.",
         "UPGRADE_DESCRIPTION": "",
         "EXTENDED_DESCRIPTION": [
-            "At the start of your turn, Exhaust all *Unscrupulous in your hand. For each one you Exhaust , gain !M! rhinemod:Calcium .",
+            "Whenever you draw an *Unscrupulous , Exhaust it and gain !M! rhinemod:Calcium and !rhinemod:M2! Block .",
             "At the start of your turn, play 1 *Lone *Light .",
             "At the start of your turn, draw 1 card and gain !M! rhinemod:Flowing_Shape ."
         ]
