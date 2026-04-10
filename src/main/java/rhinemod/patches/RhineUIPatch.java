@@ -251,53 +251,52 @@ public class RhineUIPatch {
         public static SpireReturn<?> Prefix(SingleCardViewPopup _inst, SpriteBatch sb) {
             AbstractCard card = ReflectionHacks.getPrivate(_inst, SingleCardViewPopup.class, "card");
             if (RhineMod.useLoneTrail && card instanceof AbstractRhineCard) {
-                Texture img;
+                TextureAtlas.AtlasRegion img;
                 largeFrameLabel:
                 switch (card.type) {
                     case ATTACK:
                         switch (card.rarity) {
                             case UNCOMMON:
-                                img = RhineImageMaster.attackUncommonL;
+                                img = RhineImageMaster.attackUncommonL_rg;
                                 break largeFrameLabel;
                             case RARE:
-                                img = RhineImageMaster.attackRareL;
+                                img = RhineImageMaster.attackRareL_rg;
                                 break largeFrameLabel;
                             case COMMON:
                             default:
-                                img = RhineImageMaster.attackCommonL;
+                                img = RhineImageMaster.attackCommonL_rg;
                                 break largeFrameLabel;
                         }
                     case POWER:
                         switch (card.rarity) {
                             case UNCOMMON:
-                                img = RhineImageMaster.powerUncommonL;
+                                img = RhineImageMaster.powerUncommonL_rg;
                                 break largeFrameLabel;
                             case RARE:
-                                img = RhineImageMaster.powerRareL;
+                                img = RhineImageMaster.powerRareL_rg;
                                 break largeFrameLabel;
                             case COMMON:
                             default:
-                                img = RhineImageMaster.powerCommonL;
+                                img = RhineImageMaster.powerCommonL_rg;
                                 break largeFrameLabel;
                         }
                     case SKILL:
                     default:
                         switch (card.rarity) {
                             case UNCOMMON:
-                                img = RhineImageMaster.skillUncommonL;
+                                img = RhineImageMaster.skillUncommonL_rg;
                                 break largeFrameLabel;
                             case RARE:
-                                img = RhineImageMaster.skillRareL;
+                                img = RhineImageMaster.skillRareL_rg;
                                 break largeFrameLabel;
                             case COMMON:
                             default:
-                                img = RhineImageMaster.skillCommonL;
+                                img = RhineImageMaster.skillCommonL_rg;
                                 break largeFrameLabel;
                         }
                 }
                 ReflectionHacks.RMethod method = ReflectionHacks.privateMethod(SingleCardViewPopup.class, "renderHelper", SpriteBatch.class, float.class, float.class, TextureAtlas.AtlasRegion.class);
-                TextureAtlas.AtlasRegion region = new TextureAtlas.AtlasRegion(img, 0, 0, 1024, 1024);
-                method.invoke(_inst, sb, Settings.WIDTH / 2.0f, Settings.HEIGHT / 2.0f, region);
+                method.invoke(_inst, sb, Settings.WIDTH / 2.0f, Settings.HEIGHT / 2.0f, img);
                 return SpireReturn.Return();
             }
             return SpireReturn.Continue();
@@ -310,22 +309,21 @@ public class RhineUIPatch {
         public static SpireReturn<?> Prefix(SingleCardViewPopup _inst, SpriteBatch sb) {
             AbstractCard card = ReflectionHacks.getPrivate(_inst, SingleCardViewPopup.class, "card");
             if (RhineMod.useLoneTrail && card instanceof AbstractRhineCard) {
-                Texture img;
+                TextureAtlas.AtlasRegion img;
                 switch (card.rarity) {
                     case UNCOMMON:
-                        img = RhineImageMaster.uncommonBannerL;
+                        img = RhineImageMaster.uncommonBannerL_rg;
                         break;
                     case RARE:
-                        img = RhineImageMaster.rareBannerL;
+                        img = RhineImageMaster.rareBannerL_rg;
                         break;
                     case COMMON:
                     default:
-                        img = RhineImageMaster.commonBannerL;
+                        img = RhineImageMaster.commonBannerL_rg;
                         break;
                 }
                 ReflectionHacks.RMethod method = ReflectionHacks.privateMethod(SingleCardViewPopup.class, "renderHelper", SpriteBatch.class, float.class, float.class, TextureAtlas.AtlasRegion.class);
-                TextureAtlas.AtlasRegion region = new TextureAtlas.AtlasRegion(img, 0, 0, 1024, 1024);
-                method.invoke(_inst, sb, Settings.WIDTH / 2.0f, Settings.HEIGHT / 2.0f, region);
+                method.invoke(_inst, sb, Settings.WIDTH / 2.0f, Settings.HEIGHT / 2.0f, img);
                 return SpireReturn.Return();
             }
             return SpireReturn.Continue();
@@ -350,54 +348,53 @@ public class RhineUIPatch {
         @SpirePrefixPatch
         public static SpireReturn<?> Prefix(AbstractCard _inst, SpriteBatch sb, float x, float y) {
             if (RhineMod.useLoneTrail && _inst instanceof AbstractRhineCard) {
-                Texture img;
+                TextureAtlas.AtlasRegion img;
                 smallFrameLabel:
                 switch (_inst.type) {
                     case ATTACK:
                         switch (_inst.rarity) {
                             case UNCOMMON:
-                                img = RhineImageMaster.attackUncommon;
+                                img = RhineImageMaster.attackUncommon_rg;
                                 break smallFrameLabel;
                             case RARE:
-                                img = RhineImageMaster.attackRare;
+                                img = RhineImageMaster.attackRare_rg;
                                 break smallFrameLabel;
                             case COMMON:
                             default:
-                                img = RhineImageMaster.attackCommon;
+                                img = RhineImageMaster.attackCommon_rg;
                                 break smallFrameLabel;
                         }
                     case POWER:
                         switch (_inst.rarity) {
                             case UNCOMMON:
-                                img = RhineImageMaster.powerUncommon;
+                                img = RhineImageMaster.powerUncommon_rg;
                                 break smallFrameLabel;
                             case RARE:
-                                img = RhineImageMaster.powerRare;
+                                img = RhineImageMaster.powerRare_rg;
                                 break smallFrameLabel;
                             case COMMON:
                             default:
-                                img = RhineImageMaster.powerCommon;
+                                img = RhineImageMaster.powerCommon_rg;
                                 break smallFrameLabel;
                         }
                     case SKILL:
                     default:
                         switch (_inst.rarity) {
                             case UNCOMMON:
-                                img = RhineImageMaster.skillUncommon;
+                                img = RhineImageMaster.skillUncommon_rg;
                                 break smallFrameLabel;
                             case RARE:
-                                img = RhineImageMaster.skillRare;
+                                img = RhineImageMaster.skillRare_rg;
                                 break smallFrameLabel;
                             case COMMON:
                             default:
-                                img = RhineImageMaster.skillCommon;
+                                img = RhineImageMaster.skillCommon_rg;
                                 break smallFrameLabel;
                         }
                 }
                 ReflectionHacks.RMethod method = ReflectionHacks.privateMethod(AbstractCard.class, "renderHelper", SpriteBatch.class, Color.class, TextureAtlas.AtlasRegion.class, float.class, float.class);
                 Color renderColor = ReflectionHacks.getPrivate(_inst, AbstractCard.class, "renderColor");
-                TextureAtlas.AtlasRegion region = new TextureAtlas.AtlasRegion(img, 0, 0, 512, 512);
-                method.invoke(_inst, sb, renderColor, region, x, y);
+                method.invoke(_inst, sb, renderColor, img, x, y);
                 return SpireReturn.Return();
             }
             return SpireReturn.Continue();
@@ -409,23 +406,22 @@ public class RhineUIPatch {
         @SpirePrefixPatch
         public static SpireReturn<?> Prefix(AbstractCard _inst, SpriteBatch sb, float x, float y) {
             if (RhineMod.useLoneTrail && _inst instanceof AbstractRhineCard) {
-                Texture img;
+                TextureAtlas.AtlasRegion img;
                 switch (_inst.rarity) {
                     case UNCOMMON:
-                        img = RhineImageMaster.uncommonBanner;
+                        img = RhineImageMaster.uncommonBanner_rg;
                         break;
                     case RARE:
-                        img = RhineImageMaster.rareBanner;
+                        img = RhineImageMaster.rareBanner_rg;
                         break;
                     case COMMON:
                     default:
-                        img = RhineImageMaster.commonBanner;
+                        img = RhineImageMaster.commonBanner_rg;
                         break;
                 }
                 ReflectionHacks.RMethod method = ReflectionHacks.privateMethod(AbstractCard.class, "renderHelper", SpriteBatch.class, Color.class, TextureAtlas.AtlasRegion.class, float.class, float.class);
                 Color renderColor = ReflectionHacks.getPrivate(_inst, AbstractCard.class, "renderColor");
-                TextureAtlas.AtlasRegion region = new TextureAtlas.AtlasRegion(img, 0, 0, 512, 512);
-                method.invoke(_inst, sb, renderColor, region, x, y);
+                method.invoke(_inst, sb, renderColor, img, x, y);
                 return SpireReturn.Return();
             }
             return SpireReturn.Continue();
@@ -734,13 +730,17 @@ public class RhineUIPatch {
         }
     }
 
-    @SpirePatch(clz = AbstractEvent.class, method = "renderRoomEventPanel")
+    @SpirePatch(clz = AbstractEvent.class, method = "update")
     public static class renderRoomEventPanelPatch {
+        public static int count = 0;
         public static ExprEditor Instrument() {
             return new ExprEditor() {
                 public void edit(MethodCall m) throws CannotCompileException {
-                    if (m.getClassName().equals(SpriteBatch.class.getName()) && m.getMethodName().equals("setColor")) {
-                        m.replace("if (" + RhineMod.class.getName() + ".useLoneTrail) { $1 = " + Color.class.getName() + ".WHITE; $_ = $proceed($$); } else { $proceed($$); }");
+                    if (m.getClassName().equals(MathHelper.class.getName()) && m.getMethodName().equals("fadeLerpSnap")) {
+                        count++;
+                        if (count == 1) {
+                            m.replace("if (" + RhineMod.class.getName() + ".useLoneTrail) { $2 = 1.0F; $_ = $proceed($$); } else { $proceed($$); }");
+                        }
                     }
                 }
             };

@@ -51,6 +51,30 @@ public class RhineImageMaster {
     public static Texture commonBanner;
     public static Texture uncommonBanner;
     public static Texture rareBanner;
+    public static TextureAtlas.AtlasRegion attackCommonL_rg;
+    public static TextureAtlas.AtlasRegion attackUncommonL_rg;
+    public static TextureAtlas.AtlasRegion attackRareL_rg;
+    public static TextureAtlas.AtlasRegion skillCommonL_rg;
+    public static TextureAtlas.AtlasRegion skillUncommonL_rg;
+    public static TextureAtlas.AtlasRegion skillRareL_rg;
+    public static TextureAtlas.AtlasRegion powerCommonL_rg;
+    public static TextureAtlas.AtlasRegion powerUncommonL_rg;
+    public static TextureAtlas.AtlasRegion powerRareL_rg;
+    public static TextureAtlas.AtlasRegion commonBannerL_rg;
+    public static TextureAtlas.AtlasRegion uncommonBannerL_rg;
+    public static TextureAtlas.AtlasRegion rareBannerL_rg;
+    public static TextureAtlas.AtlasRegion attackCommon_rg;
+    public static TextureAtlas.AtlasRegion attackUncommon_rg;
+    public static TextureAtlas.AtlasRegion attackRare_rg;
+    public static TextureAtlas.AtlasRegion skillCommon_rg;
+    public static TextureAtlas.AtlasRegion skillUncommon_rg;
+    public static TextureAtlas.AtlasRegion skillRare_rg;
+    public static TextureAtlas.AtlasRegion powerCommon_rg;
+    public static TextureAtlas.AtlasRegion powerUncommon_rg;
+    public static TextureAtlas.AtlasRegion powerRare_rg;
+    public static TextureAtlas.AtlasRegion commonBanner_rg;
+    public static TextureAtlas.AtlasRegion uncommonBanner_rg;
+    public static TextureAtlas.AtlasRegion rareBanner_rg;
     public static Texture bossCardReward;
     public static Texture normalCardReward;
     public static Texture relicLink;
@@ -175,6 +199,19 @@ public class RhineImageMaster {
         uncommonBannerL = ImageMaster.loadImage("resources/rhinemod/images/1024/banner/uncommon.png");
         rareBannerL = ImageMaster.loadImage("resources/rhinemod/images/1024/banner/rare.png");
 
+        attackCommonL_rg = new TextureAtlas.AtlasRegion(attackCommonL, 0, 0, 1024, 1024);
+        attackUncommonL_rg = new TextureAtlas.AtlasRegion(attackUncommonL, 0, 0, 1024, 1024);
+        attackRareL_rg = new TextureAtlas.AtlasRegion(attackRareL, 0, 0, 1024, 1024);
+        skillCommonL_rg = new TextureAtlas.AtlasRegion(skillCommonL, 0, 0, 1024, 1024);
+        skillUncommonL_rg = new TextureAtlas.AtlasRegion(skillUncommonL, 0, 0, 1024, 1024);
+        skillRareL_rg = new TextureAtlas.AtlasRegion(skillRareL, 0, 0, 1024, 1024);
+        powerCommonL_rg = new TextureAtlas.AtlasRegion(powerCommonL, 0, 0, 1024, 1024);
+        powerUncommonL_rg = new TextureAtlas.AtlasRegion(powerUncommonL, 0, 0, 1024, 1024);
+        powerRareL_rg = new TextureAtlas.AtlasRegion(powerRareL, 0, 0, 1024, 1024);
+        commonBannerL_rg = new TextureAtlas.AtlasRegion(commonBannerL, 0, 0, 1024, 1024);
+        uncommonBannerL_rg = new TextureAtlas.AtlasRegion(uncommonBannerL, 0, 0, 1024, 1024);
+        rareBannerL_rg = new TextureAtlas.AtlasRegion(rareBannerL, 0, 0, 1024, 1024);
+
         attackCommon = ImageMaster.loadImage("resources/rhinemod/images/512/frame/attack_common.png");
         attackUncommon = ImageMaster.loadImage("resources/rhinemod/images/512/frame/attack_uncommon.png");
         attackRare = ImageMaster.loadImage("resources/rhinemod/images/512/frame/attack_rare.png");
@@ -187,6 +224,19 @@ public class RhineImageMaster {
         commonBanner = ImageMaster.loadImage("resources/rhinemod/images/512/banner/common.png");
         uncommonBanner = ImageMaster.loadImage("resources/rhinemod/images/512/banner/uncommon.png");
         rareBanner = ImageMaster.loadImage("resources/rhinemod/images/512/banner/rare.png");
+
+        attackCommon_rg = new TextureAtlas.AtlasRegion(attackCommon, 0, 0, 512, 512);
+        attackUncommon_rg = new TextureAtlas.AtlasRegion(attackUncommon, 0, 0, 512, 512);
+        attackRare_rg = new TextureAtlas.AtlasRegion(attackRare, 0, 0, 512, 512);
+        skillCommon_rg = new TextureAtlas.AtlasRegion(skillCommon, 0, 0, 512, 512);
+        skillUncommon_rg = new TextureAtlas.AtlasRegion(skillUncommon, 0, 0, 512, 512);
+        skillRare_rg = new TextureAtlas.AtlasRegion(skillRare, 0, 0, 512, 512);
+        powerCommon_rg = new TextureAtlas.AtlasRegion(powerCommon, 0, 0, 512, 512);
+        powerUncommon_rg = new TextureAtlas.AtlasRegion(powerUncommon, 0, 0, 512, 512);
+        powerRare_rg = new TextureAtlas.AtlasRegion(powerRare, 0, 0, 512, 512);
+        commonBanner_rg = new TextureAtlas.AtlasRegion(commonBanner, 0, 0, 512, 512);
+        uncommonBanner_rg = new TextureAtlas.AtlasRegion(uncommonBanner, 0, 0, 512, 512);
+        rareBanner_rg = new TextureAtlas.AtlasRegion(rareBanner, 0, 0, 512, 512);
 
         bossCardReward = ImageMaster.loadImage("resources/rhinemod/images/ui/reward/bossCardReward.png");
         normalCardReward = ImageMaster.loadImage("resources/rhinemod/images/ui/reward/normalCardReward.png");
