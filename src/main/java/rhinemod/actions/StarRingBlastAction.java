@@ -54,7 +54,7 @@ public class StarRingBlastAction extends AbstractGameAction {
         }
         int enemyDmg = amount * (extraMultiDmg + 1);
         for (AbstractCreature m : aimList) {
-            DamageInfo info = new DamageInfo(null, m instanceof AbstractPlayer ? amount : enemyDmg, DamageInfo.DamageType.THORNS);
+            DamageInfo info = new DamageInfo(AbstractDungeon.player, m instanceof AbstractPlayer ? amount : enemyDmg, DamageInfo.DamageType.THORNS);
             info.name = "StarRing";
             m.damage(info);
         }

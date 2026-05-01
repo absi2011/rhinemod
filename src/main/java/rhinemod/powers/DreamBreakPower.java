@@ -43,8 +43,8 @@ public class DreamBreakPower extends AbstractRhinePower {
         }
         AbstractDungeon.player.currentHealth -= amount;
         if (AbstractDungeon.player.currentHealth <= 0) {
-            AbstractDungeon.player.currentHealth = 0;
-            AbstractDungeon.player.damage(new DamageInfo(owner, 1, DamageInfo.DamageType.HP_LOSS));
+            AbstractDungeon.player.currentHealth = 1;
+            AbstractDungeon.player.damage(new DamageInfo(owner, 100, DamageInfo.DamageType.HP_LOSS));
         }
         AbstractDungeon.effectsQueue.add(new TextAboveCreatureEffect(AbstractDungeon.player.hb.cX - AbstractDungeon.player.animX, AbstractDungeon.player.hb.cY, DESCRIPTIONS[2] + amount, Settings.RED_TEXT_COLOR));
         AbstractDungeon.player.decreaseMaxHealth(amount);

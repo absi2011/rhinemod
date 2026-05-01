@@ -22,7 +22,7 @@ public class R31HeavyPowerArmor extends AbstractRhineMonster {
     public static final String NAME = monsterStrings.NAME;
     public static final String[] MOVES = monsterStrings.MOVES;
     public static final int stunStrike = 10;
-    public static int stunNum = 5;
+    public int stunNum = 5;
     private static float moveX;
 
     public R31HeavyPowerArmor(float x, float y) {
